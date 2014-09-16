@@ -35,6 +35,8 @@ public class KitchensinkSetupFixture extends FixtureScript {
 
         // create
         execute(new NumberObjectsFixture(), executionContext);
+        execute(new TextObjectsFixture(), executionContext);
+        execute(new EnumeratedObjectsFixture(), executionContext);
     }
 
 }

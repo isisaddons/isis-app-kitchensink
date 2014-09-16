@@ -1,0 +1,190 @@
+{
+  "columns": [
+    {
+      "span": 4,
+      "memberGroups": {
+        "Name In Collection": {
+          "members": {
+            "nameInCollection": {
+              "hidden": {
+                "where": "OBJECT_FORMS"
+              }
+            }
+          }
+        },
+        "Character": {
+          "members": {
+            "someChar": {
+              "actions": {
+                "updateSomeChar": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              }
+            },
+            "someCharacterWrapperMandatory": {
+              "actions": {
+                "updateSomeCharacterWrapperMandatory": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
+            },
+            "someCharacterWrapperOptional": {
+              "actions": {
+                "updateSomeCharacterWrapperOptional": {
+                  "named": {
+                    "value": "update"
+                  }
+                },
+                "resetSomeCharacterWrapperOptional": {
+                  "named": {
+                    "value": "clear"
+                  }
+                },
+                "hidden": {
+                  "where": "ALL_TABLES"
+                }
+              }
+            }
+          }
+        },
+        "Name": {
+          "members": {
+            "name": {
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "span": 4,
+      "memberGroups": {
+        "String": {
+          "members": {
+            "someStringMandatory": {
+              "actions": {
+                "updateSomeStringMandatory": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
+            },
+            "someStringOptional": {
+              "actions": {
+                "updateSomeStringOptional": {
+                  "named": {
+                    "value": "update"
+                  }
+                },
+                "resetSomeStringOptional": {
+                  "named": {
+                    "value": "clear"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
+            },
+            "someString20": {
+              "actions": {
+                "updateSomeString20": {
+                  "named": {
+                    "value": "update"
+                  }
+                },
+                "resetSomeString20": {
+                  "named": {
+                    "value": "clear"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
+            },
+            "someString50": {
+              "actions": {
+                "updateSomeString50": {
+                  "named": {
+                    "value": "update"
+                  }
+                },
+                "resetSomeString50": {
+                  "named": {
+                    "value": "clear"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "span": 4,
+      "memberGroups": {
+        "String Multi": {
+          "members": {
+            "someStringMulti": {
+              "actions": {
+                "updateSomeStringMulti": {
+                  "named": {
+                    "value": "update"
+                  }
+                },
+                "resetSomeStringMulti": {
+                  "named": {
+                    "value": "clear"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
+            },
+            "someStringMultiNoWrap": {
+              "actions": {
+                "updateSomeStringMultiNoWrap": {
+                  "named": {
+                    "value": "update"
+                  }
+                },
+                "resetSomeStringMultiNoWrap": {
+                  "named": {
+                    "value": "clear"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "span": 0,
+      "collections": {}
+    }
+  ],
+  "actions": {}
+}
+ 

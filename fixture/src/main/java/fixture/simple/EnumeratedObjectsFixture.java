@@ -19,27 +19,26 @@
 
 package fixture.simple;
 
-import dom.simple.NumberObject;
-import dom.simple.NumberObjects;
+import dom.simple.*;
 
 import org.apache.isis.applib.fixturescripts.FixtureScript;
 
-public class NumberObjectsFixture extends FixtureScript {
+public class EnumeratedObjectsFixture extends FixtureScript {
 
     @Override
     protected void execute(ExecutionContext executionContext) {
 
-        long l = 0;
-        create("Foo", l++, executionContext);
-        create("Bar", l++, executionContext);
-        create("Baz", l++, executionContext);
+        // create
+        create("Foo", executionContext);
+        create("Bar", executionContext);
+        create("Baz", executionContext);
     }
 
-    private NumberObject create(final String name, long l, ExecutionContext executionContext) {
-        return executionContext.add(this, numberObjects.create(name, (byte)l, (short)l, (int)l, l, l, l));
+    private EnumeratedObject create(final String name, ExecutionContext executionContext) {
+        return executionContext.add(this, enumeratedObjects.create(name, true, EnumOf3.AMEX, EnumOf4.WINTER, EnumOf8.ABBEY_ROAD));
     }
 
     @javax.inject.Inject
-    private NumberObjects numberObjects;
+    private EnumeratedObjects enumeratedObjects;
 
 }

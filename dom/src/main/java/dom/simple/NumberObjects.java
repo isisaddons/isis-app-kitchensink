@@ -18,6 +18,8 @@
  */
 package dom.simple;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.List;
 import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.annotation.*;
@@ -76,6 +78,8 @@ public class NumberObjects {
         obj.setSomeLongWrapperMandatory(l);
         obj.setSomeFloatWrapperMandatory(f);
         obj.setSomeDoubleWrapperMandatory(d);
+        obj.setSomeBigIntegerMandatory(BigInteger.valueOf(l));
+        obj.setSomeBigDecimalMandatory(BigDecimal.valueOf(d));
 
         obj.setSomeByteWrapperOptional(b);
         obj.setSomeShortWrapperOptional(s);
@@ -83,6 +87,10 @@ public class NumberObjects {
         obj.setSomeLongWrapperOptional(l);
         obj.setSomeFloatWrapperOptional(f);
         obj.setSomeDoubleWrapperOptional(d);
+        obj.setSomeBigIntegerOptional(BigInteger.valueOf(l));
+        obj.setSomeBigDecimalOptional(BigDecimal.valueOf(d));
+
+        obj.setSomeBigDecimal92(BigDecimal.valueOf(d));
 
         container.persistIfNotAlready(obj);
         return obj;

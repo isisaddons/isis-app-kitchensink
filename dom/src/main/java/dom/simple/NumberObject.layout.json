@@ -175,6 +175,34 @@
               }
             }
           }
+        },
+        "Mandatory Math": {
+          "members": {
+            "someBigIntegerMandatory": {
+              "actions": {
+                "updateSomeBigIntegerMandatory": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
+            },
+            "someBigDecimalMandatory": {
+              "actions": {
+                "updateSomeBigDecimalMandatory": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
+            }
+          }
         }
       }
     },
@@ -276,6 +304,78 @@
                   }
                 },
                 "resetSomeDoubleWrapperOptional": {
+                  "named": {
+                    "value": "clear"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
+            }
+          }
+        },
+        "Optional Math": {
+          "members": {
+            "someBigIntegerOptional": {
+              "actions": {
+                "updateSomeBigIntegerOptional": {
+                  "named": {
+                    "value": "update"
+                  }
+                },
+                "resetSomeBigIntegerOptional": {
+                  "named": {
+                    "value": "clear"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
+            },
+            "someBigDecimalOptional": {
+              "actions": {
+                "updateSomeBigDecimalOptional": {
+                  "named": {
+                    "value": "update"
+                  }
+                },
+                "resetSomeBigDecimalOptional": {
+                  "named": {
+                    "value": "clear"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
+            },
+            "someBigDecimal92": {
+              "actions": {
+                "updateSomeBigDecimal92": {
+                  "named": {
+                    "value": "update"
+                  }
+                },
+                "resetSomeBigDecimal92": {
+                  "named": {
+                    "value": "clear"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
+            },
+            "someBigDecimal124": {
+              "actions": {
+                "updateSomeBigDecimal124": {
+                  "named": {
+                    "value": "update"
+                  }
+                },
+                "resetSomeBigDecimal124": {
                   "named": {
                     "value": "clear"
                   }
