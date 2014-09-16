@@ -19,25 +19,27 @@
 
 package fixture.simple;
 
+import dom.simple.*;
+
 import org.apache.isis.applib.fixturescripts.FixtureScript;
 
-public class KitchensinkSetupFixture extends FixtureScript {
-
-    public KitchensinkSetupFixture() {
-        withDiscoverability(Discoverability.DISCOVERABLE);
-    }
+public class ChoiceObjectsFixture extends FixtureScript {
 
     @Override
     protected void execute(ExecutionContext executionContext) {
 
-        // prereqs
-        execute(new KitchensinkTearDownFixture(), executionContext);
-
         // create
-        execute(new NumberObjectsFixture(), executionContext);
-        execute(new TextObjectsFixture(), executionContext);
-        execute(new EnumeratedObjectsFixture(), executionContext);
-        execute(new ChoiceObjectsFixture(), executionContext);
+        int i=0;
+        create("Foo", executionContext, i++);
+        create("Bar", executionContext, i++);
+        create("Baz", executionContext, i++);
     }
+
+    private ChoiceObject create(final String name, ExecutionContext executionContext, int i) {
+        return executionContext.add(this, choiceObjects.create(name, i));
+    }
+
+    @javax.inject.Inject
+    private ChoiceObjects choiceObjects;
 
 }
