@@ -1,0 +1,263 @@
+{
+  "columns": [
+    {
+      "span": 4,
+      "memberGroups": {
+        "Name In Collection": {
+          "members": {
+            "nameInCollection": {
+              "hidden": {
+                "where": "OBJECT_FORMS"
+              }
+            }
+          }
+        },
+        "JDK": {
+          "members": {
+            "someJavaUtilDateMandatory": {
+              "actions": {
+                "updateSomeJavaUtilDateMandatory": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              }
+            },
+            "someJavaUtilDateOptional": {
+              "actions": {
+                "updateSomeJavaUtilDateOptional": {
+                  "named": {
+                    "value": "update"
+                  }
+                },
+                "resetSomeJavaUtilDateOptional": {
+                  "named": {
+                    "value": "clear"
+                  }
+                },
+                "hidden": {
+                  "where": "ALL_TABLES"
+                }
+              }
+            },
+            "someJavaSqlDateMandatory": {
+              "actions": {
+                "updateSomeJavaSqlDateMandatory": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              }
+            },
+            "someJavaSqlDateOptional": {
+              "actions": {
+                "updateSomeJavaSqlDateOptional": {
+                  "named": {
+                    "value": "update"
+                  }
+                },
+                "resetSomeJavaSqlDateOptional": {
+                  "named": {
+                    "value": "clear"
+                  }
+                },
+                "hidden": {
+                  "where": "ALL_TABLES"
+                }
+              }
+            },
+            "someJavaSqlTimestampMandatory": {
+              "actions": {
+                "updateSomeJavaSqlTimestampMandatory": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              }
+            },
+            "someJavaSqlTimestampOptional": {
+              "actions": {
+                "updateSomeJavaSqlTimestampOptional": {
+                  "named": {
+                    "value": "update"
+                  }
+                },
+                "resetSomeJavaSqlTimestampOptional": {
+                  "named": {
+                    "value": "clear"
+                  }
+                },
+                "hidden": {
+                  "where": "ALL_TABLES"
+                }
+              }
+            }
+          }
+        },
+        "Name": {
+          "members": {
+            "name": {
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "span": 4,
+      "memberGroups": {
+        "Joda": {
+          "members": {
+            "someJodaDateTimeMandatory": {
+              "actions": {
+                "updateSomeJodaDateTimeMandatory": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              }
+            },
+            "someJodaDateTimeOptional": {
+              "actions": {
+                "updateSomeJodaDateTimeOptional": {
+                  "named": {
+                    "value": "update"
+                  }
+                },
+                "resetSomeJodaDateTimeOptional": {
+                  "named": {
+                    "value": "clear"
+                  }
+                },
+                "hidden": {
+                  "where": "ALL_TABLES"
+                }
+              }
+            },
+            "someJodaLocalDateMandatory": {
+              "actions": {
+                "updateSomeJodaLocalDateMandatory": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              }
+            },
+            "someJodaLocalDateOptional": {
+              "actions": {
+                "updateSomeJodaLocalDateOptional": {
+                  "named": {
+                    "value": "update"
+                  }
+                },
+                "resetSomeJodaLocalDateOptional": {
+                  "named": {
+                    "value": "clear"
+                  }
+                },
+                "hidden": {
+                  "where": "ALL_TABLES"
+                }
+              }
+            },
+            "someJodaLocalDateTimeMandatory": {
+              "actions": {
+                "updateSomeJodaLocalDateTimeMandatory": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              }
+            },
+            "someJodaLocalDateTimeOptional": {
+              "actions": {
+                "updateSomeJodaLocalDateTimeOptional": {
+                  "named": {
+                    "value": "update"
+                  }
+                },
+                "resetSomeJodaLocalDateTimeOptional": {
+                  "named": {
+                    "value": "clear"
+                  }
+                },
+                "hidden": {
+                  "where": "ALL_TABLES"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "span": 4,
+      "memberGroups": {
+        "Applib": {
+          "members": {
+            "someApplibDateTimeMandatory": {
+              "actions": {
+                "updateSomeApplibDateTimeMandatory": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              }
+            },
+            "someApplibDateTimeOptional": {
+              "actions": {
+                "updateSomeApplibDateTimeOptional": {
+                  "named": {
+                    "value": "update"
+                  }
+                },
+                "resetSomeApplibDateTimeOptional": {
+                  "named": {
+                    "value": "clear"
+                  }
+                },
+                "hidden": {
+                  "where": "ALL_TABLES"
+                }
+              }
+            },
+            "someApplibDateMandatory": {
+              "actions": {
+                "updateSomeApplibDateMandatory": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              }
+            },
+            "someApplibDateOptional": {
+              "actions": {
+                "updateSomeApplibDateOptional": {
+                  "named": {
+                    "value": "update"
+                  }
+                },
+                "resetSomeApplibDateOptional": {
+                  "named": {
+                    "value": "clear"
+                  }
+                },
+                "hidden": {
+                  "where": "ALL_TABLES"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "span": 0,
+      "collections": {}
+    }
+  ],
+  "actions": {}
+}
+ 

@@ -19,13 +19,14 @@
 
 package com.danhaywood.isis.kitchensink.fixture;
 
+import com.danhaywood.isis.kitchensink.fixture.blobclob.BlobClobObjectsFixture;
 import com.danhaywood.isis.kitchensink.fixture.choice.ChoiceObjectsFixture;
+import com.danhaywood.isis.kitchensink.fixture.date.DateObjectsFixture;
 import com.danhaywood.isis.kitchensink.fixture.enumerated.EnumeratedObjectsFixture;
 import com.danhaywood.isis.kitchensink.fixture.number.NumberObjectsFixture;
 import com.danhaywood.isis.kitchensink.fixture.other.OtherBoundedObjectsFixture;
 import com.danhaywood.isis.kitchensink.fixture.other.OtherObjectsFixture;
 import com.danhaywood.isis.kitchensink.fixture.text.TextObjectsFixture;
-
 import org.apache.isis.applib.fixturescripts.FixtureScript;
 
 public class KitchensinkSetupFixture extends FixtureScript {
@@ -37,16 +38,17 @@ public class KitchensinkSetupFixture extends FixtureScript {
     @Override
     protected void execute(ExecutionContext executionContext) {
 
-        // prereqs
         execute(new KitchensinkTearDownFixture(), executionContext);
 
-        // create
+        execute(new OtherBoundedObjectsFixture(), executionContext);
+        execute(new OtherObjectsFixture(), executionContext);
+
         execute(new NumberObjectsFixture(), executionContext);
         execute(new TextObjectsFixture(), executionContext);
         execute(new EnumeratedObjectsFixture(), executionContext);
-        execute(new OtherBoundedObjectsFixture(), executionContext);
-        execute(new OtherObjectsFixture(), executionContext);
         execute(new ChoiceObjectsFixture(), executionContext);
+        execute(new DateObjectsFixture(), executionContext);
+        execute(new BlobClobObjectsFixture(), executionContext);
     }
 
 }
