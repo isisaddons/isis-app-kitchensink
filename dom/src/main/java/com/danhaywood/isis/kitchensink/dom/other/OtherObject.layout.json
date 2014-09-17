@@ -1,0 +1,43 @@
+{
+  "columns": [
+    {
+      "span": 6,
+      "memberGroups": {
+        "Name": {
+          "members": {
+            "name": {
+            }
+          }
+        }
+      }
+    },
+    {
+      "span": 6,
+      "memberGroups": {
+        "Description": {
+          "members": {
+            "description": {
+            }
+          }
+        },
+        "Category": {
+          "members": {
+            "category": {
+            }
+          }
+        }
+      }
+    },
+    {
+      "span": 0,
+      "memberGroups": {
+      }
+    },
+    {
+      "span": 0,
+      "collections": {}
+    }
+  ],
+  "actions": {}
+}
+ 
