@@ -8,10 +8,7 @@ import javax.jdo.annotations.VersionStrategy;
 import com.danhaywood.isis.kitchensink.dom.Entity;
 import com.google.common.collect.Lists;
 import org.apache.isis.applib.DomainObjectContainer;
-import org.apache.isis.applib.annotation.ActionSemantics;
-import org.apache.isis.applib.annotation.Bookmarkable;
-import org.apache.isis.applib.annotation.ObjectType;
-import org.apache.isis.applib.annotation.Title;
+import org.apache.isis.applib.annotation.*;
 import org.apache.isis.applib.util.ObjectContracts;
 
 @javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE)
@@ -41,6 +38,7 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
 
     //endregion
 
+
     //region > someByte (property)
     private byte someByte;
 
@@ -61,6 +59,7 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
         return getSomeByte();
     }
     //endregion
+
 
     //region > someShort (property)
     private short someShort;
@@ -83,9 +82,11 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
     }
     //endregion
 
+
     //region > someInt (property)
     private int someInt;
 
+    @DescribedAs("description of some int")
     public int getSomeInt() {
         return someInt;
     }
@@ -102,6 +103,34 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
     public int default0UpdateSomeInt() {
         return getSomeInt();
     }
+    //endregion
+
+    //region > someIntHidden (property)
+    private int someIntHidden;
+
+    @Hidden
+    public int getSomeIntHidden() {
+        return someIntHidden;
+    }
+
+    public void setSomeIntHidden(final int someIntHidden) {
+        this.someIntHidden = someIntHidden;
+    }
+
+    //endregion
+
+    //region > someIntDisabled (property)
+    private int someIntDisabled;
+
+    @Disabled
+    public int getSomeIntDisabled() {
+        return someIntDisabled;
+    }
+
+    public void setSomeIntDisabled(final int someIntDisabled) {
+        this.someIntDisabled = someIntDisabled;
+    }
+
     //endregion
 
     //region > someIntWithChoices (property)
@@ -133,6 +162,37 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
     }
     //endregion
 
+    //region > someIntWithValidation (property)
+    private int someIntWithValidation;
+
+    public int getSomeIntWithValidation() {
+        return someIntWithValidation;
+    }
+
+    public void setSomeIntWithValidation(final int someIntWithValidation) {
+        this.someIntWithValidation = someIntWithValidation;
+    }
+
+    public String validateSomeIntWithValidation(final int i) {
+        return i % 2 != 0? "Can only enter even numbers": null;
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public PrimitiveObject updateSomeIntWithValidation(final int i) {
+        setSomeIntWithValidation(i);
+        return this;
+    }
+
+    public String validateUpdateSomeIntWithValidation(final int i) {
+        return validateSomeIntWithValidation(i);
+    }
+    public int default0UpdateSomeIntWithValidation() {
+        return getSomeIntWithValidation();
+    }
+
+    //endregion
+
+
     //region > someLong (property)
     private long someLong;
 
@@ -153,6 +213,7 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
         return getSomeLong();
     }
     //endregion
+
 
     //region > someFloat (property)
     private float someFloat;
@@ -175,6 +236,7 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
     }
     //endregion
 
+
     //region > someDouble (property)
     private double someDouble;
 
@@ -195,6 +257,7 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
         return getSomeDouble();
     }
     //endregion
+
 
     //region > compareTo
 

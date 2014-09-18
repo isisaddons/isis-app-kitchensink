@@ -47,6 +47,10 @@ public class PrimitiveObjects extends RepositoryAbstract<PrimitiveObject> {
         obj.setSomeShort(s);
 
         obj.setSomeInt(i);
+        obj.setSomeIntHidden(i);
+        obj.setSomeIntDisabled(i);
+        obj.setSomeIntWithValidation(i);
+        obj.setSomeIntWithChoices(i);
         obj.setSomeIntWithChoices(i);
 
         obj.setSomeLong(l);

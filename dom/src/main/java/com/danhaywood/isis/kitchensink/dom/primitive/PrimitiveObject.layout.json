@@ -70,6 +70,19 @@
                 }
               }
             },
+            "someIntHidden": {
+            },
+            "someIntDisabled": {
+            },
+            "someIntWithValidation": {
+              "actions": {
+                "updateSomeIntWithValidation": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              }
+            },
             "someIntWithChoices": {
               "actions": {
                 "updateSomeIntWithChoices": {
