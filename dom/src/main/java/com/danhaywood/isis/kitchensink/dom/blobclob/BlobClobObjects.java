@@ -18,44 +18,24 @@
  */
 package com.danhaywood.isis.kitchensink.dom.blobclob;
 
-import java.util.List;
-import com.danhaywood.isis.kitchensink.dom.choice.ChoiceObject;
-import org.apache.isis.applib.DomainObjectContainer;
-import org.apache.isis.applib.annotation.*;
-import org.apache.isis.applib.annotation.ActionSemantics.Of;
+import com.danhaywood.isis.kitchensink.dom.RepositoryAbstract;
+import com.danhaywood.isis.kitchensink.dom.reference.ReferenceObject;
+import org.apache.isis.applib.annotation.DomainService;
+import org.apache.isis.applib.annotation.MemberOrder;
+import org.apache.isis.applib.annotation.Named;
+import org.apache.isis.applib.annotation.Optional;
 import org.apache.isis.applib.value.Blob;
 import org.apache.isis.applib.value.Clob;
 
 @Named("Blob/Clob")
-@DomainService(menuOrder = "10", repositoryFor = ChoiceObject.class)
-public class BlobClobObjects {
+@DomainService(menuOrder = "10", repositoryFor = ReferenceObject.class)
+public class BlobClobObjects extends RepositoryAbstract<BlobClobObject> {
 
-    //region > identification in the UI
-
-    public String getId() {
-        return "blobClob";
+    public BlobClobObjects() {
+        super(BlobClobObject.class);
     }
 
-    public String iconName() {
-        return "BlobClobObject";
-    }
-
-    //endregion
-
-    //region > listAll (action)
-
-    @Bookmarkable
-    @ActionSemantics(Of.SAFE)
-    @MemberOrder(sequence = "1")
-    public List<BlobClobObject> listAll() {
-        return container.allInstances(BlobClobObject.class);
-    }
-
-    //endregion
-
-    //region > create (action)
-
-    @MemberOrder(sequence = "2")
+    @MemberOrder(sequence = "30")
     public BlobClobObject create(
             final @Named("Name") String name,
             final @Named("Some blob") @Optional Blob blob,
@@ -72,13 +52,5 @@ public class BlobClobObjects {
         return obj;
     }
 
-    //endregion
-
-    //region > injected services
-
-    @javax.inject.Inject 
-    DomainObjectContainer container;
-
-    //endregion
 
 }

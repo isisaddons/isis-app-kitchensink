@@ -1,8 +1,12 @@
 package com.danhaywood.isis.kitchensink.dom.text;
 
+import java.util.Collection;
+import java.util.List;
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.VersionStrategy;
+import com.danhaywood.isis.kitchensink.dom.Entity;
+import com.google.common.collect.Lists;
 import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.annotation.*;
 import org.apache.isis.applib.util.ObjectContracts;
@@ -16,15 +20,8 @@ import org.apache.isis.applib.util.ObjectContracts;
         column="version")
 @ObjectType("TEXT")
 @Bookmarkable
-public class TextObject implements Comparable<TextObject> {
+public class TextObject implements Entity<TextObject> {
 
-    //region > nameInCollection (property)
-
-    public String getNameInCollection() {
-        return getName();
-    }
-
-    //endregion
 
     //region > name (property)
 
@@ -162,6 +159,69 @@ public class TextObject implements Comparable<TextObject> {
         return this;
     }
     //endregion
+
+    //region > someStringMandatoryWithChoices (property)
+    private String someStringMandatoryWithChoices;
+
+    @Column(allowsNull = "false")
+    public String getSomeStringMandatoryWithChoices() {
+        return someStringMandatoryWithChoices;
+    }
+
+    public void setSomeStringMandatoryWithChoices(final String someStringMandatoryWithChoices) {
+        this.someStringMandatoryWithChoices = someStringMandatoryWithChoices;
+    }
+    public Collection<String> choicesSomeStringMandatoryWithChoices() {
+        return Lists.newArrayList("a", "ab", "abcd", "abcdefgh", "abcdefghijklmnop", "abcdefghijklmnopqrstuvwxyz");
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public TextObject updateSomeStringMandatoryWithChoices(final String i) {
+        setSomeStringMandatoryWithChoices(i);
+        return this;
+    }
+    public String default0UpdateSomeStringMandatoryWithChoices() {
+        return getSomeStringMandatoryWithChoices();
+    }
+    public List<String> choices0UpdateSomeStringMandatoryWithChoices() {
+        return Lists.newArrayList("a", "ab", "abcd", "abcdefgh", "abcdefghijklmnop", "abcdefghijklmnopqrstuvwxyz");
+    }
+    //endregion
+
+    //region > someStringOptionalWithChoices (property)
+    private String someStringOptionalWithChoices;
+
+    @Column(allowsNull = "true")
+    public String getSomeStringOptionalWithChoices() {
+        return someStringOptionalWithChoices;
+    }
+
+    public void setSomeStringOptionalWithChoices(final String someStringOptionalWithChoices) {
+        this.someStringOptionalWithChoices = someStringOptionalWithChoices;
+    }
+    public Collection<String> choicesSomeStringOptionalWithChoices() {
+        return Lists.newArrayList("a", "ab", "abcd", "abcdefgh", "abcdefghijklmnop", "abcdefghijklmnopqrstuvwxyz");
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public TextObject updateSomeStringOptionalWithChoices(final @Optional String i) {
+        setSomeStringOptionalWithChoices(i);
+        return this;
+    }
+    public String default0UpdateSomeStringOptionalWithChoices() {
+        return getSomeStringOptionalWithChoices();
+    }
+    public List<String> choices0UpdateSomeStringOptionalWithChoices() {
+        return Lists.newArrayList("a", "ab", "abcd", "abcdefgh", "abcdefghijklmnop", "abcdefghijklmnopqrstuvwxyz");
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public TextObject resetSomeStringOptionalWithChoices() {
+        setSomeStringOptionalWithChoices(null);
+        return this;
+    }
+    //endregion
+
 
     //region > someString20 (property)
     private String someString20;

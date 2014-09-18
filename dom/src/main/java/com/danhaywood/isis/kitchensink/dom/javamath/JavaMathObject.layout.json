@@ -17,92 +17,36 @@
 {
   "columns": [
     {
-      "span": 4,
+      "span": 6,
       "memberGroups": {
-        "Name In Collection": {
+        "Name": {
           "members": {
-            "nameInCollection": {
+            "name": {
               "hidden": {
                 "where": "OBJECT_FORMS"
               }
             }
           }
         },
-        "Integers": {
+        "java.math.BigInteger": {
           "members": {
-            "someInt": {
+            "someBigIntegerMandatory": {
               "actions": {
-                "updateSomeInt": {
+                "updateSomeBigIntegerMandatory": {
                   "named": {
                     "value": "update"
                   }
                 }
               }
             },
-            "someIntegerWrapperMandatory": {
+            "someBigIntegerOptional": {
               "actions": {
-                "updateSomeIntegerWrapperMandatory": {
-                  "named": {
-                    "value": "update"
-                  }
-                }
-              },
-              "hidden": {
-                "where": "ALL_TABLES"
-              }
-            },
-            "someIntegerWrapperOptional": {
-              "actions": {
-                "updateSomeIntegerWrapperOptional": {
+                "updateSomeBigIntegerOptional": {
                   "named": {
                     "value": "update"
                   }
                 },
-                "resetSomeIntegerWrapperOptional": {
-                  "named": {
-                    "value": "clear"
-                  }
-                }
-              },
-              "hidden": {
-                "where": "ALL_TABLES"
-              }
-            }
-          }
-        },
-        "Name": {
-          "members": {
-            "name": {
-              "hidden": {
-                "where": "ALL_TABLES"
-              }
-            }
-          }
-        }
-      }
-    },
-    {
-      "span": 4,
-      "memberGroups": {
-        "Strings": {
-          "members": {
-            "someStringMandatory": {
-              "actions": {
-                "updateSomeStringMandatory": {
-                  "named": {
-                    "value": "update"
-                  }
-                }
-              }
-            },
-            "someStringOptional": {
-              "actions": {
-                "updateSomeStringOptional": {
-                  "named": {
-                    "value": "update"
-                  }
-                },
-                "resetSomeStringOptional": {
+                "resetSomeBigIntegerOptional": {
                   "named": {
                     "value": "clear"
                   }
@@ -117,27 +61,32 @@
       }
     },
     {
-      "span": 4,
+      "span": 0,
       "memberGroups": {
-        "Other Objects": {
+      }
+    },
+    {
+      "span": 6,
+      "memberGroups": {
+        "java.math.BigDecimal": {
           "members": {
-            "someChoiceOfOtherObjectMandatory": {
+            "someBigDecimalMandatory": {
               "actions": {
-                "updateSomeChoiceOfOtherObjectMandatory": {
+                "updateSomeBigDecimalMandatory": {
                   "named": {
                     "value": "update"
                   }
                 }
               }
             },
-            "someChoiceOfOtherObjectOptional": {
+            "someBigDecimalOptional": {
               "actions": {
-                "updateSomeChoiceOfOtherObjectOptional": {
+                "updateSomeBigDecimalOptional": {
                   "named": {
                     "value": "update"
                   }
                 },
-                "resetSomeChoiceOfOtherObjectOptional": {
+                "resetSomeBigDecimalOptional": {
                   "named": {
                     "value": "clear"
                   }
@@ -147,14 +96,14 @@
                 "where": "ALL_TABLES"
               }
             },
-            "someChoiceOfOtherObjectActionOnly": {
+            "someBigDecimal92": {
               "actions": {
-                "updateSomeChoiceOfOtherObjectActionOnly": {
+                "updateSomeBigDecimal92": {
                   "named": {
                     "value": "update"
                   }
                 },
-                "resetSomeChoiceOfOtherObjectActionOnly": {
+                "resetSomeBigDecimal92": {
                   "named": {
                     "value": "clear"
                   }
@@ -163,28 +112,15 @@
               "hidden": {
                 "where": "ALL_TABLES"
               }
-            }
-          }
-        },
-        "Other Bounded Objects": {
-          "members": {
-            "someChoiceOfOtherBoundedObjectMandatory": {
-              "actions": {
-                "updateSomeChoiceOfOtherBoundedObjectMandatory": {
-                  "named": {
-                    "value": "update"
-                  }
-                }
-              }
             },
-            "someChoiceOfOtherBoundedObjectOptional": {
+            "someBigDecimal124": {
               "actions": {
-                "updateSomeChoiceOfOtherBoundedObjectOptional": {
+                "updateSomeBigDecimal124": {
                   "named": {
                     "value": "update"
                   }
                 },
-                "resetSomeChoiceOfOtherBoundedObjectOptional": {
+                "resetSomeBigDecimal124": {
                   "named": {
                     "value": "clear"
                   }

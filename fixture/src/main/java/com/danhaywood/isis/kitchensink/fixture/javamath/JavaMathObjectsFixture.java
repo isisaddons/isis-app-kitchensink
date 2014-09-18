@@ -17,14 +17,13 @@
  *  under the License.
  */
 
-package com.danhaywood.isis.kitchensink.fixture.number;
+package com.danhaywood.isis.kitchensink.fixture.javamath;
 
-import com.danhaywood.isis.kitchensink.dom.number.NumberObject;
-import com.danhaywood.isis.kitchensink.dom.number.NumberObjects;
-
+import com.danhaywood.isis.kitchensink.dom.javamath.JavaMathObject;
+import com.danhaywood.isis.kitchensink.dom.javamath.JavaMathObjects;
 import org.apache.isis.applib.fixturescripts.FixtureScript;
 
-public class NumberObjectsFixture extends FixtureScript {
+public class JavaMathObjectsFixture extends FixtureScript {
 
     @Override
     protected void execute(ExecutionContext executionContext) {
@@ -35,11 +34,11 @@ public class NumberObjectsFixture extends FixtureScript {
         create("Baz", l++, executionContext);
     }
 
-    private NumberObject create(final String name, long l, ExecutionContext executionContext) {
-        return executionContext.add(this, numberObjects.create(name, (byte)l, (short)l, (int)l, l, l, l));
+    private JavaMathObject create(final String name, long l, ExecutionContext executionContext) {
+        return executionContext.add(this, javaMathObjects.create(name, l, l));
     }
 
     @javax.inject.Inject
-    private NumberObjects numberObjects;
+    private JavaMathObjects javaMathObjects;
 
 }

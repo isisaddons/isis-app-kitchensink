@@ -18,44 +18,33 @@
  */
 package com.danhaywood.isis.kitchensink.dom.other;
 
-import com.danhaywood.isis.kitchensink.dom.text.TextObject;
-
 import java.util.List;
-import org.apache.isis.applib.DomainObjectContainer;
-import org.apache.isis.applib.annotation.*;
-import org.apache.isis.applib.annotation.ActionSemantics.Of;
+import com.danhaywood.isis.kitchensink.dom.RepositoryAbstract;
+import org.apache.isis.applib.annotation.DomainService;
+import org.apache.isis.applib.annotation.Hidden;
+import org.apache.isis.applib.annotation.Named;
 
-@Named("Others")
-@DomainService(menuOrder = "90", repositoryFor = TextObject.class)
-public class OtherBoundedObjects {
+@Hidden
+@DomainService(menuOrder = "90", repositoryFor = OtherBoundedObject.class)
+public class OtherBoundedObjects extends RepositoryAbstract<OtherBoundedObject> {
 
-    //region > identification in the UI
-
-    public String getId() {
-        return "otherBounded";
+    public OtherBoundedObjects() {
+        super(OtherBoundedObject.class);
     }
 
-    public String iconName() {
-        return "OtherBoundedObject";
+    @Hidden
+    @Override
+    public OtherBoundedObject first() {
+        return super.first();
     }
 
-    //endregion
-
-    //region > listAll (action)
-
-    @Bookmarkable
-    @ActionSemantics(Of.SAFE)
-    @Named("List Bounded Others")
-    @MemberOrder(name="Others", sequence = "20.1")
+    @Hidden
+    @Override
     public List<OtherBoundedObject> listAll() {
-        return container.allInstances(OtherBoundedObject.class);
+        return super.listAll();
     }
 
-    //endregion
-
-    //region > create (action)
-
-    @MemberOrder(name="Others", sequence = "20.2")
+    @Hidden
     public OtherBoundedObject create(
             final @Named("Name") String name,
             final @Named("Description") String description) {
@@ -66,14 +55,5 @@ public class OtherBoundedObjects {
         container.persistIfNotAlready(obj);
         return obj;
     }
-
-    //endregion
-
-    //region > injected services
-
-    @javax.inject.Inject 
-    DomainObjectContainer container;
-
-    //endregion
 
 }

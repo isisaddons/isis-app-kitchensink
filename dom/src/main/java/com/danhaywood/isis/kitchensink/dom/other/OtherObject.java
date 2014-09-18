@@ -1,10 +1,10 @@
 package com.danhaywood.isis.kitchensink.dom.other;
 
-import com.danhaywood.isis.kitchensink.dom.SomeCategory;
-
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.VersionStrategy;
+import com.danhaywood.isis.kitchensink.dom.Entity;
+import com.danhaywood.isis.kitchensink.dom.SomeCategory;
 import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.annotation.BookmarkPolicy;
 import org.apache.isis.applib.annotation.Bookmarkable;
@@ -24,7 +24,7 @@ import org.apache.isis.applib.util.ObjectContracts;
         column="version")
 @ObjectType("OTHER")
 @Bookmarkable(BookmarkPolicy.AS_CHILD)
-public class OtherObject implements Comparable<OtherObject> {
+public class OtherObject implements Entity<OtherObject> {
 
     //region > name (property)
 

@@ -17,11 +17,11 @@
  *  under the License.
  */
 
-package com.danhaywood.isis.kitchensink.fixture.choice;
+package com.danhaywood.isis.kitchensink.fixture.reference;
 
 import java.util.List;
-import com.danhaywood.isis.kitchensink.dom.choice.ChoiceObject;
-import com.danhaywood.isis.kitchensink.dom.choice.ChoiceObjects;
+import com.danhaywood.isis.kitchensink.dom.reference.ReferenceObject;
+import com.danhaywood.isis.kitchensink.dom.reference.ReferenceObjects;
 import com.danhaywood.isis.kitchensink.dom.other.OtherBoundedObject;
 import com.danhaywood.isis.kitchensink.dom.other.OtherBoundedObjects;
 import com.danhaywood.isis.kitchensink.dom.other.OtherObject;
@@ -30,7 +30,7 @@ import com.danhaywood.isis.kitchensink.fixture.other.OtherBoundedObjectsFixture;
 import com.danhaywood.isis.kitchensink.fixture.other.OtherObjectsFixture;
 import org.apache.isis.applib.fixturescripts.FixtureScript;
 
-public class ChoiceObjectsFixture extends FixtureScript {
+public class ReferenceObjectsFixture extends FixtureScript {
 
     @Override
     protected void execute(ExecutionContext executionContext) {
@@ -53,12 +53,12 @@ public class ChoiceObjectsFixture extends FixtureScript {
         return list.get(i % list.size());
     }
 
-    private ChoiceObject create(final String name, ExecutionContext executionContext, int i, OtherObject otherObject, OtherBoundedObject otherBoundedObject) {
-        return executionContext.add(this, choiceObjects.create(name, i, otherObject, otherBoundedObject));
+    private ReferenceObject create(final String name, ExecutionContext executionContext, int i, OtherObject otherObject, OtherBoundedObject otherBoundedObject) {
+        return executionContext.add(this, referenceObjects.create(name, i, otherObject, otherBoundedObject));
     }
 
     @javax.inject.Inject
-    private ChoiceObjects choiceObjects;
+    private ReferenceObjects referenceObjects;
     @javax.inject.Inject
     private OtherObjects otherObjects;
     @javax.inject.Inject

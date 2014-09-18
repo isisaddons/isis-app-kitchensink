@@ -26,10 +26,12 @@ public class KitchensinkTearDownFixture extends FixtureScript {
 
     @Override
     protected void execute(ExecutionContext executionContext) {
-        isisJdoSupport.executeUpdate("delete from \"NumberObject\"");
+        isisJdoSupport.executeUpdate("delete from \"PrimitiveObject\"");
+        isisJdoSupport.executeUpdate("delete from \"WrapperObject\"");
+        isisJdoSupport.executeUpdate("delete from \"JavaMathObject\"");
         isisJdoSupport.executeUpdate("delete from \"TextObject\"");
-        isisJdoSupport.executeUpdate("delete from \"ChoiceObject\"");
         isisJdoSupport.executeUpdate("delete from \"DateObject\"");
+        isisJdoSupport.executeUpdate("delete from \"ReferenceObject\"");
         isisJdoSupport.executeUpdate("delete from \"BlobClobObject\"");
         isisJdoSupport.executeUpdate("delete from \"EnumeratedObject\"");
 

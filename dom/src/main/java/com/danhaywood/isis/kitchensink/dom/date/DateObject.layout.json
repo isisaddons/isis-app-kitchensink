@@ -1,18 +1,18 @@
 {
   "columns": [
     {
-      "span": 4,
+      "span": 6,
       "memberGroups": {
-        "Name In Collection": {
+        "Name": {
           "members": {
-            "nameInCollection": {
+            "name": {
               "hidden": {
                 "where": "OBJECT_FORMS"
               }
             }
           }
         },
-        "JDK": {
+        "java.util.Date": {
           "members": {
             "someJavaUtilDateMandatory": {
               "actions": {
@@ -34,12 +34,16 @@
                   "named": {
                     "value": "clear"
                   }
-                },
-                "hidden": {
-                  "where": "ALL_TABLES"
                 }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
               }
-            },
+            }
+          }
+        },
+        "java.sql.Date": {
+          "members": {
             "someJavaSqlDateMandatory": {
               "actions": {
                 "updateSomeJavaSqlDateMandatory": {
@@ -60,12 +64,16 @@
                   "named": {
                     "value": "clear"
                   }
-                },
-                "hidden": {
-                  "where": "ALL_TABLES"
                 }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
               }
-            },
+            }
+          }
+        },
+        "java.sql.Timestamp": {
+          "members": {
             "someJavaSqlTimestampMandatory": {
               "actions": {
                 "updateSomeJavaSqlTimestampMandatory": {
@@ -86,17 +94,8 @@
                   "named": {
                     "value": "clear"
                   }
-                },
-                "hidden": {
-                  "where": "ALL_TABLES"
                 }
-              }
-            }
-          }
-        },
-        "Name": {
-          "members": {
-            "name": {
+              },
               "hidden": {
                 "where": "ALL_TABLES"
               }
@@ -106,9 +105,9 @@
       }
     },
     {
-      "span": 4,
+      "span": 6,
       "memberGroups": {
-        "Joda": {
+        "org.joda.time.DateTime": {
           "members": {
             "someJodaDateTimeMandatory": {
               "actions": {
@@ -130,38 +129,16 @@
                   "named": {
                     "value": "clear"
                   }
-                },
-                "hidden": {
-                  "where": "ALL_TABLES"
                 }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
               }
-            },
-            "someJodaLocalDateMandatory": {
-              "actions": {
-                "updateSomeJodaLocalDateMandatory": {
-                  "named": {
-                    "value": "update"
-                  }
-                }
-              }
-            },
-            "someJodaLocalDateOptional": {
-              "actions": {
-                "updateSomeJodaLocalDateOptional": {
-                  "named": {
-                    "value": "update"
-                  }
-                },
-                "resetSomeJodaLocalDateOptional": {
-                  "named": {
-                    "value": "clear"
-                  }
-                },
-                "hidden": {
-                  "where": "ALL_TABLES"
-                }
-              }
-            },
+            }
+          }
+        },
+        "org.joda.time.LocalDateTime": {
+          "members": {
             "someJodaLocalDateTimeMandatory": {
               "actions": {
                 "updateSomeJodaLocalDateTimeMandatory": {
@@ -182,10 +159,40 @@
                   "named": {
                     "value": "clear"
                   }
-                },
-                "hidden": {
-                  "where": "ALL_TABLES"
                 }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
+            }
+          }
+        },
+        "org.joda.time.LocalDate": {
+          "members": {
+            "someJodaLocalDateMandatory": {
+              "actions": {
+                "updateSomeJodaLocalDateMandatory": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              }
+            },
+            "someJodaLocalDateOptional": {
+              "actions": {
+                "updateSomeJodaLocalDateOptional": {
+                  "named": {
+                    "value": "update"
+                  }
+                },
+                "resetSomeJodaLocalDateOptional": {
+                  "named": {
+                    "value": "clear"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
               }
             }
           }
@@ -193,9 +200,10 @@
       }
     },
     {
-      "span": 4,
+      "span": 0,
       "memberGroups": {
-        "Applib": {
+        /*
+        "isis.applib.DateTime": {
           "members": {
             "someApplibDateTimeMandatory": {
               "actions": {
@@ -217,12 +225,16 @@
                   "named": {
                     "value": "clear"
                   }
-                },
-                "hidden": {
-                  "where": "ALL_TABLES"
                 }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
               }
-            },
+            }
+          }
+        },
+        "isis.applib.Date": {
+          "members": {
             "someApplibDateMandatory": {
               "actions": {
                 "updateSomeApplibDateMandatory": {
@@ -243,14 +255,15 @@
                   "named": {
                     "value": "clear"
                   }
-                },
-                "hidden": {
-                  "where": "ALL_TABLES"
                 }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
               }
             }
           }
         }
+        */
       }
     },
     {

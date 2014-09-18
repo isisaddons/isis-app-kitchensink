@@ -17,7 +17,7 @@
 {
   "columns": [
     {
-      "span": 6,
+      "span": 4,
       "memberGroups": {
         "Name": {
           "members": {
@@ -28,55 +28,69 @@
             }
           }
         },
-        "Blob": {
+        "byte": {
           "members": {
-            "someBlob": {
+            "someByte": {
               "actions": {
-                "updateSomeBlob": {
+                "updateSomeByte": {
                   "named": {
                     "value": "update"
                   }
-                },
-                "resetSomeBlob": {
+                }
+              }
+            }
+          }
+        },
+        "short": {
+          "members": {
+            "someShort": {
+              "actions": {
+                "updateSomeShort": {
                   "named": {
-                    "value": "clear"
+                    "value": "update"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "span": 4,
+      "memberGroups": {
+        "int": {
+          "members": {
+            "someInt": {
+              "actions": {
+                "updateSomeInt": {
+                  "named": {
+                    "value": "update"
                   }
                 }
               }
             },
-            "someImage": {
+            "someIntWithChoices": {
               "actions": {
-                "updateSomeImage": {
+                "updateSomeIntWithChoices": {
                   "named": {
                     "value": "update"
                   }
-                },
-                "resetSomeImage": {
-                  "named": {
-                    "value": "clear"
-                  }
                 }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
               }
             }
           }
-        }
-      }
-    },
-    {
-      "span": 6,
-      "memberGroups": {
-        "Clob": {
+        },
+        "long": {
           "members": {
-            "someClob": {
+            "someLong": {
               "actions": {
-                "updateSomeClob": {
+                "updateSomeLong": {
                   "named": {
                     "value": "update"
-                  }
-                },
-                "resetSomeClob": {
-                  "named": {
-                    "value": "clear"
                   }
                 }
               }
@@ -86,8 +100,34 @@
       }
     },
     {
-      "span": 0,
+      "span": 4,
       "memberGroups": {
+        "float": {
+          "members": {
+            "someFloat": {
+              "actions": {
+                "updateSomeFloat": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "double": {
+          "members": {
+            "someDouble": {
+              "actions": {
+                "updateSomeDouble": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     },
     {

@@ -1,4 +1,4 @@
-package com.danhaywood.isis.kitchensink.dom;
+package com.danhaywood.isis.kitchensink.dom.enumerated;
 
 /**
 * Created by Dan on 16/09/2014.

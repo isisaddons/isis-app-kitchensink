@@ -3,6 +3,7 @@ package com.danhaywood.isis.kitchensink.dom.blobclob;
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.VersionStrategy;
+import com.danhaywood.isis.kitchensink.dom.Entity;
 import com.danhaywood.isis.kitchensink.dom.other.OtherBoundedObjects;
 import com.danhaywood.isis.kitchensink.dom.other.OtherObjects;
 import org.apache.isis.applib.DomainObjectContainer;
@@ -20,15 +21,7 @@ import org.apache.isis.applib.value.Clob;
         column="version")
 @ObjectType("BLOBCLOB")
 @Bookmarkable
-public class BlobClobObject implements Comparable<BlobClobObject> {
-
-    //region > nameInCollection (property)
-
-    public String getNameInCollection() {
-        return getName();
-    }
-
-    //endregion
+public class BlobClobObject implements Entity<BlobClobObject> {
 
     //region > name (property)
 

@@ -18,41 +18,20 @@
  */
 package com.danhaywood.isis.kitchensink.dom.text;
 
-import java.util.List;
-import org.apache.isis.applib.DomainObjectContainer;
-import org.apache.isis.applib.annotation.*;
-import org.apache.isis.applib.annotation.ActionSemantics.Of;
+import com.danhaywood.isis.kitchensink.dom.RepositoryAbstract;
+import org.apache.isis.applib.annotation.DomainService;
+import org.apache.isis.applib.annotation.MemberOrder;
+import org.apache.isis.applib.annotation.Named;
 
 @Named("Text")
 @DomainService(menuOrder = "10", repositoryFor = TextObject.class)
-public class TextObjects {
+public class TextObjects extends RepositoryAbstract<TextObject> {
 
-    //region > identification in the UI
-
-    public String getId() {
-        return "text";
+    public TextObjects() {
+        super(TextObject.class);
     }
 
-    public String iconName() {
-        return "TextObject";
-    }
-
-    //endregion
-
-    //region > listAll (action)
-
-    @Bookmarkable
-    @ActionSemantics(Of.SAFE)
-    @MemberOrder(sequence = "1")
-    public List<TextObject> listAll() {
-        return container.allInstances(TextObject.class);
-    }
-
-    //endregion
-
-    //region > create (action)
-
-    @MemberOrder(sequence = "2")
+    @MemberOrder(sequence = "30")
     public TextObject create(
             final @Named("Name") String name) {
         final TextObject obj = container.newTransientInstance(TextObject.class);
@@ -66,20 +45,13 @@ public class TextObjects {
         obj.setSomeStringOptional(name);
         obj.setSomeString20(name);
         obj.setSomeString50(name);
+        obj.setSomeStringMandatoryWithChoices(name);
+        obj.setSomeStringOptionalWithChoices(name);
+
         obj.setSomeStringMulti(name);
         obj.setSomeStringMultiNoWrap(name);
 
         container.persistIfNotAlready(obj);
         return obj;
     }
-
-    //endregion
-
-    //region > injected services
-
-    @javax.inject.Inject 
-    DomainObjectContainer container;
-
-    //endregion
-
 }

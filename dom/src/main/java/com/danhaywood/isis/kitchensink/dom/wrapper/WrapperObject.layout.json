@@ -28,41 +28,55 @@
             }
           }
         },
-        "boolean": {
+        "java.lang.Byte": {
           "members": {
-            "someBoolean": {
+            "someByteWrapperMandatory": {
               "actions": {
-                "updateSomeBoolean": {
+                "updateSomeByteWrapperMandatory": {
                   "named": {
                     "value": "update"
                   }
                 }
               }
-            }
-          }
-        },
-        "java.lang.Boolean": {
-          "members": {
-            "someBooleanWrapperMandatory": {
+            },
+            "someByteWrapperOptional": {
               "actions": {
-                "updateSomeBooleanWrapperMandatory": {
+                "updateSomeByteWrapperOptional": {
                   "named": {
                     "value": "update"
+                  }
+                },
+                "resetSomeByteWrapperOptional": {
+                  "named": {
+                    "value": "clear"
                   }
                 }
               },
               "hidden": {
                 "where": "ALL_TABLES"
               }
-            },
-            "someBooleanWrapperOptional": {
+            }
+          }
+        },
+        "java.lang.Short": {
+          "members": {
+            "someShortWrapperMandatory": {
               "actions": {
-                "updateSomeBooleanWrapperOptional": {
+                "updateSomeShortWrapperMandatory": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              }
+            },
+            "someShortWrapperOptional": {
+              "actions": {
+                "updateSomeShortWrapperOptional": {
                   "named": {
                     "value": "update"
                   }
                 },
-                "resetSomeBooleanWrapperOptional": {
+                "resetSomeShortWrapperOptional": {
                   "named": {
                     "value": "clear"
                   }
@@ -79,25 +93,54 @@
     {
       "span": 4,
       "memberGroups": {
-        "Enum of 3": {
+        "java.lang.Integer": {
           "members": {
-            "someEnumOf3Mandatory": {
+            "someIntegerWrapperMandatory": {
               "actions": {
-                "updateSomeEnumOf3Mandatory": {
+                "updateSomeIntegerWrapperMandatory": {
                   "named": {
                     "value": "update"
                   }
                 }
               }
             },
-            "someEnumOf3Optional": {
+            "someIntegerWrapperOptional": {
               "actions": {
-                "updateSomeEnumOf3Optional": {
+                "updateSomeIntegerWrapperOptional": {
                   "named": {
                     "value": "update"
                   }
                 },
-                "resetSomeEnumOf3Optional": {
+                "resetSomeIntegerWrapperOptional": {
+                  "named": {
+                    "value": "clear"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
+            },
+            "someIntegerWrapperMandatoryWithChoices": {
+              "actions": {
+                "updateSomeIntegerWrapperMandatoryWithChoices": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
+            },
+            "someIntegerWrapperOptionalWithChoices": {
+              "actions": {
+                "updateSomeIntegerWrapperOptionalWithChoices": {
+                  "named": {
+                    "value": "update"
+                  }
+                },
+                "resetSomeIntegerWrapperOptionalWithChoices": {
                   "named": {
                     "value": "clear"
                   }
@@ -109,25 +152,25 @@
             }
           }
         },
-        "Enum of 4": {
+        "java.lang.Long": {
           "members": {
-            "someEnumOf4Mandatory": {
+            "someLongWrapperMandatory": {
               "actions": {
-                "updateSomeEnumOf4Mandatory": {
+                "updateSomeLongWrapperMandatory": {
                   "named": {
                     "value": "update"
                   }
                 }
               }
             },
-            "someEnumOf4Optional": {
+            "someLongWrapperOptional": {
               "actions": {
-                "updateSomeEnumOf4Optional": {
+                "updateSomeLongWrapperOptional": {
                   "named": {
                     "value": "update"
                   }
                 },
-                "resetSomeEnumOf4Optional": {
+                "resetSomeLongWrapperOptional": {
                   "named": {
                     "value": "clear"
                   }
@@ -144,25 +187,55 @@
     {
       "span": 4,
       "memberGroups": {
-        "Enum of 8": {
+        "java.lang.Float": {
           "members": {
-            "someEnumOf8Mandatory": {
+            "someFloatWrapperMandatory": {
               "actions": {
-                "updateSomeEnumOf8Mandatory": {
+                "updateSomeFloatWrapperMandatory": {
                   "named": {
                     "value": "update"
                   }
                 }
               }
             },
-            "someEnumOf8Optional": {
+            "someFloatWrapperOptional": {
               "actions": {
-                "updateSomeEnumOf8Optional": {
+                "updateSomeFloatWrapperOptional": {
                   "named": {
                     "value": "update"
                   }
                 },
-                "resetSomeEnumOf8Optional": {
+                "resetSomeFloatWrapperOptional": {
+                  "named": {
+                    "value": "clear"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
+            }
+          }
+        },
+        "java.lang.Double": {
+          "members": {
+            "someDoubleWrapperMandatory": {
+              "actions": {
+                "updateSomeDoubleWrapperMandatory": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              }
+            },
+            "someDoubleWrapperOptional": {
+              "actions": {
+                "updateSomeDoubleWrapperOptional": {
+                  "named": {
+                    "value": "update"
+                  }
+                },
+                "resetSomeDoubleWrapperOptional": {
                   "named": {
                     "value": "clear"
                   }

@@ -17,32 +17,27 @@
  *  under the License.
  */
 
-package com.danhaywood.isis.kitchensink.fixture.enumerated;
+package com.danhaywood.isis.kitchensink.fixture.primitive;
 
-import com.danhaywood.isis.kitchensink.dom.enumerated.EnumOf3;
-import com.danhaywood.isis.kitchensink.dom.enumerated.EnumOf4;
-import com.danhaywood.isis.kitchensink.dom.enumerated.EnumOf8;
-import com.danhaywood.isis.kitchensink.dom.enumerated.EnumeratedObject;
-import com.danhaywood.isis.kitchensink.dom.enumerated.EnumeratedObjects;
-
+import com.danhaywood.isis.kitchensink.dom.primitive.PrimitiveObjects;
 import org.apache.isis.applib.fixturescripts.FixtureScript;
 
-public class EnumeratedObjectsFixture extends FixtureScript {
+public class PrimitiveObjectsFixture extends FixtureScript {
 
     @Override
     protected void execute(ExecutionContext executionContext) {
 
-        // create
-        create("Foo", executionContext);
-        create("Bar", executionContext);
-        create("Baz", executionContext);
+        long l = 0;
+        create("Foo", l++, executionContext);
+        create("Bar", l++, executionContext);
+        create("Baz", l++, executionContext);
     }
 
-    private EnumeratedObject create(final String name, ExecutionContext executionContext) {
-        return executionContext.add(this, enumeratedObjects.create(name, true, EnumOf3.AMEX, EnumOf4.WINTER, EnumOf8.ABBEY_ROAD));
+    private com.danhaywood.isis.kitchensink.dom.primitive.PrimitiveObject create(final String name, long l, ExecutionContext executionContext) {
+        return executionContext.add(this, primitiveObjects.create(name, (byte) l, (short) l, (int) l, l, l, l));
     }
 
     @javax.inject.Inject
-    private EnumeratedObjects enumeratedObjects;
+    private PrimitiveObjects primitiveObjects;
 
 }

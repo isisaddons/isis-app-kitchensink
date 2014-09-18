@@ -16,46 +16,43 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-package com.danhaywood.isis.kitchensink.dom.other;
+package com.danhaywood.isis.kitchensink.dom.javamath;
 
-import java.util.List;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import com.danhaywood.isis.kitchensink.dom.RepositoryAbstract;
 import org.apache.isis.applib.annotation.DomainService;
-import org.apache.isis.applib.annotation.Hidden;
+import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.Named;
 
-@Hidden
-@DomainService(menuOrder = "90", repositoryFor = OtherObject.class)
-public class OtherObjects extends RepositoryAbstract<OtherObject> {
+@Named("Java Math")
+@DomainService(menuOrder = "10", repositoryFor = JavaMathObject.class)
+public class JavaMathObjects extends RepositoryAbstract<JavaMathObject> {
 
-    public OtherObjects() {
-        super(OtherObject.class);
+    public JavaMathObjects() {
+        super(JavaMathObject.class);
     }
 
 
-    @Hidden
-    @Override
-    public OtherObject first() {
-        return super.first();
-    }
-
-    @Hidden
-    @Override
-    public List<OtherObject> listAll() {
-        return super.listAll();
-    }
-
-
-    @Hidden
-    public OtherObject create(
+    @MemberOrder(sequence = "30")
+    public JavaMathObject create(
             final @Named("Name") String name,
-            final @Named("Description") String description) {
-        final OtherObject obj = container.newTransientInstance(OtherObject.class);
+            final @Named("Long") long l,
+            final @Named("Double") double d) {
+        final JavaMathObject obj = container.newTransientInstance(JavaMathObject.class);
         obj.setName(name);
-        obj.setDescription(description);
+
+        obj.setSomeBigIntegerMandatory(BigInteger.valueOf(l));
+        obj.setSomeBigIntegerOptional(BigInteger.valueOf(l));
+
+        obj.setSomeBigDecimalMandatory(BigDecimal.valueOf(d));
+        obj.setSomeBigDecimalOptional(BigDecimal.valueOf(d));
+
+        obj.setSomeBigDecimal92(BigDecimal.valueOf(d));
 
         container.persistIfNotAlready(obj);
         return obj;
     }
+
 
 }

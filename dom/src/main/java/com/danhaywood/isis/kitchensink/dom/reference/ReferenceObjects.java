@@ -16,43 +16,35 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-package com.danhaywood.isis.kitchensink.dom.other;
+package com.danhaywood.isis.kitchensink.dom.reference;
 
-import java.util.List;
 import com.danhaywood.isis.kitchensink.dom.RepositoryAbstract;
+import com.danhaywood.isis.kitchensink.dom.other.OtherBoundedObject;
+import com.danhaywood.isis.kitchensink.dom.other.OtherObject;
 import org.apache.isis.applib.annotation.DomainService;
-import org.apache.isis.applib.annotation.Hidden;
+import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.Named;
 
-@Hidden
-@DomainService(menuOrder = "90", repositoryFor = OtherObject.class)
-public class OtherObjects extends RepositoryAbstract<OtherObject> {
+@Named("Reference Objects")
+@DomainService(menuOrder = "10", repositoryFor = ReferenceObject.class)
+public class ReferenceObjects extends RepositoryAbstract<ReferenceObject> {
 
-    public OtherObjects() {
-        super(OtherObject.class);
+    public ReferenceObjects() {
+        super(ReferenceObject.class);
     }
 
-
-    @Hidden
-    @Override
-    public OtherObject first() {
-        return super.first();
-    }
-
-    @Hidden
-    @Override
-    public List<OtherObject> listAll() {
-        return super.listAll();
-    }
-
-
-    @Hidden
-    public OtherObject create(
+    @MemberOrder(sequence = "30")
+    public ReferenceObject create(
             final @Named("Name") String name,
-            final @Named("Description") String description) {
-        final OtherObject obj = container.newTransientInstance(OtherObject.class);
+            final @Named("Some Int") int i,
+            final OtherObject otherObject,
+            final OtherBoundedObject otherBoundedObject) {
+        final ReferenceObject obj = container.newTransientInstance(ReferenceObject.class);
         obj.setName(name);
-        obj.setDescription(description);
+
+        obj.setSomeOtherObjectMandatoryWithChoices(otherObject);
+        obj.setSomeOtherObjectActionOnlyWithChoices(otherObject);
+        obj.setSomeOtherBoundedObjectMandatory(otherBoundedObject);
 
         container.persistIfNotAlready(obj);
         return obj;

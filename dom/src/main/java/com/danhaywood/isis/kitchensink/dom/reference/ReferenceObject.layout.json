@@ -28,57 +28,49 @@
             }
           }
         },
-        "Blob": {
+        "Reference Objects": {
           "members": {
-            "someBlob": {
+            "someOtherObjectMandatoryWithChoices": {
               "actions": {
-                "updateSomeBlob": {
+                "updateSomeOtherObjectMandatoryWithChoices": {
                   "named": {
                     "value": "update"
-                  }
-                },
-                "resetSomeBlob": {
-                  "named": {
-                    "value": "clear"
                   }
                 }
               }
             },
-            "someImage": {
+            "someOtherObjectOptionalWithChoices": {
               "actions": {
-                "updateSomeImage": {
+                "updateSomeOtherObjectOptionalWithChoices": {
                   "named": {
                     "value": "update"
                   }
                 },
-                "resetSomeImage": {
+                "resetSomeOtherObjectOptionalWithChoices": {
                   "named": {
                     "value": "clear"
                   }
                 }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
               }
-            }
-          }
-        }
-      }
-    },
-    {
-      "span": 6,
-      "memberGroups": {
-        "Clob": {
-          "members": {
-            "someClob": {
+            },
+            "someOtherObjectActionOnlyWithChoices": {
               "actions": {
-                "updateSomeClob": {
+                "updateSomeOtherObjectActionOnlyWithChoices": {
                   "named": {
                     "value": "update"
                   }
                 },
-                "resetSomeClob": {
+                "resetSomeOtherObjectActionOnlyWithChoices": {
                   "named": {
                     "value": "clear"
                   }
                 }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
               }
             }
           }
@@ -88,6 +80,41 @@
     {
       "span": 0,
       "memberGroups": {
+      }
+    },
+    {
+      "span": 6,
+      "memberGroups": {
+        "Other Bounded Objects": {
+          "members": {
+            "someOtherBoundedObjectMandatory": {
+              "actions": {
+                "updateSomeOtherBoundedObjectMandatory": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              }
+            },
+            "someOtherBoundedObjectOptional": {
+              "actions": {
+                "updateSomeOtherBoundedObjectOptional": {
+                  "named": {
+                    "value": "update"
+                  }
+                },
+                "resetSomeOtherBoundedObjectOptional": {
+                  "named": {
+                    "value": "clear"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
+            }
+          }
+        }
       }
     },
     {

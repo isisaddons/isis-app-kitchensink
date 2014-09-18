@@ -16,47 +16,52 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-package com.danhaywood.isis.kitchensink.dom.enumerated;
+package com.danhaywood.isis.kitchensink.dom.wrapper;
 
 import com.danhaywood.isis.kitchensink.dom.RepositoryAbstract;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.Named;
 
-@Named("Enumerated")
-@DomainService(menuOrder = "10", repositoryFor = EnumeratedObject.class)
-public class EnumeratedObjects extends RepositoryAbstract<EnumeratedObject> {
+@Named("Wrappers")
+@DomainService(menuOrder = "10", repositoryFor = WrapperObject.class)
+public class WrapperObjects extends RepositoryAbstract<WrapperObject> {
 
-    public EnumeratedObjects() {
-        super(EnumeratedObject.class);
+    public WrapperObjects() {
+        super(WrapperObject.class);
     }
 
     @MemberOrder(sequence = "30")
-    public EnumeratedObject create(
+    public WrapperObject create(
             final @Named("Name") String name,
-            final boolean b,
-            final EnumOf3 enumOf3,
-            final EnumOf4 enumOf4,
-            final EnumOf8 enumOf8) {
-        final EnumeratedObject obj = container.newTransientInstance(EnumeratedObject.class);
+            final @Named("Byte") byte b,
+            final @Named("Short") short s,
+            final @Named("Int") int i,
+            final @Named("Long") long l,
+            final @Named("Float") float f,
+            final @Named("Double") double d) {
+        final WrapperObject obj = container.newTransientInstance(WrapperObject.class);
         obj.setName(name);
 
-        obj.setSomeBoolean(b);
-        obj.setSomeBooleanWrapperMandatory(b);
-        obj.setSomeBooleanWrapperOptional(b);
+        obj.setSomeByteWrapperMandatory(b);
+        obj.setSomeByteWrapperOptional(b);
 
-        obj.setSomeEnumOf3Mandatory(enumOf3);
-        obj.setSomeEnumOf3Optional(enumOf3);
+        obj.setSomeShortWrapperMandatory(s);
+        obj.setSomeShortWrapperOptional(s);
 
-        obj.setSomeEnumOf4Mandatory(enumOf4);
-        obj.setSomeEnumOf4Optional(enumOf4);
+        obj.setSomeIntegerWrapperMandatory(i);
+        obj.setSomeIntegerWrapperOptional(i);
 
-        obj.setSomeEnumOf8Mandatory(enumOf8);
-        obj.setSomeEnumOf8Optional(enumOf8);
+        obj.setSomeLongWrapperMandatory(l);
+        obj.setSomeLongWrapperOptional(l);
+
+        obj.setSomeFloatWrapperMandatory(f);
+        obj.setSomeFloatWrapperOptional(f);
+
+        obj.setSomeDoubleWrapperMandatory(d);
+        obj.setSomeDoubleWrapperOptional(d);
 
         container.persistIfNotAlready(obj);
         return obj;
     }
-
-
 }

@@ -3,6 +3,7 @@ package com.danhaywood.isis.kitchensink.dom.date;
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.VersionStrategy;
+import com.danhaywood.isis.kitchensink.dom.Entity;
 import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.annotation.*;
 import org.apache.isis.applib.util.ObjectContracts;
@@ -16,15 +17,7 @@ import org.apache.isis.applib.util.ObjectContracts;
         column="version")
 @ObjectType("DATE")
 @Bookmarkable
-public class DateObject implements Comparable<DateObject> {
-
-    //region > nameInCollection (property)
-
-    public String getNameInCollection() {
-        return getName();
-    }
-
-    //endregion
+public class DateObject implements Entity<DateObject> {
 
     //region > name (property)
 

@@ -1,12 +1,9 @@
 package com.danhaywood.isis.kitchensink.dom.enumerated;
 
-import com.danhaywood.isis.kitchensink.dom.EnumOf3;
-import com.danhaywood.isis.kitchensink.dom.EnumOf4;
-import com.danhaywood.isis.kitchensink.dom.EnumOf8;
-
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.VersionStrategy;
+import com.danhaywood.isis.kitchensink.dom.Entity;
 import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.annotation.*;
 import org.apache.isis.applib.util.ObjectContracts;
@@ -20,15 +17,7 @@ import org.apache.isis.applib.util.ObjectContracts;
         column="version")
 @ObjectType("ENUMERATED")
 @Bookmarkable
-public class EnumeratedObject implements Comparable<EnumeratedObject> {
-
-    //region > nameInCollection (property)
-
-    public String getNameInCollection() {
-        return getName();
-    }
-
-    //endregion
+public class EnumeratedObject implements Entity<EnumeratedObject> {
 
     //region > name (property)
 

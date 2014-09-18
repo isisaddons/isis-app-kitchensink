@@ -3,6 +3,7 @@ package com.danhaywood.isis.kitchensink.dom.other;
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.VersionStrategy;
+import com.danhaywood.isis.kitchensink.dom.Entity;
 import com.danhaywood.isis.kitchensink.dom.SomeCategory;
 import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.annotation.*;
@@ -21,7 +22,7 @@ import org.apache.isis.applib.util.ObjectContracts;
 @ObjectType("OTHERBOUNDED")
 @Bookmarkable(BookmarkPolicy.AS_CHILD)
 @Bounded
-public class OtherBoundedObject implements Comparable<OtherBoundedObject> {
+public class OtherBoundedObject implements Entity<OtherBoundedObject> {
 
     //region > name (property)
 

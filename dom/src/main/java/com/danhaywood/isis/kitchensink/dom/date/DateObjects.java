@@ -19,41 +19,20 @@
 package com.danhaywood.isis.kitchensink.dom.date;
 
 import java.sql.Timestamp;
-import java.util.List;
-import org.apache.isis.applib.DomainObjectContainer;
-import org.apache.isis.applib.annotation.*;
-import org.apache.isis.applib.annotation.ActionSemantics.Of;
+import com.danhaywood.isis.kitchensink.dom.RepositoryAbstract;
+import org.apache.isis.applib.annotation.DomainService;
+import org.apache.isis.applib.annotation.MemberOrder;
+import org.apache.isis.applib.annotation.Named;
 
 @Named("Date")
 @DomainService(menuOrder = "10", repositoryFor = DateObject.class)
-public class DateObjects {
+public class DateObjects extends RepositoryAbstract<DateObject> {
 
-    //region > identification in the UI
-
-    public String getId() {
-        return "date";
+    public DateObjects() {
+        super(DateObject.class);
     }
 
-    public String iconName() {
-        return "DateObject";
-    }
-
-    //endregion
-
-    //region > listAll (action)
-
-    @Bookmarkable
-    @ActionSemantics(Of.SAFE)
-    @MemberOrder(sequence = "1")
-    public List<DateObject> listAll() {
-        return container.allInstances(DateObject.class);
-    }
-
-    //endregion
-
-    //region > create (action)
-
-    @MemberOrder(sequence = "2")
+    @MemberOrder(sequence = "30")
     public DateObject create(
             final @Named("Name") String name,
             final @Named("Year") int year,
@@ -82,14 +61,5 @@ public class DateObjects {
         container.persistIfNotAlready(obj);
         return obj;
     }
-
-    //endregion
-
-    //region > injected services
-
-    @javax.inject.Inject 
-    DomainObjectContainer container;
-
-    //endregion
 
 }

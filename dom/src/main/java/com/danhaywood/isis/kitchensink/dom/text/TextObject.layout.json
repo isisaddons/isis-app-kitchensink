@@ -3,16 +3,16 @@
     {
       "span": 4,
       "memberGroups": {
-        "Name In Collection": {
+        "Name": {
           "members": {
-            "nameInCollection": {
+            "name": {
               "hidden": {
                 "where": "OBJECT_FORMS"
               }
             }
           }
         },
-        "Character": {
+        "char": {
           "members": {
             "someChar": {
               "actions": {
@@ -22,7 +22,11 @@
                   }
                 }
               }
-            },
+            }
+          }
+        },
+        "java.lang.Character": {
+          "members": {
             "someCharacterWrapperMandatory": {
               "actions": {
                 "updateSomeCharacterWrapperMandatory": {
@@ -30,9 +34,6 @@
                     "value": "update"
                   }
                 }
-              },
-              "hidden": {
-                "where": "ALL_TABLES"
               }
             },
             "someCharacterWrapperOptional": {
@@ -46,17 +47,8 @@
                   "named": {
                     "value": "clear"
                   }
-                },
-                "hidden": {
-                  "where": "ALL_TABLES"
                 }
-              }
-            }
-          }
-        },
-        "Name": {
-          "members": {
-            "name": {
+              },
               "hidden": {
                 "where": "ALL_TABLES"
               }
@@ -68,7 +60,7 @@
     {
       "span": 4,
       "memberGroups": {
-        "String": {
+        "java.lang.String": {
           "members": {
             "someStringMandatory": {
               "actions": {
@@ -77,9 +69,6 @@
                     "value": "update"
                   }
                 }
-              },
-              "hidden": {
-                "where": "ALL_TABLES"
               }
             },
             "someStringOptional": {
@@ -132,6 +121,35 @@
               "hidden": {
                 "where": "ALL_TABLES"
               }
+            },
+            "someStringMandatoryWithChoices": {
+              "actions": {
+                "updateSomeStringMandatoryWithChoices": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
+            },
+            "someStringOptionalWithChoices": {
+              "actions": {
+                "updateSomeStringOptionalWithChoices": {
+                  "named": {
+                    "value": "update"
+                  }
+                },
+                "resetSomeStringOptionalWithChoices": {
+                  "named": {
+                    "value": "clear"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
             }
           }
         }
@@ -154,9 +172,6 @@
                     "value": "clear"
                   }
                 }
-              },
-              "hidden": {
-                "where": "ALL_TABLES"
               }
             },
             "someStringMultiNoWrap": {

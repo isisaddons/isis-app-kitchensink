@@ -16,46 +16,45 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-package com.danhaywood.isis.kitchensink.dom.other;
+package com.danhaywood.isis.kitchensink.dom.primitive;
 
-import java.util.List;
 import com.danhaywood.isis.kitchensink.dom.RepositoryAbstract;
 import org.apache.isis.applib.annotation.DomainService;
-import org.apache.isis.applib.annotation.Hidden;
+import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.Named;
 
-@Hidden
-@DomainService(menuOrder = "90", repositoryFor = OtherObject.class)
-public class OtherObjects extends RepositoryAbstract<OtherObject> {
+@Named("Primitive")
+@DomainService(menuOrder = "10", repositoryFor = PrimitiveObject.class)
+public class PrimitiveObjects extends RepositoryAbstract<PrimitiveObject> {
 
-    public OtherObjects() {
-        super(OtherObject.class);
+    public PrimitiveObjects() {
+        super(PrimitiveObject.class);
     }
 
-
-    @Hidden
-    @Override
-    public OtherObject first() {
-        return super.first();
-    }
-
-    @Hidden
-    @Override
-    public List<OtherObject> listAll() {
-        return super.listAll();
-    }
-
-
-    @Hidden
-    public OtherObject create(
+    @MemberOrder(sequence = "30")
+    public PrimitiveObject create(
             final @Named("Name") String name,
-            final @Named("Description") String description) {
-        final OtherObject obj = container.newTransientInstance(OtherObject.class);
+            final @Named("Byte") byte b,
+            final @Named("Short") short s,
+            final @Named("Int") int i,
+            final @Named("Long") long l,
+            final @Named("Float") float f,
+            final @Named("Double") double d) {
+        final PrimitiveObject obj = container.newTransientInstance(PrimitiveObject.class);
         obj.setName(name);
-        obj.setDescription(description);
+
+        obj.setSomeByte(b);
+        obj.setSomeShort(s);
+
+        obj.setSomeInt(i);
+        obj.setSomeIntWithChoices(i);
+
+        obj.setSomeLong(l);
+        obj.setSomeFloat(f);
+        obj.setSomeDouble(d);
+
 
         container.persistIfNotAlready(obj);
         return obj;
     }
-
 }
