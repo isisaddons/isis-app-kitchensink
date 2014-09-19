@@ -1,7 +1,9 @@
-isis-wicket-kitchensink
-=======================
+isis-kitchensink
+================
 
-An app for Isis to build a regression suite for the Wicket viewer.
+[![Build Status](https://travis-ci.org/danhaywood/isis-kitchensink.png?branch=master)](https://travis-ci.org/isisaddons/isis-module-publishing)
+
+An app to act as a regression suite for [Apache Isis](http://isis.apache.org).
 
 
 ## Getting started (IntelliJ)
