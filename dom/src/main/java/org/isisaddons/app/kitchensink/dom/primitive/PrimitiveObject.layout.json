@@ -38,6 +38,31 @@
                   }
                 }
               }
+            },
+            "someByteHidden": {
+            },
+            "someByteDisabled": {
+            },
+            "someByteWithValidation": {
+              "actions": {
+                "updateSomeByteWithValidation": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              }
+            },
+            "someByteWithChoices": {
+              "actions": {
+                "updateSomeByteWithChoices": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
             }
           }
         },
@@ -50,6 +75,31 @@
                     "value": "update"
                   }
                 }
+              }
+            },
+            "someShortHidden": {
+            },
+            "someShortDisabled": {
+            },
+            "someShortWithValidation": {
+              "actions": {
+                "updateSomeShortWithValidation": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              }
+            },
+            "someShortWithChoices": {
+              "actions": {
+                "updateSomeShortWithChoices": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
               }
             }
           }
@@ -107,6 +157,31 @@
                   }
                 }
               }
+            },
+            "someLongHidden": {
+            },
+            "someLongDisabled": {
+            },
+            "someLongWithValidation": {
+              "actions": {
+                "updateSomeLongWithValidation": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              }
+            },
+            "someLongWithChoices": {
+              "actions": {
+                "updateSomeLongWithChoices": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
             }
           }
         }
@@ -125,6 +200,31 @@
                   }
                 }
               }
+            },
+            "someFloatHidden": {
+            },
+            "someFloatDisabled": {
+            },
+            "someFloatWithValidation": {
+              "actions": {
+                "updateSomeFloatWithValidation": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              }
+            },
+            "someFloatWithChoices": {
+              "actions": {
+                "updateSomeFloatWithChoices": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
             }
           }
         },
@@ -137,6 +237,31 @@
                     "value": "update"
                   }
                 }
+              }
+            },
+            "someDoubleHidden": {
+            },
+            "someDoubleDisabled": {
+            },
+            "someDoubleWithValidation": {
+              "actions": {
+                "updateSomeDoubleWithValidation": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              }
+            },
+            "someDoubleWithChoices": {
+              "actions": {
+                "updateSomeDoubleWithChoices": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
               }
             }
           }

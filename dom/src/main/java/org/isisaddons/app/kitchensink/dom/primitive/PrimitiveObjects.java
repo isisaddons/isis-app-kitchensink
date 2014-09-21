@@ -42,7 +42,18 @@ public class PrimitiveObjects extends RepositoryAbstract<PrimitiveObject> {
         obj.setName(name);
 
         obj.setSomeByte(b);
+        obj.setSomeByteHidden(b);
+        obj.setSomeIntDisabled(b);
+        obj.setSomeIntWithValidation(b);
+        obj.setSomeIntWithChoices(b);
+        obj.setSomeIntWithChoices(b);
+
         obj.setSomeShort(s);
+        obj.setSomeShortHidden(s);
+        obj.setSomeShortDisabled(s);
+        obj.setSomeShortWithValidation(s);
+        obj.setSomeShortWithChoices(s);
+        obj.setSomeShortWithChoices(s);
 
         obj.setSomeInt(i);
         obj.setSomeIntHidden(i);
@@ -52,8 +63,25 @@ public class PrimitiveObjects extends RepositoryAbstract<PrimitiveObject> {
         obj.setSomeIntWithChoices(i);
 
         obj.setSomeLong(l);
+        obj.setSomeLongHidden(l);
+        obj.setSomeLongDisabled(l);
+        obj.setSomeLongWithValidation(l);
+        obj.setSomeLongWithChoices(l);
+        obj.setSomeLongWithChoices(l);
+
         obj.setSomeFloat(f);
+        obj.setSomeFloatHidden(f);
+        obj.setSomeFloatDisabled(f);
+        obj.setSomeFloatWithValidation(f);
+        obj.setSomeFloatWithChoices(f);
+        obj.setSomeFloatWithChoices(f);
+
         obj.setSomeDouble(d);
+        obj.setSomeDoubleHidden(d);
+        obj.setSomeDoubleDisabled(d);
+        obj.setSomeDoubleWithValidation(d);
+        obj.setSomeDoubleWithChoices(d);
+        obj.setSomeDoubleWithChoices(d);
 
 
         container.persistIfNotAlready(obj);

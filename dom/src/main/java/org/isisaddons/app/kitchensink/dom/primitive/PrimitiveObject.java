@@ -76,6 +76,93 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
     }
     //endregion
 
+    //region > someByteHidden (property)
+    private byte someByteHidden;
+
+    @Hidden
+    public byte getSomeByteHidden() {
+        return someByteHidden;
+    }
+
+    public void setSomeByteHidden(final byte someByteHidden) {
+        this.someByteHidden = someByteHidden;
+    }
+
+    //endregion
+
+    //region > someByteDisabled (property)
+    private byte someByteDisabled;
+
+    @Disabled
+    public byte getSomeByteDisabled() {
+        return someByteDisabled;
+    }
+
+    public void setSomeByteDisabled(final byte someByteDisabled) {
+        this.someByteDisabled = someByteDisabled;
+    }
+
+    //endregion
+
+    //region > someByteWithChoices (property)
+    private byte someByteWithChoices;
+
+    public byte getSomeByteWithChoices() {
+        return someByteWithChoices;
+    }
+
+    public void setSomeByteWithChoices(final byte someByteWithChoices) {
+        this.someByteWithChoices = someByteWithChoices;
+    }
+
+    public Collection<Byte> choicesSomeByteWithChoices() {
+        return Lists.newArrayList((byte)1, (byte)2, (byte)3, (byte)4);
+    }
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public PrimitiveObject updateSomeByteWithChoices(final byte i) {
+        setSomeByteWithChoices(i);
+        return this;
+    }
+
+    public byte default0UpdateSomeByteWithChoices() {
+        return getSomeByteWithChoices();
+    }
+
+    public List<Byte> choices0UpdateSomeByteWithChoices() {
+        return Lists.newArrayList((byte)1,(byte)2,(byte)3,(byte)4);
+    }
+    //endregion
+
+    //region > someByteWithValidation (property)
+    private byte someByteWithValidation;
+
+    public byte getSomeByteWithValidation() {
+        return someByteWithValidation;
+    }
+
+    public void setSomeByteWithValidation(final byte someByteWithValidation) {
+        this.someByteWithValidation = someByteWithValidation;
+    }
+
+    public String validateSomeByteWithValidation(final byte i) {
+        return i % 2 != 0? "Can only enter even numbers": null;
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public PrimitiveObject updateSomeByteWithValidation(final byte i) {
+        setSomeByteWithValidation(i);
+        return this;
+    }
+
+    public String validateUpdateSomeByteWithValidation(final byte i) {
+        return validateSomeByteWithValidation(i);
+    }
+    public byte default0UpdateSomeByteWithValidation() {
+        return getSomeByteWithValidation();
+    }
+
+    //endregion
+
 
     //region > someShort (property)
     private short someShort;
@@ -96,6 +183,93 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
     public short default0UpdateSomeShort() {
         return getSomeShort();
     }
+    //endregion
+
+    //region > someShortHidden (property)
+    private short someShortHidden;
+
+    @Hidden
+    public short getSomeShortHidden() {
+        return someShortHidden;
+    }
+
+    public void setSomeShortHidden(final short someShortHidden) {
+        this.someShortHidden = someShortHidden;
+    }
+
+    //endregion
+
+    //region > someShortDisabled (property)
+    private short someShortDisabled;
+
+    @Disabled
+    public short getSomeShortDisabled() {
+        return someShortDisabled;
+    }
+
+    public void setSomeShortDisabled(final short someShortDisabled) {
+        this.someShortDisabled = someShortDisabled;
+    }
+
+    //endregion
+
+    //region > someShortWithChoices (property)
+    private short someShortWithChoices;
+
+    public short getSomeShortWithChoices() {
+        return someShortWithChoices;
+    }
+
+    public void setSomeShortWithChoices(final short someShortWithChoices) {
+        this.someShortWithChoices = someShortWithChoices;
+    }
+
+    public Collection<Short> choicesSomeShortWithChoices() {
+        return Lists.newArrayList((short)1, (short)2, (short)3, (short)4);
+    }
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public PrimitiveObject updateSomeShortWithChoices(final short i) {
+        setSomeShortWithChoices(i);
+        return this;
+    }
+
+    public short default0UpdateSomeShortWithChoices() {
+        return getSomeShortWithChoices();
+    }
+
+    public List<Short> choices0UpdateSomeShortWithChoices() {
+        return Lists.newArrayList((short)1,(short)2,(short)3,(short)4);
+    }
+    //endregion
+
+    //region > someShortWithValidation (property)
+    private short someShortWithValidation;
+
+    public short getSomeShortWithValidation() {
+        return someShortWithValidation;
+    }
+
+    public void setSomeShortWithValidation(final short someShortWithValidation) {
+        this.someShortWithValidation = someShortWithValidation;
+    }
+
+    public String validateSomeShortWithValidation(final short i) {
+        return i % 2 != 0? "Can only enter even numbers": null;
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public PrimitiveObject updateSomeShortWithValidation(final short i) {
+        setSomeShortWithValidation(i);
+        return this;
+    }
+
+    public String validateUpdateSomeShortWithValidation(final short i) {
+        return validateSomeShortWithValidation(i);
+    }
+    public short default0UpdateSomeShortWithValidation() {
+        return getSomeShortWithValidation();
+    }
+
     //endregion
 
 
@@ -230,6 +404,93 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
     }
     //endregion
 
+    //region > someLongHidden (property)
+    private long someLongHidden;
+
+    @Hidden
+    public long getSomeLongHidden() {
+        return someLongHidden;
+    }
+
+    public void setSomeLongHidden(final long someLongHidden) {
+        this.someLongHidden = someLongHidden;
+    }
+
+    //endregion
+
+    //region > someLongDisabled (property)
+    private long someLongDisabled;
+
+    @Disabled
+    public long getSomeLongDisabled() {
+        return someLongDisabled;
+    }
+
+    public void setSomeLongDisabled(final long someLongDisabled) {
+        this.someLongDisabled = someLongDisabled;
+    }
+
+    //endregion
+
+    //region > someLongWithChoices (property)
+    private long someLongWithChoices;
+
+    public long getSomeLongWithChoices() {
+        return someLongWithChoices;
+    }
+
+    public void setSomeLongWithChoices(final long someLongWithChoices) {
+        this.someLongWithChoices = someLongWithChoices;
+    }
+
+    public Collection<Long> choicesSomeLongWithChoices() {
+        return Lists.newArrayList((long)1, (long)2, (long)3, (long)4);
+    }
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public PrimitiveObject updateSomeLongWithChoices(final long i) {
+        setSomeLongWithChoices(i);
+        return this;
+    }
+
+    public long default0UpdateSomeLongWithChoices() {
+        return getSomeLongWithChoices();
+    }
+
+    public List<Long> choices0UpdateSomeLongWithChoices() {
+        return Lists.newArrayList((long)1, (long)2, (long)3, (long)4);
+    }
+    //endregion
+
+    //region > someLongWithValidation (property)
+    private long someLongWithValidation;
+
+    public long getSomeLongWithValidation() {
+        return someLongWithValidation;
+    }
+
+    public void setSomeLongWithValidation(final long someLongWithValidation) {
+        this.someLongWithValidation = someLongWithValidation;
+    }
+
+    public String validateSomeLongWithValidation(final long i) {
+        return i % 2 != 0? "Can only enter even numbers": null;
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public PrimitiveObject updateSomeLongWithValidation(final long i) {
+        setSomeLongWithValidation(i);
+        return this;
+    }
+
+    public String validateUpdateSomeLongWithValidation(final long i) {
+        return validateSomeLongWithValidation(i);
+    }
+    public long default0UpdateSomeLongWithValidation() {
+        return getSomeLongWithValidation();
+    }
+
+    //endregion
+
 
     //region > someFloat (property)
     private float someFloat;
@@ -252,6 +513,93 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
     }
     //endregion
 
+    //region > someFloatHidden (property)
+    private float someFloatHidden;
+
+    @Hidden
+    public float getSomeFloatHidden() {
+        return someFloatHidden;
+    }
+
+    public void setSomeFloatHidden(final float someFloatHidden) {
+        this.someFloatHidden = someFloatHidden;
+    }
+
+    //endregion
+
+    //region > someFloatDisabled (property)
+    private float someFloatDisabled;
+
+    @Disabled
+    public float getSomeFloatDisabled() {
+        return someFloatDisabled;
+    }
+
+    public void setSomeFloatDisabled(final float someFloatDisabled) {
+        this.someFloatDisabled = someFloatDisabled;
+    }
+
+    //endregion
+
+    //region > someFloatWithChoices (property)
+    private float someFloatWithChoices;
+
+    public float getSomeFloatWithChoices() {
+        return someFloatWithChoices;
+    }
+
+    public void setSomeFloatWithChoices(final float someFloatWithChoices) {
+        this.someFloatWithChoices = someFloatWithChoices;
+    }
+
+    public Collection<Float> choicesSomeFloatWithChoices() {
+        return Lists.newArrayList(1.1f, 2.2f, 3.3f, 4.4f);
+    }
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public PrimitiveObject updateSomeFloatWithChoices(final float i) {
+        setSomeFloatWithChoices(i);
+        return this;
+    }
+
+    public float default0UpdateSomeFloatWithChoices() {
+        return getSomeFloatWithChoices();
+    }
+
+    public List<Float> choices0UpdateSomeFloatWithChoices() {
+        return Lists.newArrayList(1.1f, 2.2f, 3.3f, 4.4f);
+    }
+    //endregion
+
+    //region > someFloatWithValidation (property)
+    private float someFloatWithValidation;
+
+    public float getSomeFloatWithValidation() {
+        return someFloatWithValidation;
+    }
+
+    public void setSomeFloatWithValidation(final float someFloatWithValidation) {
+        this.someFloatWithValidation = someFloatWithValidation;
+    }
+
+    public String validateSomeFloatWithValidation(final float i) {
+        return i % 2 != 0? "Can only enter even numbers": null;
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public PrimitiveObject updateSomeFloatWithValidation(final float i) {
+        setSomeFloatWithValidation(i);
+        return this;
+    }
+
+    public String validateUpdateSomeFloatWithValidation(final float i) {
+        return validateSomeFloatWithValidation(i);
+    }
+    public float default0UpdateSomeFloatWithValidation() {
+        return getSomeFloatWithValidation();
+    }
+
+    //endregion
+
 
     //region > someDouble (property)
     private double someDouble;
@@ -272,6 +620,93 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
     public double default0UpdateSomeDouble() {
         return getSomeDouble();
     }
+    //endregion
+
+    //region > someDoubleHidden (property)
+    private double someDoubleHidden;
+
+    @Hidden
+    public double getSomeDoubleHidden() {
+        return someDoubleHidden;
+    }
+
+    public void setSomeDoubleHidden(final double someDoubleHidden) {
+        this.someDoubleHidden = someDoubleHidden;
+    }
+
+    //endregion
+
+    //region > someDoubleDisabled (property)
+    private double someDoubleDisabled;
+
+    @Disabled
+    public double getSomeDoubleDisabled() {
+        return someDoubleDisabled;
+    }
+
+    public void setSomeDoubleDisabled(final double someDoubleDisabled) {
+        this.someDoubleDisabled = someDoubleDisabled;
+    }
+
+    //endregion
+
+    //region > someDoubleWithChoices (property)
+    private double someDoubleWithChoices;
+
+    public double getSomeDoubleWithChoices() {
+        return someDoubleWithChoices;
+    }
+
+    public void setSomeDoubleWithChoices(final double someDoubleWithChoices) {
+        this.someDoubleWithChoices = someDoubleWithChoices;
+    }
+
+    public Collection<Double> choicesSomeDoubleWithChoices() {
+        return Lists.newArrayList(1.1, 2.2, 3.3, 4.4);
+    }
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public PrimitiveObject updateSomeDoubleWithChoices(final double i) {
+        setSomeDoubleWithChoices(i);
+        return this;
+    }
+
+    public double default0UpdateSomeDoubleWithChoices() {
+        return getSomeDoubleWithChoices();
+    }
+
+    public List<Double> choices0UpdateSomeDoubleWithChoices() {
+        return Lists.newArrayList(1.1, 2.2, 3.3, 4.4);
+    }
+    //endregion
+
+    //region > someDoubleWithValidation (property)
+    private double someDoubleWithValidation;
+
+    public double getSomeDoubleWithValidation() {
+        return someDoubleWithValidation;
+    }
+
+    public void setSomeDoubleWithValidation(final double someDoubleWithValidation) {
+        this.someDoubleWithValidation = someDoubleWithValidation;
+    }
+
+    public String validateSomeDoubleWithValidation(final double i) {
+        return i % 2 != 0? "Can only enter even numbers": null;
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public PrimitiveObject updateSomeDoubleWithValidation(final double i) {
+        setSomeDoubleWithValidation(i);
+        return this;
+    }
+
+    public String validateUpdateSomeDoubleWithValidation(final double i) {
+        return validateSomeDoubleWithValidation(i);
+    }
+    public double default0UpdateSomeDoubleWithValidation() {
+        return getSomeDoubleWithValidation();
+    }
+
     //endregion
 
 
