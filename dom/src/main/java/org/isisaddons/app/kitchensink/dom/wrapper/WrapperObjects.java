@@ -49,6 +49,11 @@ public class WrapperObjects extends RepositoryAbstract<WrapperObject> {
 
         obj.setSomeIntegerWrapperMandatory(i);
         obj.setSomeIntegerWrapperOptional(i);
+        obj.setSomeIntegerWrapperHidden(i);
+        obj.setSomeIntegerWrapperDisabled(i);
+        obj.setSomeIntegerWrapperMandatoryWithChoices(i);
+        obj.setSomeIntegerWrapperOptionalWithChoices(i);
+        obj.setSomeIntegerWrapperWithValidation(i);
 
         obj.setSomeLongWrapperMandatory(l);
         obj.setSomeLongWrapperOptional(l);

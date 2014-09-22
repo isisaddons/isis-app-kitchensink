@@ -55,6 +55,48 @@
               "hidden": {
                 "where": "ALL_TABLES"
               }
+            },
+            "someByteWrapperHidden": {
+            },
+            "someByteWrapperDisabled": {
+            },
+            "someByteWrapperWithValidation": {
+              "actions": {
+                "updateSomeByteWrapperWithValidation": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              }
+            },
+            "someByteWrapperMandatoryWithChoices": {
+              "actions": {
+                "updateSomeByteWrapperMandatoryWithChoices": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
+            },
+            "someByteWrapperOptionalWithChoices": {
+              "actions": {
+                "updateSomeByteWrapperOptionalWithChoices": {
+                  "named": {
+                    "value": "update"
+                  }
+                },
+                "resetSomeByteWrapperOptionalWithChoices": {
+                  "named": {
+                    "value": "clear"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
             }
           }
         },
@@ -77,6 +119,48 @@
                   }
                 },
                 "resetSomeShortWrapperOptional": {
+                  "named": {
+                    "value": "clear"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
+            },
+            "someShortWrapperHidden": {
+            },
+            "someShortWrapperDisabled": {
+            },
+            "someShortWrapperWithValidation": {
+              "actions": {
+                "updateSomeShortWrapperWithValidation": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              }
+            },
+            "someShortWrapperMandatoryWithChoices": {
+              "actions": {
+                "updateSomeShortWrapperMandatoryWithChoices": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
+            },
+            "someShortWrapperOptionalWithChoices": {
+              "actions": {
+                "updateSomeShortWrapperOptionalWithChoices": {
+                  "named": {
+                    "value": "update"
+                  }
+                },
+                "resetSomeShortWrapperOptionalWithChoices": {
                   "named": {
                     "value": "clear"
                   }
@@ -119,6 +203,19 @@
               },
               "hidden": {
                 "where": "ALL_TABLES"
+              }
+            },
+            "someIntegerWrapperHidden": {
+            },
+            "someIntegerWrapperDisabled": {
+            },
+            "someIntegerWrapperWithValidation": {
+              "actions": {
+                "updateSomeIntegerWrapperWithValidation": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
               }
             },
             "someIntegerWrapperMandatoryWithChoices": {
@@ -179,6 +276,48 @@
               "hidden": {
                 "where": "ALL_TABLES"
               }
+            },
+            "someLongWrapperHidden": {
+            },
+            "someLongWrapperDisabled": {
+            },
+            "someLongWrapperWithValidation": {
+              "actions": {
+                "updateSomeLongWrapperWithValidation": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              }
+            },
+            "someLongWrapperMandatoryWithChoices": {
+              "actions": {
+                "updateSomeLongWrapperMandatoryWithChoices": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
+            },
+            "someLongWrapperOptionalWithChoices": {
+              "actions": {
+                "updateSomeLongWrapperOptionalWithChoices": {
+                  "named": {
+                    "value": "update"
+                  }
+                },
+                "resetSomeLongWrapperOptionalWithChoices": {
+                  "named": {
+                    "value": "clear"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
             }
           }
         }
@@ -214,6 +353,48 @@
               "hidden": {
                 "where": "ALL_TABLES"
               }
+            },
+            "someFloatWrapperHidden": {
+            },
+            "someFloatWrapperDisabled": {
+            },
+            "someFloatWrapperWithValidation": {
+              "actions": {
+                "updateSomeFloatWrapperWithValidation": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              }
+            },
+            "someFloatWrapperMandatoryWithChoices": {
+              "actions": {
+                "updateSomeFloatWrapperMandatoryWithChoices": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
+            },
+            "someFloatWrapperOptionalWithChoices": {
+              "actions": {
+                "updateSomeFloatWrapperOptionalWithChoices": {
+                  "named": {
+                    "value": "update"
+                  }
+                },
+                "resetSomeFloatWrapperOptionalWithChoices": {
+                  "named": {
+                    "value": "clear"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
             }
           }
         },
@@ -236,6 +417,48 @@
                   }
                 },
                 "resetSomeDoubleWrapperOptional": {
+                  "named": {
+                    "value": "clear"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
+            },
+            "someDoubleWrapperHidden": {
+            },
+            "someDoubleWrapperDisabled": {
+            },
+            "someDoubleWrapperWithValidation": {
+              "actions": {
+                "updateSomeDoubleWrapperWithValidation": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              }
+            },
+            "someDoubleWrapperMandatoryWithChoices": {
+              "actions": {
+                "updateSomeDoubleWrapperMandatoryWithChoices": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
+            },
+            "someDoubleWrapperOptionalWithChoices": {
+              "actions": {
+                "updateSomeDoubleWrapperOptionalWithChoices": {
+                  "named": {
+                    "value": "update"
+                  }
+                },
+                "resetSomeDoubleWrapperOptionalWithChoices": {
                   "named": {
                     "value": "clear"
                   }

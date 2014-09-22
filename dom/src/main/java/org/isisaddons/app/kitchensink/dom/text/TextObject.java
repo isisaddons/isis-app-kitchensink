@@ -76,6 +76,94 @@ public class TextObject implements Entity<TextObject> {
     }
     //endregion
 
+    //region > someCharHidden (property)
+    private char someCharHidden;
+
+    @Hidden
+    public char getSomeCharHidden() {
+        return someCharHidden;
+    }
+
+    public void setSomeCharHidden(final char someCharHidden) {
+        this.someCharHidden = someCharHidden;
+    }
+
+    //endregion
+
+    //region > someCharDisabled (property)
+    private char someCharDisabled;
+
+    @Disabled
+    public char getSomeCharDisabled() {
+        return someCharDisabled;
+    }
+
+    public void setSomeCharDisabled(final char someCharDisabled) {
+        this.someCharDisabled = someCharDisabled;
+    }
+
+    //endregion
+
+    //region > someCharWithValidation (property)
+    private char someCharWithValidation;
+
+    public char getSomeCharWithValidation() {
+        return someCharWithValidation;
+    }
+
+    public void setSomeCharWithValidation(final char someCharWithValidation) {
+        this.someCharWithValidation = someCharWithValidation;
+    }
+
+    public String validateSomeCharWithValidation(final char c) {
+        return c % 2 != 0? "Can only enter even characters": null;
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public TextObject updateSomeCharWithValidation(final char i) {
+        setSomeCharWithValidation(i);
+        return this;
+    }
+
+    public String validateUpdateSomeCharWithValidation(final char i) {
+        return validateSomeCharWithValidation(i);
+    }
+    public char default0UpdateSomeCharWithValidation() {
+        return getSomeCharWithValidation();
+    }
+
+    //endregion
+
+    //region > someCharWithChoices (property)
+    private char someCharWithChoices;
+
+    public char getSomeCharWithChoices() {
+        return someCharWithChoices;
+    }
+
+    public void setSomeCharWithChoices(final char someCharWithChoices) {
+        this.someCharWithChoices = someCharWithChoices;
+    }
+
+    public Collection<Character> choicesSomeCharWithChoices() {
+        return Lists.newArrayList('a','b','c','d');
+    }
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public TextObject updateSomeCharWithChoices(final char i) {
+        setSomeCharWithChoices(i);
+        return this;
+    }
+
+    public char default0UpdateSomeCharWithChoices() {
+        return getSomeCharWithChoices();
+    }
+
+    public List<Character> choices0UpdateSomeCharWithChoices() {
+        return Lists.newArrayList('a','b','c','d');
+    }
+    //endregion
+
+
     //region > someCharacterWrapperMandatory (property)
     private Character someCharacterWrapperMandatory;
 
@@ -126,6 +214,130 @@ public class TextObject implements Entity<TextObject> {
     }
     //endregion
 
+    //region > someCharacterWrapperHidden (property)
+    private java.lang.Character someCharacterWrapperHidden;
+
+    @javax.jdo.annotations.Column(allowsNull = "false")
+    @Hidden
+    public java.lang.Character getSomeCharacterWrapperHidden() {
+        return someCharacterWrapperHidden;
+    }
+
+    public void setSomeCharacterWrapperHidden(final java.lang.Character someCharacterWrapperHidden) {
+        this.someCharacterWrapperHidden = someCharacterWrapperHidden;
+    }
+
+    //endregion
+
+    //region > someCharacterWrapperDisabled (property)
+    private java.lang.Character someCharacterWrapperDisabled;
+
+    @javax.jdo.annotations.Column(allowsNull = "false")
+    @Disabled
+    public java.lang.Character getSomeCharacterWrapperDisabled() {
+        return someCharacterWrapperDisabled;
+    }
+
+    public void setSomeCharacterWrapperDisabled(final java.lang.Character someCharacterWrapperDisabled) {
+        this.someCharacterWrapperDisabled = someCharacterWrapperDisabled;
+    }
+
+    //endregion
+
+    //region > someCharacterWrapperWithValidation (property)
+    private java.lang.Character someCharacterWrapperWithValidation;
+
+    @javax.jdo.annotations.Column(allowsNull = "false")
+    public java.lang.Character getSomeCharacterWrapperWithValidation() {
+        return someCharacterWrapperWithValidation;
+    }
+
+    public void setSomeCharacterWrapperWithValidation(final java.lang.Character someCharacterWrapperWithValidation) {
+        this.someCharacterWrapperWithValidation = someCharacterWrapperWithValidation;
+    }
+
+    public String validateSomeCharacterWrapperWithValidation(final java.lang.Character i) {
+        return i % 2 != 0? "Can only enter even numbers": null;
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public TextObject updateSomeCharacterWrapperWithValidation(final java.lang.Character i) {
+        setSomeCharacterWrapperWithValidation(i);
+        return this;
+    }
+
+    public String validateUpdateSomeCharacterWrapperWithValidation(final java.lang.Character i) {
+        return validateSomeCharacterWrapperWithValidation(i);
+    }
+    public java.lang.Character default0UpdateSomeCharacterWrapperWithValidation() {
+        return getSomeCharacterWrapperWithValidation();
+    }
+
+    //endregion
+
+    //region > someCharacterWrapperMandatoryWithChoices (property)
+    private Character someCharacterWrapperMandatoryWithChoices;
+
+    @Column(allowsNull = "false")
+    public Character getSomeCharacterWrapperMandatoryWithChoices() {
+        return someCharacterWrapperMandatoryWithChoices;
+    }
+
+    public void setSomeCharacterWrapperMandatoryWithChoices(final Character someCharacterWrapperMandatoryWithChoices) {
+        this.someCharacterWrapperMandatoryWithChoices = someCharacterWrapperMandatoryWithChoices;
+    }
+    public Collection<Character> choicesSomeCharacterWrapperMandatoryWithChoices() {
+        return Lists.newArrayList('a','b','c','d');
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public TextObject updateSomeCharacterWrapperMandatoryWithChoices(final Character i) {
+        setSomeCharacterWrapperMandatoryWithChoices(i);
+        return this;
+    }
+    public Character default0UpdateSomeCharacterWrapperMandatoryWithChoices() {
+        return getSomeCharacterWrapperMandatoryWithChoices();
+    }
+    public List<Character> choices0UpdateSomeCharacterWrapperMandatoryWithChoices() {
+        return Lists.newArrayList('a','b','c','d');
+    }
+    //endregion
+
+    //region > someCharacterWrapperOptionalWithChoices (property)
+    private Character someCharacterWrapperOptionalWithChoices;
+
+    @Column(allowsNull = "true")
+    public Character getSomeCharacterWrapperOptionalWithChoices() {
+        return someCharacterWrapperOptionalWithChoices;
+    }
+
+    public void setSomeCharacterWrapperOptionalWithChoices(final Character someCharacterWrapperOptionalWithChoices) {
+        this.someCharacterWrapperOptionalWithChoices = someCharacterWrapperOptionalWithChoices;
+    }
+    public Collection<Character> choicesSomeCharacterWrapperOptionalWithChoices() {
+        return Lists.newArrayList('a','b','c','d');
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public TextObject updateSomeCharacterWrapperOptionalWithChoices(final @Optional Character i) {
+        setSomeCharacterWrapperOptionalWithChoices(i);
+        return this;
+    }
+    public Character default0UpdateSomeCharacterWrapperOptionalWithChoices() {
+        return getSomeCharacterWrapperOptionalWithChoices();
+    }
+    public List<Character> choices0UpdateSomeCharacterWrapperOptionalWithChoices() {
+        return Lists.newArrayList('a','b','c','d');
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public TextObject resetSomeCharacterWrapperOptionalWithChoices() {
+        setSomeCharacterWrapperOptionalWithChoices(null);
+        return this;
+    }
+    //endregion
+
+
     //region > someStringMandatory (property)
     private String someStringMandatory;
 
@@ -174,6 +386,67 @@ public class TextObject implements Entity<TextObject> {
         setSomeStringOptional(null);
         return this;
     }
+    //endregion
+
+    //region > someStringHidden (property)
+    private String someStringHidden;
+
+    @javax.jdo.annotations.Column(allowsNull = "false")
+    @Hidden
+    public String getSomeStringHidden() {
+        return someStringHidden;
+    }
+
+    public void setSomeStringHidden(final String someStringHidden) {
+        this.someStringHidden = someStringHidden;
+    }
+
+    //endregion
+
+    //region > someStringDisabled (property)
+    private String someStringDisabled;
+
+    @javax.jdo.annotations.Column(allowsNull = "false")
+    @Disabled
+    public String getSomeStringDisabled() {
+        return someStringDisabled;
+    }
+
+    public void setSomeStringDisabled(final String someStringDisabled) {
+        this.someStringDisabled = someStringDisabled;
+    }
+
+    //endregion
+
+    //region > someStringWithValidation (property)
+    private String someStringWithValidation;
+
+    @javax.jdo.annotations.Column(allowsNull = "false")
+    public String getSomeStringWithValidation() {
+        return someStringWithValidation;
+    }
+
+    public void setSomeStringWithValidation(final String someStringWithValidation) {
+        this.someStringWithValidation = someStringWithValidation;
+    }
+
+    public String validateSomeStringWithValidation(final String x) {
+        return !x.startsWith("a") ? "Must start with letter 'a'": null;
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public TextObject updateSomeStringWithValidation(final String i) {
+        setSomeStringWithValidation(i);
+        return this;
+    }
+
+    public String validateUpdateSomeStringWithValidation(final String i) {
+        return validateSomeStringWithValidation(i);
+    }
+    public String default0UpdateSomeStringWithValidation() {
+        return getSomeStringWithValidation();
+    }
+
     //endregion
 
     //region > someStringMandatoryWithChoices (property)
@@ -296,6 +569,7 @@ public class TextObject implements Entity<TextObject> {
     }
     //endregion
 
+
     //region > someStringMulti (property)
     private String someStringMulti;
 
@@ -353,6 +627,7 @@ public class TextObject implements Entity<TextObject> {
         return this;
     }
     //endregion
+
 
     //region > compareTo
 

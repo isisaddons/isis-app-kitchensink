@@ -104,35 +104,6 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
 
     //endregion
 
-    //region > someByteWithChoices (property)
-    private byte someByteWithChoices;
-
-    public byte getSomeByteWithChoices() {
-        return someByteWithChoices;
-    }
-
-    public void setSomeByteWithChoices(final byte someByteWithChoices) {
-        this.someByteWithChoices = someByteWithChoices;
-    }
-
-    public Collection<Byte> choicesSomeByteWithChoices() {
-        return Lists.newArrayList((byte)1, (byte)2, (byte)3, (byte)4);
-    }
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public PrimitiveObject updateSomeByteWithChoices(final byte i) {
-        setSomeByteWithChoices(i);
-        return this;
-    }
-
-    public byte default0UpdateSomeByteWithChoices() {
-        return getSomeByteWithChoices();
-    }
-
-    public List<Byte> choices0UpdateSomeByteWithChoices() {
-        return Lists.newArrayList((byte)1,(byte)2,(byte)3,(byte)4);
-    }
-    //endregion
-
     //region > someByteWithValidation (property)
     private byte someByteWithValidation;
 
@@ -161,6 +132,35 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
         return getSomeByteWithValidation();
     }
 
+    //endregion
+
+    //region > someByteWithChoices (property)
+    private byte someByteWithChoices;
+
+    public byte getSomeByteWithChoices() {
+        return someByteWithChoices;
+    }
+
+    public void setSomeByteWithChoices(final byte someByteWithChoices) {
+        this.someByteWithChoices = someByteWithChoices;
+    }
+
+    public Collection<Byte> choicesSomeByteWithChoices() {
+        return Lists.newArrayList((byte)1, (byte)2, (byte)3, (byte)4);
+    }
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public PrimitiveObject updateSomeByteWithChoices(final byte i) {
+        setSomeByteWithChoices(i);
+        return this;
+    }
+
+    public byte default0UpdateSomeByteWithChoices() {
+        return getSomeByteWithChoices();
+    }
+
+    public List<Byte> choices0UpdateSomeByteWithChoices() {
+        return Lists.newArrayList((byte)1,(byte)2,(byte)3,(byte)4);
+    }
     //endregion
 
 
@@ -213,35 +213,6 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
 
     //endregion
 
-    //region > someShortWithChoices (property)
-    private short someShortWithChoices;
-
-    public short getSomeShortWithChoices() {
-        return someShortWithChoices;
-    }
-
-    public void setSomeShortWithChoices(final short someShortWithChoices) {
-        this.someShortWithChoices = someShortWithChoices;
-    }
-
-    public Collection<Short> choicesSomeShortWithChoices() {
-        return Lists.newArrayList((short)1, (short)2, (short)3, (short)4);
-    }
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public PrimitiveObject updateSomeShortWithChoices(final short i) {
-        setSomeShortWithChoices(i);
-        return this;
-    }
-
-    public short default0UpdateSomeShortWithChoices() {
-        return getSomeShortWithChoices();
-    }
-
-    public List<Short> choices0UpdateSomeShortWithChoices() {
-        return Lists.newArrayList((short)1,(short)2,(short)3,(short)4);
-    }
-    //endregion
-
     //region > someShortWithValidation (property)
     private short someShortWithValidation;
 
@@ -271,6 +242,36 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
     }
 
     //endregion
+
+    //region > someShortWithChoices (property)
+    private short someShortWithChoices;
+
+    public short getSomeShortWithChoices() {
+        return someShortWithChoices;
+    }
+
+    public void setSomeShortWithChoices(final short someShortWithChoices) {
+        this.someShortWithChoices = someShortWithChoices;
+    }
+
+    public Collection<Short> choicesSomeShortWithChoices() {
+        return Lists.newArrayList((short)1, (short)2, (short)3, (short)4);
+    }
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public PrimitiveObject updateSomeShortWithChoices(final short i) {
+        setSomeShortWithChoices(i);
+        return this;
+    }
+
+    public short default0UpdateSomeShortWithChoices() {
+        return getSomeShortWithChoices();
+    }
+
+    public List<Short> choices0UpdateSomeShortWithChoices() {
+        return Lists.newArrayList((short)1,(short)2,(short)3,(short)4);
+    }
+    //endregion
+
 
 
     //region > someInt (property)
@@ -323,35 +324,6 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
 
     //endregion
 
-    //region > someIntWithChoices (property)
-    private int someIntWithChoices;
-
-    public int getSomeIntWithChoices() {
-        return someIntWithChoices;
-    }
-
-    public void setSomeIntWithChoices(final int someIntWithChoices) {
-        this.someIntWithChoices = someIntWithChoices;
-    }
-
-    public Collection<Integer> choicesSomeIntWithChoices() {
-        return Lists.newArrayList(1, 2, 3, 4);
-    }
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public PrimitiveObject updateSomeIntWithChoices(final int i) {
-        setSomeIntWithChoices(i);
-        return this;
-    }
-
-    public int default0UpdateSomeIntWithChoices() {
-        return getSomeIntWithChoices();
-    }
-
-    public List<Integer> choices0UpdateSomeIntWithChoices() {
-        return Lists.newArrayList(1,2,3,4);
-    }
-    //endregion
-
     //region > someIntWithValidation (property)
     private int someIntWithValidation;
 
@@ -380,6 +352,35 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
         return getSomeIntWithValidation();
     }
 
+    //endregion
+
+    //region > someIntWithChoices (property)
+    private int someIntWithChoices;
+
+    public int getSomeIntWithChoices() {
+        return someIntWithChoices;
+    }
+
+    public void setSomeIntWithChoices(final int someIntWithChoices) {
+        this.someIntWithChoices = someIntWithChoices;
+    }
+
+    public Collection<Integer> choicesSomeIntWithChoices() {
+        return Lists.newArrayList(1, 2, 3, 4);
+    }
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public PrimitiveObject updateSomeIntWithChoices(final int i) {
+        setSomeIntWithChoices(i);
+        return this;
+    }
+
+    public int default0UpdateSomeIntWithChoices() {
+        return getSomeIntWithChoices();
+    }
+
+    public List<Integer> choices0UpdateSomeIntWithChoices() {
+        return Lists.newArrayList(1,2,3,4);
+    }
     //endregion
 
 
@@ -432,35 +433,6 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
 
     //endregion
 
-    //region > someLongWithChoices (property)
-    private long someLongWithChoices;
-
-    public long getSomeLongWithChoices() {
-        return someLongWithChoices;
-    }
-
-    public void setSomeLongWithChoices(final long someLongWithChoices) {
-        this.someLongWithChoices = someLongWithChoices;
-    }
-
-    public Collection<Long> choicesSomeLongWithChoices() {
-        return Lists.newArrayList((long)1, (long)2, (long)3, (long)4);
-    }
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public PrimitiveObject updateSomeLongWithChoices(final long i) {
-        setSomeLongWithChoices(i);
-        return this;
-    }
-
-    public long default0UpdateSomeLongWithChoices() {
-        return getSomeLongWithChoices();
-    }
-
-    public List<Long> choices0UpdateSomeLongWithChoices() {
-        return Lists.newArrayList((long)1, (long)2, (long)3, (long)4);
-    }
-    //endregion
-
     //region > someLongWithValidation (property)
     private long someLongWithValidation;
 
@@ -489,6 +461,35 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
         return getSomeLongWithValidation();
     }
 
+    //endregion
+
+    //region > someLongWithChoices (property)
+    private long someLongWithChoices;
+
+    public long getSomeLongWithChoices() {
+        return someLongWithChoices;
+    }
+
+    public void setSomeLongWithChoices(final long someLongWithChoices) {
+        this.someLongWithChoices = someLongWithChoices;
+    }
+
+    public Collection<Long> choicesSomeLongWithChoices() {
+        return Lists.newArrayList((long)1, (long)2, (long)3, (long)4);
+    }
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public PrimitiveObject updateSomeLongWithChoices(final long i) {
+        setSomeLongWithChoices(i);
+        return this;
+    }
+
+    public long default0UpdateSomeLongWithChoices() {
+        return getSomeLongWithChoices();
+    }
+
+    public List<Long> choices0UpdateSomeLongWithChoices() {
+        return Lists.newArrayList((long)1, (long)2, (long)3, (long)4);
+    }
     //endregion
 
 
@@ -541,35 +542,6 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
 
     //endregion
 
-    //region > someFloatWithChoices (property)
-    private float someFloatWithChoices;
-
-    public float getSomeFloatWithChoices() {
-        return someFloatWithChoices;
-    }
-
-    public void setSomeFloatWithChoices(final float someFloatWithChoices) {
-        this.someFloatWithChoices = someFloatWithChoices;
-    }
-
-    public Collection<Float> choicesSomeFloatWithChoices() {
-        return Lists.newArrayList(1.1f, 2.2f, 3.3f, 4.4f);
-    }
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public PrimitiveObject updateSomeFloatWithChoices(final float i) {
-        setSomeFloatWithChoices(i);
-        return this;
-    }
-
-    public float default0UpdateSomeFloatWithChoices() {
-        return getSomeFloatWithChoices();
-    }
-
-    public List<Float> choices0UpdateSomeFloatWithChoices() {
-        return Lists.newArrayList(1.1f, 2.2f, 3.3f, 4.4f);
-    }
-    //endregion
-
     //region > someFloatWithValidation (property)
     private float someFloatWithValidation;
 
@@ -598,6 +570,35 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
         return getSomeFloatWithValidation();
     }
 
+    //endregion
+
+    //region > someFloatWithChoices (property)
+    private float someFloatWithChoices;
+
+    public float getSomeFloatWithChoices() {
+        return someFloatWithChoices;
+    }
+
+    public void setSomeFloatWithChoices(final float someFloatWithChoices) {
+        this.someFloatWithChoices = someFloatWithChoices;
+    }
+
+    public Collection<Float> choicesSomeFloatWithChoices() {
+        return Lists.newArrayList(1.1f, 2.2f, 3.3f, 4.4f);
+    }
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public PrimitiveObject updateSomeFloatWithChoices(final float i) {
+        setSomeFloatWithChoices(i);
+        return this;
+    }
+
+    public float default0UpdateSomeFloatWithChoices() {
+        return getSomeFloatWithChoices();
+    }
+
+    public List<Float> choices0UpdateSomeFloatWithChoices() {
+        return Lists.newArrayList(1.1f, 2.2f, 3.3f, 4.4f);
+    }
     //endregion
 
 
@@ -650,35 +651,6 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
 
     //endregion
 
-    //region > someDoubleWithChoices (property)
-    private double someDoubleWithChoices;
-
-    public double getSomeDoubleWithChoices() {
-        return someDoubleWithChoices;
-    }
-
-    public void setSomeDoubleWithChoices(final double someDoubleWithChoices) {
-        this.someDoubleWithChoices = someDoubleWithChoices;
-    }
-
-    public Collection<Double> choicesSomeDoubleWithChoices() {
-        return Lists.newArrayList(1.1, 2.2, 3.3, 4.4);
-    }
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public PrimitiveObject updateSomeDoubleWithChoices(final double i) {
-        setSomeDoubleWithChoices(i);
-        return this;
-    }
-
-    public double default0UpdateSomeDoubleWithChoices() {
-        return getSomeDoubleWithChoices();
-    }
-
-    public List<Double> choices0UpdateSomeDoubleWithChoices() {
-        return Lists.newArrayList(1.1, 2.2, 3.3, 4.4);
-    }
-    //endregion
-
     //region > someDoubleWithValidation (property)
     private double someDoubleWithValidation;
 
@@ -707,6 +679,35 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
         return getSomeDoubleWithValidation();
     }
 
+    //endregion
+
+    //region > someDoubleWithChoices (property)
+    private double someDoubleWithChoices;
+
+    public double getSomeDoubleWithChoices() {
+        return someDoubleWithChoices;
+    }
+
+    public void setSomeDoubleWithChoices(final double someDoubleWithChoices) {
+        this.someDoubleWithChoices = someDoubleWithChoices;
+    }
+
+    public Collection<Double> choicesSomeDoubleWithChoices() {
+        return Lists.newArrayList(1.1, 2.2, 3.3, 4.4);
+    }
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public PrimitiveObject updateSomeDoubleWithChoices(final double i) {
+        setSomeDoubleWithChoices(i);
+        return this;
+    }
+
+    public double default0UpdateSomeDoubleWithChoices() {
+        return getSomeDoubleWithChoices();
+    }
+
+    public List<Double> choices0UpdateSomeDoubleWithChoices() {
+        return Lists.newArrayList(1.1, 2.2, 3.3, 4.4);
+    }
     //endregion
 
 

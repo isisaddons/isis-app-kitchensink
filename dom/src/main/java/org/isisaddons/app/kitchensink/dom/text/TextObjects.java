@@ -35,16 +35,31 @@ public class TextObjects extends RepositoryAbstract<TextObject> {
         final TextObject obj = container.newTransientInstance(TextObject.class);
         obj.setName(name);
 
-        obj.setSomeChar(name.charAt(0));
-        obj.setSomeCharacterWrapperMandatory(name.charAt(0));
-        obj.setSomeCharacterWrapperOptional(name.charAt(0));
+        final char nameChar0 = name.charAt(0);
+        obj.setSomeChar(nameChar0);
+        obj.setSomeCharHidden(nameChar0);
+        obj.setSomeCharDisabled(nameChar0);
+        obj.setSomeCharWithValidation(nameChar0);
+        obj.setSomeCharWithChoices(nameChar0);
+
+        obj.setSomeCharacterWrapperMandatory(nameChar0);
+        obj.setSomeCharacterWrapperOptional(nameChar0);
+        obj.setSomeCharacterWrapperHidden(nameChar0);
+        obj.setSomeCharacterWrapperDisabled(nameChar0);
+        obj.setSomeCharacterWrapperWithValidation(nameChar0);
+        obj.setSomeCharacterWrapperMandatoryWithChoices(nameChar0);
+        obj.setSomeCharacterWrapperOptional(nameChar0);
 
         obj.setSomeStringMandatory(name);
         obj.setSomeStringOptional(name);
-        obj.setSomeString20(name);
-        obj.setSomeString50(name);
+        obj.setSomeStringHidden(name);
+        obj.setSomeStringDisabled(name);
+        obj.setSomeStringWithValidation(name);
         obj.setSomeStringMandatoryWithChoices(name);
         obj.setSomeStringOptionalWithChoices(name);
+
+        obj.setSomeString20(name);
+        obj.setSomeString50(name);
 
         obj.setSomeStringMulti(name);
         obj.setSomeStringMultiNoWrap(name);

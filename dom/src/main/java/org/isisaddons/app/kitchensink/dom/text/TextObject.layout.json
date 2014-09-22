@@ -38,6 +38,31 @@
                   }
                 }
               }
+            },
+            "someCharHidden": {
+            },
+            "someCharDisabled": {
+            },
+            "someCharWithValidation": {
+              "actions": {
+                "updateSomeCharWithValidation": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              }
+            },
+            "someCharWithChoices": {
+              "actions": {
+                "updateSomeCharWithChoices": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
             }
           }
         },
@@ -60,6 +85,48 @@
                   }
                 },
                 "resetSomeCharacterWrapperOptional": {
+                  "named": {
+                    "value": "clear"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
+            },
+            "someCharacterWrapperHidden": {
+            },
+            "someCharacterWrapperDisabled": {
+            },
+            "someCharacterWrapperWithValidation": {
+              "actions": {
+                "updateSomeCharacterWrapperWithValidation": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              }
+            },
+            "someCharacterWrapperMandatoryWithChoices": {
+              "actions": {
+                "updateSomeCharacterWrapperMandatoryWithChoices": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
+            },
+            "someCharacterWrapperOptionalWithChoices": {
+              "actions": {
+                "updateSomeCharacterWrapperOptionalWithChoices": {
+                  "named": {
+                    "value": "update"
+                  }
+                },
+                "resetSomeCharacterWrapperOptionalWithChoices": {
                   "named": {
                     "value": "clear"
                   }
@@ -104,38 +171,17 @@
                 "where": "ALL_TABLES"
               }
             },
-            "someString20": {
-              "actions": {
-                "updateSomeString20": {
-                  "named": {
-                    "value": "update"
-                  }
-                },
-                "resetSomeString20": {
-                  "named": {
-                    "value": "clear"
-                  }
-                }
-              },
-              "hidden": {
-                "where": "ALL_TABLES"
-              }
+            "someStringHidden": {
             },
-            "someString50": {
+            "someStringDisabled": {
+            },
+            "someStringWithValidation": {
               "actions": {
-                "updateSomeString50": {
+                "updateSomeStringWithValidation": {
                   "named": {
                     "value": "update"
                   }
-                },
-                "resetSomeString50": {
-                  "named": {
-                    "value": "clear"
-                  }
                 }
-              },
-              "hidden": {
-                "where": "ALL_TABLES"
               }
             },
             "someStringMandatoryWithChoices": {
@@ -174,6 +220,44 @@
     {
       "span": 4,
       "memberGroups": {
+        "String with Sizes": {
+          "members": {
+            "someString20": {
+              "actions": {
+                "updateSomeString20": {
+                  "named": {
+                    "value": "update"
+                  }
+                },
+                "resetSomeString20": {
+                  "named": {
+                    "value": "clear"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
+            },
+            "someString50": {
+              "actions": {
+                "updateSomeString50": {
+                  "named": {
+                    "value": "update"
+                  }
+                },
+                "resetSomeString50": {
+                  "named": {
+                    "value": "clear"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
+            }
+          }
+        },
         "String Multi": {
           "members": {
             "someStringMulti": {
