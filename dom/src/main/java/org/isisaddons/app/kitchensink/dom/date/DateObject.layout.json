@@ -56,14 +56,44 @@
                 "where": "ALL_TABLES"
               }
             },
-            "someJavaUtilDateWithChoices": {
+            "someJavaUtilDateHidden": {
+            },
+            "someJavaUtilDateDisabled": {
+            },
+            "someJavaUtilDateWithValidation": {
               "actions": {
-                "updateSomeJavaUtilDateWithChoices": {
+                "updateSomeJavaUtilDateWithValidation": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              }
+            },
+            "someJavaUtilDateMandatoryWithChoices": {
+              "actions": {
+                "updateSomeJavaUtilDateMandatoryWithChoices": {
                   "named": {
                     "value": "update"
                   }
                 },
-                "resetSomeJavaUtilDateWithChoices": {
+                "resetSomeJavaUtilDateMandatoryWithChoices": {
+                  "named": {
+                    "value": "clear"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
+            },
+            "someJavaUtilDateOptionalWithChoices": {
+              "actions": {
+                "updateSomeJavaUtilDateOptionalWithChoices": {
+                  "named": {
+                    "value": "update"
+                  }
+                },
+                "resetSomeJavaUtilDateOptionalWithChoices": {
                   "named": {
                     "value": "clear"
                   }
@@ -103,14 +133,44 @@
                 "where": "ALL_TABLES"
               }
             },
-            "someJavaSqlDateWithChoices": {
+            "someJavaSqlDateHidden": {
+            },
+            "someJavaSqlDateDisabled": {
+            },
+            "someJavaSqlDateWithValidation": {
               "actions": {
-                "updateSomeJavaSqlDateWithChoices": {
+                "updateSomeJavaSqlDateWithValidation": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              }
+            },
+            "someJavaSqlDateMandatoryWithChoices": {
+              "actions": {
+                "updateSomeJavaSqlDateMandatoryWithChoices": {
                   "named": {
                     "value": "update"
                   }
                 },
-                "resetSomeJavaSqlDateWithChoices": {
+                "resetSomeJavaSqlDateMandatoryWithChoices": {
+                  "named": {
+                    "value": "clear"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
+            },
+            "someJavaSqlDateOptionalWithChoices": {
+              "actions": {
+                "updateSomeJavaSqlDateOptionalWithChoices": {
+                  "named": {
+                    "value": "update"
+                  }
+                },
+                "resetSomeJavaSqlDateOptionalWithChoices": {
                   "named": {
                     "value": "clear"
                   }
@@ -127,53 +187,6 @@
     {
       "span": 4,
       "memberGroups": {
-        "org.joda.time.LocalDateTime": {
-          "members": {
-            "someJodaLocalDateTimeMandatory": {
-              "actions": {
-                "updateSomeJodaLocalDateTimeMandatory": {
-                  "named": {
-                    "value": "update"
-                  }
-                }
-              }
-            },
-            "someJodaLocalDateTimeOptional": {
-              "actions": {
-                "updateSomeJodaLocalDateTimeOptional": {
-                  "named": {
-                    "value": "update"
-                  }
-                },
-                "resetSomeJodaLocalDateTimeOptional": {
-                  "named": {
-                    "value": "clear"
-                  }
-                }
-              },
-              "hidden": {
-                "where": "ALL_TABLES"
-              }
-            },
-            "someJodaLocalDateTimeWithChoices": {
-              "actions": {
-                "updateSomeJodaLocalDateTimeWithChoices": {
-                  "named": {
-                    "value": "update"
-                  }
-                },
-                "resetSomeJodaLocalDateTimeWithChoices": {
-                  "named": {
-                    "value": "clear"
-                  }
-                }
-              },
-              "hidden": {
-                "where": "ALL_TABLES"
-              }
-            }
-          }
-        },
         "org.joda.time.LocalDate": {
           "members": {
             "someJodaLocalDateMandatory": {
@@ -202,14 +215,121 @@
                 "where": "ALL_TABLES"
               }
             },
-            "someJodaLocalDateWithChoices": {
+            "someJodaLocalDateHidden": {
+            },
+            "someJodaLocalDateDisabled": {
+            },
+            "someJodaLocalDateWithValidation": {
               "actions": {
-                "updateSomeJodaLocalDateWithChoices": {
+                "updateSomeJodaLocalDateWithValidation": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              }
+            },
+            "someJodaLocalDateMandatoryWithChoices": {
+              "actions": {
+                "updateSomeJodaLocalDateMandatoryWithChoices": {
                   "named": {
                     "value": "update"
                   }
                 },
-                "resetSomeJodaLocalDateWithChoices": {
+                "resetSomeJodaLocalDateMandatoryWithChoices": {
+                  "named": {
+                    "value": "clear"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
+            },
+            "someJodaLocalDateOptionalWithChoices": {
+              "actions": {
+                "updateSomeJodaLocalDateOptionalWithChoices": {
+                  "named": {
+                    "value": "update"
+                  }
+                },
+                "resetSomeJodaLocalDateOptionalWithChoices": {
+                  "named": {
+                    "value": "clear"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
+            }
+          }
+        },
+        "org.joda.time.LocalDateTime": {
+          "members": {
+            "someJodaLocalDateTimeMandatory": {
+              "actions": {
+                "updateSomeJodaLocalDateTimeMandatory": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              }
+            },
+            "someJodaLocalDateTimeOptional": {
+              "actions": {
+                "updateSomeJodaLocalDateTimeOptional": {
+                  "named": {
+                    "value": "update"
+                  }
+                },
+                "resetSomeJodaLocalDateTimeOptional": {
+                  "named": {
+                    "value": "clear"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
+            },
+            "someJodaLocalDateTimeHidden": {
+            },
+            "someJodaLocalDateTimeDisabled": {
+            },
+            "someJodaLocalDateTimeWithValidation": {
+              "actions": {
+                "updateSomeJodaLocalDateTimeWithValidation": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              }
+            },
+            "someJodaLocalDateTimeMandatoryWithChoices": {
+              "actions": {
+                "updateSomeJodaLocalDateTimeMandatoryWithChoices": {
+                  "named": {
+                    "value": "update"
+                  }
+                },
+                "resetSomeJodaLocalDateTimeMandatoryWithChoices": {
+                  "named": {
+                    "value": "clear"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
+            },
+            "someJodaLocalDateTimeOptionalWithChoices": {
+              "actions": {
+                "updateSomeJodaLocalDateTimeOptionalWithChoices": {
+                  "named": {
+                    "value": "update"
+                  }
+                },
+                "resetSomeJodaLocalDateTimeOptionalWithChoices": {
                   "named": {
                     "value": "clear"
                   }
@@ -254,14 +374,44 @@
                 "where": "ALL_TABLES"
               }
             },
-            "someJodaDateTimeWithChoices": {
+            "someJodaDateTimeHidden": {
+            },
+            "someJodaDateTimeDisabled": {
+            },
+            "someJodaDateTimeWithValidation": {
               "actions": {
-                "updateSomeJodaDateTimeWithChoices": {
+                "updateSomeJodaDateTimeWithValidation": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              }
+            },
+            "someJodaDateTimeMandatoryWithChoices": {
+              "actions": {
+                "updateSomeJodaDateTimeMandatoryWithChoices": {
                   "named": {
                     "value": "update"
                   }
                 },
-                "resetSomeJodaDateTimeWithChoices": {
+                "resetSomeJodaDateTimeMandatoryWithChoices": {
+                  "named": {
+                    "value": "clear"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
+            },
+            "someJodaDateTimeOptionalWithChoices": {
+              "actions": {
+                "updateSomeJodaDateTimeOptionalWithChoices": {
+                  "named": {
+                    "value": "update"
+                  }
+                },
+                "resetSomeJodaDateTimeOptionalWithChoices": {
                   "named": {
                     "value": "clear"
                   }
@@ -301,14 +451,44 @@
                 "where": "ALL_TABLES"
               }
             },
-            "someJavaSqlTimestampWithChoices": {
+            "someJavaSqlTimestampHidden": {
+            },
+            "someJavaSqlTimestampDisabled": {
+            },
+            "someJavaSqlTimestampWithValidation": {
               "actions": {
-                "updateSomeJavaSqlTimestampWithChoices": {
+                "updateSomeJavaSqlTimestampWithValidation": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              }
+            },
+            "someJavaSqlTimestampMandatoryWithChoices": {
+              "actions": {
+                "updateSomeJavaSqlTimestampMandatoryWithChoices": {
                   "named": {
                     "value": "update"
                   }
                 },
-                "resetSomeJavaSqlTimestampWithChoices": {
+                "resetSomeJavaSqlTimestampMandatoryWithChoices": {
+                  "named": {
+                    "value": "clear"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
+            },
+            "someJavaSqlTimestampOptionalWithChoices": {
+              "actions": {
+                "updateSomeJavaSqlTimestampOptionalWithChoices": {
+                  "named": {
+                    "value": "update"
+                  }
+                },
+                "resetSomeJavaSqlTimestampOptionalWithChoices": {
                   "named": {
                     "value": "clear"
                   }

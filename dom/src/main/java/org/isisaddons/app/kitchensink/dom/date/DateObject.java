@@ -17,6 +17,7 @@
 package org.isisaddons.app.kitchensink.dom.date;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
@@ -26,6 +27,7 @@ import com.google.common.base.Functions;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import org.isisaddons.app.kitchensink.dom.Entity;
+import org.joda.time.DateTimeConstants;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
 import org.apache.isis.applib.DomainObjectContainer;
@@ -59,6 +61,8 @@ public class DateObject implements Entity<DateObject> {
     }
 
     //endregion
+
+
 
     //region > someJavaUtilDateMandatory (property)
     private java.util.Date someJavaUtilDateMandatory;
@@ -110,40 +114,137 @@ public class DateObject implements Entity<DateObject> {
     }
     //endregion
 
-    //region > someJavaUtilDateWithChoices (property)
-    private java.util.Date someJavaUtilDateWithChoices;
+    //region > someJavaUtilDateHidden (property)
+    private java.util.Date someJavaUtilDateHidden;
 
-    @Column(allowsNull = "true")
-    public java.util.Date getSomeJavaUtilDateWithChoices() {
-        return someJavaUtilDateWithChoices;
+    @javax.jdo.annotations.Column(allowsNull = "false")
+    @Hidden
+    public java.util.Date getSomeJavaUtilDateHidden() {
+        return someJavaUtilDateHidden;
     }
 
-    public void setSomeJavaUtilDateWithChoices(final java.util.Date someJavaUtilDateWithChoices) {
-        this.someJavaUtilDateWithChoices = someJavaUtilDateWithChoices;
+    public void setSomeJavaUtilDateHidden(final java.util.Date someJavaUtilDateHidden) {
+        this.someJavaUtilDateHidden = someJavaUtilDateHidden;
     }
 
-    public Collection<java.util.Date> choicesSomeJavaUtilDateWithChoices() {
-        return nextFewDays(4, LOCALDATE_AS_JAVAUTILDATE);
+    //endregion
+
+    //region > someJavaUtilDateDisabled (property)
+    private java.util.Date someJavaUtilDateDisabled;
+
+    @javax.jdo.annotations.Column(allowsNull = "false")
+    @Disabled
+    public java.util.Date getSomeJavaUtilDateDisabled() {
+        return someJavaUtilDateDisabled;
+    }
+
+    public void setSomeJavaUtilDateDisabled(final java.util.Date someJavaUtilDateDisabled) {
+        this.someJavaUtilDateDisabled = someJavaUtilDateDisabled;
+    }
+
+    //endregion
+
+    //region > someJavaUtilDateWithValidation (property)
+    private java.util.Date someJavaUtilDateWithValidation;
+
+    @javax.jdo.annotations.Column(allowsNull = "false")
+    public java.util.Date getSomeJavaUtilDateWithValidation() {
+        return someJavaUtilDateWithValidation;
+    }
+
+    public void setSomeJavaUtilDateWithValidation(final java.util.Date someJavaUtilDateWithValidation) {
+        this.someJavaUtilDateWithValidation = someJavaUtilDateWithValidation;
+    }
+
+    public String validateSomeJavaUtilDateWithValidation(final java.util.Date i) {
+        return i.getDay() == 1? "Can't enter Monday (don't like Mondays)": null;
     }
 
     @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public DateObject updateSomeJavaUtilDateWithChoices(final @Optional java.util.Date i) {
-        setSomeJavaUtilDateWithChoices(i);
+    public DateObject updateSomeJavaUtilDateWithValidation(final Date i) {
+        setSomeJavaUtilDateWithValidation(i);
         return this;
     }
-    public java.util.Date default0UpdateSomeJavaUtilDateWithChoices() {
-        return getSomeJavaUtilDateWithChoices();
+
+    public String validateUpdateSomeJavaUtilDateWithValidation(final java.util.Date i) {
+        return validateSomeJavaUtilDateWithValidation(i);
+    }
+    public java.util.Date default0UpdateSomeJavaUtilDateWithValidation() {
+        return getSomeJavaUtilDateWithValidation();
     }
 
-    public List<java.util.Date> choices0UpdateSomeJavaUtilDateWithChoices() {
+    //endregion
+
+    //region > someJavaUtilDateMandatoryWithChoices (property)
+    private java.util.Date someJavaUtilDateMandatoryWithChoices;
+
+    @Column(allowsNull = "false")
+    public java.util.Date getSomeJavaUtilDateMandatoryWithChoices() {
+        return someJavaUtilDateMandatoryWithChoices;
+    }
+
+    public void setSomeJavaUtilDateMandatoryWithChoices(final java.util.Date someJavaUtilDateMandatoryWithChoices) {
+        this.someJavaUtilDateMandatoryWithChoices = someJavaUtilDateMandatoryWithChoices;
+    }
+
+    public Collection<java.util.Date> choicesSomeJavaUtilDateMandatoryWithChoices() {
+        return nextFewDays(4, LOCALDATE_AS_JAVAUTILDATE);
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public DateObject updateSomeJavaUtilDateMandatoryWithChoices(final java.util.Date i) {
+        setSomeJavaUtilDateMandatoryWithChoices(i);
+        return this;
+    }
+    public java.util.Date default0UpdateSomeJavaUtilDateMandatoryWithChoices() {
+        return getSomeJavaUtilDateMandatoryWithChoices();
+    }
+
+    public List<java.util.Date> choices0UpdateSomeJavaUtilDateMandatoryWithChoices() {
         return nextFewDays(4, LOCALDATE_AS_JAVAUTILDATE);
     }
     @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public DateObject resetSomeJavaUtilDateWithChoices() {
-        setSomeJavaUtilDateWithChoices(null);
+    public DateObject resetSomeJavaUtilDateMandatoryWithChoices() {
+        setSomeJavaUtilDateMandatoryWithChoices(null);
         return this;
     }
     //endregion
+
+    //region > someJavaUtilDateOptionalWithChoices (property)
+    private java.util.Date someJavaUtilDateOptionalWithChoices;
+
+    @Column(allowsNull = "true")
+    public java.util.Date getSomeJavaUtilDateOptionalWithChoices() {
+        return someJavaUtilDateOptionalWithChoices;
+    }
+
+    public void setSomeJavaUtilDateOptionalWithChoices(final java.util.Date someJavaUtilDateOptionalWithChoices) {
+        this.someJavaUtilDateOptionalWithChoices = someJavaUtilDateOptionalWithChoices;
+    }
+
+    public Collection<java.util.Date> choicesSomeJavaUtilDateOptionalWithChoices() {
+        return nextFewDays(4, LOCALDATE_AS_JAVAUTILDATE);
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public DateObject updateSomeJavaUtilDateOptionalWithChoices(final @Optional java.util.Date i) {
+        setSomeJavaUtilDateOptionalWithChoices(i);
+        return this;
+    }
+    public java.util.Date default0UpdateSomeJavaUtilDateOptionalWithChoices() {
+        return getSomeJavaUtilDateOptionalWithChoices();
+    }
+
+    public List<java.util.Date> choices0UpdateSomeJavaUtilDateOptionalWithChoices() {
+        return nextFewDays(4, LOCALDATE_AS_JAVAUTILDATE);
+    }
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public DateObject resetSomeJavaUtilDateOptionalWithChoices() {
+        setSomeJavaUtilDateOptionalWithChoices(null);
+        return this;
+    }
+    //endregion
+
 
 
     //region > someJavaSqlDateMandatory (property)
@@ -196,214 +297,137 @@ public class DateObject implements Entity<DateObject> {
     }
     //endregion
 
-    //region > someJavaSqlDateWithChoices (property)
-    private java.sql.Date someJavaSqlDateWithChoices;
+    //region > someJavaSqlDateHidden (property)
+    private java.sql.Date someJavaSqlDateHidden;
+
+    @javax.jdo.annotations.Column(allowsNull = "false")
+    @Hidden
+    public java.sql.Date getSomeJavaSqlDateHidden() {
+        return someJavaSqlDateHidden;
+    }
+
+    public void setSomeJavaSqlDateHidden(final java.sql.Date someJavaSqlDateHidden) {
+        this.someJavaSqlDateHidden = someJavaSqlDateHidden;
+    }
+
+    //endregion
+
+    //region > someJavaSqlDateDisabled (property)
+    private java.sql.Date someJavaSqlDateDisabled;
+
+    @javax.jdo.annotations.Column(allowsNull = "false")
+    @Disabled
+    public java.sql.Date getSomeJavaSqlDateDisabled() {
+        return someJavaSqlDateDisabled;
+    }
+
+    public void setSomeJavaSqlDateDisabled(final java.sql.Date someJavaSqlDateDisabled) {
+        this.someJavaSqlDateDisabled = someJavaSqlDateDisabled;
+    }
+
+    //endregion
+
+    //region > someJavaSqlDateWithValidation (property)
+    private java.sql.Date someJavaSqlDateWithValidation;
+
+    @javax.jdo.annotations.Column(allowsNull = "false")
+    public java.sql.Date getSomeJavaSqlDateWithValidation() {
+        return someJavaSqlDateWithValidation;
+    }
+
+    public void setSomeJavaSqlDateWithValidation(final java.sql.Date someJavaSqlDateWithValidation) {
+        this.someJavaSqlDateWithValidation = someJavaSqlDateWithValidation;
+    }
+
+    public String validateSomeJavaSqlDateWithValidation(final java.sql.Date i) {
+        return i.getDay() == 1? "Can't enter Monday (don't like Mondays)": null;
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public DateObject updateSomeJavaSqlDateWithValidation(final java.sql.Date i) {
+        setSomeJavaSqlDateWithValidation(i);
+        return this;
+    }
+
+    public String validateUpdateSomeJavaSqlDateWithValidation(final java.sql.Date i) {
+        return validateSomeJavaSqlDateWithValidation(i);
+    }
+    public java.sql.Date default0UpdateSomeJavaSqlDateWithValidation() {
+        return getSomeJavaSqlDateWithValidation();
+    }
+
+    //endregion
+
+    //region > someJavaSqlDateMandatoryWithChoices (property)
+    private java.sql.Date someJavaSqlDateMandatoryWithChoices;
 
     @Column(allowsNull = "true")
-    public java.sql.Date getSomeJavaSqlDateWithChoices() {
-        return someJavaSqlDateWithChoices;
+    public java.sql.Date getSomeJavaSqlDateMandatoryWithChoices() {
+        return someJavaSqlDateMandatoryWithChoices;
     }
 
-    public void setSomeJavaSqlDateWithChoices(final java.sql.Date someJavaSqlDateWithChoices) {
-        this.someJavaSqlDateWithChoices = someJavaSqlDateWithChoices;
+    public void setSomeJavaSqlDateMandatoryWithChoices(final java.sql.Date someJavaSqlDateMandatoryWithChoices) {
+        this.someJavaSqlDateMandatoryWithChoices = someJavaSqlDateMandatoryWithChoices;
     }
 
-    public Collection<java.sql.Date> choicesSomeJavaSqlDateWithChoices() {
+    public Collection<java.sql.Date> choicesSomeJavaSqlDateMandatoryWithChoices() {
         return nextFewDays(4, LOCALDATE_AS_JAVASQLDATE);
     }
 
     @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public DateObject updateSomeJavaSqlDateWithChoices(final @Optional java.sql.Date i) {
-        setSomeJavaSqlDateWithChoices(i);
+    public DateObject updateSomeJavaSqlDateMandatoryWithChoices(final @Optional java.sql.Date i) {
+        setSomeJavaSqlDateMandatoryWithChoices(i);
         return this;
     }
-    public java.sql.Date default0UpdateSomeJavaSqlDateWithChoices() {
-        return getSomeJavaSqlDateWithChoices();
+    public java.sql.Date default0UpdateSomeJavaSqlDateMandatoryWithChoices() {
+        return getSomeJavaSqlDateMandatoryWithChoices();
     }
 
-    public List<java.sql.Date> choices0UpdateSomeJavaSqlDateWithChoices() {
+    public List<java.sql.Date> choices0UpdateSomeJavaSqlDateMandatoryWithChoices() {
         return nextFewDays(4, LOCALDATE_AS_JAVASQLDATE);
     }
     @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public DateObject resetSomeJavaSqlDateWithChoices() {
-        setSomeJavaSqlDateWithChoices(null);
+    public DateObject resetSomeJavaSqlDateMandatoryWithChoices() {
+        setSomeJavaSqlDateMandatoryWithChoices(null);
         return this;
     }
     //endregion
 
-
-    //region > someJavaSqlTimestampMandatory (property)
-    private java.sql.Timestamp someJavaSqlTimestampMandatory;
-
-    @Column(allowsNull = "false")
-    public java.sql.Timestamp getSomeJavaSqlTimestampMandatory() {
-        return someJavaSqlTimestampMandatory;
-    }
-
-    public void setSomeJavaSqlTimestampMandatory(final java.sql.Timestamp someJavaSqlTimestampMandatory) {
-        this.someJavaSqlTimestampMandatory = someJavaSqlTimestampMandatory;
-    }
-
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public DateObject updateSomeJavaSqlTimestampMandatory(final java.sql.Timestamp i) {
-        setSomeJavaSqlTimestampMandatory(i);
-        return this;
-    }
-    public java.sql.Timestamp default0UpdateSomeJavaSqlTimestampMandatory() {
-        return getSomeJavaSqlTimestampMandatory();
-    }
-    //endregion
-
-    //region > someJavaSqlTimestampOptional (property)
-    private java.sql.Timestamp someJavaSqlTimestampOptional;
+    //region > someJavaSqlDateOptionalWithChoices (property)
+    private java.sql.Date someJavaSqlDateOptionalWithChoices;
 
     @Column(allowsNull = "true")
-    public java.sql.Timestamp getSomeJavaSqlTimestampOptional() {
-        return someJavaSqlTimestampOptional;
+    public java.sql.Date getSomeJavaSqlDateOptionalWithChoices() {
+        return someJavaSqlDateOptionalWithChoices;
     }
 
-    public void setSomeJavaSqlTimestampOptional(final java.sql.Timestamp someJavaSqlTimestampOptional) {
-        this.someJavaSqlTimestampOptional = someJavaSqlTimestampOptional;
+    public void setSomeJavaSqlDateOptionalWithChoices(final java.sql.Date someJavaSqlDateOptionalWithChoices) {
+        this.someJavaSqlDateOptionalWithChoices = someJavaSqlDateOptionalWithChoices;
+    }
+
+    public Collection<java.sql.Date> choicesSomeJavaSqlDateOptionalWithChoices() {
+        return nextFewDays(4, LOCALDATE_AS_JAVASQLDATE);
     }
 
     @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public DateObject updateSomeJavaSqlTimestampOptional(final @Optional java.sql.Timestamp i) {
-        setSomeJavaSqlTimestampOptional(i);
+    public DateObject updateSomeJavaSqlDateOptionalWithChoices(final @Optional java.sql.Date i) {
+        setSomeJavaSqlDateOptionalWithChoices(i);
         return this;
     }
-    public java.sql.Timestamp default0UpdateSomeJavaSqlTimestampOptional() {
-        return getSomeJavaSqlTimestampOptional();
+    public java.sql.Date default0UpdateSomeJavaSqlDateOptionalWithChoices() {
+        return getSomeJavaSqlDateOptionalWithChoices();
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public DateObject resetSomeJavaSqlTimestampOptional() {
-        setSomeJavaSqlTimestampOptional(null);
-        return this;
-    }
-    //endregion
-
-    //region > someJavaSqlTimestampWithChoices (property)
-    private java.sql.Timestamp someJavaSqlTimestampWithChoices;
-
-    @Column(allowsNull = "true")
-    public java.sql.Timestamp getSomeJavaSqlTimestampWithChoices() {
-        return someJavaSqlTimestampWithChoices;
-    }
-
-    public void setSomeJavaSqlTimestampWithChoices(final java.sql.Timestamp someJavaSqlTimestampWithChoices) {
-        this.someJavaSqlTimestampWithChoices = someJavaSqlTimestampWithChoices;
-    }
-
-    public Collection<java.sql.Timestamp> choicesSomeJavaSqlTimestampWithChoices() {
-        return nextFewDays(4, LOCALDATE_AS_JAVASQLTIMESTAMP);
-    }
-
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public DateObject updateSomeJavaSqlTimestampWithChoices(final @Optional java.sql.Timestamp i) {
-        setSomeJavaSqlTimestampWithChoices(i);
-        return this;
-    }
-    public java.sql.Timestamp default0UpdateSomeJavaSqlTimestampWithChoices() {
-        return getSomeJavaSqlTimestampWithChoices();
-    }
-
-    public List<java.sql.Timestamp> choices0UpdateSomeJavaSqlTimestampWithChoices() {
-        return nextFewDays(4, LOCALDATE_AS_JAVASQLTIMESTAMP);
+    public List<java.sql.Date> choices0UpdateSomeJavaSqlDateOptionalWithChoices() {
+        return nextFewDays(4, LOCALDATE_AS_JAVASQLDATE);
     }
     @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public DateObject resetSomeJavaSqlTimestampWithChoices() {
-        setSomeJavaSqlTimestampWithChoices(null);
+    public DateObject resetSomeJavaSqlDateOptionalWithChoices() {
+        setSomeJavaSqlDateOptionalWithChoices(null);
         return this;
     }
     //endregion
 
-
-    //region > someJodaDateTimeMandatory (property)
-    @javax.jdo.annotations.Persistent(defaultFetchGroup="true")
-    private org.joda.time.DateTime someJodaDateTimeMandatory;
-
-    @Column(allowsNull = "false")
-    public org.joda.time.DateTime getSomeJodaDateTimeMandatory() {
-        return someJodaDateTimeMandatory;
-    }
-
-    public void setSomeJodaDateTimeMandatory(final org.joda.time.DateTime someJodaDateTimeMandatory) {
-        this.someJodaDateTimeMandatory = someJodaDateTimeMandatory;
-    }
-
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public DateObject updateSomeJodaDateTimeMandatory(final org.joda.time.DateTime i) {
-        setSomeJodaDateTimeMandatory(i);
-        return this;
-    }
-    public org.joda.time.DateTime default0UpdateSomeJodaDateTimeMandatory() {
-        return getSomeJodaDateTimeMandatory();
-    }
-    //endregion
-
-    //region > someJodaDateTimeOptional (property)
-    @javax.jdo.annotations.Persistent(defaultFetchGroup="true")
-    private org.joda.time.DateTime someJodaDateTimeOptional;
-
-    @Column(allowsNull = "true")
-    public org.joda.time.DateTime getSomeJodaDateTimeOptional() {
-        return someJodaDateTimeOptional;
-    }
-
-    public void setSomeJodaDateTimeOptional(final org.joda.time.DateTime someJodaDateTimeOptional) {
-        this.someJodaDateTimeOptional = someJodaDateTimeOptional;
-    }
-
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public DateObject updateSomeJodaDateTimeOptional(final @Optional org.joda.time.DateTime i) {
-        setSomeJodaDateTimeOptional(i);
-        return this;
-    }
-    public org.joda.time.DateTime default0UpdateSomeJodaDateTimeOptional() {
-        return getSomeJodaDateTimeOptional();
-    }
-
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public DateObject resetSomeJodaDateTimeOptional() {
-        setSomeJodaDateTimeOptional(null);
-        return this;
-    }
-    //endregion
-
-    //region > someJodaDateTimeWithChoices (property)
-    private org.joda.time.DateTime someJodaDateTimeWithChoices;
-
-    @Column(allowsNull = "true")
-    public org.joda.time.DateTime getSomeJodaDateTimeWithChoices() {
-        return someJodaDateTimeWithChoices;
-    }
-
-    public void setSomeJodaDateTimeWithChoices(final org.joda.time.DateTime someJodaDateTimeWithChoices) {
-        this.someJodaDateTimeWithChoices = someJodaDateTimeWithChoices;
-    }
-
-    public Collection<org.joda.time.DateTime> choicesSomeJodaDateTimeWithChoices() {
-        return nextFewDays(4, LOCALDATE_AS_DATETIME);
-    }
-
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public DateObject updateSomeJodaDateTimeWithChoices(final @Optional org.joda.time.DateTime i) {
-        setSomeJodaDateTimeWithChoices(i);
-        return this;
-    }
-    public org.joda.time.DateTime default0UpdateSomeJodaDateTimeWithChoices() {
-        return getSomeJodaDateTimeWithChoices();
-    }
-
-    public List<org.joda.time.DateTime> choices0UpdateSomeJodaDateTimeWithChoices() {
-        return nextFewDays(4, LOCALDATE_AS_DATETIME);
-    }
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public DateObject resetSomeJodaDateTimeWithChoices() {
-        setSomeJodaDateTimeWithChoices(null);
-        return this;
-    }
-    //endregion
 
 
     //region > someJodaLocalDateMandatory (property)
@@ -458,37 +482,133 @@ public class DateObject implements Entity<DateObject> {
     }
     //endregion
 
-    //region > someJodaLocalDateWithChoices (property)
-    private org.joda.time.LocalDate someJodaLocalDateWithChoices;
+    //region > someJodaLocalDateHidden (property)
+    private org.joda.time.LocalDate someJodaLocalDateHidden;
 
-    @Column(allowsNull = "true")
-    public org.joda.time.LocalDate getSomeJodaLocalDateWithChoices() {
-        return someJodaLocalDateWithChoices;
+    @javax.jdo.annotations.Column(allowsNull = "false")
+    @Hidden
+    public org.joda.time.LocalDate getSomeJodaLocalDateHidden() {
+        return someJodaLocalDateHidden;
     }
 
-    public void setSomeJodaLocalDateWithChoices(final org.joda.time.LocalDate someJodaLocalDateWithChoices) {
-        this.someJodaLocalDateWithChoices = someJodaLocalDateWithChoices;
+    public void setSomeJodaLocalDateHidden(final org.joda.time.LocalDate someJodaLocalDateHidden) {
+        this.someJodaLocalDateHidden = someJodaLocalDateHidden;
     }
 
-    public Collection<org.joda.time.LocalDate> choicesSomeJodaLocalDateWithChoices() {
-        return nextFewDays(4, Functions.<LocalDate>identity());
+    //endregion
+
+    //region > someJodaLocalDateDisabled (property)
+    private org.joda.time.LocalDate someJodaLocalDateDisabled;
+
+    @javax.jdo.annotations.Column(allowsNull = "false")
+    @Disabled
+    public org.joda.time.LocalDate getSomeJodaLocalDateDisabled() {
+        return someJodaLocalDateDisabled;
+    }
+
+    public void setSomeJodaLocalDateDisabled(final org.joda.time.LocalDate someJodaLocalDateDisabled) {
+        this.someJodaLocalDateDisabled = someJodaLocalDateDisabled;
+    }
+
+    //endregion
+
+    //region > someJodaLocalDateWithValidation (property)
+    private org.joda.time.LocalDate someJodaLocalDateWithValidation;
+
+    @javax.jdo.annotations.Column(allowsNull = "false")
+    public org.joda.time.LocalDate getSomeJodaLocalDateWithValidation() {
+        return someJodaLocalDateWithValidation;
+    }
+
+    public void setSomeJodaLocalDateWithValidation(final org.joda.time.LocalDate someJodaLocalDateWithValidation) {
+        this.someJodaLocalDateWithValidation = someJodaLocalDateWithValidation;
+    }
+
+    public String validateSomeJodaLocalDateWithValidation(final org.joda.time.LocalDate i) {
+        return i.getDayOfWeek() == DateTimeConstants.MONDAY? "Can't enter Monday (don't like Mondays)": null;
     }
 
     @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public DateObject updateSomeJodaLocalDateWithChoices(final @Optional org.joda.time.LocalDate i) {
-        setSomeJodaLocalDateWithChoices(i);
+    public DateObject updateSomeJodaLocalDateWithValidation(final org.joda.time.LocalDate i) {
+        setSomeJodaLocalDateWithValidation(i);
         return this;
     }
-    public org.joda.time.LocalDate default0UpdateSomeJodaLocalDateWithChoices() {
-        return getSomeJodaLocalDateWithChoices();
+
+    public String validateUpdateSomeJodaLocalDateWithValidation(final org.joda.time.LocalDate i) {
+        return validateSomeJodaLocalDateWithValidation(i);
+    }
+    public org.joda.time.LocalDate default0UpdateSomeJodaLocalDateWithValidation() {
+        return getSomeJodaLocalDateWithValidation();
     }
 
-    public List<org.joda.time.LocalDate> choices0UpdateSomeJodaLocalDateWithChoices() {
+    //endregion
+
+    //region > someJodaLocalDateMandatoryWithChoices (property)
+    private org.joda.time.LocalDate someJodaLocalDateMandatoryWithChoices;
+
+    @Column(allowsNull = "true")
+    public org.joda.time.LocalDate getSomeJodaLocalDateMandatoryWithChoices() {
+        return someJodaLocalDateMandatoryWithChoices;
+    }
+
+    public void setSomeJodaLocalDateMandatoryWithChoices(final org.joda.time.LocalDate someJodaLocalDateMandatoryWithChoices) {
+        this.someJodaLocalDateMandatoryWithChoices = someJodaLocalDateMandatoryWithChoices;
+    }
+
+    public Collection<org.joda.time.LocalDate> choicesSomeJodaLocalDateMandatoryWithChoices() {
+        return nextFewDays(4, Functions.<LocalDate>identity());
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public DateObject updateSomeJodaLocalDateMandatoryWithChoices(final @Optional org.joda.time.LocalDate i) {
+        setSomeJodaLocalDateMandatoryWithChoices(i);
+        return this;
+    }
+    public org.joda.time.LocalDate default0UpdateSomeJodaLocalDateMandatoryWithChoices() {
+        return getSomeJodaLocalDateMandatoryWithChoices();
+    }
+
+    public List<org.joda.time.LocalDate> choices0UpdateSomeJodaLocalDateMandatoryWithChoices() {
         return nextFewDays(4, Functions.<LocalDate>identity());
     }
     @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public DateObject resetSomeJodaLocalDateWithChoices() {
-        setSomeJodaLocalDateWithChoices(null);
+    public DateObject resetSomeJodaLocalDateMandatoryWithChoices() {
+        setSomeJodaLocalDateMandatoryWithChoices(null);
+        return this;
+    }
+    //endregion
+
+    //region > someJodaLocalDateOptionalWithChoices (property)
+    private org.joda.time.LocalDate someJodaLocalDateOptionalWithChoices;
+
+    @Column(allowsNull = "true")
+    public org.joda.time.LocalDate getSomeJodaLocalDateOptionalWithChoices() {
+        return someJodaLocalDateOptionalWithChoices;
+    }
+
+    public void setSomeJodaLocalDateOptionalWithChoices(final org.joda.time.LocalDate someJodaLocalDateOptionalWithChoices) {
+        this.someJodaLocalDateOptionalWithChoices = someJodaLocalDateOptionalWithChoices;
+    }
+
+    public Collection<org.joda.time.LocalDate> choicesSomeJodaLocalDateOptionalWithChoices() {
+        return nextFewDays(4, Functions.<LocalDate>identity());
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public DateObject updateSomeJodaLocalDateOptionalWithChoices(final @Optional org.joda.time.LocalDate i) {
+        setSomeJodaLocalDateOptionalWithChoices(i);
+        return this;
+    }
+    public org.joda.time.LocalDate default0UpdateSomeJodaLocalDateOptionalWithChoices() {
+        return getSomeJodaLocalDateOptionalWithChoices();
+    }
+
+    public List<org.joda.time.LocalDate> choices0UpdateSomeJodaLocalDateOptionalWithChoices() {
+        return nextFewDays(4, Functions.<LocalDate>identity());
+    }
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public DateObject resetSomeJodaLocalDateOptionalWithChoices() {
+        setSomeJodaLocalDateOptionalWithChoices(null);
         return this;
     }
     //endregion
@@ -547,42 +667,139 @@ public class DateObject implements Entity<DateObject> {
     }
     //endregion
 
+    //region > someJodaLocalDateTimeHidden (property)
+    private org.joda.time.LocalDateTime someJodaLocalDateTimeHidden;
+
+    @javax.jdo.annotations.Column(allowsNull = "false")
+    @Hidden
+    public org.joda.time.LocalDateTime getSomeJodaLocalDateTimeHidden() {
+        return someJodaLocalDateTimeHidden;
+    }
+
+    public void setSomeJodaLocalDateTimeHidden(final org.joda.time.LocalDateTime someJodaLocalDateTimeHidden) {
+        this.someJodaLocalDateTimeHidden = someJodaLocalDateTimeHidden;
+    }
+
+    //endregion
+
+    //region > someJodaLocalDateTimeDisabled (property)
+    private org.joda.time.LocalDateTime someJodaLocalDateTimeDisabled;
+
+    @javax.jdo.annotations.Column(allowsNull = "false")
+    @Disabled
+    public org.joda.time.LocalDateTime getSomeJodaLocalDateTimeDisabled() {
+        return someJodaLocalDateTimeDisabled;
+    }
+
+    public void setSomeJodaLocalDateTimeDisabled(final org.joda.time.LocalDateTime someJodaLocalDateTimeDisabled) {
+        this.someJodaLocalDateTimeDisabled = someJodaLocalDateTimeDisabled;
+    }
+
+    //endregion
+
+    //region > someJodaLocalDateTimeWithValidation (property)
+    private org.joda.time.LocalDateTime someJodaLocalDateTimeWithValidation;
+
+    @javax.jdo.annotations.Column(allowsNull = "false")
+    public org.joda.time.LocalDateTime getSomeJodaLocalDateTimeWithValidation() {
+        return someJodaLocalDateTimeWithValidation;
+    }
+
+    public void setSomeJodaLocalDateTimeWithValidation(final org.joda.time.LocalDateTime someJodaLocalDateTimeWithValidation) {
+        this.someJodaLocalDateTimeWithValidation = someJodaLocalDateTimeWithValidation;
+    }
+
+    public String validateSomeJodaLocalDateTimeWithValidation(final org.joda.time.LocalDateTime i) {
+        return i.getDayOfWeek() == DateTimeConstants.MONDAY? "Can't enter Monday (don't like Mondays)": null;
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public DateObject updateSomeJodaLocalDateTimeWithValidation(final org.joda.time.LocalDateTime i) {
+        setSomeJodaLocalDateTimeWithValidation(i);
+        return this;
+    }
+
+    public String validateUpdateSomeJodaLocalDateTimeWithValidation(final org.joda.time.LocalDateTime i) {
+        return validateSomeJodaLocalDateTimeWithValidation(i);
+    }
+    public org.joda.time.LocalDateTime default0UpdateSomeJodaLocalDateTimeWithValidation() {
+        return getSomeJodaLocalDateTimeWithValidation();
+    }
+
+    //endregion
 
     //
     // throwing an exception... looks like issue in Isis core.
     //
-
-//    //region > someJodaLocalDateTimeWithChoices (property)
-//    private org.joda.time.LocalDateTime someJodaLocalDateTimeWithChoices;
+//    //region > someJodaLocalDateTimeMandatoryWithChoices (property)
+//    private org.joda.time.LocalDateTime someJodaLocalDateTimeMandatoryWithChoices;
 //
 //    @Column(allowsNull = "true")
-//    public org.joda.time.LocalDateTime getSomeJodaLocalDateTimeWithChoices() {
-//        return someJodaLocalDateTimeWithChoices;
+//    public org.joda.time.LocalDateTime getSomeJodaLocalDateTimeMandatoryWithChoices() {
+//        return someJodaLocalDateTimeMandatoryWithChoices;
 //    }
 //
-//    public void setSomeJodaLocalDateTimeWithChoices(final org.joda.time.LocalDateTime someJodaLocalDateTimeWithChoices) {
-//        this.someJodaLocalDateTimeWithChoices = someJodaLocalDateTimeWithChoices;
+//    public void setSomeJodaLocalDateTimeMandatoryWithChoices(final org.joda.time.LocalDateTime someJodaLocalDateTimeMandatoryWithChoices) {
+//        this.someJodaLocalDateTimeMandatoryWithChoices = someJodaLocalDateTimeMandatoryWithChoices;
 //    }
 //
-//    public Collection<org.joda.time.LocalDateTime> choicesSomeJodaLocalDateTimeWithChoices() {
+//    public Collection<org.joda.time.LocalDateTime> choicesSomeJodaLocalDateTimeMandatoryWithChoices() {
 //        return nextFewDays(4, localDateWithTime(new LocalTime()));
 //    }
 //
 //    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-//    public DateObject updateSomeJodaLocalDateTimeWithChoices(final @Optional org.joda.time.LocalDateTime i) {
-//        setSomeJodaLocalDateTimeWithChoices(i);
+//    public DateObject updateSomeJodaLocalDateTimeMandatoryWithChoices(final @Optional org.joda.time.LocalDateTime i) {
+//        setSomeJodaLocalDateTimeMandatoryWithChoices(i);
 //        return this;
 //    }
-//    public org.joda.time.LocalDateTime default0UpdateSomeJodaLocalDateTimeWithChoices() {
-//        return getSomeJodaLocalDateTimeWithChoices();
+//    public org.joda.time.LocalDateTime default0UpdateSomeJodaLocalDateTimeMandatoryWithChoices() {
+//        return getSomeJodaLocalDateTimeMandatoryWithChoices();
 //    }
 //
-//    public List<org.joda.time.LocalDateTime> choices0UpdateSomeJodaLocalDateTimeWithChoices() {
+//    public List<org.joda.time.LocalDateTime> choices0UpdateSomeJodaLocalDateTimeMandatoryWithChoices() {
 //        return nextFewDays(4, localDateWithTime(new LocalTime()));
 //    }
 //    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-//    public DateObject resetSomeJodaLocalDateTimeWithChoices() {
-//        setSomeJodaLocalDateTimeWithChoices(null);
+//    public DateObject resetSomeJodaLocalDateTimeMandatoryWithChoices() {
+//        setSomeJodaLocalDateTimeMandatoryWithChoices(null);
+//        return this;
+//    }
+//    //endregion
+
+    //
+    // throwing an exception... looks like issue in Isis core.
+    //
+//    //region > someJodaLocalDateTimeOptionalWithChoices (property)
+//    private org.joda.time.LocalDateTime someJodaLocalDateTimeOptionalWithChoices;
+//
+//    @Column(allowsNull = "true")
+//    public org.joda.time.LocalDateTime getSomeJodaLocalDateTimeOptionalWithChoices() {
+//        return someJodaLocalDateTimeOptionalWithChoices;
+//    }
+//
+//    public void setSomeJodaLocalDateTimeOptionalWithChoices(final org.joda.time.LocalDateTime someJodaLocalDateTimeOptionalWithChoices) {
+//        this.someJodaLocalDateTimeOptionalWithChoices = someJodaLocalDateTimeOptionalWithChoices;
+//    }
+//
+//    public Collection<org.joda.time.LocalDateTime> choicesSomeJodaLocalDateTimeOptionalWithChoices() {
+//        return nextFewDays(4, localDateWithTime(new LocalTime()));
+//    }
+//
+//    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+//    public DateObject updateSomeJodaLocalDateTimeOptionalWithChoices(final @Optional org.joda.time.LocalDateTime i) {
+//        setSomeJodaLocalDateTimeOptionalWithChoices(i);
+//        return this;
+//    }
+//    public org.joda.time.LocalDateTime default0UpdateSomeJodaLocalDateTimeOptionalWithChoices() {
+//        return getSomeJodaLocalDateTimeOptionalWithChoices();
+//    }
+//
+//    public List<org.joda.time.LocalDateTime> choices0UpdateSomeJodaLocalDateTimeOptionalWithChoices() {
+//        return nextFewDays(4, localDateWithTime(new LocalTime()));
+//    }
+//    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+//    public DateObject resetSomeJodaLocalDateTimeOptionalWithChoices() {
+//        setSomeJodaLocalDateTimeOptionalWithChoices(null);
 //        return this;
 //    }
 //    //endregion
@@ -701,6 +918,379 @@ public class DateObject implements Entity<DateObject> {
 
     //region > compareTo
 
+
+
+
+    //region > someJodaDateTimeMandatory (property)
+    @javax.jdo.annotations.Persistent(defaultFetchGroup="true")
+    private org.joda.time.DateTime someJodaDateTimeMandatory;
+
+    @Column(allowsNull = "false")
+    public org.joda.time.DateTime getSomeJodaDateTimeMandatory() {
+        return someJodaDateTimeMandatory;
+    }
+
+    public void setSomeJodaDateTimeMandatory(final org.joda.time.DateTime someJodaDateTimeMandatory) {
+        this.someJodaDateTimeMandatory = someJodaDateTimeMandatory;
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public DateObject updateSomeJodaDateTimeMandatory(final org.joda.time.DateTime i) {
+        setSomeJodaDateTimeMandatory(i);
+        return this;
+    }
+    public org.joda.time.DateTime default0UpdateSomeJodaDateTimeMandatory() {
+        return getSomeJodaDateTimeMandatory();
+    }
+    //endregion
+
+    //region > someJodaDateTimeOptional (property)
+    @javax.jdo.annotations.Persistent(defaultFetchGroup="true")
+    private org.joda.time.DateTime someJodaDateTimeOptional;
+
+    @Column(allowsNull = "true")
+    public org.joda.time.DateTime getSomeJodaDateTimeOptional() {
+        return someJodaDateTimeOptional;
+    }
+
+    public void setSomeJodaDateTimeOptional(final org.joda.time.DateTime someJodaDateTimeOptional) {
+        this.someJodaDateTimeOptional = someJodaDateTimeOptional;
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public DateObject updateSomeJodaDateTimeOptional(final @Optional org.joda.time.DateTime i) {
+        setSomeJodaDateTimeOptional(i);
+        return this;
+    }
+    public org.joda.time.DateTime default0UpdateSomeJodaDateTimeOptional() {
+        return getSomeJodaDateTimeOptional();
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public DateObject resetSomeJodaDateTimeOptional() {
+        setSomeJodaDateTimeOptional(null);
+        return this;
+    }
+    //endregion
+
+    //region > someJodaDateTimeHidden (property)
+    private org.joda.time.DateTime someJodaDateTimeHidden;
+
+    @javax.jdo.annotations.Column(allowsNull = "false")
+    @Hidden
+    public org.joda.time.DateTime getSomeJodaDateTimeHidden() {
+        return someJodaDateTimeHidden;
+    }
+
+    public void setSomeJodaDateTimeHidden(final org.joda.time.DateTime someJodaDateTimeHidden) {
+        this.someJodaDateTimeHidden = someJodaDateTimeHidden;
+    }
+
+    //endregion
+
+    //region > someJodaDateTimeDisabled (property)
+    private org.joda.time.DateTime someJodaDateTimeDisabled;
+
+    @javax.jdo.annotations.Column(allowsNull = "false")
+    @Disabled
+    public org.joda.time.DateTime getSomeJodaDateTimeDisabled() {
+        return someJodaDateTimeDisabled;
+    }
+
+    public void setSomeJodaDateTimeDisabled(final org.joda.time.DateTime someJodaDateTimeDisabled) {
+        this.someJodaDateTimeDisabled = someJodaDateTimeDisabled;
+    }
+
+    //endregion
+
+    //region > someJodaDateTimeWithValidation (property)
+    private org.joda.time.DateTime someJodaDateTimeWithValidation;
+
+    @javax.jdo.annotations.Column(allowsNull = "false")
+    public org.joda.time.DateTime getSomeJodaDateTimeWithValidation() {
+        return someJodaDateTimeWithValidation;
+    }
+
+    public void setSomeJodaDateTimeWithValidation(final org.joda.time.DateTime someJodaDateTimeWithValidation) {
+        this.someJodaDateTimeWithValidation = someJodaDateTimeWithValidation;
+    }
+
+    public String validateSomeJodaDateTimeWithValidation(final org.joda.time.DateTime i) {
+        return i.getDayOfWeek() == DateTimeConstants.MONDAY? "Can't enter Monday (don't like Mondays)": null;
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public DateObject updateSomeJodaDateTimeWithValidation(final org.joda.time.DateTime i) {
+        setSomeJodaDateTimeWithValidation(i);
+        return this;
+    }
+
+    public String validateUpdateSomeJodaDateTimeWithValidation(final org.joda.time.DateTime i) {
+        return validateSomeJodaDateTimeWithValidation(i);
+    }
+    public org.joda.time.DateTime default0UpdateSomeJodaDateTimeWithValidation() {
+        return getSomeJodaDateTimeWithValidation();
+    }
+
+    //endregion
+
+    //region > someJodaDateTimeMandatoryWithChoices (property)
+    private org.joda.time.DateTime someJodaDateTimeMandatoryWithChoices;
+
+    @Column(allowsNull = "true")
+    public org.joda.time.DateTime getSomeJodaDateTimeMandatoryWithChoices() {
+        return someJodaDateTimeMandatoryWithChoices;
+    }
+
+    public void setSomeJodaDateTimeMandatoryWithChoices(final org.joda.time.DateTime someJodaDateTimeMandatoryWithChoices) {
+        this.someJodaDateTimeMandatoryWithChoices = someJodaDateTimeMandatoryWithChoices;
+    }
+
+    public Collection<org.joda.time.DateTime> choicesSomeJodaDateTimeMandatoryWithChoices() {
+        return nextFewDays(4, LOCALDATE_AS_DATETIME);
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public DateObject updateSomeJodaDateTimeMandatoryWithChoices(final @Optional org.joda.time.DateTime i) {
+        setSomeJodaDateTimeMandatoryWithChoices(i);
+        return this;
+    }
+    public org.joda.time.DateTime default0UpdateSomeJodaDateTimeMandatoryWithChoices() {
+        return getSomeJodaDateTimeMandatoryWithChoices();
+    }
+
+    public List<org.joda.time.DateTime> choices0UpdateSomeJodaDateTimeMandatoryWithChoices() {
+        return nextFewDays(4, LOCALDATE_AS_DATETIME);
+    }
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public DateObject resetSomeJodaDateTimeMandatoryWithChoices() {
+        setSomeJodaDateTimeMandatoryWithChoices(null);
+        return this;
+    }
+    //endregion
+
+    //region > someJodaDateTimeOptionalWithChoices (property)
+    private org.joda.time.DateTime someJodaDateTimeOptionalWithChoices;
+
+    @Column(allowsNull = "true")
+    public org.joda.time.DateTime getSomeJodaDateTimeOptionalWithChoices() {
+        return someJodaDateTimeOptionalWithChoices;
+    }
+
+    public void setSomeJodaDateTimeOptionalWithChoices(final org.joda.time.DateTime someJodaDateTimeOptionalWithChoices) {
+        this.someJodaDateTimeOptionalWithChoices = someJodaDateTimeOptionalWithChoices;
+    }
+
+    public Collection<org.joda.time.DateTime> choicesSomeJodaDateTimeOptionalWithChoices() {
+        return nextFewDays(4, LOCALDATE_AS_DATETIME);
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public DateObject updateSomeJodaDateTimeOptionalWithChoices(final @Optional org.joda.time.DateTime i) {
+        setSomeJodaDateTimeOptionalWithChoices(i);
+        return this;
+    }
+    public org.joda.time.DateTime default0UpdateSomeJodaDateTimeOptionalWithChoices() {
+        return getSomeJodaDateTimeOptionalWithChoices();
+    }
+
+    public List<org.joda.time.DateTime> choices0UpdateSomeJodaDateTimeOptionalWithChoices() {
+        return nextFewDays(4, LOCALDATE_AS_DATETIME);
+    }
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public DateObject resetSomeJodaDateTimeOptionalWithChoices() {
+        setSomeJodaDateTimeOptionalWithChoices(null);
+        return this;
+    }
+    //endregion
+
+
+
+    //region > someJavaSqlTimestampMandatory (property)
+    private java.sql.Timestamp someJavaSqlTimestampMandatory;
+
+    @Column(allowsNull = "false")
+    public java.sql.Timestamp getSomeJavaSqlTimestampMandatory() {
+        return someJavaSqlTimestampMandatory;
+    }
+
+    public void setSomeJavaSqlTimestampMandatory(final java.sql.Timestamp someJavaSqlTimestampMandatory) {
+        this.someJavaSqlTimestampMandatory = someJavaSqlTimestampMandatory;
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public DateObject updateSomeJavaSqlTimestampMandatory(final java.sql.Timestamp i) {
+        setSomeJavaSqlTimestampMandatory(i);
+        return this;
+    }
+    public java.sql.Timestamp default0UpdateSomeJavaSqlTimestampMandatory() {
+        return getSomeJavaSqlTimestampMandatory();
+    }
+    //endregion
+
+    //region > someJavaSqlTimestampOptional (property)
+    private java.sql.Timestamp someJavaSqlTimestampOptional;
+
+    @Column(allowsNull = "true")
+    public java.sql.Timestamp getSomeJavaSqlTimestampOptional() {
+        return someJavaSqlTimestampOptional;
+    }
+
+    public void setSomeJavaSqlTimestampOptional(final java.sql.Timestamp someJavaSqlTimestampOptional) {
+        this.someJavaSqlTimestampOptional = someJavaSqlTimestampOptional;
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public DateObject updateSomeJavaSqlTimestampOptional(final @Optional java.sql.Timestamp i) {
+        setSomeJavaSqlTimestampOptional(i);
+        return this;
+    }
+    public java.sql.Timestamp default0UpdateSomeJavaSqlTimestampOptional() {
+        return getSomeJavaSqlTimestampOptional();
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public DateObject resetSomeJavaSqlTimestampOptional() {
+        setSomeJavaSqlTimestampOptional(null);
+        return this;
+    }
+    //endregion
+
+    //region > someJavaSqlTimestampHidden (property)
+    private java.sql.Timestamp someJavaSqlTimestampHidden;
+
+    @javax.jdo.annotations.Column(allowsNull = "false")
+    @Hidden
+    public java.sql.Timestamp getSomeJavaSqlTimestampHidden() {
+        return someJavaSqlTimestampHidden;
+    }
+
+    public void setSomeJavaSqlTimestampHidden(final java.sql.Timestamp someJavaSqlTimestampHidden) {
+        this.someJavaSqlTimestampHidden = someJavaSqlTimestampHidden;
+    }
+
+    //endregion
+
+    //region > someJavaSqlTimestampDisabled (property)
+    private java.sql.Timestamp someJavaSqlTimestampDisabled;
+
+    @javax.jdo.annotations.Column(allowsNull = "false")
+    @Disabled
+    public java.sql.Timestamp getSomeJavaSqlTimestampDisabled() {
+        return someJavaSqlTimestampDisabled;
+    }
+
+    public void setSomeJavaSqlTimestampDisabled(final java.sql.Timestamp someJavaSqlTimestampDisabled) {
+        this.someJavaSqlTimestampDisabled = someJavaSqlTimestampDisabled;
+    }
+
+    //endregion
+
+    //region > someJavaSqlTimestampWithValidation (property)
+    private java.sql.Timestamp someJavaSqlTimestampWithValidation;
+
+    @javax.jdo.annotations.Column(allowsNull = "false")
+    public java.sql.Timestamp getSomeJavaSqlTimestampWithValidation() {
+        return someJavaSqlTimestampWithValidation;
+    }
+
+    public void setSomeJavaSqlTimestampWithValidation(final java.sql.Timestamp someJavaSqlTimestampWithValidation) {
+        this.someJavaSqlTimestampWithValidation = someJavaSqlTimestampWithValidation;
+    }
+
+    public String validateSomeJavaSqlTimestampWithValidation(final java.sql.Timestamp i) {
+        return i.getDay() == 1? "Can't enter Monday (don't like Mondays)": null;
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public DateObject updateSomeJavaSqlTimestampWithValidation(final java.sql.Timestamp i) {
+        setSomeJavaSqlTimestampWithValidation(i);
+        return this;
+    }
+
+    public String validateUpdateSomeJavaSqlTimestampWithValidation(final java.sql.Timestamp i) {
+        return validateSomeJavaSqlTimestampWithValidation(i);
+    }
+    public java.sql.Timestamp default0UpdateSomeJavaSqlTimestampWithValidation() {
+        return getSomeJavaSqlTimestampWithValidation();
+    }
+
+    //endregion
+
+    //region > someJavaSqlTimestampMandatoryWithChoices (property)
+    private java.sql.Timestamp someJavaSqlTimestampMandatoryWithChoices;
+
+    @Column(allowsNull = "true")
+    public java.sql.Timestamp getSomeJavaSqlTimestampMandatoryWithChoices() {
+        return someJavaSqlTimestampMandatoryWithChoices;
+    }
+
+    public void setSomeJavaSqlTimestampMandatoryWithChoices(final java.sql.Timestamp someJavaSqlTimestampMandatoryWithChoices) {
+        this.someJavaSqlTimestampMandatoryWithChoices = someJavaSqlTimestampMandatoryWithChoices;
+    }
+
+    public Collection<java.sql.Timestamp> choicesSomeJavaSqlTimestampMandatoryWithChoices() {
+        return nextFewDays(4, LOCALDATE_AS_JAVASQLTIMESTAMP);
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public DateObject updateSomeJavaSqlTimestampMandatoryWithChoices(final @Optional java.sql.Timestamp i) {
+        setSomeJavaSqlTimestampMandatoryWithChoices(i);
+        return this;
+    }
+    public java.sql.Timestamp default0UpdateSomeJavaSqlTimestampMandatoryWithChoices() {
+        return getSomeJavaSqlTimestampMandatoryWithChoices();
+    }
+
+    public List<java.sql.Timestamp> choices0UpdateSomeJavaSqlTimestampMandatoryWithChoices() {
+        return nextFewDays(4, LOCALDATE_AS_JAVASQLTIMESTAMP);
+    }
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public DateObject resetSomeJavaSqlTimestampMandatoryWithChoices() {
+        setSomeJavaSqlTimestampMandatoryWithChoices(null);
+        return this;
+    }
+    //endregion
+
+    //region > someJavaSqlTimestampOptionalWithChoices (property)
+    private java.sql.Timestamp someJavaSqlTimestampOptionalWithChoices;
+
+    @Column(allowsNull = "true")
+    public java.sql.Timestamp getSomeJavaSqlTimestampOptionalWithChoices() {
+        return someJavaSqlTimestampOptionalWithChoices;
+    }
+
+    public void setSomeJavaSqlTimestampOptionalWithChoices(final java.sql.Timestamp someJavaSqlTimestampOptionalWithChoices) {
+        this.someJavaSqlTimestampOptionalWithChoices = someJavaSqlTimestampOptionalWithChoices;
+    }
+
+    public Collection<java.sql.Timestamp> choicesSomeJavaSqlTimestampOptionalWithChoices() {
+        return nextFewDays(4, LOCALDATE_AS_JAVASQLTIMESTAMP);
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public DateObject updateSomeJavaSqlTimestampOptionalWithChoices(final @Optional java.sql.Timestamp i) {
+        setSomeJavaSqlTimestampOptionalWithChoices(i);
+        return this;
+    }
+    public java.sql.Timestamp default0UpdateSomeJavaSqlTimestampOptionalWithChoices() {
+        return getSomeJavaSqlTimestampOptionalWithChoices();
+    }
+
+    public List<java.sql.Timestamp> choices0UpdateSomeJavaSqlTimestampOptionalWithChoices() {
+        return nextFewDays(4, LOCALDATE_AS_JAVASQLTIMESTAMP);
+    }
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public DateObject resetSomeJavaSqlTimestampOptionalWithChoices() {
+        setSomeJavaSqlTimestampOptionalWithChoices(null);
+        return this;
+    }
+    //endregion
+
+
+
+    //region > compareTo 
+    
     @Override
     public int compareTo(DateObject other) {
         return ObjectContracts.compare(this, other, "name");

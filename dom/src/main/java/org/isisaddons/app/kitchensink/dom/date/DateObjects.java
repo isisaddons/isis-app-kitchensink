@@ -16,6 +16,7 @@
  */
 package org.isisaddons.app.kitchensink.dom.date;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
 import org.apache.isis.applib.annotation.DomainService;
@@ -44,14 +45,57 @@ public class DateObjects extends RepositoryAbstract<DateObject> {
         final org.joda.time.DateTime dt = new org.joda.time.DateTime(year, month, day, hour, minutes);
         final org.joda.time.LocalDateTime ldt = new org.joda.time.LocalDateTime(year, month, day, hour, minutes);
         final org.joda.time.LocalDate ld = new org.joda.time.LocalDate(year, month, day);
+        final java.util.Date jud = dt.toDate();
+        final Date sqldt = new Date(jud.getTime());
+        final Timestamp ts = new Timestamp(jud.getTime());
 
-        obj.setSomeJavaUtilDateMandatory(dt.toDate());
-        obj.setSomeJavaSqlDateMandatory(new java.sql.Date(dt.toDate().getTime()));
-        obj.setSomeJavaSqlTimestampMandatory(new Timestamp(dt.toDate().getTime()));
+        obj.setSomeJavaUtilDateMandatory(jud);
+        obj.setSomeJavaUtilDateOptional(jud);
+        obj.setSomeJavaUtilDateHidden(jud);
+        obj.setSomeJavaUtilDateDisabled(jud);
+        obj.setSomeJavaUtilDateWithValidation(jud);
+        obj.setSomeJavaUtilDateMandatoryWithChoices(jud);
+        obj.setSomeJavaUtilDateOptional(jud);
+
+        obj.setSomeJavaSqlDateMandatory(sqldt);
+        obj.setSomeJavaSqlDateOptional(sqldt);
+        obj.setSomeJavaSqlDateHidden(sqldt);
+        obj.setSomeJavaSqlDateDisabled(sqldt);
+        obj.setSomeJavaSqlDateWithValidation(sqldt);
+        obj.setSomeJavaSqlDateMandatoryWithChoices(sqldt);
+        obj.setSomeJavaSqlDateOptionalWithChoices(sqldt);
+
+        obj.setSomeJavaSqlTimestampMandatory(ts);
+        obj.setSomeJavaSqlTimestampOptional(ts);
+        obj.setSomeJavaSqlTimestampHidden(ts);
+        obj.setSomeJavaSqlTimestampDisabled(ts);
+        obj.setSomeJavaSqlTimestampWithValidation(ts);
+        obj.setSomeJavaSqlTimestampMandatoryWithChoices(ts);
+        obj.setSomeJavaSqlTimestampOptionalWithChoices(ts);
 
         obj.setSomeJodaDateTimeMandatory(dt);
+        obj.setSomeJodaDateTimeOptional(dt);
+        obj.setSomeJodaDateTimeHidden(dt);
+        obj.setSomeJodaDateTimeDisabled(dt);
+        obj.setSomeJodaDateTimeWithValidation(dt);
+        obj.setSomeJodaDateTimeMandatoryWithChoices(dt);
+        obj.setSomeJodaDateTimeOptionalWithChoices(dt);
+
         obj.setSomeJodaLocalDateTimeMandatory(ldt);
+        obj.setSomeJodaLocalDateTimeOptional(ldt);
+        obj.setSomeJodaLocalDateTimeHidden(ldt);
+        obj.setSomeJodaLocalDateTimeDisabled(ldt);
+        obj.setSomeJodaLocalDateTimeWithValidation(ldt);
+//        obj.setSomeJodaLocalDateTimeMandatoryWithChoices(ldt);
+//        obj.setSomeJodaLocalDateTimeOptionalWithChoices(ldt);
+
         obj.setSomeJodaLocalDateMandatory(ld);
+        obj.setSomeJodaLocalDateOptional(ld);
+        obj.setSomeJodaLocalDateHidden(ld);
+        obj.setSomeJodaLocalDateDisabled(ld);
+        obj.setSomeJodaLocalDateWithValidation(ld);
+        obj.setSomeJodaLocalDateMandatoryWithChoices(ld);
+        obj.setSomeJodaLocalDateOptionalWithChoices(ld);
 
 //        obj.setSomeApplibDateMandatory(new Date(ld.toDate()));
 //        obj.setSomeApplibDateTimeMandatory(new DateTime(ldt.toDateTime()));
