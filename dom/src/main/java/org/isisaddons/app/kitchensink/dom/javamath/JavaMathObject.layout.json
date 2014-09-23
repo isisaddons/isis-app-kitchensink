@@ -17,7 +17,7 @@
 {
   "columns": [
     {
-      "span": 6,
+      "span": 4,
       "memberGroups": {
         "Name": {
           "members": {
@@ -55,18 +55,55 @@
               "hidden": {
                 "where": "ALL_TABLES"
               }
+            },
+            "someBigIntegerHidden": {
+            },
+            "someBigIntegerDisabled": {
+            },
+            "someBigIntegerWithValidation": {
+              "actions": {
+                "updateSomeBigIntegerWithValidation": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              }
+            },
+            "someBigIntegerMandatoryWithChoices": {
+              "actions": {
+                "updateSomeBigIntegerMandatoryWithChoices": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
+            },
+            "someBigIntegerOptionalWithChoices": {
+              "actions": {
+                "updateSomeBigIntegerOptionalWithChoices": {
+                  "named": {
+                    "value": "update"
+                  }
+                },
+                "resetSomeBigIntegerOptionalWithChoices": {
+                  "named": {
+                    "value": "clear"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
             }
           }
         }
       }
     },
     {
-      "span": 0,
-      "memberGroups": {
-      }
-    },
-    {
-      "span": 6,
+      "span": 4,
       "memberGroups": {
         "java.math.BigDecimal": {
           "members": {
@@ -96,6 +133,57 @@
                 "where": "ALL_TABLES"
               }
             },
+            "someBigDecimalHidden": {
+            },
+            "someBigDecimalDisabled": {
+            },
+            "someBigDecimalWithValidation": {
+              "actions": {
+                "updateSomeBigDecimalWithValidation": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              }
+            },
+            "someBigDecimalMandatoryWithChoices": {
+              "actions": {
+                "updateSomeBigDecimalMandatoryWithChoices": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
+            },
+            "someBigDecimalOptionalWithChoices": {
+              "actions": {
+                "updateSomeBigDecimalOptionalWithChoices": {
+                  "named": {
+                    "value": "update"
+                  }
+                },
+                "resetSomeBigDecimalOptionalWithChoices": {
+                  "named": {
+                    "value": "clear"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "span": 4,
+      "memberGroups": {
+        "java.math.BigDecimal with sizes": {
+          "members": {
             "someBigDecimal92": {
               "actions": {
                 "updateSomeBigDecimal92": {

@@ -38,6 +38,19 @@
                   }
                 }
               }
+            },
+            "someBooleanHidden": {
+            },
+            "someBooleanDisabled": {
+            },
+            "someBooleanWithValidation": {
+              "actions": {
+                "updateSomeBooleanWithValidation": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              }
             }
           }
         },
@@ -70,6 +83,19 @@
               },
               "hidden": {
                 "where": "ALL_TABLES"
+              }
+            },
+            "someBooleanWrapperHidden": {
+            },
+            "someBooleanWrapperDisabled": {
+            },
+            "someBooleanWrapperWithValidation": {
+              "actions": {
+                "updateSomeBooleanWrapperWithValidation": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
               }
             }
           }
@@ -106,6 +132,19 @@
               "hidden": {
                 "where": "ALL_TABLES"
               }
+            },
+            "someEnumOf3Hidden": {
+            },
+            "someEnumOf3Disabled": {
+            },
+            "someEnumOf3WithValidation": {
+              "actions": {
+                "updateSomeEnumOf3WithValidation": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              }
             }
           }
         },
@@ -135,6 +174,19 @@
               },
               "hidden": {
                 "where": "ALL_TABLES"
+              }
+            },
+            "someEnumOf4Hidden": {
+            },
+            "someEnumOf4Disabled": {
+            },
+            "someEnumOf4WithValidation": {
+              "actions": {
+                "updateSomeEnumOf4WithValidation": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
               }
             }
           }
@@ -170,6 +222,19 @@
               },
               "hidden": {
                 "where": "ALL_TABLES"
+              }
+            },
+            "someEnumOf8Hidden": {
+            },
+            "someEnumOf8Disabled": {
+            },
+            "someEnumOf8WithValidation": {
+              "actions": {
+                "updateSomeEnumOf8WithValidation": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
               }
             }
           }

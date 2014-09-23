@@ -40,17 +40,33 @@ public class EnumeratedObjects extends RepositoryAbstract<EnumeratedObject> {
         obj.setName(name);
 
         obj.setSomeBoolean(b);
+        obj.setSomeBooleanHidden(b);
+        obj.setSomeBooleanDisabled(b);
+        obj.setSomeBooleanWithValidation(b);
+
         obj.setSomeBooleanWrapperMandatory(b);
         obj.setSomeBooleanWrapperOptional(b);
+        obj.setSomeBooleanWrapperHidden(b);
+        obj.setSomeBooleanWrapperDisabled(b);
+        obj.setSomeBooleanWrapperWithValidation(b);
 
         obj.setSomeEnumOf3Mandatory(enumOf3);
         obj.setSomeEnumOf3Optional(enumOf3);
+        obj.setSomeEnumOf3Hidden(enumOf3);
+        obj.setSomeEnumOf3Disabled(enumOf3);
+        obj.setSomeEnumOf3WithValidation(enumOf3);
 
         obj.setSomeEnumOf4Mandatory(enumOf4);
         obj.setSomeEnumOf4Optional(enumOf4);
+        obj.setSomeEnumOf4Hidden(enumOf4);
+        obj.setSomeEnumOf4Disabled(enumOf4);
+        obj.setSomeEnumOf4WithValidation(enumOf4);
 
         obj.setSomeEnumOf8Mandatory(enumOf8);
         obj.setSomeEnumOf8Optional(enumOf8);
+        obj.setSomeEnumOf8Hidden(enumOf8);
+        obj.setSomeEnumOf8Disabled(enumOf8);
+        obj.setSomeEnumOf8WithValidation(enumOf8);
 
         container.persistIfNotAlready(obj);
         return obj;

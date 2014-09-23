@@ -40,13 +40,27 @@ public class JavaMathObjects extends RepositoryAbstract<JavaMathObject> {
         final JavaMathObject obj = container.newTransientInstance(JavaMathObject.class);
         obj.setName(name);
 
-        obj.setSomeBigIntegerMandatory(BigInteger.valueOf(l));
-        obj.setSomeBigIntegerOptional(BigInteger.valueOf(l));
+        final BigInteger bi = BigInteger.valueOf(l);
+        final BigDecimal bd = BigDecimal.valueOf(d);
 
-        obj.setSomeBigDecimalMandatory(BigDecimal.valueOf(d));
-        obj.setSomeBigDecimalOptional(BigDecimal.valueOf(d));
+        obj.setSomeBigIntegerMandatory(bi);
+        obj.setSomeBigIntegerOptional(bi);
+        obj.setSomeBigIntegerHidden(bi);
+        obj.setSomeBigIntegerDisabled(bi);
+        obj.setSomeBigIntegerWithValidation(bi);
+        obj.setSomeBigIntegerMandatoryWithChoices(bi);
+        obj.setSomeBigIntegerOptionalWithChoices(bi);
 
-        obj.setSomeBigDecimal92(BigDecimal.valueOf(d));
+        obj.setSomeBigDecimalMandatory(bd);
+        obj.setSomeBigDecimalOptional(bd);
+        obj.setSomeBigDecimalHidden(bd);
+        obj.setSomeBigDecimalDisabled(bd);
+        obj.setSomeBigDecimalWithValidation(bd);
+        obj.setSomeBigDecimalMandatoryWithChoices(bd);
+        obj.setSomeBigDecimalOptionalWithChoices(bd);
+
+
+        obj.setSomeBigDecimal92(bd);
 
         container.persistIfNotAlready(obj);
         return obj;

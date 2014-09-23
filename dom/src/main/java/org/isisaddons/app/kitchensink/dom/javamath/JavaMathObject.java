@@ -18,10 +18,13 @@ package org.isisaddons.app.kitchensink.dom.javamath;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.Collection;
+import java.util.List;
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.VersionStrategy;
 import javax.validation.constraints.Digits;
+import com.google.common.collect.Lists;
 import org.isisaddons.app.kitchensink.dom.Entity;
 import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.annotation.*;
@@ -105,6 +108,131 @@ public class JavaMathObject implements Entity<JavaMathObject> {
     }
     //endregion
 
+    //region > someBigIntegerHidden (property)
+    private java.math.BigInteger someBigIntegerHidden;
+
+    @javax.jdo.annotations.Column(allowsNull = "false")
+    @Hidden
+    public java.math.BigInteger getSomeBigIntegerHidden() {
+        return someBigIntegerHidden;
+    }
+
+    public void setSomeBigIntegerHidden(final java.math.BigInteger someBigIntegerHidden) {
+        this.someBigIntegerHidden = someBigIntegerHidden;
+    }
+
+    //endregion
+
+    //region > someBigIntegerDisabled (property)
+    private java.math.BigInteger someBigIntegerDisabled;
+
+    @javax.jdo.annotations.Column(allowsNull = "false")
+    @Disabled
+    public java.math.BigInteger getSomeBigIntegerDisabled() {
+        return someBigIntegerDisabled;
+    }
+
+    public void setSomeBigIntegerDisabled(final java.math.BigInteger someBigIntegerDisabled) {
+        this.someBigIntegerDisabled = someBigIntegerDisabled;
+    }
+
+    //endregion
+
+    //region > someBigIntegerWithValidation (property)
+    private java.math.BigInteger someBigIntegerWithValidation;
+
+    @javax.jdo.annotations.Column(allowsNull = "false")
+    public java.math.BigInteger getSomeBigIntegerWithValidation() {
+        return someBigIntegerWithValidation;
+    }
+
+    public void setSomeBigIntegerWithValidation(final java.math.BigInteger someBigIntegerWithValidation) {
+        this.someBigIntegerWithValidation = someBigIntegerWithValidation;
+    }
+
+    public String validateSomeBigIntegerWithValidation(final java.math.BigInteger i) {
+        return i.intValue() % 2 != 0? "Can only enter even numbers": null;
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public JavaMathObject updateSomeBigIntegerWithValidation(final BigInteger i) {
+        setSomeBigIntegerWithValidation(i);
+        return this;
+    }
+
+    public String validateUpdateSomeBigIntegerWithValidation(final java.math.BigInteger i) {
+        return validateSomeBigIntegerWithValidation(i);
+    }
+    public java.math.BigInteger default0UpdateSomeBigIntegerWithValidation() {
+        return getSomeBigIntegerWithValidation();
+    }
+
+    //endregion
+
+    //region > someBigIntegerMandatoryWithChoices (property)
+    private java.math.BigInteger someBigIntegerMandatoryWithChoices;
+
+    @Column(allowsNull = "false")
+    public java.math.BigInteger getSomeBigIntegerMandatoryWithChoices() {
+        return someBigIntegerMandatoryWithChoices;
+    }
+
+    public void setSomeBigIntegerMandatoryWithChoices(final java.math.BigInteger someBigIntegerMandatoryWithChoices) {
+        this.someBigIntegerMandatoryWithChoices = someBigIntegerMandatoryWithChoices;
+    }
+    public Collection<java.math.BigInteger> choicesSomeBigIntegerMandatoryWithChoices() {
+        return Lists.newArrayList(BigInteger.valueOf(1L), BigInteger.valueOf(2L), BigInteger.valueOf(3L), BigInteger.valueOf(4L));
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public JavaMathObject updateSomeBigIntegerMandatoryWithChoices(final java.math.BigInteger i) {
+        setSomeBigIntegerMandatoryWithChoices(i);
+        return this;
+    }
+    public java.math.BigInteger default0UpdateSomeBigIntegerMandatoryWithChoices() {
+        return getSomeBigIntegerMandatoryWithChoices();
+    }
+    public List<java.math.BigInteger> choices0UpdateSomeBigIntegerMandatoryWithChoices() {
+        return Lists.newArrayList(BigInteger.valueOf(1L), BigInteger.valueOf(2L), BigInteger.valueOf(3L), BigInteger.valueOf(4L));
+    }
+    //endregion
+
+    //region > someBigIntegerOptionalWithChoices (property)
+    private java.math.BigInteger someBigIntegerOptionalWithChoices;
+
+    @Column(allowsNull = "true")
+    public java.math.BigInteger getSomeBigIntegerOptionalWithChoices() {
+        return someBigIntegerOptionalWithChoices;
+    }
+
+    public void setSomeBigIntegerOptionalWithChoices(final java.math.BigInteger someBigIntegerOptionalWithChoices) {
+        this.someBigIntegerOptionalWithChoices = someBigIntegerOptionalWithChoices;
+    }
+    public Collection<java.math.BigInteger> choicesSomeBigIntegerOptionalWithChoices() {
+        return Lists.newArrayList(BigInteger.valueOf(1L), BigInteger.valueOf(2L), BigInteger.valueOf(3L), BigInteger.valueOf(4L));
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public JavaMathObject updateSomeBigIntegerOptionalWithChoices(final @Optional java.math.BigInteger i) {
+        setSomeBigIntegerOptionalWithChoices(i);
+        return this;
+    }
+    public java.math.BigInteger default0UpdateSomeBigIntegerOptionalWithChoices() {
+        return getSomeBigIntegerOptionalWithChoices();
+    }
+    public List<java.math.BigInteger> choices0UpdateSomeBigIntegerOptionalWithChoices() {
+        return Lists.newArrayList(BigInteger.valueOf(1L), BigInteger.valueOf(2L), BigInteger.valueOf(3L), BigInteger.valueOf(4L));
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public JavaMathObject resetSomeBigIntegerOptionalWithChoices() {
+        setSomeBigIntegerOptionalWithChoices(null);
+        return this;
+    }
+    //endregion
+
+
+
 
     //region > someBigDecimalMandatory (property)
     private BigDecimal someBigDecimalMandatory;
@@ -155,6 +283,132 @@ public class JavaMathObject implements Entity<JavaMathObject> {
         return this;
     }
     //endregion
+
+    //region > someBigDecimalHidden (property)
+    private java.math.BigDecimal someBigDecimalHidden;
+
+    @javax.jdo.annotations.Column(allowsNull = "false")
+    @Hidden
+    public java.math.BigDecimal getSomeBigDecimalHidden() {
+        return someBigDecimalHidden;
+    }
+
+    public void setSomeBigDecimalHidden(final java.math.BigDecimal someBigDecimalHidden) {
+        this.someBigDecimalHidden = someBigDecimalHidden;
+    }
+
+    //endregion
+
+    //region > someBigDecimalDisabled (property)
+    private java.math.BigDecimal someBigDecimalDisabled;
+
+    @javax.jdo.annotations.Column(allowsNull = "false")
+    @Disabled
+    public java.math.BigDecimal getSomeBigDecimalDisabled() {
+        return someBigDecimalDisabled;
+    }
+
+    public void setSomeBigDecimalDisabled(final java.math.BigDecimal someBigDecimalDisabled) {
+        this.someBigDecimalDisabled = someBigDecimalDisabled;
+    }
+
+    //endregion
+
+    //region > someBigDecimalWithValidation (property)
+    private java.math.BigDecimal someBigDecimalWithValidation;
+
+    @javax.jdo.annotations.Column(allowsNull = "false")
+    public java.math.BigDecimal getSomeBigDecimalWithValidation() {
+        return someBigDecimalWithValidation;
+    }
+
+    public void setSomeBigDecimalWithValidation(final java.math.BigDecimal someBigDecimalWithValidation) {
+        this.someBigDecimalWithValidation = someBigDecimalWithValidation;
+    }
+
+    public String validateSomeBigDecimalWithValidation(final java.math.BigDecimal i) {
+        return i.intValue() % 2 != 0? "Can only enter even numbers": null;
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public JavaMathObject updateSomeBigDecimalWithValidation(final BigDecimal i) {
+        setSomeBigDecimalWithValidation(i);
+        return this;
+    }
+
+    public String validateUpdateSomeBigDecimalWithValidation(final java.math.BigDecimal i) {
+        return validateSomeBigDecimalWithValidation(i);
+    }
+    public java.math.BigDecimal default0UpdateSomeBigDecimalWithValidation() {
+        return getSomeBigDecimalWithValidation();
+    }
+
+    //endregion
+
+    //region > someBigDecimalMandatoryWithChoices (property)
+    private java.math.BigDecimal someBigDecimalMandatoryWithChoices;
+
+    @Column(allowsNull = "false")
+    public java.math.BigDecimal getSomeBigDecimalMandatoryWithChoices() {
+        return someBigDecimalMandatoryWithChoices;
+    }
+
+    public void setSomeBigDecimalMandatoryWithChoices(final java.math.BigDecimal someBigDecimalMandatoryWithChoices) {
+        this.someBigDecimalMandatoryWithChoices = someBigDecimalMandatoryWithChoices;
+    }
+    public Collection<java.math.BigDecimal> choicesSomeBigDecimalMandatoryWithChoices() {
+        return Lists.newArrayList(BigDecimal.valueOf(1.1), BigDecimal.valueOf(2.2), BigDecimal.valueOf(3.3), BigDecimal.valueOf(4.4));
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public JavaMathObject updateSomeBigDecimalMandatoryWithChoices(final java.math.BigDecimal i) {
+        setSomeBigDecimalMandatoryWithChoices(i);
+        return this;
+    }
+    public java.math.BigDecimal default0UpdateSomeBigDecimalMandatoryWithChoices() {
+        return getSomeBigDecimalMandatoryWithChoices();
+    }
+    public List<java.math.BigDecimal> choices0UpdateSomeBigDecimalMandatoryWithChoices() {
+        return Lists.newArrayList(BigDecimal.valueOf(1.1), BigDecimal.valueOf(2.2), BigDecimal.valueOf(3.3), BigDecimal.valueOf(4.4));
+    }
+    //endregion
+
+    //region > someBigDecimalOptionalWithChoices (property)
+    private java.math.BigDecimal someBigDecimalOptionalWithChoices;
+
+    @Column(allowsNull = "true")
+    public java.math.BigDecimal getSomeBigDecimalOptionalWithChoices() {
+        return someBigDecimalOptionalWithChoices;
+    }
+
+    public void setSomeBigDecimalOptionalWithChoices(final java.math.BigDecimal someBigDecimalOptionalWithChoices) {
+        this.someBigDecimalOptionalWithChoices = someBigDecimalOptionalWithChoices;
+    }
+    public Collection<java.math.BigDecimal> choicesSomeBigDecimalOptionalWithChoices() {
+        return Lists.newArrayList(BigDecimal.valueOf(1.1), BigDecimal.valueOf(2.2), BigDecimal.valueOf(3.3), BigDecimal.valueOf(4.4));
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public JavaMathObject updateSomeBigDecimalOptionalWithChoices(final @Optional java.math.BigDecimal i) {
+        setSomeBigDecimalOptionalWithChoices(i);
+        return this;
+    }
+    public java.math.BigDecimal default0UpdateSomeBigDecimalOptionalWithChoices() {
+        return getSomeBigDecimalOptionalWithChoices();
+    }
+    public List<java.math.BigDecimal> choices0UpdateSomeBigDecimalOptionalWithChoices() {
+        return Lists.newArrayList(BigDecimal.valueOf(1.1), BigDecimal.valueOf(2.2), BigDecimal.valueOf(3.3), BigDecimal.valueOf(4.4));
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public JavaMathObject resetSomeBigDecimalOptionalWithChoices() {
+        setSomeBigDecimalOptionalWithChoices(null);
+        return this;
+    }
+    //endregion
+
+
+
 
     //region > someBigDecimal92 (property)
     private BigDecimal someBigDecimal92;
