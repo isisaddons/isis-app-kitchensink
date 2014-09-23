@@ -248,6 +248,12 @@ language governing permissions and limitations under the License.
           </exclusions>
         </dependency>
 
+        <dependency>
+            <groupId>de.agilecoders.wicket</groupId>
+            <artifactId>wicket-bootstrap-themes</artifactId>
+            <version>0.9.6-SNAPSHOT</version>
+        </dependency>
+
     </dependencies>
 
     <profiles>

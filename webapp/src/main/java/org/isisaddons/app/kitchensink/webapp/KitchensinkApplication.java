@@ -16,6 +16,13 @@
  */
 package org.isisaddons.app.kitchensink.webapp;
 
+import de.agilecoders.wicket.core.Bootstrap;
+import de.agilecoders.wicket.core.settings.IBootstrapSettings;
+import de.agilecoders.wicket.core.settings.SingleThemeProvider;
+import de.agilecoders.wicket.themes.markup.html.bootstrap.BootstrapThemeTheme;
+import de.agilecoders.wicket.themes.markup.html.bootswatch.BootswatchTheme;
+import de.agilecoders.wicket.themes.markup.html.bootswatch.BootswatchThemeProvider;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.Charset;
@@ -118,6 +125,18 @@ public class KitchensinkApplication extends IsisWicketApplication {
         };
 
         return Modules.override(isisDefaults).with(simpleOverrides);
+    }
+
+    @Override
+    protected void init() {
+        super.init();
+
+        getDebugSettings().setOutputMarkupContainerClassName(true);
+        getMarkupSettings().setStripWicketTags(true);
+
+        IBootstrapSettings settings = Bootstrap.getSettings();
+        settings.setThemeProvider(new BootswatchThemeProvider(BootswatchTheme.Flatly));
+//        settings.setThemeProvider(new SingleThemeProvider(new BootstrapThemeTheme()));
     }
 
     private static String readLines(final Class<?> contextClass, final String resourceName) {
