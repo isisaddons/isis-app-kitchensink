@@ -18,10 +18,8 @@ package org.isisaddons.app.kitchensink.dom;
 
 import java.util.List;
 import org.apache.isis.applib.DomainObjectContainer;
-import org.apache.isis.applib.annotation.ActionSemantics;
+import org.apache.isis.applib.annotation.*;
 import org.apache.isis.applib.annotation.ActionSemantics.Of;
-import org.apache.isis.applib.annotation.Bookmarkable;
-import org.apache.isis.applib.annotation.MemberOrder;
 
 public abstract class RepositoryAbstract<T extends Entity> {
 
@@ -65,6 +63,31 @@ public abstract class RepositoryAbstract<T extends Entity> {
     }
 
     //endregion
+
+    //region > listAllDisabled (action)
+
+    @Bookmarkable
+    @ActionSemantics(Of.SAFE)
+    @MemberOrder(sequence = "30")
+    @Disabled
+    public List<T> listAllDisabled() {
+        return listAll();
+    }
+
+    //endregion
+
+    //region > listAllDisabled (action)
+
+    @Bookmarkable
+    @ActionSemantics(Of.SAFE)
+    @MemberOrder(sequence = "40")
+    @Hidden
+    public List<T> listAllHidden() {
+        return listAll();
+    }
+
+    //endregion
+
 
     //region > injected services
 
