@@ -14,7 +14,7 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-package org.isisaddons.app.kitchensink.dom.layout.layout_4_0_0_8C;
+package org.isisaddons.app.kitchensink.dom.layout.layout_6_0_6_12C;
 
 import javax.inject.Inject;
 import javax.jdo.annotations.Column;
@@ -39,9 +39,9 @@ import org.apache.isis.applib.util.ObjectContracts;
 @javax.jdo.annotations.Version(
         strategy=VersionStrategy.VERSION_NUMBER, 
         column="version")
-@ObjectType("LAYOUT_4_0_8C")
+@ObjectType("LAYOUT_6_0_6_12C")
 @Bookmarkable
-public class Layout_4_0_0_8C_Object implements Entity<Layout_4_0_0_8C_Object> {
+public class Layout_6_0_6_12C_Object implements Entity<Layout_6_0_6_12C_Object> {
 
     //region > name (property)
 
@@ -99,6 +99,45 @@ public class Layout_4_0_0_8C_Object implements Entity<Layout_4_0_0_8C_Object> {
     }
     //endregion
 
+    //region > someString4 (property)
+    private String someString4;
+
+    @Column(allowsNull="true")
+    public String getSomeString4() {
+        return someString4;
+    }
+
+    public void setSomeString4(final String someString4) {
+        this.someString4 = someString4;
+    }
+    //endregion
+
+    //region > someString5 (property)
+    private String someString5;
+
+    @Column(allowsNull="true")
+    public String getSomeString5() {
+        return someString5;
+    }
+
+    public void setSomeString5(final String someString5) {
+        this.someString5 = someString5;
+    }
+    //endregion
+
+    //region > someString6 (property)
+    private String someString6;
+
+    @Column(allowsNull="true")
+    public String getSomeString6() {
+        return someString6;
+    }
+
+    public void setSomeString6(final String someString6) {
+        this.someString6 = someString6;
+    }
+    //endregion
+
 
     //region > someTextObjects (collection)
     public java.util.List<TextObject> getSomeTextObjects() {
@@ -122,7 +161,7 @@ public class Layout_4_0_0_8C_Object implements Entity<Layout_4_0_0_8C_Object> {
     //region > compareTo
 
     @Override
-    public int compareTo(Layout_4_0_0_8C_Object other) {
+    public int compareTo(Layout_6_0_6_12C_Object other) {
         return ObjectContracts.compare(this, other, "name");
     }
 
@@ -137,12 +176,14 @@ public class Layout_4_0_0_8C_Object implements Entity<Layout_4_0_0_8C_Object> {
     @javax.inject.Inject
     @SuppressWarnings("unused")
     private ClockService clockService;
+
     @Inject
     private TextObjects textObjects;
     @Inject
     private JavaMathObjects mathObjects;
     @Inject
     private NflPlayers nflPlayers;
+
     //endregion
 
 }

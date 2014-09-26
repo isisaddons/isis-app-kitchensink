@@ -27,11 +27,14 @@ import org.isisaddons.app.kitchensink.dom.layout.layout_4_4_4.Layout_4_4_4_Objec
 import org.isisaddons.app.kitchensink.dom.layout.layout_4_4_4.Layout_4_4_4_Objects;
 import org.isisaddons.app.kitchensink.dom.layout.layout_6_0_6.Layout_6_0_6_Object;
 import org.isisaddons.app.kitchensink.dom.layout.layout_6_0_6.Layout_6_0_6_Objects;
+import org.isisaddons.app.kitchensink.dom.layout.layout_6_0_6_12C.Layout_6_0_6_12C_Object;
+import org.isisaddons.app.kitchensink.dom.layout.layout_6_0_6_12C.Layout_6_0_6_12C_Objects;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.MemberOrder;
 
 @DomainService(menuOrder = "10")
 public class LayoutObjects  {
+
 
     @MemberOrder(sequence = "10")
     public Layout_4_4_4_Object first_4_4_4() {
@@ -58,6 +61,11 @@ public class LayoutObjects  {
         return layout_4_0_0_8C_objects.first();
     }
 
+    @MemberOrder(sequence = "60")
+    public Layout_6_0_6_12C_Object first_6_0_6_12C() {
+        return layout_6_0_6_12C_objects.first();
+    }
+
 
 
     @Inject
@@ -74,4 +82,7 @@ public class LayoutObjects  {
 
     @Inject
     private Layout_4_0_0_8C_Objects layout_4_0_0_8C_objects;
+
+    @Inject
+    private Layout_6_0_6_12C_Objects layout_6_0_6_12C_objects;
 }

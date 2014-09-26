@@ -16,11 +16,11 @@
  */
 package org.isisaddons.app.kitchensink.fixture.layout;
 
-import org.isisaddons.app.kitchensink.dom.layout.layout_4_0_0_8C.Layout_4_0_0_8C_Object;
-import org.isisaddons.app.kitchensink.dom.layout.layout_4_0_0_8C.Layout_4_0_0_8C_Objects;
+import org.isisaddons.app.kitchensink.dom.layout.layout_6_0_6_12C.Layout_6_0_6_12C_Object;
+import org.isisaddons.app.kitchensink.dom.layout.layout_6_0_6_12C.Layout_6_0_6_12C_Objects;
 import org.apache.isis.applib.fixturescripts.FixtureScript;
 
-public class Layout_4_0_8C_ObjectsFixture extends FixtureScript {
+public class Layout_6_0_6_12C_ObjectsFixture extends FixtureScript {
 
     @Override
     protected void execute(ExecutionContext executionContext) {
@@ -31,11 +31,11 @@ public class Layout_4_0_8C_ObjectsFixture extends FixtureScript {
         create("Baz", executionContext);
     }
 
-    private Layout_4_0_0_8C_Object create(final String name, ExecutionContext executionContext) {
-        return executionContext.add(this, layout_4_0_8C_objects.create(name));
+    private Layout_6_0_6_12C_Object create(final String name, ExecutionContext executionContext) {
+        return executionContext.add(this, layout_6_0_6_12C_objects.create(name));
     }
 
     @javax.inject.Inject
-    private Layout_4_0_0_8C_Objects layout_4_0_8C_objects;
+    private Layout_6_0_6_12C_Objects layout_6_0_6_12C_objects;
 
 }

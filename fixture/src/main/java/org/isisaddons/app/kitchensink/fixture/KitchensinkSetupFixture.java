@@ -58,8 +58,10 @@ public class KitchensinkSetupFixture extends FixtureScript {
         execute(new Layout_3_4_5_ObjectsFixture(), executionContext);
         execute(new Layout_4_4_4_ObjectsFixture(), executionContext);
         execute(new Layout_4_0_8_ObjectsFixture(), executionContext);
-        execute(new Layout_4_0_8C_ObjectsFixture(), executionContext);
         execute(new Layout_6_0_6_ObjectsFixture(), executionContext);
+
+        execute(new Layout_4_0_0_8C_ObjectsFixture(), executionContext);
+        execute(new Layout_6_0_6_12C_ObjectsFixture(), executionContext);
     }
 
 }
