@@ -30,7 +30,7 @@ import org.apache.isis.applib.value.Clob;
 public class BlobClobObjects extends RepositoryAbstract<BlobClobObject> {
 
     public BlobClobObjects() {
-        super(BlobClobObject.class);
+        super(BlobClobObject.class, Visibility.VISIBLE);
     }
 
     @MemberOrder(sequence = "30")

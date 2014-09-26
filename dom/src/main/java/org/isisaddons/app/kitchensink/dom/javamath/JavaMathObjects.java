@@ -28,7 +28,7 @@ import org.apache.isis.applib.annotation.Named;
 public class JavaMathObjects extends RepositoryAbstract<JavaMathObject> {
 
     public JavaMathObjects() {
-        super(JavaMathObject.class);
+        super(JavaMathObject.class, Visibility.VISIBLE);
     }
 
 

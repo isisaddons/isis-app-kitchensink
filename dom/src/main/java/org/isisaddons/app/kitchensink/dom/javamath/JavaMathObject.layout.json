@@ -59,6 +59,9 @@
             "someBigIntegerHidden": {
             },
             "someBigIntegerDisabled": {
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
             },
             "someBigIntegerWithValidation": {
               "actions": {
@@ -67,6 +70,9 @@
                     "value": "update"
                   }
                 }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
               }
             },
             "someBigIntegerMandatoryWithChoices": {
@@ -136,6 +142,9 @@
             "someBigDecimalHidden": {
             },
             "someBigDecimalDisabled": {
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
             },
             "someBigDecimalWithValidation": {
               "actions": {
@@ -144,6 +153,9 @@
                     "value": "update"
                   }
                 }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
               }
             },
             "someBigDecimalMandatoryWithChoices": {

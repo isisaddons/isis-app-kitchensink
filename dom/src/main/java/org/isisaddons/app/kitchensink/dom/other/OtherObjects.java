@@ -27,7 +27,7 @@ import org.apache.isis.applib.annotation.Named;
 public class OtherObjects extends RepositoryAbstract<OtherObject> {
 
     public OtherObjects() {
-        super(OtherObject.class);
+        super(OtherObject.class, Visibility.VISIBLE);
     }
 
 

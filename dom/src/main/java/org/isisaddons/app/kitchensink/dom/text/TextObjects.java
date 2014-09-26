@@ -27,7 +27,7 @@ import org.apache.isis.applib.value.Password;
 public class TextObjects extends RepositoryAbstract<TextObject> {
 
     public TextObjects() {
-        super(TextObject.class);
+        super(TextObject.class, Visibility.VISIBLE);
     }
 
     @MemberOrder(sequence = "30")

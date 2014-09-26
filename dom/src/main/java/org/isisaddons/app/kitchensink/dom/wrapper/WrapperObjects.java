@@ -26,7 +26,7 @@ import org.apache.isis.applib.annotation.Named;
 public class WrapperObjects extends RepositoryAbstract<WrapperObject> {
 
     public WrapperObjects() {
-        super(WrapperObject.class);
+        super(WrapperObject.class, Visibility.VISIBLE);
     }
 
     @MemberOrder(sequence = "30")

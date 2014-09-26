@@ -28,7 +28,7 @@ import org.apache.isis.applib.annotation.Named;
 public class DateObjects extends RepositoryAbstract<DateObject> {
 
     public DateObjects() {
-        super(DateObject.class);
+        super(DateObject.class, Visibility.VISIBLE);
     }
 
     @MemberOrder(sequence = "30")

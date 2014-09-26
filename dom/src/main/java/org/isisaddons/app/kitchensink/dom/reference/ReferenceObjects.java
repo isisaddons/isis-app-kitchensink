@@ -28,7 +28,7 @@ import org.apache.isis.applib.annotation.Named;
 public class ReferenceObjects extends RepositoryAbstract<ReferenceObject> {
 
     public ReferenceObjects() {
-        super(ReferenceObject.class);
+        super(ReferenceObject.class, Visibility.VISIBLE);
     }
 
     @MemberOrder(sequence = "30")

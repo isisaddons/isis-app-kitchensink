@@ -26,7 +26,7 @@ import org.apache.isis.applib.annotation.Named;
 public class EnumeratedObjects extends RepositoryAbstract<EnumeratedObject> {
 
     public EnumeratedObjects() {
-        super(EnumeratedObject.class);
+        super(EnumeratedObject.class, Visibility.VISIBLE);
     }
 
     @MemberOrder(sequence = "30")

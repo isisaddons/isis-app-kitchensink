@@ -42,6 +42,9 @@
             "someCharHidden": {
             },
             "someCharDisabled": {
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
             },
             "someCharWithValidation": {
               "actions": {
@@ -50,6 +53,9 @@
                     "value": "update"
                   }
                 }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
               }
             },
             "someCharWithChoices": {
@@ -97,6 +103,9 @@
             "someCharacterWrapperHidden": {
             },
             "someCharacterWrapperDisabled": {
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
             },
             "someCharacterWrapperWithValidation": {
               "actions": {
@@ -105,6 +114,9 @@
                     "value": "update"
                   }
                 }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
               }
             },
             "someCharacterWrapperMandatoryWithChoices": {
@@ -174,6 +186,9 @@
             "someStringHidden": {
             },
             "someStringDisabled": {
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
             },
             "someStringWithValidation": {
               "actions": {
@@ -182,6 +197,9 @@
                     "value": "update"
                   }
                 }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
               }
             },
             "someStringMandatoryWithChoices": {
@@ -246,6 +264,9 @@
             "somePasswordHidden": {
             },
             "somePasswordDisabled": {
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
             },
             "somePasswordWithValidation": {
               "actions": {
@@ -254,6 +275,9 @@
                     "value": "update"
                   }
                 }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
               }
             },
             "somePasswordMandatoryWithChoices": {

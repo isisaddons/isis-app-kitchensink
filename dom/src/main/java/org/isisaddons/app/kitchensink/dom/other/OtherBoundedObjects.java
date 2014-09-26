@@ -27,7 +27,7 @@ import org.apache.isis.applib.annotation.Named;
 public class OtherBoundedObjects extends RepositoryAbstract<OtherBoundedObject> {
 
     public OtherBoundedObjects() {
-        super(OtherBoundedObject.class);
+        super(OtherBoundedObject.class, Visibility.VISIBLE);
     }
 
     @Hidden

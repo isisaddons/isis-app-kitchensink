@@ -29,7 +29,7 @@ import org.apache.isis.applib.annotation.Optional;
 public class NflPlayers extends RepositoryAbstract<NflPlayer> {
 
     public NflPlayers() {
-        super(NflPlayer.class);
+        super(NflPlayer.class, Visibility.VISIBLE);
     }
 
     @MemberOrder(sequence = "30")

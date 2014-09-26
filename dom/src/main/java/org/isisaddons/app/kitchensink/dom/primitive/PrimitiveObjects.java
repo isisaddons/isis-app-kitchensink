@@ -26,7 +26,7 @@ import org.apache.isis.applib.annotation.Named;
 public class PrimitiveObjects extends RepositoryAbstract<PrimitiveObject> {
 
     public PrimitiveObjects() {
-        super(PrimitiveObject.class);
+        super(PrimitiveObject.class, Visibility.VISIBLE);
     }
 
     @MemberOrder(sequence = "30")

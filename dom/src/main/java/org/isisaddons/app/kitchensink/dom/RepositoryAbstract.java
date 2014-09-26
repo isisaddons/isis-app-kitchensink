@@ -25,9 +25,25 @@ public abstract class RepositoryAbstract<T extends Entity> {
 
     private final Class<T> cls;
 
-    public RepositoryAbstract(Class<T> cls) {
+    public RepositoryAbstract(Class<T> cls, Visibility visibility) {
         this.cls = cls;
+        this.visibility = visibility;
     }
+
+    //region > visibility
+
+    private final Visibility visibility;
+
+    protected enum Visibility {
+        VISIBLE,
+        NOT_VISIBLE
+    }
+
+    public boolean hidden() {
+        return this.visibility == Visibility.NOT_VISIBLE;
+    }
+    //endregion
+
 
     //region > identification in the UI
 
@@ -50,7 +66,6 @@ public abstract class RepositoryAbstract<T extends Entity> {
         final List<T> list = listAll();
         return list.isEmpty()? null: list.get(0);
     }
-
     //endregion
 
     //region > listAll (action)
