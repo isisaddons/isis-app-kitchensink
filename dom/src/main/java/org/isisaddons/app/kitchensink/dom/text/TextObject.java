@@ -26,6 +26,7 @@ import org.isisaddons.app.kitchensink.dom.Entity;
 import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.annotation.*;
 import org.apache.isis.applib.util.ObjectContracts;
+import org.apache.isis.applib.value.Password;
 
 @javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE)
 @javax.jdo.annotations.DatastoreIdentity(
@@ -568,6 +569,266 @@ public class TextObject implements Entity<TextObject> {
         return this;
     }
     //endregion
+
+
+    //region > somePasswordMandatory (property)
+    private String somePasswordMandatoryStr;
+
+    @Programmatic
+    @Column(allowsNull = "false")
+    public String getSomePasswordMandatoryStr() {
+        return somePasswordMandatoryStr;
+    }
+
+    public void setSomePasswordMandatoryStr(final String somePasswordMandatoryStr) {
+        this.somePasswordMandatoryStr = somePasswordMandatoryStr;
+    }
+
+    @javax.jdo.annotations.NotPersistent
+    public Password getSomePasswordMandatory() {
+        return new Password(somePasswordMandatoryStr);
+    }
+    public void setSomePasswordMandatory(final Password somePasswordMandatory) {
+        this.somePasswordMandatoryStr = somePasswordMandatory.getPassword();
+    }
+
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public TextObject updateSomePasswordMandatory(final Password password) {
+        setSomePasswordMandatory(password);
+        return this;
+    }
+    public Password default0UpdateSomePasswordMandatory() {
+        return getSomePasswordMandatory();
+    }
+    //endregion
+
+    //region > somePasswordOptional (property)
+    private String somePasswordOptionalStr;
+
+    @Column(allowsNull = "true")
+    @Programmatic
+    public String getSomePasswordOptionalStr() {
+        return somePasswordOptionalStr;
+    }
+
+    public void setSomePasswordOptionalStr(final String somePasswordOptionalStr) {
+        this.somePasswordOptionalStr = somePasswordOptionalStr;
+    }
+
+    @javax.jdo.annotations.NotPersistent
+    @Optional
+    public Password getSomePasswordOptional() {
+        return new Password(somePasswordOptionalStr);
+    }
+    public void setSomePasswordOptional(final Password somePasswordOptional) {
+        this.somePasswordOptionalStr = somePasswordOptional != null? somePasswordOptional.getPassword(): null;
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public TextObject updateSomePasswordOptional(final @Optional Password password) {
+        setSomePasswordOptional(password);
+        return this;
+    }
+    public Password default0UpdateSomePasswordOptional() {
+        return getSomePasswordOptional();
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public TextObject resetSomePasswordOptional() {
+        setSomePasswordOptionalStr(null);
+        return this;
+    }
+    //endregion
+
+
+    //region > somePasswordHidden (property)
+    private String somePasswordHiddenStr;
+
+    @javax.jdo.annotations.Column(allowsNull = "false")
+    @Programmatic
+    public String getSomePasswordHiddenStr() {
+        return somePasswordHiddenStr;
+    }
+
+    public void setSomePasswordHiddenStr(final String somePasswordHiddenStr) {
+        this.somePasswordHiddenStr = somePasswordHiddenStr;
+    }
+
+    @javax.jdo.annotations.NotPersistent
+    @Hidden
+    public Password getSomePasswordHidden() {
+        return new Password(somePasswordHiddenStr);
+    }
+    public void setSomePasswordHidden(final Password somePasswordHidden) {
+        this.somePasswordHiddenStr = somePasswordHidden.getPassword();
+    }
+
+    //endregion
+
+    //region > somePasswordDisabled (property)
+    private String somePasswordDisabledStr;
+
+    @javax.jdo.annotations.Column(allowsNull = "false")
+    @Programmatic
+    public String getSomePasswordDisabledStr() {
+        return somePasswordDisabledStr;
+    }
+
+    public void setSomePasswordDisabledStr(final String somePasswordDisabledStr) {
+        this.somePasswordDisabledStr = somePasswordDisabledStr;
+    }
+
+    @javax.jdo.annotations.NotPersistent
+    @Disabled
+    public Password getSomePasswordDisabled() {
+        return new Password(somePasswordDisabledStr);
+    }
+    public void setSomePasswordDisabled(final Password somePasswordDisabled) {
+        this.somePasswordDisabledStr = somePasswordDisabled.getPassword();
+    }
+
+    //endregion
+
+    //region > somePasswordWithValidation (property)
+    private String somePasswordWithValidationStr;
+
+    @javax.jdo.annotations.Column(allowsNull = "false")
+    @Programmatic
+    public String getSomePasswordWithValidationStr() {
+        return somePasswordWithValidationStr;
+    }
+
+    public void setSomePasswordWithValidationStr(final String somePasswordWithValidationStr) {
+        this.somePasswordWithValidationStr = somePasswordWithValidationStr;
+    }
+
+
+    @javax.jdo.annotations.NotPersistent
+    public Password getSomePasswordWithValidation() {
+        return new Password(somePasswordWithValidationStr);
+    }
+    public void setSomePasswordWithValidation(final Password somePasswordWithValidation) {
+        this.somePasswordWithValidationStr = somePasswordWithValidation.getPassword();
+    }
+
+    public String validateSomePasswordWithValidation(final Password x) {
+        return x != null && x.getPassword() != null && x.getPassword().length() < 4
+                ? "Must be 4 characters or more"
+                : null;
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public TextObject updateSomePasswordWithValidation(final Password password) {
+        setSomePasswordWithValidation(password);
+        return this;
+    }
+
+    public String validateUpdateSomePasswordWithValidation(final Password password) {
+        return validateSomePasswordWithValidation(password);
+    }
+    public Password default0UpdateSomePasswordWithValidation() {
+        return getSomePasswordWithValidation();
+    }
+
+    //endregion
+
+    //region > somePasswordMandatoryWithChoices (property)
+    private String somePasswordMandatoryWithChoicesStr;
+
+    @Column(allowsNull = "false")
+    @Programmatic
+    public String getSomePasswordMandatoryWithChoicesStr() {
+        return somePasswordMandatoryWithChoicesStr;
+    }
+
+    public void setSomePasswordMandatoryWithChoicesStr(final String somePasswordMandatoryWithChoicesStr) {
+        this.somePasswordMandatoryWithChoicesStr = somePasswordMandatoryWithChoicesStr;
+    }
+
+    @javax.jdo.annotations.NotPersistent
+    public Password getSomePasswordMandatoryWithChoices() {
+        return new Password(somePasswordMandatoryWithChoicesStr);
+    }
+    public void setSomePasswordMandatoryWithChoices(final Password somePasswordMandatoryWithChoices) {
+        this.somePasswordMandatoryWithChoicesStr = somePasswordMandatoryWithChoices.getPassword();
+    }
+
+    public Collection<Password> choicesSomePasswordMandatoryWithChoices() {
+        return Lists.newArrayList(
+                new Password("a"),
+                new Password("ab"),
+                new Password("abcd"),
+                new Password("abcdefgh"),
+                new Password("abcdefghijklmnop"),
+                new Password("abcdefghijklmnopqrstuvwxyz"));
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public TextObject updateSomePasswordMandatoryWithChoices(final Password password) {
+        setSomePasswordMandatoryWithChoices(password);
+        return this;
+    }
+    public Password default0UpdateSomePasswordMandatoryWithChoices() {
+        return getSomePasswordMandatoryWithChoices();
+    }
+    public Collection<Password> choices0UpdateSomePasswordMandatoryWithChoices() {
+        return choicesSomePasswordMandatoryWithChoices();
+    }
+    //endregion
+
+    //region > somePasswordOptionalWithChoices (property)
+    private String somePasswordOptionalWithChoicesStr;
+
+    @Column(allowsNull = "true")
+    @Programmatic
+    public String getSomePasswordOptionalWithChoicesStr() {
+        return somePasswordOptionalWithChoicesStr;
+    }
+
+    public void setSomePasswordOptionalWithChoicesStr(final String somePasswordOptionalWithChoicesStr) {
+        this.somePasswordOptionalWithChoicesStr = somePasswordOptionalWithChoicesStr;
+    }
+
+    @javax.jdo.annotations.NotPersistent
+    @Optional
+    public Password getSomePasswordOptionalWithChoices() {
+        return new Password(somePasswordOptionalWithChoicesStr);
+    }
+    public void setSomePasswordOptionalWithChoices(final Password somePasswordOptionalWithChoices) {
+        this.somePasswordOptionalWithChoicesStr = somePasswordOptionalWithChoices != null? somePasswordOptionalWithChoices.getPassword(): null;
+    }
+
+    public Collection<Password> choicesSomePasswordOptionalWithChoices() {
+        return Lists.newArrayList(
+                new Password("a"),
+                new Password("ab"),
+                new Password("abcd"),
+                new Password("abcdefgh"),
+                new Password("abcdefghijklmnop"),
+                new Password("abcdefghijklmnopqrstuvwxyz"));
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public TextObject updateSomePasswordOptionalWithChoices(final @Optional Password password) {
+        setSomePasswordOptionalWithChoices(password);
+        return this;
+    }
+    public Password default0UpdateSomePasswordOptionalWithChoices() {
+        return getSomePasswordOptionalWithChoices();
+    }
+    public Collection<Password> choices0UpdateSomePasswordOptionalWithChoices() {
+        return choicesSomePasswordOptionalWithChoices();
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public TextObject resetSomePasswordOptionalWithChoices() {
+        setSomePasswordOptionalWithChoices(null);
+        return this;
+    }
+    //endregion
+
+
 
 
     //region > someStringMulti (property)

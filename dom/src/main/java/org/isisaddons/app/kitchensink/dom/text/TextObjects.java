@@ -20,6 +20,7 @@ import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.Named;
+import org.apache.isis.applib.value.Password;
 
 @Named("Text")
 @DomainService(menuOrder = "10", repositoryFor = TextObject.class)
@@ -36,6 +37,8 @@ public class TextObjects extends RepositoryAbstract<TextObject> {
         obj.setName(name);
 
         final char nameChar0 = name.charAt(0);
+        final Password password = new Password(name);
+
         obj.setSomeChar(nameChar0);
         obj.setSomeCharHidden(nameChar0);
         obj.setSomeCharDisabled(nameChar0);
@@ -58,6 +61,14 @@ public class TextObjects extends RepositoryAbstract<TextObject> {
         obj.setSomeStringMandatoryWithChoices(name);
         obj.setSomeStringOptionalWithChoices(name);
 
+        obj.setSomePasswordMandatory(password);
+        obj.setSomePasswordOptional(password);
+        obj.setSomePasswordHidden(password);
+        obj.setSomePasswordDisabled(password);
+        obj.setSomePasswordWithValidation(password);
+        obj.setSomePasswordMandatoryWithChoices(password);
+        obj.setSomePasswordOptionalWithChoices(password);
+        
         obj.setSomeString20(name);
         obj.setSomeString50(name);
 

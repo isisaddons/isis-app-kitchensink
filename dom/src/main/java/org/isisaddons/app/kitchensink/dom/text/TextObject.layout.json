@@ -214,6 +214,78 @@
               }
             }
           }
+        },
+        "Password": {
+          "members": {
+            "somePasswordMandatory": {
+              "actions": {
+                "updateSomePasswordMandatory": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              }
+            },
+            "somePasswordOptional": {
+              "actions": {
+                "updateSomePasswordOptional": {
+                  "named": {
+                    "value": "update"
+                  }
+                },
+                "resetSomePasswordOptional": {
+                  "named": {
+                    "value": "clear"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
+            },
+            "somePasswordHidden": {
+            },
+            "somePasswordDisabled": {
+            },
+            "somePasswordWithValidation": {
+              "actions": {
+                "updateSomePasswordWithValidation": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              }
+            },
+            "somePasswordMandatoryWithChoices": {
+              "actions": {
+                "updateSomePasswordMandatoryWithChoices": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
+            },
+            "somePasswordOptionalWithChoices": {
+              "actions": {
+                "updateSomePasswordOptionalWithChoices": {
+                  "named": {
+                    "value": "update"
+                  }
+                },
+                "resetSomePasswordOptionalWithChoices": {
+                  "named": {
+                    "value": "clear"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
+            }
+          }
         }
       }
     },
