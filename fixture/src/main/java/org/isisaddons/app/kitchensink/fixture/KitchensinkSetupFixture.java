@@ -17,6 +17,7 @@
 package org.isisaddons.app.kitchensink.fixture;
 
 import org.isisaddons.app.kitchensink.fixture.blobclob.BlobClobObjectsFixture;
+import org.isisaddons.app.kitchensink.fixture.dependent.NflPlayersFixture;
 import org.isisaddons.app.kitchensink.fixture.reference.ReferenceObjectsFixture;
 import org.isisaddons.app.kitchensink.fixture.date.DateObjectsFixture;
 import org.isisaddons.app.kitchensink.fixture.enumerated.EnumeratedObjectsFixture;
@@ -41,6 +42,7 @@ public class KitchensinkSetupFixture extends FixtureScript {
 
         execute(new OtherBoundedObjectsFixture(), executionContext);
         execute(new OtherObjectsFixture(), executionContext);
+        execute(new NflPlayersFixture(), executionContext);
 
         execute(new PrimitiveObjectsFixture(), executionContext);
         execute(new WrapperObjectsFixture(), executionContext);
