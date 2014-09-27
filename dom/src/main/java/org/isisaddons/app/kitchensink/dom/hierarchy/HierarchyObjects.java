@@ -25,7 +25,9 @@ import org.isisaddons.app.kitchensink.dom.hierarchy.parent.ParentObject;
 import org.isisaddons.app.kitchensink.dom.hierarchy.parent.ParentObjects;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.MemberOrder;
+import org.apache.isis.applib.annotation.Named;
 
+@Named("Hierarchy")
 @DomainService(menuOrder = "10")
 public class HierarchyObjects {
 
