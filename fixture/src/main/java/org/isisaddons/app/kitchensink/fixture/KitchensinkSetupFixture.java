@@ -20,6 +20,7 @@ import org.isisaddons.app.kitchensink.fixture.blobclob.BlobClobObjectsFixture;
 import org.isisaddons.app.kitchensink.fixture.date.DateObjectsFixture;
 import org.isisaddons.app.kitchensink.fixture.dependent.NflPlayersFixture;
 import org.isisaddons.app.kitchensink.fixture.enumerated.EnumeratedObjectsFixture;
+import org.isisaddons.app.kitchensink.fixture.hierarchy.HierarchyObjectsFixture;
 import org.isisaddons.app.kitchensink.fixture.javamath.JavaMathObjectsFixture;
 import org.isisaddons.app.kitchensink.fixture.layout.*;
 import org.isisaddons.app.kitchensink.fixture.other.OtherBoundedObjectsFixture;
@@ -62,6 +63,8 @@ public class KitchensinkSetupFixture extends FixtureScript {
 
         execute(new Layout_4_0_0_8C_ObjectsFixture(), executionContext);
         execute(new Layout_6_0_6_12C_ObjectsFixture(), executionContext);
+
+        execute(new HierarchyObjectsFixture(), executionContext);
     }
 
 }
