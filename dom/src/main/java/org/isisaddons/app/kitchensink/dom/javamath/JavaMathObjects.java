@@ -24,7 +24,7 @@ import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.Named;
 
 @Named("Java Math")
-@DomainService(menuOrder = "10", repositoryFor = JavaMathObject.class)
+@DomainService(menuOrder = "10.4", repositoryFor = JavaMathObject.class)
 public class JavaMathObjects extends RepositoryAbstract<JavaMathObject> {
 
     public JavaMathObjects() {

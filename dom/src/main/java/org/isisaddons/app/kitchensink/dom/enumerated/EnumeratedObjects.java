@@ -22,7 +22,7 @@ import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.Named;
 
 @Named("Enumerated")
-@DomainService(menuOrder = "10", repositoryFor = EnumeratedObject.class)
+@DomainService(menuOrder = "10.6", repositoryFor = EnumeratedObject.class)
 public class EnumeratedObjects extends RepositoryAbstract<EnumeratedObject> {
 
     public EnumeratedObjects() {

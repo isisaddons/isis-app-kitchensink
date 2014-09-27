@@ -26,7 +26,7 @@ import org.apache.isis.applib.value.Blob;
 import org.apache.isis.applib.value.Clob;
 
 @Named("Blob/Clob")
-@DomainService(menuOrder = "10", repositoryFor = ReferenceObject.class)
+@DomainService(menuOrder = "10.7", repositoryFor = ReferenceObject.class)
 public class BlobClobObjects extends RepositoryAbstract<BlobClobObject> {
 
     public BlobClobObjects() {

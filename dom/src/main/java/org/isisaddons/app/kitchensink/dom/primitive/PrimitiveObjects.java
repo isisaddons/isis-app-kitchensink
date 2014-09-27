@@ -22,7 +22,7 @@ import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.Named;
 
 @Named("Primitive")
-@DomainService(menuOrder = "10", repositoryFor = PrimitiveObject.class)
+@DomainService(menuOrder = "10.2", repositoryFor = PrimitiveObject.class)
 public class PrimitiveObjects extends RepositoryAbstract<PrimitiveObject> {
 
     public PrimitiveObjects() {

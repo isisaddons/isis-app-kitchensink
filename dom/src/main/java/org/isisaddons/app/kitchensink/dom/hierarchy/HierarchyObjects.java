@@ -28,7 +28,7 @@ import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.Named;
 
 @Named("Hierarchy")
-@DomainService(menuOrder = "10")
+@DomainService(menuOrder = "10.10")
 public class HierarchyObjects {
 
 

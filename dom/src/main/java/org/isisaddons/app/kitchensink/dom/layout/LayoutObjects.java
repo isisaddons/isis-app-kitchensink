@@ -34,7 +34,7 @@ import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.Named;
 
 @Named("Layout")
-@DomainService(menuOrder = "10")
+@DomainService(menuOrder = "10.11")
 public class LayoutObjects  {
 
 

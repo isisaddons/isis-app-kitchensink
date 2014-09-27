@@ -14,44 +14,19 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-{
-  "columns": [
-    {
-      "span": 6,
-      "memberGroups": {
-        "Name": {
-          "members": {
-            "name": {
+package org.isisaddons.app.kitchensink.dom.hierarchy.child;
+
+import java.util.Collection;
+import com.google.common.base.Predicate;
+
+public final class PredicateUtil {
+    private PredicateUtil(){}
+    public static <T> Predicate<T> containedIn(final Collection<T> children) {
+        return new Predicate<T>() {
+            @Override
+            public boolean apply(T input) {
+                return children.contains(input);
             }
-          }
-        }
-      }
-    },
-    {
-      "span": 0,
-      "memberGroups": {
-      }
-    },
-    {
-      "span": 0,
-      "memberGroups": {
-      }
-    },
-    {
-      "span": 6,
-      "collections": {
-        "children": {
-          "actions": {
-            "addChild": {},
-            "moveChild": {}
-          },
-          "render": {
-            "value": "EAGERLY"
-          }
-        }
-      }
+        };
     }
-  ],
-  "actions": {}
 }
- 

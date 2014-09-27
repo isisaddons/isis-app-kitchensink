@@ -25,7 +25,7 @@ import org.apache.isis.applib.annotation.Named;
 import org.apache.isis.applib.annotation.Optional;
 
 @Named("Dependent")
-@DomainService(menuOrder = "10", repositoryFor = ReferenceObject.class)
+@DomainService(menuOrder = "10.9", repositoryFor = ReferenceObject.class)
 public class NflPlayers extends RepositoryAbstract<NflPlayer> {
 
     public NflPlayers() {

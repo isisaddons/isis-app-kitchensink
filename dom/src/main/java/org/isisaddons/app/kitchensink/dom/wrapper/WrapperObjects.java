@@ -22,7 +22,7 @@ import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.Named;
 
 @Named("Wrappers")
-@DomainService(menuOrder = "10", repositoryFor = WrapperObject.class)
+@DomainService(menuOrder = "10.3", repositoryFor = WrapperObject.class)
 public class WrapperObjects extends RepositoryAbstract<WrapperObject> {
 
     public WrapperObjects() {

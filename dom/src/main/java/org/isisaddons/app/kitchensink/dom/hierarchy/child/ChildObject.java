@@ -16,6 +16,7 @@
  */
 package org.isisaddons.app.kitchensink.dom.hierarchy.child;
 
+import java.util.Collection;
 import java.util.SortedSet;
 import java.util.TreeSet;
 import javax.jdo.annotations.Column;
@@ -25,8 +26,7 @@ import javax.jdo.annotations.VersionStrategy;
 import org.isisaddons.app.kitchensink.dom.Entity;
 import org.isisaddons.app.kitchensink.dom.hierarchy.grandchild.GrandchildObject;
 import org.isisaddons.app.kitchensink.dom.hierarchy.parent.ParentObject;
-import org.isisaddons.app.kitchensink.dom.other.OtherBoundedObjects;
-import org.isisaddons.app.kitchensink.dom.other.OtherObjects;
+import org.isisaddons.app.kitchensink.dom.hierarchy.parent.ParentObjects;
 import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.annotation.*;
 import org.apache.isis.applib.util.ObjectContracts;
@@ -63,6 +63,7 @@ public class ChildObject implements Entity<ChildObject> {
     //region > parent (property)
     private ParentObject parent;
 
+    @Disabled
     @MemberOrder(sequence = "1")
     @Column(allowsNull = "false")
     public ParentObject getParent() {
@@ -74,6 +75,19 @@ public class ChildObject implements Entity<ChildObject> {
     }
     //endregion
 
+    //region > changeParent (action)
+    @MemberOrder(sequence = "1")
+    public ChildObject changeParent(final ParentObject newParent) {
+        setParent(newParent);
+        return this;
+    }
+
+    public Collection<ParentObject> choices0ChangeParent() {
+        return getParent().choices1MoveChild();
+    }
+    //endregion
+    
+    
     //region > grandchildren (collection)
     @Persistent(mappedBy = "child", dependentElement = "false")
     private SortedSet<GrandchildObject> grandchildren = new TreeSet<GrandchildObject>();
@@ -98,18 +112,14 @@ public class ChildObject implements Entity<ChildObject> {
 
     //endregion
 
+
     //region > injected services
 
     @javax.inject.Inject
-    @SuppressWarnings("unused")
     private DomainObjectContainer container;
 
     @javax.inject.Inject
-    private OtherObjects otherObjects;
-
-    @javax.inject.Inject
-    private OtherBoundedObjects otherBoundedObjects;
-
+    private ParentObjects parentObjects;
     //endregion
 
 }

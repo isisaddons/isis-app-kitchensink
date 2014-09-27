@@ -24,7 +24,7 @@ import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.Named;
 
 @Named("Date")
-@DomainService(menuOrder = "10", repositoryFor = DateObject.class)
+@DomainService(menuOrder = "10.5", repositoryFor = DateObject.class)
 public class DateObjects extends RepositoryAbstract<DateObject> {
 
     public DateObjects() {

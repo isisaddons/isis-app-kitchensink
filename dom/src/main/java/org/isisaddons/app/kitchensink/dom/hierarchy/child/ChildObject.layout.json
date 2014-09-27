@@ -17,11 +17,28 @@
 {
   "columns": [
     {
-      "span": 4,
+      "span": 3,
       "memberGroups": {
         "Name": {
           "members": {
             "name": {
+            }
+          }
+        }
+      }
+    },
+    {
+      "span": 3,
+      "memberGroups": {
+        "Parent": {
+          "members": {
+            "parent": {
+              "actions": {
+                "changeParent": {}
+              },
+              "hidden": {
+                "where": "REFERENCES_PARENT"
+              }
             }
           }
         }
@@ -33,12 +50,7 @@
       }
     },
     {
-      "span": 0,
-      "memberGroups": {
-      }
-    },
-    {
-      "span": 8,
+      "span": 6,
       "collections": {
         "grandchildren": {
           "render": {

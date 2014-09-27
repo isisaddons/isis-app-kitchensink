@@ -17,7 +17,7 @@
 {
   "columns": [
     {
-      "span": 12,
+      "span": 3,
       "memberGroups": {
         "Name": {
           "members": {
@@ -28,8 +28,20 @@
       }
     },
     {
-      "span": 0,
+      "span": 3,
       "memberGroups": {
+        "Parent": {
+          "members": {
+            "child": {
+              "actions": {
+                "changeChild": {}
+              },
+              "hidden": {
+                "where": "REFERENCES_PARENT"
+              }
+            }
+          }
+        }
       }
     },
     {

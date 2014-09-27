@@ -16,19 +16,22 @@
  */
 package org.isisaddons.app.kitchensink.dom.hierarchy.parent;
 
-import java.util.SortedSet;
-import java.util.TreeSet;
+import java.util.*;
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.VersionStrategy;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 import org.isisaddons.app.kitchensink.dom.Entity;
 import org.isisaddons.app.kitchensink.dom.hierarchy.child.ChildObject;
-import org.isisaddons.app.kitchensink.dom.other.OtherBoundedObjects;
-import org.isisaddons.app.kitchensink.dom.other.OtherObjects;
+import org.isisaddons.app.kitchensink.dom.hierarchy.child.ChildObjects;
 import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.annotation.*;
 import org.apache.isis.applib.util.ObjectContracts;
+
+import static com.google.common.base.Predicates.not;
+import static org.isisaddons.app.kitchensink.dom.hierarchy.child.PredicateUtil.containedIn;
 
 @javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE)
 @javax.jdo.annotations.DatastoreIdentity(
@@ -73,6 +76,41 @@ public class ParentObject implements Entity<ParentObject> {
     }
     //endregion
 
+    //region > addChild (action)
+    @MemberOrder(sequence = "1")
+    public ParentObject addChild(final ChildObject childObject) {
+        childObject.setParent(this);
+        return this;
+    }
+
+    public List<ChildObject> choices0AddChild() {
+        return Lists.newArrayList(Iterables.filter(childObjects.listAll(), not(containedIn(children)))
+        );
+    }
+
+    //endregion
+
+    //region > removeChild (action)
+    @MemberOrder(sequence = "1")
+    public ParentObject moveChild(final ChildObject childObject, final ParentObject other) {
+        childObject.setParent(other);
+        return this;
+    }
+
+    public Collection<ChildObject> choices0MoveChild() {
+        return getChildren();
+    }
+    public Collection<ParentObject> choices1MoveChild() {
+        return Lists.newArrayList(
+                Iterables.filter(parentObjects.listAll(), not(containedIn(Collections.singleton(this)))
+        ));
+    }
+
+    public String disableMoveChild(final ChildObject childObject, final ParentObject other) {
+        return choices0MoveChild().isEmpty()? "No children to move": null;
+    }
+    //endregion
+
     //region > compareTo
 
     @Override
@@ -85,14 +123,14 @@ public class ParentObject implements Entity<ParentObject> {
     //region > injected services
 
     @javax.inject.Inject
-    @SuppressWarnings("unused")
     private DomainObjectContainer container;
 
     @javax.inject.Inject
-    private OtherObjects otherObjects;
+    private ChildObjects childObjects;
 
     @javax.inject.Inject
-    private OtherBoundedObjects otherBoundedObjects;
+    private ParentObjects parentObjects;
+
 
     //endregion
 

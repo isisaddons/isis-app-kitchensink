@@ -23,7 +23,7 @@ import org.apache.isis.applib.annotation.Named;
 import org.apache.isis.applib.value.Password;
 
 @Named("Text")
-@DomainService(menuOrder = "10", repositoryFor = TextObject.class)
+@DomainService(menuOrder = "10.1", repositoryFor = TextObject.class)
 public class TextObjects extends RepositoryAbstract<TextObject> {
 
     public TextObjects() {

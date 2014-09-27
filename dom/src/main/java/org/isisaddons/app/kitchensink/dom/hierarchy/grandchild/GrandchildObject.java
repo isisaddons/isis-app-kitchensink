@@ -16,9 +16,11 @@
  */
 package org.isisaddons.app.kitchensink.dom.hierarchy.grandchild;
 
+import java.util.SortedSet;
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.VersionStrategy;
+import com.google.common.base.Predicate;
 import org.isisaddons.app.kitchensink.dom.Entity;
 import org.isisaddons.app.kitchensink.dom.hierarchy.child.ChildObject;
 import org.isisaddons.app.kitchensink.dom.other.OtherBoundedObjects;
@@ -79,6 +81,19 @@ public class GrandchildObject implements Entity<GrandchildObject> {
     }
 
     //endregion
+
+
+    static class Predicates {
+        private Predicates(){}
+        static Predicate<ChildObject> containedIn(final SortedSet<GrandchildObject> children) {
+            return new Predicate<ChildObject>() {
+                @Override
+                public boolean apply(ChildObject input) {
+                    return children.contains(input);
+                }
+            };
+        }
+    }
 
     //region > injected services
 
