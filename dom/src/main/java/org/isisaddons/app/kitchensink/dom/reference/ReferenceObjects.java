@@ -23,7 +23,7 @@ import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.Named;
 
-@Named("Reference")
+@Named("Reference Objects")
 @DomainService(menuOrder = "10.8", repositoryFor = ReferenceObject.class)
 public class ReferenceObjects extends RepositoryAbstract<ReferenceObject> {
 
