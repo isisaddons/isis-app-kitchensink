@@ -55,6 +55,18 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
     //endregion
 
 
+    public byte default0DeliberatelyOrphanedToCauseMetaModelValidationErrorUpdateSomeByte() {
+        return getSomeByte();
+    }
+
+    public byte default0AlsoDeliberatelyOrphanedToCauseMetaModelValidationErrorUpdateSomeByte() {
+        return getSomeByte();
+    }
+
+    public byte default0AndThisOneAlsoDeliberatelyOrphanedToCauseMetaModelValidationErrorUpdateSomeByte() {
+        return getSomeByte();
+    }
+
     //region > someByte (property)
     private byte someByte;
 
