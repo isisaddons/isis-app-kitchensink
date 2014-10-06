@@ -829,8 +829,6 @@ public class TextObject implements Entity<TextObject> {
     //endregion
 
 
-
-
     //region > someStringMulti (property)
     private String someStringMulti;
 

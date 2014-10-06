@@ -37,7 +37,7 @@ import org.apache.isis.applib.util.ObjectContracts;
 @javax.jdo.annotations.Version(
         strategy=VersionStrategy.VERSION_NUMBER, 
         column="version")
-@ObjectType("CHOICE")
+@ObjectType("REFERENCE")
 @Bookmarkable
 public class ReferenceObject implements Entity<ReferenceObject> {
 

@@ -24,6 +24,8 @@ import org.isisaddons.app.kitchensink.fixture.enumerated.EnumeratedObjectsFixtur
 import org.isisaddons.app.kitchensink.fixture.hierarchy.HierarchyObjectsFixture;
 import org.isisaddons.app.kitchensink.fixture.javamath.JavaMathObjectsFixture;
 import org.isisaddons.app.kitchensink.fixture.layout.*;
+import org.isisaddons.app.kitchensink.fixture.message.MessageObjectsFixture;
+import org.isisaddons.app.kitchensink.fixture.misc.MiscObjectsFixture;
 import org.isisaddons.app.kitchensink.fixture.other.OtherBoundedObjectsFixture;
 import org.isisaddons.app.kitchensink.fixture.other.OtherObjectsFixture;
 import org.isisaddons.app.kitchensink.fixture.primitive.PrimitiveObjectsFixture;
@@ -56,6 +58,7 @@ public class KitchensinkSetupFixture extends FixtureScript {
         execute(new ReferenceObjectsFixture(), executionContext);
         execute(new DateObjectsFixture(), executionContext);
         execute(new BlobClobObjectsFixture(), executionContext);
+        execute(new MiscObjectsFixture(), executionContext);
 
         execute(new WorkflowObjectsFixture(), executionContext);
 
@@ -68,6 +71,9 @@ public class KitchensinkSetupFixture extends FixtureScript {
         execute(new Layout_6_0_6_12C_ObjectsFixture(), executionContext);
 
         execute(new HierarchyObjectsFixture(), executionContext);
+
+        execute(new MessageObjectsFixture(), executionContext);
+
     }
 
 }
