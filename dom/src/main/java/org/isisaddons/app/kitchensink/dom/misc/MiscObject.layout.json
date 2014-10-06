@@ -28,7 +28,12 @@
       }
     },
     {
-      "span": 4,
+      "span": 0,
+      "memberGroups": {
+      }
+    },
+    {
+      "span": 8,
       "memberGroups": {
         "java.net.URL": {
           "members": {
@@ -107,12 +112,7 @@
               }
             }
           }
-        }
-      }
-    },
-    {
-      "span": 4,
-      "memberGroups": {
+        },
         "java.util.UUID": {
           "members": {
             "someUuidMandatory": {

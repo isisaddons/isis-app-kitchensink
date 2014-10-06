@@ -55,7 +55,7 @@ public class MessageObject implements Entity<MessageObject> {
 
 
     @MemberOrder(name="name", sequence = "30.1")
-    public MessageObject updateAndInfoMessage(
+    public MessageObject updateAndInformUser(
             final @Named("Name") String name) {
         setName(name);
         container.informUser("Created object: " + name + " (informUser)");
@@ -82,21 +82,21 @@ public class MessageObject implements Entity<MessageObject> {
     public MessageObject updateAndThrowRecoverableException(
             final @Named("Name") String name) {
         setName(name);
-        throw new RecoverableException("A recoverable (application) exception has been thrown; the object (name='" + name + "') should NOT have been created");
+        throw new RecoverableException("A recoverable (application) exception has been thrown; the object should NOT have been updated (to '" + name + "') ");
     }
 
     @MemberOrder(sequence = "30.5")
     public MessageObject updateAndThrowNonRecoverableException(
             final @Named("Name") String name) {
         setName(name);
-        throw new NonRecoverableException("A non-recoverable exception has been thrown; the object (name='" + name + "') should NOT have been created");
+        throw new NonRecoverableException("A non-recoverable exception has been thrown; the object should NOT have been updated (to '" + name + "') ");
     }
 
     @MemberOrder(sequence = "30.6")
     public MessageObject updateAndThrowRuntimeException(
             final @Named("Name") String name) {
         setName(name);
-        throw new RuntimeException("A runtime exception has been thrown; the object (name='" + name + "') should NOT have been created");
+        throw new RuntimeException("A runtime exception has been thrown; the object should NOT have been updated (to '" + name + "') ");
     }
 
 
@@ -105,7 +105,7 @@ public class MessageObject implements Entity<MessageObject> {
     //region > cloneAnd...
 
     @MemberOrder(sequence = "40.1")
-    public MessageObject cloneAndInfoMessage() {
+    public MessageObject cloneAndInformUser() {
         final MessageObject clonedObject = messageObjects.create(getName() + " (cloned)");
         container.informUser("Cloned object: " + name + " (informUser)");
         return clonedObject;

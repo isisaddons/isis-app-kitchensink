@@ -22,8 +22,13 @@
         "Name": {
           "members": {
             "name": {
-              "hidden": {
-                "where": "OBJECT_FORMS"
+              "actions": {
+                "updateAndInformUser": {},
+                "updateAndWarnUser": {},
+                "updateAndRaiseError": {},
+                "updateAndThrowRecoverableException": {},
+                "updateAndThrowNonRecoverableException": {},
+                "updateAndThrowRuntimeException": {}
               }
             }
           }
