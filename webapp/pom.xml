@@ -127,7 +127,12 @@ language governing permissions and limitations under the License.
     </build>
 
     <dependencies>
-    
+        <dependency>
+            <groupId>org.isisaddons.wicket.excel</groupId>
+            <artifactId>isis-wicket-excel-cpt</artifactId>
+            <version>1.6.2-SNAPSHOT</version>
+        </dependency>
+
         <!-- other modules in this project -->
         <dependency>
             <groupId>${project.groupId}</groupId>
