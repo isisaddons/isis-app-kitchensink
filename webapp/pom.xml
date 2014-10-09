@@ -133,6 +133,12 @@ language governing permissions and limitations under the License.
             <version>1.6.2-SNAPSHOT</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.isisaddons.wicket.wickedcharts</groupId>
+            <artifactId>isis-wicket-wickedcharts-cpt</artifactId>
+            <version>1.6.1-SNAPSHOT</version>
+        </dependency>
+
         <!-- other modules in this project -->
         <dependency>
             <groupId>${project.groupId}</groupId>
