@@ -18,8 +18,6 @@ package org.isisaddons.app.kitchensink.webapp;
 
 import de.agilecoders.wicket.core.Bootstrap;
 import de.agilecoders.wicket.core.settings.IBootstrapSettings;
-import de.agilecoders.wicket.core.settings.SingleThemeProvider;
-import de.agilecoders.wicket.themes.markup.html.bootstrap.BootstrapThemeTheme;
 import de.agilecoders.wicket.themes.markup.html.bootswatch.BootswatchTheme;
 import de.agilecoders.wicket.themes.markup.html.bootswatch.BootswatchThemeProvider;
 
@@ -77,6 +75,18 @@ public class KitchensinkApplication extends IsisWicketApplication {
     private static final String APP_NAME = "Isis Kitchensink App";
 
     @Override
+    protected void init() {
+        super.init();
+
+        getDebugSettings().setOutputMarkupContainerClassName(true);
+        getMarkupSettings().setStripWicketTags(true);
+        getDebugSettings().setAjaxDebugModeEnabled(false);
+
+        IBootstrapSettings settings = Bootstrap.getSettings();
+        settings.setThemeProvider(new BootswatchThemeProvider(BootswatchTheme.Flatly));
+    }
+
+    @Override
     public Session newSession(final Request request, final Response response) {
         if(!DEMO_MODE_USING_CREDENTIALS_AS_QUERYARGS) {
             return super.newSession(request, response);
@@ -125,19 +135,6 @@ public class KitchensinkApplication extends IsisWicketApplication {
         };
 
         return Modules.override(isisDefaults).with(simpleOverrides);
-    }
-
-    @Override
-    protected void init() {
-        super.init();
-
-        getDebugSettings().setOutputMarkupContainerClassName(true);
-        getMarkupSettings().setStripWicketTags(true);
-        getDebugSettings().setAjaxDebugModeEnabled(false);
-
-        IBootstrapSettings settings = Bootstrap.getSettings();
-        settings.setThemeProvider(new BootswatchThemeProvider(BootswatchTheme.Flatly));
-//        settings.setThemeProvider(new SingleThemeProvider(new BootstrapThemeTheme()));
     }
 
     private static String readLines(final Class<?> contextClass, final String resourceName) {
