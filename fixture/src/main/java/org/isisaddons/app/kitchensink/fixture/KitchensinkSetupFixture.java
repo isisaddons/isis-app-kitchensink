@@ -43,36 +43,36 @@ public class KitchensinkSetupFixture extends FixtureScript {
     @Override
     protected void execute(ExecutionContext executionContext) {
 
-        execute(new KitchensinkTearDownFixture(), executionContext);
+        executeChild(new KitchensinkTearDownFixture(), executionContext);
 
-        execute(new OtherBoundedObjectsFixture(), executionContext);
-        execute(new OtherObjectsFixture(), executionContext);
-        execute(new NflPlayersFixture(), executionContext);
+        executeChild(new OtherBoundedObjectsFixture(), executionContext);
+        executeChild(new OtherObjectsFixture(), executionContext);
+        executeChild(new NflPlayersFixture(), executionContext);
 
-        execute(new PrimitiveObjectsFixture(), executionContext);
-        execute(new WrapperObjectsFixture(), executionContext);
-        execute(new JavaMathObjectsFixture(), executionContext);
+        executeChild(new PrimitiveObjectsFixture(), executionContext);
+        executeChild(new WrapperObjectsFixture(), executionContext);
+        executeChild(new JavaMathObjectsFixture(), executionContext);
 
-        execute(new TextObjectsFixture(), executionContext);
-        execute(new EnumeratedObjectsFixture(), executionContext);
-        execute(new ReferenceObjectsFixture(), executionContext);
-        execute(new DateObjectsFixture(), executionContext);
-        execute(new BlobClobObjectsFixture(), executionContext);
-        execute(new MiscObjectsFixture(), executionContext);
+        executeChild(new TextObjectsFixture(), executionContext);
+        executeChild(new EnumeratedObjectsFixture(), executionContext);
+        executeChild(new ReferenceObjectsFixture(), executionContext);
+        executeChild(new DateObjectsFixture(), executionContext);
+        executeChild(new BlobClobObjectsFixture(), executionContext);
+        executeChild(new MiscObjectsFixture(), executionContext);
 
-        execute(new WorkflowObjectsFixture(), executionContext);
+        executeChild(new WorkflowObjectsFixture(), executionContext);
 
-        execute(new Layout_3_4_5_ObjectsFixture(), executionContext);
-        execute(new Layout_4_4_4_ObjectsFixture(), executionContext);
-        execute(new Layout_4_0_8_ObjectsFixture(), executionContext);
-        execute(new Layout_6_0_6_ObjectsFixture(), executionContext);
+        executeChild(new Layout_3_4_5_ObjectsFixture(), executionContext);
+        executeChild(new Layout_4_4_4_ObjectsFixture(), executionContext);
+        executeChild(new Layout_4_0_8_ObjectsFixture(), executionContext);
+        executeChild(new Layout_6_0_6_ObjectsFixture(), executionContext);
 
-        execute(new Layout_4_0_0_8C_ObjectsFixture(), executionContext);
-        execute(new Layout_6_0_6_12C_ObjectsFixture(), executionContext);
+        executeChild(new Layout_4_0_0_8C_ObjectsFixture(), executionContext);
+        executeChild(new Layout_6_0_6_12C_ObjectsFixture(), executionContext);
 
-        execute(new HierarchyObjectsFixture(), executionContext);
+        executeChild(new HierarchyObjectsFixture(), executionContext);
 
-        execute(new MessageObjectsFixture(), executionContext);
+        executeChild(new MessageObjectsFixture(), executionContext);
 
     }
 

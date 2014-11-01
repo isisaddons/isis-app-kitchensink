@@ -32,6 +32,8 @@ import org.apache.isis.applib.fixturescripts.FixtureScripts;
 @DomainService(menuOrder = "99")
 public class KitchensinkFixturesService extends FixtureScripts {
 
+    private boolean isInstalled = false;
+
     public KitchensinkFixturesService() {
         super("org.isisaddons.app.kitchensink.fixture");
     }
@@ -57,8 +59,11 @@ public class KitchensinkFixturesService extends FixtureScripts {
     @MemberOrder(sequence="20")
     public Object installFixturesAndReturnFirst() {
         final List<FixtureResult> run = findFixtureScriptFor(KitchensinkSetupFixture.class).run(null);
+        isInstalled = true;
         return run.get(0).getObject();
     }
 
-
+    public String disableInstallFixturesAndReturnFirst() {
+        return isInstalled ? "The installation can be ran just once" : null;
+    }
 }
