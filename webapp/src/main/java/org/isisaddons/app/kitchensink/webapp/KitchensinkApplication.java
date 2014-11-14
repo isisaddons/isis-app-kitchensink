@@ -72,7 +72,7 @@ public class KitchensinkApplication extends IsisWicketApplication {
      */
     private final static boolean DEMO_MODE_USING_CREDENTIALS_AS_QUERYARGS = false;
 
-    private static final String APP_NAME = "Isis Kitchensink App";
+    private static final String APP_NAME = "Kitchensink";
 
     @Override
     protected void init() {

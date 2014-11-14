@@ -33,8 +33,8 @@ public class ReferenceObjectsFixture extends FixtureScript {
     protected void execute(ExecutionContext executionContext) {
 
         // prereqs
-        execute(new OtherObjectsFixture(), executionContext);
-        execute(new OtherBoundedObjectsFixture(), executionContext);
+        executeChild(new OtherObjectsFixture(), executionContext);
+        executeChild(new OtherBoundedObjectsFixture(), executionContext);
 
         final List<OtherObject> otherObjectList = otherObjects.listAll();
         final List<OtherBoundedObject> otherBoundedObjectList = otherBoundedObjects.listAll();

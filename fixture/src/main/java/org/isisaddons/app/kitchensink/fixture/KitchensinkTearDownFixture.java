@@ -45,9 +45,9 @@ public class KitchensinkTearDownFixture extends FixtureScript {
         isisJdoSupport.executeUpdate("delete from \"Layout_4_0_0_8C_Object\"");
         isisJdoSupport.executeUpdate("delete from \"Layout_6_0_6_12C_Object\"");
 
-        isisJdoSupport.executeUpdate("delete from \"ParentObject\"");
-        isisJdoSupport.executeUpdate("delete from \"ChildObject\"");
         isisJdoSupport.executeUpdate("delete from \"GrandchildObject\"");
+        isisJdoSupport.executeUpdate("delete from \"ChildObject\"");
+        isisJdoSupport.executeUpdate("delete from \"ParentObject\"");
 
         isisJdoSupport.executeUpdate("delete from \"MessageObject\"");
     }

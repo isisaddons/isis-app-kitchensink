@@ -130,13 +130,11 @@ language governing permissions and limitations under the License.
         <dependency>
             <groupId>org.isisaddons.wicket.excel</groupId>
             <artifactId>isis-wicket-excel-cpt</artifactId>
-            <version>1.8.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>org.isisaddons.wicket.wickedcharts</groupId>
             <artifactId>isis-wicket-wickedcharts-cpt</artifactId>
-            <version>1.8.0-SNAPSHOT</version>
         </dependency>
 
         <!-- other modules in this project -->

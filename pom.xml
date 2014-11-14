@@ -33,6 +33,9 @@ language governing permissions and limitations under the License.
         <isis.version>1.8.0-SNAPSHOT</isis.version>
         <isis-viewer-wicket.version>1.8.0-SNAPSHOT</isis-viewer-wicket.version>
 
+        <isis-wicket-excel.version>1.8.0-SNAPSHOT</isis-wicket-excel.version>
+        <isis-wicket-wickedcharts.version>1.8.0-SNAPSHOT</isis-wicket-wickedcharts.version>
+
         <!-- must be consistent with the versions defined by the JDO Objectstore -->
         <datanucleus-accessplatform-jdo-rdbms.version>3.3.6</datanucleus-accessplatform-jdo-rdbms.version>
         <datanucleus-maven-plugin.version>3.3.2</datanucleus-maven-plugin.version>
@@ -327,11 +330,55 @@ language governing permissions and limitations under the License.
                 <artifactId>isis-app-kitchensink-webapp</artifactId>
                 <version>1.0-SNAPSHOT</version>
             </dependency>
+
+            <!-- addon modules -->
+            <dependency>
+                <groupId>org.isisaddons.wicket.excel</groupId>
+                <artifactId>isis-wicket-excel-cpt</artifactId>
+                <version>${isis-wicket-excel.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.apache.isis.viewer</groupId>
+                        <artifactId>isis-viewer-wicket-ui</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>org.isisaddons.wicket.wickedcharts</groupId>
+                <artifactId>isis-wicket-wickedcharts-cpt</artifactId>
+                <version>${isis-wicket-wickedcharts.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.apache.isis.viewer</groupId>
+                        <artifactId>isis-viewer-wicket-ui</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
     
 
     <profiles>
+        <profile>
+            <id>cloudbees-snapshots</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <repositories>
+                <repository>
+                    <id>snapshots-repo</id>
+                    <url>https://repository-estatio.forge.cloudbees.com/snapshot/</url>
+                    <releases>
+                        <enabled>false</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </repository>
+            </repositories>
+        </profile>
         <profile>
             <id>m2e</id>
             <activation>
