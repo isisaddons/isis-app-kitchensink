@@ -33,7 +33,7 @@ public class TextObjectsFixture extends FixtureScript {
     }
 
     private TextObject create(final String name, ExecutionContext executionContext) {
-        return executionContext.add(this, textObjects.create(name));
+        return executionContext.add(this, textObjects.createTextObject(name));
     }
 
     @javax.inject.Inject

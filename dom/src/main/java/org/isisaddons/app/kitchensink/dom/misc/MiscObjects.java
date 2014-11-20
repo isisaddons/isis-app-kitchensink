@@ -17,13 +17,15 @@
 package org.isisaddons.app.kitchensink.dom.misc;
 
 import java.net.URL;
+import java.util.List;
 import java.util.UUID;
 import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
+import org.apache.isis.applib.annotation.CssClassFa;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.Named;
 
-@Named("Misc")
+@Named("Data Types")
 @DomainService(menuOrder = "10.15", repositoryFor = MiscObject.class)
 public class MiscObjects extends RepositoryAbstract<MiscObject> {
 
@@ -32,7 +34,7 @@ public class MiscObjects extends RepositoryAbstract<MiscObject> {
     }
 
     @MemberOrder(sequence = "30")
-    public MiscObject create(
+    public MiscObject createMiscObject(
             final @Named("Name") String name,
             final URL url,
             final UUID uuid) {
@@ -60,4 +62,20 @@ public class MiscObjects extends RepositoryAbstract<MiscObject> {
         container.persistIfNotAlready(obj);
         return obj;
     }
+
+
+
+    @Named("First MiscObject")
+    @Override
+    public MiscObject first() {
+        return super.first();
+    }
+
+    @Named("List All MiscObjects")
+    @Override
+    public List<MiscObject> listAll() {
+        return super.listAll();
+    }
+
+
 }

@@ -16,12 +16,13 @@
  */
 package org.isisaddons.app.kitchensink.dom.wrapper;
 
+import java.util.List;
 import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.Named;
 
-@Named("Wrappers")
+@Named("Data Types")
 @DomainService(menuOrder = "10.3", repositoryFor = WrapperObject.class)
 public class WrapperObjects extends RepositoryAbstract<WrapperObject> {
 
@@ -30,7 +31,7 @@ public class WrapperObjects extends RepositoryAbstract<WrapperObject> {
     }
 
     @MemberOrder(sequence = "30")
-    public WrapperObject create(
+    public WrapperObject createWrapperObject(
             final @Named("Name") String name,
             final @Named("Byte") byte b,
             final @Named("Short") short s,
@@ -67,4 +68,20 @@ public class WrapperObjects extends RepositoryAbstract<WrapperObject> {
         container.persistIfNotAlready(obj);
         return obj;
     }
+
+
+
+    @Named("First WrapperObject")
+    @Override
+    public WrapperObject first() {
+        return super.first();
+    }
+
+    @Named("List All WrapperObjects")
+    @Override
+    public List<WrapperObject> listAll() {
+        return super.listAll();
+    }
+
+
 }

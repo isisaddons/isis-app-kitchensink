@@ -38,7 +38,7 @@ public class MiscObjectsFixture extends FixtureScript {
     }
 
     private MiscObject create(final String name, final URL url, final UUID uuid, final ExecutionContext executionContext) {
-        return executionContext.add(this, miscObjects.create(name, url, uuid));
+        return executionContext.add(this, miscObjects.createMiscObject(name, url, uuid));
     }
 
     @javax.inject.Inject

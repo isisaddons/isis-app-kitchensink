@@ -37,7 +37,7 @@ public class DateObjectsFixture extends FixtureScript {
     }
 
     private DateObject create(final String name, ExecutionContext executionContext, DateTime dt) {
-        return executionContext.add(this, dateObjects.create(name, dt.getYear(), dt.getMonthOfYear(), dt.getDayOfMonth(), dt.getHourOfDay(), dt.getMinuteOfHour()));
+        return executionContext.add(this, dateObjects.createDateObject(name, dt.getYear(), dt.getMonthOfYear(), dt.getDayOfMonth(), dt.getHourOfDay(), dt.getMinuteOfHour()));
     }
 
     @javax.inject.Inject

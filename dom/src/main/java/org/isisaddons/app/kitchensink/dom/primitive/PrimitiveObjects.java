@@ -16,12 +16,14 @@
  */
 package org.isisaddons.app.kitchensink.dom.primitive;
 
+import java.util.List;
 import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
+import org.apache.isis.applib.annotation.CssClassFa;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.Named;
 
-@Named("Primitive")
+@Named("Data Types")
 @DomainService(menuOrder = "10.2", repositoryFor = PrimitiveObject.class)
 public class PrimitiveObjects extends RepositoryAbstract<PrimitiveObject> {
 
@@ -30,7 +32,7 @@ public class PrimitiveObjects extends RepositoryAbstract<PrimitiveObject> {
     }
 
     @MemberOrder(sequence = "30")
-    public PrimitiveObject create(
+    public PrimitiveObject createPrimitiveObject(
             final @Named("Name") String name,
             final @Named("Byte") byte b,
             final @Named("Short") short s,
@@ -87,4 +89,19 @@ public class PrimitiveObjects extends RepositoryAbstract<PrimitiveObject> {
         container.persistIfNotAlready(obj);
         return obj;
     }
+
+
+    @Named("First PrimitiveObject")
+    @Override
+    public PrimitiveObject first() {
+        return super.first();
+    }
+
+    @Named("List All PrimitiveObjects")
+    @Override
+    public List<PrimitiveObject> listAll() {
+        return super.listAll();
+    }
+
+
 }

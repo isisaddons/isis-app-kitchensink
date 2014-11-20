@@ -16,13 +16,14 @@
  */
 package org.isisaddons.app.kitchensink.dom.text;
 
+import java.util.List;
 import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.Named;
 import org.apache.isis.applib.value.Password;
 
-@Named("Text")
+@Named("Data Types")
 @DomainService(menuOrder = "10.1", repositoryFor = TextObject.class)
 public class TextObjects extends RepositoryAbstract<TextObject> {
 
@@ -31,7 +32,7 @@ public class TextObjects extends RepositoryAbstract<TextObject> {
     }
 
     @MemberOrder(sequence = "30")
-    public TextObject create(
+    public TextObject createTextObject(
             final @Named("Name") String name) {
         final TextObject obj = container.newTransientInstance(TextObject.class);
         obj.setName(name);
@@ -78,4 +79,21 @@ public class TextObjects extends RepositoryAbstract<TextObject> {
         container.persistIfNotAlready(obj);
         return obj;
     }
+
+
+
+    @Named("First TextObject")
+    @Override
+    public TextObject first() {
+        return super.first();
+    }
+
+    @Named("List All TextObjects")
+    @Override
+    public List<TextObject> listAll() {
+        return super.listAll();
+    }
+
+
+
 }

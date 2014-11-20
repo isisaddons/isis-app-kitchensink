@@ -14,29 +14,28 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-package org.isisaddons.app.kitchensink.fixture.wrapper;
+package org.isisaddons.app.kitchensink.fixture.busrules;
 
-import org.isisaddons.app.kitchensink.dom.wrapper.WrapperObject;
-import org.isisaddons.app.kitchensink.dom.wrapper.WrapperObjects;
-
+import org.isisaddons.app.kitchensink.dom.busrules.BusRulesObject;
+import org.isisaddons.app.kitchensink.dom.busrules.BusRulesObjects;
 import org.apache.isis.applib.fixturescripts.FixtureScript;
 
-public class WrapperObjectsFixture extends FixtureScript {
+public class BusRulesObjectsFixture extends FixtureScript {
 
     @Override
     protected void execute(ExecutionContext executionContext) {
 
-        long l = 0;
-        create("Foo", l++, executionContext);
-        create("Bar", l++, executionContext);
-        create("Baz", l++, executionContext);
+        // create
+        create("Foo", executionContext);
+        create("Bar", executionContext);
+        create("Baz", executionContext);
     }
 
-    private WrapperObject create(final String name, long l, ExecutionContext executionContext) {
-        return executionContext.add(this, wrapperObjects.createWrapperObject(name, (byte) l, (short) l, (int) l, l, l, l));
+    private BusRulesObject create(final String name, ExecutionContext executionContext) {
+        return executionContext.add(this, busRulesObjects.create(name));
     }
 
     @javax.inject.Inject
-    private WrapperObjects wrapperObjects;
+    private BusRulesObjects busRulesObjects;
 
 }

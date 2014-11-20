@@ -18,12 +18,14 @@ package org.isisaddons.app.kitchensink.dom.date;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.List;
 import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
+import org.apache.isis.applib.annotation.CssClassFa;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.Named;
 
-@Named("Date")
+@Named("Data Types")
 @DomainService(menuOrder = "10.5", repositoryFor = DateObject.class)
 public class DateObjects extends RepositoryAbstract<DateObject> {
 
@@ -32,7 +34,7 @@ public class DateObjects extends RepositoryAbstract<DateObject> {
     }
 
     @MemberOrder(sequence = "30")
-    public DateObject create(
+    public DateObject createDateObject(
             final @Named("Name") String name,
             final @Named("Year") int year,
             final @Named("Month") int month,
@@ -102,6 +104,18 @@ public class DateObjects extends RepositoryAbstract<DateObject> {
 
         container.persistIfNotAlready(obj);
         return obj;
+    }
+
+    @Named("First DateObject")
+    @Override
+    public DateObject first() {
+        return super.first();
+    }
+
+    @Named("List All DateObjects")
+    @Override
+    public List<DateObject> listAll() {
+        return super.listAll();
     }
 
 }

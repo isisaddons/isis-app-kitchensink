@@ -18,6 +18,7 @@ package org.isisaddons.app.kitchensink.dom.hierarchy.child;
 
 import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
 import org.isisaddons.app.kitchensink.dom.hierarchy.parent.ParentObject;
+import org.apache.isis.applib.annotation.CssClassFa;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.Named;

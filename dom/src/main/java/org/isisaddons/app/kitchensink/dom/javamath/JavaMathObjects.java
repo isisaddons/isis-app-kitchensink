@@ -18,12 +18,14 @@ package org.isisaddons.app.kitchensink.dom.javamath;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.List;
 import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
+import org.apache.isis.applib.annotation.CssClassFa;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.Named;
 
-@Named("Java Math")
+@Named("Data Types")
 @DomainService(menuOrder = "10.4", repositoryFor = JavaMathObject.class)
 public class JavaMathObjects extends RepositoryAbstract<JavaMathObject> {
 
@@ -33,7 +35,7 @@ public class JavaMathObjects extends RepositoryAbstract<JavaMathObject> {
 
 
     @MemberOrder(sequence = "30")
-    public JavaMathObject create(
+    public JavaMathObject createJavaMathObject(
             final @Named("Name") String name,
             final @Named("Long") long l,
             final @Named("Double") double d) {
@@ -64,6 +66,19 @@ public class JavaMathObjects extends RepositoryAbstract<JavaMathObject> {
 
         container.persistIfNotAlready(obj);
         return obj;
+    }
+
+
+    @Named("First JavaMathObject")
+    @Override
+    public JavaMathObject first() {
+        return super.first();
+    }
+
+    @Named("List All JavaMathObjects")
+    @Override
+    public List<JavaMathObject> listAll() {
+        return super.listAll();
     }
 
 

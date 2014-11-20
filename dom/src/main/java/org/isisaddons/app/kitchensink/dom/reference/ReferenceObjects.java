@@ -16,14 +16,16 @@
  */
 package org.isisaddons.app.kitchensink.dom.reference;
 
+import java.util.List;
 import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
 import org.isisaddons.app.kitchensink.dom.other.OtherBoundedObject;
 import org.isisaddons.app.kitchensink.dom.other.OtherObject;
+import org.apache.isis.applib.annotation.CssClassFa;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.Named;
 
-@Named("Reference Objects")
+@Named("Data Types")
 @DomainService(menuOrder = "10.8", repositoryFor = ReferenceObject.class)
 public class ReferenceObjects extends RepositoryAbstract<ReferenceObject> {
 
@@ -32,7 +34,7 @@ public class ReferenceObjects extends RepositoryAbstract<ReferenceObject> {
     }
 
     @MemberOrder(sequence = "30")
-    public ReferenceObject create(
+    public ReferenceObject createReferenceObject(
             final @Named("Name") String name,
             final @Named("Some Int") int i,
             final OtherObject otherObject,
@@ -47,5 +49,21 @@ public class ReferenceObjects extends RepositoryAbstract<ReferenceObject> {
         container.persistIfNotAlready(obj);
         return obj;
     }
+
+
+
+    @Named("First ReferenceObject")
+    @Override
+    public ReferenceObject first() {
+        return super.first();
+    }
+
+    @Named("List All ReferenceObjects")
+    @Override
+    public List<ReferenceObject> listAll() {
+        return super.listAll();
+    }
+
+
 
 }

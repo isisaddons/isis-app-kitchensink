@@ -51,7 +51,7 @@ public class ReferenceObjectsFixture extends FixtureScript {
     }
 
     private ReferenceObject create(final String name, ExecutionContext executionContext, int i, OtherObject otherObject, OtherBoundedObject otherBoundedObject) {
-        return executionContext.add(this, referenceObjects.create(name, i, otherObject, otherBoundedObject));
+        return executionContext.add(this, referenceObjects.createReferenceObject(name, i, otherObject, otherBoundedObject));
     }
 
     @javax.inject.Inject

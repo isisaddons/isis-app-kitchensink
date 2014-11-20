@@ -31,7 +31,7 @@ public class PrimitiveObjectsFixture extends FixtureScript {
     }
 
     private org.isisaddons.app.kitchensink.dom.primitive.PrimitiveObject create(final String name, long l, ExecutionContext executionContext) {
-        return executionContext.add(this, primitiveObjects.create(name, (byte) l, (short) l, (int) l, l, l, l));
+        return executionContext.add(this, primitiveObjects.createPrimitiveObject(name, (byte) l, (short) l, (int) l, l, l, l));
     }
 
     @javax.inject.Inject

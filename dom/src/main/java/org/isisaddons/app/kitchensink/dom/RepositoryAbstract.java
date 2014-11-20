@@ -79,30 +79,6 @@ public abstract class RepositoryAbstract<T extends Entity> {
 
     //endregion
 
-    //region > listAllDisabled (action)
-
-    @Bookmarkable
-    @ActionSemantics(Of.SAFE)
-    @MemberOrder(sequence = "30")
-    @Disabled
-    public List<T> listAllDisabled() {
-        return listAll();
-    }
-
-    //endregion
-
-    //region > listAllDisabled (action)
-
-    @Bookmarkable
-    @ActionSemantics(Of.SAFE)
-    @MemberOrder(sequence = "40")
-    @Hidden
-    public List<T> listAllHidden() {
-        return listAll();
-    }
-
-    //endregion
-
 
     //region > injected services
 

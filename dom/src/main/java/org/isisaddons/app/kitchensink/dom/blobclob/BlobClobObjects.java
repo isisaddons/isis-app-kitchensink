@@ -16,8 +16,10 @@
  */
 package org.isisaddons.app.kitchensink.dom.blobclob;
 
+import java.util.List;
 import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
 import org.isisaddons.app.kitchensink.dom.reference.ReferenceObject;
+import org.apache.isis.applib.annotation.CssClassFa;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.Named;
@@ -25,7 +27,7 @@ import org.apache.isis.applib.annotation.Optional;
 import org.apache.isis.applib.value.Blob;
 import org.apache.isis.applib.value.Clob;
 
-@Named("Blob/Clob")
+@Named("Data Types")
 @DomainService(menuOrder = "10.7", repositoryFor = ReferenceObject.class)
 public class BlobClobObjects extends RepositoryAbstract<BlobClobObject> {
 
@@ -34,7 +36,7 @@ public class BlobClobObjects extends RepositoryAbstract<BlobClobObject> {
     }
 
     @MemberOrder(sequence = "30")
-    public BlobClobObject create(
+    public BlobClobObject createBlobClobObject(
             final @Named("Name") String name,
             final @Named("Some blob") @Optional Blob blob,
             final @Named("Some image") @Optional Blob image,
@@ -50,5 +52,15 @@ public class BlobClobObjects extends RepositoryAbstract<BlobClobObject> {
         return obj;
     }
 
+    @Named("First BlobClobObject")
+    @Override
+    public BlobClobObject first() {
+        return super.first();
+    }
 
+    @Named("List All BlobClobObjects")
+    @Override
+    public List<BlobClobObject> listAll() {
+        return super.listAll();
+    }
 }

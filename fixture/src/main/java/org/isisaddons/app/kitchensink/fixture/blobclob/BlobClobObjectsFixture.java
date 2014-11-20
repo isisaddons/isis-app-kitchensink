@@ -41,7 +41,7 @@ public class BlobClobObjectsFixture extends FixtureScript {
             final Blob blob = newBlob(name, "application/pdf", "rick-mugridge-paper.pdf");
             final Blob image = newBlob(name, "image/jpeg", "flowers.jpg");
             Clob clob = newClob(name, "application/rtf", "sample.rtf");
-            return executionContext.add(this, blobClobObjects.create(name, blob, image, clob));
+            return executionContext.add(this, blobClobObjects.createBlobClobObject(name, blob, image, clob));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

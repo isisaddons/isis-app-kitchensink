@@ -16,12 +16,14 @@
  */
 package org.isisaddons.app.kitchensink.dom.enumerated;
 
+import java.util.List;
 import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
+import org.apache.isis.applib.annotation.CssClassFa;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.Named;
 
-@Named("Enumerated")
+@Named("Data Types")
 @DomainService(menuOrder = "10.6", repositoryFor = EnumeratedObject.class)
 public class EnumeratedObjects extends RepositoryAbstract<EnumeratedObject> {
 
@@ -30,7 +32,7 @@ public class EnumeratedObjects extends RepositoryAbstract<EnumeratedObject> {
     }
 
     @MemberOrder(sequence = "30")
-    public EnumeratedObject create(
+    public EnumeratedObject createEnumeratedObject(
             final @Named("Name") String name,
             final boolean b,
             final EnumOf3 enumOf3,
@@ -71,6 +73,19 @@ public class EnumeratedObjects extends RepositoryAbstract<EnumeratedObject> {
         container.persistIfNotAlready(obj);
         return obj;
     }
+
+    @Named("First EnumeratedObject")
+    @Override
+    public EnumeratedObject first() {
+        return super.first();
+    }
+
+    @Named("List All EnumeratedObjects")
+    @Override
+    public List<EnumeratedObject> listAll() {
+        return super.listAll();
+    }
+
 
 
 }
