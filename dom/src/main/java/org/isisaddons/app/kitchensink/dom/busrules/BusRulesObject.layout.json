@@ -22,26 +22,67 @@
         "Name": {
           "members": {
             "name": {
+              "actions": {
+                "actionAssociatedWithProperty": {
+                  "disabled": {},
+                  "named": {
+                    "value": "Disabled"
+                  }
+                },
+                "action2AssociatedWithProperty": {
+                  "named": {
+                    "value": "Not disabled"
+                  }
+                }
+              }
             }
           }
         }
       }
     },
     {
-      "span": 4,
-      "memberGroups": {
-      }
-    },
-    {
-      "span": 4,
+      "span": 0,
       "memberGroups": {
       }
     },
     {
       "span": 0,
-      "collections": {}
+      "memberGroups": {
+      }
+    },
+    {
+      "span": 8,
+      "collections": {
+        "other": {
+          "actions": {
+            "actionAssociatedWithCollection": {
+              "disabled": {},
+              "named": {
+                "value": "Disabled"
+              }
+            },
+            "action2AssociatedWithCollection": {
+              "named": {
+                "value": "Not disabled"
+              }
+            }
+          }
+        }
+      }
     }
   ],
-  "actions": {}
+  "actions": {
+    "topLevelAction": {
+      "disabled": {},
+      "named": {
+        "value": "Disabled"
+      }
+    },
+    "topLevelAction2": {
+      "named": {
+        "value": "Not disabled"
+      }
+    }
+  }
 }
  

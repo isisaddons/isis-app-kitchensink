@@ -70,4 +70,6 @@ div.x-key span.scalarName {
 	color: red;
 }
 
-body { padding-top: 150px; }
+body {
+	/*padding-top: 120px;*/
+}

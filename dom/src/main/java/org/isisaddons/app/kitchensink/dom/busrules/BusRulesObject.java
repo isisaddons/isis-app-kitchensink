@@ -16,12 +16,17 @@
  */
 package org.isisaddons.app.kitchensink.dom.busrules;
 
+import java.util.List;
+import javax.inject.Inject;
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.VersionStrategy;
+import com.google.common.collect.Lists;
 import org.isisaddons.app.kitchensink.dom.Entity;
 import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.annotation.Bookmarkable;
+import org.apache.isis.applib.annotation.Disabled;
+import org.apache.isis.applib.annotation.NotPersisted;
 import org.apache.isis.applib.annotation.ObjectType;
 import org.apache.isis.applib.annotation.Title;
 import org.apache.isis.applib.util.ObjectContracts;
@@ -36,6 +41,7 @@ import org.apache.isis.applib.util.ObjectContracts;
 @ObjectType("BUSRULES")
 @Bookmarkable
 public class BusRulesObject implements Entity<BusRulesObject> {
+
 
 
     //region > name (property)
@@ -55,6 +61,69 @@ public class BusRulesObject implements Entity<BusRulesObject> {
     //endregion
 
 
+    //region > actionAssociatedWithProperty
+
+    @Disabled
+    public BusRulesObject actionAssociatedWithProperty() {
+        return this;
+    }
+
+
+    //endregion
+
+    //region > action2AssociatedWithProperty
+
+    public BusRulesObject action2AssociatedWithProperty() {
+        return this;
+    }
+
+
+    //endregion
+
+
+    //region > other (derived collection)
+
+    @NotPersisted
+    public List<BusRulesObject> getOther() {
+        final List<BusRulesObject> other = Lists.newArrayList();
+        other.addAll(busRulesObjects.listAllBusRulesObject());
+        other.remove(this);
+        return other;
+    }
+
+    //endregion
+
+    //region > actionAssociatedWithCollection
+
+    @Disabled
+    public BusRulesObject actionAssociatedWithCollection() {
+        return this;
+    }
+    //endregion
+
+    //region > action2AssociatedWithCollection
+
+    public BusRulesObject action2AssociatedWithCollection() {
+        return this;
+    }
+    //endregion
+
+
+    //region > topLevelAction (action)
+    @Disabled
+    public BusRulesObject topLevelAction() {
+        return this;
+    }
+    //endregion
+
+    //region > topLevelAction2 (action)
+    public BusRulesObject topLevelAction2() {
+        return this;
+    }
+    //endregion
+
+
+
     //region > compareTo
 
     @Override
@@ -70,6 +139,8 @@ public class BusRulesObject implements Entity<BusRulesObject> {
     @SuppressWarnings("unused")
     private DomainObjectContainer container;
 
+    @Inject
+    BusRulesObjects busRulesObjects ;
     //endregion
 
 }
