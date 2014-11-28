@@ -32,7 +32,7 @@ public class BusRulesObjectsFixture extends FixtureScript {
     }
 
     private BusRulesObject create(final String name, ExecutionContext executionContext) {
-        return executionContext.add(this, busRulesObjects.create(name));
+        return executionContext.add(this, busRulesObjects.createBusRulesObject(name));
     }
 
     @javax.inject.Inject

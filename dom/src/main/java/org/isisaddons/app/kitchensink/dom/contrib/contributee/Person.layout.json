@@ -23,25 +23,6 @@
           "members": {
             "name": {
               "actions": {
-                "actionAssociatedWithProperty": {
-                  "disabled": {},
-                  "cssClass": { "value": "btn-warning" },
-                  "named": {
-                    "value": "Disabled"
-                  },
-                  "actionLayout": {
-                    "position": "BELOW"
-                  }
-                },
-                "action2AssociatedWithProperty": {
-                  "named": {
-                    "value": "Not disabled"
-                  },
-                  "actionLayout": {
-                    "position": "PANEL"
-                  },
-                  "cssClass": { "value": "btn-warning" }
-                }
               }
             }
           }
@@ -61,17 +42,19 @@
     {
       "span": 8,
       "collections": {
-        "other": {
+        "likes": {
+          "render": {
+            "value": "EAGERLY"
+          },
           "actions": {
-            "actionAssociatedWithCollection": {
-              "disabled": {},
+            "addPreference": {
               "named": {
-                "value": "Disabled"
+                "value": "Add"
               }
             },
-            "action2AssociatedWithCollection": {
+            "removePreference": {
               "named": {
-                "value": "Not disabled"
+                "value": "Remove"
               }
             }
           }
@@ -80,17 +63,6 @@
     }
   ],
   "actions": {
-    "topLevelAction": {
-      "disabled": {},
-      "named": {
-        "value": "Disabled"
-      }
-    },
-    "topLevelAction2": {
-      "named": {
-        "value": "Not disabled"
-      }
-    }
   }
 }
  

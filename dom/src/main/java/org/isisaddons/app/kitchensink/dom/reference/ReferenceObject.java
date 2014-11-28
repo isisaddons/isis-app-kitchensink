@@ -58,6 +58,7 @@ public class ReferenceObject implements Entity<ReferenceObject> {
 
     //endregion
 
+
     //region > someOtherObjectMandatoryWithChoices (property)
     private OtherObject someOtherObjectMandatoryWithChoices;
 
@@ -154,6 +155,75 @@ public class ReferenceObject implements Entity<ReferenceObject> {
         return this;
     }
     //endregion
+
+
+
+    //region > someOtherObjectOptionalWithoutChoices (property)
+    private OtherObject someOtherObjectOptionalWithoutChoices;
+
+    @Column(allowsNull = "true")
+    public OtherObject getSomeOtherObjectOptionalWithoutChoices() {
+        return someOtherObjectOptionalWithoutChoices;
+    }
+
+    public void setSomeOtherObjectOptionalWithoutChoices(final OtherObject someOtherObjectOptionalWithoutChoices) {
+        this.someOtherObjectOptionalWithoutChoices = someOtherObjectOptionalWithoutChoices;
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public ReferenceObject updateSomeOtherObjectOptionalWithoutChoices(final @Optional OtherObject i) {
+        setSomeOtherObjectOptionalWithoutChoices(i);
+        return this;
+    }
+    public OtherObject default0UpdateSomeOtherObjectOptionalWithoutChoices() {
+        return getSomeOtherObjectOptionalWithoutChoices();
+    }
+    public List<OtherObject> choices0UpdateSomeOtherObjectOptionalWithoutChoices() {
+        return otherObjects.listAll();
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public ReferenceObject resetSomeOtherObjectOptionalWithoutChoices() {
+        setSomeOtherObjectOptionalWithoutChoices(null);
+        return this;
+    }
+    //endregion
+
+    //region > someOtherObjectActionOnlyWithoutChoices (property)
+    private OtherObject someOtherObjectActionOnlyWithoutChoices;
+
+    @Disabled
+    @Column(allowsNull = "true")
+    public OtherObject getSomeOtherObjectActionOnlyWithoutChoices() {
+        return someOtherObjectActionOnlyWithoutChoices;
+    }
+
+    public void setSomeOtherObjectActionOnlyWithoutChoices(final OtherObject someOtherObjectActionOnlyWithoutChoices) {
+        this.someOtherObjectActionOnlyWithoutChoices = someOtherObjectActionOnlyWithoutChoices;
+    }
+
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public ReferenceObject updateSomeOtherObjectActionOnlyWithoutChoices(final @Optional OtherObject i) {
+        setSomeOtherObjectActionOnlyWithoutChoices(i);
+        return this;
+    }
+    public OtherObject default0UpdateSomeOtherObjectActionOnlyWithoutChoices() {
+        return getSomeOtherObjectActionOnlyWithoutChoices();
+    }
+    public List<OtherObject> choices0UpdateSomeOtherObjectActionOnlyWithoutChoices() {
+        return otherObjects.listAll();
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public ReferenceObject resetSomeOtherObjectActionOnlyWithoutChoices() {
+        setSomeOtherObjectActionOnlyWithoutChoices(null);
+        return this;
+    }
+    //endregion
+
+
+
 
     //region > someOtherBoundedObjectMandatory (property)
     private OtherBoundedObject someOtherBoundedObjectMandatory;

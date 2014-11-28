@@ -17,7 +17,7 @@
 {
   "columns": [
     {
-      "span": 6,
+      "span": 4,
       "memberGroups": {
         "Name": {
           "members": {
@@ -28,7 +28,7 @@
             }
           }
         },
-        "Reference Objects": {
+        "With Choices": {
           "members": {
             "someOtherObjectMandatoryWithChoices": {
               "actions": {
@@ -49,11 +49,14 @@
                 "resetSomeOtherObjectOptionalWithChoices": {
                   "named": {
                     "value": "clear"
+                  },
+                  "actionLayout": {
+                    "position": "RIGHT"
                   }
                 }
               },
               "hidden": {
-                "where": "ALL_TABLES"
+                "where": "NOWHERE"
               }
             },
             "someOtherObjectActionOnlyWithChoices": {
@@ -66,11 +69,14 @@
                 "resetSomeOtherObjectActionOnlyWithChoices": {
                   "named": {
                     "value": "clear"
+                  },
+                  "actionLayout": {
+                    "position": "RIGHT"
                   }
                 }
               },
               "hidden": {
-                "where": "ALL_TABLES"
+                "where": "NOWHERE"
               }
             }
           }
@@ -78,12 +84,50 @@
       }
     },
     {
-      "span": 0,
+      "span": 4,
       "memberGroups": {
+        "Without Choices": {
+          "members": {
+            "someOtherObjectOptionalWithoutChoices": {
+              "actions": {
+                "updateSomeOtherObjectOptionalWithoutChoices": {
+                  "named": {
+                    "value": "update"
+                  }
+                },
+                "resetSomeOtherObjectOptionalWithoutChoices": {
+                  "named": {
+                    "value": "clear"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "NOWHERE"
+              }
+            },
+            "someOtherObjectActionOnlyWithoutChoices": {
+              "actions": {
+                "updateSomeOtherObjectActionOnlyWithoutChoices": {
+                  "named": {
+                    "value": "update"
+                  }
+                },
+                "resetSomeOtherObjectActionOnlyWithoutChoices": {
+                  "named": {
+                    "value": "clear"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "NOWHERE"
+              }
+            }
+          }
+        }
       }
     },
     {
-      "span": 6,
+      "span": 4,
       "memberGroups": {
         "Other Bounded Objects": {
           "members": {
@@ -110,7 +154,7 @@
                 }
               },
               "hidden": {
-                "where": "ALL_TABLES"
+                "where": "NOWHERE"
               }
             }
           }

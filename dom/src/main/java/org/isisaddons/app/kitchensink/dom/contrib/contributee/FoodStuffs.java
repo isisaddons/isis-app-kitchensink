@@ -14,26 +14,21 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-package org.isisaddons.app.kitchensink.dom.busrules;
+package org.isisaddons.app.kitchensink.dom.contrib.contributee;
 
 import java.util.List;
-import java.util.Objects;
 import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.annotation.ActionSemantics;
 import org.apache.isis.applib.annotation.Bookmarkable;
-import org.apache.isis.applib.annotation.Disabled;
 import org.apache.isis.applib.annotation.DomainService;
-import org.apache.isis.applib.annotation.Hidden;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.Named;
 
-@Named("Bus Rules")
-@DomainService(menuOrder = "10.1", repositoryFor = BusRulesObject.class)
-public class BusRulesObjects  {
+@Named("Contributions")
+@DomainService(menuOrder = "10.1", repositoryFor = FoodStuff.class)
+public class FoodStuffs {
 
-    private final Class<BusRulesObject> cls = BusRulesObject.class;
-
-
+    private final Class<FoodStuff> cls = FoodStuff.class;
 
     public String getId() {
         return cls.getSimpleName();
@@ -43,10 +38,11 @@ public class BusRulesObjects  {
         return cls.getSimpleName();
     }
 
+
     @MemberOrder(sequence = "30")
-    public BusRulesObject createBusRulesObject(
+    public FoodStuff createFoodStuff(
             final @Named("Name") String name) {
-        final BusRulesObject obj = container.newTransientInstance(BusRulesObject.class);
+        final FoodStuff obj = container.newTransientInstance(FoodStuff.class);
         obj.setName(name);
 
         container.persistIfNotAlready(obj);
@@ -56,45 +52,16 @@ public class BusRulesObjects  {
     @Bookmarkable
     @ActionSemantics(ActionSemantics.Of.SAFE)
     @MemberOrder(sequence = "10")
-    public BusRulesObject firstBusRulesObject() {
-        final List<BusRulesObject> list = listAllBusRulesObject();
+    public FoodStuff firstFoodStuff() {
+        final List<FoodStuff> list = listAllFoodStuffs();
         return list.isEmpty()? null: list.get(0);
     }
 
     @Bookmarkable
     @ActionSemantics(ActionSemantics.Of.SAFE)
-    @MemberOrder(sequence = "15")
-    public BusRulesObject findBusRulesObject(final @Named("Name") String name) {
-        final List<BusRulesObject> list = listAllBusRulesObject();
-        for (BusRulesObject busRulesObject : list) {
-            if(Objects.equals(busRulesObject.getName(), name)) {
-                return busRulesObject;
-            }
-        }
-        return null;
-    }
-
-    @Bookmarkable
-    @ActionSemantics(ActionSemantics.Of.SAFE)
     @MemberOrder(sequence = "20")
-    public List<BusRulesObject> listAllBusRulesObject() {
+    public List<FoodStuff> listAllFoodStuffs() {
         return container.allInstances(cls);
-    }
-
-    @Bookmarkable
-    @ActionSemantics(ActionSemantics.Of.SAFE)
-    @MemberOrder(sequence = "30")
-    @Disabled
-    public List<BusRulesObject> listAllBusRulesObjectDisabled() {
-        return listAllBusRulesObject();
-    }
-
-    @Bookmarkable
-    @ActionSemantics(ActionSemantics.Of.SAFE)
-    @MemberOrder(sequence = "40")
-    @Hidden
-    public List<BusRulesObject> listAllBusRulesObjectHidden() {
-        return listAllBusRulesObject();
     }
 
     @javax.inject.Inject

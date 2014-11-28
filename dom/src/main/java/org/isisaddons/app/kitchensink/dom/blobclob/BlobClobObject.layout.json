@@ -40,6 +40,9 @@
                 "resetSomeBlob": {
                   "named": {
                     "value": "clear"
+                  },
+                  "actionLayout": {
+                    "position": "RIGHT"
                   }
                 }
               }

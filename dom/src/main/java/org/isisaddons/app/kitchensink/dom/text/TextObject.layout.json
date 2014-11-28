@@ -176,6 +176,9 @@
                 "resetSomeStringOptional": {
                   "named": {
                     "value": "clear"
+                  },
+                  "actionLayout": {
+                    "position": "RIGHT"
                   }
                 }
               },

@@ -78,6 +78,9 @@
                 "resetSomeBooleanWrapperOptional": {
                   "named": {
                     "value": "clear"
+                  },
+                  "actionLayout": {
+                    "position": "RIGHT"
                   }
                 }
               },
@@ -164,11 +167,17 @@
                 "updateSomeEnumOf4Optional": {
                   "named": {
                     "value": "update"
+                  },
+                  "actionLayout": {
+                    "position": "RIGHT"
                   }
                 },
                 "resetSomeEnumOf4Optional": {
                   "named": {
                     "value": "clear"
+                  },
+                  "actionLayout": {
+                    "position": "RIGHT"
                   }
                 }
               },
