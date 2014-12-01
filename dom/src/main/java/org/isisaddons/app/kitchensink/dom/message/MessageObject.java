@@ -114,14 +114,14 @@ public class MessageObject implements Entity<MessageObject> {
     @MemberOrder(sequence = "40.2")
     public MessageObject cloneAndWarnUser() {
         final MessageObject clonedObject = messageObjects.create(getName() + " (cloned)");
-        container.warnUser("Cloned object: " + name + " (informUser)");
+        container.warnUser("Cloned object: " + name + " (warnUser)");
         return clonedObject;
     }
 
     @MemberOrder(sequence = "40.3")
     public MessageObject cloneAndRaiseError() {
         final MessageObject clonedObject = messageObjects.create(getName() + " (cloned)");
-        container.raiseError("Cloned object: " + name + " (informUser)");
+        container.raiseError("Cloned object: " + name + " (raiseError)");
         return clonedObject;
     }
 
