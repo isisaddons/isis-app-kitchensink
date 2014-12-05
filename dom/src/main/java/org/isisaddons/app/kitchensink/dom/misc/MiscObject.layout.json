@@ -19,22 +19,6 @@
     {
       "span": 4,
       "memberGroups": {
-        "Name": {
-          "members": {
-            "name": {
-            }
-          }
-        }
-      }
-    },
-    {
-      "span": 0,
-      "memberGroups": {
-      }
-    },
-    {
-      "span": 8,
-      "memberGroups": {
         "java.net.URL": {
           "members": {
             "someUrlMandatory": {
@@ -113,6 +97,17 @@
             }
           }
         },
+        "Name": {
+          "members": {
+            "name": {
+            }
+          }
+        }
+      }
+    },
+    {
+      "span": 4,
+      "memberGroups": {
         "java.util.UUID": {
           "members": {
             "someUuidMandatory": {
@@ -180,6 +175,89 @@
                   }
                 },
                 "resetSomeUuidOptionalWithChoices": {
+                  "named": {
+                    "value": "clear"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "span": 4,
+      "memberGroups": {
+        "Money": {
+          "members": {
+            "someMoneyMandatory": {
+              "actions": {
+                "updateSomeMoneyMandatory": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              }
+            },
+            "someMoneyOptional": {
+              "actions": {
+                "updateSomeMoneyOptional": {
+                  "named": {
+                    "value": "update"
+                  }
+                },
+                "resetSomeMoneyOptional": {
+                  "named": {
+                    "value": "clear"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
+            },
+            "someMoneyHidden": {
+            },
+            "someMoneyDisabled": {
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
+            },
+            "someMoneyWithValidation": {
+              "actions": {
+                "updateSomeMoneyWithValidation": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
+            },
+            "someMoneyMandatoryWithChoices": {
+              "actions": {
+                "updateSomeMoneyMandatoryWithChoices": {
+                  "named": {
+                    "value": "update"
+                  }
+                }
+              },
+              "hidden": {
+                "where": "ALL_TABLES"
+              }
+            },
+            "someMoneyOptionalWithChoices": {
+              "actions": {
+                "updateSomeMoneyOptionalWithChoices": {
+                  "named": {
+                    "value": "update"
+                  }
+                },
+                "resetSomeMoneyOptionalWithChoices": {
                   "named": {
                     "value": "clear"
                   }

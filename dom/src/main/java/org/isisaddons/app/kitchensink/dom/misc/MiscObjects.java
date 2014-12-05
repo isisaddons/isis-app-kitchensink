@@ -20,10 +20,10 @@ import java.net.URL;
 import java.util.List;
 import java.util.UUID;
 import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
-import org.apache.isis.applib.annotation.CssClassFa;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.Named;
+import org.apache.isis.applib.value.Money;
 
 @Named("Data Types")
 @DomainService(menuOrder = "10.15", repositoryFor = MiscObject.class)
@@ -37,7 +37,8 @@ public class MiscObjects extends RepositoryAbstract<MiscObject> {
     public MiscObject createMiscObject(
             final @Named("Name") String name,
             final URL url,
-            final UUID uuid) {
+            final UUID uuid,
+            final Money money) {
         final MiscObject obj = container.newTransientInstance(MiscObject.class);
         obj.setName(name);
 
@@ -58,6 +59,13 @@ public class MiscObjects extends RepositoryAbstract<MiscObject> {
         obj.setSomeUuidOptional(uuid);
         obj.setSomeUuidOptionalWithChoices(uuid);
 
+        obj.setSomeMoneyDisabled(money);
+        obj.setSomeMoneyHidden(money);
+        obj.setSomeMoneyMandatory(money);
+        obj.setSomeMoneyMandatoryWithChoices(money);
+        obj.setSomeMoneyWithValidation(money);
+        obj.setSomeMoneyOptional(money);
+        obj.setSomeMoneyOptionalWithChoices(money);
 
         container.persistIfNotAlready(obj);
         return obj;

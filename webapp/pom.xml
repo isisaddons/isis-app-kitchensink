@@ -135,6 +135,12 @@ language governing permissions and limitations under the License.
         <dependency>
             <groupId>org.isisaddons.wicket.wickedcharts</groupId>
             <artifactId>isis-wicket-wickedcharts-cpt</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.fasterxml.jackson.core</groupId>
+                    <artifactId>jackson-annotations</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- other modules in this project -->

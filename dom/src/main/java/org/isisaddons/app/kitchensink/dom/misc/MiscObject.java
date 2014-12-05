@@ -26,8 +26,15 @@ import javax.jdo.annotations.VersionStrategy;
 import com.google.common.collect.Lists;
 import org.isisaddons.app.kitchensink.dom.Entity;
 import org.apache.isis.applib.DomainObjectContainer;
-import org.apache.isis.applib.annotation.*;
+import org.apache.isis.applib.annotation.ActionSemantics;
+import org.apache.isis.applib.annotation.Bookmarkable;
+import org.apache.isis.applib.annotation.Disabled;
+import org.apache.isis.applib.annotation.Hidden;
+import org.apache.isis.applib.annotation.ObjectType;
+import org.apache.isis.applib.annotation.Optional;
+import org.apache.isis.applib.annotation.Title;
 import org.apache.isis.applib.util.ObjectContracts;
+import org.apache.isis.applib.value.Money;
 
 @javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE)
 @javax.jdo.annotations.DatastoreIdentity(
@@ -426,6 +433,208 @@ public class MiscObject implements Entity<MiscObject> {
     @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
     public MiscObject resetSomeUuidOptionalWithChoices() {
         setSomeUuidOptionalWithChoices(null);
+        return this;
+    }
+    //endregion
+
+
+    //region > someMoneyMandatory (property)
+    private Money someMoneyMandatory;
+
+    @javax.jdo.annotations.Persistent(defaultFetchGroup="true", columns = {
+            @javax.jdo.annotations.Column(name = "someMoneyMandatory_amount"),
+            @javax.jdo.annotations.Column(name = "someMoneyMandatory_currency")
+    })
+    @Column(allowsNull = "false")
+    public Money getSomeMoneyMandatory() {
+        return someMoneyMandatory;
+    }
+
+    public void setSomeMoneyMandatory(final Money someMoneyMandatory) {
+        this.someMoneyMandatory = someMoneyMandatory;
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public MiscObject updateSomeMoneyMandatory(final Money i) {
+        setSomeMoneyMandatory(i);
+        return this;
+    }
+    public Money default0UpdateSomeMoneyMandatory() {
+        return getSomeMoneyMandatory();
+    }
+    //endregion
+
+    //region > someMoneyOptional (property)
+    private Money someMoneyOptional;
+
+    @javax.jdo.annotations.Persistent(defaultFetchGroup="true", columns = {
+            @javax.jdo.annotations.Column(name = "someMoneyOptional_amount"),
+            @javax.jdo.annotations.Column(name = "someMoneyOptional_currency")
+    })
+    @Column(allowsNull = "true")
+    public Money getSomeMoneyOptional() {
+        return someMoneyOptional;
+    }
+
+    public void setSomeMoneyOptional(final Money someMoneyOptional) {
+        this.someMoneyOptional = someMoneyOptional;
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public MiscObject updateSomeMoneyOptional(final @Optional Money i) {
+        setSomeMoneyOptional(i);
+        return this;
+    }
+    public Money default0UpdateSomeMoneyOptional() {
+        return getSomeMoneyOptional();
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public MiscObject resetSomeMoneyOptional() {
+        setSomeMoneyOptional(null);
+        return this;
+    }
+    //endregion
+
+    //region > someMoneyHidden (property)
+    private Money someMoneyHidden;
+
+    @javax.jdo.annotations.Persistent(defaultFetchGroup="true", columns = {
+            @javax.jdo.annotations.Column(name = "someMoneyHidden_amount"),
+            @javax.jdo.annotations.Column(name = "someMoneyHidden_currency")
+    })
+    @Column(allowsNull = "false")
+    @Hidden
+    public Money getSomeMoneyHidden() {
+        return someMoneyHidden;
+    }
+
+    public void setSomeMoneyHidden(final Money someMoneyHidden) {
+        this.someMoneyHidden = someMoneyHidden;
+    }
+
+    //endregion
+
+    //region > someMoneyDisabled (property)
+    private Money someMoneyDisabled;
+
+    @javax.jdo.annotations.Persistent(defaultFetchGroup="true", columns = {
+            @javax.jdo.annotations.Column(name = "someMoneyDisabled_amount"),
+            @javax.jdo.annotations.Column(name = "someMoneyDisabled_currency")
+    })
+    @Column(allowsNull = "false")
+    @Disabled
+    public Money getSomeMoneyDisabled() {
+        return someMoneyDisabled;
+    }
+
+    public void setSomeMoneyDisabled(final Money someMoneyDisabled) {
+        this.someMoneyDisabled = someMoneyDisabled;
+    }
+
+    //endregion
+
+    //region > someMoneyWithValidation (property)
+    private Money someMoneyWithValidation;
+
+    @javax.jdo.annotations.Persistent(defaultFetchGroup="true", columns = {
+            @javax.jdo.annotations.Column(name = "someMoneyWithValidation_amount"),
+            @javax.jdo.annotations.Column(name = "someMoneyWithValidation_currency")
+    })
+    @Column(allowsNull = "false")
+    public Money getSomeMoneyWithValidation() {
+        return someMoneyWithValidation;
+    }
+
+    public void setSomeMoneyWithValidation(final Money someMoneyWithValidation) {
+        this.someMoneyWithValidation = someMoneyWithValidation;
+    }
+
+    public String validateSomeMoneyWithValidation(final Money i) {
+        return i != null && !"GBP".equals(i.getCurrency())? "Must be in GBP": null;
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public MiscObject updateSomeMoneyWithValidation(final Money i) {
+        setSomeMoneyWithValidation(i);
+        return this;
+    }
+
+    public String validateUpdateSomeMoneyWithValidation(final Money i) {
+        return validateSomeMoneyWithValidation(i);
+    }
+    public Money default0UpdateSomeMoneyWithValidation() {
+        return getSomeMoneyWithValidation();
+    }
+
+    //endregion
+
+    //region > someMoneyMandatoryWithChoices (property)
+    private Money someMoneyMandatoryWithChoices;
+
+    @javax.jdo.annotations.Persistent(defaultFetchGroup="true", columns = {
+            @javax.jdo.annotations.Column(name = "someMoneyWithMandatoryWithChoices_amount"),
+            @javax.jdo.annotations.Column(name = "someMoneyWithMandatoryWithChoices_currency")
+    })
+    @Column(allowsNull = "false")
+    public Money getSomeMoneyMandatoryWithChoices() {
+        return someMoneyMandatoryWithChoices;
+    }
+
+    public void setSomeMoneyMandatoryWithChoices(final Money someMoneyMandatoryWithChoices) {
+        this.someMoneyMandatoryWithChoices = someMoneyMandatoryWithChoices;
+    }
+    public Collection<Money> choicesSomeMoneyMandatoryWithChoices() {
+        return Lists.newArrayList(new Money(1000, "GBP"),new Money(10.00, "GBP"),new Money(1000, "EUR"),new Money(10.00, "EUR"), new Money(1000, "USD"), new Money(10.00, "USD"));
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public MiscObject updateSomeMoneyMandatoryWithChoices(final Money i) {
+        setSomeMoneyMandatoryWithChoices(i);
+        return this;
+    }
+    public Money default0UpdateSomeMoneyMandatoryWithChoices() {
+        return getSomeMoneyMandatoryWithChoices();
+    }
+    public List<Money> choices0UpdateSomeMoneyMandatoryWithChoices() {
+        return Lists.newArrayList(new Money(1000, "GBP"),new Money(10.00, "GBP"),new Money(1000, "EUR"),new Money(10.00, "EUR"), new Money(1000, "USD"), new Money(10.00, "USD"));
+    }
+    //endregion
+
+    //region > someMoneyOptionalWithChoices (property)
+    private Money someMoneyOptionalWithChoices;
+
+    @javax.jdo.annotations.Persistent(defaultFetchGroup="true", columns = {
+            @javax.jdo.annotations.Column(name = "someMoneyWithOptionalWithChoices_amount"),
+            @javax.jdo.annotations.Column(name = "someMoneyWithOptionalWithChoices_currency")
+    })
+    @Column(allowsNull = "true")
+    public Money getSomeMoneyOptionalWithChoices() {
+        return someMoneyOptionalWithChoices;
+    }
+
+    public void setSomeMoneyOptionalWithChoices(final Money someMoneyOptionalWithChoices) {
+        this.someMoneyOptionalWithChoices = someMoneyOptionalWithChoices;
+    }
+    public Collection<Money> choicesSomeMoneyOptionalWithChoices() {
+        return Lists.newArrayList(new Money(1000, "GBP"),new Money(10.00, "GBP"),new Money(1000, "EUR"),new Money(10.00, "EUR"), new Money(1000, "USD"), new Money(10.00, "USD"));
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public MiscObject updateSomeMoneyOptionalWithChoices(final @Optional Money i) {
+        setSomeMoneyOptionalWithChoices(i);
+        return this;
+    }
+    public Money default0UpdateSomeMoneyOptionalWithChoices() {
+        return getSomeMoneyOptionalWithChoices();
+    }
+    public List<Money> choices0UpdateSomeMoneyOptionalWithChoices() {
+        return Lists.newArrayList(new Money(1000, "GBP"),new Money(10.00, "GBP"),new Money(1000, "EUR"),new Money(10.00, "EUR"), new Money(1000, "USD"), new Money(10.00, "USD"));
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    public MiscObject resetSomeMoneyOptionalWithChoices() {
+        setSomeMoneyOptionalWithChoices(null);
         return this;
     }
     //endregion

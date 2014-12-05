@@ -22,6 +22,7 @@ import java.util.UUID;
 import org.isisaddons.app.kitchensink.dom.misc.MiscObject;
 import org.isisaddons.app.kitchensink.dom.misc.MiscObjects;
 import org.apache.isis.applib.fixturescripts.FixtureScript;
+import org.apache.isis.applib.value.Money;
 
 public class MiscObjectsFixture extends FixtureScript {
 
@@ -29,16 +30,16 @@ public class MiscObjectsFixture extends FixtureScript {
     protected void execute(ExecutionContext executionContext) {
 
         try {
-            create("Foo", new URL("http://isis.apache.org"), UUID.randomUUID(), executionContext);
-            create("Bar", new URL("http://www.apache.org"), UUID.randomUUID(), executionContext);
-            create("Baz", new URL("http://issues.apache.org"), UUID.randomUUID(), executionContext);
+            create("Foo", new URL("http://isis.apache.org"), UUID.randomUUID(), new Money(10, "GBP"), executionContext);
+            create("Bar", new URL("http://www.apache.org"), UUID.randomUUID(), new Money(10, "GBP"), executionContext);
+            create("Baz", new URL("http://issues.apache.org"), UUID.randomUUID(), new Money(10, "GBP"), executionContext);
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
     }
 
-    private MiscObject create(final String name, final URL url, final UUID uuid, final ExecutionContext executionContext) {
-        return executionContext.add(this, miscObjects.createMiscObject(name, url, uuid));
+    private MiscObject create(final String name, final URL url, final UUID uuid, final Money money, final ExecutionContext executionContext) {
+        return executionContext.add(this, miscObjects.createMiscObject(name, url, uuid, money));
     }
 
     @javax.inject.Inject
