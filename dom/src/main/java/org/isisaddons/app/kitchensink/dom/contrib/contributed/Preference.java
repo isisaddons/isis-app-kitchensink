@@ -41,7 +41,6 @@ import org.apache.isis.applib.util.ObjectContracts;
 @Bookmarkable
 public class Preference implements Entity<Preference> {
 
-
     static class Predicates {
         static Predicate<Preference> preferenceOf(final Person person) {
             return new Predicate<Preference>() {
@@ -98,7 +97,6 @@ public class Preference implements Entity<Preference> {
 
     //endregion
 
-
     //region > person (property)
     private Person person;
 
@@ -124,7 +122,6 @@ public class Preference implements Entity<Preference> {
         this.foodStuff = foodStuff;
     }
     //endregion
-
 
     //region > compareTo
 

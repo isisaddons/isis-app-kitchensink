@@ -40,8 +40,6 @@ import org.apache.isis.applib.util.ObjectContracts;
 @Bounded
 public class Person implements Entity<Person> {
 
-
-
     //region > name (property)
 
     private String name;
@@ -57,9 +55,6 @@ public class Person implements Entity<Person> {
     }
 
     //endregion
-
-
-
 
     //region > compareTo
 

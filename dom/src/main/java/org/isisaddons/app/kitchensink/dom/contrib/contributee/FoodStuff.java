@@ -40,7 +40,6 @@ import org.apache.isis.applib.util.ObjectContracts;
 @Bounded
 public class FoodStuff implements Entity<FoodStuff> {
 
-
     //region > name (property)
 
     private String name;
@@ -56,7 +55,6 @@ public class FoodStuff implements Entity<FoodStuff> {
     }
 
     //endregion
-
 
     //region > compareTo
 
