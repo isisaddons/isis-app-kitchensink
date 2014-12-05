@@ -30,6 +30,7 @@ import org.apache.isis.applib.annotation.NotInServiceMenu;
 @DomainService(menuOrder = "10.1", repositoryFor = Preference.class)
 public class PreferenceContributions {
 
+    //region > likes (contributed collection to Person)
     @NotContributed(NotContributed.As.ACTION) // ie contributed as collection
     @NotInServiceMenu
     @ActionSemantics(ActionSemantics.Of.SAFE)
@@ -42,7 +43,9 @@ public class PreferenceContributions {
                         Preference.Functions.food()
                     ));
     }
+    //endregion
 
+    //region > firstLove (contributed property to Person)
     @NotContributed(NotContributed.As.ACTION) // ie contributed as property
     @NotInServiceMenu
     @ActionSemantics(ActionSemantics.Of.SAFE)
@@ -56,8 +59,9 @@ public class PreferenceContributions {
                 ));
         return loves.isEmpty()? null: loves.get(0);
     }
+    //endregion
 
-
+    //region > addPreference (contributed action to Person and FoodStuff) 
     @NotInServiceMenu
     public Preference addPreference(
             final Person person,
@@ -66,9 +70,12 @@ public class PreferenceContributions {
         removePreference(person, foodStuff);
         return preferences.createPreference(person, preferenceType, foodStuff);
     }
+    //endregion
 
+    //region > removePreference (contributed action to Person and FoodStuff)
     /**
-     * Will be contributed as an action.  Not currently possible to contribute to a single parameter.
+     * Will be contributed as an action to both parameters.  However, the FoodStuff.layout.json hides the action so it
+     * in the UI it appears to be only contributed to the Person entity.
      */
     @NotInServiceMenu
     public Person removePreference(final Person person, final FoodStuff foodStuff) {
@@ -80,8 +87,11 @@ public class PreferenceContributions {
         }
         return person;
     }
+    //endregion
 
+    //region > injected services
     @javax.inject.Inject
     protected Preferences preferences;
+    //endregion
 
 }
