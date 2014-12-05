@@ -43,18 +43,18 @@
       "span": 8,
       "collections": {
         "likes": {
-          "render": {
-            "value": "EAGERLY"
+          "collectionLayout": {
+            "render": "EAGERLY"
           },
           "actions": {
             "addPreference": {
-              "named": {
-                "value": "Add"
+              "actionLayout": {
+                "named": "Add"
               }
             },
             "removePreference": {
-              "named": {
-                "value": "Remove"
+              "actionLayout": {
+                "named": "Remove"
               }
             }
           }

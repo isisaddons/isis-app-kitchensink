@@ -25,22 +25,18 @@
               "actions": {
                 "actionAssociatedWithProperty": {
                   "disabled": {},
-                  "cssClass": { "value": "btn-warning" },
-                  "named": {
-                    "value": "Disabled"
-                  },
                   "actionLayout": {
+                    "named": "Disabled",
+                    "cssClass": "btn-warning",
                     "position": "BELOW"
                   }
                 },
                 "action2AssociatedWithProperty": {
-                  "named": {
-                    "value": "Not disabled"
-                  },
                   "actionLayout": {
+                    "named": "Not disabled",
+                    "cssClass": "btn-warning",
                     "position": "PANEL"
-                  },
-                  "cssClass": { "value": "btn-warning" }
+                  }
                 }
               }
             }

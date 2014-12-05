@@ -46,6 +46,17 @@
     }
   ],
   "actions": {
+    "addPreference": {
+      "actionLayout": {
+        "cssClass": "btn-success"
+      }
+    },
+    "removePreference": {
+      "actionLayout": {
+        "cssClass": "btn-warn",
+        "hidden": "EVERYWHERE" /* contributed action is hidden on one of its contributees */
+      }
+    }
   }
 }
  

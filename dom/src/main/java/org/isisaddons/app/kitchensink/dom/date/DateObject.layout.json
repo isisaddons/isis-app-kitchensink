@@ -22,8 +22,8 @@
         "Name": {
           "members": {
             "name": {
-              "hidden": {
-                "where": "OBJECT_FORMS"
+              "propertyLayout": {
+                "hidden": "OBJECT_FORMS"
               }
             }
           }
@@ -33,27 +33,27 @@
             "someJavaUtilDateMandatory": {
               "actions": {
                 "updateSomeJavaUtilDateMandatory": {
-                  "named": {
-                    "value": "update"
+                  "actionLayout": {
+                    "named": "update"
                   }
                 }
               }
             },
             "someJavaUtilDateOptional": {
+              "propertyLayout": {
+                "hidden": "ALL_TABLES"
+              },
               "actions": {
                 "updateSomeJavaUtilDateOptional": {
-                  "named": {
-                    "value": "update"
+                  "actionLayout": {
+                    "named": "update"
                   }
                 },
                 "resetSomeJavaUtilDateOptional": {
-                  "named": {
-                    "value": "clear"
+                  "actionLayout": {
+                    "named": "clear"
                   }
                 }
-              },
-              "hidden": {
-                "where": "ALL_TABLES"
               }
             },
             "someJavaUtilDateHidden": {
@@ -63,44 +63,44 @@
             "someJavaUtilDateWithValidation": {
               "actions": {
                 "updateSomeJavaUtilDateWithValidation": {
-                  "named": {
-                    "value": "update"
+                  "actionLayout": {
+                    "named": "update"
                   }
                 }
               }
             },
             "someJavaUtilDateMandatoryWithChoices": {
+              "propertyLayout": {
+                "hidden": "ALL_TABLES"
+              },
               "actions": {
                 "updateSomeJavaUtilDateMandatoryWithChoices": {
-                  "named": {
-                    "value": "update"
+                  "actionLayout": {
+                    "named": "update"
                   }
                 },
                 "resetSomeJavaUtilDateMandatoryWithChoices": {
-                  "named": {
-                    "value": "clear"
+                  "actionLayout": {
+                    "named": "clear"
                   }
                 }
-              },
-              "hidden": {
-                "where": "ALL_TABLES"
               }
             },
             "someJavaUtilDateOptionalWithChoices": {
+              "propertyLayout": {
+                "hidden": "ALL_TABLES"
+              },
               "actions": {
                 "updateSomeJavaUtilDateOptionalWithChoices": {
-                  "named": {
-                    "value": "update"
+                  "actionLayout": {
+                    "named": "update"
                   }
                 },
                 "resetSomeJavaUtilDateOptionalWithChoices": {
-                  "named": {
-                    "value": "clear"
+                  "actionLayout": {
+                    "named": "clear"
                   }
                 }
-              },
-              "hidden": {
-                "where": "ALL_TABLES"
               }
             }
           }
@@ -110,27 +110,27 @@
             "someJavaSqlDateMandatory": {
               "actions": {
                 "updateSomeJavaSqlDateMandatory": {
-                  "named": {
-                    "value": "update"
+                  "actionLayout": {
+                    "named": "update"
                   }
                 }
               }
             },
             "someJavaSqlDateOptional": {
+              "propertyLayout": {
+                "hidden": "ALL_TABLES"
+              },
               "actions": {
                 "updateSomeJavaSqlDateOptional": {
-                  "named": {
-                    "value": "update"
+                  "actionLayout": {
+                    "named": "update"
                   }
                 },
                 "resetSomeJavaSqlDateOptional": {
-                  "named": {
-                    "value": "clear"
+                  "actionLayout": {
+                    "named": "clear"
                   }
                 }
-              },
-              "hidden": {
-                "where": "ALL_TABLES"
               }
             },
             "someJavaSqlDateHidden": {
@@ -140,44 +140,44 @@
             "someJavaSqlDateWithValidation": {
               "actions": {
                 "updateSomeJavaSqlDateWithValidation": {
-                  "named": {
-                    "value": "update"
+                  "actionLayout": {
+                    "named": "update"
                   }
                 }
               }
             },
             "someJavaSqlDateMandatoryWithChoices": {
+              "propertyLayout": {
+                "hidden": "ALL_TABLES"
+              },
               "actions": {
                 "updateSomeJavaSqlDateMandatoryWithChoices": {
-                  "named": {
-                    "value": "update"
+                  "actionLayout": {
+                    "named": "update"
                   }
                 },
                 "resetSomeJavaSqlDateMandatoryWithChoices": {
-                  "named": {
-                    "value": "clear"
+                  "actionLayout": {
+                    "named": "clear"
                   }
                 }
-              },
-              "hidden": {
-                "where": "ALL_TABLES"
               }
             },
             "someJavaSqlDateOptionalWithChoices": {
+              "propertyLayout": {
+                "hidden": "ALL_TABLES"
+              },
               "actions": {
                 "updateSomeJavaSqlDateOptionalWithChoices": {
-                  "named": {
-                    "value": "update"
+                  "actionLayout": {
+                    "named": "update"
                   }
                 },
                 "resetSomeJavaSqlDateOptionalWithChoices": {
-                  "named": {
-                    "value": "clear"
+                  "actionLayout": {
+                    "named": "clear"
                   }
                 }
-              },
-              "hidden": {
-                "where": "ALL_TABLES"
               }
             }
           }
@@ -192,27 +192,27 @@
             "someJodaLocalDateMandatory": {
               "actions": {
                 "updateSomeJodaLocalDateMandatory": {
-                  "named": {
-                    "value": "update"
+                  "actionLayout": {
+                    "named": "update"
                   }
                 }
               }
             },
             "someJodaLocalDateOptional": {
+              "propertyLayout": {
+                "hidden": "ALL_TABLES"
+              },
               "actions": {
                 "updateSomeJodaLocalDateOptional": {
-                  "named": {
-                    "value": "update"
+                  "actionLayout": {
+                    "named": "update"
                   }
                 },
                 "resetSomeJodaLocalDateOptional": {
-                  "named": {
-                    "value": "clear"
+                  "actionLayout": {
+                    "named": "clear"
                   }
                 }
-              },
-              "hidden": {
-                "where": "ALL_TABLES"
               }
             },
             "someJodaLocalDateHidden": {
@@ -222,44 +222,44 @@
             "someJodaLocalDateWithValidation": {
               "actions": {
                 "updateSomeJodaLocalDateWithValidation": {
-                  "named": {
-                    "value": "update"
+                  "actionLayout": {
+                    "named": "update"
                   }
                 }
               }
             },
             "someJodaLocalDateMandatoryWithChoices": {
+              "propertyLayout": {
+                "hidden": "ALL_TABLES"
+              },
               "actions": {
                 "updateSomeJodaLocalDateMandatoryWithChoices": {
-                  "named": {
-                    "value": "update"
+                  "actionLayout": {
+                    "named": "update"
                   }
                 },
                 "resetSomeJodaLocalDateMandatoryWithChoices": {
-                  "named": {
-                    "value": "clear"
+                  "actionLayout": {
+                    "named": "clear"
                   }
                 }
-              },
-              "hidden": {
-                "where": "ALL_TABLES"
               }
             },
             "someJodaLocalDateOptionalWithChoices": {
+              "propertyLayout": {
+                "hidden": "ALL_TABLES"
+              },
               "actions": {
                 "updateSomeJodaLocalDateOptionalWithChoices": {
-                  "named": {
-                    "value": "update"
+                  "actionLayout": {
+                    "named": "update"
                   }
                 },
                 "resetSomeJodaLocalDateOptionalWithChoices": {
-                  "named": {
-                    "value": "clear"
+                  "actionLayout": {
+                    "named": "clear"
                   }
                 }
-              },
-              "hidden": {
-                "where": "ALL_TABLES"
               }
             }
           }
@@ -269,27 +269,27 @@
             "someJodaLocalDateTimeMandatory": {
               "actions": {
                 "updateSomeJodaLocalDateTimeMandatory": {
-                  "named": {
-                    "value": "update"
+                  "actionLayout": {
+                    "named": "update"
                   }
                 }
               }
             },
             "someJodaLocalDateTimeOptional": {
+              "propertyLayout": {
+                "hidden": "ALL_TABLES"
+              },
               "actions": {
                 "updateSomeJodaLocalDateTimeOptional": {
-                  "named": {
-                    "value": "update"
+                  "actionLayout": {
+                    "named": "update"
                   }
                 },
                 "resetSomeJodaLocalDateTimeOptional": {
-                  "named": {
-                    "value": "clear"
+                  "actionLayout": {
+                    "named": "clear"
                   }
                 }
-              },
-              "hidden": {
-                "where": "ALL_TABLES"
               }
             },
             "someJodaLocalDateTimeHidden": {
@@ -299,44 +299,44 @@
             "someJodaLocalDateTimeWithValidation": {
               "actions": {
                 "updateSomeJodaLocalDateTimeWithValidation": {
-                  "named": {
-                    "value": "update"
+                  "actionLayout": {
+                    "named": "update"
                   }
                 }
               }
             },
             "someJodaLocalDateTimeMandatoryWithChoices": {
+              "propertyLayout": {
+                "hidden": "ALL_TABLES"
+              },
               "actions": {
                 "updateSomeJodaLocalDateTimeMandatoryWithChoices": {
-                  "named": {
-                    "value": "update"
+                  "actionLayout": {
+                    "named": "update"
                   }
                 },
                 "resetSomeJodaLocalDateTimeMandatoryWithChoices": {
-                  "named": {
-                    "value": "clear"
+                  "actionLayout": {
+                    "named": "clear"
                   }
                 }
-              },
-              "hidden": {
-                "where": "ALL_TABLES"
               }
             },
             "someJodaLocalDateTimeOptionalWithChoices": {
+              "propertyLayout": {
+                "hidden": "ALL_TABLES"
+              },
               "actions": {
                 "updateSomeJodaLocalDateTimeOptionalWithChoices": {
-                  "named": {
-                    "value": "update"
+                  "actionLayout": {
+                    "named": "update"
                   }
                 },
                 "resetSomeJodaLocalDateTimeOptionalWithChoices": {
-                  "named": {
-                    "value": "clear"
+                  "actionLayout": {
+                    "named": "clear"
                   }
                 }
-              },
-              "hidden": {
-                "where": "ALL_TABLES"
               }
             }
           }
@@ -351,27 +351,27 @@
             "someJodaDateTimeMandatory": {
               "actions": {
                 "updateSomeJodaDateTimeMandatory": {
-                  "named": {
-                    "value": "update"
+                  "actionLayout": {
+                    "named": "update"
                   }
                 }
               }
             },
             "someJodaDateTimeOptional": {
+              "propertyLayout": {
+                "hidden": "ALL_TABLES"
+              },
               "actions": {
                 "updateSomeJodaDateTimeOptional": {
-                  "named": {
-                    "value": "update"
+                  "actionLayout": {
+                    "named": "update"
                   }
                 },
                 "resetSomeJodaDateTimeOptional": {
-                  "named": {
-                    "value": "clear"
+                  "actionLayout": {
+                    "named": "clear"
                   }
                 }
-              },
-              "hidden": {
-                "where": "ALL_TABLES"
               }
             },
             "someJodaDateTimeHidden": {
@@ -381,44 +381,44 @@
             "someJodaDateTimeWithValidation": {
               "actions": {
                 "updateSomeJodaDateTimeWithValidation": {
-                  "named": {
-                    "value": "update"
+                  "actionLayout": {
+                    "named": "update"
                   }
                 }
               }
             },
             "someJodaDateTimeMandatoryWithChoices": {
+              "propertyLayout": {
+                "hidden": "ALL_TABLES"
+              },
               "actions": {
                 "updateSomeJodaDateTimeMandatoryWithChoices": {
-                  "named": {
-                    "value": "update"
+                  "actionLayout": {
+                    "named": "update"
                   }
                 },
                 "resetSomeJodaDateTimeMandatoryWithChoices": {
-                  "named": {
-                    "value": "clear"
+                  "actionLayout": {
+                    "named": "clear"
                   }
                 }
-              },
-              "hidden": {
-                "where": "ALL_TABLES"
               }
             },
             "someJodaDateTimeOptionalWithChoices": {
+              "propertyLayout": {
+                "hidden": "ALL_TABLES"
+              },
               "actions": {
                 "updateSomeJodaDateTimeOptionalWithChoices": {
-                  "named": {
-                    "value": "update"
+                  "actionLayout": {
+                    "named": "update"
                   }
                 },
                 "resetSomeJodaDateTimeOptionalWithChoices": {
-                  "named": {
-                    "value": "clear"
+                  "actionLayout": {
+                    "named": "clear"
                   }
                 }
-              },
-              "hidden": {
-                "where": "ALL_TABLES"
               }
             }
           }
@@ -428,17 +428,20 @@
             "someJavaSqlTimestampMandatory": {
               "actions": {
                 "updateSomeJavaSqlTimestampMandatory": {
-                  "named": {
-                    "value": "update"
+                  "actionLayout": {
+                    "named": "update"
                   }
                 }
               }
             },
             "someJavaSqlTimestampOptional": {
+              "propertyLayout": {
+                "hidden": "ALL_TABLES"
+              },
               "actions": {
                 "updateSomeJavaSqlTimestampOptional": {
-                  "named": {
-                    "value": "update"
+                  "actionLayout": {
+                    "named": "update"
                   }
                 },
                 "resetSomeJavaSqlTimestampOptional": {
@@ -446,9 +449,6 @@
                     "value": "clear"
                   }
                 }
-              },
-              "hidden": {
-                "where": "ALL_TABLES"
               }
             },
             "someJavaSqlTimestampHidden": {
@@ -458,44 +458,44 @@
             "someJavaSqlTimestampWithValidation": {
               "actions": {
                 "updateSomeJavaSqlTimestampWithValidation": {
-                  "named": {
-                    "value": "update"
+                  "actionLayout": {
+                    "named": "update"
                   }
                 }
               }
             },
             "someJavaSqlTimestampMandatoryWithChoices": {
+              "propertyLayout": {
+                "hidden": "ALL_TABLES"
+              },
               "actions": {
                 "updateSomeJavaSqlTimestampMandatoryWithChoices": {
-                  "named": {
-                    "value": "update"
+                  "actionLayout": {
+                    "named": "update"
                   }
                 },
                 "resetSomeJavaSqlTimestampMandatoryWithChoices": {
-                  "named": {
-                    "value": "clear"
+                  "actionLayout": {
+                    "named": "clear"
                   }
                 }
-              },
-              "hidden": {
-                "where": "ALL_TABLES"
               }
             },
             "someJavaSqlTimestampOptionalWithChoices": {
+              "propertyLayout": {
+                "hidden": "ALL_TABLES"
+              },
               "actions": {
                 "updateSomeJavaSqlTimestampOptionalWithChoices": {
-                  "named": {
-                    "value": "update"
+                  "actionLayout": {
+                    "named": "update"
                   }
                 },
                 "resetSomeJavaSqlTimestampOptionalWithChoices": {
-                  "named": {
-                    "value": "clear"
+                  "actionLayout": {
+                    "named": "clear"
                   }
                 }
-              },
-              "hidden": {
-                "where": "ALL_TABLES"
               }
             }
           }
@@ -504,29 +504,29 @@
         "isis.applib.DateTime": {
           "members": {
             "someApplibDateTimeMandatory": {
+              "propertyLayout": {
+                "hidden": "ALL_TABLES"
+              },
               "actions": {
                 "updateSomeApplibDateTimeMandatory": {
-                  "named": {
-                    "value": "update"
+                 "actionLayout": {
+                    "named": "update"
                   }
-                }
+                 }
               }
             },
             "someApplibDateTimeOptional": {
               "actions": {
                 "updateSomeApplibDateTimeOptional": {
-                  "named": {
-                    "value": "update"
+                 "actionLayout": {
+                    "named": "update"
                   }
-                },
+                 },
                 "resetSomeApplibDateTimeOptional": {
-                  "named": {
-                    "value": "clear"
+                  "actionLayout": {
+                    "named": "clear"
                   }
                 }
-              },
-              "hidden": {
-                "where": "ALL_TABLES"
               }
             }
           }
@@ -536,27 +536,27 @@
             "someApplibDateMandatory": {
               "actions": {
                 "updateSomeApplibDateMandatory": {
-                  "named": {
-                    "value": "update"
+                 "actionLayout": {
+                    "named": "update"
                   }
                 }
               }
             },
             "someApplibDateOptional": {
+              "propertyLayout": {
+                "hidden": "ALL_TABLES"
+              },
               "actions": {
                 "updateSomeApplibDateOptional": {
-                  "named": {
-                    "value": "update"
+                 "actionLayout": {
+                    "named": "update"
                   }
-                },
+                 },
                 "resetSomeApplibDateOptional": {
-                  "named": {
-                    "value": "clear"
+                  "actionLayout": {
+                    "named": "clear"
                   }
                 }
-              },
-              "hidden": {
-                "where": "ALL_TABLES"
               }
             }
           }

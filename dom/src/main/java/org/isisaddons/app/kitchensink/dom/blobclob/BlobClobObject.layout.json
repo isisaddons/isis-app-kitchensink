@@ -22,8 +22,8 @@
         "Name": {
           "members": {
             "name": {
-              "hidden": {
-                "where": "OBJECT_FORMS"
+              "propertyLayout": {
+                "hidden": "OBJECT_FORMS"
               }
             }
           }
@@ -33,15 +33,13 @@
             "someBlob": {
               "actions": {
                 "updateSomeBlob": {
-                  "named": {
-                    "value": "update"
+                  "actionLayout": {
+                    "named": "update"
                   }
                 },
                 "resetSomeBlob": {
-                  "named": {
-                    "value": "clear"
-                  },
                   "actionLayout": {
+                    "named": "clear",
                     "position": "RIGHT"
                   }
                 }
@@ -50,13 +48,13 @@
             "someImage": {
               "actions": {
                 "updateSomeImage": {
-                  "named": {
-                    "value": "update"
+                  "actionLayout": {
+                    "named": "update"
                   }
                 },
                 "resetSomeImage": {
-                  "named": {
-                    "value": "clear"
+                  "actionLayout": {
+                    "named": "clear"
                   }
                 }
               }
