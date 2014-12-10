@@ -18,6 +18,7 @@ package org.isisaddons.app.kitchensink.fixture;
 
 import java.util.List;
 import org.apache.isis.applib.annotation.DomainService;
+import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.Named;
 import org.apache.isis.applib.annotation.Prototype;
@@ -29,7 +30,8 @@ import org.apache.isis.applib.fixturescripts.FixtureScripts;
  * Enables fixtures to be installed from the application.
  */
 @Named("Prototyping")
-@DomainService(menuOrder = "99", menuBar = DomainService.MenuBar.SECONDARY)
+@DomainService
+@DomainServiceLayout(menuBar = DomainServiceLayout.MenuBar.SECONDARY, menuOrder = "99")
 public class KitchensinkFixturesService extends FixtureScripts {
 
     private boolean isInstalled = false;

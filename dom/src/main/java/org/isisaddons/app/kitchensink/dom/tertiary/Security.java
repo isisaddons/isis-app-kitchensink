@@ -17,15 +17,17 @@
 package org.isisaddons.app.kitchensink.dom.tertiary;
 
 import org.apache.isis.applib.DomainObjectContainer;
+import org.apache.isis.applib.annotation.ActionLayout;
 import org.apache.isis.applib.annotation.ActionSemantics;
-import org.apache.isis.applib.annotation.CssClassFa;
 import org.apache.isis.applib.annotation.DomainService;
+import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
 
-@DomainService(menuBar = DomainService.MenuBar.TERTIARY, menuOrder = "1")
+@DomainService
+@DomainServiceLayout(menuBar = DomainServiceLayout.MenuBar.TERTIARY, menuOrder = "1")
 public class Security {
 
-    @CssClassFa("fa-briefcase")
+    @ActionLayout(cssClassFa = "fa-briefcase")
     @ActionSemantics(ActionSemantics.Of.SAFE)
     @MemberOrder(sequence = "1")
     public Object me() {
