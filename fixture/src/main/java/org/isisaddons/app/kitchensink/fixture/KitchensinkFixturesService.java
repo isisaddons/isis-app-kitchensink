@@ -29,9 +29,8 @@ import org.apache.isis.applib.fixturescripts.FixtureScripts;
 /**
  * Enables fixtures to be installed from the application.
  */
-@Named("Prototyping")
 @DomainService
-@DomainServiceLayout(menuBar = DomainServiceLayout.MenuBar.SECONDARY, menuOrder = "99")
+@DomainServiceLayout(named = "Prototyping", menuBar = DomainServiceLayout.MenuBar.SECONDARY, menuOrder = "99")
 public class KitchensinkFixturesService extends FixtureScripts {
 
     private boolean isInstalled = false;
