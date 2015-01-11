@@ -16,14 +16,14 @@
  */
 package org.isisaddons.app.kitchensink.dom.date;
 
-import java.sql.Date;
-import java.sql.Timestamp;
-import java.util.List;
-import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
-import org.apache.isis.applib.annotation.CssClassFa;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.Named;
+import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
+
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.util.List;
 
 @Named("Data Types")
 @DomainService(menuOrder = "10.5", repositoryFor = DateObject.class)
@@ -57,7 +57,7 @@ public class DateObjects extends RepositoryAbstract<DateObject> {
         obj.setSomeJavaUtilDateDisabled(jud);
         obj.setSomeJavaUtilDateWithValidation(jud);
         obj.setSomeJavaUtilDateMandatoryWithChoices(jud);
-        obj.setSomeJavaUtilDateOptional(jud);
+        obj.setSomeJavaUtilDateOptionalWithChoices(jud);
 
         obj.setSomeJavaSqlDateMandatory(sqldt);
         obj.setSomeJavaSqlDateOptional(sqldt);
