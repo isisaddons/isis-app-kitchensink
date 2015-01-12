@@ -32,7 +32,7 @@ public class JavaMathObjectsFixture extends FixtureScript {
     }
 
     private JavaMathObject create(final String name, long l, ExecutionContext executionContext) {
-        return executionContext.add(this, javaMathObjects.createJavaMathObject(name, l, l));
+        return executionContext.add(this, javaMathObjects.createJavaMathObject(name, l, l + 0.123456789d));
     }
 
     @javax.inject.Inject
