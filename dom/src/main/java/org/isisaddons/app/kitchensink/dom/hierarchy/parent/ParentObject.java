@@ -16,7 +16,10 @@
  */
 package org.isisaddons.app.kitchensink.dom.hierarchy.parent;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.List;
+import java.util.SortedSet;
+import java.util.TreeSet;
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.Persistent;
@@ -27,7 +30,11 @@ import org.isisaddons.app.kitchensink.dom.Entity;
 import org.isisaddons.app.kitchensink.dom.hierarchy.child.ChildObject;
 import org.isisaddons.app.kitchensink.dom.hierarchy.child.ChildObjects;
 import org.apache.isis.applib.DomainObjectContainer;
-import org.apache.isis.applib.annotation.*;
+import org.apache.isis.applib.annotation.BookmarkPolicy;
+import org.apache.isis.applib.annotation.Bookmarkable;
+import org.apache.isis.applib.annotation.MemberOrder;
+import org.apache.isis.applib.annotation.ObjectType;
+import org.apache.isis.applib.annotation.Title;
 import org.apache.isis.applib.util.ObjectContracts;
 
 import static com.google.common.base.Predicates.not;
@@ -97,10 +104,10 @@ public class ParentObject implements Entity<ParentObject> {
         return this;
     }
 
-    public Collection<ChildObject> choices0MoveChild() {
+    public java.util.Collection<ChildObject> choices0MoveChild() {
         return getChildren();
     }
-    public Collection<ParentObject> choices1MoveChild() {
+    public java.util.Collection<ParentObject> choices1MoveChild() {
         return Lists.newArrayList(
                 Iterables.filter(parentObjects.listAll(), not(containedIn(Collections.singleton(this)))
         ));

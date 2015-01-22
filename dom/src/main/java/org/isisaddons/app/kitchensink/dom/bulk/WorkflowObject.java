@@ -23,6 +23,7 @@ import javax.jdo.annotations.VersionStrategy;
 import org.isisaddons.app.kitchensink.dom.Entity;
 import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.annotation.*;
+import org.apache.isis.applib.services.actinvoc.ActionInvocationContext;
 import org.apache.isis.applib.util.ObjectContracts;
 
 @javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE)
@@ -70,7 +71,7 @@ public class WorkflowObject implements Entity<WorkflowObject> {
     @Bulk
     public WorkflowObject previous() {
         setState(getState().previous());
-        return bulkInteractionContext.getInvokedAs().isBulk()? null: this;
+        return actionInvocationContext.getInvokedOn().isCollection()? null: this;
     }
     //endregion
 
@@ -78,14 +79,14 @@ public class WorkflowObject implements Entity<WorkflowObject> {
     @Bulk
     public WorkflowObject next() {
         setState(getState().next());
-        return bulkInteractionContext.getInvokedAs().isBulk()? null: this;
+        return actionInvocationContext.getInvokedOn().isCollection()? null: this;
     }
     //endregion
 
     //region > compareTo
 
     @Override
-    public int compareTo(WorkflowObject other) {
+    public int compareTo(final WorkflowObject other) {
         return ObjectContracts.compare(this, other, "name");
     }
 
@@ -98,7 +99,7 @@ public class WorkflowObject implements Entity<WorkflowObject> {
     private DomainObjectContainer container;
 
     @Inject
-    private Bulk.InteractionContext bulkInteractionContext;
+    private ActionInvocationContext actionInvocationContext;
     //endregion
 
 }
