@@ -25,7 +25,7 @@ public class JavaMathObjectsFixture extends FixtureScript {
     @Override
     protected void execute(ExecutionContext executionContext) {
 
-        long l = 0;
+        long l = 1_000_000L;
         create("Foo", l++, executionContext);
         create("Bar", l++, executionContext);
         create("Baz", l++, executionContext);
