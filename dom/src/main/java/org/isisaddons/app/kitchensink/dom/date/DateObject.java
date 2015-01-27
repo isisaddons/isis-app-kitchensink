@@ -44,6 +44,7 @@ import org.apache.isis.applib.util.ObjectContracts;
         column="version")
 @ObjectType("DATE")
 @Bookmarkable
+@SuppressWarnings("unused")
 public class DateObject implements Entity<DateObject> {
 
     //region > name (property)
@@ -76,7 +77,7 @@ public class DateObject implements Entity<DateObject> {
         this.someJavaUtilDateMandatory = someJavaUtilDateMandatory;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
     public DateObject updateSomeJavaUtilDateMandatory(final java.util.Date i) {
         setSomeJavaUtilDateMandatory(i);
         return this;
@@ -98,7 +99,7 @@ public class DateObject implements Entity<DateObject> {
         this.someJavaUtilDateOptional = someJavaUtilDateOptional;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
     public DateObject updateSomeJavaUtilDateOptional(final @Optional java.util.Date i) {
         setSomeJavaUtilDateOptional(i);
         return this;
@@ -107,7 +108,7 @@ public class DateObject implements Entity<DateObject> {
         return getSomeJavaUtilDateOptional();
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
     public DateObject resetSomeJavaUtilDateOptional() {
         setSomeJavaUtilDateOptional(null);
         return this;
@@ -133,7 +134,7 @@ public class DateObject implements Entity<DateObject> {
     private java.util.Date someJavaUtilDateDisabled;
 
     @javax.jdo.annotations.Column(allowsNull = "false")
-    @Disabled
+    @Property(editing = Editing.DISABLED)
     public java.util.Date getSomeJavaUtilDateDisabled() {
         return someJavaUtilDateDisabled;
     }
@@ -160,7 +161,7 @@ public class DateObject implements Entity<DateObject> {
         return i.getDay() == 1? "Can't enter Monday (don't like Mondays)": null;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
     public DateObject updateSomeJavaUtilDateWithValidation(final Date i) {
         setSomeJavaUtilDateWithValidation(i);
         return this;
@@ -191,7 +192,7 @@ public class DateObject implements Entity<DateObject> {
         return nextFewDays(4, LOCALDATE_AS_JAVAUTILDATE);
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
     public DateObject updateSomeJavaUtilDateMandatoryWithChoices(final java.util.Date i) {
         setSomeJavaUtilDateMandatoryWithChoices(i);
         return this;
@@ -203,7 +204,7 @@ public class DateObject implements Entity<DateObject> {
     public List<java.util.Date> choices0UpdateSomeJavaUtilDateMandatoryWithChoices() {
         return nextFewDays(4, LOCALDATE_AS_JAVAUTILDATE);
     }
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
     public DateObject resetSomeJavaUtilDateMandatoryWithChoices() {
         setSomeJavaUtilDateMandatoryWithChoices(null);
         return this;
@@ -226,7 +227,7 @@ public class DateObject implements Entity<DateObject> {
         return nextFewDays(4, LOCALDATE_AS_JAVAUTILDATE);
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
     public DateObject updateSomeJavaUtilDateOptionalWithChoices(final @Optional java.util.Date i) {
         setSomeJavaUtilDateOptionalWithChoices(i);
         return this;
@@ -238,7 +239,7 @@ public class DateObject implements Entity<DateObject> {
     public List<java.util.Date> choices0UpdateSomeJavaUtilDateOptionalWithChoices() {
         return nextFewDays(4, LOCALDATE_AS_JAVAUTILDATE);
     }
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
     public DateObject resetSomeJavaUtilDateOptionalWithChoices() {
         setSomeJavaUtilDateOptionalWithChoices(null);
         return this;
@@ -259,7 +260,7 @@ public class DateObject implements Entity<DateObject> {
         this.someJavaSqlDateMandatory = someJavaSqlDateMandatory;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
     public DateObject updateSomeJavaSqlDateMandatory(final java.sql.Date i) {
         setSomeJavaSqlDateMandatory(i);
         return this;
@@ -281,7 +282,7 @@ public class DateObject implements Entity<DateObject> {
         this.someJavaSqlDateOptional = someJavaSqlDateOptional;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
     public DateObject updateSomeJavaSqlDateOptional(final @Optional java.sql.Date i) {
         setSomeJavaSqlDateOptional(i);
         return this;
@@ -290,7 +291,7 @@ public class DateObject implements Entity<DateObject> {
         return getSomeJavaSqlDateOptional();
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
     public DateObject resetSomeJavaSqlDateOptional() {
         setSomeJavaSqlDateOptional(null);
         return this;
@@ -316,7 +317,7 @@ public class DateObject implements Entity<DateObject> {
     private java.sql.Date someJavaSqlDateDisabled;
 
     @javax.jdo.annotations.Column(allowsNull = "false")
-    @Disabled
+    @Property(editing = Editing.DISABLED)
     public java.sql.Date getSomeJavaSqlDateDisabled() {
         return someJavaSqlDateDisabled;
     }
@@ -343,7 +344,7 @@ public class DateObject implements Entity<DateObject> {
         return i.getDay() == 1? "Can't enter Monday (don't like Mondays)": null;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
     public DateObject updateSomeJavaSqlDateWithValidation(final java.sql.Date i) {
         setSomeJavaSqlDateWithValidation(i);
         return this;
@@ -374,7 +375,7 @@ public class DateObject implements Entity<DateObject> {
         return nextFewDays(4, LOCALDATE_AS_JAVASQLDATE);
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
     public DateObject updateSomeJavaSqlDateMandatoryWithChoices(final @Optional java.sql.Date i) {
         setSomeJavaSqlDateMandatoryWithChoices(i);
         return this;
@@ -386,7 +387,7 @@ public class DateObject implements Entity<DateObject> {
     public List<java.sql.Date> choices0UpdateSomeJavaSqlDateMandatoryWithChoices() {
         return nextFewDays(4, LOCALDATE_AS_JAVASQLDATE);
     }
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
     public DateObject resetSomeJavaSqlDateMandatoryWithChoices() {
         setSomeJavaSqlDateMandatoryWithChoices(null);
         return this;
@@ -409,7 +410,7 @@ public class DateObject implements Entity<DateObject> {
         return nextFewDays(4, LOCALDATE_AS_JAVASQLDATE);
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
     public DateObject updateSomeJavaSqlDateOptionalWithChoices(final @Optional java.sql.Date i) {
         setSomeJavaSqlDateOptionalWithChoices(i);
         return this;
@@ -421,7 +422,7 @@ public class DateObject implements Entity<DateObject> {
     public List<java.sql.Date> choices0UpdateSomeJavaSqlDateOptionalWithChoices() {
         return nextFewDays(4, LOCALDATE_AS_JAVASQLDATE);
     }
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
     public DateObject resetSomeJavaSqlDateOptionalWithChoices() {
         setSomeJavaSqlDateOptionalWithChoices(null);
         return this;
@@ -443,7 +444,7 @@ public class DateObject implements Entity<DateObject> {
         this.someJodaLocalDateMandatory = someJodaLocalDateMandatory;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
     public DateObject updateSomeJodaLocalDateMandatory(final org.joda.time.LocalDate i) {
         setSomeJodaLocalDateMandatory(i);
         return this;
@@ -466,7 +467,7 @@ public class DateObject implements Entity<DateObject> {
         this.someJodaLocalDateOptional = someJodaLocalDateOptional;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
     public DateObject updateSomeJodaLocalDateOptional(final @Optional org.joda.time.LocalDate i) {
         setSomeJodaLocalDateOptional(i);
         return this;
@@ -475,7 +476,7 @@ public class DateObject implements Entity<DateObject> {
         return getSomeJodaLocalDateOptional();
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
     public DateObject resetSomeJodaLocalDateOptional() {
         setSomeJodaLocalDateOptional(null);
         return this;
@@ -501,7 +502,7 @@ public class DateObject implements Entity<DateObject> {
     private org.joda.time.LocalDate someJodaLocalDateDisabled;
 
     @javax.jdo.annotations.Column(allowsNull = "false")
-    @Disabled
+    @Property(editing = Editing.DISABLED)
     public org.joda.time.LocalDate getSomeJodaLocalDateDisabled() {
         return someJodaLocalDateDisabled;
     }
@@ -528,7 +529,7 @@ public class DateObject implements Entity<DateObject> {
         return i.getDayOfWeek() == DateTimeConstants.MONDAY? "Can't enter Monday (don't like Mondays)": null;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
     public DateObject updateSomeJodaLocalDateWithValidation(final org.joda.time.LocalDate i) {
         setSomeJodaLocalDateWithValidation(i);
         return this;
@@ -559,7 +560,7 @@ public class DateObject implements Entity<DateObject> {
         return nextFewDays(4, Functions.<LocalDate>identity());
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
     public DateObject updateSomeJodaLocalDateMandatoryWithChoices(final @Optional org.joda.time.LocalDate i) {
         setSomeJodaLocalDateMandatoryWithChoices(i);
         return this;
@@ -571,7 +572,7 @@ public class DateObject implements Entity<DateObject> {
     public List<org.joda.time.LocalDate> choices0UpdateSomeJodaLocalDateMandatoryWithChoices() {
         return nextFewDays(4, Functions.<LocalDate>identity());
     }
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
     public DateObject resetSomeJodaLocalDateMandatoryWithChoices() {
         setSomeJodaLocalDateMandatoryWithChoices(null);
         return this;
@@ -594,7 +595,7 @@ public class DateObject implements Entity<DateObject> {
         return nextFewDays(4, Functions.<LocalDate>identity());
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
     public DateObject updateSomeJodaLocalDateOptionalWithChoices(final @Optional org.joda.time.LocalDate i) {
         setSomeJodaLocalDateOptionalWithChoices(i);
         return this;
@@ -606,7 +607,7 @@ public class DateObject implements Entity<DateObject> {
     public List<org.joda.time.LocalDate> choices0UpdateSomeJodaLocalDateOptionalWithChoices() {
         return nextFewDays(4, Functions.<LocalDate>identity());
     }
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
     public DateObject resetSomeJodaLocalDateOptionalWithChoices() {
         setSomeJodaLocalDateOptionalWithChoices(null);
         return this;
@@ -628,7 +629,7 @@ public class DateObject implements Entity<DateObject> {
         this.someJodaLocalDateTimeMandatory = someJodaLocalDateTimeMandatory;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
     public DateObject updateSomeJodaLocalDateTimeMandatory(final org.joda.time.LocalDateTime i) {
         setSomeJodaLocalDateTimeMandatory(i);
         return this;
@@ -651,7 +652,7 @@ public class DateObject implements Entity<DateObject> {
         this.someJodaLocalDateTimeOptional = someJodaLocalDateTimeOptional;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
     public DateObject updateSomeJodaLocalDateTimeOptional(final @Optional org.joda.time.LocalDateTime i) {
         setSomeJodaLocalDateTimeOptional(i);
         return this;
@@ -660,7 +661,7 @@ public class DateObject implements Entity<DateObject> {
         return getSomeJodaLocalDateTimeOptional();
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
     public DateObject resetSomeJodaLocalDateTimeOptional() {
         setSomeJodaLocalDateTimeOptional(null);
         return this;
@@ -686,7 +687,7 @@ public class DateObject implements Entity<DateObject> {
     private org.joda.time.LocalDateTime someJodaLocalDateTimeDisabled;
 
     @javax.jdo.annotations.Column(allowsNull = "false")
-    @Disabled
+    @Property(editing = Editing.DISABLED)
     public org.joda.time.LocalDateTime getSomeJodaLocalDateTimeDisabled() {
         return someJodaLocalDateTimeDisabled;
     }
@@ -713,7 +714,7 @@ public class DateObject implements Entity<DateObject> {
         return i.getDayOfWeek() == DateTimeConstants.MONDAY? "Can't enter Monday (don't like Mondays)": null;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
     public DateObject updateSomeJodaLocalDateTimeWithValidation(final org.joda.time.LocalDateTime i) {
         setSomeJodaLocalDateTimeWithValidation(i);
         return this;
@@ -731,40 +732,40 @@ public class DateObject implements Entity<DateObject> {
     //
     // throwing an exception... looks like issue in Isis core.
     //
-//    //region > someJodaLocalDateTimeMandatoryWithChoices (property)
-//    private org.joda.time.LocalDateTime someJodaLocalDateTimeMandatoryWithChoices;
-//
-//    @Column(allowsNull = "true")
-//    public org.joda.time.LocalDateTime getSomeJodaLocalDateTimeMandatoryWithChoices() {
-//        return someJodaLocalDateTimeMandatoryWithChoices;
-//    }
-//
-//    public void setSomeJodaLocalDateTimeMandatoryWithChoices(final org.joda.time.LocalDateTime someJodaLocalDateTimeMandatoryWithChoices) {
-//        this.someJodaLocalDateTimeMandatoryWithChoices = someJodaLocalDateTimeMandatoryWithChoices;
-//    }
-//
-//    public Collection<org.joda.time.LocalDateTime> choicesSomeJodaLocalDateTimeMandatoryWithChoices() {
-//        return nextFewDays(4, localDateWithTime(new LocalTime()));
-//    }
-//
-//    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-//    public DateObject updateSomeJodaLocalDateTimeMandatoryWithChoices(final @Optional org.joda.time.LocalDateTime i) {
-//        setSomeJodaLocalDateTimeMandatoryWithChoices(i);
-//        return this;
-//    }
-//    public org.joda.time.LocalDateTime default0UpdateSomeJodaLocalDateTimeMandatoryWithChoices() {
-//        return getSomeJodaLocalDateTimeMandatoryWithChoices();
-//    }
-//
-//    public List<org.joda.time.LocalDateTime> choices0UpdateSomeJodaLocalDateTimeMandatoryWithChoices() {
-//        return nextFewDays(4, localDateWithTime(new LocalTime()));
-//    }
-//    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-//    public DateObject resetSomeJodaLocalDateTimeMandatoryWithChoices() {
-//        setSomeJodaLocalDateTimeMandatoryWithChoices(null);
-//        return this;
-//    }
-//    //endregion
+    //region > someJodaLocalDateTimeMandatoryWithChoices (property)
+    private org.joda.time.LocalDateTime someJodaLocalDateTimeMandatoryWithChoices;
+
+    @Column(allowsNull = "true")
+    public org.joda.time.LocalDateTime getSomeJodaLocalDateTimeMandatoryWithChoices() {
+        return someJodaLocalDateTimeMandatoryWithChoices;
+    }
+
+    public void setSomeJodaLocalDateTimeMandatoryWithChoices(final org.joda.time.LocalDateTime someJodaLocalDateTimeMandatoryWithChoices) {
+        this.someJodaLocalDateTimeMandatoryWithChoices = someJodaLocalDateTimeMandatoryWithChoices;
+    }
+
+    public Collection<org.joda.time.LocalDateTime> choicesSomeJodaLocalDateTimeMandatoryWithChoices() {
+        return nextFewDays(4, localDateWithTime(new LocalTime()));
+    }
+
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
+    public DateObject updateSomeJodaLocalDateTimeMandatoryWithChoices(final @Optional org.joda.time.LocalDateTime i) {
+        setSomeJodaLocalDateTimeMandatoryWithChoices(i);
+        return this;
+    }
+    public org.joda.time.LocalDateTime default0UpdateSomeJodaLocalDateTimeMandatoryWithChoices() {
+        return getSomeJodaLocalDateTimeMandatoryWithChoices();
+    }
+
+    public List<org.joda.time.LocalDateTime> choices0UpdateSomeJodaLocalDateTimeMandatoryWithChoices() {
+        return nextFewDays(4, localDateWithTime(new LocalTime()));
+    }
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
+    public DateObject resetSomeJodaLocalDateTimeMandatoryWithChoices() {
+        setSomeJodaLocalDateTimeMandatoryWithChoices(null);
+        return this;
+    }
+    //endregion
 
     //
     // throwing an exception... looks like issue in Isis core.
@@ -785,7 +786,7 @@ public class DateObject implements Entity<DateObject> {
 //        return nextFewDays(4, localDateWithTime(new LocalTime()));
 //    }
 //
-//    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+//    @Action(semantics = SemanticsOf.IDEMPOTENT)
 //    public DateObject updateSomeJodaLocalDateTimeOptionalWithChoices(final @Optional org.joda.time.LocalDateTime i) {
 //        setSomeJodaLocalDateTimeOptionalWithChoices(i);
 //        return this;
@@ -797,7 +798,7 @@ public class DateObject implements Entity<DateObject> {
 //    public List<org.joda.time.LocalDateTime> choices0UpdateSomeJodaLocalDateTimeOptionalWithChoices() {
 //        return nextFewDays(4, localDateWithTime(new LocalTime()));
 //    }
-//    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+//    @Action(semantics = SemanticsOf.IDEMPOTENT)
 //    public DateObject resetSomeJodaLocalDateTimeOptionalWithChoices() {
 //        setSomeJodaLocalDateTimeOptionalWithChoices(null);
 //        return this;
@@ -824,7 +825,7 @@ public class DateObject implements Entity<DateObject> {
 //        this.someApplibDateTimeMandatory = someApplibDateTimeMandatory;
 //    }
 //
-//    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+//    @Action(semantics = SemanticsOf.IDEMPOTENT)
 //    public DateObject updateSomeApplibDateTimeMandatory(final org.apache.isis.applib.value.DateTime i) {
 //        setSomeApplibDateTimeMandatory(i);
 //        return this;
@@ -847,7 +848,7 @@ public class DateObject implements Entity<DateObject> {
 //        this.someApplibDateTimeOptional = someApplibDateTimeOptional;
 //    }
 //
-//    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+//    @Action(semantics = SemanticsOf.IDEMPOTENT)
 //    public DateObject updateSomeApplibDateTimeOptional(final @Optional org.apache.isis.applib.value.DateTime i) {
 //        setSomeApplibDateTimeOptional(i);
 //        return this;
@@ -856,7 +857,7 @@ public class DateObject implements Entity<DateObject> {
 //        return getSomeApplibDateTimeOptional();
 //    }
 //
-//    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+//    @Action(semantics = SemanticsOf.IDEMPOTENT)
 //    public DateObject resetSomeApplibDateTimeOptional() {
 //        setSomeApplibDateTimeOptional(null);
 //        return this;
@@ -876,7 +877,7 @@ public class DateObject implements Entity<DateObject> {
 //        this.someApplibDateMandatory = someApplibDateMandatory;
 //    }
 //
-//    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+//    @Action(semantics = SemanticsOf.IDEMPOTENT)
 //    public DateObject updateSomeApplibDateMandatory(final org.apache.isis.applib.value.Date i) {
 //        setSomeApplibDateMandatory(i);
 //        return this;
@@ -899,7 +900,7 @@ public class DateObject implements Entity<DateObject> {
 //        this.someApplibDateOptional = someApplibDateOptional;
 //    }
 //
-//    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+//    @Action(semantics = SemanticsOf.IDEMPOTENT)
 //    public DateObject updateSomeApplibDateOptional(final @Optional org.apache.isis.applib.value.Date i) {
 //        setSomeApplibDateOptional(i);
 //        return this;
@@ -908,7 +909,7 @@ public class DateObject implements Entity<DateObject> {
 //        return getSomeApplibDateOptional();
 //    }
 //
-//    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+//    @Action(semantics = SemanticsOf.IDEMPOTENT)
 //    public DateObject resetSomeApplibDateOptional() {
 //        setSomeApplibDateOptional(null);
 //        return this;
@@ -934,7 +935,7 @@ public class DateObject implements Entity<DateObject> {
         this.someJodaDateTimeMandatory = someJodaDateTimeMandatory;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
     public DateObject updateSomeJodaDateTimeMandatory(final org.joda.time.DateTime i) {
         setSomeJodaDateTimeMandatory(i);
         return this;
@@ -957,7 +958,7 @@ public class DateObject implements Entity<DateObject> {
         this.someJodaDateTimeOptional = someJodaDateTimeOptional;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
     public DateObject updateSomeJodaDateTimeOptional(final @Optional org.joda.time.DateTime i) {
         setSomeJodaDateTimeOptional(i);
         return this;
@@ -966,7 +967,7 @@ public class DateObject implements Entity<DateObject> {
         return getSomeJodaDateTimeOptional();
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
     public DateObject resetSomeJodaDateTimeOptional() {
         setSomeJodaDateTimeOptional(null);
         return this;
@@ -992,7 +993,7 @@ public class DateObject implements Entity<DateObject> {
     private org.joda.time.DateTime someJodaDateTimeDisabled;
 
     @javax.jdo.annotations.Column(allowsNull = "false")
-    @Disabled
+    @Property(editing = Editing.DISABLED)
     public org.joda.time.DateTime getSomeJodaDateTimeDisabled() {
         return someJodaDateTimeDisabled;
     }
@@ -1019,7 +1020,7 @@ public class DateObject implements Entity<DateObject> {
         return i.getDayOfWeek() == DateTimeConstants.MONDAY? "Can't enter Monday (don't like Mondays)": null;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
     public DateObject updateSomeJodaDateTimeWithValidation(final org.joda.time.DateTime i) {
         setSomeJodaDateTimeWithValidation(i);
         return this;
@@ -1050,7 +1051,7 @@ public class DateObject implements Entity<DateObject> {
         return nextFewDays(4, LOCALDATE_AS_DATETIME);
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
     public DateObject updateSomeJodaDateTimeMandatoryWithChoices(final @Optional org.joda.time.DateTime i) {
         setSomeJodaDateTimeMandatoryWithChoices(i);
         return this;
@@ -1062,7 +1063,7 @@ public class DateObject implements Entity<DateObject> {
     public List<org.joda.time.DateTime> choices0UpdateSomeJodaDateTimeMandatoryWithChoices() {
         return nextFewDays(4, LOCALDATE_AS_DATETIME);
     }
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
     public DateObject resetSomeJodaDateTimeMandatoryWithChoices() {
         setSomeJodaDateTimeMandatoryWithChoices(null);
         return this;
@@ -1085,7 +1086,7 @@ public class DateObject implements Entity<DateObject> {
         return nextFewDays(4, LOCALDATE_AS_DATETIME);
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
     public DateObject updateSomeJodaDateTimeOptionalWithChoices(final @Optional org.joda.time.DateTime i) {
         setSomeJodaDateTimeOptionalWithChoices(i);
         return this;
@@ -1097,7 +1098,7 @@ public class DateObject implements Entity<DateObject> {
     public List<org.joda.time.DateTime> choices0UpdateSomeJodaDateTimeOptionalWithChoices() {
         return nextFewDays(4, LOCALDATE_AS_DATETIME);
     }
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
     public DateObject resetSomeJodaDateTimeOptionalWithChoices() {
         setSomeJodaDateTimeOptionalWithChoices(null);
         return this;
@@ -1118,7 +1119,7 @@ public class DateObject implements Entity<DateObject> {
         this.someJavaSqlTimestampMandatory = someJavaSqlTimestampMandatory;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
     public DateObject updateSomeJavaSqlTimestampMandatory(final java.sql.Timestamp i) {
         setSomeJavaSqlTimestampMandatory(i);
         return this;
@@ -1140,7 +1141,7 @@ public class DateObject implements Entity<DateObject> {
         this.someJavaSqlTimestampOptional = someJavaSqlTimestampOptional;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
     public DateObject updateSomeJavaSqlTimestampOptional(final @Optional java.sql.Timestamp i) {
         setSomeJavaSqlTimestampOptional(i);
         return this;
@@ -1149,7 +1150,7 @@ public class DateObject implements Entity<DateObject> {
         return getSomeJavaSqlTimestampOptional();
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
     public DateObject resetSomeJavaSqlTimestampOptional() {
         setSomeJavaSqlTimestampOptional(null);
         return this;
@@ -1175,7 +1176,7 @@ public class DateObject implements Entity<DateObject> {
     private java.sql.Timestamp someJavaSqlTimestampDisabled;
 
     @javax.jdo.annotations.Column(allowsNull = "false")
-    @Disabled
+    @Property(editing = Editing.DISABLED)
     public java.sql.Timestamp getSomeJavaSqlTimestampDisabled() {
         return someJavaSqlTimestampDisabled;
     }
@@ -1202,7 +1203,7 @@ public class DateObject implements Entity<DateObject> {
         return i.getDay() == 1? "Can't enter Monday (don't like Mondays)": null;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
     public DateObject updateSomeJavaSqlTimestampWithValidation(final java.sql.Timestamp i) {
         setSomeJavaSqlTimestampWithValidation(i);
         return this;
@@ -1233,7 +1234,7 @@ public class DateObject implements Entity<DateObject> {
         return nextFewDays(4, LOCALDATE_AS_JAVASQLTIMESTAMP);
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
     public DateObject updateSomeJavaSqlTimestampMandatoryWithChoices(final @Optional java.sql.Timestamp i) {
         setSomeJavaSqlTimestampMandatoryWithChoices(i);
         return this;
@@ -1245,7 +1246,7 @@ public class DateObject implements Entity<DateObject> {
     public List<java.sql.Timestamp> choices0UpdateSomeJavaSqlTimestampMandatoryWithChoices() {
         return nextFewDays(4, LOCALDATE_AS_JAVASQLTIMESTAMP);
     }
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
     public DateObject resetSomeJavaSqlTimestampMandatoryWithChoices() {
         setSomeJavaSqlTimestampMandatoryWithChoices(null);
         return this;
@@ -1268,7 +1269,7 @@ public class DateObject implements Entity<DateObject> {
         return nextFewDays(4, LOCALDATE_AS_JAVASQLTIMESTAMP);
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
     public DateObject updateSomeJavaSqlTimestampOptionalWithChoices(final @Optional java.sql.Timestamp i) {
         setSomeJavaSqlTimestampOptionalWithChoices(i);
         return this;
@@ -1280,7 +1281,7 @@ public class DateObject implements Entity<DateObject> {
     public List<java.sql.Timestamp> choices0UpdateSomeJavaSqlTimestampOptionalWithChoices() {
         return nextFewDays(4, LOCALDATE_AS_JAVASQLTIMESTAMP);
     }
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
     public DateObject resetSomeJavaSqlTimestampOptionalWithChoices() {
         setSomeJavaSqlTimestampOptionalWithChoices(null);
         return this;
