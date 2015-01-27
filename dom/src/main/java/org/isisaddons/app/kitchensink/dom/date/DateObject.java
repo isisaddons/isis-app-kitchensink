@@ -432,10 +432,11 @@ public class DateObject implements Entity<DateObject> {
 
 
     //region > someJodaLocalDateMandatory (property)
-    @javax.jdo.annotations.Persistent(defaultFetchGroup="true")
+
     private org.joda.time.LocalDate someJodaLocalDateMandatory;
 
     @Column(allowsNull = "false")
+    @javax.jdo.annotations.Persistent(defaultFetchGroup="true")
     public org.joda.time.LocalDate getSomeJodaLocalDateMandatory() {
         return someJodaLocalDateMandatory;
     }
@@ -455,10 +456,10 @@ public class DateObject implements Entity<DateObject> {
     //endregion
 
     //region > someJodaLocalDateOptional (property)
-    @javax.jdo.annotations.Persistent(defaultFetchGroup="true")
     private org.joda.time.LocalDate someJodaLocalDateOptional;
 
     @Column(allowsNull = "true")
+    @javax.jdo.annotations.Persistent(defaultFetchGroup="true")
     public org.joda.time.LocalDate getSomeJodaLocalDateOptional() {
         return someJodaLocalDateOptional;
     }
@@ -615,12 +616,12 @@ public class DateObject implements Entity<DateObject> {
     //endregion
 
 
-
+/*
     //region > someJodaLocalDateTimeMandatory (property)
-    @javax.jdo.annotations.Persistent(defaultFetchGroup="true")
     private org.joda.time.LocalDateTime someJodaLocalDateTimeMandatory;
 
     @Column(allowsNull = "false")
+    @javax.jdo.annotations.Persistent(defaultFetchGroup="true")
     public org.joda.time.LocalDateTime getSomeJodaLocalDateTimeMandatory() {
         return someJodaLocalDateTimeMandatory;
     }
@@ -640,9 +641,9 @@ public class DateObject implements Entity<DateObject> {
     //endregion
 
     //region > someJodaLocalDateTimeOptional (property)
-    @javax.jdo.annotations.Persistent(defaultFetchGroup="true")
     private org.joda.time.LocalDateTime someJodaLocalDateTimeOptional;
 
+    @javax.jdo.annotations.Persistent(defaultFetchGroup="true")
     @Column(allowsNull = "true")
     public org.joda.time.LocalDateTime getSomeJodaLocalDateTimeOptional() {
         return someJodaLocalDateTimeOptional;
@@ -702,6 +703,7 @@ public class DateObject implements Entity<DateObject> {
     private org.joda.time.LocalDateTime someJodaLocalDateTimeWithValidation;
 
     @javax.jdo.annotations.Column(allowsNull = "false")
+    @javax.jdo.annotations.Persistent(defaultFetchGroup="true")
     public org.joda.time.LocalDateTime getSomeJodaLocalDateTimeWithValidation() {
         return someJodaLocalDateTimeWithValidation;
     }
@@ -736,6 +738,7 @@ public class DateObject implements Entity<DateObject> {
     private org.joda.time.LocalDateTime someJodaLocalDateTimeMandatoryWithChoices;
 
     @Column(allowsNull = "true")
+    @javax.jdo.annotations.Persistent(defaultFetchGroup="true")
     public org.joda.time.LocalDateTime getSomeJodaLocalDateTimeMandatoryWithChoices() {
         return someJodaLocalDateTimeMandatoryWithChoices;
     }
@@ -805,7 +808,7 @@ public class DateObject implements Entity<DateObject> {
 //    }
 //    //endregion
 
-
+*/
     //
     // the applib datetime/date classes are commented out because they haven't been mapped to the DataNucleus objectstore,
     // and will almost certainly remove in Isis 2.0
@@ -813,10 +816,10 @@ public class DateObject implements Entity<DateObject> {
 
 
 //    //region > someApplibDateTimeMandatory (property)
-//    @javax.jdo.annotations.Persistent(defaultFetchGroup="true")
 //    private org.apache.isis.applib.value.DateTime someApplibDateTimeMandatory;
 //
 //    @Column(allowsNull = "false")
+//    @javax.jdo.annotations.Persistent(defaultFetchGroup="true")
 //    public org.apache.isis.applib.value.DateTime getSomeApplibDateTimeMandatory() {
 //        return someApplibDateTimeMandatory;
 //    }
@@ -836,10 +839,10 @@ public class DateObject implements Entity<DateObject> {
 //    //endregion
 //
 //    //region > someApplibDateTimeOptional (property)
-//    @javax.jdo.annotations.Persistent(defaultFetchGroup="true")
 //    private org.apache.isis.applib.value.DateTime someApplibDateTimeOptional;
 //
 //    @Column(allowsNull = "true")
+//    @javax.jdo.annotations.Persistent(defaultFetchGroup="true")
 //    public org.apache.isis.applib.value.DateTime getSomeApplibDateTimeOptional() {
 //        return someApplibDateTimeOptional;
 //    }
@@ -865,10 +868,10 @@ public class DateObject implements Entity<DateObject> {
 //    //endregion
 //
 //    //region > someApplibDateMandatory (property)
-//    @javax.jdo.annotations.Persistent(defaultFetchGroup="true")
 //    private org.apache.isis.applib.value.Date someApplibDateMandatory;
 //
 //    @Column(allowsNull = "false")
+//    @javax.jdo.annotations.Persistent(defaultFetchGroup="true")
 //    public org.apache.isis.applib.value.Date getSomeApplibDateMandatory() {
 //        return someApplibDateMandatory;
 //    }
@@ -888,10 +891,10 @@ public class DateObject implements Entity<DateObject> {
 //    //endregion
 //
 //    //region > someApplibDateOptional (property)
-//    @javax.jdo.annotations.Persistent(defaultFetchGroup="true")
 //    private org.apache.isis.applib.value.Date someApplibDateOptional;
 //
 //    @Column(allowsNull = "true")
+//    @javax.jdo.annotations.Persistent(defaultFetchGroup="true")
 //    public org.apache.isis.applib.value.Date getSomeApplibDateOptional() {
 //        return someApplibDateOptional;
 //    }

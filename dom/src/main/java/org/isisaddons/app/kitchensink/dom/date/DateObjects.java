@@ -83,12 +83,12 @@ public class DateObjects extends RepositoryAbstract<DateObject> {
         obj.setSomeJodaDateTimeMandatoryWithChoices(dt);
         obj.setSomeJodaDateTimeOptionalWithChoices(dt);
 
-        obj.setSomeJodaLocalDateTimeMandatory(ldt);
-        obj.setSomeJodaLocalDateTimeOptional(ldt);
-        obj.setSomeJodaLocalDateTimeHidden(ldt);
-        obj.setSomeJodaLocalDateTimeDisabled(ldt);
-        obj.setSomeJodaLocalDateTimeWithValidation(ldt);
-        obj.setSomeJodaLocalDateTimeMandatoryWithChoices(ldt);
+//        obj.setSomeJodaLocalDateTimeMandatory(ldt);
+//        obj.setSomeJodaLocalDateTimeOptional(ldt);
+//        obj.setSomeJodaLocalDateTimeHidden(ldt);
+//        obj.setSomeJodaLocalDateTimeDisabled(ldt);
+//        obj.setSomeJodaLocalDateTimeWithValidation(ldt);
+//        obj.setSomeJodaLocalDateTimeMandatoryWithChoices(ldt);
 //        obj.setSomeJodaLocalDateTimeOptionalWithChoices(ldt);
 
         obj.setSomeJodaLocalDateMandatory(ld);
