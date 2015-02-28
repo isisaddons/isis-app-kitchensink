@@ -20,12 +20,14 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.List;
 import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
+import org.apache.isis.applib.annotation.ActionLayout;
 import org.apache.isis.applib.annotation.DomainService;
+import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
-import org.apache.isis.applib.annotation.Named;
+import org.apache.isis.applib.annotation.ParameterLayout;
 
-@Named("Data Types")
-@DomainService(menuOrder = "10.4", repositoryFor = JavaMathObject.class)
+@DomainService(repositoryFor = JavaMathObject.class)
+@DomainServiceLayout(named="Data Types",menuOrder = "10.4")
 public class JavaMathObjects extends RepositoryAbstract<JavaMathObject> {
 
     public JavaMathObjects() {
@@ -35,9 +37,9 @@ public class JavaMathObjects extends RepositoryAbstract<JavaMathObject> {
 
     @MemberOrder(sequence = "30")
     public JavaMathObject createJavaMathObject(
-            final @Named("Name") String name,
-            final @Named("Long") long l,
-            final @Named("Double") double d) {
+            @ParameterLayout(named="Name") final String name,
+            @ParameterLayout(named="Long") final long l,
+            @ParameterLayout(named="Double") final double d) {
         final JavaMathObject obj = container.newTransientInstance(JavaMathObject.class);
         obj.setName(name);
 
@@ -68,13 +70,13 @@ public class JavaMathObjects extends RepositoryAbstract<JavaMathObject> {
     }
 
 
-    @Named("First JavaMathObject")
+    @ActionLayout(named="First JavaMathObject")
     @Override
     public JavaMathObject first() {
         return super.first();
     }
 
-    @Named("List All JavaMathObjects")
+    @ActionLayout(named="List All JavaMathObjects")
     @Override
     public List<JavaMathObject> listAll() {
         return super.listAll();

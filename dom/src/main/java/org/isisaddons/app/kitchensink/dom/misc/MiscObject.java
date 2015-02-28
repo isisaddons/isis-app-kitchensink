@@ -26,13 +26,17 @@ import javax.jdo.annotations.VersionStrategy;
 import com.google.common.collect.Lists;
 import org.isisaddons.app.kitchensink.dom.Entity;
 import org.apache.isis.applib.DomainObjectContainer;
-import org.apache.isis.applib.annotation.ActionSemantics;
-import org.apache.isis.applib.annotation.Bookmarkable;
-import org.apache.isis.applib.annotation.Disabled;
-import org.apache.isis.applib.annotation.Hidden;
-import org.apache.isis.applib.annotation.ObjectType;
-import org.apache.isis.applib.annotation.Optional;
+import org.apache.isis.applib.annotation.Action;
+import org.apache.isis.applib.annotation.BookmarkPolicy;
+import org.apache.isis.applib.annotation.DomainObject;
+import org.apache.isis.applib.annotation.DomainObjectLayout;
+import org.apache.isis.applib.annotation.Editing;
+import org.apache.isis.applib.annotation.Optionality;
+import org.apache.isis.applib.annotation.Parameter;
+import org.apache.isis.applib.annotation.Property;
+import org.apache.isis.applib.annotation.SemanticsOf;
 import org.apache.isis.applib.annotation.Title;
+import org.apache.isis.applib.annotation.Where;
 import org.apache.isis.applib.util.ObjectContracts;
 import org.apache.isis.applib.value.Money;
 
@@ -43,8 +47,12 @@ import org.apache.isis.applib.value.Money;
 @javax.jdo.annotations.Version(
         strategy=VersionStrategy.VERSION_NUMBER, 
         column="version")
-@ObjectType("MISC")
-@Bookmarkable
+@DomainObject(
+        objectType = "MISC"
+)
+@DomainObjectLayout(
+        bookmarking = BookmarkPolicy.AS_ROOT
+)
 public class MiscObject implements Entity<MiscObject> {
 
 
@@ -77,7 +85,7 @@ public class MiscObject implements Entity<MiscObject> {
         this.someUrlMandatory = someUrlMandatory;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public MiscObject updateSomeUrlMandatory(final java.net.URL i) {
         setSomeUrlMandatory(i);
         return this;
@@ -99,8 +107,8 @@ public class MiscObject implements Entity<MiscObject> {
         this.someUrlOptional = someUrlOptional;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public MiscObject updateSomeUrlOptional(final @Optional java.net.URL i) {
+    @Action(semantics= SemanticsOf.IDEMPOTENT)
+    public MiscObject updateSomeUrlOptional(@Parameter(optionality=Optionality.OPTIONAL) final  java.net.URL i) {
         setSomeUrlOptional(i);
         return this;
     }
@@ -108,7 +116,7 @@ public class MiscObject implements Entity<MiscObject> {
         return getSomeUrlOptional();
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public MiscObject resetSomeUrlOptional() {
         setSomeUrlOptional(null);
         return this;
@@ -119,7 +127,7 @@ public class MiscObject implements Entity<MiscObject> {
     private java.net.URL someUrlHidden;
 
     @Column(allowsNull = "false")
-    @Hidden
+    @Property(hidden = Where.EVERYWHERE)
     public java.net.URL getSomeUrlHidden() {
         return someUrlHidden;
     }
@@ -134,7 +142,7 @@ public class MiscObject implements Entity<MiscObject> {
     private java.net.URL someUrlDisabled;
 
     @Column(allowsNull = "false")
-    @Disabled
+    @Property(editing = Editing.DISABLED)
     public java.net.URL getSomeUrlDisabled() {
         return someUrlDisabled;
     }
@@ -161,7 +169,7 @@ public class MiscObject implements Entity<MiscObject> {
         return !i.toString().contains("://") ? "Does not contain '://'": null;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public MiscObject updateSomeUrlWithValidation(final java.net.URL i) {
         setSomeUrlWithValidation(i);
         return this;
@@ -197,7 +205,7 @@ public class MiscObject implements Entity<MiscObject> {
                 );
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public MiscObject updateSomeUrlMandatoryWithChoices(final java.net.URL i) {
         setSomeUrlMandatoryWithChoices(i);
         return this;
@@ -237,8 +245,8 @@ public class MiscObject implements Entity<MiscObject> {
         );
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public MiscObject updateSomeUrlOptionalWithChoices(final @Optional java.net.URL i) {
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public MiscObject updateSomeUrlOptionalWithChoices(@Parameter(optionality= Optionality.OPTIONAL) final  java.net.URL i) {
         setSomeUrlOptionalWithChoices(i);
         return this;
     }
@@ -255,7 +263,7 @@ public class MiscObject implements Entity<MiscObject> {
         );
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public MiscObject resetSomeUrlOptionalWithChoices() {
         setSomeUrlOptionalWithChoices(null);
         return this;
@@ -276,7 +284,7 @@ public class MiscObject implements Entity<MiscObject> {
         this.someUuidMandatory = someUuidMandatory;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public MiscObject updateSomeUuidMandatory(final java.util.UUID i) {
         setSomeUuidMandatory(i);
         return this;
@@ -298,8 +306,8 @@ public class MiscObject implements Entity<MiscObject> {
         this.someUuidOptional = someUuidOptional;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public MiscObject updateSomeUuidOptional(final @Optional java.util.UUID i) {
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public MiscObject updateSomeUuidOptional(@Parameter(optionality=Optionality.OPTIONAL) final  java.util.UUID i) {
         setSomeUuidOptional(i);
         return this;
     }
@@ -307,7 +315,7 @@ public class MiscObject implements Entity<MiscObject> {
         return getSomeUuidOptional();
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public MiscObject resetSomeUuidOptional() {
         setSomeUuidOptional(null);
         return this;
@@ -318,7 +326,7 @@ public class MiscObject implements Entity<MiscObject> {
     private java.util.UUID someUuidHidden;
 
     @Column(allowsNull = "false")
-    @Hidden
+    @Property(hidden = Where.EVERYWHERE)
     public java.util.UUID getSomeUuidHidden() {
         return someUuidHidden;
     }
@@ -333,7 +341,7 @@ public class MiscObject implements Entity<MiscObject> {
     private java.util.UUID someUuidDisabled;
 
     @Column(allowsNull = "false")
-    @Disabled
+    @Property(editing = Editing.DISABLED)
     public java.util.UUID getSomeUuidDisabled() {
         return someUuidDisabled;
     }
@@ -360,7 +368,7 @@ public class MiscObject implements Entity<MiscObject> {
         return !i.toString().contains("-")? "Must contain '-' character(s)": null;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public MiscObject updateSomeUuidWithValidation(final java.util.UUID i) {
         setSomeUuidWithValidation(i);
         return this;
@@ -390,7 +398,7 @@ public class MiscObject implements Entity<MiscObject> {
         return Lists.newArrayList(UUID.randomUUID(),UUID.randomUUID(),UUID.randomUUID(),UUID.randomUUID());
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public MiscObject updateSomeUuidMandatoryWithChoices(final java.util.UUID i) {
         setSomeUuidMandatoryWithChoices(i);
         return this;
@@ -418,8 +426,8 @@ public class MiscObject implements Entity<MiscObject> {
         return Lists.newArrayList(UUID.randomUUID(),UUID.randomUUID(),UUID.randomUUID(),UUID.randomUUID());
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public MiscObject updateSomeUuidOptionalWithChoices(final @Optional java.util.UUID i) {
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public MiscObject updateSomeUuidOptionalWithChoices(@Parameter(optionality=Optionality.OPTIONAL) final  java.util.UUID i) {
         setSomeUuidOptionalWithChoices(i);
         return this;
     }
@@ -430,7 +438,7 @@ public class MiscObject implements Entity<MiscObject> {
         return Lists.newArrayList(UUID.randomUUID(),UUID.randomUUID(),UUID.randomUUID(),UUID.randomUUID());
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public MiscObject resetSomeUuidOptionalWithChoices() {
         setSomeUuidOptionalWithChoices(null);
         return this;
@@ -454,7 +462,7 @@ public class MiscObject implements Entity<MiscObject> {
         this.someMoneyMandatory = someMoneyMandatory;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public MiscObject updateSomeMoneyMandatory(final Money i) {
         setSomeMoneyMandatory(i);
         return this;
@@ -480,8 +488,8 @@ public class MiscObject implements Entity<MiscObject> {
         this.someMoneyOptional = someMoneyOptional;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public MiscObject updateSomeMoneyOptional(final @Optional Money i) {
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public MiscObject updateSomeMoneyOptional(@Parameter(optionality=Optionality.OPTIONAL) final  Money i) {
         setSomeMoneyOptional(i);
         return this;
     }
@@ -489,7 +497,7 @@ public class MiscObject implements Entity<MiscObject> {
         return getSomeMoneyOptional();
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public MiscObject resetSomeMoneyOptional() {
         setSomeMoneyOptional(null);
         return this;
@@ -504,7 +512,7 @@ public class MiscObject implements Entity<MiscObject> {
             @javax.jdo.annotations.Column(name = "someMoneyHidden_currency")
     })
     @Column(allowsNull = "false")
-    @Hidden
+    @Property(hidden = Where.EVERYWHERE)
     public Money getSomeMoneyHidden() {
         return someMoneyHidden;
     }
@@ -523,7 +531,7 @@ public class MiscObject implements Entity<MiscObject> {
             @javax.jdo.annotations.Column(name = "someMoneyDisabled_currency")
     })
     @Column(allowsNull = "false")
-    @Disabled
+    @Property(editing = Editing.DISABLED)
     public Money getSomeMoneyDisabled() {
         return someMoneyDisabled;
     }
@@ -554,7 +562,7 @@ public class MiscObject implements Entity<MiscObject> {
         return i != null && !"GBP".equals(i.getCurrency())? "Must be in GBP": null;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public MiscObject updateSomeMoneyWithValidation(final Money i) {
         setSomeMoneyWithValidation(i);
         return this;
@@ -588,7 +596,7 @@ public class MiscObject implements Entity<MiscObject> {
         return Lists.newArrayList(new Money(1000, "GBP"),new Money(10.00, "GBP"),new Money(1000, "EUR"),new Money(10.00, "EUR"), new Money(1000, "USD"), new Money(10.00, "USD"));
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public MiscObject updateSomeMoneyMandatoryWithChoices(final Money i) {
         setSomeMoneyMandatoryWithChoices(i);
         return this;
@@ -620,8 +628,8 @@ public class MiscObject implements Entity<MiscObject> {
         return Lists.newArrayList(new Money(1000, "GBP"),new Money(10.00, "GBP"),new Money(1000, "EUR"),new Money(10.00, "EUR"), new Money(1000, "USD"), new Money(10.00, "USD"));
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public MiscObject updateSomeMoneyOptionalWithChoices(final @Optional Money i) {
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public MiscObject updateSomeMoneyOptionalWithChoices(@Parameter(optionality=Optionality.OPTIONAL) final  Money i) {
         setSomeMoneyOptionalWithChoices(i);
         return this;
     }
@@ -632,7 +640,7 @@ public class MiscObject implements Entity<MiscObject> {
         return Lists.newArrayList(new Money(1000, "GBP"),new Money(10.00, "GBP"),new Money(1000, "EUR"),new Money(10.00, "EUR"), new Money(1000, "USD"), new Money(10.00, "USD"));
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public MiscObject resetSomeMoneyOptionalWithChoices() {
         setSomeMoneyOptionalWithChoices(null);
         return this;

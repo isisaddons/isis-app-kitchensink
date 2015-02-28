@@ -21,19 +21,30 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import org.isisaddons.app.kitchensink.dom.contrib.contributee.FoodStuff;
 import org.isisaddons.app.kitchensink.dom.contrib.contributee.Person;
-import org.apache.isis.applib.annotation.ActionSemantics;
+import org.apache.isis.applib.annotation.Action;
+import org.apache.isis.applib.annotation.ActionLayout;
+import org.apache.isis.applib.annotation.Contributed;
 import org.apache.isis.applib.annotation.DomainService;
-import org.apache.isis.applib.annotation.Named;
-import org.apache.isis.applib.annotation.NotContributed;
-import org.apache.isis.applib.annotation.NotInServiceMenu;
+import org.apache.isis.applib.annotation.DomainServiceLayout;
+import org.apache.isis.applib.annotation.NatureOfService;
+import org.apache.isis.applib.annotation.ParameterLayout;
+import org.apache.isis.applib.annotation.SemanticsOf;
 
-@DomainService(menuOrder = "10.1", repositoryFor = Preference.class)
+@DomainService(
+        nature = NatureOfService.VIEW_CONTRIBUTIONS_ONLY
+)
+@DomainServiceLayout(
+        menuOrder = "10.1"
+)
 public class PreferenceContributions {
 
     //region > likes (contributed collection to Person)
-    @NotContributed(NotContributed.As.ACTION) // ie contributed as collection
-    @NotInServiceMenu
-    @ActionSemantics(ActionSemantics.Of.SAFE)
+    @Action(
+            semantics = SemanticsOf.SAFE
+    )
+    @ActionLayout(
+            contributed = Contributed.AS_ASSOCIATION
+    )
     public List<FoodStuff> likes(final Person person) {
         return Lists.newArrayList(
                 Iterables.transform(
@@ -46,9 +57,10 @@ public class PreferenceContributions {
     //endregion
 
     //region > firstLove (contributed property to Person)
-    @NotContributed(NotContributed.As.ACTION) // ie contributed as property
-    @NotInServiceMenu
-    @ActionSemantics(ActionSemantics.Of.SAFE)
+    @Action(semantics = SemanticsOf.SAFE)
+    @ActionLayout(
+            contributed = Contributed.AS_ASSOCIATION
+    )
     public FoodStuff firstLove(final Person person) {
         final List<FoodStuff> loves = Lists.newArrayList(
                 Iterables.transform(
@@ -62,10 +74,9 @@ public class PreferenceContributions {
     //endregion
 
     //region > addPreference (contributed action to Person and FoodStuff) 
-    @NotInServiceMenu
     public Preference addPreference(
             final Person person,
-            final @Named("Type") Preference.PreferenceType preferenceType,
+            final @ParameterLayout(named="Type") Preference.PreferenceType preferenceType,
             final FoodStuff foodStuff) {
         removePreference(person, foodStuff);
         return preferences.createPreference(person, preferenceType, foodStuff);
@@ -77,10 +88,9 @@ public class PreferenceContributions {
      * Will be contributed as an action to both parameters.  However, the FoodStuff.layout.json hides the action so it
      * in the UI it appears to be only contributed to the Person entity.
      */
-    @NotInServiceMenu
     public Person removePreference(final Person person, final FoodStuff foodStuff) {
         final List<Preference> preferences1 = preferences.listAllPreferences();
-        for (Preference preference : preferences1) {
+        for (final Preference preference : preferences1) {
             if(preference.getPerson() == person && preference.getFoodStuff() == foodStuff) {
                 preferences.deletePreference(preference);
             }

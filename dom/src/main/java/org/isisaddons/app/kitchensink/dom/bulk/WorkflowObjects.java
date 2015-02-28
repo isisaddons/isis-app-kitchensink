@@ -17,13 +17,18 @@
 package org.isisaddons.app.kitchensink.dom.bulk;
 
 import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
-import org.apache.isis.applib.annotation.CssClassFa;
 import org.apache.isis.applib.annotation.DomainService;
+import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
-import org.apache.isis.applib.annotation.Named;
+import org.apache.isis.applib.annotation.ParameterLayout;
 
-@Named("Bulk")
-@DomainService(menuOrder = "10.9", repositoryFor = WorkflowObject.class)
+@DomainService(
+        repositoryFor = WorkflowObject.class
+)
+@DomainServiceLayout(
+        named="Bulk",
+        menuOrder = "10.9"
+)
 public class WorkflowObjects extends RepositoryAbstract<WorkflowObject> {
 
     public WorkflowObjects() {
@@ -32,7 +37,8 @@ public class WorkflowObjects extends RepositoryAbstract<WorkflowObject> {
 
     @MemberOrder(sequence = "30")
     public WorkflowObject create(
-            final @Named("Name") String name) {
+            @ParameterLayout(named="Name")
+            final String name) {
         final WorkflowObject obj = container.newTransientInstance(WorkflowObject.class);
         obj.setName(name);
         obj.setState(State.OPEN);

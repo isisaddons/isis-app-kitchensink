@@ -18,13 +18,14 @@ package org.isisaddons.app.kitchensink.dom.primitive;
 
 import java.util.List;
 import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
-import org.apache.isis.applib.annotation.CssClassFa;
+import org.apache.isis.applib.annotation.ActionLayout;
 import org.apache.isis.applib.annotation.DomainService;
+import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
-import org.apache.isis.applib.annotation.Named;
+import org.apache.isis.applib.annotation.ParameterLayout;
 
-@Named("Data Types")
 @DomainService(menuOrder = "10.2", repositoryFor = PrimitiveObject.class)
+@DomainServiceLayout(named="Data Types")
 public class PrimitiveObjects extends RepositoryAbstract<PrimitiveObject> {
 
     public PrimitiveObjects() {
@@ -33,13 +34,13 @@ public class PrimitiveObjects extends RepositoryAbstract<PrimitiveObject> {
 
     @MemberOrder(sequence = "30")
     public PrimitiveObject createPrimitiveObject(
-            final @Named("Name") String name,
-            final @Named("Byte") byte b,
-            final @Named("Short") short s,
-            final @Named("Int") int i,
-            final @Named("Long") long l,
-            final @Named("Float") float f,
-            final @Named("Double") double d) {
+            final @ParameterLayout(named="Name") String name,
+            final @ParameterLayout(named="Byte") byte b,
+            final @ParameterLayout(named="Short") short s,
+            final @ParameterLayout(named="Int") int i,
+            final @ParameterLayout(named="Long") long l,
+            final @ParameterLayout(named="Float") float f,
+            final @ParameterLayout(named="Double") double d) {
         final PrimitiveObject obj = container.newTransientInstance(PrimitiveObject.class);
         obj.setName(name);
 
@@ -91,13 +92,13 @@ public class PrimitiveObjects extends RepositoryAbstract<PrimitiveObject> {
     }
 
 
-    @Named("First PrimitiveObject")
+    @ActionLayout(named="First PrimitiveObject")
     @Override
     public PrimitiveObject first() {
         return super.first();
     }
 
-    @Named("List All PrimitiveObjects")
+    @ActionLayout(named="List All PrimitiveObjects")
     @Override
     public List<PrimitiveObject> listAll() {
         return super.listAll();

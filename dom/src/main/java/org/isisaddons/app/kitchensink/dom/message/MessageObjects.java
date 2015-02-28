@@ -19,14 +19,14 @@ package org.isisaddons.app.kitchensink.dom.message;
 import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
 import org.apache.isis.applib.NonRecoverableException;
 import org.apache.isis.applib.RecoverableException;
-import org.apache.isis.applib.annotation.CssClassFa;
 import org.apache.isis.applib.annotation.DomainService;
+import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
-import org.apache.isis.applib.annotation.Named;
+import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.Programmatic;
 
-@Named("Messages")
-@DomainService(menuOrder = "10.12", repositoryFor = MessageObject.class)
+@DomainService(repositoryFor = MessageObject.class)
+@DomainServiceLayout(named="Messages",menuOrder = "10.12")
 public class MessageObjects extends RepositoryAbstract<MessageObject> {
 
     public MessageObjects() {
@@ -35,7 +35,7 @@ public class MessageObjects extends RepositoryAbstract<MessageObject> {
 
     @MemberOrder(sequence = "30.1")
     public MessageObject createAndInfoMessage(
-            final @Named("Name") String name) {
+            final @ParameterLayout(named="Name") String name) {
         final MessageObject messageObject = create(name);
         container.informUser("Created object: " + name + " (informUser)");
         return messageObject;
@@ -43,7 +43,7 @@ public class MessageObjects extends RepositoryAbstract<MessageObject> {
 
     @MemberOrder(sequence = "30.2")
     public MessageObject createAndWarnUser(
-            final @Named("Name") String name) {
+            final @ParameterLayout(named="Name") String name) {
         final MessageObject messageObject = create(name);
         container.warnUser("Created object: " + name + " (warnUser)");
         return messageObject;
@@ -51,7 +51,7 @@ public class MessageObjects extends RepositoryAbstract<MessageObject> {
 
     @MemberOrder(sequence = "30.3")
     public MessageObject createAndRaiseError(
-            final @Named("Name") String name) {
+            final @ParameterLayout(named="Name") String name) {
         final MessageObject messageObject = create(name);
         container.raiseError("Created object: " + name + " (raiseError)");
         return messageObject;
@@ -59,21 +59,21 @@ public class MessageObjects extends RepositoryAbstract<MessageObject> {
 
     @MemberOrder(sequence = "30.4")
     public MessageObject createAndThrowRecoverableException(
-            final @Named("Name") String name) {
+            final @ParameterLayout(named="Name") String name) {
         create(name);
         throw new RecoverableException("A recoverable (application) exception has been thrown; the object (name='" + name + "') should NOT have been created");
     }
 
     @MemberOrder(sequence = "30.5")
     public MessageObject createAndThrowNonRecoverableException(
-            final @Named("Name") String name) {
+            final @ParameterLayout(named="Name") String name) {
         create(name);
         throw new NonRecoverableException("A non-recoverable exception has been thrown; the object (name='" + name + "') should NOT have been created");
     }
 
     @MemberOrder(sequence = "30.6")
     public MessageObject createAndThrowRuntimeException(
-            final @Named("Name") String name) {
+            final @ParameterLayout(named="Name") String name) {
         create(name);
         throw new RuntimeException("A runtime exception has been thrown; the object (name='" + name + "') should NOT have been created");
     }

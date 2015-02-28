@@ -21,48 +21,50 @@ import org.isisaddons.app.kitchensink.dom.busrules.BusRulesObject;
 import org.isisaddons.app.kitchensink.dom.busrules.BusRulesObjects;
 import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.NonRecoverableException;
-import org.apache.isis.applib.annotation.ActionSemantics;
-import org.apache.isis.applib.annotation.Bookmarkable;
+import org.apache.isis.applib.annotation.Action;
+import org.apache.isis.applib.annotation.ActionLayout;
+import org.apache.isis.applib.annotation.BookmarkPolicy;
 import org.apache.isis.applib.annotation.DomainService;
+import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
-import org.apache.isis.applib.annotation.Named;
+import org.apache.isis.applib.annotation.SemanticsOf;
 
-@Named("Pages")
 @DomainService(menuOrder = "10.1")
+@DomainServiceLayout(named="Pages")
 public class Pages {
 
 
-    @ActionSemantics(ActionSemantics.Of.SAFE)
+    @Action(semantics= SemanticsOf.SAFE)
     @MemberOrder(sequence = "10")
     public BusRulesObject entityPage() {
         return busRulesObjects.firstBusRulesObject();
     }
 
-    @Bookmarkable
-    @ActionSemantics(ActionSemantics.Of.SAFE)
+    @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
+    @Action(semantics=SemanticsOf.SAFE)
     @MemberOrder(sequence = "10")
     public List<BusRulesObject> standaloneCollection() {
         return busRulesObjects.listAllBusRulesObject();
     }
 
-    @ActionSemantics(ActionSemantics.Of.SAFE)
+    @Action(semantics=SemanticsOf.SAFE)
     @MemberOrder(sequence = "30")
     public int scalarPageReturningInt() {
         return 5;
     }
 
-    @ActionSemantics(ActionSemantics.Of.SAFE)
+    @Action(semantics=SemanticsOf.SAFE)
     @MemberOrder(sequence = "40")
     public String scalarPageReturningString() {
         return "Hi there!";
     }
 
-    @ActionSemantics(ActionSemantics.Of.SAFE)
+    @Action(semantics=SemanticsOf.SAFE)
     @MemberOrder(sequence = "50")
     public void voidPage() {
     }
 
-    @ActionSemantics(ActionSemantics.Of.SAFE)
+    @Action(semantics=SemanticsOf.SAFE)
     @MemberOrder(sequence = "60")
     public void errorPage() {
         throw new NonRecoverableException("Oh no, all gone wrong!");

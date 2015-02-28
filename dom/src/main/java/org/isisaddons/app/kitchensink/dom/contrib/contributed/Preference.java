@@ -26,8 +26,9 @@ import org.isisaddons.app.kitchensink.dom.Entity;
 import org.isisaddons.app.kitchensink.dom.contrib.contributee.FoodStuff;
 import org.isisaddons.app.kitchensink.dom.contrib.contributee.Person;
 import org.apache.isis.applib.DomainObjectContainer;
-import org.apache.isis.applib.annotation.Bookmarkable;
-import org.apache.isis.applib.annotation.ObjectType;
+import org.apache.isis.applib.annotation.BookmarkPolicy;
+import org.apache.isis.applib.annotation.DomainObject;
+import org.apache.isis.applib.annotation.DomainObjectLayout;
 import org.apache.isis.applib.util.ObjectContracts;
 
 @javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE)
@@ -37,15 +38,19 @@ import org.apache.isis.applib.util.ObjectContracts;
 @javax.jdo.annotations.Version(
         strategy=VersionStrategy.VERSION_NUMBER, 
         column="version")
-@ObjectType("PREFERENCE")
-@Bookmarkable
+@DomainObject(
+        objectType = "PREFERENCE"
+)
+@DomainObjectLayout(
+        bookmarking = BookmarkPolicy.AS_ROOT
+)
 public class Preference implements Entity<Preference> {
 
     static class Predicates {
         static Predicate<Preference> preferenceOf(final Person person) {
             return new Predicate<Preference>() {
                 @Override
-                public boolean apply(Preference input) {
+                public boolean apply(final Preference input) {
                     return input.getPerson() == person;
                 }
             };
@@ -53,7 +58,7 @@ public class Preference implements Entity<Preference> {
         static Predicate<Preference> preferenceOf(final Person person, final PreferenceType preferenceType) {
             return new Predicate<Preference>() {
                 @Override
-                public boolean apply(Preference input) {
+                public boolean apply(final Preference input) {
                     return input.getPerson() == person && input.getType() == preferenceType;
                 }
             };
@@ -64,7 +69,7 @@ public class Preference implements Entity<Preference> {
         static Function<Preference, FoodStuff> food() {
             return new Function<Preference, FoodStuff>() {
                 @Override
-                public FoodStuff apply(Preference input) {
+                public FoodStuff apply(final Preference input) {
                     return input.getFoodStuff();
                 }
             };
@@ -126,7 +131,7 @@ public class Preference implements Entity<Preference> {
     //region > compareTo
 
     @Override
-    public int compareTo(Preference other) {
+    public int compareTo(final Preference other) {
         return ObjectContracts.compare(this, other, "name");
     }
 

@@ -27,7 +27,17 @@ import javax.validation.constraints.Digits;
 import com.google.common.collect.Lists;
 import org.isisaddons.app.kitchensink.dom.Entity;
 import org.apache.isis.applib.DomainObjectContainer;
-import org.apache.isis.applib.annotation.*;
+import org.apache.isis.applib.annotation.Action;
+import org.apache.isis.applib.annotation.BookmarkPolicy;
+import org.apache.isis.applib.annotation.DomainObject;
+import org.apache.isis.applib.annotation.DomainObjectLayout;
+import org.apache.isis.applib.annotation.Editing;
+import org.apache.isis.applib.annotation.Optionality;
+import org.apache.isis.applib.annotation.Parameter;
+import org.apache.isis.applib.annotation.Property;
+import org.apache.isis.applib.annotation.SemanticsOf;
+import org.apache.isis.applib.annotation.Title;
+import org.apache.isis.applib.annotation.Where;
 import org.apache.isis.applib.util.ObjectContracts;
 
 @javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE)
@@ -37,8 +47,12 @@ import org.apache.isis.applib.util.ObjectContracts;
 @javax.jdo.annotations.Version(
         strategy=VersionStrategy.VERSION_NUMBER, 
         column="version")
-@ObjectType("NUMBER")
-@Bookmarkable
+@DomainObject(
+        objectType = "NUMBER"
+)
+@DomainObjectLayout(
+        bookmarking = BookmarkPolicy.AS_ROOT
+)
 public class JavaMathObject implements Entity<JavaMathObject> {
 
     //region > name (property)
@@ -70,7 +84,7 @@ public class JavaMathObject implements Entity<JavaMathObject> {
         this.someBigIntegerMandatory = someBigIntegerMandatory;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public JavaMathObject updateSomeBigIntegerMandatory(final BigInteger d) {
         setSomeBigIntegerMandatory(d);
         return this;
@@ -92,8 +106,10 @@ public class JavaMathObject implements Entity<JavaMathObject> {
         this.someBigIntegerOptional = someBigIntegerOptional;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public JavaMathObject updateSomeBigIntegerOptional(final @Optional BigInteger d) {
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public JavaMathObject updateSomeBigIntegerOptional(
+            @Parameter(optionality=Optionality.OPTIONAL)
+            final  BigInteger d) {
         setSomeBigIntegerOptional(d);
         return this;
     }
@@ -101,7 +117,7 @@ public class JavaMathObject implements Entity<JavaMathObject> {
         return getSomeBigIntegerOptional();
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public JavaMathObject resetSomeBigIntegerOptional() {
         setSomeBigIntegerOptional(null);
         return this;
@@ -112,7 +128,7 @@ public class JavaMathObject implements Entity<JavaMathObject> {
     private java.math.BigInteger someBigIntegerHidden;
 
     @javax.jdo.annotations.Column(allowsNull = "false")
-    @Hidden
+    @Property(hidden = Where.EVERYWHERE)
     public java.math.BigInteger getSomeBigIntegerHidden() {
         return someBigIntegerHidden;
     }
@@ -127,7 +143,7 @@ public class JavaMathObject implements Entity<JavaMathObject> {
     private java.math.BigInteger someBigIntegerDisabled;
 
     @javax.jdo.annotations.Column(allowsNull = "false")
-    @Disabled
+    @Property(editing = Editing.DISABLED)
     public java.math.BigInteger getSomeBigIntegerDisabled() {
         return someBigIntegerDisabled;
     }
@@ -154,7 +170,7 @@ public class JavaMathObject implements Entity<JavaMathObject> {
         return i.intValue() % 2 != 0? "Can only enter even numbers": null;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public JavaMathObject updateSomeBigIntegerWithValidation(final BigInteger i) {
         setSomeBigIntegerWithValidation(i);
         return this;
@@ -184,7 +200,7 @@ public class JavaMathObject implements Entity<JavaMathObject> {
         return Lists.newArrayList(BigInteger.valueOf(1L), BigInteger.valueOf(2L), BigInteger.valueOf(3L), BigInteger.valueOf(4L));
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public JavaMathObject updateSomeBigIntegerMandatoryWithChoices(final java.math.BigInteger i) {
         setSomeBigIntegerMandatoryWithChoices(i);
         return this;
@@ -212,8 +228,8 @@ public class JavaMathObject implements Entity<JavaMathObject> {
         return Lists.newArrayList(BigInteger.valueOf(1L), BigInteger.valueOf(2L), BigInteger.valueOf(3L), BigInteger.valueOf(4L));
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public JavaMathObject updateSomeBigIntegerOptionalWithChoices(final @Optional java.math.BigInteger i) {
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public JavaMathObject updateSomeBigIntegerOptionalWithChoices(@Parameter(optionality=Optionality.OPTIONAL) final  java.math.BigInteger i) {
         setSomeBigIntegerOptionalWithChoices(i);
         return this;
     }
@@ -224,7 +240,7 @@ public class JavaMathObject implements Entity<JavaMathObject> {
         return Lists.newArrayList(BigInteger.valueOf(1L), BigInteger.valueOf(2L), BigInteger.valueOf(3L), BigInteger.valueOf(4L));
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public JavaMathObject resetSomeBigIntegerOptionalWithChoices() {
         setSomeBigIntegerOptionalWithChoices(null);
         return this;
@@ -246,7 +262,7 @@ public class JavaMathObject implements Entity<JavaMathObject> {
         this.someBigDecimalMandatory = someBigDecimalMandatory;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public JavaMathObject updateSomeBigDecimalMandatory(final BigDecimal d) {
         setSomeBigDecimalMandatory(d);
         return this;
@@ -268,8 +284,8 @@ public class JavaMathObject implements Entity<JavaMathObject> {
         this.someBigDecimalOptional = someBigDecimalOptional;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public JavaMathObject updateSomeBigDecimalOptional(final @Optional BigDecimal d) {
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public JavaMathObject updateSomeBigDecimalOptional(@Parameter(optionality=Optionality.OPTIONAL) final  BigDecimal d) {
         setSomeBigDecimalOptional(d);
         return this;
     }
@@ -277,7 +293,7 @@ public class JavaMathObject implements Entity<JavaMathObject> {
         return getSomeBigDecimalOptional();
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public JavaMathObject resetSomeBigDecimalOptional() {
         setSomeBigDecimalOptional(null);
         return this;
@@ -288,7 +304,7 @@ public class JavaMathObject implements Entity<JavaMathObject> {
     private java.math.BigDecimal someBigDecimalHidden;
 
     @javax.jdo.annotations.Column(allowsNull = "false")
-    @Hidden
+    @Property(hidden = Where.EVERYWHERE)
     public java.math.BigDecimal getSomeBigDecimalHidden() {
         return someBigDecimalHidden;
     }
@@ -303,7 +319,7 @@ public class JavaMathObject implements Entity<JavaMathObject> {
     private java.math.BigDecimal someBigDecimalDisabled;
 
     @javax.jdo.annotations.Column(allowsNull = "false")
-    @Disabled
+    @Property(editing = Editing.DISABLED)
     public java.math.BigDecimal getSomeBigDecimalDisabled() {
         return someBigDecimalDisabled;
     }
@@ -330,7 +346,7 @@ public class JavaMathObject implements Entity<JavaMathObject> {
         return i.intValue() % 2 != 0? "Can only enter even numbers": null;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public JavaMathObject updateSomeBigDecimalWithValidation(final BigDecimal i) {
         setSomeBigDecimalWithValidation(i);
         return this;
@@ -360,7 +376,7 @@ public class JavaMathObject implements Entity<JavaMathObject> {
         return Lists.newArrayList(BigDecimal.valueOf(1.1), BigDecimal.valueOf(2.2), BigDecimal.valueOf(3.3), BigDecimal.valueOf(4.4));
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public JavaMathObject updateSomeBigDecimalMandatoryWithChoices(final java.math.BigDecimal i) {
         setSomeBigDecimalMandatoryWithChoices(i);
         return this;
@@ -388,8 +404,8 @@ public class JavaMathObject implements Entity<JavaMathObject> {
         return Lists.newArrayList(BigDecimal.valueOf(1.1), BigDecimal.valueOf(2.2), BigDecimal.valueOf(3.3), BigDecimal.valueOf(4.4));
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public JavaMathObject updateSomeBigDecimalOptionalWithChoices(final @Optional java.math.BigDecimal i) {
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public JavaMathObject updateSomeBigDecimalOptionalWithChoices(@Parameter(optionality=Optionality.OPTIONAL) final  java.math.BigDecimal i) {
         setSomeBigDecimalOptionalWithChoices(i);
         return this;
     }
@@ -400,7 +416,7 @@ public class JavaMathObject implements Entity<JavaMathObject> {
         return Lists.newArrayList(BigDecimal.valueOf(1.1), BigDecimal.valueOf(2.2), BigDecimal.valueOf(3.3), BigDecimal.valueOf(4.4));
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public JavaMathObject resetSomeBigDecimalOptionalWithChoices() {
         setSomeBigDecimalOptionalWithChoices(null);
         return this;
@@ -423,8 +439,8 @@ public class JavaMathObject implements Entity<JavaMathObject> {
         this.someBigDecimal92 = someBigDecimal92;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public JavaMathObject updateSomeBigDecimal92(final @Optional @Digits(integer = 9, fraction = 2) BigDecimal d) {
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public JavaMathObject updateSomeBigDecimal92(@Parameter(optionality=Optionality.OPTIONAL) final  @Digits(integer = 9, fraction = 2) BigDecimal d) {
         setSomeBigDecimal92(d);
         return this;
     }
@@ -433,7 +449,7 @@ public class JavaMathObject implements Entity<JavaMathObject> {
         return getSomeBigDecimal92();
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public JavaMathObject resetSomeBigDecimal92() {
         setSomeBigDecimal92(null);
         return this;
@@ -453,8 +469,8 @@ public class JavaMathObject implements Entity<JavaMathObject> {
         this.someBigDecimal124 = someBigDecimal124;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public JavaMathObject updateSomeBigDecimal124(final @Optional @Digits(integer = 12, fraction = 4) BigDecimal d) {
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public JavaMathObject updateSomeBigDecimal124(@Parameter(optionality=Optionality.OPTIONAL) final  @Digits(integer = 12, fraction = 4) BigDecimal d) {
         setSomeBigDecimal124(d);
         return this;
     }
@@ -463,7 +479,7 @@ public class JavaMathObject implements Entity<JavaMathObject> {
         return getSomeBigDecimal124();
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public JavaMathObject resetSomeBigDecimal124() {
         setSomeBigDecimal124(null);
         return this;

@@ -22,7 +22,12 @@ import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.VersionStrategy;
 import org.isisaddons.app.kitchensink.dom.Entity;
 import org.apache.isis.applib.DomainObjectContainer;
-import org.apache.isis.applib.annotation.*;
+import org.apache.isis.applib.annotation.Action;
+import org.apache.isis.applib.annotation.BookmarkPolicy;
+import org.apache.isis.applib.annotation.DomainObject;
+import org.apache.isis.applib.annotation.DomainObjectLayout;
+import org.apache.isis.applib.annotation.InvokeOn;
+import org.apache.isis.applib.annotation.Title;
 import org.apache.isis.applib.services.actinvoc.ActionInvocationContext;
 import org.apache.isis.applib.util.ObjectContracts;
 
@@ -33,8 +38,12 @@ import org.apache.isis.applib.util.ObjectContracts;
 @javax.jdo.annotations.Version(
         strategy=VersionStrategy.VERSION_NUMBER, 
         column="version")
-@ObjectType("WORKFLOW")
-@Bookmarkable
+@DomainObject(
+        objectType = "WORKFLOW"
+)
+@DomainObjectLayout(
+        bookmarking = BookmarkPolicy.AS_ROOT
+)
 public class WorkflowObject implements Entity<WorkflowObject> {
 
     //region > name (property)
@@ -68,7 +77,7 @@ public class WorkflowObject implements Entity<WorkflowObject> {
     //endregion
 
     //region > previous (action)
-    @Bulk
+    @Action(invokeOn = InvokeOn.OBJECT_AND_COLLECTION)
     public WorkflowObject previous() {
         setState(getState().previous());
         return actionInvocationContext.getInvokedOn().isCollection()? null: this;
@@ -76,7 +85,7 @@ public class WorkflowObject implements Entity<WorkflowObject> {
     //endregion
 
     //region > next (action)
-    @Bulk
+    @Action(invokeOn = InvokeOn.OBJECT_AND_COLLECTION)
     public WorkflowObject next() {
         setState(getState().next());
         return actionInvocationContext.getInvokedOn().isCollection()? null: this;

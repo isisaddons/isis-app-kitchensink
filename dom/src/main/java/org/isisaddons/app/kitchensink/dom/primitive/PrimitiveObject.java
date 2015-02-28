@@ -24,7 +24,16 @@ import javax.jdo.annotations.VersionStrategy;
 import com.google.common.collect.Lists;
 import org.isisaddons.app.kitchensink.dom.Entity;
 import org.apache.isis.applib.DomainObjectContainer;
-import org.apache.isis.applib.annotation.*;
+import org.apache.isis.applib.annotation.Action;
+import org.apache.isis.applib.annotation.BookmarkPolicy;
+import org.apache.isis.applib.annotation.DomainObject;
+import org.apache.isis.applib.annotation.DomainObjectLayout;
+import org.apache.isis.applib.annotation.Editing;
+import org.apache.isis.applib.annotation.Property;
+import org.apache.isis.applib.annotation.PropertyLayout;
+import org.apache.isis.applib.annotation.SemanticsOf;
+import org.apache.isis.applib.annotation.Title;
+import org.apache.isis.applib.annotation.Where;
 import org.apache.isis.applib.util.ObjectContracts;
 
 @javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE)
@@ -34,8 +43,12 @@ import org.apache.isis.applib.util.ObjectContracts;
 @javax.jdo.annotations.Version(
         strategy=VersionStrategy.VERSION_NUMBER, 
         column="version")
-@ObjectType("PRIMITIVE")
-@Bookmarkable
+@DomainObject(
+        objectType = "PRIMITIVE"
+)
+@DomainObjectLayout(
+        bookmarking = BookmarkPolicy.AS_ROOT
+)
 public class PrimitiveObject implements Entity<PrimitiveObject> {
 
     //region > name (property)
@@ -66,7 +79,7 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
         this.someByte = aByte;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public PrimitiveObject updateSomeByte(final byte b) {
         setSomeByte(b);
         return this;
@@ -79,7 +92,7 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
     //region > someByteHidden (property)
     private byte someByteHidden;
 
-    @Hidden
+    @Property(hidden = Where.EVERYWHERE)
     public byte getSomeByteHidden() {
         return someByteHidden;
     }
@@ -93,7 +106,7 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
     //region > someByteDisabled (property)
     private byte someByteDisabled;
 
-    @Disabled
+    @Property(editing = Editing.DISABLED)
     public byte getSomeByteDisabled() {
         return someByteDisabled;
     }
@@ -119,7 +132,7 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
         return i % 2 != 0? "Can only enter even numbers": null;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public PrimitiveObject updateSomeByteWithValidation(final byte i) {
         setSomeByteWithValidation(i);
         return this;
@@ -148,7 +161,7 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
     public Collection<Byte> choicesSomeByteWithChoices() {
         return Lists.newArrayList((byte)1, (byte)2, (byte)3, (byte)4);
     }
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public PrimitiveObject updateSomeByteWithChoices(final byte i) {
         setSomeByteWithChoices(i);
         return this;
@@ -175,7 +188,7 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
         this.someShort = someShort;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public PrimitiveObject updateSomeShort(final short s) {
         setSomeShort(s);
         return this;
@@ -188,7 +201,7 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
     //region > someShortHidden (property)
     private short someShortHidden;
 
-    @Hidden
+    @Property(hidden = Where.EVERYWHERE)
     public short getSomeShortHidden() {
         return someShortHidden;
     }
@@ -202,7 +215,7 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
     //region > someShortDisabled (property)
     private short someShortDisabled;
 
-    @Disabled
+    @Property(editing = Editing.DISABLED)
     public short getSomeShortDisabled() {
         return someShortDisabled;
     }
@@ -228,7 +241,7 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
         return i % 2 != 0? "Can only enter even numbers": null;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public PrimitiveObject updateSomeShortWithValidation(final short i) {
         setSomeShortWithValidation(i);
         return this;
@@ -257,7 +270,7 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
     public Collection<Short> choicesSomeShortWithChoices() {
         return Lists.newArrayList((short)1, (short)2, (short)3, (short)4);
     }
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public PrimitiveObject updateSomeShortWithChoices(final short i) {
         setSomeShortWithChoices(i);
         return this;
@@ -277,7 +290,7 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
     //region > someInt (property)
     private int someInt;
 
-    @DescribedAs("description of some int")
+    @PropertyLayout(describedAs = "description of some int")
     public int getSomeInt() {
         return someInt;
     }
@@ -286,7 +299,7 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
         this.someInt = someInt;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public PrimitiveObject updateSomeInt(final int i) {
         setSomeInt(i);
         return this;
@@ -299,7 +312,7 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
     //region > someIntHidden (property)
     private int someIntHidden;
 
-    @Hidden
+    @Property(hidden = Where.EVERYWHERE)
     public int getSomeIntHidden() {
         return someIntHidden;
     }
@@ -313,7 +326,7 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
     //region > someIntDisabled (property)
     private int someIntDisabled;
 
-    @Disabled
+    @Property(editing = Editing.DISABLED)
     public int getSomeIntDisabled() {
         return someIntDisabled;
     }
@@ -339,7 +352,7 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
         return i % 2 != 0? "Can only enter even numbers": null;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public PrimitiveObject updateSomeIntWithValidation(final int i) {
         setSomeIntWithValidation(i);
         return this;
@@ -368,7 +381,7 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
     public Collection<Integer> choicesSomeIntWithChoices() {
         return Lists.newArrayList(1, 2, 3, 4);
     }
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public PrimitiveObject updateSomeIntWithChoices(final int i) {
         setSomeIntWithChoices(i);
         return this;
@@ -395,7 +408,7 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
         this.someLong = someLong;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public PrimitiveObject updateSomeLong(final long l) {
         setSomeLong(l);
         return this;
@@ -408,7 +421,7 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
     //region > someLongHidden (property)
     private long someLongHidden;
 
-    @Hidden
+    @Property(hidden = Where.EVERYWHERE)
     public long getSomeLongHidden() {
         return someLongHidden;
     }
@@ -422,7 +435,7 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
     //region > someLongDisabled (property)
     private long someLongDisabled;
 
-    @Disabled
+    @Property(editing = Editing.DISABLED)
     public long getSomeLongDisabled() {
         return someLongDisabled;
     }
@@ -448,7 +461,7 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
         return i % 2 != 0? "Can only enter even numbers": null;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public PrimitiveObject updateSomeLongWithValidation(final long i) {
         setSomeLongWithValidation(i);
         return this;
@@ -477,7 +490,7 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
     public Collection<Long> choicesSomeLongWithChoices() {
         return Lists.newArrayList((long)1, (long)2, (long)3, (long)4);
     }
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public PrimitiveObject updateSomeLongWithChoices(final long i) {
         setSomeLongWithChoices(i);
         return this;
@@ -504,7 +517,7 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
         this.someFloat = someFloat;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public PrimitiveObject updateSomeFloat(final float f) {
         setSomeFloat(f);
         return this;
@@ -517,7 +530,7 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
     //region > someFloatHidden (property)
     private float someFloatHidden;
 
-    @Hidden
+    @Property(hidden = Where.EVERYWHERE)
     public float getSomeFloatHidden() {
         return someFloatHidden;
     }
@@ -531,7 +544,7 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
     //region > someFloatDisabled (property)
     private float someFloatDisabled;
 
-    @Disabled
+    @Property(editing = Editing.DISABLED)
     public float getSomeFloatDisabled() {
         return someFloatDisabled;
     }
@@ -557,7 +570,7 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
         return i % 2 != 0? "Can only enter even numbers": null;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public PrimitiveObject updateSomeFloatWithValidation(final float i) {
         setSomeFloatWithValidation(i);
         return this;
@@ -586,7 +599,7 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
     public Collection<Float> choicesSomeFloatWithChoices() {
         return Lists.newArrayList(1.1f, 2.2f, 3.3f, 4.4f);
     }
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public PrimitiveObject updateSomeFloatWithChoices(final float i) {
         setSomeFloatWithChoices(i);
         return this;
@@ -613,7 +626,7 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
         this.someDouble = someDouble;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public PrimitiveObject updateSomeDouble(final double d) {
         setSomeDouble(d);
         return this;
@@ -626,7 +639,7 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
     //region > someDoubleHidden (property)
     private double someDoubleHidden;
 
-    @Hidden
+    @Property(hidden = Where.EVERYWHERE)
     public double getSomeDoubleHidden() {
         return someDoubleHidden;
     }
@@ -640,7 +653,7 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
     //region > someDoubleDisabled (property)
     private double someDoubleDisabled;
 
-    @Disabled
+    @Property(editing = Editing.DISABLED)
     public double getSomeDoubleDisabled() {
         return someDoubleDisabled;
     }
@@ -666,7 +679,7 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
         return i % 2 != 0? "Can only enter even numbers": null;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public PrimitiveObject updateSomeDoubleWithValidation(final double i) {
         setSomeDoubleWithValidation(i);
         return this;
@@ -695,7 +708,7 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
     public Collection<Double> choicesSomeDoubleWithChoices() {
         return Lists.newArrayList(1.1, 2.2, 3.3, 4.4);
     }
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public PrimitiveObject updateSomeDoubleWithChoices(final double i) {
         setSomeDoubleWithChoices(i);
         return this;

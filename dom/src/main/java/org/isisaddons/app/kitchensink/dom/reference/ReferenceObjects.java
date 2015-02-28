@@ -20,13 +20,14 @@ import java.util.List;
 import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
 import org.isisaddons.app.kitchensink.dom.other.OtherBoundedObject;
 import org.isisaddons.app.kitchensink.dom.other.OtherObject;
-import org.apache.isis.applib.annotation.CssClassFa;
+import org.apache.isis.applib.annotation.ActionLayout;
 import org.apache.isis.applib.annotation.DomainService;
+import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
-import org.apache.isis.applib.annotation.Named;
+import org.apache.isis.applib.annotation.ParameterLayout;
 
-@Named("Data Types")
 @DomainService(menuOrder = "10.8", repositoryFor = ReferenceObject.class)
+@DomainServiceLayout(named="Data Types")
 public class ReferenceObjects extends RepositoryAbstract<ReferenceObject> {
 
     public ReferenceObjects() {
@@ -35,8 +36,8 @@ public class ReferenceObjects extends RepositoryAbstract<ReferenceObject> {
 
     @MemberOrder(sequence = "30")
     public ReferenceObject createReferenceObject(
-            final @Named("Name") String name,
-            final @Named("Some Int") int i,
+            final @ParameterLayout(named="Name") String name,
+            final @ParameterLayout(named="Some Int") int i,
             final OtherObject otherObject,
             final OtherBoundedObject otherBoundedObject) {
         final ReferenceObject obj = container.newTransientInstance(ReferenceObject.class);
@@ -52,13 +53,13 @@ public class ReferenceObjects extends RepositoryAbstract<ReferenceObject> {
 
 
 
-    @Named("First ReferenceObject")
+    @ActionLayout(named="First ReferenceObject")
     @Override
     public ReferenceObject first() {
         return super.first();
     }
 
-    @Named("List All ReferenceObjects")
+    @ActionLayout(named="List All ReferenceObjects")
     @Override
     public List<ReferenceObject> listAll() {
         return super.listAll();

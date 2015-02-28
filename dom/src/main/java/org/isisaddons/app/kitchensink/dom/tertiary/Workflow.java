@@ -17,17 +17,18 @@
 package org.isisaddons.app.kitchensink.dom.tertiary;
 
 import org.apache.isis.applib.DomainObjectContainer;
+import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.ActionLayout;
-import org.apache.isis.applib.annotation.ActionSemantics;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
+import org.apache.isis.applib.annotation.SemanticsOf;
 
 @DomainService
 @DomainServiceLayout(menuBar = DomainServiceLayout.MenuBar.TERTIARY, menuOrder = "3")
 public class Workflow {
 
-    @ActionSemantics(ActionSemantics.Of.SAFE)
+    @Action(semantics= SemanticsOf.SAFE)
     @MemberOrder(sequence = "1")
     @ActionLayout(cssClassFa = "fa-bell")
     public Object tasks() {

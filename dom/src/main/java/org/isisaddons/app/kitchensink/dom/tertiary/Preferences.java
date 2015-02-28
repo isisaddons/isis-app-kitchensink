@@ -17,18 +17,19 @@
 package org.isisaddons.app.kitchensink.dom.tertiary;
 
 import org.apache.isis.applib.DomainObjectContainer;
+import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.ActionLayout;
-import org.apache.isis.applib.annotation.ActionSemantics;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
+import org.apache.isis.applib.annotation.SemanticsOf;
 
 @DomainService
 @DomainServiceLayout(menuBar = DomainServiceLayout.MenuBar.TERTIARY, menuOrder = "2")
 public class Preferences {
 
     @ActionLayout(cssClassFa = "fa-gear")
-    @ActionSemantics(ActionSemantics.Of.SAFE)
+    @Action(semantics= SemanticsOf.SAFE)
     @MemberOrder(sequence = "1")
     public Object preferences() {
         return "object returned by preferences()";

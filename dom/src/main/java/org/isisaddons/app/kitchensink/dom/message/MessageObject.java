@@ -23,7 +23,12 @@ import org.isisaddons.app.kitchensink.dom.Entity;
 import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.NonRecoverableException;
 import org.apache.isis.applib.RecoverableException;
-import org.apache.isis.applib.annotation.*;
+import org.apache.isis.applib.annotation.BookmarkPolicy;
+import org.apache.isis.applib.annotation.DomainObject;
+import org.apache.isis.applib.annotation.DomainObjectLayout;
+import org.apache.isis.applib.annotation.MemberOrder;
+import org.apache.isis.applib.annotation.ParameterLayout;
+import org.apache.isis.applib.annotation.Title;
 import org.apache.isis.applib.util.ObjectContracts;
 
 @javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE)
@@ -33,8 +38,12 @@ import org.apache.isis.applib.util.ObjectContracts;
 @javax.jdo.annotations.Version(
         strategy=VersionStrategy.VERSION_NUMBER, 
         column="version")
-@ObjectType("MESSAGE")
-@Bookmarkable
+@DomainObject(
+        objectType = "MESSAGE"
+)
+@DomainObjectLayout(
+        bookmarking = BookmarkPolicy.AS_ROOT
+)
 public class MessageObject implements Entity<MessageObject> {
 
 
@@ -56,7 +65,7 @@ public class MessageObject implements Entity<MessageObject> {
 
     @MemberOrder(name="name", sequence = "30.1")
     public MessageObject updateAndInformUser(
-            final @Named("Name") String name) {
+            final @ParameterLayout(named="Name") String name) {
         setName(name);
         container.informUser("Created object: " + name + " (informUser)");
         return this;
@@ -64,7 +73,7 @@ public class MessageObject implements Entity<MessageObject> {
 
     @MemberOrder(name="name", sequence = "30.2")
     public MessageObject updateAndWarnUser(
-            final @Named("Name") String name) {
+            final @ParameterLayout(named="Name") String name) {
         setName(name);
         container.warnUser("Created object: " + name + " (warnUser)");
         return this;
@@ -72,7 +81,7 @@ public class MessageObject implements Entity<MessageObject> {
 
     @MemberOrder(name="name", sequence = "30.3")
     public MessageObject updateAndRaiseError(
-            final @Named("Name") String name) {
+            final @ParameterLayout(named="Name") String name) {
         setName(name);
         container.raiseError("Created object: " + name + " (raiseError)");
         return this;
@@ -80,21 +89,21 @@ public class MessageObject implements Entity<MessageObject> {
 
     @MemberOrder(sequence = "30.4")
     public MessageObject updateAndThrowRecoverableException(
-            final @Named("Name") String name) {
+            final @ParameterLayout(named="Name") String name) {
         setName(name);
         throw new RecoverableException("A recoverable (application) exception has been thrown; the object should NOT have been updated (to '" + name + "') ");
     }
 
     @MemberOrder(sequence = "30.5")
     public MessageObject updateAndThrowNonRecoverableException(
-            final @Named("Name") String name) {
+            final @ParameterLayout(named="Name") String name) {
         setName(name);
         throw new NonRecoverableException("A non-recoverable exception has been thrown; the object should NOT have been updated (to '" + name + "') ");
     }
 
     @MemberOrder(sequence = "30.6")
     public MessageObject updateAndThrowRuntimeException(
-            final @Named("Name") String name) {
+            final @ParameterLayout(named="Name") String name) {
         setName(name);
         throw new RuntimeException("A runtime exception has been thrown; the object should NOT have been updated (to '" + name + "') ");
     }
@@ -127,7 +136,7 @@ public class MessageObject implements Entity<MessageObject> {
 
     @MemberOrder(sequence = "40.4")
     public MessageObject cloneAndThrowRecoverableException(
-            final @Named("Name") String name) {
+            final @ParameterLayout(named="Name") String name) {
         final String cloneName = getName() + " (cloned)";
         messageObjects.create(cloneName);
         throw new RecoverableException("A recoverable (application) exception has been thrown; the object (name='" + cloneName + "') should NOT have been created");
@@ -135,7 +144,7 @@ public class MessageObject implements Entity<MessageObject> {
 
     @MemberOrder(sequence = "40.5")
     public MessageObject cloneAndThrowNonRecoverableException(
-            final @Named("Name") String name) {
+            final @ParameterLayout(named="Name") String name) {
         final String cloneName = getName() + " (cloned)";
         messageObjects.create(cloneName);
         throw new NonRecoverableException("A non-recoverable exception has been thrown; the object (name='" + cloneName + "') should NOT have been created");
@@ -143,7 +152,7 @@ public class MessageObject implements Entity<MessageObject> {
 
     @MemberOrder(sequence = "40.6")
     public MessageObject createAndThrowRuntimeException(
-            final @Named("Name") String name) {
+            final @ParameterLayout(named="Name") String name) {
         final String cloneName = getName() + " (cloned)";
         messageObjects.create(cloneName);
         throw new RuntimeException("A runtime exception has been thrown; the object (name='" + cloneName + "') should NOT have been created");

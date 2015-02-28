@@ -18,14 +18,17 @@ package org.isisaddons.app.kitchensink.dom.contrib.contributee;
 
 import java.util.List;
 import org.apache.isis.applib.DomainObjectContainer;
-import org.apache.isis.applib.annotation.ActionSemantics;
-import org.apache.isis.applib.annotation.Bookmarkable;
+import org.apache.isis.applib.annotation.Action;
+import org.apache.isis.applib.annotation.ActionLayout;
+import org.apache.isis.applib.annotation.BookmarkPolicy;
 import org.apache.isis.applib.annotation.DomainService;
+import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
-import org.apache.isis.applib.annotation.Named;
+import org.apache.isis.applib.annotation.ParameterLayout;
+import org.apache.isis.applib.annotation.SemanticsOf;
 
-@Named("Contributions")
-@DomainService(menuOrder = "10.1", repositoryFor = FoodStuff.class)
+@DomainService(repositoryFor = FoodStuff.class)
+@DomainServiceLayout(named="Contributions", menuOrder = "10.1")
 public class FoodStuffs {
 
     private final Class<FoodStuff> cls = FoodStuff.class;
@@ -41,7 +44,8 @@ public class FoodStuffs {
 
     @MemberOrder(sequence = "30")
     public FoodStuff createFoodStuff(
-            final @Named("Name") String name) {
+            @ParameterLayout(named="Name")
+            final String name) {
         final FoodStuff obj = container.newTransientInstance(FoodStuff.class);
         obj.setName(name);
 
@@ -49,16 +53,16 @@ public class FoodStuffs {
         return obj;
     }
 
-    @Bookmarkable
-    @ActionSemantics(ActionSemantics.Of.SAFE)
+    @Action(semantics=SemanticsOf.SAFE)
+    @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
     @MemberOrder(sequence = "10")
     public FoodStuff firstFoodStuff() {
         final List<FoodStuff> list = listAllFoodStuffs();
         return list.isEmpty()? null: list.get(0);
     }
 
-    @Bookmarkable
-    @ActionSemantics(ActionSemantics.Of.SAFE)
+    @Action(semantics= SemanticsOf.SAFE)
+    @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
     @MemberOrder(sequence = "20")
     public List<FoodStuff> listAllFoodStuffs() {
         return container.allInstances(cls);

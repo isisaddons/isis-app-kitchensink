@@ -18,12 +18,14 @@ package org.isisaddons.app.kitchensink.dom.wrapper;
 
 import java.util.List;
 import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
+import org.apache.isis.applib.annotation.ActionLayout;
 import org.apache.isis.applib.annotation.DomainService;
+import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
-import org.apache.isis.applib.annotation.Named;
+import org.apache.isis.applib.annotation.ParameterLayout;
 
-@Named("Data Types")
-@DomainService(menuOrder = "10.3", repositoryFor = WrapperObject.class)
+@DomainService(repositoryFor = WrapperObject.class)
+@DomainServiceLayout(named="Data Types", menuOrder = "10.3")
 public class WrapperObjects extends RepositoryAbstract<WrapperObject> {
 
     public WrapperObjects() {
@@ -32,13 +34,13 @@ public class WrapperObjects extends RepositoryAbstract<WrapperObject> {
 
     @MemberOrder(sequence = "30")
     public WrapperObject createWrapperObject(
-            final @Named("Name") String name,
-            final @Named("Byte") byte b,
-            final @Named("Short") short s,
-            final @Named("Int") int i,
-            final @Named("Long") long l,
-            final @Named("Float") float f,
-            final @Named("Double") double d) {
+            final @ParameterLayout(named="Name") String name,
+            final @ParameterLayout(named="Byte") byte b,
+            final @ParameterLayout(named="Short") short s,
+            final @ParameterLayout(named="Int") int i,
+            final @ParameterLayout(named="Long") long l,
+            final @ParameterLayout(named="Float") float f,
+            final @ParameterLayout(named="Double") double d) {
         final WrapperObject obj = container.newTransientInstance(WrapperObject.class);
         obj.setName(name);
 
@@ -71,13 +73,13 @@ public class WrapperObjects extends RepositoryAbstract<WrapperObject> {
 
 
 
-    @Named("First WrapperObject")
+    @ActionLayout(named="First WrapperObject")
     @Override
     public WrapperObject first() {
         return super.first();
     }
 
-    @Named("List All WrapperObjects")
+    @ActionLayout(named="List All WrapperObjects")
     @Override
     public List<WrapperObject> listAll() {
         return super.listAll();

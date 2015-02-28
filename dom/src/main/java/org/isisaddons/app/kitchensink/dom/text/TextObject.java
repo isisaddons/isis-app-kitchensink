@@ -24,7 +24,20 @@ import javax.jdo.annotations.VersionStrategy;
 import com.google.common.collect.Lists;
 import org.isisaddons.app.kitchensink.dom.Entity;
 import org.apache.isis.applib.DomainObjectContainer;
-import org.apache.isis.applib.annotation.*;
+import org.apache.isis.applib.annotation.Action;
+import org.apache.isis.applib.annotation.BookmarkPolicy;
+import org.apache.isis.applib.annotation.DomainObject;
+import org.apache.isis.applib.annotation.DomainObjectLayout;
+import org.apache.isis.applib.annotation.Editing;
+import org.apache.isis.applib.annotation.Optionality;
+import org.apache.isis.applib.annotation.Parameter;
+import org.apache.isis.applib.annotation.ParameterLayout;
+import org.apache.isis.applib.annotation.Programmatic;
+import org.apache.isis.applib.annotation.Property;
+import org.apache.isis.applib.annotation.PropertyLayout;
+import org.apache.isis.applib.annotation.SemanticsOf;
+import org.apache.isis.applib.annotation.Title;
+import org.apache.isis.applib.annotation.Where;
 import org.apache.isis.applib.util.ObjectContracts;
 import org.apache.isis.applib.value.Password;
 
@@ -35,8 +48,12 @@ import org.apache.isis.applib.value.Password;
 @javax.jdo.annotations.Version(
         strategy=VersionStrategy.VERSION_NUMBER, 
         column="version")
-@ObjectType("TEXT")
-@Bookmarkable
+@DomainObject(
+        objectType = "TEXT"
+)
+@DomainObjectLayout(
+        bookmarking = BookmarkPolicy.AS_ROOT
+)
 public class TextObject implements Entity<TextObject> {
 
 
@@ -67,7 +84,7 @@ public class TextObject implements Entity<TextObject> {
         this.someChar = someChar;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public TextObject updateSomeChar(final char i) {
         setSomeChar(i);
         return this;
@@ -80,7 +97,7 @@ public class TextObject implements Entity<TextObject> {
     //region > someCharHidden (property)
     private char someCharHidden;
 
-    @Hidden
+    @Property(hidden = Where.EVERYWHERE)
     public char getSomeCharHidden() {
         return someCharHidden;
     }
@@ -94,7 +111,7 @@ public class TextObject implements Entity<TextObject> {
     //region > someCharDisabled (property)
     private char someCharDisabled;
 
-    @Disabled
+    @Property(editing = Editing.DISABLED)
     public char getSomeCharDisabled() {
         return someCharDisabled;
     }
@@ -120,7 +137,7 @@ public class TextObject implements Entity<TextObject> {
         return c % 2 != 0? "Can only enter even characters": null;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public TextObject updateSomeCharWithValidation(final char i) {
         setSomeCharWithValidation(i);
         return this;
@@ -149,7 +166,7 @@ public class TextObject implements Entity<TextObject> {
     public Collection<Character> choicesSomeCharWithChoices() {
         return Lists.newArrayList('a','b','c','d');
     }
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public TextObject updateSomeCharWithChoices(final char i) {
         setSomeCharWithChoices(i);
         return this;
@@ -177,7 +194,7 @@ public class TextObject implements Entity<TextObject> {
         this.someCharacterWrapperMandatory = someCharacterWrapperMandatory;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public TextObject updateSomeCharacterWrapperMandatory(final Character i) {
         setSomeCharacterWrapperMandatory(i);
         return this;
@@ -199,8 +216,8 @@ public class TextObject implements Entity<TextObject> {
         this.someCharacterWrapperOptional = someCharacterWrapperOptional;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public TextObject updateSomeCharacterWrapperOptional(final @Optional Character i) {
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public TextObject updateSomeCharacterWrapperOptional(@Parameter(optionality=Optionality.OPTIONAL) final  Character i) {
         setSomeCharacterWrapperOptional(i);
         return this;
     }
@@ -208,7 +225,7 @@ public class TextObject implements Entity<TextObject> {
         return getSomeCharacterWrapperOptional();
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public TextObject resetSomeCharacterWrapperOptional() {
         setSomeCharacterWrapperOptional(null);
         return this;
@@ -219,7 +236,7 @@ public class TextObject implements Entity<TextObject> {
     private java.lang.Character someCharacterWrapperHidden;
 
     @javax.jdo.annotations.Column(allowsNull = "false")
-    @Hidden
+    @Property(hidden = Where.EVERYWHERE)
     public java.lang.Character getSomeCharacterWrapperHidden() {
         return someCharacterWrapperHidden;
     }
@@ -234,7 +251,7 @@ public class TextObject implements Entity<TextObject> {
     private java.lang.Character someCharacterWrapperDisabled;
 
     @javax.jdo.annotations.Column(allowsNull = "false")
-    @Disabled
+    @Property(editing = Editing.DISABLED)
     public java.lang.Character getSomeCharacterWrapperDisabled() {
         return someCharacterWrapperDisabled;
     }
@@ -261,7 +278,7 @@ public class TextObject implements Entity<TextObject> {
         return i % 2 != 0? "Can only enter even numbers": null;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public TextObject updateSomeCharacterWrapperWithValidation(final java.lang.Character i) {
         setSomeCharacterWrapperWithValidation(i);
         return this;
@@ -291,7 +308,7 @@ public class TextObject implements Entity<TextObject> {
         return Lists.newArrayList('a','b','c','d');
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public TextObject updateSomeCharacterWrapperMandatoryWithChoices(final Character i) {
         setSomeCharacterWrapperMandatoryWithChoices(i);
         return this;
@@ -319,8 +336,8 @@ public class TextObject implements Entity<TextObject> {
         return Lists.newArrayList('a','b','c','d');
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public TextObject updateSomeCharacterWrapperOptionalWithChoices(final @Optional Character i) {
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public TextObject updateSomeCharacterWrapperOptionalWithChoices(@Parameter(optionality=Optionality.OPTIONAL) final  Character i) {
         setSomeCharacterWrapperOptionalWithChoices(i);
         return this;
     }
@@ -331,7 +348,7 @@ public class TextObject implements Entity<TextObject> {
         return Lists.newArrayList('a','b','c','d');
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public TextObject resetSomeCharacterWrapperOptionalWithChoices() {
         setSomeCharacterWrapperOptionalWithChoices(null);
         return this;
@@ -351,7 +368,7 @@ public class TextObject implements Entity<TextObject> {
         this.someStringMandatory = someStringMandatory;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public TextObject updateSomeStringMandatory(final String i) {
         setSomeStringMandatory(i);
         return this;
@@ -373,8 +390,8 @@ public class TextObject implements Entity<TextObject> {
         this.someStringOptional = someStringOptional;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public TextObject updateSomeStringOptional(final @Optional String i) {
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public TextObject updateSomeStringOptional(@Parameter(optionality=Optionality.OPTIONAL) final  String i) {
         setSomeStringOptional(i);
         return this;
     }
@@ -382,7 +399,7 @@ public class TextObject implements Entity<TextObject> {
         return getSomeStringOptional();
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public TextObject resetSomeStringOptional() {
         setSomeStringOptional(null);
         return this;
@@ -393,7 +410,7 @@ public class TextObject implements Entity<TextObject> {
     private String someStringHidden;
 
     @javax.jdo.annotations.Column(allowsNull = "false")
-    @Hidden
+    @Property(hidden = Where.EVERYWHERE)
     public String getSomeStringHidden() {
         return someStringHidden;
     }
@@ -408,7 +425,7 @@ public class TextObject implements Entity<TextObject> {
     private String someStringDisabled;
 
     @javax.jdo.annotations.Column(allowsNull = "false")
-    @Disabled
+    @Property(editing = Editing.DISABLED)
     public String getSomeStringDisabled() {
         return someStringDisabled;
     }
@@ -435,7 +452,7 @@ public class TextObject implements Entity<TextObject> {
         return !x.startsWith("a") ? "Must start with letter 'a'": null;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public TextObject updateSomeStringWithValidation(final String i) {
         setSomeStringWithValidation(i);
         return this;
@@ -465,7 +482,7 @@ public class TextObject implements Entity<TextObject> {
         return Lists.newArrayList("a", "ab", "abcd", "abcdefgh", "abcdefghijklmnop", "abcdefghijklmnopqrstuvwxyz");
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public TextObject updateSomeStringMandatoryWithChoices(final String i) {
         setSomeStringMandatoryWithChoices(i);
         return this;
@@ -493,8 +510,8 @@ public class TextObject implements Entity<TextObject> {
         return Lists.newArrayList("a", "ab", "abcd", "abcdefgh", "abcdefghijklmnop", "abcdefghijklmnopqrstuvwxyz");
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public TextObject updateSomeStringOptionalWithChoices(final @Optional String i) {
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public TextObject updateSomeStringOptionalWithChoices(@Parameter(optionality=Optionality.OPTIONAL) final  String i) {
         setSomeStringOptionalWithChoices(i);
         return this;
     }
@@ -505,7 +522,7 @@ public class TextObject implements Entity<TextObject> {
         return Lists.newArrayList("a", "ab", "abcd", "abcdefgh", "abcdefghijklmnop", "abcdefghijklmnopqrstuvwxyz");
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public TextObject resetSomeStringOptionalWithChoices() {
         setSomeStringOptionalWithChoices(null);
         return this;
@@ -525,8 +542,8 @@ public class TextObject implements Entity<TextObject> {
         this.someString20 = someString20;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public TextObject updateSomeString20(final @Optional @MaxLength(20) String i) {
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public TextObject updateSomeString20(@Parameter(optionality=Optionality.OPTIONAL, maxLength = 20) final  String i) {
         setSomeString20(i);
         return this;
     }
@@ -534,7 +551,7 @@ public class TextObject implements Entity<TextObject> {
         return getSomeString20();
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public TextObject resetSomeString20() {
         setSomeString20(null);
         return this;
@@ -544,7 +561,7 @@ public class TextObject implements Entity<TextObject> {
     //region > someString50 (property)
     private String someString50;
 
-    @TypicalLength(20)
+    @PropertyLayout(typicalLength = 20)
     @Column(allowsNull = "true", length = 50)
     public String getSomeString50() {
         return someString50;
@@ -554,8 +571,8 @@ public class TextObject implements Entity<TextObject> {
         this.someString50 = someString50;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public TextObject updateSomeString50(final @Optional @MaxLength(50) @TypicalLength(20) String i) {
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public TextObject updateSomeString50(@Parameter(optionality=Optionality.OPTIONAL, maxLength = 50) final  @ParameterLayout(typicalLength = 20) String i) {
         setSomeString50(i);
         return this;
     }
@@ -563,7 +580,7 @@ public class TextObject implements Entity<TextObject> {
         return getSomeString50();
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public TextObject resetSomeString50() {
         setSomeString50(null);
         return this;
@@ -593,7 +610,7 @@ public class TextObject implements Entity<TextObject> {
     }
 
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public TextObject updateSomePasswordMandatory(final Password password) {
         setSomePasswordMandatory(password);
         return this;
@@ -617,7 +634,7 @@ public class TextObject implements Entity<TextObject> {
     }
 
     @javax.jdo.annotations.NotPersistent
-    @Optional
+    @Property(optionality=Optionality.OPTIONAL)
     public Password getSomePasswordOptional() {
         return new Password(somePasswordOptionalStr);
     }
@@ -625,8 +642,8 @@ public class TextObject implements Entity<TextObject> {
         this.somePasswordOptionalStr = somePasswordOptional != null? somePasswordOptional.getPassword(): null;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public TextObject updateSomePasswordOptional(final @Optional Password password) {
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public TextObject updateSomePasswordOptional(@Parameter(optionality=Optionality.OPTIONAL) final  Password password) {
         setSomePasswordOptional(password);
         return this;
     }
@@ -634,7 +651,7 @@ public class TextObject implements Entity<TextObject> {
         return getSomePasswordOptional();
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public TextObject resetSomePasswordOptional() {
         setSomePasswordOptionalStr(null);
         return this;
@@ -656,7 +673,7 @@ public class TextObject implements Entity<TextObject> {
     }
 
     @javax.jdo.annotations.NotPersistent
-    @Hidden
+    @Property(hidden = Where.EVERYWHERE)
     public Password getSomePasswordHidden() {
         return new Password(somePasswordHiddenStr);
     }
@@ -680,7 +697,7 @@ public class TextObject implements Entity<TextObject> {
     }
 
     @javax.jdo.annotations.NotPersistent
-    @Disabled
+    @Property(editing = Editing.DISABLED)
     public Password getSomePasswordDisabled() {
         return new Password(somePasswordDisabledStr);
     }
@@ -718,7 +735,7 @@ public class TextObject implements Entity<TextObject> {
                 : null;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public TextObject updateSomePasswordWithValidation(final Password password) {
         setSomePasswordWithValidation(password);
         return this;
@@ -764,7 +781,7 @@ public class TextObject implements Entity<TextObject> {
                 new Password("abcdefghijklmnopqrstuvwxyz"));
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public TextObject updateSomePasswordMandatoryWithChoices(final Password password) {
         setSomePasswordMandatoryWithChoices(password);
         return this;
@@ -791,7 +808,7 @@ public class TextObject implements Entity<TextObject> {
     }
 
     @javax.jdo.annotations.NotPersistent
-    @Optional
+    @Property(optionality=Optionality.OPTIONAL)
     public Password getSomePasswordOptionalWithChoices() {
         return new Password(somePasswordOptionalWithChoicesStr);
     }
@@ -809,8 +826,8 @@ public class TextObject implements Entity<TextObject> {
                 new Password("abcdefghijklmnopqrstuvwxyz"));
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public TextObject updateSomePasswordOptionalWithChoices(final @Optional Password password) {
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public TextObject updateSomePasswordOptionalWithChoices(@Parameter(optionality=Optionality.OPTIONAL) final  Password password) {
         setSomePasswordOptionalWithChoices(password);
         return this;
     }
@@ -821,7 +838,7 @@ public class TextObject implements Entity<TextObject> {
         return choicesSomePasswordOptionalWithChoices();
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public TextObject resetSomePasswordOptionalWithChoices() {
         setSomePasswordOptionalWithChoices(null);
         return this;
@@ -832,8 +849,8 @@ public class TextObject implements Entity<TextObject> {
     //region > someStringMulti (property)
     private String someStringMulti;
 
-    @MultiLine(numberOfLines = 10, preventWrapping = false) 
     @Column(allowsNull = "true", length = 2048)
+    @PropertyLayout(multiLine = 10)
     public String getSomeStringMulti() {
         return someStringMulti;
     }
@@ -842,8 +859,8 @@ public class TextObject implements Entity<TextObject> {
         this.someStringMulti = someStringMulti;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public TextObject updateSomeStringMulti(final @Optional @MultiLine(numberOfLines = 10, preventWrapping = false) @MaxLength(2048)  String i) {
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public TextObject updateSomeStringMulti(@Parameter(optionality=Optionality.OPTIONAL, maxLength = 2048) final  @ParameterLayout(multiLine = 10)  String i) {
         setSomeStringMulti(i);
         return this;
     }
@@ -851,7 +868,7 @@ public class TextObject implements Entity<TextObject> {
         return getSomeStringMulti();
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public TextObject resetSomeStringMulti() {
         setSomeStringMulti(null);
         return this;
@@ -861,7 +878,7 @@ public class TextObject implements Entity<TextObject> {
     //region > someStringMultiNoWrap (property)
     private String someStringMultiNoWrap;
 
-    @MultiLine(numberOfLines = 4, preventWrapping = true)
+    @PropertyLayout(multiLine = 4)
     @Column(allowsNull = "true", length = 2048)
     public String getSomeStringMultiNoWrap() {
         return someStringMultiNoWrap;
@@ -871,8 +888,10 @@ public class TextObject implements Entity<TextObject> {
         this.someStringMultiNoWrap = someStringMultiNoWrap;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public TextObject updateSomeStringMultiNoWrap(final @Optional @MultiLine(numberOfLines = 4, preventWrapping = true) @MaxLength(2048) String i) {
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public TextObject updateSomeStringMultiNoWrap(@Parameter(optionality=Optionality.OPTIONAL, maxLength = 2048)
+                                                  @ParameterLayout(multiLine = 4)
+                                                  final String i) {
         setSomeStringMultiNoWrap(i);
         return this;
     }
@@ -880,7 +899,7 @@ public class TextObject implements Entity<TextObject> {
         return getSomeStringMultiNoWrap();
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public TextObject resetSomeStringMultiNoWrap() {
         setSomeStringMultiNoWrap(null);
         return this;

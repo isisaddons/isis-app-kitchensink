@@ -24,7 +24,17 @@ import javax.jdo.annotations.VersionStrategy;
 import com.google.common.collect.Lists;
 import org.isisaddons.app.kitchensink.dom.Entity;
 import org.apache.isis.applib.DomainObjectContainer;
-import org.apache.isis.applib.annotation.*;
+import org.apache.isis.applib.annotation.Action;
+import org.apache.isis.applib.annotation.BookmarkPolicy;
+import org.apache.isis.applib.annotation.DomainObject;
+import org.apache.isis.applib.annotation.DomainObjectLayout;
+import org.apache.isis.applib.annotation.Editing;
+import org.apache.isis.applib.annotation.Optionality;
+import org.apache.isis.applib.annotation.Parameter;
+import org.apache.isis.applib.annotation.Property;
+import org.apache.isis.applib.annotation.SemanticsOf;
+import org.apache.isis.applib.annotation.Title;
+import org.apache.isis.applib.annotation.Where;
 import org.apache.isis.applib.util.ObjectContracts;
 
 @javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE)
@@ -34,8 +44,12 @@ import org.apache.isis.applib.util.ObjectContracts;
 @javax.jdo.annotations.Version(
         strategy=VersionStrategy.VERSION_NUMBER, 
         column="version")
-@ObjectType("WRAPPER")
-@Bookmarkable
+@DomainObject(
+        objectType = "WRAPPER"
+)
+@DomainObjectLayout(
+        bookmarking = BookmarkPolicy.AS_ROOT
+)
 public class WrapperObject implements Entity<WrapperObject> {
 
     //region > name (property)
@@ -67,7 +81,7 @@ public class WrapperObject implements Entity<WrapperObject> {
         this.someByteWrapperMandatory = someByteWrapperMandatory;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public WrapperObject updateSomeByteWrapperMandatory(final Byte b) {
         setSomeByteWrapperMandatory(b);
         return this;
@@ -89,8 +103,8 @@ public class WrapperObject implements Entity<WrapperObject> {
         this.someByteWrapperOptional = someByteWrapperOptional;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public WrapperObject updateSomeByteWrapperOptional(final @Optional Byte b) {
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public WrapperObject updateSomeByteWrapperOptional(@Parameter(optionality=Optionality.OPTIONAL) final  Byte b) {
         setSomeByteWrapperOptional(b);
         return this;
     }
@@ -98,7 +112,7 @@ public class WrapperObject implements Entity<WrapperObject> {
     public Byte default0UpdateSomeByteWrapperOptional() {
         return getSomeByteWrapperOptional();
     }
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public WrapperObject resetSomeByteWrapperOptional() {
         setSomeByteWrapperOptional(null);
         return this;
@@ -109,7 +123,7 @@ public class WrapperObject implements Entity<WrapperObject> {
     private java.lang.Byte someByteWrapperHidden;
 
     @javax.jdo.annotations.Column(allowsNull = "false")
-    @Hidden
+    @Property(hidden = Where.EVERYWHERE)
     public java.lang.Byte getSomeByteWrapperHidden() {
         return someByteWrapperHidden;
     }
@@ -124,7 +138,7 @@ public class WrapperObject implements Entity<WrapperObject> {
     private java.lang.Byte someByteWrapperDisabled;
 
     @javax.jdo.annotations.Column(allowsNull = "false")
-    @Disabled
+    @Property(editing = Editing.DISABLED)
     public java.lang.Byte getSomeByteWrapperDisabled() {
         return someByteWrapperDisabled;
     }
@@ -151,7 +165,7 @@ public class WrapperObject implements Entity<WrapperObject> {
         return i % 2 != 0? "Can only enter even numbers": null;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public WrapperObject updateSomeByteWrapperWithValidation(final java.lang.Byte i) {
         setSomeByteWrapperWithValidation(i);
         return this;
@@ -181,7 +195,7 @@ public class WrapperObject implements Entity<WrapperObject> {
         return Lists.newArrayList((byte)1, (byte)2, (byte)3, (byte)4);
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public WrapperObject updateSomeByteWrapperMandatoryWithChoices(final Byte i) {
         setSomeByteWrapperMandatoryWithChoices(i);
         return this;
@@ -209,8 +223,8 @@ public class WrapperObject implements Entity<WrapperObject> {
         return Lists.newArrayList((byte)1, (byte)2, (byte)3, (byte)4);
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public WrapperObject updateSomeByteWrapperOptionalWithChoices(final @Optional Byte i) {
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public WrapperObject updateSomeByteWrapperOptionalWithChoices(@Parameter(optionality=Optionality.OPTIONAL) final  Byte i) {
         setSomeByteWrapperOptionalWithChoices(i);
         return this;
     }
@@ -221,7 +235,7 @@ public class WrapperObject implements Entity<WrapperObject> {
         return Lists.newArrayList((byte)1, (byte)2, (byte)3, (byte)4);
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public WrapperObject resetSomeByteWrapperOptionalWithChoices() {
         setSomeByteWrapperOptionalWithChoices(null);
         return this;
@@ -242,7 +256,7 @@ public class WrapperObject implements Entity<WrapperObject> {
         this.someShortWrapperMandatory = someShortWrapperMandatory;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public WrapperObject updateSomeShortWrapperMandatory(final Short s) {
         setSomeShortWrapperMandatory(s);
         return this;
@@ -264,8 +278,8 @@ public class WrapperObject implements Entity<WrapperObject> {
         this.someShortWrapperOptional = someShortWrapperOptional;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public WrapperObject updateSomeShortWrapperOptional(final @Optional Short s) {
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public WrapperObject updateSomeShortWrapperOptional(@Parameter(optionality=Optionality.OPTIONAL) final  Short s) {
         setSomeShortWrapperOptional(s);
         return this;
     }
@@ -273,7 +287,7 @@ public class WrapperObject implements Entity<WrapperObject> {
         return getSomeShortWrapperOptional();
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public WrapperObject resetSomeShortWrapperOptional() {
         setSomeShortWrapperOptional(null);
         return this;
@@ -284,7 +298,7 @@ public class WrapperObject implements Entity<WrapperObject> {
     private java.lang.Short someShortWrapperHidden;
 
     @javax.jdo.annotations.Column(allowsNull = "false")
-    @Hidden
+    @Property(hidden = Where.EVERYWHERE)
     public java.lang.Short getSomeShortWrapperHidden() {
         return someShortWrapperHidden;
     }
@@ -299,7 +313,7 @@ public class WrapperObject implements Entity<WrapperObject> {
     private java.lang.Short someShortWrapperDisabled;
 
     @javax.jdo.annotations.Column(allowsNull = "false")
-    @Disabled
+    @Property(editing = Editing.DISABLED)
     public java.lang.Short getSomeShortWrapperDisabled() {
         return someShortWrapperDisabled;
     }
@@ -326,7 +340,7 @@ public class WrapperObject implements Entity<WrapperObject> {
         return i % 2 != 0? "Can only enter even numbers": null;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public WrapperObject updateSomeShortWrapperWithValidation(final java.lang.Short i) {
         setSomeShortWrapperWithValidation(i);
         return this;
@@ -356,7 +370,7 @@ public class WrapperObject implements Entity<WrapperObject> {
         return Lists.newArrayList((short)1, (short)2, (short)3, (short)4);
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public WrapperObject updateSomeShortWrapperMandatoryWithChoices(final Short i) {
         setSomeShortWrapperMandatoryWithChoices(i);
         return this;
@@ -384,8 +398,8 @@ public class WrapperObject implements Entity<WrapperObject> {
         return Lists.newArrayList((short)1, (short)2, (short)3, (short)4);
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public WrapperObject updateSomeShortWrapperOptionalWithChoices(final @Optional Short i) {
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public WrapperObject updateSomeShortWrapperOptionalWithChoices(@Parameter(optionality=Optionality.OPTIONAL) final  Short i) {
         setSomeShortWrapperOptionalWithChoices(i);
         return this;
     }
@@ -396,7 +410,7 @@ public class WrapperObject implements Entity<WrapperObject> {
         return Lists.newArrayList((short)1, (short)2, (short)3, (short)4);
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public WrapperObject resetSomeShortWrapperOptionalWithChoices() {
         setSomeShortWrapperOptionalWithChoices(null);
         return this;
@@ -416,7 +430,7 @@ public class WrapperObject implements Entity<WrapperObject> {
         this.someIntegerWrapperMandatory = someIntegerWrapperMandatory;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public WrapperObject updateSomeIntegerWrapperMandatory(final Integer i) {
         setSomeIntegerWrapperMandatory(i);
         return this;
@@ -438,8 +452,8 @@ public class WrapperObject implements Entity<WrapperObject> {
         this.someIntegerWrapperOptional = someIntegerWrapperOptional;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public WrapperObject updateSomeIntegerWrapperOptional(final @Optional Integer i) {
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public WrapperObject updateSomeIntegerWrapperOptional(@Parameter(optionality=Optionality.OPTIONAL) final  Integer i) {
         setSomeIntegerWrapperOptional(i);
         return this;
     }
@@ -447,7 +461,7 @@ public class WrapperObject implements Entity<WrapperObject> {
         return getSomeIntegerWrapperOptional();
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public WrapperObject resetSomeIntegerWrapperOptional() {
         setSomeIntegerWrapperOptional(null);
         return this;
@@ -458,7 +472,7 @@ public class WrapperObject implements Entity<WrapperObject> {
     private java.lang.Integer someIntegerWrapperHidden;
 
     @javax.jdo.annotations.Column(allowsNull = "false")
-    @Hidden
+    @Property(hidden = Where.EVERYWHERE)
     public java.lang.Integer getSomeIntegerWrapperHidden() {
         return someIntegerWrapperHidden;
     }
@@ -473,7 +487,7 @@ public class WrapperObject implements Entity<WrapperObject> {
     private java.lang.Integer someIntegerWrapperDisabled;
 
     @javax.jdo.annotations.Column(allowsNull = "false")
-    @Disabled
+    @Property(editing = Editing.DISABLED)
     public java.lang.Integer getSomeIntegerWrapperDisabled() {
         return someIntegerWrapperDisabled;
     }
@@ -500,7 +514,7 @@ public class WrapperObject implements Entity<WrapperObject> {
         return i % 2 != 0? "Can only enter even numbers": null;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public WrapperObject updateSomeIntegerWrapperWithValidation(final java.lang.Integer i) {
         setSomeIntegerWrapperWithValidation(i);
         return this;
@@ -530,7 +544,7 @@ public class WrapperObject implements Entity<WrapperObject> {
         return Lists.newArrayList(1, 2, 3, 4);
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public WrapperObject updateSomeIntegerWrapperMandatoryWithChoices(final Integer i) {
         setSomeIntegerWrapperMandatoryWithChoices(i);
         return this;
@@ -558,8 +572,8 @@ public class WrapperObject implements Entity<WrapperObject> {
         return Lists.newArrayList(1, 2, 3, 4);
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public WrapperObject updateSomeIntegerWrapperOptionalWithChoices(final @Optional Integer i) {
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public WrapperObject updateSomeIntegerWrapperOptionalWithChoices(@Parameter(optionality=Optionality.OPTIONAL) final  Integer i) {
         setSomeIntegerWrapperOptionalWithChoices(i);
         return this;
     }
@@ -570,7 +584,7 @@ public class WrapperObject implements Entity<WrapperObject> {
         return Lists.newArrayList(1, 2, 3, 4);
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public WrapperObject resetSomeIntegerWrapperOptionalWithChoices() {
         setSomeIntegerWrapperOptionalWithChoices(null);
         return this;
@@ -590,7 +604,7 @@ public class WrapperObject implements Entity<WrapperObject> {
         this.someLongWrapperMandatory = someLongWrapperMandatory;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public WrapperObject updateSomeLongWrapperMandatory(final Long l) {
         setSomeLongWrapperMandatory(l);
         return this;
@@ -612,13 +626,13 @@ public class WrapperObject implements Entity<WrapperObject> {
         this.someLongWrapperOptional = someLongWrapperOptional;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public WrapperObject updateSomeLongWrapperOptional(final @Optional Long l) {
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public WrapperObject updateSomeLongWrapperOptional(@Parameter(optionality=Optionality.OPTIONAL) final  Long l) {
         setSomeLongWrapperOptional(l);
         return this;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public WrapperObject resetSomeLongWrapperOptional() {
         setSomeLongWrapperOptional(null);
         return this;
@@ -629,7 +643,7 @@ public class WrapperObject implements Entity<WrapperObject> {
     private java.lang.Long someLongWrapperHidden;
 
     @javax.jdo.annotations.Column(allowsNull = "false")
-    @Hidden
+    @Property(hidden = Where.EVERYWHERE)
     public java.lang.Long getSomeLongWrapperHidden() {
         return someLongWrapperHidden;
     }
@@ -644,7 +658,7 @@ public class WrapperObject implements Entity<WrapperObject> {
     private java.lang.Long someLongWrapperDisabled;
 
     @javax.jdo.annotations.Column(allowsNull = "false")
-    @Disabled
+    @Property(editing = Editing.DISABLED)
     public java.lang.Long getSomeLongWrapperDisabled() {
         return someLongWrapperDisabled;
     }
@@ -671,7 +685,7 @@ public class WrapperObject implements Entity<WrapperObject> {
         return i % 2 != 0? "Can only enter even numbers": null;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public WrapperObject updateSomeLongWrapperWithValidation(final java.lang.Long i) {
         setSomeLongWrapperWithValidation(i);
         return this;
@@ -701,7 +715,7 @@ public class WrapperObject implements Entity<WrapperObject> {
         return Lists.newArrayList(1L, 2L, 3L, 4L);
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public WrapperObject updateSomeLongWrapperMandatoryWithChoices(final Long i) {
         setSomeLongWrapperMandatoryWithChoices(i);
         return this;
@@ -729,8 +743,8 @@ public class WrapperObject implements Entity<WrapperObject> {
         return Lists.newArrayList(1L, 2L, 3L, 4L);
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public WrapperObject updateSomeLongWrapperOptionalWithChoices(final @Optional Long i) {
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public WrapperObject updateSomeLongWrapperOptionalWithChoices(@Parameter(optionality=Optionality.OPTIONAL) final  Long i) {
         setSomeLongWrapperOptionalWithChoices(i);
         return this;
     }
@@ -741,7 +755,7 @@ public class WrapperObject implements Entity<WrapperObject> {
         return Lists.newArrayList(1L, 2L, 3L, 4L);
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public WrapperObject resetSomeLongWrapperOptionalWithChoices() {
         setSomeLongWrapperOptionalWithChoices(null);
         return this;
@@ -761,7 +775,7 @@ public class WrapperObject implements Entity<WrapperObject> {
         this.someFloatWrapperMandatory = someFloatWrapperMandatory;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public WrapperObject updateSomeFloatWrapperMandatory(final Float f) {
         setSomeFloatWrapperMandatory(f);
         return this;
@@ -783,8 +797,8 @@ public class WrapperObject implements Entity<WrapperObject> {
         this.someFloatWrapperOptional = someFloatWrapperOptional;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public WrapperObject updateSomeFloatWrapperOptional(final @Optional Float f) {
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public WrapperObject updateSomeFloatWrapperOptional(@Parameter(optionality=Optionality.OPTIONAL) final  Float f) {
         setSomeFloatWrapperOptional(f);
         return this;
     }
@@ -792,7 +806,7 @@ public class WrapperObject implements Entity<WrapperObject> {
         return getSomeFloatWrapperOptional();
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public WrapperObject resetSomeFloatWrapperOptional() {
         setSomeFloatWrapperOptional(null);
         return this;
@@ -803,7 +817,7 @@ public class WrapperObject implements Entity<WrapperObject> {
     private java.lang.Float someFloatWrapperHidden;
 
     @javax.jdo.annotations.Column(allowsNull = "false")
-    @Hidden
+    @Property(hidden = Where.EVERYWHERE)
     public java.lang.Float getSomeFloatWrapperHidden() {
         return someFloatWrapperHidden;
     }
@@ -818,7 +832,7 @@ public class WrapperObject implements Entity<WrapperObject> {
     private java.lang.Float someFloatWrapperDisabled;
 
     @javax.jdo.annotations.Column(allowsNull = "false")
-    @Disabled
+    @Property(editing = Editing.DISABLED)
     public java.lang.Float getSomeFloatWrapperDisabled() {
         return someFloatWrapperDisabled;
     }
@@ -845,7 +859,7 @@ public class WrapperObject implements Entity<WrapperObject> {
         return i % 2 != 0? "Can only enter even numbers": null;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public WrapperObject updateSomeFloatWrapperWithValidation(final java.lang.Float i) {
         setSomeFloatWrapperWithValidation(i);
         return this;
@@ -875,7 +889,7 @@ public class WrapperObject implements Entity<WrapperObject> {
         return Lists.newArrayList(1.1f, 2.2f, 3.3f, 4.4f);
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public WrapperObject updateSomeFloatWrapperMandatoryWithChoices(final Float i) {
         setSomeFloatWrapperMandatoryWithChoices(i);
         return this;
@@ -903,8 +917,8 @@ public class WrapperObject implements Entity<WrapperObject> {
         return Lists.newArrayList(1.1f, 2.2f, 3.3f, 4.4f);
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public WrapperObject updateSomeFloatWrapperOptionalWithChoices(final @Optional Float i) {
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public WrapperObject updateSomeFloatWrapperOptionalWithChoices(@Parameter(optionality=Optionality.OPTIONAL) final  Float i) {
         setSomeFloatWrapperOptionalWithChoices(i);
         return this;
     }
@@ -915,7 +929,7 @@ public class WrapperObject implements Entity<WrapperObject> {
         return Lists.newArrayList(1.1f, 2.2f, 3.3f, 4.4f);
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public WrapperObject resetSomeFloatWrapperOptionalWithChoices() {
         setSomeFloatWrapperOptionalWithChoices(null);
         return this;
@@ -935,7 +949,7 @@ public class WrapperObject implements Entity<WrapperObject> {
         this.someDoubleWrapperMandatory = someDoubleWrapperMandatory;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public WrapperObject updateSomeDoubleWrapperMandatory(final Double d) {
         setSomeDoubleWrapperMandatory(d);
         return this;
@@ -957,8 +971,8 @@ public class WrapperObject implements Entity<WrapperObject> {
         this.someDoubleWrapperOptional = someDoubleWrapperOptional;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public WrapperObject updateSomeDoubleWrapperOptional(final @Optional Double d) {
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public WrapperObject updateSomeDoubleWrapperOptional(@Parameter(optionality=Optionality.OPTIONAL) final  Double d) {
         setSomeDoubleWrapperOptional(d);
         return this;
     }
@@ -966,7 +980,7 @@ public class WrapperObject implements Entity<WrapperObject> {
         return getSomeDoubleWrapperOptional();
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public WrapperObject resetSomeDoubleWrapperOptional() {
         setSomeDoubleWrapperOptional(null);
         return this;
@@ -977,7 +991,7 @@ public class WrapperObject implements Entity<WrapperObject> {
     private java.lang.Double someDoubleWrapperHidden;
 
     @javax.jdo.annotations.Column(allowsNull = "false")
-    @Hidden
+    @Property(hidden = Where.EVERYWHERE)
     public java.lang.Double getSomeDoubleWrapperHidden() {
         return someDoubleWrapperHidden;
     }
@@ -992,7 +1006,7 @@ public class WrapperObject implements Entity<WrapperObject> {
     private java.lang.Double someDoubleWrapperDisabled;
 
     @javax.jdo.annotations.Column(allowsNull = "false")
-    @Disabled
+    @Property(editing = Editing.DISABLED)
     public java.lang.Double getSomeDoubleWrapperDisabled() {
         return someDoubleWrapperDisabled;
     }
@@ -1019,7 +1033,7 @@ public class WrapperObject implements Entity<WrapperObject> {
         return i % 2 != 0? "Can only enter even numbers": null;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public WrapperObject updateSomeDoubleWrapperWithValidation(final java.lang.Double i) {
         setSomeDoubleWrapperWithValidation(i);
         return this;
@@ -1049,7 +1063,7 @@ public class WrapperObject implements Entity<WrapperObject> {
         return Lists.newArrayList(1.1, 2.2, 3.3, 4.4);
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public WrapperObject updateSomeDoubleWrapperMandatoryWithChoices(final Double i) {
         setSomeDoubleWrapperMandatoryWithChoices(i);
         return this;
@@ -1077,8 +1091,8 @@ public class WrapperObject implements Entity<WrapperObject> {
         return Lists.newArrayList(1.1, 2.2, 3.3, 4.4);
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public WrapperObject updateSomeDoubleWrapperOptionalWithChoices(final @Optional Double i) {
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public WrapperObject updateSomeDoubleWrapperOptionalWithChoices(@Parameter(optionality=Optionality.OPTIONAL) final  Double i) {
         setSomeDoubleWrapperOptionalWithChoices(i);
         return this;
     }
@@ -1089,7 +1103,7 @@ public class WrapperObject implements Entity<WrapperObject> {
         return Lists.newArrayList(1.1, 2.2, 3.3, 4.4);
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public WrapperObject resetSomeDoubleWrapperOptionalWithChoices() {
         setSomeDoubleWrapperOptionalWithChoices(null);
         return this;

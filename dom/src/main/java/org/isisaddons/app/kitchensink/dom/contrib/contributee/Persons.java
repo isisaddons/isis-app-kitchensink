@@ -18,14 +18,20 @@ package org.isisaddons.app.kitchensink.dom.contrib.contributee;
 
 import java.util.List;
 import org.apache.isis.applib.DomainObjectContainer;
-import org.apache.isis.applib.annotation.ActionSemantics;
-import org.apache.isis.applib.annotation.Bookmarkable;
+import org.apache.isis.applib.annotation.Action;
+import org.apache.isis.applib.annotation.ActionLayout;
+import org.apache.isis.applib.annotation.BookmarkPolicy;
 import org.apache.isis.applib.annotation.DomainService;
+import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
-import org.apache.isis.applib.annotation.Named;
+import org.apache.isis.applib.annotation.ParameterLayout;
+import org.apache.isis.applib.annotation.SemanticsOf;
 
-@Named("Contributions")
-@DomainService(menuOrder = "10.1", repositoryFor = Person.class)
+@DomainService(repositoryFor = Person.class)
+@DomainServiceLayout(
+        named="Contributions",
+        menuOrder = "10.1"
+)
 public class Persons {
 
     private final Class<Person> cls = Person.class;
@@ -40,7 +46,7 @@ public class Persons {
 
     @MemberOrder(sequence = "30")
     public Person createPerson(
-            final @Named("Name") String name) {
+            final @ParameterLayout(named="Name") String name) {
         final Person obj = container.newTransientInstance(Person.class);
         obj.setName(name);
 
@@ -49,16 +55,16 @@ public class Persons {
     }
 
 
-    @Bookmarkable
-    @ActionSemantics(ActionSemantics.Of.SAFE)
+    @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
+    @Action(semantics=SemanticsOf.SAFE)
     @MemberOrder(sequence = "10")
     public Person firstPerson() {
         final List<Person> list = listAllPersons();
         return list.isEmpty()? null: list.get(0);
     }
 
-    @Bookmarkable
-    @ActionSemantics(ActionSemantics.Of.SAFE)
+    @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
+    @Action(semantics= SemanticsOf.SAFE)
     @MemberOrder(sequence = "20")
     public List<Person> listAllPersons() {
         return container.allInstances(cls);

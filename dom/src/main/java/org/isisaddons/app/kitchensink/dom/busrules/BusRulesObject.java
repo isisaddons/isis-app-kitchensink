@@ -24,10 +24,10 @@ import javax.jdo.annotations.VersionStrategy;
 import com.google.common.collect.Lists;
 import org.isisaddons.app.kitchensink.dom.Entity;
 import org.apache.isis.applib.DomainObjectContainer;
-import org.apache.isis.applib.annotation.Bookmarkable;
-import org.apache.isis.applib.annotation.Disabled;
-import org.apache.isis.applib.annotation.NotPersisted;
-import org.apache.isis.applib.annotation.ObjectType;
+import org.apache.isis.applib.annotation.BookmarkPolicy;
+import org.apache.isis.applib.annotation.Collection;
+import org.apache.isis.applib.annotation.DomainObject;
+import org.apache.isis.applib.annotation.DomainObjectLayout;
 import org.apache.isis.applib.annotation.Title;
 import org.apache.isis.applib.util.ObjectContracts;
 
@@ -38,11 +38,13 @@ import org.apache.isis.applib.util.ObjectContracts;
 @javax.jdo.annotations.Version(
         strategy=VersionStrategy.VERSION_NUMBER, 
         column="version")
-@ObjectType("BUSRULES")
-@Bookmarkable
+@DomainObject(
+        objectType = "BUSRULES"
+)
+@DomainObjectLayout(
+        bookmarking = BookmarkPolicy.AS_ROOT
+)
 public class BusRulesObject implements Entity<BusRulesObject> {
-
-
 
     //region > name (property)
 
@@ -63,9 +65,12 @@ public class BusRulesObject implements Entity<BusRulesObject> {
 
     //region > actionAssociatedWithProperty
 
-    @Disabled
     public BusRulesObject actionAssociatedWithProperty() {
         return this;
+    }
+
+    public String disableActionAssociatedWithProperty() {
+        return "Always disabled";
     }
 
 
@@ -83,7 +88,9 @@ public class BusRulesObject implements Entity<BusRulesObject> {
 
     //region > other (derived collection)
 
-    @NotPersisted
+    @Collection(
+            notPersisted = true
+    )
     public List<BusRulesObject> getOther() {
         final List<BusRulesObject> other = Lists.newArrayList();
         other.addAll(busRulesObjects.listAllBusRulesObject());
@@ -95,10 +102,14 @@ public class BusRulesObject implements Entity<BusRulesObject> {
 
     //region > actionAssociatedWithCollection
 
-    @Disabled
     public BusRulesObject actionAssociatedWithCollection() {
         return this;
     }
+
+    public String disableActionAssociatedWithCollection() {
+        return "Always disabled";
+    }
+
     //endregion
 
     //region > action2AssociatedWithCollection
@@ -110,9 +121,11 @@ public class BusRulesObject implements Entity<BusRulesObject> {
 
 
     //region > topLevelAction (action)
-    @Disabled
     public BusRulesObject topLevelAction() {
         return this;
+    }
+    public String disableTopLevelAction() {
+        return "Always disabled";
     }
     //endregion
 
@@ -127,7 +140,7 @@ public class BusRulesObject implements Entity<BusRulesObject> {
     //region > compareTo
 
     @Override
-    public int compareTo(BusRulesObject other) {
+    public int compareTo(final BusRulesObject other) {
         return ObjectContracts.compare(this, other, "name");
     }
 

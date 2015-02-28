@@ -26,7 +26,11 @@ import org.isisaddons.app.kitchensink.dom.hierarchy.child.ChildObject;
 import org.isisaddons.app.kitchensink.dom.other.OtherBoundedObjects;
 import org.isisaddons.app.kitchensink.dom.other.OtherObjects;
 import org.apache.isis.applib.DomainObjectContainer;
-import org.apache.isis.applib.annotation.*;
+import org.apache.isis.applib.annotation.BookmarkPolicy;
+import org.apache.isis.applib.annotation.DomainObject;
+import org.apache.isis.applib.annotation.DomainObjectLayout;
+import org.apache.isis.applib.annotation.MemberOrder;
+import org.apache.isis.applib.annotation.Title;
 import org.apache.isis.applib.util.ObjectContracts;
 
 @javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE)
@@ -36,8 +40,12 @@ import org.apache.isis.applib.util.ObjectContracts;
 @javax.jdo.annotations.Version(
         strategy=VersionStrategy.VERSION_NUMBER, 
         column="version")
-@ObjectType("GRANDCHILD")
-@Bookmarkable(BookmarkPolicy.AS_CHILD)
+@DomainObject(
+        objectType = "GRANDCHILD"
+)
+@DomainObjectLayout(
+        bookmarking = BookmarkPolicy.AS_CHILD
+)
 public class GrandchildObject implements Entity<GrandchildObject> {
 
 
@@ -76,7 +84,7 @@ public class GrandchildObject implements Entity<GrandchildObject> {
     //region > compareTo
 
     @Override
-    public int compareTo(GrandchildObject other) {
+    public int compareTo(final GrandchildObject other) {
         return ObjectContracts.compare(this, other, "name");
     }
 
@@ -88,7 +96,7 @@ public class GrandchildObject implements Entity<GrandchildObject> {
         static Predicate<ChildObject> containedIn(final SortedSet<GrandchildObject> children) {
             return new Predicate<ChildObject>() {
                 @Override
-                public boolean apply(ChildObject input) {
+                public boolean apply(final ChildObject input) {
                     return children.contains(input);
                 }
             };

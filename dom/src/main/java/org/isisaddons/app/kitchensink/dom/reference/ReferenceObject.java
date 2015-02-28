@@ -27,7 +27,16 @@ import org.isisaddons.app.kitchensink.dom.other.OtherBoundedObjects;
 import org.isisaddons.app.kitchensink.dom.other.OtherObject;
 import org.isisaddons.app.kitchensink.dom.other.OtherObjects;
 import org.apache.isis.applib.DomainObjectContainer;
-import org.apache.isis.applib.annotation.*;
+import org.apache.isis.applib.annotation.Action;
+import org.apache.isis.applib.annotation.BookmarkPolicy;
+import org.apache.isis.applib.annotation.DomainObject;
+import org.apache.isis.applib.annotation.DomainObjectLayout;
+import org.apache.isis.applib.annotation.Editing;
+import org.apache.isis.applib.annotation.Optionality;
+import org.apache.isis.applib.annotation.Parameter;
+import org.apache.isis.applib.annotation.Property;
+import org.apache.isis.applib.annotation.SemanticsOf;
+import org.apache.isis.applib.annotation.Title;
 import org.apache.isis.applib.util.ObjectContracts;
 
 @javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE)
@@ -37,8 +46,12 @@ import org.apache.isis.applib.util.ObjectContracts;
 @javax.jdo.annotations.Version(
         strategy=VersionStrategy.VERSION_NUMBER, 
         column="version")
-@ObjectType("REFERENCE")
-@Bookmarkable
+@DomainObject(
+        objectType = "REFERENCE"
+)
+@DomainObjectLayout(
+        bookmarking = BookmarkPolicy.AS_ROOT
+)
 public class ReferenceObject implements Entity<ReferenceObject> {
 
 
@@ -74,7 +87,7 @@ public class ReferenceObject implements Entity<ReferenceObject> {
         return otherObjects.listAll();
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public ReferenceObject updateSomeOtherObjectMandatoryWithChoices(final OtherObject i) {
         setSomeOtherObjectMandatoryWithChoices(i);
         return this;
@@ -102,8 +115,8 @@ public class ReferenceObject implements Entity<ReferenceObject> {
         return otherObjects.listAll();
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public ReferenceObject updateSomeOtherObjectOptionalWithChoices(final @Optional OtherObject i) {
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public ReferenceObject updateSomeOtherObjectOptionalWithChoices(@Parameter(optionality=Optionality.OPTIONAL) final  OtherObject i) {
         setSomeOtherObjectOptionalWithChoices(i);
         return this;
     }
@@ -114,7 +127,7 @@ public class ReferenceObject implements Entity<ReferenceObject> {
         return otherObjects.listAll();
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public ReferenceObject resetSomeOtherObjectOptionalWithChoices() {
         setSomeOtherObjectOptionalWithChoices(null);
         return this;
@@ -124,7 +137,7 @@ public class ReferenceObject implements Entity<ReferenceObject> {
     //region > someOtherObjectActionOnlyWithChoices (property)
     private OtherObject someOtherObjectActionOnlyWithChoices;
 
-    @Disabled
+    @Property(editing = Editing.DISABLED)
     @Column(allowsNull = "true")
     public OtherObject getSomeOtherObjectActionOnlyWithChoices() {
         return someOtherObjectActionOnlyWithChoices;
@@ -137,8 +150,8 @@ public class ReferenceObject implements Entity<ReferenceObject> {
         return otherObjects.listAll();
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public ReferenceObject updateSomeOtherObjectActionOnlyWithChoices(final @Optional OtherObject i) {
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public ReferenceObject updateSomeOtherObjectActionOnlyWithChoices(@Parameter(optionality=Optionality.OPTIONAL) final  OtherObject i) {
         setSomeOtherObjectActionOnlyWithChoices(i);
         return this;
     }
@@ -149,7 +162,7 @@ public class ReferenceObject implements Entity<ReferenceObject> {
         return otherObjects.listAll();
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public ReferenceObject resetSomeOtherObjectActionOnlyWithChoices() {
         setSomeOtherObjectActionOnlyWithChoices(null);
         return this;
@@ -170,8 +183,8 @@ public class ReferenceObject implements Entity<ReferenceObject> {
         this.someOtherObjectOptionalWithoutChoices = someOtherObjectOptionalWithoutChoices;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public ReferenceObject updateSomeOtherObjectOptionalWithoutChoices(final @Optional OtherObject i) {
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public ReferenceObject updateSomeOtherObjectOptionalWithoutChoices(@Parameter(optionality=Optionality.OPTIONAL) final  OtherObject i) {
         setSomeOtherObjectOptionalWithoutChoices(i);
         return this;
     }
@@ -182,7 +195,7 @@ public class ReferenceObject implements Entity<ReferenceObject> {
         return otherObjects.listAll();
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public ReferenceObject resetSomeOtherObjectOptionalWithoutChoices() {
         setSomeOtherObjectOptionalWithoutChoices(null);
         return this;
@@ -192,7 +205,7 @@ public class ReferenceObject implements Entity<ReferenceObject> {
     //region > someOtherObjectActionOnlyWithoutChoices (property)
     private OtherObject someOtherObjectActionOnlyWithoutChoices;
 
-    @Disabled
+    @Property(editing = Editing.DISABLED)
     @Column(allowsNull = "true")
     public OtherObject getSomeOtherObjectActionOnlyWithoutChoices() {
         return someOtherObjectActionOnlyWithoutChoices;
@@ -203,8 +216,8 @@ public class ReferenceObject implements Entity<ReferenceObject> {
     }
 
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public ReferenceObject updateSomeOtherObjectActionOnlyWithoutChoices(final @Optional OtherObject i) {
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public ReferenceObject updateSomeOtherObjectActionOnlyWithoutChoices(@Parameter(optionality=Optionality.OPTIONAL) final  OtherObject i) {
         setSomeOtherObjectActionOnlyWithoutChoices(i);
         return this;
     }
@@ -215,7 +228,7 @@ public class ReferenceObject implements Entity<ReferenceObject> {
         return otherObjects.listAll();
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public ReferenceObject resetSomeOtherObjectActionOnlyWithoutChoices() {
         setSomeOtherObjectActionOnlyWithoutChoices(null);
         return this;
@@ -237,7 +250,7 @@ public class ReferenceObject implements Entity<ReferenceObject> {
         this.someOtherBoundedObjectMandatory = someOtherBoundedObjectMandatory;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public ReferenceObject updateSomeOtherBoundedObjectMandatory(final OtherBoundedObject i) {
         setSomeOtherBoundedObjectMandatory(i);
         return this;
@@ -259,8 +272,8 @@ public class ReferenceObject implements Entity<ReferenceObject> {
         this.someOtherBoundedObjectOptional = someOtherBoundedObjectOptional;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public ReferenceObject updateSomeOtherBoundedObjectOptional(final @Optional OtherBoundedObject i) {
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public ReferenceObject updateSomeOtherBoundedObjectOptional(@Parameter(optionality=Optionality.OPTIONAL) final  OtherBoundedObject i) {
         setSomeOtherBoundedObjectOptional(i);
         return this;
     }
@@ -268,7 +281,7 @@ public class ReferenceObject implements Entity<ReferenceObject> {
         return getSomeOtherBoundedObjectOptional();
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public ReferenceObject resetSomeOtherBoundedObjectOptional() {
         setSomeOtherBoundedObjectOptional(null);
         return this;

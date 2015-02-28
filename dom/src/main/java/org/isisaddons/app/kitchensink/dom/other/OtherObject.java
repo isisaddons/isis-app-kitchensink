@@ -23,8 +23,8 @@ import org.isisaddons.app.kitchensink.dom.Entity;
 import org.isisaddons.app.kitchensink.dom.SomeCategory;
 import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.annotation.BookmarkPolicy;
-import org.apache.isis.applib.annotation.Bookmarkable;
-import org.apache.isis.applib.annotation.ObjectType;
+import org.apache.isis.applib.annotation.DomainObject;
+import org.apache.isis.applib.annotation.DomainObjectLayout;
 import org.apache.isis.applib.annotation.Title;
 import org.apache.isis.applib.util.ObjectContracts;
 
@@ -38,8 +38,12 @@ import org.apache.isis.applib.util.ObjectContracts;
 @javax.jdo.annotations.Version(
         strategy=VersionStrategy.VERSION_NUMBER, 
         column="version")
-@ObjectType("OTHER")
-@Bookmarkable(BookmarkPolicy.AS_CHILD)
+@DomainObject(
+        objectType = "OTHER"
+)
+@DomainObjectLayout(
+        bookmarking = BookmarkPolicy.AS_CHILD
+)
 public class OtherObject implements Entity<OtherObject> {
 
     //region > name (property)

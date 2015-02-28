@@ -19,16 +19,23 @@ package org.isisaddons.app.kitchensink.dom.busrules;
 import java.util.List;
 import java.util.Objects;
 import org.apache.isis.applib.DomainObjectContainer;
-import org.apache.isis.applib.annotation.ActionSemantics;
-import org.apache.isis.applib.annotation.Bookmarkable;
-import org.apache.isis.applib.annotation.Disabled;
+import org.apache.isis.applib.annotation.Action;
+import org.apache.isis.applib.annotation.ActionLayout;
+import org.apache.isis.applib.annotation.BookmarkPolicy;
 import org.apache.isis.applib.annotation.DomainService;
-import org.apache.isis.applib.annotation.Hidden;
+import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
-import org.apache.isis.applib.annotation.Named;
+import org.apache.isis.applib.annotation.ParameterLayout;
+import org.apache.isis.applib.annotation.SemanticsOf;
+import org.apache.isis.applib.annotation.Where;
 
-@Named("Bus Rules")
-@DomainService(menuOrder = "10.1", repositoryFor = BusRulesObject.class)
+@DomainService(
+        repositoryFor = BusRulesObject.class
+)
+@DomainServiceLayout(
+        menuOrder = "10.1",
+        named="Bus Rules"
+)
 public class BusRulesObjects  {
 
     private final Class<BusRulesObject> cls = BusRulesObject.class;
@@ -45,7 +52,7 @@ public class BusRulesObjects  {
 
     @MemberOrder(sequence = "30")
     public BusRulesObject createBusRulesObject(
-            final @Named("Name") String name) {
+            final @ParameterLayout(named="Name") String name) {
         final BusRulesObject obj = container.newTransientInstance(BusRulesObject.class);
         obj.setName(name);
 
@@ -53,18 +60,18 @@ public class BusRulesObjects  {
         return obj;
     }
 
-    @Bookmarkable
-    @ActionSemantics(ActionSemantics.Of.SAFE)
+    @Action(semantics= SemanticsOf.SAFE)
+    @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
     @MemberOrder(sequence = "10")
     public BusRulesObject firstBusRulesObject() {
         final List<BusRulesObject> list = listAllBusRulesObject();
         return list.isEmpty()? null: list.get(0);
     }
 
-    @Bookmarkable
-    @ActionSemantics(ActionSemantics.Of.SAFE)
+    @Action(semantics=SemanticsOf.SAFE)
+    @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
     @MemberOrder(sequence = "15")
-    public BusRulesObject findBusRulesObject(final @Named("Name") String name) {
+    public BusRulesObject findBusRulesObject(final @ParameterLayout(named="Name") String name) {
         final List<BusRulesObject> list = listAllBusRulesObject();
         for (BusRulesObject busRulesObject : list) {
             if(Objects.equals(busRulesObject.getName(), name)) {
@@ -74,25 +81,29 @@ public class BusRulesObjects  {
         return null;
     }
 
-    @Bookmarkable
-    @ActionSemantics(ActionSemantics.Of.SAFE)
+    @Action(semantics=SemanticsOf.SAFE)
+    @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
     @MemberOrder(sequence = "20")
     public List<BusRulesObject> listAllBusRulesObject() {
         return container.allInstances(cls);
     }
 
-    @Bookmarkable
-    @ActionSemantics(ActionSemantics.Of.SAFE)
+    @Action(semantics=SemanticsOf.SAFE)
+    @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
     @MemberOrder(sequence = "30")
-    @Disabled
     public List<BusRulesObject> listAllBusRulesObjectDisabled() {
         return listAllBusRulesObject();
     }
 
-    @Bookmarkable
-    @ActionSemantics(ActionSemantics.Of.SAFE)
+    public String disableListAllBusRulesObjectDisabled() {
+        return "Always disabled";
+    }
+    @Action(
+            semantics=SemanticsOf.SAFE,
+            hidden = Where.EVERYWHERE
+    )
+    @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
     @MemberOrder(sequence = "40")
-    @Hidden
     public List<BusRulesObject> listAllBusRulesObjectHidden() {
         return listAllBusRulesObject();
     }

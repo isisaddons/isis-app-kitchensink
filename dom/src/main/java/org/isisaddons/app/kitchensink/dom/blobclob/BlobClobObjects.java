@@ -19,16 +19,21 @@ package org.isisaddons.app.kitchensink.dom.blobclob;
 import java.util.List;
 import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
 import org.isisaddons.app.kitchensink.dom.reference.ReferenceObject;
-import org.apache.isis.applib.annotation.CssClassFa;
+import org.apache.isis.applib.annotation.ActionLayout;
 import org.apache.isis.applib.annotation.DomainService;
+import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
-import org.apache.isis.applib.annotation.Named;
-import org.apache.isis.applib.annotation.Optional;
+import org.apache.isis.applib.annotation.Optionality;
+import org.apache.isis.applib.annotation.Parameter;
+import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.value.Blob;
 import org.apache.isis.applib.value.Clob;
 
-@Named("Data Types")
-@DomainService(menuOrder = "10.7", repositoryFor = ReferenceObject.class)
+@DomainService(repositoryFor = ReferenceObject.class)
+@DomainServiceLayout(
+        named="Data Types",
+        menuOrder = "10.7"
+)
 public class BlobClobObjects extends RepositoryAbstract<BlobClobObject> {
 
     public BlobClobObjects() {
@@ -37,10 +42,14 @@ public class BlobClobObjects extends RepositoryAbstract<BlobClobObject> {
 
     @MemberOrder(sequence = "30")
     public BlobClobObject createBlobClobObject(
-            final @Named("Name") String name,
-            final @Named("Some blob") @Optional Blob blob,
-            final @Named("Some image") @Optional Blob image,
-            final @Named("Some clob") @Optional Clob clob) {
+            @ParameterLayout(named="Name")
+            final String name,
+            @ParameterLayout(named="Some blob") @Parameter(optionality=Optionality.OPTIONAL)
+            final Blob blob,
+            @ParameterLayout(named="Some image") @Parameter(optionality= Optionality.OPTIONAL)
+            final Blob image,
+            @ParameterLayout(named="Some clob") @Parameter(optionality=Optionality.OPTIONAL)
+            final Clob clob) {
         final BlobClobObject obj = container.newTransientInstance(BlobClobObject.class);
         obj.setName(name);
 
@@ -52,13 +61,13 @@ public class BlobClobObjects extends RepositoryAbstract<BlobClobObject> {
         return obj;
     }
 
-    @Named("First BlobClobObject")
+    @ActionLayout(named="First BlobClobObject")
     @Override
     public BlobClobObject first() {
         return super.first();
     }
 
-    @Named("List All BlobClobObjects")
+    @ActionLayout(named="List All BlobClobObjects")
     @Override
     public List<BlobClobObject> listAll() {
         return super.listAll();

@@ -31,7 +31,18 @@ import org.joda.time.DateTimeConstants;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
 import org.apache.isis.applib.DomainObjectContainer;
-import org.apache.isis.applib.annotation.*;
+import org.apache.isis.applib.annotation.Action;
+import org.apache.isis.applib.annotation.BookmarkPolicy;
+import org.apache.isis.applib.annotation.DomainObject;
+import org.apache.isis.applib.annotation.DomainObjectLayout;
+import org.apache.isis.applib.annotation.Editing;
+import org.apache.isis.applib.annotation.Hidden;
+import org.apache.isis.applib.annotation.Optionality;
+import org.apache.isis.applib.annotation.Parameter;
+import org.apache.isis.applib.annotation.Property;
+import org.apache.isis.applib.annotation.SemanticsOf;
+import org.apache.isis.applib.annotation.Title;
+import org.apache.isis.applib.annotation.Where;
 import org.apache.isis.applib.services.clock.ClockService;
 import org.apache.isis.applib.util.ObjectContracts;
 
@@ -42,9 +53,12 @@ import org.apache.isis.applib.util.ObjectContracts;
 @javax.jdo.annotations.Version(
         strategy=VersionStrategy.VERSION_NUMBER, 
         column="version")
-@ObjectType("DATE")
-@Bookmarkable
-@SuppressWarnings("unused")
+@DomainObject(
+        objectType = "DATE"
+)
+@DomainObjectLayout(
+        bookmarking = BookmarkPolicy.AS_ROOT
+)
 public class DateObject implements Entity<DateObject> {
 
     //region > name (property)
@@ -100,7 +114,7 @@ public class DateObject implements Entity<DateObject> {
     }
 
     @Action(semantics = SemanticsOf.IDEMPOTENT)
-    public DateObject updateSomeJavaUtilDateOptional(final @Optional java.util.Date i) {
+    public DateObject updateSomeJavaUtilDateOptional(@Parameter(optionality=Optionality.OPTIONAL) final  java.util.Date i) {
         setSomeJavaUtilDateOptional(i);
         return this;
     }
@@ -119,7 +133,7 @@ public class DateObject implements Entity<DateObject> {
     private java.util.Date someJavaUtilDateHidden;
 
     @javax.jdo.annotations.Column(allowsNull = "false")
-    @Hidden
+    @Property(hidden = Where.EVERYWHERE)
     public java.util.Date getSomeJavaUtilDateHidden() {
         return someJavaUtilDateHidden;
     }
@@ -228,7 +242,7 @@ public class DateObject implements Entity<DateObject> {
     }
 
     @Action(semantics = SemanticsOf.IDEMPOTENT)
-    public DateObject updateSomeJavaUtilDateOptionalWithChoices(final @Optional java.util.Date i) {
+    public DateObject updateSomeJavaUtilDateOptionalWithChoices(@Parameter(optionality=Optionality.OPTIONAL) final  java.util.Date i) {
         setSomeJavaUtilDateOptionalWithChoices(i);
         return this;
     }
@@ -283,7 +297,7 @@ public class DateObject implements Entity<DateObject> {
     }
 
     @Action(semantics = SemanticsOf.IDEMPOTENT)
-    public DateObject updateSomeJavaSqlDateOptional(final @Optional java.sql.Date i) {
+    public DateObject updateSomeJavaSqlDateOptional(@Parameter(optionality=Optionality.OPTIONAL) final  java.sql.Date i) {
         setSomeJavaSqlDateOptional(i);
         return this;
     }
@@ -302,7 +316,7 @@ public class DateObject implements Entity<DateObject> {
     private java.sql.Date someJavaSqlDateHidden;
 
     @javax.jdo.annotations.Column(allowsNull = "false")
-    @Hidden
+    @Property(hidden = Where.EVERYWHERE)
     public java.sql.Date getSomeJavaSqlDateHidden() {
         return someJavaSqlDateHidden;
     }
@@ -376,7 +390,7 @@ public class DateObject implements Entity<DateObject> {
     }
 
     @Action(semantics = SemanticsOf.IDEMPOTENT)
-    public DateObject updateSomeJavaSqlDateMandatoryWithChoices(final @Optional java.sql.Date i) {
+    public DateObject updateSomeJavaSqlDateMandatoryWithChoices(@Parameter(optionality=Optionality.OPTIONAL) final  java.sql.Date i) {
         setSomeJavaSqlDateMandatoryWithChoices(i);
         return this;
     }
@@ -411,7 +425,7 @@ public class DateObject implements Entity<DateObject> {
     }
 
     @Action(semantics = SemanticsOf.IDEMPOTENT)
-    public DateObject updateSomeJavaSqlDateOptionalWithChoices(final @Optional java.sql.Date i) {
+    public DateObject updateSomeJavaSqlDateOptionalWithChoices(@Parameter(optionality=Optionality.OPTIONAL) final  java.sql.Date i) {
         setSomeJavaSqlDateOptionalWithChoices(i);
         return this;
     }
@@ -469,7 +483,7 @@ public class DateObject implements Entity<DateObject> {
     }
 
     @Action(semantics = SemanticsOf.IDEMPOTENT)
-    public DateObject updateSomeJodaLocalDateOptional(final @Optional org.joda.time.LocalDate i) {
+    public DateObject updateSomeJodaLocalDateOptional(@Parameter(optionality=Optionality.OPTIONAL) final  org.joda.time.LocalDate i) {
         setSomeJodaLocalDateOptional(i);
         return this;
     }
@@ -488,7 +502,7 @@ public class DateObject implements Entity<DateObject> {
     private org.joda.time.LocalDate someJodaLocalDateHidden;
 
     @javax.jdo.annotations.Column(allowsNull = "false")
-    @Hidden
+    @Property(hidden = Where.EVERYWHERE)
     public org.joda.time.LocalDate getSomeJodaLocalDateHidden() {
         return someJodaLocalDateHidden;
     }
@@ -562,7 +576,7 @@ public class DateObject implements Entity<DateObject> {
     }
 
     @Action(semantics = SemanticsOf.IDEMPOTENT)
-    public DateObject updateSomeJodaLocalDateMandatoryWithChoices(final @Optional org.joda.time.LocalDate i) {
+    public DateObject updateSomeJodaLocalDateMandatoryWithChoices(@Parameter(optionality=Optionality.OPTIONAL) final  org.joda.time.LocalDate i) {
         setSomeJodaLocalDateMandatoryWithChoices(i);
         return this;
     }
@@ -597,7 +611,7 @@ public class DateObject implements Entity<DateObject> {
     }
 
     @Action(semantics = SemanticsOf.IDEMPOTENT)
-    public DateObject updateSomeJodaLocalDateOptionalWithChoices(final @Optional org.joda.time.LocalDate i) {
+    public DateObject updateSomeJodaLocalDateOptionalWithChoices(@Parameter(optionality=Optionality.OPTIONAL) final  org.joda.time.LocalDate i) {
         setSomeJodaLocalDateOptionalWithChoices(i);
         return this;
     }
@@ -654,7 +668,7 @@ public class DateObject implements Entity<DateObject> {
     }
 
     @Action(semantics = SemanticsOf.IDEMPOTENT)
-    public DateObject updateSomeJodaLocalDateTimeOptional(final @Optional org.joda.time.LocalDateTime i) {
+    public DateObject updateSomeJodaLocalDateTimeOptional(@Parameter(optionality=Optionality.OPTIONAL) final  org.joda.time.LocalDateTime i) {
         setSomeJodaLocalDateTimeOptional(i);
         return this;
     }
@@ -673,7 +687,7 @@ public class DateObject implements Entity<DateObject> {
     private org.joda.time.LocalDateTime someJodaLocalDateTimeHidden;
 
     @javax.jdo.annotations.Column(allowsNull = "false")
-    @Hidden
+    @Property(hidden = Where.EVERYWHERE)
     public org.joda.time.LocalDateTime getSomeJodaLocalDateTimeHidden() {
         return someJodaLocalDateTimeHidden;
     }
@@ -752,7 +766,7 @@ public class DateObject implements Entity<DateObject> {
     }
 
     @Action(semantics = SemanticsOf.IDEMPOTENT)
-    public DateObject updateSomeJodaLocalDateTimeMandatoryWithChoices(final @Optional org.joda.time.LocalDateTime i) {
+    public DateObject updateSomeJodaLocalDateTimeMandatoryWithChoices(@Parameter(optionality=Optionality.OPTIONAL) final  org.joda.time.LocalDateTime i) {
         setSomeJodaLocalDateTimeMandatoryWithChoices(i);
         return this;
     }
@@ -790,7 +804,7 @@ public class DateObject implements Entity<DateObject> {
 //    }
 //
 //    @Action(semantics = SemanticsOf.IDEMPOTENT)
-//    public DateObject updateSomeJodaLocalDateTimeOptionalWithChoices(final @Optional org.joda.time.LocalDateTime i) {
+//    public DateObject updateSomeJodaLocalDateTimeOptionalWithChoices(@Parameter(optionality=Optionality.OPTIONAL) final  org.joda.time.LocalDateTime i) {
 //        setSomeJodaLocalDateTimeOptionalWithChoices(i);
 //        return this;
 //    }
@@ -852,7 +866,7 @@ public class DateObject implements Entity<DateObject> {
 //    }
 //
 //    @Action(semantics = SemanticsOf.IDEMPOTENT)
-//    public DateObject updateSomeApplibDateTimeOptional(final @Optional org.apache.isis.applib.value.DateTime i) {
+//    public DateObject updateSomeApplibDateTimeOptional(@Parameter(optionality=Optionality.OPTIONAL) final  org.apache.isis.applib.value.DateTime i) {
 //        setSomeApplibDateTimeOptional(i);
 //        return this;
 //    }
@@ -904,7 +918,7 @@ public class DateObject implements Entity<DateObject> {
 //    }
 //
 //    @Action(semantics = SemanticsOf.IDEMPOTENT)
-//    public DateObject updateSomeApplibDateOptional(final @Optional org.apache.isis.applib.value.Date i) {
+//    public DateObject updateSomeApplibDateOptional(@Parameter(optionality=Optionality.OPTIONAL) final  org.apache.isis.applib.value.Date i) {
 //        setSomeApplibDateOptional(i);
 //        return this;
 //    }
@@ -962,7 +976,7 @@ public class DateObject implements Entity<DateObject> {
     }
 
     @Action(semantics = SemanticsOf.IDEMPOTENT)
-    public DateObject updateSomeJodaDateTimeOptional(final @Optional org.joda.time.DateTime i) {
+    public DateObject updateSomeJodaDateTimeOptional(@Parameter(optionality=Optionality.OPTIONAL) final  org.joda.time.DateTime i) {
         setSomeJodaDateTimeOptional(i);
         return this;
     }
@@ -981,7 +995,7 @@ public class DateObject implements Entity<DateObject> {
     private org.joda.time.DateTime someJodaDateTimeHidden;
 
     @javax.jdo.annotations.Column(allowsNull = "false")
-    @Hidden
+    @Property(hidden = Where.EVERYWHERE)
     public org.joda.time.DateTime getSomeJodaDateTimeHidden() {
         return someJodaDateTimeHidden;
     }
@@ -1055,7 +1069,7 @@ public class DateObject implements Entity<DateObject> {
     }
 
     @Action(semantics = SemanticsOf.IDEMPOTENT)
-    public DateObject updateSomeJodaDateTimeMandatoryWithChoices(final @Optional org.joda.time.DateTime i) {
+    public DateObject updateSomeJodaDateTimeMandatoryWithChoices(@Parameter(optionality=Optionality.OPTIONAL) final  org.joda.time.DateTime i) {
         setSomeJodaDateTimeMandatoryWithChoices(i);
         return this;
     }
@@ -1090,7 +1104,7 @@ public class DateObject implements Entity<DateObject> {
     }
 
     @Action(semantics = SemanticsOf.IDEMPOTENT)
-    public DateObject updateSomeJodaDateTimeOptionalWithChoices(final @Optional org.joda.time.DateTime i) {
+    public DateObject updateSomeJodaDateTimeOptionalWithChoices(@Parameter(optionality=Optionality.OPTIONAL) final  org.joda.time.DateTime i) {
         setSomeJodaDateTimeOptionalWithChoices(i);
         return this;
     }
@@ -1145,7 +1159,7 @@ public class DateObject implements Entity<DateObject> {
     }
 
     @Action(semantics = SemanticsOf.IDEMPOTENT)
-    public DateObject updateSomeJavaSqlTimestampOptional(final @Optional java.sql.Timestamp i) {
+    public DateObject updateSomeJavaSqlTimestampOptional(@Parameter(optionality=Optionality.OPTIONAL) final  java.sql.Timestamp i) {
         setSomeJavaSqlTimestampOptional(i);
         return this;
     }
@@ -1164,7 +1178,7 @@ public class DateObject implements Entity<DateObject> {
     private java.sql.Timestamp someJavaSqlTimestampHidden;
 
     @javax.jdo.annotations.Column(allowsNull = "false")
-    @Hidden
+    @Property(hidden = Where.EVERYWHERE)
     public java.sql.Timestamp getSomeJavaSqlTimestampHidden() {
         return someJavaSqlTimestampHidden;
     }
@@ -1238,7 +1252,7 @@ public class DateObject implements Entity<DateObject> {
     }
 
     @Action(semantics = SemanticsOf.IDEMPOTENT)
-    public DateObject updateSomeJavaSqlTimestampMandatoryWithChoices(final @Optional java.sql.Timestamp i) {
+    public DateObject updateSomeJavaSqlTimestampMandatoryWithChoices(@Parameter(optionality=Optionality.OPTIONAL) final  java.sql.Timestamp i) {
         setSomeJavaSqlTimestampMandatoryWithChoices(i);
         return this;
     }
@@ -1273,7 +1287,7 @@ public class DateObject implements Entity<DateObject> {
     }
 
     @Action(semantics = SemanticsOf.IDEMPOTENT)
-    public DateObject updateSomeJavaSqlTimestampOptionalWithChoices(final @Optional java.sql.Timestamp i) {
+    public DateObject updateSomeJavaSqlTimestampOptionalWithChoices(@Parameter(optionality=Optionality.OPTIONAL) final  java.sql.Timestamp i) {
         setSomeJavaSqlTimestampOptionalWithChoices(i);
         return this;
     }

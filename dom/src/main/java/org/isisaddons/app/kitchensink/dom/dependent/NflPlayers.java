@@ -19,14 +19,15 @@ package org.isisaddons.app.kitchensink.dom.dependent;
 import java.util.List;
 import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
 import org.isisaddons.app.kitchensink.dom.reference.ReferenceObject;
-import org.apache.isis.applib.annotation.CssClassFa;
 import org.apache.isis.applib.annotation.DomainService;
+import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
-import org.apache.isis.applib.annotation.Named;
-import org.apache.isis.applib.annotation.Optional;
+import org.apache.isis.applib.annotation.Optionality;
+import org.apache.isis.applib.annotation.Parameter;
+import org.apache.isis.applib.annotation.ParameterLayout;
 
-@Named("Dependent")
-@DomainService(menuOrder = "10.9", repositoryFor = ReferenceObject.class)
+@DomainService(repositoryFor = ReferenceObject.class)
+@DomainServiceLayout(menuOrder = "10.9",named="Dependent")
 public class NflPlayers extends RepositoryAbstract<NflPlayer> {
 
     public NflPlayers() {
@@ -35,10 +36,10 @@ public class NflPlayers extends RepositoryAbstract<NflPlayer> {
 
     @MemberOrder(sequence = "30")
     public NflPlayer create(
-            final @Named("Name") String name,
+            final @ParameterLayout(named="Name") String name,
             final NflLeague league,
-            final @Optional NflRegion region,
-            final @Optional NflTeam nflTeam) {
+            @Parameter(optionality=Optionality.OPTIONAL) final  NflRegion region,
+            @Parameter(optionality= Optionality.OPTIONAL) final  NflTeam nflTeam) {
         final NflPlayer obj = container.newTransientInstance(NflPlayer.class);
         obj.setName(name);
 
@@ -50,10 +51,10 @@ public class NflPlayers extends RepositoryAbstract<NflPlayer> {
         return obj;
     }
 
-    public List<NflRegion> choices2Create(String name, NflLeague league) {
+    public List<NflRegion> choices2Create(final String name, final NflLeague league) {
         return NflRegion.thoseFor(league);
     }
-    public List<NflTeam> choices3Create(String name, NflLeague league, NflRegion region) {
+    public List<NflTeam> choices3Create(final String name, final NflLeague league, final NflRegion region) {
         return NflTeam.thoseFor(region);
     }
 

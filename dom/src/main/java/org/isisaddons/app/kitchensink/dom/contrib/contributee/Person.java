@@ -22,9 +22,9 @@ import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.VersionStrategy;
 import org.isisaddons.app.kitchensink.dom.Entity;
 import org.apache.isis.applib.DomainObjectContainer;
-import org.apache.isis.applib.annotation.Bookmarkable;
-import org.apache.isis.applib.annotation.Bounded;
-import org.apache.isis.applib.annotation.ObjectType;
+import org.apache.isis.applib.annotation.BookmarkPolicy;
+import org.apache.isis.applib.annotation.DomainObject;
+import org.apache.isis.applib.annotation.DomainObjectLayout;
 import org.apache.isis.applib.annotation.Title;
 import org.apache.isis.applib.util.ObjectContracts;
 
@@ -35,9 +35,13 @@ import org.apache.isis.applib.util.ObjectContracts;
 @javax.jdo.annotations.Version(
         strategy=VersionStrategy.VERSION_NUMBER, 
         column="version")
-@ObjectType("PERSON")
-@Bookmarkable
-@Bounded
+@DomainObject(
+        objectType = "PERSON",
+        bounded = true
+)
+@DomainObjectLayout(
+        bookmarking = BookmarkPolicy.AS_ROOT
+)
 public class Person implements Entity<Person> {
 
     //region > name (property)
@@ -59,7 +63,7 @@ public class Person implements Entity<Person> {
     //region > compareTo
 
     @Override
-    public int compareTo(Person other) {
+    public int compareTo(final Person other) {
         return ObjectContracts.compare(this, other, "name");
     }
 

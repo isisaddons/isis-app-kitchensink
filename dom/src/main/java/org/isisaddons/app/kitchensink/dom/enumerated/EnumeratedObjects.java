@@ -18,13 +18,14 @@ package org.isisaddons.app.kitchensink.dom.enumerated;
 
 import java.util.List;
 import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
-import org.apache.isis.applib.annotation.CssClassFa;
+import org.apache.isis.applib.annotation.ActionLayout;
 import org.apache.isis.applib.annotation.DomainService;
+import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
-import org.apache.isis.applib.annotation.Named;
+import org.apache.isis.applib.annotation.ParameterLayout;
 
-@Named("Data Types")
-@DomainService(menuOrder = "10.6", repositoryFor = EnumeratedObject.class)
+@DomainService(repositoryFor = EnumeratedObject.class)
+@DomainServiceLayout(named="Data Types", menuOrder = "10.6")
 public class EnumeratedObjects extends RepositoryAbstract<EnumeratedObject> {
 
     public EnumeratedObjects() {
@@ -33,7 +34,7 @@ public class EnumeratedObjects extends RepositoryAbstract<EnumeratedObject> {
 
     @MemberOrder(sequence = "30")
     public EnumeratedObject createEnumeratedObject(
-            final @Named("Name") String name,
+            final @ParameterLayout(named="Name") String name,
             final boolean b,
             final EnumOf3 enumOf3,
             final EnumOf4 enumOf4,
@@ -74,13 +75,13 @@ public class EnumeratedObjects extends RepositoryAbstract<EnumeratedObject> {
         return obj;
     }
 
-    @Named("First EnumeratedObject")
+    @ActionLayout(named="First EnumeratedObject")
     @Override
     public EnumeratedObject first() {
         return super.first();
     }
 
-    @Named("List All EnumeratedObjects")
+    @ActionLayout(named="List All EnumeratedObjects")
     @Override
     public List<EnumeratedObject> listAll() {
         return super.listAll();

@@ -23,7 +23,15 @@ import org.isisaddons.app.kitchensink.dom.Entity;
 import org.isisaddons.app.kitchensink.dom.other.OtherBoundedObjects;
 import org.isisaddons.app.kitchensink.dom.other.OtherObjects;
 import org.apache.isis.applib.DomainObjectContainer;
-import org.apache.isis.applib.annotation.*;
+import org.apache.isis.applib.annotation.Action;
+import org.apache.isis.applib.annotation.BookmarkPolicy;
+import org.apache.isis.applib.annotation.DomainObject;
+import org.apache.isis.applib.annotation.DomainObjectLayout;
+import org.apache.isis.applib.annotation.Optionality;
+import org.apache.isis.applib.annotation.Parameter;
+import org.apache.isis.applib.annotation.Property;
+import org.apache.isis.applib.annotation.SemanticsOf;
+import org.apache.isis.applib.annotation.Title;
 import org.apache.isis.applib.util.ObjectContracts;
 import org.apache.isis.applib.value.Blob;
 import org.apache.isis.applib.value.Clob;
@@ -35,8 +43,12 @@ import org.apache.isis.applib.value.Clob;
 @javax.jdo.annotations.Version(
         strategy=VersionStrategy.VERSION_NUMBER, 
         column="version")
-@ObjectType("BLOBCLOB")
-@Bookmarkable
+@DomainObject(
+        objectType = "BLOBCLOB"
+)
+@DomainObjectLayout(
+        bookmarking = BookmarkPolicy.AS_ROOT
+)
 public class BlobClobObject implements Entity<BlobClobObject> {
 
     //region > name (property)
@@ -63,7 +75,7 @@ public class BlobClobObject implements Entity<BlobClobObject> {
     })
     private Blob someBlob;
 
-    @Optional
+    @Property(optionality = Optionality.OPTIONAL)
     public Blob getSomeBlob() {
         return someBlob;
     }
@@ -72,13 +84,15 @@ public class BlobClobObject implements Entity<BlobClobObject> {
         this.someBlob = someBlob;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public BlobClobObject updateSomeBlob(final @Optional Blob i) {
-        setSomeBlob(i);
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
+    public BlobClobObject updateSomeBlob(
+            @Parameter(optionality = Optionality.OPTIONAL)
+            final Blob blob) {
+        setSomeBlob(blob);
         return this;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
     public BlobClobObject resetSomeBlob() {
         setSomeBlob(null);
         return this;
@@ -93,7 +107,7 @@ public class BlobClobObject implements Entity<BlobClobObject> {
     })
     private Blob someImage;
 
-    @Optional
+    @Property(optionality = Optionality.OPTIONAL)
     public Blob getSomeImage() {
         return someImage;
     }
@@ -102,13 +116,13 @@ public class BlobClobObject implements Entity<BlobClobObject> {
         this.someImage = someImage;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public BlobClobObject updateSomeImage(final @Optional Blob i) {
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public BlobClobObject updateSomeImage(@Parameter(optionality=Optionality.OPTIONAL) final  Blob i) {
         setSomeImage(i);
         return this;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public BlobClobObject resetSomeImage() {
         setSomeImage(null);
         return this;
@@ -123,7 +137,7 @@ public class BlobClobObject implements Entity<BlobClobObject> {
     })
     private Clob someClob;
 
-    @Optional
+    @Property(optionality=Optionality.OPTIONAL)
     public Clob getSomeClob() {
         return someClob;
     }
@@ -132,13 +146,15 @@ public class BlobClobObject implements Entity<BlobClobObject> {
         this.someClob = someClob;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public BlobClobObject updateSomeClob(final @Optional Clob i) {
-        setSomeClob(i);
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public BlobClobObject updateSomeClob(
+            @Parameter(optionality=Optionality.OPTIONAL)
+            final Clob clob) {
+        setSomeClob(clob);
         return this;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public BlobClobObject resetSomeClob() {
         setSomeClob(null);
         return this;
@@ -148,7 +164,7 @@ public class BlobClobObject implements Entity<BlobClobObject> {
     //region > compareTo
 
     @Override
-    public int compareTo(BlobClobObject other) {
+    public int compareTo(final BlobClobObject other) {
         return ObjectContracts.compare(this, other, "name");
     }
 

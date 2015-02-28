@@ -26,8 +26,9 @@ import org.isisaddons.app.kitchensink.dom.javamath.JavaMathObjects;
 import org.isisaddons.app.kitchensink.dom.text.TextObject;
 import org.isisaddons.app.kitchensink.dom.text.TextObjects;
 import org.apache.isis.applib.DomainObjectContainer;
-import org.apache.isis.applib.annotation.Bookmarkable;
-import org.apache.isis.applib.annotation.ObjectType;
+import org.apache.isis.applib.annotation.BookmarkPolicy;
+import org.apache.isis.applib.annotation.DomainObject;
+import org.apache.isis.applib.annotation.DomainObjectLayout;
 import org.apache.isis.applib.annotation.Title;
 import org.apache.isis.applib.services.clock.ClockService;
 import org.apache.isis.applib.util.ObjectContracts;
@@ -39,8 +40,12 @@ import org.apache.isis.applib.util.ObjectContracts;
 @javax.jdo.annotations.Version(
         strategy=VersionStrategy.VERSION_NUMBER, 
         column="version")
-@ObjectType("LAYOUT_6_0_6_12C")
-@Bookmarkable
+@DomainObject(
+        objectType = "LAYOUT_6_0_6_12C"
+)
+@DomainObjectLayout(
+        bookmarking = BookmarkPolicy.AS_ROOT
+)
 public class Layout_6_0_6_12C_Object implements Entity<Layout_6_0_6_12C_Object> {
 
     //region > name (property)

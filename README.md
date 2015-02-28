@@ -3,6 +3,8 @@ isis-kitchensink
 
 An app to act as a regression suite for [Apache Isis](http://isis.apache.org).
 
+![](https://raw.github.com/isisaddons/isis-app-kitchensink/master/images/000-home-page.png)
+
 
 ## Getting started (IntelliJ)
 

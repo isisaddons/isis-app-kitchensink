@@ -18,13 +18,16 @@ package org.isisaddons.app.kitchensink.dom.other;
 
 import java.util.List;
 import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
-import org.apache.isis.applib.annotation.CssClassFa;
+import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.DomainService;
-import org.apache.isis.applib.annotation.Hidden;
-import org.apache.isis.applib.annotation.Named;
+import org.apache.isis.applib.annotation.DomainServiceLayout;
+import org.apache.isis.applib.annotation.NatureOfService;
+import org.apache.isis.applib.annotation.ParameterLayout;
+import org.apache.isis.applib.annotation.SemanticsOf;
+import org.apache.isis.applib.annotation.Where;
 
-@Hidden
-@DomainService(menuOrder = "90", repositoryFor = OtherObject.class)
+@DomainService(nature = NatureOfService.DOMAIN, repositoryFor = OtherObject.class)
+@DomainServiceLayout(menuOrder = "90")
 public class OtherObjects extends RepositoryAbstract<OtherObject> {
 
     public OtherObjects() {
@@ -32,23 +35,23 @@ public class OtherObjects extends RepositoryAbstract<OtherObject> {
     }
 
 
-    @Hidden
+    @Action(hidden = Where.EVERYWHERE, semantics = SemanticsOf.SAFE)
     @Override
     public OtherObject first() {
         return super.first();
     }
 
-    @Hidden
+    @Action(hidden = Where.EVERYWHERE, semantics = SemanticsOf.SAFE)
     @Override
     public List<OtherObject> listAll() {
         return super.listAll();
     }
 
 
-    @Hidden
+    @Action(hidden = Where.EVERYWHERE)
     public OtherObject create(
-            final @Named("Name") String name,
-            final @Named("Description") String description) {
+            final @ParameterLayout(named="Name") String name,
+            final @ParameterLayout(named="Description") String description) {
         final OtherObject obj = container.newTransientInstance(OtherObject.class);
         obj.setName(name);
         obj.setDescription(description);

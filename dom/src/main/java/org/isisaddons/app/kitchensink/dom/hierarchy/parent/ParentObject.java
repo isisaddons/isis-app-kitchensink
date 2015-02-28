@@ -31,9 +31,9 @@ import org.isisaddons.app.kitchensink.dom.hierarchy.child.ChildObject;
 import org.isisaddons.app.kitchensink.dom.hierarchy.child.ChildObjects;
 import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.annotation.BookmarkPolicy;
-import org.apache.isis.applib.annotation.Bookmarkable;
+import org.apache.isis.applib.annotation.DomainObject;
+import org.apache.isis.applib.annotation.DomainObjectLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
-import org.apache.isis.applib.annotation.ObjectType;
 import org.apache.isis.applib.annotation.Title;
 import org.apache.isis.applib.util.ObjectContracts;
 
@@ -47,8 +47,12 @@ import static org.isisaddons.app.kitchensink.dom.hierarchy.child.PredicateUtil.c
 @javax.jdo.annotations.Version(
         strategy=VersionStrategy.VERSION_NUMBER, 
         column="version")
-@ObjectType("PARENT")
-@Bookmarkable(BookmarkPolicy.AS_ROOT)
+@DomainObject(
+        objectType = "PARENT"
+)
+@DomainObjectLayout(
+        bookmarking = BookmarkPolicy.AS_ROOT
+)
 public class ParentObject implements Entity<ParentObject> {
 
 

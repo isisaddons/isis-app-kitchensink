@@ -16,17 +16,18 @@
  */
 package org.isisaddons.app.kitchensink.dom.date;
 
-import org.apache.isis.applib.annotation.DomainService;
-import org.apache.isis.applib.annotation.MemberOrder;
-import org.apache.isis.applib.annotation.Named;
-import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
-
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.List;
+import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
+import org.apache.isis.applib.annotation.ActionLayout;
+import org.apache.isis.applib.annotation.DomainService;
+import org.apache.isis.applib.annotation.DomainServiceLayout;
+import org.apache.isis.applib.annotation.MemberOrder;
+import org.apache.isis.applib.annotation.ParameterLayout;
 
-@Named("Data Types")
 @DomainService(menuOrder = "10.5", repositoryFor = DateObject.class)
+@DomainServiceLayout(named="Data Types")
 public class DateObjects extends RepositoryAbstract<DateObject> {
 
     public DateObjects() {
@@ -35,12 +36,12 @@ public class DateObjects extends RepositoryAbstract<DateObject> {
 
     @MemberOrder(sequence = "30")
     public DateObject createDateObject(
-            final @Named("Name") String name,
-            final @Named("Year") int year,
-            final @Named("Month") int month,
-            final @Named("Day") int day,
-            final @Named("Hour") int hour,
-            final @Named("Minutes") int minutes) {
+            final @ParameterLayout(named="Name") String name,
+            final @ParameterLayout(named="Year") int year,
+            final @ParameterLayout(named="Month") int month,
+            final @ParameterLayout(named="Day") int day,
+            final @ParameterLayout(named="Hour") int hour,
+            final @ParameterLayout(named="Minutes") int minutes) {
         final DateObject obj = container.newTransientInstance(DateObject.class);
         obj.setName(name);
 
@@ -106,13 +107,13 @@ public class DateObjects extends RepositoryAbstract<DateObject> {
         return obj;
     }
 
-    @Named("First DateObject")
+    @ActionLayout(named="First DateObject")
     @Override
     public DateObject first() {
         return super.first();
     }
 
-    @Named("List All DateObjects")
+    @ActionLayout(named="List All DateObjects")
     @Override
     public List<DateObject> listAll() {
         return super.listAll();

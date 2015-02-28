@@ -21,7 +21,17 @@ import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.VersionStrategy;
 import org.isisaddons.app.kitchensink.dom.Entity;
 import org.apache.isis.applib.DomainObjectContainer;
-import org.apache.isis.applib.annotation.*;
+import org.apache.isis.applib.annotation.Action;
+import org.apache.isis.applib.annotation.BookmarkPolicy;
+import org.apache.isis.applib.annotation.DomainObject;
+import org.apache.isis.applib.annotation.DomainObjectLayout;
+import org.apache.isis.applib.annotation.Editing;
+import org.apache.isis.applib.annotation.Optionality;
+import org.apache.isis.applib.annotation.Parameter;
+import org.apache.isis.applib.annotation.Property;
+import org.apache.isis.applib.annotation.SemanticsOf;
+import org.apache.isis.applib.annotation.Title;
+import org.apache.isis.applib.annotation.Where;
 import org.apache.isis.applib.util.ObjectContracts;
 
 @javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE)
@@ -31,8 +41,12 @@ import org.apache.isis.applib.util.ObjectContracts;
 @javax.jdo.annotations.Version(
         strategy=VersionStrategy.VERSION_NUMBER, 
         column="version")
-@ObjectType("ENUMERATED")
-@Bookmarkable
+@DomainObject(
+        objectType = "ENUMERATED"
+)
+@DomainObjectLayout(
+        bookmarking = BookmarkPolicy.AS_ROOT
+)
 public class EnumeratedObject implements Entity<EnumeratedObject> {
 
     //region > name (property)
@@ -63,7 +77,7 @@ public class EnumeratedObject implements Entity<EnumeratedObject> {
         this.someBoolean = aBoolean;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public EnumeratedObject updateSomeBoolean(final boolean b) {
         setSomeBoolean(b);
         return this;
@@ -76,7 +90,7 @@ public class EnumeratedObject implements Entity<EnumeratedObject> {
     //region > someBooleanHidden (property)
     private boolean someBooleanHidden;
 
-    @Hidden
+    @Property(hidden = Where.EVERYWHERE)
     public boolean getSomeBooleanHidden() {
         return someBooleanHidden;
     }
@@ -90,7 +104,7 @@ public class EnumeratedObject implements Entity<EnumeratedObject> {
     //region > someBooleanDisabled (property)
     private boolean someBooleanDisabled;
 
-    @Disabled
+    @Property(editing = Editing.DISABLED)
     public boolean getSomeBooleanDisabled() {
         return someBooleanDisabled;
     }
@@ -116,7 +130,7 @@ public class EnumeratedObject implements Entity<EnumeratedObject> {
         return i == getSomeBooleanWithValidation() ? "Can only enter opposite of current": null;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public EnumeratedObject updateSomeBooleanWithValidation(final boolean i) {
         setSomeBooleanWithValidation(i);
         return this;
@@ -145,7 +159,7 @@ public class EnumeratedObject implements Entity<EnumeratedObject> {
         this.someBooleanWrapperMandatory = someBooleanWrapperMandatory;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public EnumeratedObject updateSomeBooleanWrapperMandatory(final Boolean i) {
         setSomeBooleanWrapperMandatory(i);
         return this;
@@ -167,8 +181,10 @@ public class EnumeratedObject implements Entity<EnumeratedObject> {
         this.someBooleanWrapperOptional = someBooleanWrapperOptional;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public EnumeratedObject updateSomeBooleanWrapperOptional(final @Optional Boolean i) {
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public EnumeratedObject updateSomeBooleanWrapperOptional(
+            @Parameter(optionality=Optionality.OPTIONAL)
+            final  Boolean i) {
         setSomeBooleanWrapperOptional(i);
         return this;
     }
@@ -176,7 +192,7 @@ public class EnumeratedObject implements Entity<EnumeratedObject> {
         return getSomeBooleanWrapperOptional();
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public EnumeratedObject resetSomeBooleanWrapperOptional() {
         setSomeBooleanWrapperOptional(null);
         return this;
@@ -187,7 +203,7 @@ public class EnumeratedObject implements Entity<EnumeratedObject> {
     private java.lang.Boolean someBooleanWrapperHidden;
 
     @Column(allowsNull = "false")
-    @Hidden
+    @Property(hidden = Where.EVERYWHERE)
     public java.lang.Boolean getSomeBooleanWrapperHidden() {
     return someBooleanWrapperHidden;
     }
@@ -202,7 +218,7 @@ public class EnumeratedObject implements Entity<EnumeratedObject> {
     private java.lang.Boolean someBooleanWrapperDisabled;
 
     @Column(allowsNull = "false")
-    @Disabled
+    @Property(editing = Editing.DISABLED)
     public java.lang.Boolean getSomeBooleanWrapperDisabled() {
     return someBooleanWrapperDisabled;
     }
@@ -229,7 +245,7 @@ public class EnumeratedObject implements Entity<EnumeratedObject> {
     return i == getSomeBooleanWrapperWithValidation() ? "Can only enter opposite of current": null;
     }
     
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public EnumeratedObject updateSomeBooleanWrapperWithValidation(final java.lang.Boolean i) {
     setSomeBooleanWrapperWithValidation(i);
     return this;
@@ -258,7 +274,7 @@ public class EnumeratedObject implements Entity<EnumeratedObject> {
         this.someEnumOf3Mandatory = someEnumOf3Mandatory;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public EnumeratedObject updateSomeEnumOf3Mandatory(final EnumOf3 i) {
         setSomeEnumOf3Mandatory(i);
         return this;
@@ -280,8 +296,8 @@ public class EnumeratedObject implements Entity<EnumeratedObject> {
         this.someEnumOf3Optional = someEnumOf3Optional;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public EnumeratedObject updateSomeEnumOf3Optional(final @Optional EnumOf3 i) {
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public EnumeratedObject updateSomeEnumOf3Optional(@Parameter(optionality=Optionality.OPTIONAL) final  EnumOf3 i) {
         setSomeEnumOf3Optional(i);
         return this;
     }
@@ -289,7 +305,7 @@ public class EnumeratedObject implements Entity<EnumeratedObject> {
         return getSomeEnumOf3Optional();
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public EnumeratedObject resetSomeEnumOf3Optional() {
         setSomeEnumOf3Optional(null);
         return this;
@@ -300,7 +316,7 @@ public class EnumeratedObject implements Entity<EnumeratedObject> {
     private EnumOf3 someEnumOf3Hidden;
 
     @Column(allowsNull = "false")
-    @Hidden
+    @Property(hidden = Where.EVERYWHERE)
     public EnumOf3 getSomeEnumOf3Hidden() {
         return someEnumOf3Hidden;
     }
@@ -315,7 +331,7 @@ public class EnumeratedObject implements Entity<EnumeratedObject> {
     private EnumOf3 someEnumOf3Disabled;
 
     @Column(allowsNull = "false")
-    @Disabled
+    @Property(editing = Editing.DISABLED)
     public EnumOf3 getSomeEnumOf3Disabled() {
         return someEnumOf3Disabled;
     }
@@ -342,7 +358,7 @@ public class EnumeratedObject implements Entity<EnumeratedObject> {
         return i == EnumOf3.AMEX ? "Can't enter AMEX": null;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public EnumeratedObject updateSomeEnumOf3WithValidation(final EnumOf3 i) {
         setSomeEnumOf3WithValidation(i);
         return this;
@@ -371,7 +387,7 @@ public class EnumeratedObject implements Entity<EnumeratedObject> {
         this.someEnumOf4Mandatory = someEnumOf4Mandatory;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public EnumeratedObject updateSomeEnumOf4Mandatory(final EnumOf4 i) {
         setSomeEnumOf4Mandatory(i);
         return this;
@@ -393,8 +409,8 @@ public class EnumeratedObject implements Entity<EnumeratedObject> {
         this.someEnumOf4Optional = someEnumOf4Optional;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public EnumeratedObject updateSomeEnumOf4Optional(final @Optional EnumOf4 i) {
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public EnumeratedObject updateSomeEnumOf4Optional(@Parameter(optionality=Optionality.OPTIONAL) final  EnumOf4 i) {
         setSomeEnumOf4Optional(i);
         return this;
     }
@@ -402,7 +418,7 @@ public class EnumeratedObject implements Entity<EnumeratedObject> {
         return getSomeEnumOf4Optional();
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public EnumeratedObject resetSomeEnumOf4Optional() {
         setSomeEnumOf4Optional(null);
         return this;
@@ -413,7 +429,7 @@ public class EnumeratedObject implements Entity<EnumeratedObject> {
     private EnumOf4 someEnumOf4Hidden;
 
     @Column(allowsNull = "false")
-    @Hidden
+    @Property(hidden = Where.EVERYWHERE)
     public EnumOf4 getSomeEnumOf4Hidden() {
         return someEnumOf4Hidden;
     }
@@ -428,7 +444,7 @@ public class EnumeratedObject implements Entity<EnumeratedObject> {
     private EnumOf4 someEnumOf4Disabled;
 
     @Column(allowsNull = "false")
-    @Disabled
+    @Property(editing = Editing.DISABLED)
     public EnumOf4 getSomeEnumOf4Disabled() {
         return someEnumOf4Disabled;
     }
@@ -455,7 +471,7 @@ public class EnumeratedObject implements Entity<EnumeratedObject> {
         return i == EnumOf4.SPRING ? "Can't enter SPRING": null;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public EnumeratedObject updateSomeEnumOf4WithValidation(final EnumOf4 i) {
         setSomeEnumOf4WithValidation(i);
         return this;
@@ -483,7 +499,7 @@ public class EnumeratedObject implements Entity<EnumeratedObject> {
         this.someEnumOf8Mandatory = someEnumOf8Mandatory;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public EnumeratedObject updateSomeEnumOf8Mandatory(final EnumOf8 i) {
         setSomeEnumOf8Mandatory(i);
         return this;
@@ -505,8 +521,8 @@ public class EnumeratedObject implements Entity<EnumeratedObject> {
         this.someEnumOf8Optional = someEnumOf8Optional;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    public EnumeratedObject updateSomeEnumOf8Optional(final @Optional EnumOf8 i) {
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public EnumeratedObject updateSomeEnumOf8Optional(@Parameter(optionality=Optionality.OPTIONAL) final  EnumOf8 i) {
         setSomeEnumOf8Optional(i);
         return this;
     }
@@ -514,7 +530,7 @@ public class EnumeratedObject implements Entity<EnumeratedObject> {
         return getSomeEnumOf8Optional();
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public EnumeratedObject resetSomeEnumOf8Optional() {
         setSomeEnumOf8Optional(null);
         return this;
@@ -525,7 +541,7 @@ public class EnumeratedObject implements Entity<EnumeratedObject> {
     private EnumOf8 someEnumOf8Hidden;
 
     @Column(allowsNull = "false")
-    @Hidden
+    @Property(hidden = Where.EVERYWHERE)
     public EnumOf8 getSomeEnumOf8Hidden() {
         return someEnumOf8Hidden;
     }
@@ -540,7 +556,7 @@ public class EnumeratedObject implements Entity<EnumeratedObject> {
     private EnumOf8 someEnumOf8Disabled;
 
     @Column(allowsNull = "false")
-    @Disabled
+    @Property(editing = Editing.DISABLED)
     public EnumOf8 getSomeEnumOf8Disabled() {
         return someEnumOf8Disabled;
     }
@@ -567,7 +583,7 @@ public class EnumeratedObject implements Entity<EnumeratedObject> {
         return i == EnumOf8.ABBEY_ROAD ? "Can't enter ABBEY_ROAD": null;
     }
 
-    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
     public EnumeratedObject updateSomeEnumOf8WithValidation(final EnumOf8 i) {
         setSomeEnumOf8WithValidation(i);
         return this;

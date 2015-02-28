@@ -22,7 +22,15 @@ import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.VersionStrategy;
 import org.isisaddons.app.kitchensink.dom.Entity;
 import org.apache.isis.applib.DomainObjectContainer;
-import org.apache.isis.applib.annotation.*;
+import org.apache.isis.applib.annotation.BookmarkPolicy;
+import org.apache.isis.applib.annotation.DomainObject;
+import org.apache.isis.applib.annotation.DomainObjectLayout;
+import org.apache.isis.applib.annotation.Editing;
+import org.apache.isis.applib.annotation.MemberOrder;
+import org.apache.isis.applib.annotation.Optionality;
+import org.apache.isis.applib.annotation.Parameter;
+import org.apache.isis.applib.annotation.Property;
+import org.apache.isis.applib.annotation.Title;
 import org.apache.isis.applib.util.ObjectContracts;
 
 @javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE)
@@ -32,8 +40,12 @@ import org.apache.isis.applib.util.ObjectContracts;
 @javax.jdo.annotations.Version(
         strategy=VersionStrategy.VERSION_NUMBER, 
         column="version")
-@ObjectType("NFLPLAYER")
-@Bookmarkable
+@DomainObject(
+        objectType = "NLFPLAYER"
+)
+@DomainObjectLayout(
+        bookmarking = BookmarkPolicy.AS_ROOT
+)
 public class NflPlayer implements Entity<NflPlayer> {
 
     //region > name (property)
@@ -56,7 +68,7 @@ public class NflPlayer implements Entity<NflPlayer> {
     //region > league (property)
     private NflLeague league;
 
-    @Disabled
+    @Property(editing = Editing.DISABLED)
     @Column(allowsNull = "false")
     @MemberOrder(sequence = "1")
     public NflLeague getLeague() {
@@ -71,7 +83,7 @@ public class NflPlayer implements Entity<NflPlayer> {
     //region > region (property)
     private NflRegion region;
 
-    @Disabled
+    @Property(editing = Editing.DISABLED)
     @Column(allowsNull = "true")
     @MemberOrder(sequence = "1")
     public NflRegion getRegion() {
@@ -86,7 +98,7 @@ public class NflPlayer implements Entity<NflPlayer> {
     //region > team (property)
     private NflTeam team;
 
-    @Disabled
+    @Property(editing = Editing.DISABLED)
     @Column(allowsNull = "true")
     @MemberOrder(sequence = "1")
     public NflTeam getTeam() {
@@ -103,8 +115,8 @@ public class NflPlayer implements Entity<NflPlayer> {
 
     public NflPlayer update(
             final NflLeague league,
-            final @Optional NflRegion region,
-            final @Optional NflTeam nflTeam) {
+            @Parameter(optionality=Optionality.OPTIONAL) final  NflRegion region,
+            @Parameter(optionality=Optionality.OPTIONAL) final  NflTeam nflTeam) {
 
         setLeague(league);
         setRegion(region);
@@ -113,10 +125,10 @@ public class NflPlayer implements Entity<NflPlayer> {
         return this;
     }
 
-    public List<NflRegion> choices1Update(NflLeague league) {
+    public List<NflRegion> choices1Update(final NflLeague league) {
         return NflRegion.thoseFor(league);
     }
-    public List<NflTeam> choices2Update(NflLeague league, NflRegion region) {
+    public List<NflTeam> choices2Update(final NflLeague league, final NflRegion region) {
         return NflTeam.thoseFor(region);
     }
 
@@ -135,7 +147,7 @@ public class NflPlayer implements Entity<NflPlayer> {
     //region > compareTo
 
     @Override
-    public int compareTo(NflPlayer other) {
+    public int compareTo(final NflPlayer other) {
         return ObjectContracts.compare(this, other, "name");
     }
 

@@ -28,7 +28,13 @@ import org.isisaddons.app.kitchensink.dom.hierarchy.grandchild.GrandchildObject;
 import org.isisaddons.app.kitchensink.dom.hierarchy.parent.ParentObject;
 import org.isisaddons.app.kitchensink.dom.hierarchy.parent.ParentObjects;
 import org.apache.isis.applib.DomainObjectContainer;
-import org.apache.isis.applib.annotation.*;
+import org.apache.isis.applib.annotation.BookmarkPolicy;
+import org.apache.isis.applib.annotation.DomainObject;
+import org.apache.isis.applib.annotation.DomainObjectLayout;
+import org.apache.isis.applib.annotation.Editing;
+import org.apache.isis.applib.annotation.MemberOrder;
+import org.apache.isis.applib.annotation.Property;
+import org.apache.isis.applib.annotation.Title;
 import org.apache.isis.applib.util.ObjectContracts;
 
 @javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE)
@@ -38,10 +44,13 @@ import org.apache.isis.applib.util.ObjectContracts;
 @javax.jdo.annotations.Version(
         strategy=VersionStrategy.VERSION_NUMBER, 
         column="version")
-@ObjectType("CHILD")
-@Bookmarkable(BookmarkPolicy.AS_CHILD)
+@DomainObject(
+        objectType = "CHILD"
+)
+@DomainObjectLayout(
+        bookmarking = BookmarkPolicy.AS_CHILD
+)
 public class ChildObject implements Entity<ChildObject> {
-
 
     //region > name (property)
 
@@ -63,7 +72,7 @@ public class ChildObject implements Entity<ChildObject> {
     //region > parent (property)
     private ParentObject parent;
 
-    @Disabled
+    @Property(editing = Editing.DISABLED)
     @MemberOrder(sequence = "1")
     @Column(allowsNull = "false")
     public ParentObject getParent() {
@@ -106,7 +115,7 @@ public class ChildObject implements Entity<ChildObject> {
     //region > compareTo
 
     @Override
-    public int compareTo(ChildObject other) {
+    public int compareTo(final ChildObject other) {
         return ObjectContracts.compare(this, other, "name");
     }
 

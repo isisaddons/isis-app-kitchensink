@@ -18,35 +18,38 @@ package org.isisaddons.app.kitchensink.dom.other;
 
 import java.util.List;
 import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
-import org.apache.isis.applib.annotation.CssClassFa;
+import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.DomainService;
-import org.apache.isis.applib.annotation.Hidden;
-import org.apache.isis.applib.annotation.Named;
+import org.apache.isis.applib.annotation.NatureOfService;
+import org.apache.isis.applib.annotation.ParameterLayout;
+import org.apache.isis.applib.annotation.SemanticsOf;
+import org.apache.isis.applib.annotation.Where;
 
-@Hidden
-@DomainService(menuOrder = "90", repositoryFor = OtherBoundedObject.class)
+@DomainService(
+        nature = NatureOfService.DOMAIN, repositoryFor = OtherBoundedObject.class
+)
 public class OtherBoundedObjects extends RepositoryAbstract<OtherBoundedObject> {
 
     public OtherBoundedObjects() {
         super(OtherBoundedObject.class, Visibility.VISIBLE);
     }
 
-    @Hidden
+    @Action(hidden = Where.EVERYWHERE, semantics = SemanticsOf.SAFE)
     @Override
     public OtherBoundedObject first() {
         return super.first();
     }
 
-    @Hidden
+    @Action(hidden = Where.EVERYWHERE, semantics = SemanticsOf.SAFE)
     @Override
     public List<OtherBoundedObject> listAll() {
         return super.listAll();
     }
 
-    @Hidden
+    @Action(hidden = Where.EVERYWHERE)
     public OtherBoundedObject create(
-            final @Named("Name") String name,
-            final @Named("Description") String description) {
+            final @ParameterLayout(named="Name") String name,
+            final @ParameterLayout(named="Description") String description) {
         final OtherBoundedObject obj = container.newTransientInstance(OtherBoundedObject.class);
         obj.setName(name);
         obj.setDescription(description);

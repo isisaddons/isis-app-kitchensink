@@ -18,12 +18,13 @@ package org.isisaddons.app.kitchensink.dom.hierarchy.grandchild;
 
 import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
 import org.isisaddons.app.kitchensink.dom.hierarchy.child.ChildObject;
-import org.apache.isis.applib.annotation.CssClassFa;
 import org.apache.isis.applib.annotation.DomainService;
+import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
-import org.apache.isis.applib.annotation.Named;
+import org.apache.isis.applib.annotation.ParameterLayout;
 
-@DomainService(menuOrder = "10", repositoryFor = GrandchildObject.class)
+@DomainService(repositoryFor = GrandchildObject.class)
+@DomainServiceLayout(menuOrder = "10")
 public class GrandchildObjects extends RepositoryAbstract<GrandchildObject> {
 
     public GrandchildObjects() {
@@ -32,7 +33,7 @@ public class GrandchildObjects extends RepositoryAbstract<GrandchildObject> {
 
     @MemberOrder(sequence = "30")
     public GrandchildObject create(
-            final @Named("Name") String name,
+            final @ParameterLayout(named="Name") String name,
             final ChildObject childObject) {
         final GrandchildObject obj = container.newTransientInstance(GrandchildObject.class);
         obj.setName(name);
