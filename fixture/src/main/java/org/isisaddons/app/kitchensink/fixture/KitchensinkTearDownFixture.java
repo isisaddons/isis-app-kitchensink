@@ -54,9 +54,9 @@ public class KitchensinkTearDownFixture extends FixtureScript {
 
         isisJdoSupport.executeUpdate("delete from \"BusRulesObject\"");
 
+        isisJdoSupport.executeUpdate("delete from \"Preference\"");
         isisJdoSupport.executeUpdate("delete from \"Person\"");
         isisJdoSupport.executeUpdate("delete from \"FoodStuff\"");
-        isisJdoSupport.executeUpdate("delete from \"Preference\"");
     }
 
 

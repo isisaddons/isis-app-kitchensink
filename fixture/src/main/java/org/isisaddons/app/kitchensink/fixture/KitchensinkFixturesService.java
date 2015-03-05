@@ -18,9 +18,13 @@ package org.isisaddons.app.kitchensink.fixture;
 
 import java.util.List;
 import org.apache.isis.applib.annotation.Action;
+import org.apache.isis.applib.annotation.ActionLayout;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
+import org.apache.isis.applib.annotation.Optionality;
+import org.apache.isis.applib.annotation.Parameter;
+import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.RestrictTo;
 import org.apache.isis.applib.fixturescripts.FixtureResult;
 import org.apache.isis.applib.fixturescripts.FixtureScript;
@@ -43,6 +47,26 @@ public class KitchensinkFixturesService extends FixtureScripts {
         super(KitchensinkFixturesService.class.getPackage().getName());
     }
 
+
+    @Action(
+            restrictTo = RestrictTo.PROTOTYPING
+    )
+    @ActionLayout(
+            cssClassFa="fa fa-bolt"
+    )
+    @MemberOrder(sequence = "499.10.1")
+    @Override
+    public List<FixtureResult> runFixtureScript(
+            final FixtureScript fixtureScript,
+            @ParameterLayout(
+                    named="Parameters",
+                    describedAs = "Script-specific parameters (key=value) ",
+                    multiLine = 10)
+            @Parameter(optionality = Optionality.OPTIONAL)
+            final String parameters) {
+        return super.runFixtureScript(fixtureScript, parameters);
+    }
+
     @Override
     public FixtureScript default0RunFixtureScript() {
         return findFixtureScriptFor(KitchensinkSetupFixture.class);
@@ -63,14 +87,13 @@ public class KitchensinkFixturesService extends FixtureScripts {
     @Action(
             restrictTo = RestrictTo.PROTOTYPING
     )
-    @MemberOrder(sequence="20")
+    @ActionLayout(
+            cssClassFa="fa fa-refresh"
+    )
+    @MemberOrder(sequence = "499.10.2")
     public Object installFixturesAndReturnFirst() {
         final List<FixtureResult> run = findFixtureScriptFor(KitchensinkSetupFixture.class).run(null);
         isInstalled = true;
         return run.get(0).getObject();
-    }
-
-    public String disableInstallFixturesAndReturnFirst() {
-        return isInstalled ? "The installation can be ran just once" : null;
     }
 }

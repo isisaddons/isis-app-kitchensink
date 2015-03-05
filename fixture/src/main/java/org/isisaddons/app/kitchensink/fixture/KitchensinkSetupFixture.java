@@ -43,42 +43,42 @@ public class KitchensinkSetupFixture extends FixtureScript {
     }
 
     @Override
-    protected void execute(ExecutionContext executionContext) {
+    protected void execute(final ExecutionContext executionContext) {
 
-        executeChild(new KitchensinkTearDownFixture(), executionContext);
+        executionContext.executeChild(this, new KitchensinkTearDownFixture());
 
-        executeChild(new OtherBoundedObjectsFixture(), executionContext);
-        executeChild(new OtherObjectsFixture(), executionContext);
-        executeChild(new NflPlayersFixture(), executionContext);
+        executionContext.executeChild(this, new OtherBoundedObjectsFixture());
+        executionContext.executeChild(this, new OtherObjectsFixture());
+        executionContext.executeChild(this, new NflPlayersFixture());
 
-        executeChild(new PrimitiveObjectsFixture(), executionContext);
-        executeChild(new WrapperObjectsFixture(), executionContext);
-        executeChild(new JavaMathObjectsFixture(), executionContext);
+        executionContext.executeChild(this, new PrimitiveObjectsFixture());
+        executionContext.executeChild(this, new WrapperObjectsFixture());
+        executionContext.executeChild(this, new JavaMathObjectsFixture());
 
-        executeChild(new TextObjectsFixture(), executionContext);
-        executeChild(new EnumeratedObjectsFixture(), executionContext);
-        executeChild(new ReferenceObjectsFixture(), executionContext);
-        executeChild(new DateObjectsFixture(), executionContext);
-        executeChild(new BlobClobObjectsFixture(), executionContext);
-        executeChild(new MiscObjectsFixture(), executionContext);
+        executionContext.executeChild(this, new TextObjectsFixture());
+        executionContext.executeChild(this, new EnumeratedObjectsFixture());
+        executionContext.executeChild(this, new ReferenceObjectsFixture());
+        executionContext.executeChild(this, new DateObjectsFixture());
+        executionContext.executeChild(this, new BlobClobObjectsFixture());
+        executionContext.executeChild(this, new MiscObjectsFixture());
 
-        executeChild(new WorkflowObjectsFixture(), executionContext);
+        executionContext.executeChild(this, new WorkflowObjectsFixture());
 
-        executeChild(new Layout_3_4_5_ObjectsFixture(), executionContext);
-        executeChild(new Layout_4_4_4_ObjectsFixture(), executionContext);
-        executeChild(new Layout_4_0_8_ObjectsFixture(), executionContext);
-        executeChild(new Layout_6_0_6_ObjectsFixture(), executionContext);
+        executionContext.executeChild(this, new Layout_3_4_5_ObjectsFixture());
+        executionContext.executeChild(this, new Layout_4_4_4_ObjectsFixture());
+        executionContext.executeChild(this, new Layout_4_0_8_ObjectsFixture());
+        executionContext.executeChild(this, new Layout_6_0_6_ObjectsFixture());
 
-        executeChild(new Layout_4_0_0_8C_ObjectsFixture(), executionContext);
-        executeChild(new Layout_6_0_6_12C_ObjectsFixture(), executionContext);
+        executionContext.executeChild(this, new Layout_4_0_0_8C_ObjectsFixture());
+        executionContext.executeChild(this, new Layout_6_0_6_12C_ObjectsFixture());
 
-        executeChild(new HierarchyObjectsFixture(), executionContext);
+        executionContext.executeChild(this, new HierarchyObjectsFixture());
 
-        executeChild(new MessageObjectsFixture(), executionContext);
+        executionContext.executeChild(this, new MessageObjectsFixture());
 
-        executeChild(new BusRulesObjectsFixture(), executionContext);
+        executionContext.executeChild(this, new BusRulesObjectsFixture());
 
-        executeChild(new ContribObjectsFixture(), executionContext);
+        executionContext.executeChild(this, new ContribObjectsFixture());
 
     }
 
