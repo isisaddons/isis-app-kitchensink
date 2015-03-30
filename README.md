@@ -21,3 +21,4 @@ The `-with-fixtures` run configuration runs the app using an additional system p
 to run the fixture script defined in `WEB-INF/isis.properties`.
 
 Login using `sven/pass`.
+
