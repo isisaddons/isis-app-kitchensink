@@ -18,46 +18,96 @@ package org.isisaddons.app.kitchensink.fixture.blobclob;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.util.List;
+import javax.inject.Inject;
+import com.google.common.collect.Lists;
 import com.google.common.io.Resources;
 import org.isisaddons.app.kitchensink.dom.blobclob.BlobClobObject;
 import org.isisaddons.app.kitchensink.dom.blobclob.BlobClobObjects;
+import org.isisaddons.module.fakedata.dom.FakeDataService;
 import org.apache.isis.applib.fixturescripts.FixtureScript;
 import org.apache.isis.applib.value.Blob;
 import org.apache.isis.applib.value.Clob;
 
 public class BlobClobObjectsFixture extends FixtureScript {
 
+    //region > numberToCreate
+    private Integer numberToCreate;
 
-    @Override
-    protected void execute(ExecutionContext executionContext) {
-
-        create("Foo", executionContext);
-        create("Bar", executionContext);
-        create("Baz", executionContext);
+    /**
+     * Defaults to 3
+     */
+    public Integer getNumberToCreate() {
+        return numberToCreate;
     }
 
-    private BlobClobObject create(final String name, ExecutionContext executionContext) {
-        try {
-            final Blob blob = newBlob(name, "application/pdf", "rick-mugridge-paper.pdf");
-            final Blob image = newBlob(name, "image/jpeg", "flowers.jpg");
-            Clob clob = newClob(name, "application/rtf", "sample.rtf");
-            return executionContext.add(this, blobClobObjects.createBlobClobObject(name, blob, image, clob));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+    public void setNumberToCreate(final Integer numberToCreate) {
+        this.numberToCreate = numberToCreate;
+    }
+    //endregion
+
+
+    //region > name
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(final String name) {
+        this.name = name;
+    }
+    //endregion
+
+    //region > objects (output)
+    private final List<BlobClobObject> objects = Lists.newArrayList();
+
+    public List<BlobClobObject> getObjects() {
+        return objects;
+    }
+    //endregion
+
+
+    @Override
+    protected void execute(final ExecutionContext ec) {
+
+        defaultParam("numberToCreate", ec, 3);
+        defaultParam("name", ec, fake.lorem().words(1));
+
+
+        for (int k = 0; k < getNumberToCreate(); k++) {
+            final String str = getName() + "-" + k;
+
+            final BlobClobObject object;
+            try {
+                final Blob blob = newBlob(str, "application/pdf", "rick-mugridge-paper.pdf");
+                final Blob image = newBlob(str, "image/jpeg", "flowers.jpg");
+                final Clob clob = newClob(str, "application/rtf", "sample.rtf");
+
+                object = blobClobObjects.createBlobClobObject(str, blob, image, clob);
+                objects.add(object);
+                ec.addResult(this, object);
+
+            } catch (final IOException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
-    private Blob newBlob(String name, String mimeType, String resourceName) throws IOException {
+    private Blob newBlob(final String name, final String mimeType, final String resourceName) throws IOException {
         final byte[] pdfBytes = Resources.toByteArray(Resources.getResource(getClass(), resourceName));
         return new Blob(name + "-" + resourceName, mimeType, pdfBytes);
     }
 
-    private Clob newClob(String name, String mimeType, String resourceName) throws IOException {
+    private Clob newClob(final String name, final String mimeType, final String resourceName) throws IOException {
         final String contents = Resources.toString(Resources.getResource(getClass(), resourceName), Charset.forName("Cp1252"));
         return new Clob(name + "-" + resourceName, mimeType, contents);
     }
 
     @javax.inject.Inject
     private BlobClobObjects blobClobObjects;
+
+    @Inject
+    FakeDataService fake;
 
 }

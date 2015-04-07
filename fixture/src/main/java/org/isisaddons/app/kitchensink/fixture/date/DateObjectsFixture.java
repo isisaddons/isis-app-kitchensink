@@ -16,28 +16,96 @@
  */
 package org.isisaddons.app.kitchensink.fixture.date;
 
+import java.util.List;
+import javax.inject.Inject;
+import com.google.common.collect.Lists;
 import org.isisaddons.app.kitchensink.dom.date.DateObject;
 import org.isisaddons.app.kitchensink.dom.date.DateObjects;
+import org.isisaddons.module.fakedata.dom.FakeDataService;
 import org.joda.time.DateTime;
 import org.apache.isis.applib.fixturescripts.FixtureScript;
 import org.apache.isis.applib.services.clock.ClockService;
 
 public class DateObjectsFixture extends FixtureScript {
 
-    @Override
-    protected void execute(ExecutionContext executionContext) {
+    //region > numberToCreate
+    private Integer numberToCreate;
 
-        // create
-        final DateTime dt = clockService.nowAsDateTime().withHourOfDay(10).withMinuteOfHour(0).withSecondOfMinute(0).withMillisOfSecond(0);
-        final DateTime dt2 = dt.plusDays(1).plusHours(1).plusMinutes(5);
-        final DateTime dt3 = dt2.plusDays(1).plusHours(1).plusMinutes(5);
-        create("Foo", executionContext, dt);
-        create("Bar", executionContext, dt2);
-        create("Baz", executionContext, dt3);
+    /**
+     * Defaults to 3
+     */
+    public Integer getNumberToCreate() {
+        return numberToCreate;
     }
 
-    private DateObject create(final String name, ExecutionContext executionContext, DateTime dt) {
-        return executionContext.addResult(this, dateObjects.createDateObject(name, dt.getYear(), dt.getMonthOfYear(), dt.getDayOfMonth(), dt.getHourOfDay(), dt.getMinuteOfHour()));
+    public void setNumberToCreate(final Integer numberToCreate) {
+        this.numberToCreate = numberToCreate;
+    }
+    //endregion
+
+
+    //region > name
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(final String name) {
+        this.name = name;
+    }
+    //endregion
+
+
+    //region > dateTime (input property)
+    private DateTime dateTime;
+    public DateTime getDateTime() {
+        return dateTime;
+    }
+    public void setDateTime(final DateTime dateTime) {
+        this.dateTime = dateTime;
+    }
+    //endregion
+
+
+    //region > objects (output)
+    private final List<DateObject> objects = Lists.newArrayList();
+
+    public List<DateObject> getObjects() {
+        return objects;
+    }
+    //endregion
+
+
+    @Override
+    protected void execute(final ExecutionContext ec) {
+
+        defaultParam("numberToCreate", ec, 3);
+
+        defaultParam("name", ec, fake.lorem().words(1));
+        defaultParam("dateTime", ec, clockService.nowAsDateTime().withHourOfDay(10).withMinuteOfHour(0).withSecondOfMinute(0).withMillisOfSecond(0));
+
+        // create
+        final DateTime dt2 = getDateTime().plusDays(1).plusHours(1).plusMinutes(5);
+        final DateTime dt3 = dt2.plusDays(1).plusHours(1).plusMinutes(5);
+
+        DateTime dt = getDateTime();
+        for (int k = 0; k < getNumberToCreate(); k++) {
+            final String str = getName() + " #" + k;
+
+            create(str, dt, ec);
+
+            dt = dt.plusDays(1).plusHours(1).plusMinutes(5).plusSeconds(15);
+        }
+    }
+
+    private DateObject create(final String name, final DateTime dt, final ExecutionContext ec) {
+        final DateObject dateObject =
+                dateObjects.createDateObject(name, dt.getYear(), dt.getMonthOfYear(), dt.getDayOfMonth(), dt.getHourOfDay(), dt.getMinuteOfHour());
+
+        objects.add(dateObject);
+
+        return ec.addResult(this, dateObject);
     }
 
     @javax.inject.Inject
@@ -45,5 +113,8 @@ public class DateObjectsFixture extends FixtureScript {
 
     @javax.inject.Inject
     private ClockService clockService;
+
+    @Inject
+    FakeDataService fake;
 
 }
