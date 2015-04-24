@@ -36,7 +36,6 @@ import org.apache.isis.applib.annotation.BookmarkPolicy;
 import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.DomainObjectLayout;
 import org.apache.isis.applib.annotation.Editing;
-import org.apache.isis.applib.annotation.Hidden;
 import org.apache.isis.applib.annotation.Optionality;
 import org.apache.isis.applib.annotation.Parameter;
 import org.apache.isis.applib.annotation.Property;
@@ -629,7 +628,7 @@ public class DateObject implements Entity<DateObject> {
     }
     //endregion
 
-
+    //region > JodaLocalTime (commented out)
 /*
     //region > someJodaLocalDateTimeMandatory (property)
     private org.joda.time.LocalDateTime someJodaLocalDateTimeMandatory;
@@ -823,11 +822,15 @@ public class DateObject implements Entity<DateObject> {
 //    //endregion
 
 */
+    //endregion
+
     //
     // the applib datetime/date classes are commented out because they haven't been mapped to the DataNucleus objectstore,
     // and will almost certainly remove in Isis 2.0
     //
 
+
+    //region > ApplibDateTime (commented out)
 
 //    //region > someApplibDateTimeMandatory (property)
 //    private org.apache.isis.applib.value.DateTime someApplibDateTimeMandatory;
@@ -850,7 +853,7 @@ public class DateObject implements Entity<DateObject> {
 //    public org.apache.isis.applib.value.DateTime default0UpdateSomeApplibDateTimeMandatory() {
 //        return getSomeApplibDateTimeMandatory();
 //    }
-//    //endregion
+//    // end region
 //
 //    //region > someApplibDateTimeOptional (property)
 //    private org.apache.isis.applib.value.DateTime someApplibDateTimeOptional;
@@ -879,7 +882,7 @@ public class DateObject implements Entity<DateObject> {
 //        setSomeApplibDateTimeOptional(null);
 //        return this;
 //    }
-//    //endregion
+//    //end region
 //
 //    //region > someApplibDateMandatory (property)
 //    private org.apache.isis.applib.value.Date someApplibDateMandatory;
@@ -902,7 +905,7 @@ public class DateObject implements Entity<DateObject> {
 //    public org.apache.isis.applib.value.Date default0UpdateSomeApplibDateMandatory() {
 //        return getSomeApplibDateMandatory();
 //    }
-//    //endregion
+//    // xnd region
 //
 //    //region > someApplibDateOptional (property)
 //    private org.apache.isis.applib.value.Date someApplibDateOptional;
@@ -931,12 +934,9 @@ public class DateObject implements Entity<DateObject> {
 //        setSomeApplibDateOptional(null);
 //        return this;
 //    }
-//    //endregion
+//    //end region
 
-
-    //region > compareTo
-
-
+    //endregion
 
 
     //region > someJodaDateTimeMandatory (property)
