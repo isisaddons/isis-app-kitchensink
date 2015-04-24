@@ -16,16 +16,24 @@
  */
 package org.isisaddons.app.kitchensink.fixture;
 
+import org.apache.isis.applib.fixturescripts.FixtureScript;
+
 import org.isisaddons.app.kitchensink.fixture.blobclob.BlobClobObjectsFixture;
 import org.isisaddons.app.kitchensink.fixture.bulk.WorkflowObjectsFixture;
 import org.isisaddons.app.kitchensink.fixture.busrules.BusRulesObjectsFixture;
 import org.isisaddons.app.kitchensink.fixture.contrib.ContribObjectsFixture;
 import org.isisaddons.app.kitchensink.fixture.date.DateObjectsFixture;
 import org.isisaddons.app.kitchensink.fixture.dependent.NflPlayersFixture;
+import org.isisaddons.app.kitchensink.fixture.dependent.NflTeamsFixture;
 import org.isisaddons.app.kitchensink.fixture.enumerated.EnumeratedObjectsFixture;
 import org.isisaddons.app.kitchensink.fixture.hierarchy.HierarchyObjectsFixture;
 import org.isisaddons.app.kitchensink.fixture.javamath.JavaMathObjectsFixture;
-import org.isisaddons.app.kitchensink.fixture.layout.*;
+import org.isisaddons.app.kitchensink.fixture.layout.Layout_3_4_5_ObjectsFixture;
+import org.isisaddons.app.kitchensink.fixture.layout.Layout_4_0_0_8C_ObjectsFixture;
+import org.isisaddons.app.kitchensink.fixture.layout.Layout_4_0_8_ObjectsFixture;
+import org.isisaddons.app.kitchensink.fixture.layout.Layout_4_4_4_ObjectsFixture;
+import org.isisaddons.app.kitchensink.fixture.layout.Layout_6_0_6_12C_ObjectsFixture;
+import org.isisaddons.app.kitchensink.fixture.layout.Layout_6_0_6_ObjectsFixture;
 import org.isisaddons.app.kitchensink.fixture.message.MessageObjectsFixture;
 import org.isisaddons.app.kitchensink.fixture.misc.MiscObjectsFixture;
 import org.isisaddons.app.kitchensink.fixture.other.OtherBoundedObjectsFixture;
@@ -34,7 +42,6 @@ import org.isisaddons.app.kitchensink.fixture.primitive.PrimitiveObjectsFixture;
 import org.isisaddons.app.kitchensink.fixture.reference.ReferenceObjectsFixture;
 import org.isisaddons.app.kitchensink.fixture.text.TextObjectsFixture;
 import org.isisaddons.app.kitchensink.fixture.wrapper.WrapperObjectsFixture;
-import org.apache.isis.applib.fixturescripts.FixtureScript;
 
 public class KitchensinkSetupFixture extends FixtureScript {
 
@@ -49,6 +56,7 @@ public class KitchensinkSetupFixture extends FixtureScript {
 
         executionContext.executeChild(this, new OtherBoundedObjectsFixture());
         executionContext.executeChild(this, new OtherObjectsFixture());
+        executionContext.executeChild(this, new NflTeamsFixture());
         executionContext.executeChild(this, new NflPlayersFixture());
 
         executionContext.executeChild(this, new PrimitiveObjectsFixture());

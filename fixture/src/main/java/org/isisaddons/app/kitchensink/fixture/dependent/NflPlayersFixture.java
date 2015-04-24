@@ -16,8 +16,13 @@
  */
 package org.isisaddons.app.kitchensink.fixture.dependent;
 
-import org.isisaddons.app.kitchensink.dom.dependent.*;
 import org.apache.isis.applib.fixturescripts.FixtureScript;
+
+import org.isisaddons.app.kitchensink.dom.dependent.NflLeague;
+import org.isisaddons.app.kitchensink.dom.dependent.NflPlayer;
+import org.isisaddons.app.kitchensink.dom.dependent.NflPlayers;
+import org.isisaddons.app.kitchensink.dom.dependent.NflRegion;
+import org.isisaddons.app.kitchensink.dom.dependent.NflTeamEnum;
 
 public class NflPlayersFixture extends FixtureScript {
 
@@ -28,23 +33,23 @@ public class NflPlayersFixture extends FixtureScript {
         create("John",   NflLeague.NFC, executionContext);
         create("Johnny", NflRegion.NFC_EAST, executionContext);
 
-        create("Herc", NflTeam.DAL, executionContext);
-        create("Johnson", NflTeam.DAL, executionContext);
-        create("Murray", NflTeam.NYG, executionContext);
-        create("Sammy", NflTeam.NYG, executionContext);
+        create("Herc", NflTeamEnum.DAL, executionContext);
+        create("Johnson", NflTeamEnum.DAL, executionContext);
+        create("Murray", NflTeamEnum.NYG, executionContext);
+        create("Sammy", NflTeamEnum.NYG, executionContext);
 
         create("Rich", NflRegion.NFC_WEST, executionContext);
-        create("Dan", NflTeam.ARI, executionContext);
-        create("Dick", NflTeam.SF, executionContext);
-        create("Bert", NflTeam.SF, executionContext);
-        create("Burt", NflTeam.SF, executionContext);
-        create("Alf", NflTeam.SEA, executionContext);
+        create("Dan", NflTeamEnum.ARI, executionContext);
+        create("Dick", NflTeamEnum.SF, executionContext);
+        create("Bert", NflTeamEnum.SF, executionContext);
+        create("Burt", NflTeamEnum.SF, executionContext);
+        create("Alf", NflTeamEnum.SEA, executionContext);
 
         create("Mike", NflLeague.AFC, executionContext);
         create("Victor", NflRegion.AFC_EAST, executionContext);
         create("Sean", NflRegion.AFC_NORTH, executionContext);
-        create("Stef", NflTeam.BAL, executionContext);
-        create("Bob", NflTeam.CIN, executionContext);
+        create("Stef", NflTeamEnum.BAL, executionContext);
+        create("Bob", NflTeamEnum.CIN, executionContext);
     }
 
     private NflPlayer create(final String name, final NflLeague league, ExecutionContext executionContext) {
@@ -55,7 +60,7 @@ public class NflPlayersFixture extends FixtureScript {
         return executionContext.add(this, nflPlayers.create(name, region.getLeague(), region, null));
     }
 
-    private NflPlayer create(final String name, final NflTeam team, ExecutionContext executionContext) {
+    private NflPlayer create(final String name, final NflTeamEnum team, ExecutionContext executionContext) {
         return executionContext.add(this, nflPlayers.create(name, team.getRegion().getLeague(), team.getRegion(), team));
     }
 

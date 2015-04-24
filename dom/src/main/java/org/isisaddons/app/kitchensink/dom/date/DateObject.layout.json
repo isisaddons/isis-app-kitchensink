@@ -510,7 +510,7 @@
               "actions": {
                 "updateSomeApplibDateTimeMandatory": {
                  "actionLayout": {
-                    "named": "update"
+                    "named": "updateUsingEnum"
                   }
                  }
               }
@@ -519,7 +519,7 @@
               "actions": {
                 "updateSomeApplibDateTimeOptional": {
                  "actionLayout": {
-                    "named": "update"
+                    "named": "updateUsingEnum"
                   }
                  },
                 "resetSomeApplibDateTimeOptional": {
@@ -537,7 +537,7 @@
               "actions": {
                 "updateSomeApplibDateMandatory": {
                  "actionLayout": {
-                    "named": "update"
+                    "named": "updateUsingEnum"
                   }
                 }
               }
@@ -549,7 +549,7 @@
               "actions": {
                 "updateSomeApplibDateOptional": {
                  "actionLayout": {
-                    "named": "update"
+                    "named": "updateUsingEnum"
                   }
                  },
                 "resetSomeApplibDateOptional": {

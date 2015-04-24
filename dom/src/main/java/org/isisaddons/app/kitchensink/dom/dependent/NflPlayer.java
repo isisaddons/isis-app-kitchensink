@@ -17,10 +17,11 @@
 package org.isisaddons.app.kitchensink.dom.dependent;
 
 import java.util.List;
+
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.VersionStrategy;
-import org.isisaddons.app.kitchensink.dom.Entity;
+
 import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.annotation.BookmarkPolicy;
 import org.apache.isis.applib.annotation.DomainObject;
@@ -32,6 +33,8 @@ import org.apache.isis.applib.annotation.Parameter;
 import org.apache.isis.applib.annotation.Property;
 import org.apache.isis.applib.annotation.Title;
 import org.apache.isis.applib.util.ObjectContracts;
+
+import org.isisaddons.app.kitchensink.dom.Entity;
 
 @javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE)
 @javax.jdo.annotations.DatastoreIdentity(
@@ -64,7 +67,6 @@ public class NflPlayer implements Entity<NflPlayer> {
 
     //endregion
 
-
     //region > league (property)
     private NflLeague league;
 
@@ -95,54 +97,97 @@ public class NflPlayer implements Entity<NflPlayer> {
     }
     //endregion
 
-    //region > team (property)
-    private NflTeam team;
+    //region > teamEnum (property)
+    private NflTeamEnum teamEnum;
 
     @Property(editing = Editing.DISABLED)
     @Column(allowsNull = "true")
     @MemberOrder(sequence = "1")
-    public NflTeam getTeam() {
-        return team;
+    public NflTeamEnum getTeamEnum() {
+        return teamEnum;
     }
 
-    public void setTeam(final NflTeam team) {
-        this.team = team;
+    public void setTeamEnum(final NflTeamEnum teamEnum) {
+        this.teamEnum = teamEnum;
     }
     //endregion
 
+    //region > teamEnum (property)
+    private NflTeamEntity teamEntity;
 
-    //region > update (action)
+    @Property(editing = Editing.DISABLED)
+    @Column(allowsNull = "true")
+    @MemberOrder(sequence = "1")
+    public NflTeamEntity getTeamEntity() {
+        return teamEntity;
+    }
 
-    public NflPlayer update(
+    public void setTeamEntity(final NflTeamEntity teamEntity) {
+        this.teamEntity = teamEntity;
+    }
+    //endregion
+
+    //region > updateUsingEnum (action)
+
+    public NflPlayer updateUsingEnum(
             final NflLeague league,
-            @Parameter(optionality=Optionality.OPTIONAL) final  NflRegion region,
-            @Parameter(optionality=Optionality.OPTIONAL) final  NflTeam nflTeam) {
+            @Parameter(optionality = Optionality.OPTIONAL) final NflRegion region,
+            @Parameter(optionality = Optionality.OPTIONAL) final NflTeamEnum nflTeamEnum) {
+
+        final NflTeamEntity nflTeamEntity = nflTeams.lookup(nflTeamEnum);
+        return updateUsingEntity(league, region, nflTeamEntity);
+    }
+
+    public List<NflRegion> choices1UpdateUsingEnum(final NflLeague league) {
+        return NflRegion.thoseFor(league);
+    }
+    public List<NflTeamEnum> choices2UpdateUsingEnum(final NflLeague league, final NflRegion region) {
+        return NflTeamEnum.thoseFor(region);
+    }
+
+    public NflLeague default0UpdateUsingEnum() {
+        return getLeague();
+    }
+    public NflRegion default1UpdateUsingEnum() {
+        return getRegion();
+    }
+    public NflTeamEnum default2UpdateUsingEnum() {
+        return getTeamEnum();
+    }
+    //endregion
+
+    //region > updateUsingEntity (action)
+
+    public NflPlayer updateUsingEntity(
+            final NflLeague league,
+            @Parameter(optionality = Optionality.OPTIONAL) final NflRegion region,
+            @Parameter(optionality = Optionality.OPTIONAL) final NflTeamEntity nflTeamEntity) {
 
         setLeague(league);
         setRegion(region);
-        setTeam(nflTeam);
+        setTeamEnum(NflTeamEnum.lookup(nflTeamEntity));
+        setTeamEntity(nflTeamEntity);
 
         return this;
     }
 
-    public List<NflRegion> choices1Update(final NflLeague league) {
+    public List<NflRegion> choices1UpdateUsingEntity(final NflLeague league) {
         return NflRegion.thoseFor(league);
     }
-    public List<NflTeam> choices2Update(final NflLeague league, final NflRegion region) {
-        return NflTeam.thoseFor(region);
+    public List<NflTeamEntity> choices2UpdateUsingEntity(final NflLeague league, final NflRegion region) {
+        return nflTeams.thoseFor(region);
     }
 
-    public NflLeague default0Update() {
+    public NflLeague default0UpdateUsingEntity() {
         return getLeague();
     }
-    public NflRegion default1Update() {
+    public NflRegion default1UpdateUsingEntity() {
         return getRegion();
     }
-    public NflTeam default2Update() {
-        return getTeam();
+    public NflTeamEntity default2UpdateUsingEntity() {
+        return getTeamEntity();
     }
     //endregion
-
 
     //region > compareTo
 
@@ -161,6 +206,9 @@ public class NflPlayer implements Entity<NflPlayer> {
 
     @javax.inject.Inject
     private NflPlayers nflPlayers;
+
+    @javax.inject.Inject
+    private NflTeams nflTeams;
 
     //endregion
 

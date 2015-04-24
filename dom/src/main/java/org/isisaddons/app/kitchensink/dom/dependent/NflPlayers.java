@@ -17,14 +17,16 @@
 package org.isisaddons.app.kitchensink.dom.dependent;
 
 import java.util.List;
-import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
-import org.isisaddons.app.kitchensink.dom.reference.ReferenceObject;
+
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.Optionality;
 import org.apache.isis.applib.annotation.Parameter;
 import org.apache.isis.applib.annotation.ParameterLayout;
+
+import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
+import org.isisaddons.app.kitchensink.dom.reference.ReferenceObject;
 
 @DomainService(repositoryFor = ReferenceObject.class)
 @DomainServiceLayout(menuOrder = "10.9",named="Dependent")
@@ -39,13 +41,11 @@ public class NflPlayers extends RepositoryAbstract<NflPlayer> {
             final @ParameterLayout(named="Name") String name,
             final NflLeague league,
             @Parameter(optionality=Optionality.OPTIONAL) final  NflRegion region,
-            @Parameter(optionality= Optionality.OPTIONAL) final  NflTeam nflTeam) {
+            @Parameter(optionality= Optionality.OPTIONAL) final NflTeamEnum nflTeamEnum) {
         final NflPlayer obj = container.newTransientInstance(NflPlayer.class);
         obj.setName(name);
 
-        obj.setLeague(league);
-        obj.setRegion(region);
-        obj.setTeam(nflTeam);
+        obj.updateUsingEnum(league, region, nflTeamEnum);
 
         container.persistIfNotAlready(obj);
         return obj;
@@ -54,8 +54,8 @@ public class NflPlayers extends RepositoryAbstract<NflPlayer> {
     public List<NflRegion> choices2Create(final String name, final NflLeague league) {
         return NflRegion.thoseFor(league);
     }
-    public List<NflTeam> choices3Create(final String name, final NflLeague league, final NflRegion region) {
-        return NflTeam.thoseFor(region);
+    public List<NflTeamEnum> choices3Create(final String name, final NflLeague league, final NflRegion region) {
+        return NflTeamEnum.thoseFor(region);
     }
 
 }

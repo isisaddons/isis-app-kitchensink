@@ -17,12 +17,15 @@
 package org.isisaddons.app.kitchensink.dom.dependent;
 
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
+
+import com.google.common.base.Objects;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
-public enum NflTeam {
+public enum NflTeamEnum {
     BAL("Baltimore Ravens", NflRegion.AFC_NORTH),
     CIN("Cincinnati Bengals", NflRegion.AFC_NORTH),
     CLE("Cleveland Browns", NflRegion.AFC_NORTH),
@@ -59,7 +62,7 @@ public enum NflTeam {
     private final String name;
     private final NflRegion leagueRegion;
 
-    NflTeam(String name, NflRegion leagueRegion) {
+    NflTeamEnum(String name, NflRegion leagueRegion) {
         this.name = name;
         this.leagueRegion = leagueRegion;
     }
@@ -72,17 +75,33 @@ public enum NflTeam {
         return leagueRegion;
     }
 
-    public static List<NflTeam> thoseFor(final NflRegion leagueRegion) {
-        return Lists.newArrayList(Iterables.filter(Arrays.asList(values()), new Predicate<NflTeam>() {
+    public static List<NflTeamEnum> thoseFor(final NflRegion leagueRegion) {
+        return Lists.newArrayList(Iterables.filter(Arrays.asList(values()), new Predicate<NflTeamEnum>() {
             @Override
-            public boolean apply(NflTeam input) {
+            public boolean apply(NflTeamEnum input) {
                 return input.getRegion() == leagueRegion;
             }
         }));
+    }
+
+    public static NflTeamEnum lookup(final NflTeamEntity nflTeamEntity) {
+        if(nflTeamEntity == null) { return null; }
+        return lookup(nflTeamEntity.getName(), nflTeamEntity.getRegion());
+    }
+
+    public static NflTeamEnum lookup(final String name, final NflRegion leagueRegion) {
+        final Iterator<NflTeamEnum> iter = Iterables.filter(Arrays.asList(values()), new Predicate<NflTeamEnum>() {
+            @Override
+            public boolean apply(NflTeamEnum input) {
+                return Objects.equal(name, input.getName()) && Objects.equal(leagueRegion, input.getRegion());
+            }
+        }).iterator();
+        return iter.hasNext()? iter.next(): null;
     }
 
     @Override
     public String toString() {
         return getName();
     }
+
 }
