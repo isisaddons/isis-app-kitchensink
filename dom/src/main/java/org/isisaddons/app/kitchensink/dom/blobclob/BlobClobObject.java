@@ -71,7 +71,7 @@ public class BlobClobObject implements Entity<BlobClobObject> {
     @javax.jdo.annotations.Persistent(defaultFetchGroup="false", columns = {
             @javax.jdo.annotations.Column(name = "someBlob_name"),
             @javax.jdo.annotations.Column(name = "someBlob_mimetype"),
-            @javax.jdo.annotations.Column(name = "someBlob_bytes", jdbcType = "BLOB", sqlType = "BLOB")
+            @javax.jdo.annotations.Column(name = "someBlob_bytes", jdbcType = "BLOB", sqlType = "VARBINARY")
     })
     private Blob someBlob;
 
@@ -103,7 +103,7 @@ public class BlobClobObject implements Entity<BlobClobObject> {
     @javax.jdo.annotations.Persistent(defaultFetchGroup="false", columns = {
             @javax.jdo.annotations.Column(name = "someImage_name"),
             @javax.jdo.annotations.Column(name = "someImage_mimetype"),
-            @javax.jdo.annotations.Column(name = "someImage_bytes", jdbcType = "BLOB", sqlType = "BLOB")
+            @javax.jdo.annotations.Column(name = "someImage_bytes", jdbcType = "BLOB", sqlType = "LONGVARBINARY")
     })
     private Blob someImage;
 
@@ -133,7 +133,7 @@ public class BlobClobObject implements Entity<BlobClobObject> {
     @javax.jdo.annotations.Persistent(defaultFetchGroup="false", columns = {
             @javax.jdo.annotations.Column(name = "someClob_name"),
             @javax.jdo.annotations.Column(name = "someClob_mimetype"),
-            @javax.jdo.annotations.Column(name = "someClob_chars", jdbcType = "CLOB", sqlType = "CLOB")
+            @javax.jdo.annotations.Column(name = "someClob_chars", jdbcType = "CLOB", sqlType = "LONGVARCHAR")
     })
     private Clob someClob;
 
