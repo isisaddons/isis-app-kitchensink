@@ -17,14 +17,19 @@
 package org.isisaddons.app.kitchensink.fixture.date;
 
 import java.util.List;
+
 import javax.inject.Inject;
+
 import com.google.common.collect.Lists;
+
+import org.joda.time.DateTime;
+
+import org.apache.isis.applib.fixturescripts.FixtureScript;
+import org.apache.isis.applib.services.clock.ClockService;
+
 import org.isisaddons.app.kitchensink.dom.date.DateObject;
 import org.isisaddons.app.kitchensink.dom.date.DateObjects;
 import org.isisaddons.module.fakedata.dom.FakeDataService;
-import org.joda.time.DateTime;
-import org.apache.isis.applib.fixturescripts.FixtureScript;
-import org.apache.isis.applib.services.clock.ClockService;
 
 public class DateObjectsFixture extends FixtureScript {
 
@@ -82,7 +87,8 @@ public class DateObjectsFixture extends FixtureScript {
 
         defaultParam("numberToCreate", ec, 3);
 
-        defaultParam("name", ec, fake.lorem().words(1));
+        defaultParam("name", ec, fake.name().firstName());
+
         defaultParam("dateTime", ec, clockService.nowAsDateTime().withHourOfDay(10).withMinuteOfHour(0).withSecondOfMinute(0).withMillisOfSecond(0));
 
         // create

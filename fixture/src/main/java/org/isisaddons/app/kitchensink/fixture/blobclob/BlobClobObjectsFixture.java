@@ -19,15 +19,19 @@ package org.isisaddons.app.kitchensink.fixture.blobclob;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.List;
+
 import javax.inject.Inject;
+
 import com.google.common.collect.Lists;
 import com.google.common.io.Resources;
-import org.isisaddons.app.kitchensink.dom.blobclob.BlobClobObject;
-import org.isisaddons.app.kitchensink.dom.blobclob.BlobClobObjects;
-import org.isisaddons.module.fakedata.dom.FakeDataService;
+
 import org.apache.isis.applib.fixturescripts.FixtureScript;
 import org.apache.isis.applib.value.Blob;
 import org.apache.isis.applib.value.Clob;
+
+import org.isisaddons.app.kitchensink.dom.blobclob.BlobClobObject;
+import org.isisaddons.app.kitchensink.dom.blobclob.BlobClobObjects;
+import org.isisaddons.module.fakedata.dom.FakeDataService;
 
 public class BlobClobObjectsFixture extends FixtureScript {
 
@@ -72,7 +76,7 @@ public class BlobClobObjectsFixture extends FixtureScript {
     protected void execute(final ExecutionContext ec) {
 
         defaultParam("numberToCreate", ec, 3);
-        defaultParam("name", ec, fake.lorem().words(1));
+        defaultParam("name", ec, fake.name().firstName());
 
 
         for (int k = 0; k < getNumberToCreate(); k++) {

@@ -17,25 +17,43 @@
 {
   "columns": [
     {
-      "span": 4,
+      "span": 6,
       "memberGroups": {
         "Name": {
           "members": {
             "name": {
               "actions": {
-                "actionAssociatedWithProperty": {
-                  "disabled": {},
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "span": 0,
+      "memberGroups": {
+      }
+    },
+    {
+      "span": 6,
+      "memberGroups": {
+        "Counters": {
+          "members": {
+            "counter": {
+              "actions": {
+                "resetCounter": {
                   "actionLayout": {
-                    "named": "Disabled",
-                    "cssClass": "btn-warning",
-                    "position": "BELOW"
+                    "named": "Reset"
                   }
                 },
-                "action2AssociatedWithProperty": {
+                "safeAction": {
                   "actionLayout": {
-                    "named": "Not disabled",
-                    "cssClass": "btn-warning",
-                    "position": "PANEL"
+                    "named": "Safe"
+                  }
+                },
+                "safeAndRequestCacheableAction": {
+                  "actionLayout": {
+                    "named": "Cacheable"
                   }
                 }
               }
@@ -45,37 +63,16 @@
       }
     },
     {
-      "span": 0,
-      "memberGroups": {
-      }
-    },
-    {
-      "span": 0,
-      "memberGroups": {
-      }
-    },
-    {
-      "span": 8,
+      "span": 12,
       "collections": {
-        "other": {
-          "actions": {
-            "actionAssociatedWithCollection": {
-              "actionLayout": {
-                "named": "Disabled"
-              },
-              "disabled": {}
-            },
-            "action2AssociatedWithCollection": {
-              "actionLayout": {
-                "named": "Not disabled"
-              }
-            }
-          }
-        }
       }
     }
   ],
   "actions": {
+    "safeAction": {
+    },
+    "safeAndRequestCacheableAction": {
+    }
   }
 }
  

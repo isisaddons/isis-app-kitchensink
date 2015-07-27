@@ -129,7 +129,7 @@ public class WrapperObjectsFixture extends FixtureScript {
 
         defaultParam("numberToCreate", ec, 3);
 
-        defaultParam("name", ec, fake.lorem().words(1));
+        defaultParam("name", ec, fake.name().firstName());
 
         defaultParam("byte", ec, fake.bytes().any());
         defaultParam("short", ec, fake.shorts().any());

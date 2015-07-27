@@ -17,12 +17,16 @@
 package org.isisaddons.app.kitchensink.fixture.primitive;
 
 import java.util.List;
+
 import javax.inject.Inject;
+
 import com.google.common.collect.Lists;
+
+import org.apache.isis.applib.fixturescripts.FixtureScript;
+
 import org.isisaddons.app.kitchensink.dom.primitive.PrimitiveObject;
 import org.isisaddons.app.kitchensink.dom.primitive.PrimitiveObjects;
 import org.isisaddons.module.fakedata.dom.FakeDataService;
-import org.apache.isis.applib.fixturescripts.FixtureScript;
 
 public class PrimitiveObjectsFixture extends FixtureScript {
 
@@ -130,7 +134,7 @@ public class PrimitiveObjectsFixture extends FixtureScript {
 
         defaultParam("numberToCreate", ec, 3);
 
-        defaultParam("name", ec, fake.lorem().words(1));
+        defaultParam("name", ec, fake.name().firstName());
 
         defaultParam("byte", ec, fake.bytes().any());
         defaultParam("short", ec, fake.shorts().any());

@@ -40,6 +40,7 @@ import org.isisaddons.app.kitchensink.fixture.other.OtherBoundedObjectsFixture;
 import org.isisaddons.app.kitchensink.fixture.other.OtherObjectsFixture;
 import org.isisaddons.app.kitchensink.fixture.primitive.PrimitiveObjectsFixture;
 import org.isisaddons.app.kitchensink.fixture.reference.ReferenceObjectsFixture;
+import org.isisaddons.app.kitchensink.fixture.semantics.SemanticsObjectsFixture;
 import org.isisaddons.app.kitchensink.fixture.text.TextObjectsFixture;
 import org.isisaddons.app.kitchensink.fixture.wrapper.WrapperObjectsFixture;
 
@@ -85,6 +86,7 @@ public class KitchensinkSetupFixture extends FixtureScript {
         executionContext.executeChild(this, new MessageObjectsFixture());
 
         executionContext.executeChild(this, new BusRulesObjectsFixture());
+        executionContext.executeChild(this, new SemanticsObjectsFixture());
 
         executionContext.executeChild(this, new ContribObjectsFixture());
 
