@@ -32,7 +32,7 @@ public class Layout_4_0_8_ObjectsFixture extends FixtureScript {
     }
 
     private Layout_4_0_8_Object create(final String name, ExecutionContext executionContext) {
-        return executionContext.add(this, layout_4_0_8_objects.create(name));
+        return executionContext.addResult(this, layout_4_0_8_objects.create(name));
     }
 
     @javax.inject.Inject

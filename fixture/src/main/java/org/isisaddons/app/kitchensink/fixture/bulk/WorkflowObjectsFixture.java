@@ -16,8 +16,9 @@
  */
 package org.isisaddons.app.kitchensink.fixture.bulk;
 
-import org.isisaddons.app.kitchensink.dom.bulk.WorkflowObjects;
 import org.apache.isis.applib.fixturescripts.FixtureScript;
+
+import org.isisaddons.app.kitchensink.dom.bulk.WorkflowObjects;
 
 public class WorkflowObjectsFixture extends FixtureScript {
 
@@ -31,7 +32,7 @@ public class WorkflowObjectsFixture extends FixtureScript {
     }
 
     private org.isisaddons.app.kitchensink.dom.bulk.WorkflowObject create(final String name, ExecutionContext executionContext) {
-        return executionContext.add(this, workflowObjects.create(name));
+        return executionContext.addResult(this, workflowObjects.create(name));
     }
 
     @javax.inject.Inject

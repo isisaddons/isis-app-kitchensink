@@ -32,7 +32,7 @@ public class MessageObjectsFixture extends FixtureScript {
     }
 
     private org.isisaddons.app.kitchensink.dom.message.MessageObject create(final String name, ExecutionContext executionContext) {
-        return executionContext.add(this, messageObjects.create(name));
+        return executionContext.addResult(this, messageObjects.create(name));
     }
 
     @javax.inject.Inject

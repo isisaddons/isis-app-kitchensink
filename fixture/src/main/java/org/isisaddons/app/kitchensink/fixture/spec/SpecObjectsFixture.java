@@ -14,28 +14,29 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-package org.isisaddons.app.kitchensink.fixture.javamath;
+package org.isisaddons.app.kitchensink.fixture.spec;
 
-import org.isisaddons.app.kitchensink.dom.javamath.JavaMathObject;
-import org.isisaddons.app.kitchensink.dom.javamath.JavaMathObjects;
 import org.apache.isis.applib.fixturescripts.FixtureScript;
 
-public class JavaMathObjectsFixture extends FixtureScript {
+import org.isisaddons.app.kitchensink.dom.spec.SpecObject;
+import org.isisaddons.app.kitchensink.dom.spec.SpecObjects;
+
+public class SpecObjectsFixture extends FixtureScript {
 
     @Override
     protected void execute(ExecutionContext executionContext) {
 
-        long l = 1_000_000L;
-        create("Foo", l++, executionContext);
-        create("Bar", l++, executionContext);
-        create("Baz", l++, executionContext);
+        // create
+        create("Foo", executionContext);
+        create("Bar", executionContext);
+        create("Baz", executionContext);
     }
 
-    private JavaMathObject create(final String name, long l, ExecutionContext executionContext) {
-        return executionContext.addResult(this, javaMathObjects.createJavaMathObject(name, l, l + 0.123456789d));
+    private SpecObject create(final String name, ExecutionContext executionContext) {
+        return executionContext.addResult(this, specObjects.createSpecObject(name));
     }
 
     @javax.inject.Inject
-    private JavaMathObjects javaMathObjects;
+    private SpecObjects specObjects;
 
 }

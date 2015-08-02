@@ -16,9 +16,10 @@
  */
 package org.isisaddons.app.kitchensink.fixture.layout;
 
-import org.isisaddons.app.kitchensink.dom.layout.layout_4_4_4.Layout_4_4_4_Objects;
-import org.isisaddons.app.kitchensink.dom.layout.layout_4_4_4.Layout_4_4_4_Object;
 import org.apache.isis.applib.fixturescripts.FixtureScript;
+
+import org.isisaddons.app.kitchensink.dom.layout.layout_4_4_4.Layout_4_4_4_Object;
+import org.isisaddons.app.kitchensink.dom.layout.layout_4_4_4.Layout_4_4_4_Objects;
 
 public class Layout_4_4_4_ObjectsFixture extends FixtureScript {
 
@@ -32,7 +33,7 @@ public class Layout_4_4_4_ObjectsFixture extends FixtureScript {
     }
 
     private Layout_4_4_4_Object create(final String name, ExecutionContext executionContext) {
-        return executionContext.add(this, layout_4_4_4_objects.create(name));
+        return executionContext.addResult(this, layout_4_4_4_objects.create(name));
     }
 
     @javax.inject.Inject

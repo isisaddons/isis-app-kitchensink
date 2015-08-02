@@ -33,7 +33,7 @@ public class SemanticsObjectsFixture extends FixtureScript {
     }
 
     private SemanticsObject create(final String name, ExecutionContext executionContext) {
-        return executionContext.add(this, semanticsObjects.createSemanticsObject(name));
+        return executionContext.addResult(this, semanticsObjects.createSemanticsObject(name));
     }
 
     @javax.inject.Inject

@@ -53,15 +53,15 @@ public class NflPlayersFixture extends FixtureScript {
     }
 
     private NflPlayer create(final String name, final NflLeague league, ExecutionContext executionContext) {
-        return executionContext.add(this, nflPlayers.create(name, league, null, null));
+        return executionContext.addResult(this, nflPlayers.create(name, league, null, null));
     }
 
     private NflPlayer create(final String name, final NflRegion region, ExecutionContext executionContext) {
-        return executionContext.add(this, nflPlayers.create(name, region.getLeague(), region, null));
+        return executionContext.addResult(this, nflPlayers.create(name, region.getLeague(), region, null));
     }
 
     private NflPlayer create(final String name, final NflTeamEnum team, ExecutionContext executionContext) {
-        return executionContext.add(this, nflPlayers.create(name, team.getRegion().getLeague(), team.getRegion(), team));
+        return executionContext.addResult(this, nflPlayers.create(name, team.getRegion().getLeague(), team.getRegion(), team));
     }
 
 

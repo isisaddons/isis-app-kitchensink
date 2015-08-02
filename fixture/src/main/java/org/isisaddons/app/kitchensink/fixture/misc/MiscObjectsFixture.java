@@ -19,10 +19,12 @@ package org.isisaddons.app.kitchensink.fixture.misc;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.UUID;
-import org.isisaddons.app.kitchensink.dom.misc.MiscObject;
-import org.isisaddons.app.kitchensink.dom.misc.MiscObjects;
+
 import org.apache.isis.applib.fixturescripts.FixtureScript;
 import org.apache.isis.applib.value.Money;
+
+import org.isisaddons.app.kitchensink.dom.misc.MiscObject;
+import org.isisaddons.app.kitchensink.dom.misc.MiscObjects;
 
 public class MiscObjectsFixture extends FixtureScript {
 
@@ -39,7 +41,7 @@ public class MiscObjectsFixture extends FixtureScript {
     }
 
     private MiscObject create(final String name, final URL url, final UUID uuid, final Money money, final ExecutionContext executionContext) {
-        return executionContext.add(this, miscObjects.createMiscObject(name, url, uuid, money));
+        return executionContext.addResult(this, miscObjects.createMiscObject(name, url, uuid, money));
     }
 
     @javax.inject.Inject

@@ -16,13 +16,14 @@
  */
 package org.isisaddons.app.kitchensink.fixture.contrib;
 
+import org.apache.isis.applib.fixturescripts.FixtureScript;
+
 import org.isisaddons.app.kitchensink.dom.contrib.contributed.Preference;
 import org.isisaddons.app.kitchensink.dom.contrib.contributed.Preferences;
 import org.isisaddons.app.kitchensink.dom.contrib.contributee.FoodStuff;
+import org.isisaddons.app.kitchensink.dom.contrib.contributee.FoodStuffs;
 import org.isisaddons.app.kitchensink.dom.contrib.contributee.Person;
 import org.isisaddons.app.kitchensink.dom.contrib.contributee.Persons;
-import org.isisaddons.app.kitchensink.dom.contrib.contributee.FoodStuffs;
-import org.apache.isis.applib.fixturescripts.FixtureScript;
 
 public class ContribObjectsFixture extends FixtureScript {
 
@@ -53,12 +54,12 @@ public class ContribObjectsFixture extends FixtureScript {
 
     private Person createPerson(
             final String name, ExecutionContext executionContext) {
-        return executionContext.add(this, persons.createPerson(name));
+        return executionContext.addResult(this, persons.createPerson(name));
     }
 
     private FoodStuff createFood(
             final String name, ExecutionContext executionContext) {
-        return executionContext.add(this, foodStuffs.createFoodStuff(name));
+        return executionContext.addResult(this, foodStuffs.createFoodStuff(name));
     }
 
     private Preference createPreference(
@@ -66,7 +67,7 @@ public class ContribObjectsFixture extends FixtureScript {
             final Preference.PreferenceType preferenceType,
             final FoodStuff foodStuff,
             final ExecutionContext executionContext) {
-        return executionContext.add(this, preferences.createPreference(person, preferenceType, foodStuff));
+        return executionContext.addResult(this, preferences.createPreference(person, preferenceType, foodStuff));
     }
 
     @javax.inject.Inject

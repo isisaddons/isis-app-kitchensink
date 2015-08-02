@@ -16,10 +16,10 @@
  */
 package org.isisaddons.app.kitchensink.fixture.text;
 
-import org.isisaddons.app.kitchensink.dom.text.TextObjects;
-import org.isisaddons.app.kitchensink.dom.text.TextObject;
-
 import org.apache.isis.applib.fixturescripts.FixtureScript;
+
+import org.isisaddons.app.kitchensink.dom.text.TextObject;
+import org.isisaddons.app.kitchensink.dom.text.TextObjects;
 
 public class TextObjectsFixture extends FixtureScript {
 
@@ -33,7 +33,7 @@ public class TextObjectsFixture extends FixtureScript {
     }
 
     private TextObject create(final String name, ExecutionContext executionContext) {
-        return executionContext.add(this, textObjects.createTextObject(name));
+        return executionContext.addResult(this, textObjects.createTextObject(name));
     }
 
     @javax.inject.Inject

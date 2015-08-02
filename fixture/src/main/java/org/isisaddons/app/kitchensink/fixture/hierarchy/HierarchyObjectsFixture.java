@@ -87,15 +87,15 @@ public class HierarchyObjectsFixture extends FixtureScript {
 
 
     private ParentObject createParent(final String name, ExecutionContext executionContext) {
-        return executionContext.add(this, parentObjects.create(name));
+        return executionContext.addResult(this, parentObjects.create(name));
     }
 
     private ChildObject createChild(final String name, ParentObject parentObject, ExecutionContext executionContext) {
-        return executionContext.add(this, childObjects.create(name, parentObject));
+        return executionContext.addResult(this, childObjects.create(name, parentObject));
     }
 
     private GrandchildObject createGrandchild(final String name, ChildObject childObject, ExecutionContext executionContext) {
-        return executionContext.add(this, grandchildObjects.create(name, childObject));
+        return executionContext.addResult(this, grandchildObjects.create(name, childObject));
     }
 
     @Inject

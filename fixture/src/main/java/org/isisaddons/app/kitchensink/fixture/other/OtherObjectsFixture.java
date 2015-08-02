@@ -33,7 +33,7 @@ public class OtherObjectsFixture extends FixtureScript {
     }
 
     private OtherObject create(final String name, ExecutionContext executionContext, String description) {
-        return executionContext.add(this, otherObjects.create(name, description));
+        return executionContext.addResult(this, otherObjects.create(name, description));
     }
 
     @javax.inject.Inject

@@ -32,7 +32,7 @@ public class OtherBoundedObjectsFixture extends FixtureScript {
     }
 
     private org.isisaddons.app.kitchensink.dom.other.OtherBoundedObject create(final String name, ExecutionContext executionContext, String description) {
-        return executionContext.add(this, otherBoundedObjects.create(name, description));
+        return executionContext.addResult(this, otherBoundedObjects.create(name, description));
     }
 
     @javax.inject.Inject

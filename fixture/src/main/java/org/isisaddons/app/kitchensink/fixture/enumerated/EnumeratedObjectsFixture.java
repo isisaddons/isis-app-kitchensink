@@ -36,7 +36,7 @@ public class EnumeratedObjectsFixture extends FixtureScript {
     }
 
     private EnumeratedObject create(final String name, ExecutionContext executionContext) {
-        return executionContext.add(this, enumeratedObjects.createEnumeratedObject(name, true, EnumOf3.AMEX, EnumOf4.WINTER, EnumOf8.ABBEY_ROAD));
+        return executionContext.addResult(this, enumeratedObjects.createEnumeratedObject(name, true, EnumOf3.AMEX, EnumOf4.WINTER, EnumOf8.ABBEY_ROAD));
     }
 
     @javax.inject.Inject
