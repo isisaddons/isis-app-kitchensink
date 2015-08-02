@@ -18,14 +18,19 @@ package org.isisaddons.app.kitchensink.dom.reference;
 
 import java.util.Collection;
 import java.util.List;
+
+import javax.annotation.Nullable;
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
+import javax.jdo.annotations.NotPersistent;
 import javax.jdo.annotations.VersionStrategy;
-import org.isisaddons.app.kitchensink.dom.Entity;
-import org.isisaddons.app.kitchensink.dom.other.OtherBoundedObject;
-import org.isisaddons.app.kitchensink.dom.other.OtherBoundedObjects;
-import org.isisaddons.app.kitchensink.dom.other.OtherObject;
-import org.isisaddons.app.kitchensink.dom.other.OtherObjects;
+
+import com.google.common.base.Function;
+import com.google.common.base.Objects;
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
+
 import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.BookmarkPolicy;
@@ -37,7 +42,14 @@ import org.apache.isis.applib.annotation.Parameter;
 import org.apache.isis.applib.annotation.Property;
 import org.apache.isis.applib.annotation.SemanticsOf;
 import org.apache.isis.applib.annotation.Title;
+import org.apache.isis.applib.annotation.Where;
 import org.apache.isis.applib.util.ObjectContracts;
+
+import org.isisaddons.app.kitchensink.dom.Entity;
+import org.isisaddons.app.kitchensink.dom.other.OtherBoundedObject;
+import org.isisaddons.app.kitchensink.dom.other.OtherBoundedObjects;
+import org.isisaddons.app.kitchensink.dom.other.OtherObject;
+import org.isisaddons.app.kitchensink.dom.other.OtherObjects;
 
 @javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE)
 @javax.jdo.annotations.DatastoreIdentity(
@@ -296,6 +308,72 @@ public class ReferenceObject implements Entity<ReferenceObject> {
     }
 
     //endregion
+
+
+    //region > someOtherObjectUsingName (property)
+    private OtherObject someOtherObjectUsingName;
+
+    @Property(hidden = Where.EVERYWHERE)
+    @Column(allowsNull = "true")
+    public OtherObject getSomeOtherObjectUsingName() {
+        return someOtherObjectUsingName;
+    }
+
+    public void setSomeOtherObjectUsingName(final OtherObject someOtherObjectUsingName) {
+        this.someOtherObjectUsingName = someOtherObjectUsingName;
+    }
+
+    @NotPersistent
+    public String getSomeOtherObjectUsingNameName() {
+        return getSomeOtherObjectUsingName() != null? getSomeOtherObjectUsingName().getName() : null;
+    }
+
+    public void setSomeOtherObjectUsingNameName(final String name) {
+        OtherObject otherObject = name != null
+                ? container.firstMatch(OtherObject.class, withName(name))
+                : null;
+        setSomeOtherObjectUsingName(otherObject);
+    }
+
+    public List<String> choicesSomeOtherObjectUsingNameName() {
+        List<OtherObject> otherObjects = container.allInstances(OtherObject.class);
+        return Lists.newArrayList(
+                Iterables.transform(otherObjects, nameOf())
+        );
+    }
+
+    private static Function<OtherObject, String> nameOf() {
+        return new Function<OtherObject, String>() {
+            @Nullable @Override public String apply(final OtherObject input) {
+                return input.getName();
+            }
+        };
+    }
+
+    private static Predicate<OtherObject> withName(final String name) {
+        return new Predicate<OtherObject>() {
+    @Override public boolean apply(final OtherObject input) {
+        return Objects.equal(input.getName(), name);
+    }
+};
+    }
+
+    //endregion
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     //region > injected services
 

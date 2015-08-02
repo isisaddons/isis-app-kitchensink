@@ -158,6 +158,12 @@
               }
             }
           }
+        },
+        "Using Name": {
+          "members": {
+            "someOtherObjectUsingNameName": {
+            }
+          }
         }
       }
     },
