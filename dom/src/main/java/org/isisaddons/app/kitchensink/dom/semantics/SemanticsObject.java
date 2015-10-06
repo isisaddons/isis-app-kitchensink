@@ -88,6 +88,56 @@ public class SemanticsObject implements Entity<SemanticsObject> {
     }
     //endregion
 
+    //region > resetCounterAreYouSure (action)
+    @Action(
+            semantics = SemanticsOf.IDEMPOTENT_ARE_YOU_SURE
+    )
+    public SemanticsObject resetCounterAreYouSure() {
+        setCounter(0);
+        return this;
+    }
+    //endregion
+
+    //region > resetCounterAreYouSureTakingArgument (action)
+    @Action(
+            semantics = SemanticsOf.IDEMPOTENT_ARE_YOU_SURE
+    )
+    public SemanticsObject resetCounterAreYouSureTakingArgument(@ParameterLayout(named="Dummy") String dummy) {
+        setCounter(0);
+        return this;
+    }
+    //endregion
+
+    //region > incrementCounter (action)
+    @Action(
+            semantics = SemanticsOf.NON_IDEMPOTENT
+    )
+    public SemanticsObject incrementCounter() {
+        setCounter(getCounter()+1);
+        return this;
+    }
+    //endregion
+
+    //region > incrementCounterAreYouSure (action)
+    @Action(
+            semantics = SemanticsOf.NON_IDEMPOTENT_ARE_YOU_SURE
+    )
+    public SemanticsObject incrementCounterAreYouSure() {
+        setCounter(getCounter()+1);
+        return this;
+    }
+    //endregion
+
+    //region > incrementCounterAreYouSureTakingArgument (action)
+    @Action(
+            semantics = SemanticsOf.NON_IDEMPOTENT_ARE_YOU_SURE
+    )
+    public SemanticsObject incrementCounterAreYouSureTakingArgument(@ParameterLayout(named="Dummy") String dummy) {
+    setCounter(0);
+        return this;
+    }
+    //endregion
+
     //region > safeAction
     @Action(
         semantics = SemanticsOf.SAFE
@@ -108,6 +158,8 @@ public class SemanticsObject implements Entity<SemanticsObject> {
     }
     //endregion
 
+    //region > invoke
+
     public enum Which {
         SAFE {
             @Override
@@ -127,7 +179,7 @@ public class SemanticsObject implements Entity<SemanticsObject> {
 
         public abstract void invoke(final SemanticsObject semanticsObject);
     }
-    //region > invoke
+
     public SemanticsObject invoke(
             @ParameterLayout(named = "Count")
             final Integer count,
