@@ -27,6 +27,7 @@ import org.isisaddons.app.kitchensink.fixture.dependent.NflPlayersFixture;
 import org.isisaddons.app.kitchensink.fixture.dependent.NflTeamsFixture;
 import org.isisaddons.app.kitchensink.fixture.enumerated.EnumeratedObjectsFixture;
 import org.isisaddons.app.kitchensink.fixture.hierarchy.HierarchyObjectsFixture;
+import org.isisaddons.app.kitchensink.fixture.inject.InjectObjectsFixture;
 import org.isisaddons.app.kitchensink.fixture.javamath.JavaMathObjectsFixture;
 import org.isisaddons.app.kitchensink.fixture.layout.Layout_3_4_5_ObjectsFixture;
 import org.isisaddons.app.kitchensink.fixture.layout.Layout_4_0_0_8C_ObjectsFixture;
@@ -89,6 +90,7 @@ public class KitchensinkSetupFixture extends FixtureScript {
         executionContext.executeChild(this, new BusRulesObjectsFixture());
         executionContext.executeChild(this, new SemanticsObjectsFixture());
         executionContext.executeChild(this, new SpecObjectsFixture());
+        executionContext.executeChild(this, new InjectObjectsFixture());
 
         executionContext.executeChild(this, new ContribObjectsFixture());
 
