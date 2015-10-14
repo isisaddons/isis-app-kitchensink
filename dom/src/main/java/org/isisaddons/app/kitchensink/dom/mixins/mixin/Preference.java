@@ -14,7 +14,7 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-package org.isisaddons.app.kitchensink.dom.contrib.contributed;
+package org.isisaddons.app.kitchensink.dom.mixins.mixin;
 
 import javax.inject.Inject;
 import javax.jdo.annotations.Column;
@@ -28,15 +28,17 @@ import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.annotation.BookmarkPolicy;
 import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.DomainObjectLayout;
+import org.apache.isis.applib.annotation.Property;
+import org.apache.isis.applib.annotation.Where;
 import org.apache.isis.applib.util.ObjectContracts;
 
 import org.isisaddons.app.kitchensink.dom.Entity;
-import org.isisaddons.app.kitchensink.dom.contrib.contributee.FoodStuff;
-import org.isisaddons.app.kitchensink.dom.contrib.contributee.Person;
+import org.isisaddons.app.kitchensink.dom.mixins.mixedIn.FoodStuff;
+import org.isisaddons.app.kitchensink.dom.mixins.mixedIn.Person;
 
 @javax.jdo.annotations.PersistenceCapable(
         identityType=IdentityType.DATASTORE,
-        schema = "contrib"
+        schema = "mixins"
 )
 @javax.jdo.annotations.DatastoreIdentity(
         strategy=javax.jdo.annotations.IdGeneratorStrategy.IDENTITY,
@@ -45,27 +47,12 @@ import org.isisaddons.app.kitchensink.dom.contrib.contributee.Person;
         strategy=VersionStrategy.VERSION_NUMBER, 
         column="version")
 @DomainObject(
-        objectType = "PREFERENCE"
+        objectType = "mixins.PREFERENCE"
 )
 @DomainObjectLayout(
         bookmarking = BookmarkPolicy.AS_ROOT
 )
 public class Preference implements Entity<Preference> {
-
-    static class Predicates {
-        static Predicate<Preference> preferenceOf(final Person person) {
-            return input -> input.getPerson() == person;
-        }
-        static Predicate<Preference> preferenceOf(final Person person, final PreferenceType preferenceType) {
-            return input -> input.getPerson() == person && input.getType() == preferenceType;
-        }
-    }
-
-    static class Functions {
-        static Function<Preference, FoodStuff> food() {
-            return input -> input.getFoodStuff();
-        }
-    }
 
     public String title() {
         return container.titleOf(getPerson()) + " " + getType().toString().toLowerCase() + " " + container.titleOf(getFoodStuff());
@@ -96,7 +83,8 @@ public class Preference implements Entity<Preference> {
     //region > person (property)
     private Person person;
 
-    @javax.jdo.annotations.Column(name = "personId", allowsNull = "false")
+    @Column(name = "personId", allowsNull = "false")
+    @Property(hidden = Where.REFERENCES_PARENT)
     public Person getPerson() {
         return person;
     }
@@ -109,7 +97,8 @@ public class Preference implements Entity<Preference> {
     //region > food (property)
     private FoodStuff foodStuff;
 
-    @javax.jdo.annotations.Column(name = "foodId", allowsNull = "false")
+    @Column(name = "foodId", allowsNull = "false")
+    @Property(hidden = Where.REFERENCES_PARENT)
     public FoodStuff getFoodStuff() {
         return foodStuff;
     }
@@ -128,14 +117,23 @@ public class Preference implements Entity<Preference> {
 
     //endregion
 
-    //region > injected services
+    static class Predicates {
+        static Predicate<Preference> preferenceOf(final Person person) {
+            return input -> input.getPerson() == person;
+        }
+        static Predicate<Preference> preferenceOf(final Person person, final PreferenceType preferenceType) {
+            return input -> input.getPerson() == person && input.getType() == preferenceType;
+        }
+    }
+
+    static class Functions {
+        static Function<Preference, FoodStuff> food() {
+            return input -> input.getFoodStuff();
+        }
+    }
 
     @Inject
-    @SuppressWarnings("unused")
-    private DomainObjectContainer container;
+    DomainObjectContainer container;
 
-    @Inject
-    Preferences preferences;
-    //endregion
 
 }

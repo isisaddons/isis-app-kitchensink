@@ -174,13 +174,13 @@ language governing permissions and limitations under the License.
                         <artifactId>isis-maven-plugin</artifactId>
                         <version>${isis.version}</version>
                         <configuration>
-                            <isisConfigDir>../webapp/src/main/webapp/WEB-INF</isisConfigDir>
+                            <appManifest>org.isisaddons.app.kitchensink.app.KitchensinkAppManifest</appManifest>
                         </configuration>
                         <dependencies>
                             <dependency>
-                                <groupId>org.apache.isis.example.application</groupId>
-                                <artifactId>simpleapp-dom</artifactId>
-                                <version>${isis.version}</version>
+                                <groupId>org.isisaddons.app.kitchensink</groupId>
+                                <artifactId>isis-app-kitchensink-dom</artifactId>
+                                <version>${project.version}</version>
                             </dependency>
                             <!--
                             ... workaround to avoid conflict with plexus-default

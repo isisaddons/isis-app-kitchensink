@@ -14,26 +14,31 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-package org.isisaddons.app.kitchensink.dom.contrib.contributee;
+package org.isisaddons.app.kitchensink.dom.timestampable.inject;
+
+import java.sql.Timestamp;
 
 import javax.inject.Inject;
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
+import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.VersionStrategy;
 
 import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.annotation.BookmarkPolicy;
 import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.DomainObjectLayout;
+import org.apache.isis.applib.annotation.Editing;
+import org.apache.isis.applib.annotation.MemberOrder;
+import org.apache.isis.applib.annotation.ParameterLayout;
+import org.apache.isis.applib.annotation.Property;
 import org.apache.isis.applib.annotation.Title;
+import org.apache.isis.applib.services.timestamp.Timestampable;
 import org.apache.isis.applib.util.ObjectContracts;
 
 import org.isisaddons.app.kitchensink.dom.Entity;
 
-@javax.jdo.annotations.PersistenceCapable(
-        identityType=IdentityType.DATASTORE,
-        schema = "contrib"
-)
+@javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE)
 @javax.jdo.annotations.DatastoreIdentity(
         strategy=javax.jdo.annotations.IdGeneratorStrategy.IDENTITY,
          column="id")
@@ -41,20 +46,19 @@ import org.isisaddons.app.kitchensink.dom.Entity;
         strategy=VersionStrategy.VERSION_NUMBER, 
         column="version")
 @DomainObject(
-        objectType = "FOOD",
-        bounded = true
+        objectType = "TIMESTAMPABLE"
 )
 @DomainObjectLayout(
         bookmarking = BookmarkPolicy.AS_ROOT
 )
-public class FoodStuff implements Entity<FoodStuff> {
+public class TimestampableObject implements Entity<TimestampableObject> , Timestampable {
 
     //region > name (property)
 
     private String name;
 
-    @Title
     @Column(allowsNull="false")
+    @Title(sequence="1")
     public String getName() {
         return name;
     }
@@ -62,13 +66,53 @@ public class FoodStuff implements Entity<FoodStuff> {
     public void setName(final String name) {
         this.name = name;
     }
+    //endregion
 
+    //region > updateName (action)
+    @MemberOrder(sequence = "1")
+    public TimestampableObject updateName(
+            @ParameterLayout(
+                    named = "New description"
+            )
+            final String newName) {
+        setName(newName);
+        return this;
+    }
+    //endregion
+
+    //region > updatedAt (property)
+    private Timestamp updatedAt;
+
+    @Property(editing = Editing.DISABLED)
+    @Column(allowsNull = "true")
+    @Persistent
+    public Timestamp getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(final java.sql.Timestamp updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+    //endregion
+
+    //region > updatedBy (property)
+    private String updatedBy;
+
+    @Property(editing = Editing.DISABLED)
+    @Column(allowsNull = "true")
+    public String getUpdatedBy() {
+        return updatedBy;
+    }
+
+    public void setUpdatedBy(final String updatedBy) {
+        this.updatedBy = updatedBy;
+    }
     //endregion
 
     //region > compareTo
 
     @Override
-    public int compareTo(final FoodStuff other) {
+    public int compareTo(final TimestampableObject other) {
         return ObjectContracts.compare(this, other, "name");
     }
 
@@ -81,7 +125,8 @@ public class FoodStuff implements Entity<FoodStuff> {
     private DomainObjectContainer container;
 
     @Inject
-    FoodStuffs contributee2Objects;
+    TimestampableObjects timestampableObjects;
+
     //endregion
 
 }

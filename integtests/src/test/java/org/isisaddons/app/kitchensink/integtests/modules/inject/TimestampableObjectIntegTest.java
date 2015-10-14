@@ -33,7 +33,7 @@ import org.isisaddons.app.kitchensink.integtests.modules.KitchensinkAppIntegTest
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class InjectObjectIntegTest extends KitchensinkAppIntegTest {
+public class TimestampableObjectIntegTest extends KitchensinkAppIntegTest {
 
 
     @Inject

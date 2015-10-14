@@ -14,7 +14,9 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-package org.isisaddons.app.kitchensink.dom.contrib.contributee;
+package org.isisaddons.app.kitchensink.dom.mixins.mixedIn;
+
+import java.util.Objects;
 
 import javax.inject.Inject;
 import javax.jdo.annotations.Column;
@@ -25,6 +27,7 @@ import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.annotation.BookmarkPolicy;
 import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.DomainObjectLayout;
+import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.Title;
 import org.apache.isis.applib.util.ObjectContracts;
 
@@ -32,7 +35,7 @@ import org.isisaddons.app.kitchensink.dom.Entity;
 
 @javax.jdo.annotations.PersistenceCapable(
         identityType=IdentityType.DATASTORE,
-        schema = "contrib"
+        schema = "mixins"
 )
 @javax.jdo.annotations.DatastoreIdentity(
         strategy=javax.jdo.annotations.IdGeneratorStrategy.IDENTITY,
@@ -41,13 +44,13 @@ import org.isisaddons.app.kitchensink.dom.Entity;
         strategy=VersionStrategy.VERSION_NUMBER, 
         column="version")
 @DomainObject(
-        objectType = "FOOD",
+        objectType = "mixins.PERSON",
         bounded = true
 )
 @DomainObjectLayout(
         bookmarking = BookmarkPolicy.AS_ROOT
 )
-public class FoodStuff implements Entity<FoodStuff> {
+public class Person implements Entity<Person> {
 
     //region > name (property)
 
@@ -65,10 +68,46 @@ public class FoodStuff implements Entity<FoodStuff> {
 
     //endregion
 
+    public enum ConfigureType {
+        REGULAR,
+        /**
+         * For testing dynamic visibility of mixin actions.
+         */
+        SUPPRESS,
+        /**
+         * For testing dynamic disablement of mixin actions.
+         */
+        LOCKDOWN
+    }
+
+    //region > configure (property)
+    private ConfigureType configure;
+
+    @Column(allowsNull = "true")
+    @MemberOrder(sequence = "1")
+    public ConfigureType getConfigure() {
+        return configure;
+    }
+
+    public void setConfigure(final ConfigureType configure) {
+        this.configure = configure;
+    }
+
+    public boolean isSecure() {
+        return Objects.equals(getConfigure(), ConfigureType.SUPPRESS);
+    }
+    public boolean isLockDown() {
+        return Objects.equals(getConfigure(), ConfigureType.LOCKDOWN);
+    }
+
+    //endregion
+
+
+
     //region > compareTo
 
     @Override
-    public int compareTo(final FoodStuff other) {
+    public int compareTo(final Person other) {
         return ObjectContracts.compare(this, other, "name");
     }
 
@@ -81,7 +120,7 @@ public class FoodStuff implements Entity<FoodStuff> {
     private DomainObjectContainer container;
 
     @Inject
-    FoodStuffs contributee2Objects;
+    Persons contributee1Objects;
     //endregion
 
 }

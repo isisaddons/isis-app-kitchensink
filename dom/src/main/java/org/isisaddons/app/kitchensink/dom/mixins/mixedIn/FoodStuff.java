@@ -14,7 +14,7 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-package org.isisaddons.app.kitchensink.dom.contrib.contributee;
+package org.isisaddons.app.kitchensink.dom.mixins.mixedIn;
 
 import javax.inject.Inject;
 import javax.jdo.annotations.Column;
@@ -32,7 +32,7 @@ import org.isisaddons.app.kitchensink.dom.Entity;
 
 @javax.jdo.annotations.PersistenceCapable(
         identityType=IdentityType.DATASTORE,
-        schema = "contrib"
+        schema = "mixins"
 )
 @javax.jdo.annotations.DatastoreIdentity(
         strategy=javax.jdo.annotations.IdGeneratorStrategy.IDENTITY,
@@ -41,13 +41,12 @@ import org.isisaddons.app.kitchensink.dom.Entity;
         strategy=VersionStrategy.VERSION_NUMBER, 
         column="version")
 @DomainObject(
-        objectType = "FOOD",
-        bounded = true
+        objectType = "mixins.FOOD"
 )
 @DomainObjectLayout(
         bookmarking = BookmarkPolicy.AS_ROOT
 )
-public class FoodStuff implements Entity<FoodStuff> {
+public class FoodStuff implements Entity<org.isisaddons.app.kitchensink.dom.contrib.contributee.FoodStuff> {
 
     //region > name (property)
 
@@ -68,7 +67,7 @@ public class FoodStuff implements Entity<FoodStuff> {
     //region > compareTo
 
     @Override
-    public int compareTo(final FoodStuff other) {
+    public int compareTo(final org.isisaddons.app.kitchensink.dom.contrib.contributee.FoodStuff other) {
         return ObjectContracts.compare(this, other, "name");
     }
 

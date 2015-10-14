@@ -56,9 +56,16 @@ public class KitchensinkTearDownFixture extends FixtureScript {
         isisJdoSupport.executeUpdate("delete from \"SemanticsObject\"");
         isisJdoSupport.executeUpdate("delete from \"SpecObject\"");
 
-        isisJdoSupport.executeUpdate("delete from \"Preference\"");
-        isisJdoSupport.executeUpdate("delete from \"Person\"");
-        isisJdoSupport.executeUpdate("delete from \"FoodStuff\"");
+        isisJdoSupport.executeUpdate("delete from \"contrib\".\"Preference\"");
+        isisJdoSupport.executeUpdate("delete from \"contrib\".\"Person\"");
+        isisJdoSupport.executeUpdate("delete from \"contrib\".\"FoodStuff\"");
+
+        isisJdoSupport.executeUpdate("delete from \"mixins\".\"Preference\"");
+        isisJdoSupport.executeUpdate("delete from \"mixins\".\"Person\"");
+        isisJdoSupport.executeUpdate("delete from \"mixins\".\"FoodStuff\"");
+
+        isisJdoSupport.executeUpdate("delete from \"InjectObject\"");
+        isisJdoSupport.executeUpdate("delete from \"TimestampableObject\"");
     }
 
 

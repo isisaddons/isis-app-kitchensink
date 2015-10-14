@@ -37,6 +37,7 @@ import org.isisaddons.app.kitchensink.fixture.layout.Layout_6_0_6_12C_ObjectsFix
 import org.isisaddons.app.kitchensink.fixture.layout.Layout_6_0_6_ObjectsFixture;
 import org.isisaddons.app.kitchensink.fixture.message.MessageObjectsFixture;
 import org.isisaddons.app.kitchensink.fixture.misc.MiscObjectsFixture;
+import org.isisaddons.app.kitchensink.fixture.mixins.MixinObjectsFixture;
 import org.isisaddons.app.kitchensink.fixture.other.OtherBoundedObjectsFixture;
 import org.isisaddons.app.kitchensink.fixture.other.OtherObjectsFixture;
 import org.isisaddons.app.kitchensink.fixture.primitive.PrimitiveObjectsFixture;
@@ -44,6 +45,7 @@ import org.isisaddons.app.kitchensink.fixture.reference.ReferenceObjectsFixture;
 import org.isisaddons.app.kitchensink.fixture.semantics.SemanticsObjectsFixture;
 import org.isisaddons.app.kitchensink.fixture.spec.SpecObjectsFixture;
 import org.isisaddons.app.kitchensink.fixture.text.TextObjectsFixture;
+import org.isisaddons.app.kitchensink.fixture.timestampable.TimestampableObjectsFixture;
 import org.isisaddons.app.kitchensink.fixture.wrapper.WrapperObjectsFixture;
 
 public class KitchensinkSetupFixture extends FixtureScript {
@@ -91,8 +93,10 @@ public class KitchensinkSetupFixture extends FixtureScript {
         executionContext.executeChild(this, new SemanticsObjectsFixture());
         executionContext.executeChild(this, new SpecObjectsFixture());
         executionContext.executeChild(this, new InjectObjectsFixture());
+        executionContext.executeChild(this, new TimestampableObjectsFixture());
 
         executionContext.executeChild(this, new ContribObjectsFixture());
+        executionContext.executeChild(this, new MixinObjectsFixture());
 
     }
 
