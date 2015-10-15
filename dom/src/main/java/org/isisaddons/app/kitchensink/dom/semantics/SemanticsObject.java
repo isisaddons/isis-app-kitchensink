@@ -134,6 +134,7 @@ public class SemanticsObject implements Entity<SemanticsObject> {
     )
     public SemanticsObject incrementCounterAreYouSureTakingArgument(@ParameterLayout(named="Dummy") String dummy) {
     setCounter(0);
+        setCounter(getCounter()+1);
         return this;
     }
     //endregion
