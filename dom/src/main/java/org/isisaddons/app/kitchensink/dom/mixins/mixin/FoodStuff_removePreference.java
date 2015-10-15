@@ -33,7 +33,7 @@ public class FoodStuff_removePreference {
     }
 
     @Action(semantics = SemanticsOf.IDEMPOTENT)
-    public Person _(final Person person) {
+    public Person __(final Person person) {
         return preferencesService.removePreference(person, foodStuff);
     }
 
