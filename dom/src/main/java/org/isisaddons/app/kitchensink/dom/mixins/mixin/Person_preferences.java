@@ -37,14 +37,14 @@ public class Person_preferences {
 
     @Action(semantics = SemanticsOf.SAFE)
     @ActionLayout(contributed = Contributed.AS_ASSOCIATION)
-    public List<Preference> __() {
+    public List<Preference> $$() {
         return preferencesService.preferencesOf(this.person);
     }
 
-    public boolean hide__() {
+    public boolean hide$$() {
         return person.isSecure();
     }
-    public String disable__() {
+    public String disable$$() {
         return person.isLockDown()? "Person has been locked down": null;
     }
 

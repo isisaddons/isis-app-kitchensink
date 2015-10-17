@@ -43,20 +43,20 @@ public class Person_addPreference {
 
     @Action(semantics = SemanticsOf.IDEMPOTENT)
     @ActionLayout(contributed = Contributed.AS_ACTION)
-    public Preference __(
+    public Preference $$(
             final @ParameterLayout(named = "Type") Preference.PreferenceType preferenceType,
             final FoodStuff foodStuff) {
         return preferencesService.addPreference(this.person, preferenceType, foodStuff);
     }
 
-    public boolean hide__() {
+    public boolean hide$$() {
         return person.isSecure();
     }
-    public String disable__() {
+    public String disable$$() {
         return person.isLockDown()? "Person has been locked down": null;
     }
 
-    public List<FoodStuff> choices1__() {
+    public List<FoodStuff> choices1$$() {
         final List<FoodStuff> allFoodstuffs = Lists.newArrayList(this.foodStuffs.listAllFoodStuffs());
         final List<FoodStuff> currentFoodStuffs = Lists
                 .transform(preferencesService.preferencesOf(person), Preference.Functions.food());
@@ -64,12 +64,12 @@ public class Person_addPreference {
         return allFoodstuffs;
     }
 
-    public FoodStuff default1__() {
-        final List<FoodStuff> foodStuffs = choices1__();
+    public FoodStuff default1$$() {
+        final List<FoodStuff> foodStuffs = choices1$$();
         return foodStuffs.isEmpty()? null: foodStuffs.get(0);
     }
 
-    public String validate__(Preference.PreferenceType preferenceType, FoodStuff foodStuff) {
+    public String validate$$(Preference.PreferenceType preferenceType, FoodStuff foodStuff) {
         if (Objects.equals(foodStuff.getName(), "Banana") && preferenceType == Preference.PreferenceType.LOVE){
             return "No-one really loves bananas!";
         }

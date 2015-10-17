@@ -40,17 +40,17 @@ public class Person_removePreference {
 
     @Action(semantics = SemanticsOf.IDEMPOTENT)
     @ActionLayout(contributed = Contributed.AS_ACTION)
-    public Person __(final FoodStuff foodStuff) {
+    public Person $$(final FoodStuff foodStuff) {
         return preferencesService.removePreference(person, foodStuff);
     }
 
-    public List<FoodStuff> choices0__() {
+    public List<FoodStuff> choices0$$() {
         final List<Preference> preferences = preferencesService.preferencesOf(person);
         return Lists.transform(preferences, Preference.Functions.food());
     }
 
-    public FoodStuff default0__() {
-        final List<FoodStuff> choices0 = choices0__();
+    public FoodStuff default0$$() {
+        final List<FoodStuff> choices0 = choices0$$();
         return choices0.isEmpty() ? null: choices0.get(0);
     }
     

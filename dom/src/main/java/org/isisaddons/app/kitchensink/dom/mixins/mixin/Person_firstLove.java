@@ -42,7 +42,7 @@ public class Person_firstLove {
 
     @Action(semantics = SemanticsOf.SAFE)
     @ActionLayout(contributed = Contributed.AS_ASSOCIATION)
-    public FoodStuff __() {
+    public FoodStuff $$() {
         final List<FoodStuff> loves = Lists.newArrayList(
                 Iterables.transform(
                         Iterables.filter(
@@ -53,10 +53,10 @@ public class Person_firstLove {
         return loves.isEmpty()? null: loves.get(0);
     }
 
-    public boolean hide__() {
+    public boolean hide$$() {
         return person.isSecure();
     }
-    public String disable__() {
+    public String disable$$() {
         return person.isLockDown()? "Person has been locked down": null;
     }
 

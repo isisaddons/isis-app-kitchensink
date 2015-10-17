@@ -36,7 +36,7 @@ public class FoodStuff_addPreference {
 
     @Action(semantics = SemanticsOf.IDEMPOTENT)
     @ActionLayout(contributed = Contributed.AS_ACTION)
-    public Preference __(
+    public Preference $$(
             final Person person,
             final Preference.PreferenceType preferenceType) {
         return preferencesService.addPreference(person, preferenceType, foodStuff);
