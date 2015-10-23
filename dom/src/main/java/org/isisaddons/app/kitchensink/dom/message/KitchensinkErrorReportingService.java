@@ -31,7 +31,15 @@ public class KitchensinkErrorReportingService implements ErrorReportingService {
 
     @Override
     public Ticket reportError(final ErrorDetails errorDetails) {
-        return new Ticket(nextTicketReference(), "USER MESSAGE: " + errorDetails.getMainMessage(), "These are the additional details for the end-user to read\nThis content should be able to span many lines.\nIt should be reasonably readable.");
+        return new Ticket(
+                nextTicketReference(),
+                "The Kitchen sink app is sorry to report that: " + errorDetails.getMainMessage(),
+                  "These are additional details for the end-user to read.\n"
+                + "This content should be able to span many lines.\n"
+                + "More detail.\n"
+                + "Some suggested work-arounds.\n"
+                + "Details of how to contact help desk.\n"
+                + "And so on");
     }
 
     String nextTicketReference() {
