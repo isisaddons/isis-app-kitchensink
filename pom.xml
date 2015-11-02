@@ -33,10 +33,10 @@ language governing permissions and limitations under the License.
     <properties>
         <isis.version>1.10.0-SNAPSHOT</isis.version>
 
-        <isis-module-fakedata.version>1.9.0</isis-module-fakedata.version>
+        <isis-module-fakedata.version>1.10.0-SNAPSHOT</isis-module-fakedata.version>
 
-        <isis-wicket-excel.version>1.9.0</isis-wicket-excel.version>
-        <isis-wicket-wickedcharts.version>1.9.0</isis-wicket-wickedcharts.version>
+        <isis-wicket-excel.version>1.10.0-SNAPSHOT</isis-wicket-excel.version>
+        <isis-wicket-wickedcharts.version>1.10.0-SNAPSHOT</isis-wicket-wickedcharts.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -197,15 +197,6 @@ language governing permissions and limitations under the License.
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-
-            <dependency>
-                <groupId>org.apache.isis.viewer</groupId>
-                <artifactId>isis-viewer-wicket</artifactId>
-                <version>${isis.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
 
             <!-- this project's own modules -->
             <dependency>

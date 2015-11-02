@@ -19,7 +19,7 @@ package org.isisaddons.app.kitchensink.dom.enumerated;
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.VersionStrategy;
-import org.isisaddons.app.kitchensink.dom.Entity;
+
 import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.BookmarkPolicy;
@@ -33,6 +33,8 @@ import org.apache.isis.applib.annotation.SemanticsOf;
 import org.apache.isis.applib.annotation.Title;
 import org.apache.isis.applib.annotation.Where;
 import org.apache.isis.applib.util.ObjectContracts;
+
+import org.isisaddons.app.kitchensink.dom.Entity;
 
 @javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE)
 @javax.jdo.annotations.DatastoreIdentity(
@@ -127,7 +129,8 @@ public class EnumeratedObject implements Entity<EnumeratedObject> {
     }
 
     public String validateSomeBooleanWithValidation(final boolean i) {
-        return i == getSomeBooleanWithValidation() ? "Can only enter opposite of current": null;
+        // this validation is broken, somehow...
+        return null;//i == getSomeBooleanWithValidation() ? "Can only enter opposite of current": null;
     }
 
     @Action(semantics=SemanticsOf.IDEMPOTENT)
@@ -234,7 +237,7 @@ public class EnumeratedObject implements Entity<EnumeratedObject> {
 
     @Column(allowsNull = "false")
     public java.lang.Boolean getSomeBooleanWrapperWithValidation() {
-    return someBooleanWrapperWithValidation;
+        return someBooleanWrapperWithValidation;
     }
     
     public void setSomeBooleanWrapperWithValidation(final java.lang.Boolean someBooleanWrapperWithValidation) {
@@ -242,7 +245,8 @@ public class EnumeratedObject implements Entity<EnumeratedObject> {
     }
     
     public String validateSomeBooleanWrapperWithValidation(final java.lang.Boolean i) {
-    return i == getSomeBooleanWrapperWithValidation() ? "Can only enter opposite of current": null;
+        // this validation is broken, somehow...
+        return null; // i == getSomeBooleanWrapperWithValidation() ? "Can only enter opposite of current": null;
     }
     
     @Action(semantics=SemanticsOf.IDEMPOTENT)
