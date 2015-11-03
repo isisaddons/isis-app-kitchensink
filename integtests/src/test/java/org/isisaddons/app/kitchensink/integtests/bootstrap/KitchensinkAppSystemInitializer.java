@@ -18,38 +18,24 @@
  */
 package org.isisaddons.app.kitchensink.integtests.bootstrap;
 
-import org.apache.isis.core.commons.config.IsisConfiguration;
 import org.apache.isis.core.integtestsupport.IntegrationTestAbstract;
 import org.apache.isis.core.integtestsupport.IsisSystemForTest;
-import org.apache.isis.objectstore.jdo.datanucleus.DataNucleusPersistenceMechanismInstaller;
 import org.apache.isis.objectstore.jdo.datanucleus.IsisConfigurationForJdoIntegTests;
+
+import org.isisaddons.app.kitchensink.app.KitchensinkAppManifest;
 
 public class KitchensinkAppSystemInitializer extends IntegrationTestAbstract {
 
     public static void initIsft() {
         IsisSystemForTest isft = IsisSystemForTest.getElseNull();
         if(isft == null) {
-            isft = new SimpleAppSystemBuilder().build().setUpSystem();
+            isft = new IsisSystemForTest.Builder()
+                    .with(new KitchensinkAppManifest())
+                    .with(new IsisConfigurationForJdoIntegTests())
+                    .build()
+                    .setUpSystem();
             IsisSystemForTest.set(isft);
         }
     }
 
-    private static class SimpleAppSystemBuilder extends IsisSystemForTest.Builder {
-
-        public SimpleAppSystemBuilder() {
-            withLoggingAt(org.apache.log4j.Level.INFO);
-            with(testConfiguration());
-            with(new DataNucleusPersistenceMechanismInstaller());
-
-            // services annotated with @DomainService
-            withServicesIn( "org.isisaddons.app.kitchensink", "org.isisaddons.module.fakedata" );
-        }
-
-        private static IsisConfiguration testConfiguration() {
-            final IsisConfigurationForJdoIntegTests testConfiguration = new IsisConfigurationForJdoIntegTests();
-
-            testConfiguration.addRegisterEntitiesPackagePrefix("org.isisaddons.app.kitchensink");
-            return testConfiguration;
-        }
-    }
 }

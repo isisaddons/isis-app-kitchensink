@@ -53,7 +53,7 @@
         <!-- other modules in this project -->
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>isis-app-kitchensink-fixture</artifactId>
+            <artifactId>isis-app-kitchensink-app</artifactId>
         </dependency>
 
         <dependency>

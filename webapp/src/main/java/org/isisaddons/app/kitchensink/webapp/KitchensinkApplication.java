@@ -16,16 +16,13 @@
  */
 package org.isisaddons.app.kitchensink.webapp;
 
-import de.agilecoders.wicket.core.Bootstrap;
-import de.agilecoders.wicket.core.settings.IBootstrapSettings;
-import de.agilecoders.wicket.themes.markup.html.bootswatch.BootswatchTheme;
-import de.agilecoders.wicket.themes.markup.html.bootswatch.BootswatchThemeProvider;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.Charset;
 import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
+
 import com.google.common.base.Joiner;
 import com.google.common.io.Resources;
 import com.google.inject.AbstractModule;
@@ -33,30 +30,23 @@ import com.google.inject.Module;
 import com.google.inject.name.Names;
 import com.google.inject.util.Modules;
 import com.google.inject.util.Providers;
+
 import org.apache.wicket.Session;
 import org.apache.wicket.request.Request;
 import org.apache.wicket.request.Response;
 import org.apache.wicket.request.http.WebRequest;
+
 import org.apache.isis.viewer.wicket.viewer.IsisWicketApplication;
 import org.apache.isis.viewer.wicket.viewer.integration.wicket.AuthenticatedWebSessionForIsis;
+
+import de.agilecoders.wicket.core.Bootstrap;
+import de.agilecoders.wicket.core.settings.IBootstrapSettings;
+import de.agilecoders.wicket.themes.markup.html.bootswatch.BootswatchTheme;
+import de.agilecoders.wicket.themes.markup.html.bootswatch.BootswatchThemeProvider;
 
 
 /**
  * As specified in <tt>web.xml</tt>.
- * 
- * <p>
- * See:
- * <pre>
- * &lt;filter>
- *   &lt;filter-name>wicket&lt;/filter-name>
- *    &lt;filter-class>org.apache.wicket.protocol.http.WicketFilter&lt;/filter-class>
- *    &lt;init-param>
- *      &lt;param-name>applicationClassName&lt;/param-name>
- *      &lt;param-value>webapp.SimpleApplication&lt;/param-value>
- *    &lt;/init-param>
- * &lt;/filter>
- * </pre>
- * 
  */
 public class KitchensinkApplication extends IsisWicketApplication {
 
