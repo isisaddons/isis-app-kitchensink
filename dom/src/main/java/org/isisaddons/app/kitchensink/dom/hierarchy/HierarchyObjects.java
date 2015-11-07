@@ -17,34 +17,40 @@
 package org.isisaddons.app.kitchensink.dom.hierarchy;
 
 import javax.inject.Inject;
+
+import org.apache.isis.applib.annotation.Action;
+import org.apache.isis.applib.annotation.DomainService;
+import org.apache.isis.applib.annotation.MemberOrder;
+import org.apache.isis.applib.annotation.SemanticsOf;
+
 import org.isisaddons.app.kitchensink.dom.hierarchy.child.ChildObject;
 import org.isisaddons.app.kitchensink.dom.hierarchy.child.ChildObjects;
 import org.isisaddons.app.kitchensink.dom.hierarchy.grandchild.GrandchildObject;
 import org.isisaddons.app.kitchensink.dom.hierarchy.grandchild.GrandchildObjects;
 import org.isisaddons.app.kitchensink.dom.hierarchy.parent.ParentObject;
 import org.isisaddons.app.kitchensink.dom.hierarchy.parent.ParentObjects;
-import org.apache.isis.applib.annotation.DomainService;
-import org.apache.isis.applib.annotation.MemberOrder;
 
 @DomainService(menuOrder = "10.10")
 public class HierarchyObjects {
 
 
+    @Action(semantics = SemanticsOf.SAFE)
     @MemberOrder(sequence = "10")
     public ParentObject firstParent() {
         return parentObjects.first();
     }
 
+    @Action(semantics = SemanticsOf.SAFE)
     @MemberOrder(sequence = "20")
     public ChildObject firstChild() {
         return childObjects.first();
     }
 
+    @Action(semantics = SemanticsOf.SAFE)
     @MemberOrder(sequence = "30")
     public GrandchildObject firstGrandchild() {
         return grandchildObjects.first();
     }
-
 
     @Inject
     private ParentObjects parentObjects;

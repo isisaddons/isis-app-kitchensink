@@ -1,0 +1,65 @@
+= isis-kitchensink
+
+An app to act as a regression suite for link:http://isis.apache.org[Apache Isis].
+
+image::https://raw.github.com/isisaddons/isis-app-kitchensink/master/images/000-home-page.png[link="https://raw.github.com/isisaddons/isis-app-kitchensink/master/images/000-home-page.png"]
+
+
+== Getting started (IntelliJ)
+
+* Import into IntelliJ, using `File > New > Module from Existing Sources`
+
+* in the `kitchensinkapp-webapp`, locate `ide/intellij/launch` directory
+
+* as per the README says, copy files into `workspace\.idea\runConfigurations` directory, and adjust file paths for Maven tasks.
+
+
+== Running the app
+
+The `-with-fixtures` run configuration runs the app using an additional system property that instructs Isis 
+to run the fixture script defined in `WEB-INF/isis.properties`.
+
+Login using `sven/pass`.
+
+
+== Eager Loading Demo (ISIS-1232)
+
+The script below was used in link:https://youtu.be/hSKnqqBQ7Zo[this screencast] to show how the `x-ro-follow-links`
+query argument can be used to support uses cases such as table grids (avoiding the "N+1" problem).
+
+* parent object: +
++
+`http://localhost:8080/restful/objects/PARENT/0`
+
+* children of parent: +
++
+`http://localhost:8080/restful/objects/PARENT/0/collections/children`
+
+* expand the children (follow each of their links): +
++
+`http://localhost:8080/restful/objects/PARENT/0/collections/children?x-ro-follow-links=value.href`
+
+* show parent and its children (titles) +
++
+`http://localhost:8080/restful/objects/PARENT/0?x-ro-follow-links=members[children].value`
+
+* show parent and its children (full details) +
++
+`http://localhost:8080/restful/objects/PARENT/0?x-ro-follow-links=members[children].value.href`
+
+* for child +
++
+`http://localhost:8080/restful/objects/CHILD/0`
+
+* child's parent (title) +
++
+`http://localhost:8080/restful/objects/CHILD/0?x-ro-follow-links=members[parent].value`
+
+* parent, to child, to grandchildren +
++
+`http://localhost:8080/restful/objects/PARENT/0?x-ro-follow-links=members[children].value.href.members[grandchildren]`
+
+* child's siblings (up to its parent, down to children) +
++
+`http://localhost:8080/restful/objects/CHILD/0?x-ro-follow-links=members[parent].value.members[children].value`
+ 
