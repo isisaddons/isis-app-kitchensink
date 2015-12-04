@@ -23,6 +23,7 @@ import org.slf4j.LoggerFactory;
 
 import org.apache.isis.applib.AbstractSubscriber;
 import org.apache.isis.applib.annotation.DomainService;
+import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.Programmatic;
 import org.apache.isis.applib.services.eventbus.ObjectCreatedEvent;
 import org.apache.isis.applib.services.eventbus.ObjectLoadedEvent;
@@ -32,7 +33,7 @@ import org.apache.isis.applib.services.eventbus.ObjectRemovingEvent;
 import org.apache.isis.applib.services.eventbus.ObjectUpdatedEvent;
 import org.apache.isis.applib.services.eventbus.ObjectUpdatingEvent;
 
-@DomainService()
+@DomainService(nature = NatureOfService.DOMAIN)
 public class LifecycleSubscriber extends AbstractSubscriber {
 
     public static final Logger LOG = LoggerFactory.getLogger(LifecycleSubscriber.class);

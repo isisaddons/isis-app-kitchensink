@@ -29,37 +29,37 @@ query argument can be used to support uses cases such as table grids (avoiding t
 
 * parent object: +
 +
-`http://localhost:8080/restful/objects/PARENT/0`
+pass:[<pre>http://localhost:8080/restful/objects/PARENT/0]
 
 * children of parent: +
 +
-`http://localhost:8080/restful/objects/PARENT/0/collections/children`
+pass:[<pre>http://localhost:8080/restful/objects/PARENT/0/collections/children]
 
 * expand the children (follow each of their links): +
 +
-`http://localhost:8080/restful/objects/PARENT/0/collections/children?x-ro-follow-links=value.href`
+pass:[<pre>http://localhost:8080/restful/objects/PARENT/0/collections/children?x-ro-follow-links=value.href]
 
 * show parent and its children (titles) +
 +
-`http://localhost:8080/restful/objects/PARENT/0?x-ro-follow-links=members[children].value`
+pass:[<pre>http://localhost:8080/restful/objects/PARENT/0?x-ro-follow-links=members[children\].value]
 
 * show parent and its children (full details) +
 +
-`http://localhost:8080/restful/objects/PARENT/0?x-ro-follow-links=members[children].value.href`
+pass:[<pre>http://localhost:8080/restful/objects/PARENT/0?x-ro-follow-links=members[children\].value.href]
 
 * for child +
 +
-`http://localhost:8080/restful/objects/CHILD/0`
+pass:[<pre>http://localhost:8080/restful/objects/CHILD/0`
 
 * child's parent (title) +
 +
-`http://localhost:8080/restful/objects/CHILD/0?x-ro-follow-links=members[parent].value`
+pass:[<pre>http://localhost:8080/restful/objects/CHILD/0?x-ro-follow-links=members[parent\].value]
 
 * parent, to child, to grandchildren +
 +
-`http://localhost:8080/restful/objects/PARENT/0?x-ro-follow-links=members[children].value.href.members[grandchildren]`
+pass:[<pre>http://localhost:8080/restful/objects/PARENT/0?x-ro-follow-links=members[children\].value.href.members[grandchildren\]]
 
 * child's siblings (up to its parent, down to children) +
 +
-`http://localhost:8080/restful/objects/CHILD/0?x-ro-follow-links=members[parent].value.members[children].value`
- 
+pass:[<pre>http://localhost:8080/restful/objects/CHILD/0?x-ro-follow-links=members[parent\].value.members[children\].value]
+

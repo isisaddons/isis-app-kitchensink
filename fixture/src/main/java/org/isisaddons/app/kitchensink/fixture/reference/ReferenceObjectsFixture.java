@@ -17,15 +17,17 @@
 package org.isisaddons.app.kitchensink.fixture.reference;
 
 import java.util.List;
-import org.isisaddons.app.kitchensink.dom.reference.ReferenceObject;
-import org.isisaddons.app.kitchensink.dom.reference.ReferenceObjects;
+
+import org.apache.isis.applib.fixturescripts.FixtureScript;
+
 import org.isisaddons.app.kitchensink.dom.other.OtherBoundedObject;
 import org.isisaddons.app.kitchensink.dom.other.OtherBoundedObjects;
 import org.isisaddons.app.kitchensink.dom.other.OtherObject;
 import org.isisaddons.app.kitchensink.dom.other.OtherObjects;
+import org.isisaddons.app.kitchensink.dom.reference.ReferenceObject;
+import org.isisaddons.app.kitchensink.dom.reference.ReferenceObjects;
 import org.isisaddons.app.kitchensink.fixture.other.OtherBoundedObjectsFixture;
 import org.isisaddons.app.kitchensink.fixture.other.OtherObjectsFixture;
-import org.apache.isis.applib.fixturescripts.FixtureScript;
 
 public class ReferenceObjectsFixture extends FixtureScript {
 
@@ -47,7 +49,7 @@ public class ReferenceObjectsFixture extends FixtureScript {
     }
 
     private static <T> T get(List<T> list, int i) {
-        return list.get(i % list.size());
+        return list.isEmpty() ? null : list.get(i % list.size());
     }
 
     private ReferenceObject create(final String name, ExecutionContext executionContext, int i, OtherObject otherObject, OtherBoundedObject otherBoundedObject) {
