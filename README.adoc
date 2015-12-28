@@ -49,7 +49,7 @@ pass:[<pre>http://localhost:8080/restful/objects/PARENT/0?x-ro-follow-links=memb
 
 * for child +
 +
-pass:[<pre>http://localhost:8080/restful/objects/CHILD/0`
+pass:[<pre>http://localhost:8080/restful/objects/CHILD/0]
 
 * child's parent (title) +
 +
@@ -63,3 +63,6 @@ pass:[<pre>http://localhost:8080/restful/objects/PARENT/0?x-ro-follow-links=memb
 +
 pass:[<pre>http://localhost:8080/restful/objects/CHILD/0?x-ro-follow-links=members[parent\].value.members[children\].value]
 
+* action invocations +
++
+pass:[<pre>http://localhost:8080/restful/services/HierarchyObjects/actions/findParent/invoke?title="Parent 1"&x-ro-follow-links=members[children\].value.href]
