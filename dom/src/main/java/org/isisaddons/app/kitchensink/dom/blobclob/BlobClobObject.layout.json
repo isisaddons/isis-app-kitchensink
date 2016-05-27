@@ -54,7 +54,8 @@
                 },
                 "resetSomeImage": {
                   "actionLayout": {
-                    "named": "clear"
+                    "named": "clear",
+                    "position": "RIGHT"
                   }
                 }
               }

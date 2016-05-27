@@ -79,6 +79,9 @@
                 "updateSomeCharacterWrapperMandatory": {
                   "named": {
                     "value": "update"
+                  },
+                  "actionLayout": {
+                    "position": "RIGHT"
                   }
                 }
               }
@@ -93,6 +96,9 @@
                 "resetSomeCharacterWrapperOptional": {
                   "named": {
                     "value": "clear"
+                  },
+                  "actionLayout": {
+                    "position": "RIGHT"
                   }
                 }
               },
@@ -141,6 +147,9 @@
                 "resetSomeCharacterWrapperOptionalWithChoices": {
                   "named": {
                     "value": "clear"
+                  },
+                  "actionLayout": {
+                    "position": "RIGHT"
                   }
                 }
               },
@@ -160,8 +169,9 @@
             "someStringMandatory": {
               "actions": {
                 "updateSomeStringMandatory": {
-                  "named": {
-                    "value": "update"
+                  "actionLayout": {
+                    "named": "Update mand.",
+                    "position": "PANEL"
                   }
                 }
               }
@@ -169,16 +179,15 @@
             "someStringOptional": {
               "actions": {
                 "updateSomeStringOptional": {
-                  "named": {
-                    "value": "update"
+                  "actionLayout": {
+                    "named": "Update opt.",
+                    "position": "PANEL"
                   }
                 },
                 "resetSomeStringOptional": {
-                  "named": {
-                    "value": "clear"
-                  },
                   "actionLayout": {
-                    "position": "RIGHT"
+                    "NAMED": "Clear opt.",
+                    "position": "PANEL_DROPDOWN"
                   }
                 }
               },
@@ -227,6 +236,9 @@
                 "resetSomeStringOptionalWithChoices": {
                   "named": {
                     "value": "clear"
+                  },
+                  "actionLayout": {
+                    "position": "RIGHT"
                   }
                 }
               },
@@ -257,6 +269,9 @@
                 "resetSomePasswordOptional": {
                   "named": {
                     "value": "clear"
+                  },
+                  "actionLayout": {
+                    "position": "RIGHT"
                   }
                 }
               },
@@ -305,6 +320,9 @@
                 "resetSomePasswordOptionalWithChoices": {
                   "named": {
                     "value": "clear"
+                  },
+                  "actionLayout": {
+                    "position": "RIGHT"
                   }
                 }
               },
@@ -331,6 +349,9 @@
                 "resetSomeString20": {
                   "named": {
                     "value": "clear"
+                  },
+                  "actionLayout": {
+                    "position": "RIGHT"
                   }
                 }
               },
@@ -348,6 +369,9 @@
                 "resetSomeString50": {
                   "named": {
                     "value": "clear"
+                  },
+                  "actionLayout": {
+                    "position": "RIGHT"
                   }
                 }
               },
@@ -383,6 +407,9 @@
                 "resetSomeStringMultiNoWrap": {
                   "named": {
                     "value": "clear"
+                  },
+                  "actionLayout": {
+                    "position": "RIGHT"
                   }
                 }
               },
