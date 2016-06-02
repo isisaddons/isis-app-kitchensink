@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bs3:grid xsi:schemaLocation="http://isis.apache.org/applib/layout/component http://isis.apache.org/applib/layout/component/component.xsd http://isis.apache.org/applib/layout/grid/bootstrap3 http://isis.apache.org/applib/layout/grid/bootstrap3/bootstrap3.xsd" xmlns:bs3="http://isis.apache.org/applib/layout/grid/bootstrap3" xmlns:cpt="http://isis.apache.org/applib/layout/component" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <bs3:row>
+        <bs3:col span="12" unreferencedActions="true">
+            <cpt:domainObject/>
+            <cpt:action id="clearHints"/>
+            <cpt:action id="downloadLayoutXml"/>
+            <cpt:action id="downloadJdoMetadata"/>
+            <cpt:action id="rebuildMetamodel"/>
+        </bs3:col>
+    </bs3:row>
+    <bs3:row>
+        <bs3:col span="6">
+            <cpt:fieldSet name="Name" id="name" unreferencedProperties="true">
+                <cpt:property id="name"/>
+                <cpt:property id="datanucleusVersionLong"/>
+                <cpt:property id="datanucleusVersionTimestamp"/>
+                <cpt:property id="datanucleusIdLong"/>
+            </cpt:fieldSet>
+        </bs3:col>
+        <bs3:col span="6">
+            <cpt:fieldSet name="NFL" id="nFL">
+                <cpt:property id="league"/>
+                <cpt:property id="region"/>
+                <cpt:property id="teamEntity">
+                    <cpt:action id="updateUsingEntity" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="teamEnum">
+                    <cpt:action id="updateUsingEnum" position="BELOW"/>
+                </cpt:property>
+            </cpt:fieldSet>
+        </bs3:col>
+        <bs3:col span="12" unreferencedCollections="true"/>
+    </bs3:row>
+</bs3:grid>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bs3:grid xsi:schemaLocation="http://isis.apache.org/applib/layout/component http://isis.apache.org/applib/layout/component/component.xsd http://isis.apache.org/applib/layout/grid/bootstrap3 http://isis.apache.org/applib/layout/grid/bootstrap3/bootstrap3.xsd" xmlns:bs3="http://isis.apache.org/applib/layout/grid/bootstrap3" xmlns:cpt="http://isis.apache.org/applib/layout/component" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <bs3:row>
+        <bs3:col span="12" unreferencedActions="true">
+            <cpt:domainObject/>
+            <cpt:action id="clearHints"/>
+            <cpt:action id="downloadLayoutXml"/>
+            <cpt:action id="downloadJdoMetadata"/>
+            <cpt:action id="rebuildMetamodel"/>
+        </bs3:col>
+    </bs3:row>
+    <bs3:row>
+        <bs3:col span="4">
+            <cpt:fieldSet name="Name" id="name" unreferencedProperties="true">
+                <cpt:property id="name"/>
+                <cpt:property id="datanucleusVersionLong"/>
+                <cpt:property id="datanucleusIdLong"/>
+                <cpt:property id="datanucleusVersionTimestamp"/>
+            </cpt:fieldSet>
+            <cpt:fieldSet name="boolean" id="boolean">
+                <cpt:property id="someBoolean">
+                    <cpt:action id="updateSomeBoolean" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someBooleanHidden"/>
+                <cpt:property id="someBooleanDisabled"/>
+                <cpt:property id="someBooleanWithValidation">
+                    <cpt:action id="updateSomeBooleanWithValidation" position="BELOW"/>
+                </cpt:property>
+            </cpt:fieldSet>
+            <cpt:fieldSet name="java.lang.Boolean" id="java.lang.Boolean">
+                <cpt:property id="someBooleanWrapperMandatory">
+                    <cpt:action id="updateSomeBooleanWrapperMandatory" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someBooleanWrapperOptional">
+                    <cpt:action id="updateSomeBooleanWrapperOptional" position="BELOW"/>
+                    <cpt:action id="resetSomeBooleanWrapperOptional" position="RIGHT"/>
+                </cpt:property>
+                <cpt:property id="someBooleanWrapperHidden"/>
+                <cpt:property id="someBooleanWrapperDisabled"/>
+                <cpt:property id="someBooleanWrapperWithValidation">
+                    <cpt:action id="updateSomeBooleanWrapperWithValidation" position="BELOW"/>
+                </cpt:property>
+            </cpt:fieldSet>
+        </bs3:col>
+        <bs3:col span="4">
+            <cpt:fieldSet name="Enum of 3" id="enumof3">
+                <cpt:property id="someEnumOf3Mandatory">
+                    <cpt:action id="updateSomeEnumOf3Mandatory" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someEnumOf3Optional">
+                    <cpt:action id="updateSomeEnumOf3Optional" position="BELOW"/>
+                    <cpt:action id="resetSomeEnumOf3Optional" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someEnumOf3Hidden"/>
+                <cpt:property id="someEnumOf3Disabled"/>
+                <cpt:property id="someEnumOf3WithValidation">
+                    <cpt:action id="updateSomeEnumOf3WithValidation" position="BELOW"/>
+                </cpt:property>
+            </cpt:fieldSet>
+            <cpt:fieldSet name="Enum of 4" id="enumof4">
+                <cpt:property id="someEnumOf4Mandatory">
+                    <cpt:action id="updateSomeEnumOf4Mandatory" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someEnumOf4Optional">
+                    <cpt:action id="updateSomeEnumOf4Optional" position="RIGHT"/>
+                    <cpt:action id="resetSomeEnumOf4Optional" position="RIGHT"/>
+                </cpt:property>
+                <cpt:property id="someEnumOf4Hidden"/>
+                <cpt:property id="someEnumOf4Disabled"/>
+                <cpt:property id="someEnumOf4WithValidation">
+                    <cpt:action id="updateSomeEnumOf4WithValidation" position="BELOW"/>
+                </cpt:property>
+            </cpt:fieldSet>
+        </bs3:col>
+        <bs3:col span="4">
+            <cpt:fieldSet name="Enum of 8" id="enumof8">
+                <cpt:property id="someEnumOf8Mandatory">
+                    <cpt:action id="updateSomeEnumOf8Mandatory" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someEnumOf8Optional">
+                    <cpt:action id="updateSomeEnumOf8Optional" position="BELOW"/>
+                    <cpt:action id="resetSomeEnumOf8Optional" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someEnumOf8Hidden"/>
+                <cpt:property id="someEnumOf8Disabled"/>
+                <cpt:property id="someEnumOf8WithValidation">
+                    <cpt:action id="updateSomeEnumOf8WithValidation" position="BELOW"/>
+                </cpt:property>
+            </cpt:fieldSet>
+        </bs3:col>
+        <bs3:col span="12" unreferencedCollections="true"/>
+    </bs3:row>
+</bs3:grid>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bs3:grid xsi:schemaLocation="http://isis.apache.org/applib/layout/component http://isis.apache.org/applib/layout/component/component.xsd http://isis.apache.org/applib/layout/grid/bootstrap3 http://isis.apache.org/applib/layout/grid/bootstrap3/bootstrap3.xsd" xmlns:bs3="http://isis.apache.org/applib/layout/grid/bootstrap3" xmlns:cpt="http://isis.apache.org/applib/layout/component" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <bs3:row>
+        <bs3:col span="12" unreferencedActions="true">
+            <cpt:domainObject/>
+            <cpt:action id="clearHints"/>
+            <cpt:action id="downloadLayoutXml"/>
+            <cpt:action id="downloadJdoMetadata"/>
+            <cpt:action id="rebuildMetamodel"/>
+        </bs3:col>
+    </bs3:row>
+    <bs3:row>
+        <bs3:col span="4">
+            <cpt:fieldSet name="java.net.URL" id="java.net.URL" unreferencedProperties="true">
+                <cpt:property id="someUrlMandatory">
+                    <cpt:action id="updateSomeUrlMandatory" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someUrlOptional">
+                    <cpt:action id="updateSomeUrlOptional" position="BELOW"/>
+                    <cpt:action id="resetSomeUrlOptional" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someUrlHidden"/>
+                <cpt:property id="someUrlDisabled"/>
+                <cpt:property id="someUrlWithValidation">
+                    <cpt:action id="updateSomeUrlWithValidation" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someUrlMandatoryWithChoices">
+                    <cpt:action id="updateSomeUrlMandatoryWithChoices" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someUrlOptionalWithChoices">
+                    <cpt:action id="updateSomeUrlOptionalWithChoices" position="BELOW"/>
+                    <cpt:action id="resetSomeUrlOptionalWithChoices" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="datanucleusVersionLong"/>
+                <cpt:property id="datanucleusIdLong"/>
+                <cpt:property id="datanucleusVersionTimestamp"/>
+            </cpt:fieldSet>
+            <cpt:fieldSet name="Name" id="name">
+                <cpt:property id="name"/>
+            </cpt:fieldSet>
+        </bs3:col>
+        <bs3:col span="4">
+            <cpt:fieldSet name="java.util.UUID" id="java.util.UUID">
+                <cpt:property id="someUuidMandatory">
+                    <cpt:action id="updateSomeUuidMandatory" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someUuidOptional">
+                    <cpt:action id="updateSomeUuidOptional" position="BELOW"/>
+                    <cpt:action id="resetSomeUuidOptional" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someUuidHidden"/>
+                <cpt:property id="someUuidDisabled"/>
+                <cpt:property id="someUuidWithValidation">
+                    <cpt:action id="updateSomeUuidWithValidation" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someUuidMandatoryWithChoices">
+                    <cpt:action id="updateSomeUuidMandatoryWithChoices" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someUuidOptionalWithChoices">
+                    <cpt:action id="updateSomeUuidOptionalWithChoices" position="BELOW"/>
+                    <cpt:action id="resetSomeUuidOptionalWithChoices" position="BELOW"/>
+                </cpt:property>
+            </cpt:fieldSet>
+        </bs3:col>
+        <bs3:col span="4">
+            <cpt:fieldSet name="Money" id="money">
+                <cpt:property id="someMoneyMandatory">
+                    <cpt:action id="updateSomeMoneyMandatory" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someMoneyOptional">
+                    <cpt:action id="updateSomeMoneyOptional" position="BELOW"/>
+                    <cpt:action id="resetSomeMoneyOptional" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someMoneyHidden"/>
+                <cpt:property id="someMoneyDisabled"/>
+                <cpt:property id="someMoneyWithValidation">
+                    <cpt:action id="updateSomeMoneyWithValidation" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someMoneyMandatoryWithChoices">
+                    <cpt:action id="updateSomeMoneyMandatoryWithChoices" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someMoneyOptionalWithChoices">
+                    <cpt:action id="updateSomeMoneyOptionalWithChoices" position="BELOW"/>
+                    <cpt:action id="resetSomeMoneyOptionalWithChoices" position="BELOW"/>
+                </cpt:property>
+            </cpt:fieldSet>
+        </bs3:col>
+        <bs3:col span="12" unreferencedCollections="true"/>
+    </bs3:row>
+</bs3:grid>

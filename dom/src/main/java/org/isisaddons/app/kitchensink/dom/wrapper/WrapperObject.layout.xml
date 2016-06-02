@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bs3:grid xsi:schemaLocation="http://isis.apache.org/applib/layout/component http://isis.apache.org/applib/layout/component/component.xsd http://isis.apache.org/applib/layout/grid/bootstrap3 http://isis.apache.org/applib/layout/grid/bootstrap3/bootstrap3.xsd" xmlns:bs3="http://isis.apache.org/applib/layout/grid/bootstrap3" xmlns:cpt="http://isis.apache.org/applib/layout/component" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <bs3:row>
+        <bs3:col span="12" unreferencedActions="true">
+            <cpt:domainObject/>
+            <cpt:action id="clearHints"/>
+            <cpt:action id="downloadLayoutXml"/>
+            <cpt:action id="downloadJdoMetadata"/>
+            <cpt:action id="rebuildMetamodel"/>
+        </bs3:col>
+    </bs3:row>
+    <bs3:row>
+        <bs3:col span="4">
+            <cpt:fieldSet name="Name" id="name" unreferencedProperties="true">
+                <cpt:property id="name"/>
+                <cpt:property id="datanucleusVersionLong"/>
+                <cpt:property id="datanucleusIdLong"/>
+                <cpt:property id="datanucleusVersionTimestamp"/>
+            </cpt:fieldSet>
+            <cpt:fieldSet name="java.lang.Byte" id="java.lang.Byte">
+                <cpt:property id="someByteWrapperMandatory">
+                    <cpt:action id="updateSomeByteWrapperMandatory" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someByteWrapperOptional">
+                    <cpt:action id="updateSomeByteWrapperOptional" position="BELOW"/>
+                    <cpt:action id="resetSomeByteWrapperOptional" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someByteWrapperHidden"/>
+                <cpt:property id="someByteWrapperDisabled"/>
+                <cpt:property id="someByteWrapperWithValidation">
+                    <cpt:action id="updateSomeByteWrapperWithValidation" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someByteWrapperMandatoryWithChoices">
+                    <cpt:action id="updateSomeByteWrapperMandatoryWithChoices" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someByteWrapperOptionalWithChoices">
+                    <cpt:action id="updateSomeByteWrapperOptionalWithChoices" position="BELOW"/>
+                    <cpt:action id="resetSomeByteWrapperOptionalWithChoices" position="BELOW"/>
+                </cpt:property>
+            </cpt:fieldSet>
+            <cpt:fieldSet name="java.lang.Short" id="java.lang.Short">
+                <cpt:property id="someShortWrapperMandatory">
+                    <cpt:action id="updateSomeShortWrapperMandatory" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someShortWrapperOptional">
+                    <cpt:action id="updateSomeShortWrapperOptional" position="BELOW"/>
+                    <cpt:action id="resetSomeShortWrapperOptional" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someShortWrapperHidden"/>
+                <cpt:property id="someShortWrapperDisabled"/>
+                <cpt:property id="someShortWrapperWithValidation">
+                    <cpt:action id="updateSomeShortWrapperWithValidation" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someShortWrapperMandatoryWithChoices">
+                    <cpt:action id="updateSomeShortWrapperMandatoryWithChoices" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someShortWrapperOptionalWithChoices">
+                    <cpt:action id="updateSomeShortWrapperOptionalWithChoices" position="BELOW"/>
+                    <cpt:action id="resetSomeShortWrapperOptionalWithChoices" position="BELOW"/>
+                </cpt:property>
+            </cpt:fieldSet>
+        </bs3:col>
+        <bs3:col span="4">
+            <cpt:fieldSet name="java.lang.Integer" id="java.lang.Integer">
+                <cpt:property id="someIntegerWrapperMandatory">
+                    <cpt:action id="updateSomeIntegerWrapperMandatory" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someIntegerWrapperOptional">
+                    <cpt:action id="updateSomeIntegerWrapperOptional" position="BELOW"/>
+                    <cpt:action id="resetSomeIntegerWrapperOptional" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someIntegerWrapperHidden"/>
+                <cpt:property id="someIntegerWrapperDisabled"/>
+                <cpt:property id="someIntegerWrapperWithValidation">
+                    <cpt:action id="updateSomeIntegerWrapperWithValidation" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someIntegerWrapperMandatoryWithChoices">
+                    <cpt:action id="updateSomeIntegerWrapperMandatoryWithChoices" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someIntegerWrapperOptionalWithChoices">
+                    <cpt:action id="updateSomeIntegerWrapperOptionalWithChoices" position="BELOW"/>
+                    <cpt:action id="resetSomeIntegerWrapperOptionalWithChoices" position="BELOW"/>
+                </cpt:property>
+            </cpt:fieldSet>
+            <cpt:fieldSet name="java.lang.Long" id="java.lang.Long">
+                <cpt:property id="someLongWrapperMandatory">
+                    <cpt:action id="updateSomeLongWrapperMandatory" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someLongWrapperOptional">
+                    <cpt:action id="updateSomeLongWrapperOptional" position="BELOW"/>
+                    <cpt:action id="resetSomeLongWrapperOptional" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someLongWrapperHidden"/>
+                <cpt:property id="someLongWrapperDisabled"/>
+                <cpt:property id="someLongWrapperWithValidation">
+                    <cpt:action id="updateSomeLongWrapperWithValidation" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someLongWrapperMandatoryWithChoices">
+                    <cpt:action id="updateSomeLongWrapperMandatoryWithChoices" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someLongWrapperOptionalWithChoices">
+                    <cpt:action id="updateSomeLongWrapperOptionalWithChoices" position="BELOW"/>
+                    <cpt:action id="resetSomeLongWrapperOptionalWithChoices" position="BELOW"/>
+                </cpt:property>
+            </cpt:fieldSet>
+        </bs3:col>
+        <bs3:col span="4">
+            <cpt:fieldSet name="java.lang.Float" id="java.lang.Float">
+                <cpt:property id="someFloatWrapperMandatory">
+                    <cpt:action id="updateSomeFloatWrapperMandatory" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someFloatWrapperOptional">
+                    <cpt:action id="updateSomeFloatWrapperOptional" position="BELOW"/>
+                    <cpt:action id="resetSomeFloatWrapperOptional" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someFloatWrapperHidden"/>
+                <cpt:property id="someFloatWrapperDisabled"/>
+                <cpt:property id="someFloatWrapperWithValidation">
+                    <cpt:action id="updateSomeFloatWrapperWithValidation" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someFloatWrapperMandatoryWithChoices">
+                    <cpt:action id="updateSomeFloatWrapperMandatoryWithChoices" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someFloatWrapperOptionalWithChoices">
+                    <cpt:action id="updateSomeFloatWrapperOptionalWithChoices" position="BELOW"/>
+                    <cpt:action id="resetSomeFloatWrapperOptionalWithChoices" position="BELOW"/>
+                </cpt:property>
+            </cpt:fieldSet>
+            <cpt:fieldSet name="java.lang.Double" id="java.lang.Double">
+                <cpt:property id="someDoubleWrapperMandatory">
+                    <cpt:action id="updateSomeDoubleWrapperMandatory" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someDoubleWrapperOptional">
+                    <cpt:action id="updateSomeDoubleWrapperOptional" position="BELOW"/>
+                    <cpt:action id="resetSomeDoubleWrapperOptional" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someDoubleWrapperHidden"/>
+                <cpt:property id="someDoubleWrapperDisabled"/>
+                <cpt:property id="someDoubleWrapperWithValidation">
+                    <cpt:action id="updateSomeDoubleWrapperWithValidation" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someDoubleWrapperMandatoryWithChoices">
+                    <cpt:action id="updateSomeDoubleWrapperMandatoryWithChoices" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someDoubleWrapperOptionalWithChoices">
+                    <cpt:action id="updateSomeDoubleWrapperOptionalWithChoices" position="BELOW"/>
+                    <cpt:action id="resetSomeDoubleWrapperOptionalWithChoices" position="BELOW"/>
+                </cpt:property>
+            </cpt:fieldSet>
+        </bs3:col>
+        <bs3:col span="12" unreferencedCollections="true"/>
+    </bs3:row>
+</bs3:grid>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bs3:grid xsi:schemaLocation="http://isis.apache.org/applib/layout/component http://isis.apache.org/applib/layout/component/component.xsd http://isis.apache.org/applib/layout/grid/bootstrap3 http://isis.apache.org/applib/layout/grid/bootstrap3/bootstrap3.xsd" xmlns:bs3="http://isis.apache.org/applib/layout/grid/bootstrap3" xmlns:cpt="http://isis.apache.org/applib/layout/component" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <bs3:row>
+        <bs3:col span="12" unreferencedActions="true">
+            <cpt:domainObject/>
+            <cpt:action id="clearHints"/>
+            <cpt:action id="downloadLayoutXml"/>
+            <cpt:action id="downloadJdoMetadata"/>
+            <cpt:action id="rebuildMetamodel"/>
+        </bs3:col>
+    </bs3:row>
+    <bs3:row>
+        <bs3:col span="4">
+            <cpt:fieldSet name="Name" id="name" unreferencedProperties="true">
+                <cpt:property id="name"/>
+                <cpt:property id="datanucleusVersionLong"/>
+                <cpt:property id="datanucleusVersionTimestamp"/>
+                <cpt:property id="datanucleusIdLong"/>
+                <cpt:property id="someOtherObjectUsingName"/>
+            </cpt:fieldSet>
+            <cpt:fieldSet name="With Choices" id="withChoices">
+                <cpt:property id="someOtherObjectMandatoryWithChoices">
+                    <cpt:action id="updateSomeOtherObjectMandatoryWithChoices" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someOtherObjectOptionalWithChoices">
+                    <cpt:action id="updateSomeOtherObjectOptionalWithChoices" position="BELOW"/>
+                    <cpt:action id="resetSomeOtherObjectOptionalWithChoices" position="RIGHT"/>
+                </cpt:property>
+                <cpt:property id="someOtherObjectActionOnlyWithChoices">
+                    <cpt:action id="updateSomeOtherObjectActionOnlyWithChoices" position="BELOW"/>
+                    <cpt:action id="resetSomeOtherObjectActionOnlyWithChoices" position="RIGHT"/>
+                </cpt:property>
+            </cpt:fieldSet>
+        </bs3:col>
+        <bs3:col span="4">
+            <cpt:fieldSet name="Without Choices" id="withoutChoices">
+                <cpt:property id="someOtherObjectOptionalWithoutChoices">
+                    <cpt:action id="updateSomeOtherObjectOptionalWithoutChoices" position="BELOW"/>
+                    <cpt:action id="resetSomeOtherObjectOptionalWithoutChoices" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someOtherObjectActionOnlyWithoutChoices">
+                    <cpt:action id="updateSomeOtherObjectActionOnlyWithoutChoices" position="BELOW"/>
+                    <cpt:action id="resetSomeOtherObjectActionOnlyWithoutChoices" position="BELOW"/>
+                </cpt:property>
+            </cpt:fieldSet>
+        </bs3:col>
+        <bs3:col span="4">
+            <cpt:fieldSet name="Other Bounded Objects" id="otherBoundedObjects">
+                <cpt:property id="someOtherBoundedObjectMandatory">
+                    <cpt:action id="updateSomeOtherBoundedObjectMandatory" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someOtherBoundedObjectOptional">
+                    <cpt:action id="updateSomeOtherBoundedObjectOptional" position="BELOW"/>
+                    <cpt:action id="resetSomeOtherBoundedObjectOptional" position="BELOW"/>
+                </cpt:property>
+            </cpt:fieldSet>
+            <cpt:fieldSet name="Using Name" id="usingName">
+                <cpt:property id="someOtherObjectUsingNameName"/>
+            </cpt:fieldSet>
+        </bs3:col>
+        <bs3:col span="12" unreferencedCollections="true"/>
+    </bs3:row>
+</bs3:grid>

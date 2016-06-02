@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bs3:grid xsi:schemaLocation="http://isis.apache.org/applib/layout/component http://isis.apache.org/applib/layout/component/component.xsd http://isis.apache.org/applib/layout/grid/bootstrap3 http://isis.apache.org/applib/layout/grid/bootstrap3/bootstrap3.xsd" xmlns:bs3="http://isis.apache.org/applib/layout/grid/bootstrap3" xmlns:cpt="http://isis.apache.org/applib/layout/component" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <bs3:row>
+        <bs3:col span="12" unreferencedActions="true">
+            <cpt:domainObject/>
+            <cpt:action id="clearHints"/>
+            <cpt:action id="downloadLayoutXml"/>
+            <cpt:action id="downloadJdoMetadata"/>
+            <cpt:action id="rebuildMetamodel"/>
+        </bs3:col>
+    </bs3:row>
+    <bs3:row>
+        <bs3:col span="4">
+            <cpt:fieldSet name="Name" id="name" unreferencedProperties="true">
+                <cpt:property id="name"/>
+                <cpt:property id="datanucleusVersionLong"/>
+                <cpt:property id="datanucleusIdLong"/>
+                <cpt:property id="datanucleusVersionTimestamp"/>
+            </cpt:fieldSet>
+            <cpt:fieldSet name="char" id="char">
+                <cpt:property id="someChar">
+                    <cpt:action id="updateSomeChar" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someCharHidden"/>
+                <cpt:property id="someCharDisabled"/>
+                <cpt:property id="someCharWithValidation">
+                    <cpt:action id="updateSomeCharWithValidation" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someCharWithChoices">
+                    <cpt:action id="updateSomeCharWithChoices" position="BELOW"/>
+                </cpt:property>
+            </cpt:fieldSet>
+            <cpt:fieldSet name="java.lang.Character" id="java.lang.Character">
+                <cpt:property id="someCharacterWrapperMandatory">
+                    <cpt:action id="updateSomeCharacterWrapperMandatory" position="RIGHT"/>
+                </cpt:property>
+                <cpt:property id="someCharacterWrapperOptional">
+                    <cpt:action id="updateSomeCharacterWrapperOptional" position="BELOW"/>
+                    <cpt:action id="resetSomeCharacterWrapperOptional" position="RIGHT"/>
+                </cpt:property>
+                <cpt:property id="someCharacterWrapperHidden"/>
+                <cpt:property id="someCharacterWrapperDisabled"/>
+                <cpt:property id="someCharacterWrapperWithValidation">
+                    <cpt:action id="updateSomeCharacterWrapperWithValidation" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someCharacterWrapperMandatoryWithChoices">
+                    <cpt:action id="updateSomeCharacterWrapperMandatoryWithChoices" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someCharacterWrapperOptionalWithChoices">
+                    <cpt:action id="updateSomeCharacterWrapperOptionalWithChoices" position="BELOW"/>
+                    <cpt:action id="resetSomeCharacterWrapperOptionalWithChoices" position="RIGHT"/>
+                </cpt:property>
+            </cpt:fieldSet>
+        </bs3:col>
+        <bs3:col span="4">
+            <cpt:fieldSet name="java.lang.String" id="java.lang.String">
+                <cpt:action id="updateSomeStringMandatory" position="PANEL"/>
+                <cpt:action id="updateSomeStringOptional" position="PANEL"/>
+                <cpt:action id="resetSomeStringOptional" position="PANEL_DROPDOWN"/>
+                <cpt:property id="someStringMandatory"/>
+                <cpt:property id="someStringOptional"/>
+                <cpt:property id="someStringHidden"/>
+                <cpt:property id="someStringDisabled"/>
+                <cpt:property id="someStringWithValidation">
+                    <cpt:action id="updateSomeStringWithValidation" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someStringMandatoryWithChoices">
+                    <cpt:action id="updateSomeStringMandatoryWithChoices" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someStringOptionalWithChoices">
+                    <cpt:action id="updateSomeStringOptionalWithChoices" position="BELOW"/>
+                    <cpt:action id="resetSomeStringOptionalWithChoices" position="RIGHT"/>
+                </cpt:property>
+            </cpt:fieldSet>
+            <cpt:fieldSet name="Password" id="password">
+                <cpt:property id="somePasswordMandatory">
+                    <cpt:action id="updateSomePasswordMandatory" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="somePasswordOptional">
+                    <cpt:action id="updateSomePasswordOptional" position="BELOW"/>
+                    <cpt:action id="resetSomePasswordOptional" position="RIGHT"/>
+                </cpt:property>
+                <cpt:property id="somePasswordHidden"/>
+                <cpt:property id="somePasswordDisabled"/>
+                <cpt:property id="somePasswordWithValidation">
+                    <cpt:action id="updateSomePasswordWithValidation" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="somePasswordMandatoryWithChoices">
+                    <cpt:action id="updateSomePasswordMandatoryWithChoices" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="somePasswordOptionalWithChoices">
+                    <cpt:action id="updateSomePasswordOptionalWithChoices" position="BELOW"/>
+                    <cpt:action id="resetSomePasswordOptionalWithChoices" position="RIGHT"/>
+                </cpt:property>
+            </cpt:fieldSet>
+        </bs3:col>
+        <bs3:col span="4">
+            <cpt:fieldSet name="String with Sizes" id="stringwithSizes">
+                <cpt:property id="someString20">
+                    <cpt:action id="updateSomeString20" position="BELOW"/>
+                    <cpt:action id="resetSomeString20" position="RIGHT"/>
+                </cpt:property>
+                <cpt:property id="someString50">
+                    <cpt:action id="updateSomeString50" position="BELOW"/>
+                    <cpt:action id="resetSomeString50" position="RIGHT"/>
+                </cpt:property>
+            </cpt:fieldSet>
+            <cpt:fieldSet name="String Multi" id="stringMulti">
+                <cpt:property id="someStringMulti">
+                    <cpt:action id="updateSomeStringMulti" position="BELOW"/>
+                    <cpt:action id="resetSomeStringMulti" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someStringMultiNoWrap">
+                    <cpt:action id="updateSomeStringMultiNoWrap" position="BELOW"/>
+                    <cpt:action id="resetSomeStringMultiNoWrap" position="RIGHT"/>
+                </cpt:property>
+            </cpt:fieldSet>
+        </bs3:col>
+        <bs3:col span="12" unreferencedCollections="true"/>
+    </bs3:row>
+</bs3:grid>

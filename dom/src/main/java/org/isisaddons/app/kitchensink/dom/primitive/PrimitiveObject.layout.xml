@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bs3:grid xsi:schemaLocation="http://isis.apache.org/applib/layout/component http://isis.apache.org/applib/layout/component/component.xsd http://isis.apache.org/applib/layout/grid/bootstrap3 http://isis.apache.org/applib/layout/grid/bootstrap3/bootstrap3.xsd" xmlns:bs3="http://isis.apache.org/applib/layout/grid/bootstrap3" xmlns:cpt="http://isis.apache.org/applib/layout/component" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <bs3:row>
+        <bs3:col span="12" unreferencedActions="true">
+            <cpt:domainObject/>
+            <cpt:action id="clearHints"/>
+            <cpt:action id="downloadLayoutXml"/>
+            <cpt:action id="downloadJdoMetadata"/>
+            <cpt:action id="rebuildMetamodel"/>
+        </bs3:col>
+    </bs3:row>
+    <bs3:row>
+        <bs3:col span="4">
+            <cpt:fieldSet name="Name" id="name" unreferencedProperties="true">
+                <cpt:property id="name"/>
+                <cpt:property id="datanucleusVersionLong"/>
+                <cpt:property id="datanucleusIdLong"/>
+                <cpt:property id="datanucleusVersionTimestamp"/>
+            </cpt:fieldSet>
+            <cpt:fieldSet name="byte" id="byte">
+                <cpt:property id="someByte">
+                    <cpt:action id="updateSomeByte" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someByteHidden"/>
+                <cpt:property id="someByteDisabled"/>
+                <cpt:property id="someByteWithValidation">
+                    <cpt:action id="updateSomeByteWithValidation" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someByteWithChoices">
+                    <cpt:action id="updateSomeByteWithChoices" position="BELOW"/>
+                </cpt:property>
+            </cpt:fieldSet>
+            <cpt:fieldSet name="short" id="short">
+                <cpt:property id="someShort">
+                    <cpt:action id="updateSomeShort" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someShortHidden"/>
+                <cpt:property id="someShortDisabled"/>
+                <cpt:property id="someShortWithValidation">
+                    <cpt:action id="updateSomeShortWithValidation" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someShortWithChoices">
+                    <cpt:action id="updateSomeShortWithChoices" position="BELOW"/>
+                </cpt:property>
+            </cpt:fieldSet>
+        </bs3:col>
+        <bs3:col span="4">
+            <cpt:fieldSet name="int" id="int">
+                <cpt:property id="someInt">
+                    <cpt:action id="updateSomeInt" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someIntHidden"/>
+                <cpt:property id="someIntDisabled"/>
+                <cpt:property id="someIntWithValidation">
+                    <cpt:action id="updateSomeIntWithValidation" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someIntWithChoices">
+                    <cpt:action id="updateSomeIntWithChoices" position="BELOW"/>
+                </cpt:property>
+            </cpt:fieldSet>
+            <cpt:fieldSet name="long" id="long">
+                <cpt:property id="someLong">
+                    <cpt:action id="updateSomeLong" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someLongHidden"/>
+                <cpt:property id="someLongDisabled"/>
+                <cpt:property id="someLongWithValidation">
+                    <cpt:action id="updateSomeLongWithValidation" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someLongWithChoices">
+                    <cpt:action id="updateSomeLongWithChoices" position="BELOW"/>
+                </cpt:property>
+            </cpt:fieldSet>
+        </bs3:col>
+        <bs3:col span="4">
+            <cpt:fieldSet name="float" id="float">
+                <cpt:property id="someFloat">
+                    <cpt:action id="updateSomeFloat" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someFloatHidden"/>
+                <cpt:property id="someFloatDisabled"/>
+                <cpt:property id="someFloatWithValidation">
+                    <cpt:action id="updateSomeFloatWithValidation" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someFloatWithChoices">
+                    <cpt:action id="updateSomeFloatWithChoices" position="BELOW"/>
+                </cpt:property>
+            </cpt:fieldSet>
+            <cpt:fieldSet name="double" id="double">
+                <cpt:property id="someDouble">
+                    <cpt:action id="updateSomeDouble" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someDoubleHidden"/>
+                <cpt:property id="someDoubleDisabled"/>
+                <cpt:property id="someDoubleWithValidation">
+                    <cpt:action id="updateSomeDoubleWithValidation" position="BELOW"/>
+                </cpt:property>
+                <cpt:property id="someDoubleWithChoices">
+                    <cpt:action id="updateSomeDoubleWithChoices" position="BELOW"/>
+                </cpt:property>
+            </cpt:fieldSet>
+        </bs3:col>
+        <bs3:col span="12" unreferencedCollections="true"/>
+    </bs3:row>
+</bs3:grid>
