@@ -46,10 +46,7 @@ import org.apache.isis.applib.annotation.Where;
 import org.apache.isis.applib.util.ObjectContracts;
 
 import org.isisaddons.app.kitchensink.dom.Entity;
-import org.isisaddons.app.kitchensink.dom.other.OtherBoundedObject;
-import org.isisaddons.app.kitchensink.dom.other.OtherBoundedObjects;
-import org.isisaddons.app.kitchensink.dom.other.OtherObject;
-import org.isisaddons.app.kitchensink.dom.other.OtherObjects;
+import org.isisaddons.app.kitchensink.dom.other.*;
 
 @javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE)
 @javax.jdo.annotations.DatastoreIdentity(
@@ -81,6 +78,32 @@ public class ReferenceObject implements Entity<ReferenceObject> {
         this.name = name;
     }
 
+    //endregion
+
+
+    //region > someAutoObjectMandatory (property)
+    private AutoObject someAutoObjectMandatory;
+
+    @Column(allowsNull = "false")
+    public AutoObject getSomeAutoObjectMandatory() {
+        return someAutoObjectMandatory;
+    }
+
+    public void setSomeAutoObjectMandatory(final AutoObject someAutoObjectMandatory) {
+        this.someAutoObjectMandatory = someAutoObjectMandatory;
+    }
+    public Collection<AutoObject> choicesSomeAutoObjectMandatory() {
+        return autoObjects.listAll();
+    }
+
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public ReferenceObject updateSomeAutoObjectMandatory(final AutoObject i) {
+        setSomeAutoObjectMandatory(i);
+        return this;
+    }
+    public AutoObject default0UpdateSomeAutoObjectMandatory() {
+        return getSomeAutoObjectMandatory();
+    }
     //endregion
 
 
@@ -362,24 +385,14 @@ public class ReferenceObject implements Entity<ReferenceObject> {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     //region > injected services
 
     @javax.inject.Inject
     @SuppressWarnings("unused")
     private DomainObjectContainer container;
+
+    @javax.inject.Inject
+    private AutoObjects autoObjects;
 
     @javax.inject.Inject
     private OtherObjects otherObjects;

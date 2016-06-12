@@ -38,6 +38,7 @@ import org.isisaddons.app.kitchensink.fixture.layout.Layout_6_0_6_ObjectsFixture
 import org.isisaddons.app.kitchensink.fixture.message.MessageObjectsFixture;
 import org.isisaddons.app.kitchensink.fixture.misc.MiscObjectsFixture;
 import org.isisaddons.app.kitchensink.fixture.mixins.MixinObjectsFixture;
+import org.isisaddons.app.kitchensink.fixture.other.AutoObjectsFixture;
 import org.isisaddons.app.kitchensink.fixture.other.OtherBoundedObjectsFixture;
 import org.isisaddons.app.kitchensink.fixture.other.OtherObjectsFixture;
 import org.isisaddons.app.kitchensink.fixture.primitive.PrimitiveObjectsFixture;
@@ -60,6 +61,7 @@ public class KitchensinkSetupFixture extends FixtureScript {
         executionContext.executeChild(this, new KitchensinkTearDownFixture());
 
         executionContext.executeChild(this, new OtherBoundedObjectsFixture());
+        executionContext.executeChild(this, new AutoObjectsFixture());
         executionContext.executeChild(this, new OtherObjectsFixture());
         executionContext.executeChild(this, new NflTeamsFixture());
         executionContext.executeChild(this, new NflPlayersFixture());

@@ -13,11 +13,19 @@
         <bs3:col span="4">
             <cpt:fieldSet name="Name" id="name" unreferencedProperties="true">
                 <cpt:property id="name"/>
+            </cpt:fieldSet>
+            <cpt:fieldSet name="Metadata" id="metadata">
                 <cpt:property id="datanucleusVersionLong"/>
                 <cpt:property id="datanucleusVersionTimestamp"/>
                 <cpt:property id="datanucleusIdLong"/>
-                <cpt:property id="someOtherObjectUsingName"/>
             </cpt:fieldSet>
+            <cpt:fieldSet name="AutoComplete" id="AutoComplete">
+                <cpt:property id="someAutoObjectMandatory">
+                    <cpt:action id="updateSomeAutoObjectMandatory"/>
+                </cpt:property>
+            </cpt:fieldSet>
+        </bs3:col>
+        <bs3:col span="4">
             <cpt:fieldSet name="With Choices" id="withChoices">
                 <cpt:property id="someOtherObjectMandatoryWithChoices">
                     <cpt:action id="updateSomeOtherObjectMandatoryWithChoices" position="BELOW"/>
@@ -31,8 +39,6 @@
                     <cpt:action id="resetSomeOtherObjectActionOnlyWithChoices" position="RIGHT"/>
                 </cpt:property>
             </cpt:fieldSet>
-        </bs3:col>
-        <bs3:col span="4">
             <cpt:fieldSet name="Without Choices" id="withoutChoices">
                 <cpt:property id="someOtherObjectOptionalWithoutChoices">
                     <cpt:action id="updateSomeOtherObjectOptionalWithoutChoices" position="BELOW"/>

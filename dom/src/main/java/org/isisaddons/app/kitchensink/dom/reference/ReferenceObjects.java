@@ -18,6 +18,7 @@ package org.isisaddons.app.kitchensink.dom.reference;
 
 import java.util.List;
 import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
+import org.isisaddons.app.kitchensink.dom.other.AutoObject;
 import org.isisaddons.app.kitchensink.dom.other.OtherBoundedObject;
 import org.isisaddons.app.kitchensink.dom.other.OtherObject;
 import org.apache.isis.applib.annotation.ActionLayout;
@@ -36,15 +37,19 @@ public class ReferenceObjects extends RepositoryAbstract<ReferenceObject> {
 
     @MemberOrder(sequence = "30")
     public ReferenceObject createReferenceObject(
-            final @ParameterLayout(named="Name") String name,
-            final @ParameterLayout(named="Some Int") int i,
+            final @ParameterLayout(named = "Name") String name,
+            final @ParameterLayout(named = "Some Int") int i,
+            AutoObject autoObject,
             final OtherObject otherObject,
             final OtherBoundedObject otherBoundedObject) {
         final ReferenceObject obj = container.newTransientInstance(ReferenceObject.class);
         obj.setName(name);
 
+        obj.setSomeAutoObjectMandatory(autoObject);
+
         obj.setSomeOtherObjectMandatoryWithChoices(otherObject);
         obj.setSomeOtherObjectActionOnlyWithChoices(otherObject);
+
         obj.setSomeOtherBoundedObjectMandatory(otherBoundedObject);
 
         container.persistIfNotAlready(obj);

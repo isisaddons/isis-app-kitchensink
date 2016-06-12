@@ -20,10 +20,7 @@ import java.util.List;
 
 import org.apache.isis.applib.fixturescripts.FixtureScript;
 
-import org.isisaddons.app.kitchensink.dom.other.OtherBoundedObject;
-import org.isisaddons.app.kitchensink.dom.other.OtherBoundedObjects;
-import org.isisaddons.app.kitchensink.dom.other.OtherObject;
-import org.isisaddons.app.kitchensink.dom.other.OtherObjects;
+import org.isisaddons.app.kitchensink.dom.other.*;
 import org.isisaddons.app.kitchensink.dom.reference.ReferenceObject;
 import org.isisaddons.app.kitchensink.dom.reference.ReferenceObjects;
 import org.isisaddons.app.kitchensink.fixture.other.OtherBoundedObjectsFixture;
@@ -38,28 +35,31 @@ public class ReferenceObjectsFixture extends FixtureScript {
         executeChild(new OtherObjectsFixture(), executionContext);
         executeChild(new OtherBoundedObjectsFixture(), executionContext);
 
+        final List<AutoObject> autoObjectList = autoObjects.listAll();
         final List<OtherObject> otherObjectList = otherObjects.listAll();
         final List<OtherBoundedObject> otherBoundedObjectList = otherBoundedObjects.listAll();
 
         // create
         int i=0;
-        create("Foo", executionContext, i++, get(otherObjectList, i), get(otherBoundedObjectList, i));
-        create("Bar", executionContext, i++, get(otherObjectList, i), get(otherBoundedObjectList, i));
-        create("Baz", executionContext, i++, get(otherObjectList, i), get(otherBoundedObjectList, i));
+        create("Foo", executionContext, i++, get(autoObjectList, i) , get(otherObjectList, i), get(otherBoundedObjectList, i));
+        create("Bar", executionContext, i++, get(autoObjectList, i), get(otherObjectList, i), get(otherBoundedObjectList, i));
+        create("Baz", executionContext, i++, get(autoObjectList, i), get(otherObjectList, i), get(otherBoundedObjectList, i));
     }
 
     private static <T> T get(List<T> list, int i) {
         return list.isEmpty() ? null : list.get(i % list.size());
     }
 
-    private ReferenceObject create(final String name, ExecutionContext executionContext, int i, OtherObject otherObject, OtherBoundedObject otherBoundedObject) {
-        return executionContext.addResult(this, referenceObjects.createReferenceObject(name, i, otherObject, otherBoundedObject));
+    private ReferenceObject create(final String name, ExecutionContext executionContext, int i, AutoObject autoObject, OtherObject otherObject, OtherBoundedObject otherBoundedObject) {
+        return executionContext.addResult(this, referenceObjects.createReferenceObject(name, i, autoObject, otherObject, otherBoundedObject));
     }
 
     @javax.inject.Inject
     private ReferenceObjects referenceObjects;
     @javax.inject.Inject
     private OtherObjects otherObjects;
+    @javax.inject.Inject
+    private AutoObjects autoObjects;
     @javax.inject.Inject
     private OtherBoundedObjects otherBoundedObjects;
 
