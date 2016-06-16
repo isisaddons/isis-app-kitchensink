@@ -17,6 +17,9 @@
 package org.isisaddons.app.kitchensink.fixture;
 
 import java.util.List;
+
+import javax.inject.Inject;
+
 import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.ActionLayout;
 import org.apache.isis.applib.annotation.DomainService;
@@ -29,6 +32,10 @@ import org.apache.isis.applib.annotation.RestrictTo;
 import org.apache.isis.applib.fixturescripts.FixtureResult;
 import org.apache.isis.applib.fixturescripts.FixtureScript;
 import org.apache.isis.applib.fixturescripts.FixtureScripts;
+import org.apache.isis.applib.services.registry.ServiceRegistry2;
+import org.apache.isis.applib.services.wrapper.WrapperFactory;
+
+import org.isisaddons.app.kitchensink.fixture.busrules.BusRulesObjectsFixture;
 
 /**
  * Enables fixtures to be installed from the application.
@@ -96,4 +103,21 @@ public class KitchensinkFixturesService extends FixtureScripts {
         isInstalled = true;
         return run.get(0).getObject();
     }
+
+    // //////////////////////////////////////
+
+    @Action(
+            restrictTo = RestrictTo.PROTOTYPING
+    )
+    @MemberOrder(sequence = "499.10.2")
+    public Object test() {
+        final BusRulesObjectsFixture fixtureScript = new BusRulesObjectsFixture();
+        serviceRegistry2.injectServicesInto(fixtureScript);
+        return wrapperFactory.wrap(this).runFixtureScript(fixtureScript, null);
+    }
+
+    @Inject
+    WrapperFactory wrapperFactory;
+    @Inject
+    ServiceRegistry2 serviceRegistry2;
 }

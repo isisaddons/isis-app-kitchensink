@@ -29,6 +29,10 @@ public class WorkflowObjectsFixture extends FixtureScript {
         create("Foo", executionContext);
         create("Bar", executionContext);
         create("Baz", executionContext);
+
+        for (int i = 0; i < 50; i++) {
+            create("Extra " + (i+1), executionContext);
+        }
     }
 
     private org.isisaddons.app.kitchensink.dom.bulk.WorkflowObject create(final String name, ExecutionContext executionContext) {
