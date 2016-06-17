@@ -16,25 +16,18 @@
  */
 package org.isisaddons.app.kitchensink.dom.blobclob;
 
-import javax.jdo.annotations.Column;
-import javax.jdo.annotations.IdentityType;
-import javax.jdo.annotations.VersionStrategy;
-import org.isisaddons.app.kitchensink.dom.Entity;
-import org.isisaddons.app.kitchensink.dom.other.OtherBoundedObjects;
-import org.isisaddons.app.kitchensink.dom.other.OtherObjects;
 import org.apache.isis.applib.DomainObjectContainer;
-import org.apache.isis.applib.annotation.Action;
-import org.apache.isis.applib.annotation.BookmarkPolicy;
-import org.apache.isis.applib.annotation.DomainObject;
-import org.apache.isis.applib.annotation.DomainObjectLayout;
-import org.apache.isis.applib.annotation.Optionality;
-import org.apache.isis.applib.annotation.Parameter;
-import org.apache.isis.applib.annotation.Property;
-import org.apache.isis.applib.annotation.SemanticsOf;
-import org.apache.isis.applib.annotation.Title;
+import org.apache.isis.applib.annotation.*;
 import org.apache.isis.applib.util.ObjectContracts;
 import org.apache.isis.applib.value.Blob;
 import org.apache.isis.applib.value.Clob;
+import org.isisaddons.app.kitchensink.dom.Entity;
+import org.isisaddons.app.kitchensink.dom.other.OtherBoundedObjects;
+import org.isisaddons.app.kitchensink.dom.other.OtherObjects;
+
+import javax.jdo.annotations.Column;
+import javax.jdo.annotations.IdentityType;
+import javax.jdo.annotations.VersionStrategy;
 
 @javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE)
 @javax.jdo.annotations.DatastoreIdentity(
@@ -107,7 +100,7 @@ public class BlobClobObject implements Entity<BlobClobObject> {
     })
     private Blob someImage;
 
-    @Property(optionality = Optionality.OPTIONAL)
+    @Property(optionality = Optionality.OPTIONAL, fileAccept ="image/*")
     public Blob getSomeImage() {
         return someImage;
     }
@@ -117,7 +110,7 @@ public class BlobClobObject implements Entity<BlobClobObject> {
     }
 
     @Action(semantics=SemanticsOf.IDEMPOTENT)
-    public BlobClobObject updateSomeImage(@Parameter(optionality=Optionality.OPTIONAL) final  Blob i) {
+    public BlobClobObject updateSomeImage(@Parameter(optionality=Optionality.OPTIONAL, fileAccept ="image/*") final  Blob i) {
         setSomeImage(i);
         return this;
     }
@@ -137,7 +130,7 @@ public class BlobClobObject implements Entity<BlobClobObject> {
     })
     private Clob someClob;
 
-    @Property(optionality=Optionality.OPTIONAL)
+    @Property(optionality=Optionality.OPTIONAL, fileAccept =".txt")
     public Clob getSomeClob() {
         return someClob;
     }
@@ -148,7 +141,7 @@ public class BlobClobObject implements Entity<BlobClobObject> {
 
     @Action(semantics=SemanticsOf.IDEMPOTENT)
     public BlobClobObject updateSomeClob(
-            @Parameter(optionality=Optionality.OPTIONAL)
+            @Parameter(optionality=Optionality.OPTIONAL, fileAccept =".txt")
             final Clob clob) {
         setSomeClob(clob);
         return this;
