@@ -16,20 +16,18 @@
  */
 package org.isisaddons.app.kitchensink.dom.message;
 
+import org.apache.isis.applib.NonRecoverableException;
+import org.apache.isis.applib.RecoverableException;
+import org.apache.isis.applib.annotation.*;
+import org.apache.isis.applib.services.message.MessageService;
+import org.apache.isis.applib.services.sessmgmt.SessionManagementService;
+import org.apache.isis.applib.services.xactn.TransactionService;
+import org.apache.isis.applib.util.ObjectContracts;
+import org.isisaddons.app.kitchensink.dom.Entity;
+
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.VersionStrategy;
-import org.isisaddons.app.kitchensink.dom.Entity;
-import org.apache.isis.applib.DomainObjectContainer;
-import org.apache.isis.applib.NonRecoverableException;
-import org.apache.isis.applib.RecoverableException;
-import org.apache.isis.applib.annotation.BookmarkPolicy;
-import org.apache.isis.applib.annotation.DomainObject;
-import org.apache.isis.applib.annotation.DomainObjectLayout;
-import org.apache.isis.applib.annotation.MemberOrder;
-import org.apache.isis.applib.annotation.ParameterLayout;
-import org.apache.isis.applib.annotation.Title;
-import org.apache.isis.applib.util.ObjectContracts;
 
 @javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE)
 @javax.jdo.annotations.DatastoreIdentity(
@@ -67,7 +65,7 @@ public class MessageObject implements Entity<MessageObject> {
     public MessageObject updateAndInformUser(
             final @ParameterLayout(named="Name") String name) {
         setName(name);
-        container.informUser("Created object: " + name + " (informUser)");
+        messageService.informUser("Created object: " + name + " (informUser)");
         return this;
     }
 
@@ -75,7 +73,7 @@ public class MessageObject implements Entity<MessageObject> {
     public MessageObject updateAndWarnUser(
             final @ParameterLayout(named="Name") String name) {
         setName(name);
-        container.warnUser("Created object: " + name + " (warnUser)");
+        messageService.warnUser("Created object: " + name + " (warnUser)");
         return this;
     }
 
@@ -83,7 +81,7 @@ public class MessageObject implements Entity<MessageObject> {
     public MessageObject updateAndRaiseError(
             final @ParameterLayout(named="Name") String name) {
         setName(name);
-        container.raiseError("Created object: " + name + " (raiseError)");
+        messageService.raiseError("Created object: " + name + " (raiseError)");
         return this;
     }
 
@@ -116,47 +114,86 @@ public class MessageObject implements Entity<MessageObject> {
     @MemberOrder(sequence = "40.1")
     public MessageObject cloneAndInformUser() {
         final MessageObject clonedObject = messageObjects.create(getName() + " (cloned)");
-        container.informUser("Cloned object: " + name + " (informUser)");
+        messageService.informUser("Cloned object: " + name + " (informUser)");
         return clonedObject;
     }
 
     @MemberOrder(sequence = "40.2")
     public MessageObject cloneAndWarnUser() {
         final MessageObject clonedObject = messageObjects.create(getName() + " (cloned)");
-        container.warnUser("Cloned object: " + name + " (warnUser)");
+        messageService.warnUser("Cloned object: " + name + " (warnUser)");
         return clonedObject;
     }
 
     @MemberOrder(sequence = "40.3")
     public MessageObject cloneAndRaiseError() {
         final MessageObject clonedObject = messageObjects.create(getName() + " (cloned)");
-        container.raiseError("Cloned object: " + name + " (raiseError)");
+        messageService.raiseError("Cloned object: " + name + " (raiseError)");
         return clonedObject;
     }
 
     @MemberOrder(sequence = "40.4")
     public MessageObject cloneAndThrowRecoverableException(
             final @ParameterLayout(named="Name") String name) {
-        final String cloneName = getName() + " (cloned)";
-        messageObjects.create(cloneName);
-        throw new RecoverableException("A recoverable (application) exception has been thrown; the object (name='" + cloneName + "') should NOT have been created");
+        messageObjects.create(name);
+        throw new RecoverableException("A recoverable (application) exception has been thrown; the object (name='" + name + "') should NOT have been created");
     }
 
     @MemberOrder(sequence = "40.5")
     public MessageObject cloneAndThrowNonRecoverableException(
             final @ParameterLayout(named="Name") String name) {
-        final String cloneName = getName() + " (cloned)";
-        messageObjects.create(cloneName);
-        throw new NonRecoverableException("A non-recoverable exception has been thrown; the object (name='" + cloneName + "') should NOT have been created");
+        messageObjects.create(name);
+        throw new NonRecoverableException("A non-recoverable exception has been thrown; the object (name='" + name + "') should NOT have been created");
     }
 
     @MemberOrder(sequence = "40.6")
     public MessageObject createAndThrowRuntimeException(
             final @ParameterLayout(named="Name") String name) {
-        final String cloneName = getName() + " (cloned)";
-        messageObjects.create(cloneName);
-        throw new RuntimeException("A runtime exception has been thrown; the object (name='" + cloneName + "') should NOT have been created");
+        messageObjects.create(name);
+        throw new RuntimeException("A runtime exception has been thrown; the object (name='" + name + "') should NOT have been created");
     }
+
+    @MemberOrder(sequence = "40.7")
+    public MessageObject createAndNextTransaction(
+            final @ParameterLayout(named="Name") String name) {
+        MessageObject messageObject = messageObjects.create(name);
+        transactionService.nextTransaction();;
+        return messageObject;
+    }
+
+    @MemberOrder(sequence = "40.8.1")
+    public MessageObject createAndNextSessionAttemptToReturnSame(
+            final @ParameterLayout(named="Name") String name) {
+
+        MessageObject messageObject = messageObjects.create(name);
+
+        sessionManagementService.nextSession();
+
+        // can't just return messageObject, because it was created in a previous session.
+        // ... this should throw some sort of exception
+        return messageObject;
+    }
+
+    @MemberOrder(sequence = "40.8.2")
+    public MessageObject createAndNextSessionLookupAgain(
+            final @ParameterLayout(named="Name") String name) {
+
+        messageObjects.create(name);
+
+        sessionManagementService.nextSession();
+
+        // can't just return messageObject, because it was created in a previous session.
+        // but we can search for it again in the next and return.
+        return messageObjects.listAll().stream().filter(x -> x.getName().equals(name)).findFirst().get();
+    }
+
+
+    @javax.inject.Inject
+    TransactionService transactionService;
+
+    @javax.inject.Inject
+    SessionManagementService sessionManagementService;
+
 
     //endregion
 
@@ -172,8 +209,7 @@ public class MessageObject implements Entity<MessageObject> {
     //region > injected services
 
     @javax.inject.Inject
-    @SuppressWarnings("unused")
-    private DomainObjectContainer container;
+    MessageService messageService;
 
     @javax.inject.Inject
     private MessageObjects messageObjects;
