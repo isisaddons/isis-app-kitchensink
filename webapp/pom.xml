@@ -20,11 +20,11 @@ language governing permissions and limitations under the License.
     <parent>
         <groupId>org.isisaddons.app.kitchensink</groupId>
         <artifactId>isis-app-kitchensink</artifactId>
-        <version>1.13.0-SNAPSHOT</version>
+        <version>1.14.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>isis-app-kitchensink-webapp</artifactId>
-    <name>Kitchensink App Webapp</name>
+    <name>App KitchensinkApp Webapp</name>
 
     <description>This module runs both the Wicket viewer and the Restfulobjects viewer in a single webapp configured to run using the datanucleus object store.</description>
 
