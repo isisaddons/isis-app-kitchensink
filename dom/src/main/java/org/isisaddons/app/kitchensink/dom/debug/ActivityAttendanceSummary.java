@@ -2,13 +2,14 @@ package org.isisaddons.app.kitchensink.dom.debug;
 
 import java.util.Date;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import org.joda.time.LocalDate;
 
 import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.Editing;
-import org.apache.isis.applib.annotation.ViewModel;
 
-@ViewModel
+@XmlRootElement
 @DomainObject(editing = Editing.DISABLED)
 public class ActivityAttendanceSummary implements
         Comparable<ActivityAttendanceSummary> {
