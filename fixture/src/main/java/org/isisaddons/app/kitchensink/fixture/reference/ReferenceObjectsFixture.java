@@ -32,8 +32,8 @@ public class ReferenceObjectsFixture extends FixtureScript {
     protected void execute(ExecutionContext executionContext) {
 
         // prereqs
-        executeChild(new OtherObjectsFixture(), executionContext);
-        executeChild(new OtherBoundedObjectsFixture(), executionContext);
+        executionContext.executeChild(this, new OtherObjectsFixture());
+        executionContext.executeChild(this, new OtherBoundedObjectsFixture());
 
         final List<AutoObject> autoObjectList = autoObjects.listAll();
         final List<OtherObject> otherObjectList = otherObjects.listAll();
@@ -41,8 +41,18 @@ public class ReferenceObjectsFixture extends FixtureScript {
 
         // create
         int i=0;
-        create("Foo", executionContext, i++, get(autoObjectList, i) , get(otherObjectList, i), get(otherBoundedObjectList, i));
-        create("Bar", executionContext, i++, get(autoObjectList, i), get(otherObjectList, i), get(otherBoundedObjectList, i));
+        final ReferenceObject foo = create("Foo", executionContext, i++, get(autoObjectList, i),
+                get(otherObjectList, i), get(otherBoundedObjectList, i));
+
+        foo.addChild("Child 1");
+        foo.addChild("Child 2");
+        foo.addChild("Child 3");
+
+        final ReferenceObject bar = create("Bar", executionContext, i++, get(autoObjectList, i),
+                get(otherObjectList, i), get(otherBoundedObjectList, i));
+        bar.addChild("Child 4");
+        bar.addChild("Child 5");
+
         create("Baz", executionContext, i++, get(autoObjectList, i), get(otherObjectList, i), get(otherBoundedObjectList, i));
     }
 

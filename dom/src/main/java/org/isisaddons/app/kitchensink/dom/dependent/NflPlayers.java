@@ -26,9 +26,8 @@ import org.apache.isis.applib.annotation.Parameter;
 import org.apache.isis.applib.annotation.ParameterLayout;
 
 import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
-import org.isisaddons.app.kitchensink.dom.reference.ReferenceObject;
 
-@DomainService(repositoryFor = ReferenceObject.class)
+@DomainService(repositoryFor = NflPlayer.class)
 @DomainServiceLayout(menuOrder = "10.9",named="Dependent")
 public class NflPlayers extends RepositoryAbstract<NflPlayer> {
 

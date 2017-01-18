@@ -18,11 +18,15 @@ package org.isisaddons.app.kitchensink.dom.reference;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import javax.annotation.Nullable;
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.NotPersistent;
+import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.VersionStrategy;
 
 import com.google.common.base.Function;
@@ -37,6 +41,7 @@ import org.apache.isis.applib.annotation.BookmarkPolicy;
 import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.DomainObjectLayout;
 import org.apache.isis.applib.annotation.Editing;
+import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.Optionality;
 import org.apache.isis.applib.annotation.Parameter;
 import org.apache.isis.applib.annotation.Property;
@@ -46,7 +51,12 @@ import org.apache.isis.applib.annotation.Where;
 import org.apache.isis.applib.util.ObjectContracts;
 
 import org.isisaddons.app.kitchensink.dom.Entity;
-import org.isisaddons.app.kitchensink.dom.other.*;
+import org.isisaddons.app.kitchensink.dom.other.AutoObject;
+import org.isisaddons.app.kitchensink.dom.other.AutoObjects;
+import org.isisaddons.app.kitchensink.dom.other.OtherBoundedObject;
+import org.isisaddons.app.kitchensink.dom.other.OtherBoundedObjects;
+import org.isisaddons.app.kitchensink.dom.other.OtherObject;
+import org.isisaddons.app.kitchensink.dom.other.OtherObjects;
 
 @javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE)
 @javax.jdo.annotations.DatastoreIdentity(
@@ -384,6 +394,36 @@ public class ReferenceObject implements Entity<ReferenceObject> {
     //endregion
 
 
+    //region > children (collection)
+    @Persistent(mappedBy = "parent", dependentElement = "false")
+    private SortedSet<ReferenceChildObject> children = new TreeSet<ReferenceChildObject>();
+
+    @MemberOrder(sequence = "1")
+    public SortedSet<ReferenceChildObject> getChildren() {
+        return children;
+    }
+
+    public void setChildren(final SortedSet<ReferenceChildObject> children) {
+        this.children = children;
+    }
+
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
+    @MemberOrder(name = "children", sequence = "1")
+    public ReferenceObject addChild(final String name) {
+        final ReferenceChildObject childObject = container.newTransientInstance(ReferenceChildObject.class);
+        childObject.setName(name);
+        childObject.setParent(this);
+        container.persistIfNotAlready(childObject);
+        return this;
+    }
+
+    public String validate0AddChild(final String name) {
+        final Optional<ReferenceChildObject> childNamed = getChildren().stream().filter(x -> name.equals(x.getName())).findAny();
+        return childNamed.isPresent() ? String.format("There is already a child named %s", name) : null;
+    }
+
+    //endregion
+
 
     //region > injected services
 
@@ -399,6 +439,7 @@ public class ReferenceObject implements Entity<ReferenceObject> {
 
     @javax.inject.Inject
     private OtherBoundedObjects otherBoundedObjects;
+
 
     //endregion
 

@@ -17,8 +17,7 @@
 package org.isisaddons.app.kitchensink.dom.blobclob;
 
 import java.util.List;
-import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
-import org.isisaddons.app.kitchensink.dom.reference.ReferenceObject;
+
 import org.apache.isis.applib.annotation.ActionLayout;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.DomainServiceLayout;
@@ -29,7 +28,9 @@ import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.value.Blob;
 import org.apache.isis.applib.value.Clob;
 
-@DomainService(repositoryFor = ReferenceObject.class)
+import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
+
+@DomainService(repositoryFor = BlobClobObject.class)
 @DomainServiceLayout(
         named="Data Types",
         menuOrder = "10.7"
