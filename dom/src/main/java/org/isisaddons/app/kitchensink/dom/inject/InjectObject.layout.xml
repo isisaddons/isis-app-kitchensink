@@ -3,24 +3,47 @@
     <bs3:row>
         <bs3:col span="12" unreferencedActions="true">
             <cpt:domainObject/>
-            <cpt:action id="clearHints"/>
-            <cpt:action id="downloadLayoutXml"/>
-            <cpt:action id="downloadJdoMetadata"/>
-            <cpt:action id="rebuildMetamodel"/>
         </bs3:col>
     </bs3:row>
     <bs3:row>
         <bs3:col span="6">
-            <cpt:fieldSet name="Name" id="name" unreferencedProperties="true">
-                <cpt:property id="name">
-                    <cpt:action id="updateName" position="BELOW"/>
-                </cpt:property>
-                <cpt:property id="datanucleusVersionLong"/>
-                <cpt:property id="numberOfOtherServices"/>
-                <cpt:property id="numberOfServices"/>
-                <cpt:property id="datanucleusVersionTimestamp"/>
-                <cpt:property id="datanucleusIdLong"/>
-            </cpt:fieldSet>
+            <bs3:tabGroup>
+                <bs3:tab name="General">
+                    <bs3:row>
+                        <bs3:col span="12">
+                            <cpt:fieldSet name="General">
+                                <cpt:property id="name">
+                                    <cpt:action id="updateName" position="BELOW"/>
+                                </cpt:property>
+                                <cpt:property id="numberOfOtherServices"/>
+                                <cpt:property id="numberOfServices"/>
+                            </cpt:fieldSet>
+                        </bs3:col>
+                    </bs3:row>
+                </bs3:tab>
+                <bs3:tab name="Other">
+                    <bs3:row>
+                        <bs3:col span="12">
+                            <cpt:fieldSet name="Other" unreferencedProperties="true"/>
+                        </bs3:col>
+                    </bs3:row>
+                </bs3:tab>
+                <bs3:tab name="Metadata">
+                    <bs3:row>
+                        <bs3:col span="12">
+                            <cpt:fieldSet name="Metadata">
+                                <cpt:action id="clearHints" position="PANEL_DROPDOWN"/>
+                                <cpt:action id="downloadLayoutXml" position="PANEL_DROPDOWN"/>
+                                <cpt:action id="downloadJdoMetadata" position="PANEL_DROPDOWN"/>
+                                <cpt:action id="rebuildMetamodel" position="PANEL_DROPDOWN"/>
+                                <cpt:property id="datanucleusIdLong"/>
+                                <cpt:property id="datanucleusVersionLong"/>
+                                <cpt:property id="datanucleusVersionTimestamp"/>
+                            </cpt:fieldSet>
+                        </bs3:col>
+                    </bs3:row>
+                </bs3:tab>
+            </bs3:tabGroup>
         </bs3:col>
         <bs3:col span="6">
             <cpt:fieldSet name="Counters" id="counters"/>
