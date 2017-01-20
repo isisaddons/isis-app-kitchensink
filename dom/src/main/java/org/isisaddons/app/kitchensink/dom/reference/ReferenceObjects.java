@@ -17,15 +17,18 @@
 package org.isisaddons.app.kitchensink.dom.reference;
 
 import java.util.List;
+
+import org.apache.isis.applib.annotation.ActionLayout;
+import org.apache.isis.applib.annotation.DomainService;
+import org.apache.isis.applib.annotation.DomainServiceLayout;
+import org.apache.isis.applib.annotation.HomePage;
+import org.apache.isis.applib.annotation.MemberOrder;
+import org.apache.isis.applib.annotation.ParameterLayout;
+
 import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
 import org.isisaddons.app.kitchensink.dom.other.AutoObject;
 import org.isisaddons.app.kitchensink.dom.other.OtherBoundedObject;
 import org.isisaddons.app.kitchensink.dom.other.OtherObject;
-import org.apache.isis.applib.annotation.ActionLayout;
-import org.apache.isis.applib.annotation.DomainService;
-import org.apache.isis.applib.annotation.DomainServiceLayout;
-import org.apache.isis.applib.annotation.MemberOrder;
-import org.apache.isis.applib.annotation.ParameterLayout;
 
 @DomainService(menuOrder = "10.8", repositoryFor = ReferenceObject.class)
 @DomainServiceLayout(named="Data Types")
@@ -60,6 +63,7 @@ public class ReferenceObjects extends RepositoryAbstract<ReferenceObject> {
 
     @ActionLayout(named="First ReferenceObject")
     @Override
+    @HomePage
     public ReferenceObject first() {
         return super.first();
     }

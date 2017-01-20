@@ -16,6 +16,11 @@
  */
 package org.isisaddons.app.kitchensink.dom.reference;
 
+import java.util.List;
+
+import com.google.common.collect.FluentIterable;
+import com.google.common.collect.Lists;
+
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
@@ -44,4 +49,9 @@ public class ReferenceChildObjects extends RepositoryAbstract<ReferenceChildObje
         return obj;
     }
 
+    @MemberOrder(sequence = "50")
+    public List<ReferenceChildObject> findNamed(final @ParameterLayout(named = "Search") String search) {
+        return Lists.newArrayList(
+            FluentIterable.from(listAll()).filter(input -> input.getName().contains(search)).toList());
+    }
 }

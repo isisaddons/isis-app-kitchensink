@@ -18,11 +18,13 @@ package org.isisaddons.app.kitchensink.dom.primitive;
 
 import java.util.Collection;
 import java.util.List;
+
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.VersionStrategy;
+
 import com.google.common.collect.Lists;
-import org.isisaddons.app.kitchensink.dom.Entity;
+
 import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.BookmarkPolicy;
@@ -35,6 +37,8 @@ import org.apache.isis.applib.annotation.SemanticsOf;
 import org.apache.isis.applib.annotation.Title;
 import org.apache.isis.applib.annotation.Where;
 import org.apache.isis.applib.util.ObjectContracts;
+
+import org.isisaddons.app.kitchensink.dom.Entity;
 
 @javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE)
 @javax.jdo.annotations.DatastoreIdentity(
@@ -395,6 +399,7 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
         return Lists.newArrayList(1,2,3,4);
     }
     //endregion
+
 
 
     //region > someLong (property)

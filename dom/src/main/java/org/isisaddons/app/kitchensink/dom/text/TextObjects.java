@@ -17,13 +17,15 @@
 package org.isisaddons.app.kitchensink.dom.text;
 
 import java.util.List;
-import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
+
 import org.apache.isis.applib.annotation.ActionLayout;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.value.Password;
+
+import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
 
 @DomainService(repositoryFor = TextObject.class)
 @DomainServiceLayout(named="Data Types", menuOrder = "10.1")
@@ -75,8 +77,8 @@ public class TextObjects extends RepositoryAbstract<TextObject> {
         obj.setSomeString20(name);
         obj.setSomeString50(name);
 
-        obj.setSomeStringMulti(name);
-        obj.setSomeStringMultiNoWrap(name);
+        obj.setSomeStringMultiline(name);
+        obj.setSomeStringMultilineNoWrap(name);
 
         container.persistIfNotAlready(obj);
         return obj;
@@ -85,6 +87,7 @@ public class TextObjects extends RepositoryAbstract<TextObject> {
 
 
     @ActionLayout(named="First TextObject")
+    //@HomePage
     @Override
     public TextObject first() {
         return super.first();

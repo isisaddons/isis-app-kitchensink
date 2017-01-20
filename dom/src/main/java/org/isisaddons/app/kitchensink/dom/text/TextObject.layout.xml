@@ -44,100 +44,180 @@
 
             <cpt:fieldSet name="char" id="char">
                 <cpt:property id="someChar">
-                    <cpt:action id="updateSomeChar" position="BELOW"/>
+                    <cpt:action id="updateSomeChar" position="BELOW">
+                        <cpt:named>Update</cpt:named>
+                    </cpt:action>
                 </cpt:property>
                 <cpt:property id="someCharHidden"/>
                 <cpt:property id="someCharDisabled"/>
                 <cpt:property id="someCharWithValidation">
-                    <cpt:action id="updateSomeCharWithValidation" position="BELOW"/>
+                    <cpt:action id="updateSomeCharWithValidation" position="BELOW">
+                        <cpt:named>Update</cpt:named>
+                    </cpt:action>
                 </cpt:property>
                 <cpt:property id="someCharWithChoices">
-                    <cpt:action id="updateSomeCharWithChoices" position="BELOW"/>
+                    <cpt:action id="updateSomeCharWithChoices" position="BELOW">
+                        <cpt:named>Update</cpt:named>
+                    </cpt:action>
                 </cpt:property>
             </cpt:fieldSet>
             <cpt:fieldSet name="java.lang.Character" id="java.lang.Character">
                 <cpt:property id="someCharacterWrapperMandatory">
-                    <cpt:action id="updateSomeCharacterWrapperMandatory" position="RIGHT"/>
+                    <cpt:action id="updateSomeCharacterWrapperMandatory" position="RIGHT">
+                        <cpt:named>Update</cpt:named>
+                    </cpt:action>
                 </cpt:property>
                 <cpt:property id="someCharacterWrapperOptional">
-                    <cpt:action id="updateSomeCharacterWrapperOptional" position="BELOW"/>
-                    <cpt:action id="resetSomeCharacterWrapperOptional" position="RIGHT"/>
+                    <cpt:action id="updateSomeCharacterWrapperOptional" position="BELOW">
+                        <cpt:named>Update</cpt:named>
+                    </cpt:action>
+                    <cpt:action id="resetSomeCharacterWrapperOptional" position="RIGHT">
+                        <cpt:named>Reset</cpt:named>
+                    </cpt:action>
                 </cpt:property>
                 <cpt:property id="someCharacterWrapperHidden"/>
                 <cpt:property id="someCharacterWrapperDisabled"/>
                 <cpt:property id="someCharacterWrapperWithValidation">
-                    <cpt:action id="updateSomeCharacterWrapperWithValidation" position="BELOW"/>
+                    <cpt:action id="updateSomeCharacterWrapperWithValidation" position="BELOW">
+                        <cpt:named>Update</cpt:named>
+                    </cpt:action>
                 </cpt:property>
                 <cpt:property id="someCharacterWrapperMandatoryWithChoices">
-                    <cpt:action id="updateSomeCharacterWrapperMandatoryWithChoices" position="BELOW"/>
+                    <cpt:action id="updateSomeCharacterWrapperMandatoryWithChoices" position="BELOW">
+                        <cpt:named>Update</cpt:named>
+                    </cpt:action>
                 </cpt:property>
                 <cpt:property id="someCharacterWrapperOptionalWithChoices">
-                    <cpt:action id="updateSomeCharacterWrapperOptionalWithChoices" position="BELOW"/>
-                    <cpt:action id="resetSomeCharacterWrapperOptionalWithChoices" position="RIGHT"/>
+                    <cpt:action id="updateSomeCharacterWrapperOptionalWithChoices" position="BELOW">
+                        <cpt:named>Update</cpt:named>
+                    </cpt:action>
+                    <cpt:action id="resetSomeCharacterWrapperOptionalWithChoices" position="RIGHT">
+                        <cpt:named>Reset</cpt:named>
+                    </cpt:action>
                 </cpt:property>
             </cpt:fieldSet>
         </bs3:col>
         <bs3:col span="4">
             <cpt:fieldSet name="java.lang.String" id="java.lang.String">
-                <cpt:action id="updateSomeStringMandatory" position="PANEL"/>
-                <cpt:action id="updateSomeStringOptional" position="PANEL"/>
-                <cpt:action id="resetSomeStringOptional" position="PANEL_DROPDOWN"/>
-                <cpt:property id="someStringMandatory"/>
-                <cpt:property id="someStringOptional"/>
+                <cpt:property id="someStringMandatory">
+                    <cpt:action id="updateSomeStringMandatory" position="BELOW">
+                        <cpt:named>Update</cpt:named>
+                    </cpt:action>
+                </cpt:property>
+                <cpt:property id="someStringOptional">
+                    <cpt:action id="updateSomeStringOptional" position="BELOW">
+                        <cpt:named>Update</cpt:named>
+                    </cpt:action>
+                    <cpt:action id="resetSomeStringOptional" position="RIGHT">
+                        <cpt:named>Reset</cpt:named>
+                    </cpt:action>
+                </cpt:property>
                 <cpt:property id="someStringHidden"/>
                 <cpt:property id="someStringDisabled"/>
                 <cpt:property id="someStringWithValidation">
-                    <cpt:action id="updateSomeStringWithValidation" position="BELOW"/>
+                    <cpt:action id="updateSomeStringWithValidation" position="BELOW">
+                        <cpt:named>Update</cpt:named>
+                    </cpt:action>
                 </cpt:property>
                 <cpt:property id="someStringMandatoryWithChoices">
-                    <cpt:action id="updateSomeStringMandatoryWithChoices" position="BELOW"/>
+                    <cpt:action id="updateSomeStringMandatoryWithChoices" position="BELOW">
+                        <cpt:named>Update</cpt:named>
+                    </cpt:action>>
                 </cpt:property>
                 <cpt:property id="someStringOptionalWithChoices">
-                    <cpt:action id="updateSomeStringOptionalWithChoices" position="BELOW"/>
-                    <cpt:action id="resetSomeStringOptionalWithChoices" position="RIGHT"/>
+                    <cpt:action id="updateSomeStringOptionalWithChoices" position="BELOW">
+                        <cpt:named>Update</cpt:named>
+                    </cpt:action>
+                    <cpt:action id="resetSomeStringOptionalWithChoices" position="RIGHT">
+                        <cpt:named>Reset</cpt:named>
+                    </cpt:action>
+                </cpt:property>
+                <cpt:property id="someStringOptionalWithMultiChoices">
+                    <cpt:action id="updateSomeStringOptionalWithMultiChoices" position="BELOW">
+                        <cpt:named>Update</cpt:named>
+                    </cpt:action>
+                    <cpt:action id="resetSomeStringOptionalWithMultiChoices" position="RIGHT">
+                        <cpt:named>Reset</cpt:named>
+                    </cpt:action>
+                </cpt:property>
+                <cpt:property id="someStringOptionalWithMultiAutoComplete">
+                    <cpt:action id="updateSomeStringOptionalWithMultiAutoComplete" position="BELOW">
+                        <cpt:named>Update</cpt:named>
+                    </cpt:action>
+                    <cpt:action id="resetSomeStringOptionalWithMultiAutoComplete" position="RIGHT">
+                        <cpt:named>Reset</cpt:named>
+                    </cpt:action>
                 </cpt:property>
             </cpt:fieldSet>
             <cpt:fieldSet name="Password" id="password">
                 <cpt:property id="somePasswordMandatory">
-                    <cpt:action id="updateSomePasswordMandatory" position="BELOW"/>
+                    <cpt:action id="updateSomePasswordMandatory" position="BELOW">
+                        <cpt:named>Update</cpt:named>
+                    </cpt:action>
                 </cpt:property>
                 <cpt:property id="somePasswordOptional">
-                    <cpt:action id="updateSomePasswordOptional" position="BELOW"/>
-                    <cpt:action id="resetSomePasswordOptional" position="RIGHT"/>
+                    <cpt:action id="updateSomePasswordOptional" position="BELOW">
+                        <cpt:named>Update</cpt:named>
+                    </cpt:action>
+                    <cpt:action id="resetSomePasswordOptional" position="RIGHT">
+                        <cpt:named>Reset</cpt:named>
+                    </cpt:action>
                 </cpt:property>
                 <cpt:property id="somePasswordHidden"/>
                 <cpt:property id="somePasswordDisabled"/>
                 <cpt:property id="somePasswordWithValidation">
-                    <cpt:action id="updateSomePasswordWithValidation" position="BELOW"/>
+                    <cpt:action id="updateSomePasswordWithValidation" position="BELOW">
+                        <cpt:named>Update</cpt:named>
+                    </cpt:action>
                 </cpt:property>
                 <cpt:property id="somePasswordMandatoryWithChoices">
-                    <cpt:action id="updateSomePasswordMandatoryWithChoices" position="BELOW"/>
+                    <cpt:action id="updateSomePasswordMandatoryWithChoices" position="BELOW">
+                        <cpt:named>Update</cpt:named>
+                    </cpt:action>
                 </cpt:property>
                 <cpt:property id="somePasswordOptionalWithChoices">
-                    <cpt:action id="updateSomePasswordOptionalWithChoices" position="BELOW"/>
-                    <cpt:action id="resetSomePasswordOptionalWithChoices" position="RIGHT"/>
+                    <cpt:action id="updateSomePasswordOptionalWithChoices" position="BELOW">
+                        <cpt:named>Update</cpt:named>
+                    </cpt:action>
+                    <cpt:action id="resetSomePasswordOptionalWithChoices" position="RIGHT">
+                        <cpt:named>Reset</cpt:named>
+                    </cpt:action>
                 </cpt:property>
             </cpt:fieldSet>
         </bs3:col>
         <bs3:col span="4">
             <cpt:fieldSet name="String with Sizes" id="stringwithSizes">
                 <cpt:property id="someString20">
-                    <cpt:action id="updateSomeString20" position="BELOW"/>
+                    <cpt:action id="updateSomeString20" position="BELOW">
+                        <cpt:named>Update</cpt:named>
+                    </cpt:action>
                     <cpt:action id="resetSomeString20" position="RIGHT"/>
                 </cpt:property>
                 <cpt:property id="someString50">
-                    <cpt:action id="updateSomeString50" position="BELOW"/>
-                    <cpt:action id="resetSomeString50" position="RIGHT"/>
+                    <cpt:action id="updateSomeString50" position="BELOW">
+                        <cpt:named>Update</cpt:named>
+                    </cpt:action>
+                    <cpt:action id="resetSomeString50" position="RIGHT">
+                        <cpt:named>Reset</cpt:named>
+                    </cpt:action>
                 </cpt:property>
             </cpt:fieldSet>
             <cpt:fieldSet name="String Multi" id="stringMulti">
-                <cpt:property id="someStringMulti">
-                    <cpt:action id="updateSomeStringMulti" position="BELOW"/>
-                    <cpt:action id="resetSomeStringMulti" position="BELOW"/>
+                <cpt:property id="someStringMultiline">
+                    <cpt:action id="updateSomeStringMultiline" position="BELOW">
+                        <cpt:named>Update</cpt:named>
+                    </cpt:action>
+                    <cpt:action id="resetSomeStringMultiline" position="BELOW">
+                        <cpt:named>Reset</cpt:named>
+                    </cpt:action>
                 </cpt:property>
-                <cpt:property id="someStringMultiNoWrap">
-                    <cpt:action id="updateSomeStringMultiNoWrap" position="BELOW"/>
-                    <cpt:action id="resetSomeStringMultiNoWrap" position="RIGHT"/>
+                <cpt:property id="someStringMultilineNoWrap">
+                    <cpt:action id="updateSomeStringMultilineNoWrap" position="BELOW">
+                        <cpt:named>Update</cpt:named>
+                    </cpt:action>
+                    <cpt:action id="resetSomeStringMultilineNoWrap" position="RIGHT">
+                        <cpt:named>Reset</cpt:named>
+                    </cpt:action>
                 </cpt:property>
             </cpt:fieldSet>
         </bs3:col>

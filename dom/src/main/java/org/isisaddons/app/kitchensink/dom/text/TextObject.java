@@ -16,30 +16,43 @@
  */
 package org.isisaddons.app.kitchensink.dom.text;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import javax.annotation.Nullable;
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.VersionStrategy;
+
+import com.google.common.base.Joiner;
+import com.google.common.base.Splitter;
+import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
-import org.isisaddons.app.kitchensink.dom.Entity;
+
 import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.BookmarkPolicy;
 import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.DomainObjectLayout;
 import org.apache.isis.applib.annotation.Editing;
+import org.apache.isis.applib.annotation.MinLength;
 import org.apache.isis.applib.annotation.Optionality;
 import org.apache.isis.applib.annotation.Parameter;
 import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.Programmatic;
 import org.apache.isis.applib.annotation.Property;
 import org.apache.isis.applib.annotation.PropertyLayout;
+import org.apache.isis.applib.annotation.Publishing;
 import org.apache.isis.applib.annotation.SemanticsOf;
 import org.apache.isis.applib.annotation.Title;
 import org.apache.isis.applib.annotation.Where;
 import org.apache.isis.applib.util.ObjectContracts;
 import org.apache.isis.applib.value.Password;
+
+import org.isisaddons.app.kitchensink.dom.Entity;
 
 @javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE)
 @javax.jdo.annotations.DatastoreIdentity(
@@ -55,7 +68,6 @@ import org.apache.isis.applib.value.Password;
         bookmarking = BookmarkPolicy.AS_ROOT
 )
 public class TextObject implements Entity<TextObject> {
-
 
     //region > name (property)
 
@@ -529,6 +541,90 @@ public class TextObject implements Entity<TextObject> {
     }
     //endregion
 
+    //region > someStringOptionalWithMultiChoices (property)
+    private String someStringOptionalWithMultiChoices;
+
+    @Property(editing = Editing.DISABLED)
+    @Column(allowsNull = "true")
+    public String getSomeStringOptionalWithMultiChoices() {
+        return someStringOptionalWithMultiChoices;
+    }
+
+    public void setSomeStringOptionalWithMultiChoices(final String someStringOptionalWithMultiChoices) {
+        this.someStringOptionalWithMultiChoices = someStringOptionalWithMultiChoices;
+    }
+
+    @Action(semantics=SemanticsOf.IDEMPOTENT, publishing = Publishing.ENABLED)
+    public TextObject updateSomeStringOptionalWithMultiChoices(
+            // @Nullable
+            @ParameterLayout(named = "Choose some string(s)")
+            final List<String> strings) {
+        final String asStr = SeparatorUtil.asStr(strings);
+        setSomeStringOptionalWithMultiChoices(asStr);
+        return this;
+    }
+
+    public List<String> default0UpdateSomeStringOptionalWithMultiChoices() {
+        return SeparatorUtil.asList(getSomeStringOptionalWithMultiChoices());
+    }
+
+    public List<String> choices0UpdateSomeStringOptionalWithMultiChoices() {
+        return Lists.newArrayList("a", "ab", "abcd", "abcdefgh", "abcdefghijklmnop", "abcdefghijklmnopqrstuvwxyz");
+    }
+
+
+
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public TextObject resetSomeStringOptionalWithMultiChoices() {
+        setSomeStringOptionalWithMultiChoices(null);
+        return this;
+    }
+    //endregion
+
+    //region > someStringOptionalWithMultiAutoComplete (property - NOT SUPPORTED)
+    private String someStringOptionalWithMultiAutoComplete;
+
+
+    @Property(
+            editing = Editing.DISABLED,
+            hidden = Where.EVERYWHERE  // autocomplete on values is NOT SUPPORTED
+    )
+    @Column(allowsNull = "true")
+    public String getSomeStringOptionalWithMultiAutoComplete() {
+        return someStringOptionalWithMultiAutoComplete;
+    }
+
+    public void setSomeStringOptionalWithMultiAutoComplete(final String someStringOptionalWithMultiAutoComplete) {
+        this.someStringOptionalWithMultiAutoComplete = someStringOptionalWithMultiAutoComplete;
+    }
+
+    @Action(semantics=SemanticsOf.IDEMPOTENT, publishing = Publishing.ENABLED)
+    public TextObject updateSomeStringOptionalWithMultiAutoComplete(
+            @Nullable
+            final List<String> strings) {
+        setSomeStringOptionalWithMultiAutoComplete(SeparatorUtil.asStr(strings));
+        return this;
+    }
+    public List<String> default0UpdateSomeStringOptionalWithMultiAutoComplete() {
+        final String current = getSomeStringOptionalWithMultiAutoComplete();
+        return SeparatorUtil.asList(current);
+    }
+    public List<String> autoComplete0UpdateSomeStringOptionalWithMultiAutoComplete(final @MinLength(1) String search) {
+        final ArrayList<String> strings = Lists
+                .newArrayList("a", "ab", "abcd", "abcdefgh", "abcdefghijklmnop", "abcdefghijklmnopqrstuvwxyz");
+        return strings.stream().filter(x -> x.contains(search)).collect(Collectors.toList());
+    }
+
+
+
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public TextObject resetSomeStringOptionalWithMultiAutoComplete() {
+        setSomeStringOptionalWithMultiAutoComplete(null);
+        return this;
+    }
+
+    //endregion
+
 
     //region > someString20 (property)
     private String someString20;
@@ -846,62 +942,62 @@ public class TextObject implements Entity<TextObject> {
     //endregion
 
 
-    //region > someStringMulti (property)
-    private String someStringMulti;
+    //region > someStringMultiline (property)
+    private String someStringMultiline;
 
     @Column(allowsNull = "true", length = 2048)
     @PropertyLayout(multiLine = 10)
-    public String getSomeStringMulti() {
-        return someStringMulti;
+    public String getSomeStringMultiline() {
+        return someStringMultiline;
     }
 
-    public void setSomeStringMulti(final String someStringMulti) {
-        this.someStringMulti = someStringMulti;
+    public void setSomeStringMultiline(final String someStringMultiline) {
+        this.someStringMultiline = someStringMultiline;
     }
 
     @Action(semantics=SemanticsOf.IDEMPOTENT)
-    public TextObject updateSomeStringMulti(@Parameter(optionality=Optionality.OPTIONAL, maxLength = 2048) final  @ParameterLayout(multiLine = 10)  String i) {
-        setSomeStringMulti(i);
+    public TextObject updateSomeStringMultiline(@Parameter(optionality=Optionality.OPTIONAL, maxLength = 2048) final  @ParameterLayout(multiLine = 10)  String i) {
+        setSomeStringMultiline(i);
         return this;
     }
-    public String default0UpdateSomeStringMulti() {
-        return getSomeStringMulti();
+    public String default0UpdateSomeStringMultiline() {
+        return getSomeStringMultiline();
     }
 
     @Action(semantics=SemanticsOf.IDEMPOTENT)
-    public TextObject resetSomeStringMulti() {
-        setSomeStringMulti(null);
+    public TextObject resetSomeStringMultiline() {
+        setSomeStringMultiline(null);
         return this;
     }
     //endregion
 
-    //region > someStringMultiNoWrap (property)
-    private String someStringMultiNoWrap;
+    //region > someStringMultilineNoWrap (property)
+    private String someStringMultilineNoWrap;
 
     @PropertyLayout(multiLine = 4)
     @Column(allowsNull = "true", length = 2048)
-    public String getSomeStringMultiNoWrap() {
-        return someStringMultiNoWrap;
+    public String getSomeStringMultilineNoWrap() {
+        return someStringMultilineNoWrap;
     }
 
-    public void setSomeStringMultiNoWrap(final String someStringMultiNoWrap) {
-        this.someStringMultiNoWrap = someStringMultiNoWrap;
+    public void setSomeStringMultilineNoWrap(final String someStringMultilineNoWrap) {
+        this.someStringMultilineNoWrap = someStringMultilineNoWrap;
     }
 
     @Action(semantics=SemanticsOf.IDEMPOTENT)
-    public TextObject updateSomeStringMultiNoWrap(@Parameter(optionality=Optionality.OPTIONAL, maxLength = 2048)
+    public TextObject updateSomeStringMultilineNoWrap(@Parameter(optionality=Optionality.OPTIONAL, maxLength = 2048)
                                                   @ParameterLayout(multiLine = 4)
                                                   final String i) {
-        setSomeStringMultiNoWrap(i);
+        setSomeStringMultilineNoWrap(i);
         return this;
     }
-    public String default0UpdateSomeStringMultiNoWrap() {
-        return getSomeStringMultiNoWrap();
+    public String default0UpdateSomeStringMultilineNoWrap() {
+        return getSomeStringMultilineNoWrap();
     }
 
     @Action(semantics=SemanticsOf.IDEMPOTENT)
-    public TextObject resetSomeStringMultiNoWrap() {
-        setSomeStringMultiNoWrap(null);
+    public TextObject resetSomeStringMultilineNoWrap() {
+        setSomeStringMultilineNoWrap(null);
         return this;
     }
     //endregion
@@ -915,6 +1011,29 @@ public class TextObject implements Entity<TextObject> {
     }
 
     //endregion
+
+
+    static class SeparatorUtil {
+        private SeparatorUtil(){}
+
+        private static final String SEPARATOR = "; ";
+
+        private static String asStr(final List<String> strings) {
+            return strings == null ? null : Joiner.on(SEPARATOR).join(strings);
+        }
+
+        private static List<String> asList(final String val) {
+            if(val == null) {
+                return Collections.emptyList();
+            }
+            return Splitter.on(SEPARATOR)
+                    .splitToList(val)
+                    .stream()
+                    .filter(x -> !Strings.isNullOrEmpty(x))
+                    .collect(Collectors.toList());
+        }
+
+    }
 
     //region > injected services
 

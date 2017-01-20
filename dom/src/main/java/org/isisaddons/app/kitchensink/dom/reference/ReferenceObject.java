@@ -42,8 +42,10 @@ import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.DomainObjectLayout;
 import org.apache.isis.applib.annotation.Editing;
 import org.apache.isis.applib.annotation.MemberOrder;
+import org.apache.isis.applib.annotation.MinLength;
 import org.apache.isis.applib.annotation.Optionality;
 import org.apache.isis.applib.annotation.Parameter;
+import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.Property;
 import org.apache.isis.applib.annotation.SemanticsOf;
 import org.apache.isis.applib.annotation.Title;
@@ -410,16 +412,74 @@ public class ReferenceObject implements Entity<ReferenceObject> {
     @Action(semantics = SemanticsOf.IDEMPOTENT)
     @MemberOrder(name = "children", sequence = "1")
     public ReferenceObject addChild(final String name) {
-        final ReferenceChildObject childObject = container.newTransientInstance(ReferenceChildObject.class);
-        childObject.setName(name);
-        childObject.setParent(this);
-        container.persistIfNotAlready(childObject);
+        referenceChildObjects.create(name, this);
         return this;
     }
 
     public String validate0AddChild(final String name) {
         final Optional<ReferenceChildObject> childNamed = getChildren().stream().filter(x -> name.equals(x.getName())).findAny();
         return childNamed.isPresent() ? String.format("There is already a child named %s", name) : null;
+    }
+    //endregion
+
+
+    //region > moveChildren (action)
+
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
+    @MemberOrder(name = "children", sequence = "1")
+    public ReferenceObject moveChildren(
+            //@Nullable
+            @ParameterLayout(named = "Select some child(ren)")
+            final List<ReferenceChildObject> childObjects) {
+        for (ReferenceChildObject childObject : childObjects) {
+            childObject.setParent(this);
+        }
+        return this;
+    }
+
+    public List<ReferenceChildObject> choices0MoveChildren() {
+        return otherChildren();
+    }
+
+    public List<ReferenceChildObject> default0MoveChildren() {
+        final List<ReferenceChildObject> defaults = Lists.newArrayList();
+        final List<ReferenceChildObject> choices = choices0MoveChildren();
+
+        if(choices.size() > 2) {
+            defaults.add(choices.get(0));
+            defaults.add(choices.get(2));
+        } else if(choices.size() > 1) {
+            defaults.add(choices.get(0));
+        }
+        return defaults;
+    }
+
+    private List<ReferenceChildObject> otherChildren() {
+        final List<ReferenceChildObject> referenceChildObjects = this.referenceChildObjects.listAll();
+        referenceChildObjects.removeAll(getChildren());
+        return referenceChildObjects;
+    }
+
+    //endregion
+
+
+    //region > moveChildren2 (action)
+
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
+    @MemberOrder(name = "children", sequence = "1")
+    public ReferenceObject moveChildren2(
+            @Nullable
+            final List<ReferenceChildObject> childObjects) {
+        for (ReferenceChildObject childObject : childObjects) {
+            childObject.setParent(this);
+        }
+        return this;
+    }
+
+    public List<ReferenceChildObject> autoComplete0MoveChildren2(@MinLength(1) String search) {
+        final List<ReferenceChildObject> referenceChildObjects = this.referenceChildObjects.findNamed(search);
+        referenceChildObjects.removeAll(getChildren());
+        return referenceChildObjects;
     }
 
     //endregion
@@ -439,6 +499,9 @@ public class ReferenceObject implements Entity<ReferenceObject> {
 
     @javax.inject.Inject
     private OtherBoundedObjects otherBoundedObjects;
+
+    @javax.inject.Inject
+    private ReferenceChildObjects referenceChildObjects;
 
 
     //endregion
