@@ -46,7 +46,7 @@ import org.isisaddons.app.kitchensink.dom.Entity;
 @DomainObjectLayout(
         bookmarking = BookmarkPolicy.AS_ROOT
 )
-public class FoodStuff implements Entity<org.isisaddons.app.kitchensink.dom.contrib.contributee.FoodStuff> {
+public class FoodStuff implements Entity<FoodStuff> {
 
     //region > name (property)
 
@@ -67,7 +67,7 @@ public class FoodStuff implements Entity<org.isisaddons.app.kitchensink.dom.cont
     //region > compareTo
 
     @Override
-    public int compareTo(final org.isisaddons.app.kitchensink.dom.contrib.contributee.FoodStuff other) {
+    public int compareTo(final FoodStuff other) {
         return ObjectContracts.compare(this, other, "name");
     }
 

@@ -44,7 +44,32 @@ language governing permissions and limitations under the License.
                 </excludes>
             </resource>
         </resources>
+        <plugins>
+            <plugin>
+                <groupId>com.github.odavid.maven.plugins</groupId>
+                <artifactId>mixin-maven-plugin</artifactId>
+                <version>0.1-alpha-39</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <mixins>
+                        <mixin>
+                            <groupId>com.danhaywood.mavenmixin</groupId>
+                            <artifactId>standard</artifactId>
+                        </mixin>
+                        <mixin>
+                            <groupId>com.danhaywood.mavenmixin</groupId>
+                            <artifactId>datanucleusenhance</artifactId>
+                        </mixin>
+                        <mixin>
+                            <groupId>com.danhaywood.mavenmixin</groupId>
+                            <artifactId>surefire</artifactId>
+                        </mixin>
+                    </mixins>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
+
 
     <dependencies>
         <dependency>
@@ -61,156 +86,16 @@ language governing permissions and limitations under the License.
             <groupId>org.apache.isis.module</groupId>
             <artifactId>isis-module-settings-applib</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.apache.isis.module</groupId>
-            <artifactId>isis-module-devutils-applib</artifactId>
-        </dependency>
         -->
 
-
         <dependency>
-            <groupId>org.apache.isis.core</groupId>
-            <artifactId>isis-core-unittestsupport</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- Bytecode libraries (for mocking) -->
-        <dependency>
-            <groupId>org.objenesis</groupId>
-            <artifactId>objenesis</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
+            <groupId>com.danhaywood.mavendeps</groupId>
+            <artifactId>isistesting</artifactId>
+            <version>0.0.1</version>
+            <type>pom</type>
             <scope>test</scope>
         </dependency>
     </dependencies>
-
-    <profiles>
-        <profile>
-            <id>enhance</id>
-            <activation>
-                <property>
-                    <name>!skip.enhance</name>
-                </property>
-            </activation>
-            <properties>
-                <datanucleus-maven-plugin.version>4.0.1</datanucleus-maven-plugin.version>
-            </properties>
-            <build>
-                <pluginManagement>
-                    <plugins>
-                        <plugin>
-                            <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
-                            <groupId>org.eclipse.m2e</groupId>
-                            <artifactId>lifecycle-mapping</artifactId>
-                            <version>1.0.0</version>
-                            <configuration>
-                                <lifecycleMappingMetadata>
-                                    <pluginExecutions>
-                                        <pluginExecution>
-                                            <pluginExecutionFilter>
-                                                <groupId>org.datanucleus</groupId>
-                                                <artifactId>datanucleus-maven-plugin</artifactId>
-                                                <versionRange>[${datanucleus-maven-plugin.version},)</versionRange>
-                                                <goals>
-                                                    <goal>enhance</goal>
-                                                </goals>
-                                            </pluginExecutionFilter>
-                                            <action>
-                                                <ignore></ignore>
-                                            </action>
-                                        </pluginExecution>
-                                    </pluginExecutions>
-                                </lifecycleMappingMetadata>
-                            </configuration>
-                        </plugin>
-                    </plugins>
-                </pluginManagement>
-                <plugins>
-                    <plugin>
-                        <groupId>org.datanucleus</groupId>
-                        <artifactId>datanucleus-maven-plugin</artifactId>
-                        <version>${datanucleus-maven-plugin.version}</version>
-                        <configuration>
-                            <fork>false</fork>
-                            <log4jConfiguration>${basedir}/log4j.properties</log4jConfiguration>
-                            <verbose>true</verbose>
-                            <props>${basedir}/datanucleus.properties</props>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <phase>process-classes</phase>
-                                <goals>
-                                    <goal>enhance</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-            <dependencies>
-                <dependency>
-                    <groupId>org.datanucleus</groupId>
-                    <artifactId>datanucleus-core</artifactId>
-                </dependency>
-                <dependency>
-                    <groupId>org.datanucleus</groupId>
-                    <artifactId>datanucleus-jodatime</artifactId>
-                </dependency>
-                <dependency>
-                    <groupId>org.datanucleus</groupId>
-                    <artifactId>datanucleus-api-jdo</artifactId>
-                </dependency>
-            </dependencies>
-        </profile>
-        <profile>
-            <id>isis-validate</id>
-            <activation>
-                <property>
-                    <name>isis-validate</name>
-                </property>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.isis.tool</groupId>
-                        <artifactId>isis-maven-plugin</artifactId>
-                        <version>${isis.version}</version>
-                        <configuration>
-                            <appManifest>org.isisaddons.app.kitchensink.app.KitchensinkAppManifest</appManifest>
-                        </configuration>
-                        <dependencies>
-                            <dependency>
-                                <groupId>org.isisaddons.app.kitchensink</groupId>
-                                <artifactId>isis-app-kitchensink-dom</artifactId>
-                                <version>${project.version}</version>
-                            </dependency>
-                            <!--
-                            ... workaround to avoid conflict with plexus-default
-                                (not sure why exclusions in the isis-maven-plugin aren't sufficient, though ...
-                            -->
-                            <dependency>
-                                <groupId>com.google.guava</groupId>
-                                <artifactId>guava</artifactId>
-                                <version>19.0</version>
-                            </dependency>
-                        </dependencies>
-                        <executions>
-                            <execution>
-                                <phase>test</phase>
-                                <goals>
-                                    <goal>validate</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
 
 
 </project>

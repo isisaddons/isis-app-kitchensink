@@ -28,7 +28,7 @@ public abstract class KitchensinkAppIntegTest extends IntegrationTestAbstract {
 
     @BeforeClass
     public static void initClass() {
-        org.apache.log4j.PropertyConfigurator.configure("logging.properties");
+        org.apache.log4j.PropertyConfigurator.configure("logging-integtest.properties");
         KitchensinkAppSystemInitializer.initIsft();
         
         // instantiating will install onto ThreadLocal
