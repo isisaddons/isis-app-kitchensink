@@ -20,15 +20,15 @@ import java.util.Collections;
 import java.util.List;
 import java.util.SortedSet;
 import java.util.TreeSet;
+
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.VersionStrategy;
+
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import org.isisaddons.app.kitchensink.dom.Entity;
-import org.isisaddons.app.kitchensink.dom.hierarchy.child.ChildObject;
-import org.isisaddons.app.kitchensink.dom.hierarchy.child.ChildObjects;
+
 import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.annotation.BookmarkPolicy;
 import org.apache.isis.applib.annotation.DomainObject;
@@ -36,6 +36,10 @@ import org.apache.isis.applib.annotation.DomainObjectLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.Title;
 import org.apache.isis.applib.util.ObjectContracts;
+
+import org.isisaddons.app.kitchensink.dom.Entity;
+import org.isisaddons.app.kitchensink.dom.hierarchy.child.ChildObject;
+import org.isisaddons.app.kitchensink.dom.hierarchy.child.ChildObjects;
 
 import static com.google.common.base.Predicates.not;
 import static org.isisaddons.app.kitchensink.dom.hierarchy.child.PredicateUtil.containedIn;
