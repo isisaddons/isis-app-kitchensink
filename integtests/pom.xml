@@ -30,10 +30,6 @@
     <artifactId>isis-app-kitchensink-integtests</artifactId>
     <name>App KitchensinkApp Integration Tests</name>
 
-    <properties>
-        <isis.version>1.14.0-SNAPSHOT</isis.version>
-    </properties>
-
     <build>
         <testResources>
             <testResource>

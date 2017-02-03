@@ -54,30 +54,11 @@ language governing permissions and limitations under the License.
     </build>
 
     <properties>
-        <isis.version>1.14.0-SNAPSHOT</isis.version>
         <maven-war-plugin.warName>${project.parent.artifactId}</maven-war-plugin.warName>
     </properties>
 
     <dependencies>
 
-        <!--
-        REVIEW: REINSTATE for 1.14.0
-        <dependency>
-            <groupId>org.isisaddons.wicket.excel</groupId>
-            <artifactId>isis-wicket-excel-cpt</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.isisaddons.wicket.wickedcharts</groupId>
-            <artifactId>isis-wicket-wickedcharts-cpt</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>com.fasterxml.jackson.core</groupId>
-                    <artifactId>jackson-annotations</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        -->
 
         <!-- other modules in this project -->
         <dependency>
@@ -87,6 +68,7 @@ language governing permissions and limitations under the License.
         
         <!-- other isis components -->
 <!--
+        Apache Isis 1.15.0-SNAPSHOT
         <dependency>
             <groupId>org.apache.isis.core</groupId>
             <artifactId>isis-core-viewer-wicket-impl</artifactId>
@@ -96,6 +78,7 @@ language governing permissions and limitations under the License.
             <groupId>org.apache.isis.viewer</groupId>
             <artifactId>isis-viewer-wicket-impl</artifactId>
         </dependency>
+
 
         <dependency>
             <groupId>org.apache.isis.core</groupId>
@@ -125,7 +108,11 @@ language governing permissions and limitations under the License.
         <dependency>
             <groupId>com.danhaywood.mavendeps</groupId>
             <artifactId>isiswebapp</artifactId>
+            <version>0.0.1</version>
+<!--
+            Apache Isis 1.15.0-SNAPSHOT
             <version>0.0.2</version>
+-->
             <type>pom</type>
         </dependency>
 
