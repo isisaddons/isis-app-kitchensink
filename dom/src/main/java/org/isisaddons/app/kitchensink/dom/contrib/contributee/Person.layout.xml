@@ -43,7 +43,7 @@
             </bs3:tabGroup>
         </bs3:col>
         <bs3:col span="8" unreferencedCollections="true">
-            <cpt:collection id="likes">
+            <cpt:collection id="likes" defaultView="table">
                 <cpt:action id="addPreference"/>
                 <cpt:action id="removePreference"/>
             </cpt:collection>
