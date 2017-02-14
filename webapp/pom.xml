@@ -68,12 +68,15 @@ language governing permissions and limitations under the License.
         
         <!-- other isis components -->
 <!--
-        Apache Isis 1.15.0-SNAPSHOT
+        to run against 'master' (what will end up being released as Apache v1.15.0)
         <dependency>
             <groupId>org.apache.isis.core</groupId>
             <artifactId>isis-core-viewer-wicket-impl</artifactId>
         </dependency>
 -->
+        <!--
+        to run against 'maint-1.14.0' (what will end up being released as Apache v1.14.0)
+        -->
         <dependency>
             <groupId>org.apache.isis.viewer</groupId>
             <artifactId>isis-viewer-wicket-impl</artifactId>
