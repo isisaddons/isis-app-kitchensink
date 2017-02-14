@@ -34,8 +34,13 @@ import org.apache.isis.applib.annotation.Programmatic;
 
 import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
 
-@DomainService(repositoryFor = NflTeamEntity.class)
-@DomainServiceLayout(menuOrder = "10.10",named="Dependent")
+@DomainService(
+        repositoryFor = NflTeamEntity.class
+)
+@DomainServiceLayout(
+        menuOrder = "10.10",
+        named="Dependent"
+)
 public class NflTeams extends RepositoryAbstract<NflTeamEntity> {
 
     public NflTeams() {
@@ -44,7 +49,8 @@ public class NflTeams extends RepositoryAbstract<NflTeamEntity> {
 
     @MemberOrder(sequence = "30")
     public NflTeamEntity create(
-            final @ParameterLayout(named="Name") String name,
+            @ParameterLayout(named="Name")
+            final String name,
             final NflLeague league,
             @Parameter(optionality=Optionality.OPTIONAL) final  NflRegion region) {
         final NflTeamEntity obj = container.newTransientInstance(NflTeamEntity.class);

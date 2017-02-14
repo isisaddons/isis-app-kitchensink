@@ -19,16 +19,25 @@ package org.isisaddons.app.kitchensink.dom.misc;
 import java.net.URL;
 import java.util.List;
 import java.util.UUID;
-import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
+
 import org.apache.isis.applib.annotation.ActionLayout;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
+import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.value.Money;
 
-@DomainService(repositoryFor = MiscObject.class)
-@DomainServiceLayout(named="Data Types", menuOrder = "10.15")
+import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
+
+@DomainService(
+        nature = NatureOfService.VIEW_MENU_ONLY,
+        repositoryFor = MiscObject.class
+)
+@DomainServiceLayout(
+        named="Data Types",
+        menuOrder = "10.15"
+)
 public class MiscObjects extends RepositoryAbstract<MiscObject> {
 
     public MiscObjects() {

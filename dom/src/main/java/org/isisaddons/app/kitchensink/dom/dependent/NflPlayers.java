@@ -27,7 +27,9 @@ import org.apache.isis.applib.annotation.ParameterLayout;
 
 import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
 
-@DomainService(repositoryFor = NflPlayer.class)
+@DomainService(
+        repositoryFor = NflPlayer.class
+)
 @DomainServiceLayout(menuOrder = "10.9",named="Dependent")
 public class NflPlayers extends RepositoryAbstract<NflPlayer> {
 
@@ -37,7 +39,8 @@ public class NflPlayers extends RepositoryAbstract<NflPlayer> {
 
     @MemberOrder(sequence = "30")
     public NflPlayer create(
-            final @ParameterLayout(named="Name") String name,
+            @ParameterLayout(named="Name")
+            final String name,
             final NflLeague league,
             @Parameter(optionality=Optionality.OPTIONAL) final  NflRegion region,
             @Parameter(optionality= Optionality.OPTIONAL) final NflTeamEnum nflTeamEnum) {

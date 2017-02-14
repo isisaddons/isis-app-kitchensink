@@ -132,12 +132,6 @@ language governing permissions and limitations under the License.
           </exclusions>
         </dependency>
 
-        <dependency>
-            <groupId>org.apache.isis.core</groupId>
-            <artifactId>isis-core-webserver</artifactId>
-            <scope>test</scope>
-        </dependency>
-
     </dependencies>
 
     <profiles>

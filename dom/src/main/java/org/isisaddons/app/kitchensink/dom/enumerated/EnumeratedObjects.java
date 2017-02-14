@@ -17,15 +17,24 @@
 package org.isisaddons.app.kitchensink.dom.enumerated;
 
 import java.util.List;
-import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
+
 import org.apache.isis.applib.annotation.ActionLayout;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
+import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.ParameterLayout;
 
-@DomainService(repositoryFor = EnumeratedObject.class)
-@DomainServiceLayout(named="Data Types", menuOrder = "10.6")
+import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
+
+@DomainService(
+        nature = NatureOfService.VIEW_MENU_ONLY,
+        repositoryFor = EnumeratedObject.class
+)
+@DomainServiceLayout(
+        named="Data Types",
+        menuOrder = "10.6"
+)
 public class EnumeratedObjects extends RepositoryAbstract<EnumeratedObject> {
 
     public EnumeratedObjects() {
@@ -34,7 +43,8 @@ public class EnumeratedObjects extends RepositoryAbstract<EnumeratedObject> {
 
     @MemberOrder(sequence = "30")
     public EnumeratedObject createEnumeratedObject(
-            final @ParameterLayout(named="Name") String name,
+            @ParameterLayout(named="Name")
+            final String name,
             final boolean b,
             final EnumOf3 enumOf3,
             final EnumOf4 enumOf4,

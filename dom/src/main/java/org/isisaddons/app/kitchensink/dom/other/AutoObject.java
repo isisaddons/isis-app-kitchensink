@@ -16,18 +16,19 @@
  */
 package org.isisaddons.app.kitchensink.dom.other;
 
+import javax.jdo.annotations.Column;
+import javax.jdo.annotations.IdentityType;
+import javax.jdo.annotations.VersionStrategy;
+
 import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.annotation.BookmarkPolicy;
 import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.DomainObjectLayout;
 import org.apache.isis.applib.annotation.Title;
 import org.apache.isis.applib.util.ObjectContracts;
+
 import org.isisaddons.app.kitchensink.dom.Entity;
 import org.isisaddons.app.kitchensink.dom.SomeCategory;
-
-import javax.jdo.annotations.Column;
-import javax.jdo.annotations.IdentityType;
-import javax.jdo.annotations.VersionStrategy;
 
 /**
  * Intended to be referenced from other classes...

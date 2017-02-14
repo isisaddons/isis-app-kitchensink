@@ -30,8 +30,13 @@ import org.isisaddons.app.kitchensink.dom.other.AutoObject;
 import org.isisaddons.app.kitchensink.dom.other.OtherBoundedObject;
 import org.isisaddons.app.kitchensink.dom.other.OtherObject;
 
-@DomainService(menuOrder = "10.8", repositoryFor = ReferenceObject.class)
-@DomainServiceLayout(named="Data Types")
+@DomainService(
+        repositoryFor = ReferenceObject.class
+)
+@DomainServiceLayout(
+        named="Data Types",
+        menuOrder = "10.8"
+)
 public class ReferenceObjects extends RepositoryAbstract<ReferenceObject> {
 
     public ReferenceObjects() {
@@ -40,8 +45,10 @@ public class ReferenceObjects extends RepositoryAbstract<ReferenceObject> {
 
     @MemberOrder(sequence = "30")
     public ReferenceObject createReferenceObject(
-            final @ParameterLayout(named = "Name") String name,
-            final @ParameterLayout(named = "Some Int") int i,
+            @ParameterLayout(named = "Name")
+            final String name,
+            @ParameterLayout(named = "Some Int")
+            final int i,
             AutoObject autoObject,
             final OtherObject otherObject,
             final OtherBoundedObject otherBoundedObject) {

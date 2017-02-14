@@ -17,12 +17,14 @@
 package org.isisaddons.app.kitchensink.dom.busrules;
 
 import java.util.List;
+
 import javax.inject.Inject;
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.VersionStrategy;
+
 import com.google.common.collect.Lists;
-import org.isisaddons.app.kitchensink.dom.Entity;
+
 import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.annotation.BookmarkPolicy;
 import org.apache.isis.applib.annotation.Collection;
@@ -30,6 +32,8 @@ import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.DomainObjectLayout;
 import org.apache.isis.applib.annotation.Title;
 import org.apache.isis.applib.util.ObjectContracts;
+
+import org.isisaddons.app.kitchensink.dom.Entity;
 
 @javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE)
 @javax.jdo.annotations.DatastoreIdentity(
@@ -39,7 +43,7 @@ import org.apache.isis.applib.util.ObjectContracts;
         strategy=VersionStrategy.VERSION_NUMBER, 
         column="version")
 @DomainObject(
-        objectType = "BUSRULES"
+        objectType = "busrules.BusRulesObject"
 )
 @DomainObjectLayout(
         bookmarking = BookmarkPolicy.AS_ROOT
@@ -93,7 +97,7 @@ public class BusRulesObject implements Entity<BusRulesObject> {
     )
     public List<BusRulesObject> getOther() {
         final List<BusRulesObject> other = Lists.newArrayList();
-        other.addAll(busRulesObjects.listAllBusRulesObject());
+        other.addAll(busRulesObjectMenu.listAllBusRulesObject());
         other.remove(this);
         return other;
     }
@@ -153,7 +157,7 @@ public class BusRulesObject implements Entity<BusRulesObject> {
     private DomainObjectContainer container;
 
     @Inject
-    BusRulesObjects busRulesObjects ;
+    BusRulesObjectMenu busRulesObjectMenu;
     //endregion
 
 }

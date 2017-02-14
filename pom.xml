@@ -38,7 +38,8 @@ language governing permissions and limitations under the License.
     </prerequisites>
 
     <properties>
-        <isis.version>1.13.2.20170130-1613</isis.version>
+        <isis.version>1.14.0-SNAPSHOT</isis.version>
+        <!--<isis.version>1.13.2.20170206-2043</isis.version>-->
 
         <isis-module-fakedata.version>1.13.0</isis-module-fakedata.version>
 

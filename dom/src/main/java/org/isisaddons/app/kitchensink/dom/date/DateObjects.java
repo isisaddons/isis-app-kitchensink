@@ -19,15 +19,24 @@ package org.isisaddons.app.kitchensink.dom.date;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.List;
-import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
+
 import org.apache.isis.applib.annotation.ActionLayout;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
+import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.ParameterLayout;
 
-@DomainService(menuOrder = "10.5", repositoryFor = DateObject.class)
-@DomainServiceLayout(named="Data Types")
+import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
+
+@DomainService(
+        nature = NatureOfService.VIEW_MENU_ONLY,
+        repositoryFor = DateObject.class
+)
+@DomainServiceLayout(
+        named="Data Types",
+        menuOrder = "10.5"
+)
 public class DateObjects extends RepositoryAbstract<DateObject> {
 
     public DateObjects() {
@@ -36,12 +45,18 @@ public class DateObjects extends RepositoryAbstract<DateObject> {
 
     @MemberOrder(sequence = "30")
     public DateObject createDateObject(
-            final @ParameterLayout(named="Name") String name,
-            final @ParameterLayout(named="Year") int year,
-            final @ParameterLayout(named="Month") int month,
-            final @ParameterLayout(named="Day") int day,
-            final @ParameterLayout(named="Hour") int hour,
-            final @ParameterLayout(named="Minutes") int minutes) {
+            @ParameterLayout(named="Name")
+            final String name,
+            @ParameterLayout(named="Year")
+            final int year,
+            @ParameterLayout(named="Month")
+            final int month,
+            @ParameterLayout(named="Day")
+            final int day,
+            @ParameterLayout(named="Hour")
+            final int hour,
+            @ParameterLayout(named="Minutes")
+            final int minutes) {
         final DateObject obj = container.newTransientInstance(DateObject.class);
         obj.setName(name);
 

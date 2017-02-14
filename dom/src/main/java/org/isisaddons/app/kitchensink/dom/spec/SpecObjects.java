@@ -26,10 +26,12 @@ import org.apache.isis.applib.annotation.BookmarkPolicy;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
+import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.SemanticsOf;
 
 @DomainService(
+        nature = NatureOfService.VIEW_MENU_ONLY,
         repositoryFor = SpecObject.class
 )
 @DomainServiceLayout(
@@ -50,8 +52,9 @@ public class SpecObjects {
 
     @MemberOrder(sequence = "30")
     public SpecObject createSpecObject(
-            final @ParameterLayout(named="Name") String name) {
-        final SpecObject obj = container.newTransientInstance(SpecObject.class);
+            @ParameterLayout(named="Name")
+            final String name) {
+        final SpecObject obj = container.newTransientInstance(cls);
         obj.setName(name);
 
         container.persistIfNotAlready(obj);
@@ -69,7 +72,9 @@ public class SpecObjects {
     @Action(semantics=SemanticsOf.SAFE)
     @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
     @MemberOrder(sequence = "15")
-    public SpecObject findSpecObject(final @ParameterLayout(named="Name") String name) {
+    public SpecObject findSpecObject(
+            @ParameterLayout(named="Name")
+            final String name) {
         final List<SpecObject> list = listAllSpecObject();
         for (SpecObject specObject : list) {
             if(Objects.equals(specObject.getName(), name)) {

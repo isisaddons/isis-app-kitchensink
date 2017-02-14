@@ -28,8 +28,12 @@ import org.apache.isis.applib.annotation.ParameterLayout;
 
 import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
 
-@DomainService(repositoryFor = ReferenceChildObject.class)
-@DomainServiceLayout(menuOrder = "10")
+@DomainService(
+        repositoryFor = ReferenceChildObject.class
+)
+@DomainServiceLayout(
+        menuOrder = "10"
+)
 public class ReferenceChildObjects extends RepositoryAbstract<ReferenceChildObject> {
 
     public ReferenceChildObjects() {

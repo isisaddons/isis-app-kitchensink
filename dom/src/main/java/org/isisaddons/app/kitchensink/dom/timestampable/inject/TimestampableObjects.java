@@ -26,10 +26,12 @@ import org.apache.isis.applib.annotation.BookmarkPolicy;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
+import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.SemanticsOf;
 
 @DomainService(
+        nature = NatureOfService.VIEW_MENU_ONLY,
         repositoryFor = TimestampableObject.class
 )
 @DomainServiceLayout(
@@ -50,8 +52,9 @@ public class TimestampableObjects {
 
     @MemberOrder(sequence = "30")
     public TimestampableObject createTimestampableObject(
-            final @ParameterLayout(named = "Name") String name) {
-        final TimestampableObject obj = container.newTransientInstance(TimestampableObject.class);
+            @ParameterLayout(named = "Name")
+            final String name) {
+        final TimestampableObject obj = container.newTransientInstance(cls);
         obj.setName(name);
 
         container.persistIfNotAlready(obj);
@@ -69,7 +72,9 @@ public class TimestampableObjects {
     @Action(semantics=SemanticsOf.SAFE)
     @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
     @MemberOrder(sequence = "15")
-    public TimestampableObject findTimestampableObject(final @ParameterLayout(named = "Name") String name) {
+    public TimestampableObject findTimestampableObject(
+            @ParameterLayout(named = "Name")
+            final String name) {
         final List<TimestampableObject> list = listAllTimestampableObjects();
         for (TimestampableObject timestampableObject : list) {
             if(Objects.equals(timestampableObject.getName(), name)) {

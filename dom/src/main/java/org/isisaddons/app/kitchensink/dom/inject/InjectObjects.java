@@ -26,10 +26,12 @@ import org.apache.isis.applib.annotation.BookmarkPolicy;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
+import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.SemanticsOf;
 
 @DomainService(
+        nature = NatureOfService.VIEW_MENU_ONLY,
         repositoryFor = InjectObject.class
 )
 @DomainServiceLayout(
@@ -50,8 +52,9 @@ public class InjectObjects {
 
     @MemberOrder(sequence = "30")
     public InjectObject createInjectObject(
-            final @ParameterLayout(named = "Name") String name) {
-        final InjectObject obj = container.newTransientInstance(InjectObject.class);
+            @ParameterLayout(named = "Name")
+            final String name) {
+        final InjectObject obj = container.newTransientInstance(cls);
         obj.setName(name);
 
         container.persistIfNotAlready(obj);
@@ -69,7 +72,9 @@ public class InjectObjects {
     @Action(semantics=SemanticsOf.SAFE)
     @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
     @MemberOrder(sequence = "15")
-    public InjectObject findInjectObject(final @ParameterLayout(named = "Name") String name) {
+    public InjectObject findInjectObject(
+            @ParameterLayout(named = "Name")
+            final String name) {
         final List<InjectObject> list = listAllInjectObject();
         for (InjectObject injectObject : list) {
             if(Objects.equals(injectObject.getName(), name)) {

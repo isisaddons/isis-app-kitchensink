@@ -16,13 +16,18 @@
  */
 package org.isisaddons.app.kitchensink.dom.hierarchy.parent;
 
-import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
+import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.ParameterLayout;
 
-@DomainService(repositoryFor = ParentObject.class)
+import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
+
+@DomainService(
+        nature = NatureOfService.VIEW_MENU_ONLY,
+        repositoryFor = ParentObject.class
+)
 @DomainServiceLayout(menuOrder = "10")
 public class ParentObjects extends RepositoryAbstract<ParentObject> {
 

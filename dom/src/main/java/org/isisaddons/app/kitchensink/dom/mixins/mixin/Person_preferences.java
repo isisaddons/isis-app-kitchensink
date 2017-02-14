@@ -21,13 +21,12 @@ import java.util.List;
 import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.ActionLayout;
 import org.apache.isis.applib.annotation.Contributed;
-import org.apache.isis.applib.annotation.DomainObject;
-import org.apache.isis.applib.annotation.Nature;
+import org.apache.isis.applib.annotation.Mixin;
 import org.apache.isis.applib.annotation.SemanticsOf;
 
 import org.isisaddons.app.kitchensink.dom.mixins.mixedIn.Person;
 
-@DomainObject(nature = Nature.MIXIN )
+@Mixin(method = "exec")
 public class Person_preferences {
 
     private final Person person;
@@ -37,14 +36,14 @@ public class Person_preferences {
 
     @Action(semantics = SemanticsOf.SAFE)
     @ActionLayout(contributed = Contributed.AS_ASSOCIATION)
-    public List<Preference> $$() {
+    public List<Preference> exec() {
         return preferencesService.preferencesOf(this.person);
     }
 
-    public boolean hide$$() {
+    public boolean hideExec() {
         return person.isSecure();
     }
-    public String disable$$() {
+    public String disableExec() {
         return person.isLockDown()? "Person has been locked down": null;
     }
 

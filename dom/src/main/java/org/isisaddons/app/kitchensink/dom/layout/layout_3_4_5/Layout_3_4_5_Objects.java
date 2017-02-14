@@ -16,14 +16,21 @@
  */
 package org.isisaddons.app.kitchensink.dom.layout.layout_3_4_5;
 
-import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
-import org.isisaddons.app.kitchensink.dom.layout.layout_4_4_4.Layout_4_4_4_Object;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
+import org.apache.isis.applib.annotation.NatureOfService;
 
-@DomainService(repositoryFor = Layout_4_4_4_Object.class)
-@DomainServiceLayout(menuOrder = "10")
+import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
+import org.isisaddons.app.kitchensink.dom.layout.layout_4_4_4.Layout_4_4_4_Object;
+
+@DomainService(
+        nature = NatureOfService.VIEW_MENU_ONLY,
+        repositoryFor = Layout_4_4_4_Object.class
+)
+@DomainServiceLayout(
+        menuOrder = "10"
+)
 public class Layout_3_4_5_Objects extends RepositoryAbstract<Layout_3_4_5_Object> {
 
     public Layout_3_4_5_Objects() {

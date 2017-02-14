@@ -17,8 +17,7 @@
 package org.isisaddons.app.kitchensink.dom.pages;
 
 import java.util.List;
-import org.isisaddons.app.kitchensink.dom.busrules.BusRulesObject;
-import org.isisaddons.app.kitchensink.dom.busrules.BusRulesObjects;
+
 import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.NonRecoverableException;
 import org.apache.isis.applib.annotation.Action;
@@ -27,24 +26,33 @@ import org.apache.isis.applib.annotation.BookmarkPolicy;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
+import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.SemanticsOf;
 
-@DomainService(menuOrder = "10.1")
-@DomainServiceLayout(named="Pages")
+import org.isisaddons.app.kitchensink.dom.busrules.BusRulesObject;
+import org.isisaddons.app.kitchensink.dom.busrules.BusRulesObjectMenu;
+
+@DomainService(
+        nature = NatureOfService.VIEW_MENU_ONLY
+)
+@DomainServiceLayout(
+        named="Pages",
+        menuOrder = "10.1"
+)
 public class Pages {
 
 
     @Action(semantics= SemanticsOf.SAFE)
     @MemberOrder(sequence = "10")
     public BusRulesObject entityPage() {
-        return busRulesObjects.firstBusRulesObject();
+        return busRulesObjectMenu.firstBusRulesObject();
     }
 
     @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
     @Action(semantics=SemanticsOf.SAFE)
     @MemberOrder(sequence = "10")
     public List<BusRulesObject> standaloneCollection() {
-        return busRulesObjects.listAllBusRulesObject();
+        return busRulesObjectMenu.listAllBusRulesObject();
     }
 
     @Action(semantics=SemanticsOf.SAFE)
@@ -74,6 +82,6 @@ public class Pages {
     @javax.inject.Inject
     protected DomainObjectContainer container;
     @javax.inject.Inject
-    protected BusRulesObjects busRulesObjects;
+    protected BusRulesObjectMenu busRulesObjectMenu;
 
 }

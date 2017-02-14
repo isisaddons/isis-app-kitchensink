@@ -16,13 +16,16 @@
  */
 package org.isisaddons.app.kitchensink.dom.bulk;
 
-import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
+import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.ParameterLayout;
 
+import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
+
 @DomainService(
+        nature = NatureOfService.VIEW_MENU_ONLY,
         repositoryFor = WorkflowObject.class
 )
 @DomainServiceLayout(

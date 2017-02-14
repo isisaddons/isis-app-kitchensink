@@ -20,12 +20,15 @@ import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
+import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.services.bookmark.Bookmark;
 import org.apache.isis.applib.services.bookmark.BookmarkService2;
 import org.apache.isis.applib.services.factory.FactoryService;
 
-@DomainService( )
+@DomainService(
+        nature = NatureOfService.VIEW_MENU_ONLY
+)
 @DomainServiceLayout(
         menuOrder = "16.1",
         named="View Models"
@@ -44,7 +47,8 @@ public class Bookmarks {
 
     @MemberOrder(sequence = "30")
     public SomeViewModel createViewModel(
-            final @ParameterLayout(named = "Name") String name) {
+            @ParameterLayout(named = "Name")
+            final String name) {
         SomeViewModel someViewModel = factoryService.instantiate(cls);
         someViewModel.setName(name);
         return someViewModel;
@@ -52,10 +56,10 @@ public class Bookmarks {
 
     @MemberOrder(sequence = "20")
     public Object lookup(
-            final @ParameterLayout(named = "Bookmark") String bookmarkStr) {
+            @ParameterLayout(named = "Bookmark")
+            final String bookmarkStr) {
 
         Bookmark bookmark = new Bookmark(bookmarkStr);
-        //final Object obj = bookmarkService.lookup(bookmark, BookmarkService2.FieldResetPolicy.DONT_RESET);
         final Object obj = bookmarkService.lookup(bookmark, BookmarkService2.FieldResetPolicy.DONT_RESET);
         return obj;
     }

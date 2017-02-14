@@ -23,14 +23,13 @@ import com.google.common.collect.Lists;
 import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.ActionLayout;
 import org.apache.isis.applib.annotation.Contributed;
-import org.apache.isis.applib.annotation.DomainObject;
-import org.apache.isis.applib.annotation.Nature;
+import org.apache.isis.applib.annotation.Mixin;
 import org.apache.isis.applib.annotation.SemanticsOf;
 
 import org.isisaddons.app.kitchensink.dom.mixins.mixedIn.FoodStuff;
 import org.isisaddons.app.kitchensink.dom.mixins.mixedIn.Person;
 
-@DomainObject(nature = Nature.MIXIN )
+@Mixin(method = "exec")
 public class Person_removePreference {
 
     private final Person person;
@@ -40,17 +39,17 @@ public class Person_removePreference {
 
     @Action(semantics = SemanticsOf.IDEMPOTENT)
     @ActionLayout(contributed = Contributed.AS_ACTION)
-    public Person $$(final FoodStuff foodStuff) {
+    public Person exec(final FoodStuff foodStuff) {
         return preferencesService.removePreference(person, foodStuff);
     }
 
-    public List<FoodStuff> choices0$$() {
+    public List<FoodStuff> choices0Exec() {
         final List<Preference> preferences = preferencesService.preferencesOf(person);
         return Lists.transform(preferences, Preference.Functions.food());
     }
 
-    public FoodStuff default0$$() {
-        final List<FoodStuff> choices0 = choices0$$();
+    public FoodStuff default0Exec() {
+        final List<FoodStuff> choices0 = choices0Exec();
         return choices0.isEmpty() ? null: choices0.get(0);
     }
     

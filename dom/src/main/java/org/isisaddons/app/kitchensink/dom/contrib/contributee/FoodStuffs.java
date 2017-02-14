@@ -24,10 +24,14 @@ import org.apache.isis.applib.annotation.BookmarkPolicy;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
+import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.SemanticsOf;
 
-@DomainService(repositoryFor = FoodStuff.class)
+@DomainService(
+        nature = NatureOfService.VIEW_MENU_ONLY,
+        repositoryFor = FoodStuff.class
+)
 @DomainServiceLayout(named="Contributions", menuOrder = "10.1")
 public class FoodStuffs {
 
@@ -46,7 +50,7 @@ public class FoodStuffs {
     public FoodStuff createFoodStuff(
             @ParameterLayout(named="Name")
             final String name) {
-        final FoodStuff obj = container.newTransientInstance(FoodStuff.class);
+        final FoodStuff obj = container.newTransientInstance(cls);
         obj.setName(name);
 
         container.persistIfNotAlready(obj);

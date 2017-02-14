@@ -25,18 +25,21 @@ import org.apache.isis.applib.annotation.BookmarkPolicy;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
+import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.SemanticsOf;
 import org.apache.isis.applib.annotation.Where;
 
 @DomainService(
+        nature = NatureOfService.VIEW_MENU_ONLY,
         repositoryFor = BusRulesObject.class
+        // ,objectType = "busrules.BusRulesObjectMenu"
 )
 @DomainServiceLayout(
         menuOrder = "10.1",
         named="Bus Rules"
 )
-public class BusRulesObjects  {
+public class BusRulesObjectMenu {
 
     private final Class<BusRulesObject> cls = BusRulesObject.class;
 
@@ -52,7 +55,8 @@ public class BusRulesObjects  {
 
     @MemberOrder(sequence = "30")
     public BusRulesObject createBusRulesObject(
-            final @ParameterLayout(named="Name") String name) {
+            @ParameterLayout(named="Name")
+            final String name) {
         final BusRulesObject obj = container.newTransientInstance(BusRulesObject.class);
         obj.setName(name);
 
@@ -71,7 +75,9 @@ public class BusRulesObjects  {
     @Action(semantics=SemanticsOf.SAFE)
     @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
     @MemberOrder(sequence = "15")
-    public BusRulesObject findBusRulesObject(final @ParameterLayout(named="Name") String name) {
+    public BusRulesObject findBusRulesObject(
+            @ParameterLayout(named="Name")
+            final String name) {
         final List<BusRulesObject> list = listAllBusRulesObject();
         for (BusRulesObject busRulesObject : list) {
             if(Objects.equals(busRulesObject.getName(), name)) {

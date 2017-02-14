@@ -17,6 +17,12 @@
 package org.isisaddons.app.kitchensink.dom.layout;
 
 import javax.inject.Inject;
+
+import org.apache.isis.applib.annotation.DomainService;
+import org.apache.isis.applib.annotation.DomainServiceLayout;
+import org.apache.isis.applib.annotation.MemberOrder;
+import org.apache.isis.applib.annotation.NatureOfService;
+
 import org.isisaddons.app.kitchensink.dom.layout.layout_3_4_5.Layout_3_4_5_Object;
 import org.isisaddons.app.kitchensink.dom.layout.layout_3_4_5.Layout_3_4_5_Objects;
 import org.isisaddons.app.kitchensink.dom.layout.layout_4_0_0_8C.Layout_4_0_0_8C_Object;
@@ -29,10 +35,11 @@ import org.isisaddons.app.kitchensink.dom.layout.layout_6_0_6.Layout_6_0_6_Objec
 import org.isisaddons.app.kitchensink.dom.layout.layout_6_0_6.Layout_6_0_6_Objects;
 import org.isisaddons.app.kitchensink.dom.layout.layout_6_0_6_12C.Layout_6_0_6_12C_Object;
 import org.isisaddons.app.kitchensink.dom.layout.layout_6_0_6_12C.Layout_6_0_6_12C_Objects;
-import org.apache.isis.applib.annotation.DomainService;
-import org.apache.isis.applib.annotation.MemberOrder;
 
-@DomainService(menuOrder = "10.11")
+@DomainService(
+        nature = NatureOfService.VIEW_MENU_ONLY
+)
+@DomainServiceLayout(menuOrder = "10.11")
 public class LayoutObjects  {
 
 

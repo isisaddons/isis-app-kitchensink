@@ -19,15 +19,24 @@ package org.isisaddons.app.kitchensink.dom.javamath;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.List;
-import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
+
 import org.apache.isis.applib.annotation.ActionLayout;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
+import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.ParameterLayout;
 
-@DomainService(repositoryFor = JavaMathObject.class)
-@DomainServiceLayout(named="Data Types",menuOrder = "10.4")
+import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
+
+@DomainService(
+        nature = NatureOfService.VIEW_MENU_ONLY,
+        repositoryFor = JavaMathObject.class
+)
+@DomainServiceLayout(
+        named="Data Types",
+        menuOrder = "10.4"
+)
 public class JavaMathObjects extends RepositoryAbstract<JavaMathObject> {
 
     public JavaMathObjects() {
@@ -37,9 +46,12 @@ public class JavaMathObjects extends RepositoryAbstract<JavaMathObject> {
 
     @MemberOrder(sequence = "30")
     public JavaMathObject createJavaMathObject(
-            @ParameterLayout(named="Name") final String name,
-            @ParameterLayout(named="Long") final long l,
-            @ParameterLayout(named="Double") final double d) {
+            @ParameterLayout(named="Name")
+            final String name,
+            @ParameterLayout(named="Long")
+            final long l,
+            @ParameterLayout(named="Double")
+            final double d) {
         final JavaMathObject obj = container.newTransientInstance(JavaMathObject.class);
         obj.setName(name);
 

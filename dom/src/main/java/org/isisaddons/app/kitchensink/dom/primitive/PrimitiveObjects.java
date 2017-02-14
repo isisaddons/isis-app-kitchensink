@@ -17,15 +17,24 @@
 package org.isisaddons.app.kitchensink.dom.primitive;
 
 import java.util.List;
-import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
+
 import org.apache.isis.applib.annotation.ActionLayout;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
+import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.ParameterLayout;
 
-@DomainService(menuOrder = "10.2", repositoryFor = PrimitiveObject.class)
-@DomainServiceLayout(named="Data Types")
+import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
+
+@DomainService(
+        nature = NatureOfService.VIEW_MENU_ONLY,
+        repositoryFor = PrimitiveObject.class
+)
+@DomainServiceLayout(
+        named="Data Types",
+        menuOrder = "10.2"
+)
 public class PrimitiveObjects extends RepositoryAbstract<PrimitiveObject> {
 
     public PrimitiveObjects() {
@@ -34,13 +43,20 @@ public class PrimitiveObjects extends RepositoryAbstract<PrimitiveObject> {
 
     @MemberOrder(sequence = "30")
     public PrimitiveObject createPrimitiveObject(
-            final @ParameterLayout(named="Name") String name,
-            final @ParameterLayout(named="Byte") byte b,
-            final @ParameterLayout(named="Short") short s,
-            final @ParameterLayout(named="Int") int i,
-            final @ParameterLayout(named="Long") long l,
-            final @ParameterLayout(named="Float") float f,
-            final @ParameterLayout(named="Double") double d) {
+            @ParameterLayout(named="Name")
+            final String name,
+            @ParameterLayout(named="Byte")
+            final byte b,
+            @ParameterLayout(named="Short")
+            final short s,
+            @ParameterLayout(named="Int")
+            final int i,
+            @ParameterLayout(named="Long")
+            final long l,
+            @ParameterLayout(named="Float")
+            final float f,
+            @ParameterLayout(named="Double")
+            final double d) {
         final PrimitiveObject obj = container.newTransientInstance(PrimitiveObject.class);
         obj.setName(name);
 

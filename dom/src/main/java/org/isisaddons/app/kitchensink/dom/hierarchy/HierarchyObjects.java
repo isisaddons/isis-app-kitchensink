@@ -25,6 +25,7 @@ import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.MemberOrder;
+import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.SemanticsOf;
 
@@ -35,7 +36,10 @@ import org.isisaddons.app.kitchensink.dom.hierarchy.grandchild.GrandchildObjects
 import org.isisaddons.app.kitchensink.dom.hierarchy.parent.ParentObject;
 import org.isisaddons.app.kitchensink.dom.hierarchy.parent.ParentObjects;
 
-@DomainService(menuOrder = "10.10")
+@DomainService(
+        nature = NatureOfService.VIEW_MENU_ONLY,
+        menuOrder = "10.10"
+)
 public class HierarchyObjects {
 
 
@@ -47,7 +51,9 @@ public class HierarchyObjects {
 
     @Action(semantics = SemanticsOf.SAFE)
     @MemberOrder(sequence = "10")
-    public ParentObject findParent(@ParameterLayout(named="Title") final String title) {
+    public ParentObject findParent(
+            @ParameterLayout(named="Title")
+            final String title) {
         final Optional<ParentObject> parentObjectIfAny =
                 Iterables.tryFind(parentObjects.listAll(), input -> container.titleOf(input).contains(title));
         return parentObjectIfAny.orNull();

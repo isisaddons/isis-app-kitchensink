@@ -22,13 +22,20 @@ import org.apache.isis.applib.annotation.ActionLayout;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
+import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.value.Password;
 
 import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
 
-@DomainService(repositoryFor = TextObject.class)
-@DomainServiceLayout(named="Data Types", menuOrder = "10.1")
+@DomainService(
+        nature = NatureOfService.VIEW_MENU_ONLY,
+        repositoryFor = TextObject.class
+)
+@DomainServiceLayout(
+        named="Data Types",
+        menuOrder = "10.1"
+)
 public class TextObjects extends RepositoryAbstract<TextObject> {
 
     public TextObjects() {
@@ -37,7 +44,8 @@ public class TextObjects extends RepositoryAbstract<TextObject> {
 
     @MemberOrder(sequence = "30")
     public TextObject createTextObject(
-            final @ParameterLayout(named="Name") String name) {
+            @ParameterLayout(named="Name")
+            final String name) {
         final TextObject obj = container.newTransientInstance(TextObject.class);
         obj.setName(name);
 
