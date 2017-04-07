@@ -1,0 +1,182 @@
+# automated testing notes
+
+## Prototyping
+
+### Prototyping > Run Fixture Script
+
+- Script: Kitchensink Setup Fixture
+
+- Kitchensink (home page)
+
+
+### Prototyping > Download Layouts (XML)
+
+- style: Normalized / Current / Complete / Minimal
+
+
+### Prototyping > Download Meta Model (CSV)
+
+- .csv file name: metamodel.csv
+
+
+### Prototyping > Download Swagger Spec
+
+- Filename: swagger
+- Visibility: Private / Public / Private With Prototyping
+- Format: Yaml / Json
+
+### Prototyping > Download Translations
+
+- .pot file name: translations.pot
+
+
+### Translations
+
+- Prototyping > Switch to Reading Translations
+  - then:
+    - "Prototyping > Clear Transaction Cache" visible
+    - "Prototyping > Switch to Writing Translations" visible
+    - "Prototyping > Switch to Reading Translations" invisible
+
+TODO... flesh out...
+
+
+
+## Bus Rules
+
+### Bus Rules > First Bus Rules Object
+
+- returns a "BusRulesObject"
+
+
+### For "BusRulesObject" object:
+
+- oid:
+
+- Title: Foo
+
+- General tab
+  - "Name" property
+    - value: Foo
+    - editable
+
+- Metadata tab
+  - "Id" property
+    - not editable
+  - "Version" property
+    - not editable
+
+  - "Version" property
+    - not editable
+
+  - "Clear Hints" action
+    - should reset tab back to 'General'
+
+  - "Download Layout Xml"
+
+
+- "Top Level Action"
+  - rendered at top
+  - always disabled
+- "Top Level Action2"
+  - rendered at top
+  - always enabled
+  - just returns self
+
+- "Action Associated With Property"
+  - rendered below "Name" property
+  - always disabled
+- "Action 2 Associated With Property"
+  - rendered on the "Name" panel
+  - always enabled
+  - just returns self
+
+- "Action Associated With Collection"
+  - rendered on "Other" panel
+  - always disabled
+
+- "Action 2 Associated With Collection"
+  - rendered on "Other" panel
+  - just returns self
+
+
+
+
+### Bus Rules > Find Bus Rules Object
+
+- name: Foo
+
+- name: Doesn't exist
+
+### Bus Rules > List Bus Rules Object
+
+- returns a list
+
+### Bus Rules > Create Bus Rules Object
+
+- name: Aaa
+
+- returns a new business rules object
+  - then:
+    - title: AAA
+
+### Bus Rules > List Bus Rules Object Disabled
+
+- always disabled
+
+
+### Testing "hints" functionality
+
+- find 'Foo'
+  - renders 'General' tab
+  - navigate to 'Metadata' tab
+- find 'Bar'
+- find 'Foo'
+  - renders 'Metadata' tab (ie from last time)
+
+
+## Contributions
+
+### Contributions > First Preference
+
+- returns a PREFERENCE object
+
+### For "PREFERENCE" object:
+
+- oid:
+
+- Title: Mary love Apple
+
+- General tab:
+  - "Person" property: Mary
+  - "Type" property: Love
+  - "Food Stuff" property: Apple
+
+- "Person" property:
+  - editable
+  - change to "Mungo"
+
+- "Type" property:
+  - editable
+  - change to "Dislike"
+
+- "Food Stuff" property:
+  - editable
+  - change to "Pear"
+
+### Contributions > First Food Stuff
+
+- returns a FOOD object
+
+### for "FOOD" object:
+
+- "Add Preference" (contributed action)
+
+  - Person: "Midge"
+  - Type: "Like"
+
+  - then:
+    - new preference added.
+
+-
+

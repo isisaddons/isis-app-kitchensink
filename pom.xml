@@ -39,10 +39,10 @@ language governing permissions and limitations under the License.
 
     <properties>
         <isis.version>1.15.0-SNAPSHOT</isis.version>
-        <isis-module-fakedata.version>1.13.0</isis-module-fakedata.version>
+        <isis-module-fakedata.version>1.14.0</isis-module-fakedata.version>
 
-        <isis-wicket-excel.version>1.13.0</isis-wicket-excel.version>
-        <isis-wicket-wickedcharts.version>1.13.0</isis-wicket-wickedcharts.version>
+        <isis-wicket-excel.version>1.14.0</isis-wicket-excel.version>
+        <isis-wicket-wickedcharts.version>1.14.0</isis-wicket-wickedcharts.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -101,7 +101,7 @@ language governing permissions and limitations under the License.
         <module>app</module>
         <module>dom</module>
         <module>fixture</module>
-        <module>integtests</module>
+        <module>tests-integ</module>
         <module>webapp</module>
     </modules>
 
