@@ -38,8 +38,8 @@ import org.isisaddons.app.kitchensink.dom.mixins.mixedIn.Person;
         nature = NatureOfService.VIEW_MENU_ONLY
 )
 @DomainServiceLayout(
-        named="Mixins",
-        menuOrder = "10.1"
+        named="Contributions",
+        menuOrder = "10.9"
 )
 public class Preferences {
 

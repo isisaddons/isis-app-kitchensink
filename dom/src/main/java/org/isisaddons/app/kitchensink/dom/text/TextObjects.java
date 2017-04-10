@@ -95,7 +95,6 @@ public class TextObjects extends RepositoryAbstract<TextObject> {
 
 
     @ActionLayout(named="First TextObject")
-    //@HomePage
     @Override
     public TextObject first() {
         return super.first();

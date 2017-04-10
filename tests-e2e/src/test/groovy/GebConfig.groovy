@@ -1,15 +1,18 @@
-/*
-	This is the Geb configuration file.
-
-	See: http://www.gebish.org/manual/current/#configuration
-*/
-
+/**
+ *
+ * Geb configuration file.
+ *
+ * See: http://www.gebish.org/manual/current/#configuration
+ *
+ */
 
 import io.github.bonigarcia.wdm.ChromeDriverManager
 import org.openqa.selenium.chrome.ChromeDriver
 
 waiting {
 	timeout = 2
+//	timeout = 3
+//	retryInterval = 0.5
 }
 
 environments {
@@ -24,5 +27,5 @@ environments {
 
 // To run the tests with all browsers just run “./gradlew test”
 
-baseUrl = "http://www.google.com"
+baseUrl = "http://localhost:8080/wicket"
 reportsDir = "build/reports/intellij-geb-reports"

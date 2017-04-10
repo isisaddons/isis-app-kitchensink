@@ -35,8 +35,8 @@ import org.apache.isis.applib.annotation.SemanticsOf;
         repositoryFor = SpecObject.class
 )
 @DomainServiceLayout(
-        menuOrder = "10.1",
-        named="Spec"
+        menuOrder = "10.9",
+        named="Bus Rules"
 )
 public class SpecObjects {
 

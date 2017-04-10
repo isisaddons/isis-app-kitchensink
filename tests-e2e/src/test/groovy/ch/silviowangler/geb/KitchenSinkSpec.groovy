@@ -1,51 +1,50 @@
-import ch.silviowangler.geb.pages.KitchenSinkLoginPage
+import ch.silviowangler.geb.pages.CollectionResultsPage
+import ch.silviowangler.geb.pages.HomePage
+import ch.silviowangler.geb.pages.LoginPage
 import geb.spock.GebReportingSpec
 import spock.lang.Stepwise
 
 @Stepwise
 class KitchenSinkSpec extends GebReportingSpec {
 
-    void "Login"() {
+    void "Open"() {
 
         when:
-            to KitchenSinkLoginPage
+            to LoginPage
 
         then:
-            title == 'Kitchensink'
+            at LoginPage
     }
 
-    void "Make sure the user name and password initially empty"() {
+    void "Sign in"() {
 
-        expect: 'The user name and password is initially empty'
-        usernameField.text() == ''
-        passwordField.text() == ''
+        when: "Enter user and password"
+            username_field.value 'sven'
+            password_field.value 'pass'
+
+        and: "sign in"
+            signIn_button.click()
+
+        then:
+            at HomePage
+    }
+
+    void "Install fixtures"() {
 
         when:
-            usernameField.value 'sven'
-            passwordField.value 'pass'
+            prototypingMenu.menu.jquery.mouseover()
+
+        and:
+            prototypingMenu.runFixtureScripts.menuItem.click()
+
+        and:
+            actionParameters.form.displayed
+            actionParameters.ok_button.click()
 
         then:
-            title == 'Kitchensink'
+            at CollectionResultsPage
+            prototypingMenu.runFixtureScripts.results.displayed
 
     }
 
-    /*
-    void "Enter a query"() {
-
-      when: 'Enter "Geb Framework" into the search field'
-      searchInputField.value 'Geb Framework'
-
-      and: 'Click the search button'
-      searchButton.click()
-
-      and: 'wait until the search result element is visible'
-      waitFor { searchResultsContainer.displayed }
-
-      then:
-      title == 'Geb Framework - Google Search'
-
-      and:
-      firstResult.text() == 'Geb - Very Groovy Browser Automation'
-    }
-    */
 }
