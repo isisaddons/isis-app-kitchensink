@@ -1,4 +1,4 @@
-package ch.silviowangler.geb.pages
+package org.isisaddons.app.kitchensink.e2etests.pages
 
 import geb.Page
 

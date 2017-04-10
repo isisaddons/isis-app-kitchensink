@@ -1,6 +1,6 @@
-package ch.silviowangler.geb.pages
+package org.isisaddons.app.kitchensink.e2etests.pages
 
-import ch.silviowangler.geb.modules.PrototypingMenuModule
+import org.isisaddons.app.kitchensink.e2etests.modules.PrototypingMenuModule
 import geb.Page
 
 class CollectionResultsPage extends Page {

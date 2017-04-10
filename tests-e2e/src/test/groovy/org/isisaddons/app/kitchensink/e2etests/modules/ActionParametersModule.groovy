@@ -1,4 +1,4 @@
-package ch.silviowangler.geb.modules
+package org.isisaddons.app.kitchensink.e2etests.modules
 
 import geb.Module
 

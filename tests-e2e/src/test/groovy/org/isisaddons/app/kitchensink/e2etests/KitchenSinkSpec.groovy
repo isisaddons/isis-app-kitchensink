@@ -1,6 +1,8 @@
-import ch.silviowangler.geb.pages.CollectionResultsPage
-import ch.silviowangler.geb.pages.HomePage
-import ch.silviowangler.geb.pages.LoginPage
+package org.isisaddons.app.kitchensink.e2etests
+
+import org.isisaddons.app.kitchensink.e2etests.pages.CollectionResultsPage
+import org.isisaddons.app.kitchensink.e2etests.pages.HomePage
+import org.isisaddons.app.kitchensink.e2etests.pages.LoginPage
 import geb.spock.GebReportingSpec
 import spock.lang.Stepwise
 
