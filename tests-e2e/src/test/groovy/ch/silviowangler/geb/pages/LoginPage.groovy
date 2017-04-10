@@ -8,8 +8,8 @@ class LoginPage extends Page {
 
     static at = {
         title == 'Kitchensink'
-        username_field.text() == ''
-        password_field.text() == ''
+        username_field.value() == ''
+        password_field.value() == ''
     }
 
     static content = {

@@ -19,8 +19,8 @@ class KitchenSinkSpec extends GebReportingSpec {
     void "Sign in"() {
 
         when: "Enter user and password"
-            username_field.value 'sven'
-            password_field.value 'pass'
+            username_field = "sven"
+            password_field = 'pass'
 
         and: "sign in"
             signIn_button.click()

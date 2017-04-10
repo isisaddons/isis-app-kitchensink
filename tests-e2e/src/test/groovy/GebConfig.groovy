@@ -10,9 +10,8 @@ import io.github.bonigarcia.wdm.ChromeDriverManager
 import org.openqa.selenium.chrome.ChromeDriver
 
 waiting {
-	timeout = 2
-//	timeout = 3
-//	retryInterval = 0.5
+	timeout = 3
+	retryInterval = 0.5
 }
 
 environments {
