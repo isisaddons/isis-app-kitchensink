@@ -54,7 +54,7 @@
                 </cpt:property>
             </cpt:fieldSet>
             <cpt:fieldSet name="short" id="short">
-                <cpt:property id="someShort">
+                <cpt:property id="someShort" promptStyle="INLINE">
                     <cpt:action id="updateSomeShort" position="BELOW"/>
                 </cpt:property>
                 <cpt:property id="someShortHidden"/>
@@ -69,7 +69,7 @@
         </bs3:col>
         <bs3:col span="4">
             <cpt:fieldSet name="int" id="int">
-                <cpt:property id="someInt">
+                <cpt:property id="someInt"  promptStyle="INLINE">
                     <cpt:action id="updateSomeInt" position="BELOW"/>
                 </cpt:property>
                 <cpt:property id="someIntHidden"/>

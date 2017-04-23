@@ -44,7 +44,7 @@
                 <cpt:property id="someJavaUtilDateMandatory">
                     <cpt:action id="updateSomeJavaUtilDateMandatory" position="BELOW"/>
                 </cpt:property>
-                <cpt:property id="someJavaUtilDateOptional">
+                <cpt:property id="someJavaUtilDateOptional"  promptStyle="INLINE">
                     <cpt:action id="updateSomeJavaUtilDateOptional" position="BELOW"/>
                     <cpt:action id="resetSomeJavaUtilDateOptional" position="BELOW"/>
                 </cpt:property>
@@ -90,7 +90,7 @@
                 <cpt:property id="someJodaLocalDateMandatory">
                     <cpt:action id="updateSomeJodaLocalDateMandatory" position="BELOW"/>
                 </cpt:property>
-                <cpt:property id="someJodaLocalDateOptional">
+                <cpt:property id="someJodaLocalDateOptional"  promptStyle="INLINE">
                     <cpt:action id="updateSomeJodaLocalDateOptional" position="BELOW"/>
                     <cpt:action id="resetSomeJodaLocalDateOptional" position="BELOW"/>
                 </cpt:property>

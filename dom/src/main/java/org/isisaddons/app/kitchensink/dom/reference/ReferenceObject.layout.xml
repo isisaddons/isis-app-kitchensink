@@ -41,7 +41,7 @@
                 </bs3:tab>
             </bs3:tabGroup>
             <cpt:fieldSet name="AutoComplete" id="AutoComplete">
-                <cpt:property id="someAutoObjectMandatory">
+                <cpt:property id="someAutoObjectMandatory" promptStyle="INLINE">
                     <cpt:action id="updateSomeAutoObjectMandatory"/>
                 </cpt:property>
             </cpt:fieldSet>

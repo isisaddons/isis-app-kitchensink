@@ -13,7 +13,7 @@
                     <bs3:row>
                         <bs3:col span="12">
                             <cpt:fieldSet name="General">
-                                <cpt:property id="name"/>
+                                <cpt:property id="name" promptStyle="INLINE" labelPosition="TOP"/>
                             </cpt:fieldSet>
                         </bs3:col>
                     </bs3:row>
@@ -62,7 +62,7 @@
                 </cpt:property>
             </cpt:fieldSet>
             <cpt:fieldSet name="java.lang.Character" id="java.lang.Character">
-                <cpt:property id="someCharacterWrapperMandatory">
+                <cpt:property id="someCharacterWrapperMandatory" promptStyle="INLINE" >
                     <cpt:action id="updateSomeCharacterWrapperMandatory" position="RIGHT">
                         <cpt:named>Update</cpt:named>
                     </cpt:action>
@@ -114,7 +114,7 @@
                 </cpt:property>
                 <cpt:property id="someStringHidden"/>
                 <cpt:property id="someStringDisabled"/>
-                <cpt:property id="someStringWithValidation">
+                <cpt:property id="someStringWithValidation" promptStyle="INLINE">
                     <cpt:action id="updateSomeStringWithValidation" position="BELOW">
                         <cpt:named>Update</cpt:named>
                     </cpt:action>
@@ -203,7 +203,7 @@
                 </cpt:property>
             </cpt:fieldSet>
             <cpt:fieldSet name="String Multi" id="stringMulti">
-                <cpt:property id="someStringMultiline">
+                <cpt:property id="someStringMultiline" promptStyle="INLINE" >
                     <cpt:action id="updateSomeStringMultiline" position="BELOW">
                         <cpt:named>Update</cpt:named>
                     </cpt:action>

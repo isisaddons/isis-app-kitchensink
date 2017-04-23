@@ -95,6 +95,15 @@ language governing permissions and limitations under the License.
             <type>pom</type>
             <scope>test</scope>
         </dependency>
+
+        <!-- lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.10</version>
+            <scope>provided</scope>
+        </dependency>
+
     </dependencies>
 
 

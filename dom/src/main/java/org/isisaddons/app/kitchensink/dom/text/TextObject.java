@@ -44,6 +44,7 @@ import org.apache.isis.applib.annotation.Parameter;
 import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.Programmatic;
 import org.apache.isis.applib.annotation.Property;
+//import org.apache.isis.applib.annotation.PromptStyle;
 import org.apache.isis.applib.annotation.PropertyLayout;
 import org.apache.isis.applib.annotation.Publishing;
 import org.apache.isis.applib.annotation.SemanticsOf;
@@ -53,6 +54,9 @@ import org.apache.isis.applib.util.ObjectContracts;
 import org.apache.isis.applib.value.Password;
 
 import org.isisaddons.app.kitchensink.dom.Entity;
+
+import lombok.Getter;
+import lombok.Setter;
 
 @javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE)
 @javax.jdo.annotations.DatastoreIdentity(
@@ -449,17 +453,10 @@ public class TextObject implements Entity<TextObject> {
     //endregion
 
     //region > someStringWithValidation (property)
-    private String someStringWithValidation;
-
     @javax.jdo.annotations.Column(allowsNull = "false")
-    public String getSomeStringWithValidation() {
-        return someStringWithValidation;
-    }
-
-    public void setSomeStringWithValidation(final String someStringWithValidation) {
-        this.someStringWithValidation = someStringWithValidation;
-    }
-
+//    @PropertyLayout(editStyle = PromptStyle.INLINE)
+    @Getter @Setter
+    private String someStringWithValidation;
     public String validateSomeStringWithValidation(final String x) {
         return !x.startsWith("a") ? "Must start with letter 'a'": null;
     }
