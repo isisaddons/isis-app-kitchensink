@@ -4,6 +4,8 @@ import javax.inject.Inject;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlTransient;
 
+import org.joda.time.LocalDate;
+
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.Title;
 import org.apache.isis.applib.services.bookmark.Bookmark;
@@ -13,6 +15,7 @@ import org.apache.isis.applib.services.bookmark.BookmarkService;
 @javax.xml.bind.annotation.XmlType(
         propOrder = {
                 "name",
+                "date",
         }
 )
 @javax.xml.bind.annotation.XmlAccessorType(XmlAccessType.PROPERTY)
@@ -31,8 +34,19 @@ public class SomeViewModel implements org.apache.isis.applib.services.dto.Dto {
         this.name = name;
     }
 
+    private LocalDate date;
 
     @MemberOrder(sequence = "2")
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(final LocalDate date) {
+        this.date = date;
+    }
+
+
+    @MemberOrder(sequence = "3")
     @XmlTransient
     public String getBookmark() {
         Bookmark bookmark = bookmarkService.bookmarkFor(this);

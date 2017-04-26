@@ -16,6 +16,8 @@
  */
 package org.isisaddons.app.kitchensink.dom.viewmodels;
 
+import org.joda.time.LocalDate;
+
 import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.DomainServiceLayout;
@@ -48,9 +50,13 @@ public class Bookmarks {
     @MemberOrder(sequence = "30")
     public SomeViewModel createViewModel(
             @ParameterLayout(named = "Name")
-            final String name) {
+            final String name,
+            @ParameterLayout(named = "Date")
+            final LocalDate date
+            ) {
         SomeViewModel someViewModel = factoryService.instantiate(cls);
         someViewModel.setName(name);
+        someViewModel.setDate(date);
         return someViewModel;
     }
 
