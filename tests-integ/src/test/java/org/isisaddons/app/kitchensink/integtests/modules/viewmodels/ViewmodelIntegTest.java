@@ -61,9 +61,11 @@ public class ViewmodelIntegTest extends KitchensinkAppIntegTest {
 
         // when
         SomeViewModel viewModel = bookmarks.createViewModel("test", new LocalDate(2016,1,1));
+        SomeViewModel viewModelThroughWrapper = wrap(bookmarks).createViewModel("test", new LocalDate(2016,1,1));
 
         // then
         Assertions.assertThat(viewModel.getDate()).isEqualTo(new LocalDate(2016,1,1));
+        Assertions.assertThat(viewModelThroughWrapper.getDate()).isNotEqualTo(new LocalDate(2016,1,1));
 
     }
 
