@@ -70,7 +70,7 @@
                 <cpt:property id="someEnumOf3Mandatory">
                     <cpt:action id="updateSomeEnumOf3Mandatory" position="BELOW"/>
                 </cpt:property>
-                <cpt:property id="someEnumOf3Optional">
+                <cpt:property id="someEnumOf3Optional" promptStyle="INLINE">
                     <cpt:action id="updateSomeEnumOf3Optional" position="BELOW"/>
                     <cpt:action id="resetSomeEnumOf3Optional" position="BELOW"/>
                 </cpt:property>
