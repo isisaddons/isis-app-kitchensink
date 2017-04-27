@@ -67,7 +67,7 @@
         </bs3:col>
         <bs3:col span="4">
             <cpt:fieldSet name="Enum of 3" id="enumof3">
-                <cpt:property id="someEnumOf3Mandatory">
+                <cpt:property id="someEnumOf3Mandatory"  promptStyle="INLINE">
                     <cpt:action id="updateSomeEnumOf3Mandatory" position="BELOW"/>
                 </cpt:property>
                 <cpt:property id="someEnumOf3Optional" promptStyle="INLINE">

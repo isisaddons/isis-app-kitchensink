@@ -67,7 +67,7 @@
                         <cpt:named>Update</cpt:named>
                     </cpt:action>
                 </cpt:property>
-                <cpt:property id="someCharacterWrapperOptional">
+                <cpt:property id="someCharacterWrapperOptional" promptStyle="INLINE">
                     <cpt:action id="updateSomeCharacterWrapperOptional" position="BELOW">
                         <cpt:named>Update</cpt:named>
                     </cpt:action>

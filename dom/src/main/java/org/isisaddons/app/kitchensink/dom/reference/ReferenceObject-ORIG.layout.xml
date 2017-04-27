@@ -48,24 +48,24 @@
         </bs3:col>
         <bs3:col span="4">
             <cpt:fieldSet name="With Choices" id="withChoices">
-                <cpt:property id="someOtherObjectMandatoryWithChoices" promptStyle="DIALOG">
+                <cpt:property id="someOtherObjectMandatoryWithChoices">
                     <cpt:action id="updateSomeOtherObjectMandatoryWithChoices" position="BELOW"/>
                 </cpt:property>
-                <cpt:property id="someOtherObjectOptionalWithChoices" hidden="EVERYWHERE">
+                <cpt:property id="someOtherObjectOptionalWithChoices">
                     <cpt:action id="updateSomeOtherObjectOptionalWithChoices" position="BELOW"/>
                     <cpt:action id="resetSomeOtherObjectOptionalWithChoices" position="RIGHT"/>
                 </cpt:property>
-                <cpt:property id="someOtherObjectActionOnlyWithChoices" hidden="EVERYWHERE">
+                <cpt:property id="someOtherObjectActionOnlyWithChoices">
                     <cpt:action id="updateSomeOtherObjectActionOnlyWithChoices" position="BELOW"/>
                     <cpt:action id="resetSomeOtherObjectActionOnlyWithChoices" position="RIGHT"/>
                 </cpt:property>
             </cpt:fieldSet>
             <cpt:fieldSet name="Without Choices" id="withoutChoices">
-                <cpt:property id="someOtherObjectOptionalWithoutChoices" hidden="EVERYWHERE">
+                <cpt:property id="someOtherObjectOptionalWithoutChoices">
                     <cpt:action id="updateSomeOtherObjectOptionalWithoutChoices" position="BELOW"/>
                     <cpt:action id="resetSomeOtherObjectOptionalWithoutChoices" position="BELOW"/>
                 </cpt:property>
-                <cpt:property id="someOtherObjectActionOnlyWithoutChoices" hidden="EVERYWHERE">
+                <cpt:property id="someOtherObjectActionOnlyWithoutChoices">
                     <cpt:action id="updateSomeOtherObjectActionOnlyWithoutChoices" position="BELOW"/>
                     <cpt:action id="resetSomeOtherObjectActionOnlyWithoutChoices" position="BELOW"/>
                 </cpt:property>
@@ -73,20 +73,18 @@
         </bs3:col>
         <bs3:col span="4">
             <cpt:fieldSet name="Other Bounded Objects" id="otherBoundedObjects">
-                <cpt:property id="someOtherBoundedObjectMandatory" hidden="EVERYWHERE">
+                <cpt:property id="someOtherBoundedObjectMandatory">
                     <cpt:action id="updateSomeOtherBoundedObjectMandatory" position="BELOW"/>
                 </cpt:property>
-                <cpt:property id="someOtherBoundedObjectOptional" hidden="EVERYWHERE">
+                <cpt:property id="someOtherBoundedObjectOptional">
                     <cpt:action id="updateSomeOtherBoundedObjectOptional" position="BELOW"/>
                     <cpt:action id="resetSomeOtherBoundedObjectOptional" position="BELOW"/>
                 </cpt:property>
             </cpt:fieldSet>
             <cpt:fieldSet name="Using Name" id="usingName">
-                <cpt:property id="someOtherObjectUsingNameName" hidden="EVERYWHERE"/>
+                <cpt:property id="someOtherObjectUsingNameName"/>
             </cpt:fieldSet>
         </bs3:col>
-        <bs3:col span="12" unreferencedCollections="true">
-            <cpt:collection id="children" hidden="EVERYWHERE"/>
-        </bs3:col>
+        <bs3:col span="12" unreferencedCollections="true"/>
     </bs3:row>
 </bs3:grid>
