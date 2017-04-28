@@ -4,47 +4,24 @@ $(document).ready(function() {
     ( function() {
 
 /*
+        // not helping, the select2 component doesn't exist when document first loaded...
 
-        console.log("event handlers - installing");
+        var $eventSelect = $("select.choices");
+        var $eventSelect2 = $("select.autoComplete");
 
-        $("input.form-control").focusin(function() {
+        console.log("registering..");
+        console.log($eventSelect);
+        console.log($eventSelect2);
 
-            $(this).editable('toggle');
-        });
+        $eventSelect.on("select2:open", function (e) { console.log(e); });
+        $eventSelect.on("select2:close", function (e) { console.log(e); });
+        $eventSelect.on("select2:select", function (e) { console.log(e); });
+        $eventSelect.on("select2:unselect", function (e) { console.log(e); });
 
-        $(".editable").on("keydown", function() {
-
-
-
-          $(this).data('editable').input.$input.on('keydown', function(e) {
-
-            if(e.which == 9) {                                      // when tab key is pressed
-              e.preventDefault();
-
-              console.log("xxx")
-              if(e.shiftKey) {                                      // shift + tab
-                $(this) .blur()
-                        .parents().prevAll(":has(.editable):first") // find the parent of the editable before this one in the markup
-                        .find(".editable:last").editable('show');   // grab the editable and display it
-              } else {                                              // just tab
-                $(this) .blur()
-                        .parents().nextAll(":has(.editable):first") // find the parent of the editable after this one in the markup
-                        .find(".editable:first").editable('show');  // grab the editable and display it
-              }
-            }
-          });
-        });
-
-        console.log("event handlers - installed");
-*/
-
-
-/*
-        $("input.editable").on('focus',
-            function(e) {
-                console.log("focus gained" +  e);
-            }
-        );
+        $eventSelect2.on("select2:open", function (e) { console.log(e); });
+        $eventSelect2.on("select2:close", function (e) { console.log(e); });
+        $eventSelect2.on("select2:select", function (e) { console.log(e); });
+        $eventSelect2.on("select2:unselect", function (e) { console.log(e); });
 */
 
     } )();

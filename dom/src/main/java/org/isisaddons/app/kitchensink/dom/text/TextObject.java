@@ -454,7 +454,7 @@ public class TextObject implements Entity<TextObject> {
 
     //region > someStringWithValidation (property)
     @javax.jdo.annotations.Column(allowsNull = "false")
-//    @PropertyLayout(editStyle = PromptStyle.INLINE)
+//    @PropertyLayout(promptStyle = PromptStyle.INLINE)
     @Getter @Setter
     private String someStringWithValidation;
     public String validateSomeStringWithValidation(final String x) {

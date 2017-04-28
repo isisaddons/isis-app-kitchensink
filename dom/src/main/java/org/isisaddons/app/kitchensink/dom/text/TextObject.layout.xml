@@ -120,8 +120,8 @@
                     </cpt:action>
                 </cpt:property>
                 <cpt:property id="someStringMandatoryWithChoices">
-                    <cpt:action id="updateSomeStringMandatoryWithChoices" position="BELOW">
-                        <cpt:named>Update</cpt:named>
+                    <cpt:action id="updateSomeStringMandatoryWithChoices" position="BELOW" promptStyle="INLINE">
+                        <cpt:named>Update (inline prompt)</cpt:named>
                     </cpt:action>>
                 </cpt:property>
                 <cpt:property id="someStringOptionalWithChoices">

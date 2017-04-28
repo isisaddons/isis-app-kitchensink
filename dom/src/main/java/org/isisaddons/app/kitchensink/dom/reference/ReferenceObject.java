@@ -104,9 +104,9 @@ public class ReferenceObject implements Entity<ReferenceObject> {
     public void setSomeAutoObjectMandatory(final AutoObject someAutoObjectMandatory) {
         this.someAutoObjectMandatory = someAutoObjectMandatory;
     }
-    public Collection<AutoObject> choicesSomeAutoObjectMandatory() {
-        return autoObjects.listAll();
-    }
+//    public Collection<AutoObject> choicesSomeAutoObjectMandatory() {
+//        return autoObjects.listAll();
+//    }
 
     @Action(semantics=SemanticsOf.IDEMPOTENT)
     public ReferenceObject updateSomeAutoObjectMandatory(final AutoObject i) {
