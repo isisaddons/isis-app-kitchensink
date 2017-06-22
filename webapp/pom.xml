@@ -58,7 +58,12 @@ language governing permissions and limitations under the License.
     </build>
 
     <properties>
-        <maven-war-plugin.warName>${project.parent.artifactId}</maven-war-plugin.warName>
+	    <mavenmixin-docker.version>0.0.3</mavenmixin-docker.version>
+		<maven-deploy-plugin.version>2.8.1</maven-deploy-plugin.version>
+		<docker-maven-plugin.version>0.4.13</docker-maven-plugin.version>
+		<gmavenplus-plugin.version>1.5</gmavenplus-plugin.version>
+        
+		<maven-war-plugin.warName>${project.parent.artifactId}</maven-war-plugin.warName>
 		
         <docker-plugin.imageName>incodehq/${project.parent.artifactId}</docker-plugin.imageName>
         <docker-plugin.resource.include>${maven-war-plugin.warName}.war</docker-plugin.resource.include>
