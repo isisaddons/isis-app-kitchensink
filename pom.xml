@@ -38,7 +38,7 @@ language governing permissions and limitations under the License.
     </prerequisites>
 
     <properties>
-        <isis.version>1.14.0.20170605-1812</isis.version>
+        <isis.version>1.15.0-SNAPSHOT</isis.version>
         <isis-module-fakedata.version>1.14.0</isis-module-fakedata.version>
 
         <isis-wicket-excel.version>1.14.0</isis-wicket-excel.version>
