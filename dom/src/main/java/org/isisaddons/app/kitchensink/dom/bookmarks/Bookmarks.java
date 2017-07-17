@@ -14,11 +14,8 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-package org.isisaddons.app.kitchensink.dom.viewmodels;
+package org.isisaddons.app.kitchensink.dom.bookmarks;
 
-import org.joda.time.LocalDate;
-
-import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
@@ -26,39 +23,15 @@ import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.services.bookmark.Bookmark;
 import org.apache.isis.applib.services.bookmark.BookmarkService2;
-import org.apache.isis.applib.services.factory.FactoryService;
 
 @DomainService(
         nature = NatureOfService.VIEW_MENU_ONLY
 )
 @DomainServiceLayout(
         menuOrder = "16.1",
-        named="View Models"
+        named="Misc"
 )
 public class Bookmarks {
-
-    private final Class<SomeViewModel> cls = SomeViewModel.class;
-
-    public String getId() {
-        return cls.getSimpleName();
-    }
-
-    public String iconName() {
-        return cls.getSimpleName();
-    }
-
-    @MemberOrder(sequence = "30")
-    public SomeViewModel createViewModel(
-            @ParameterLayout(named = "Name")
-            final String name,
-            @ParameterLayout(named = "Date")
-            final LocalDate date
-            ) {
-        SomeViewModel someViewModel = factoryService.instantiate(cls);
-        someViewModel.setName(name);
-        someViewModel.setDate(date);
-        return someViewModel;
-    }
 
     @MemberOrder(sequence = "20")
     public Object lookup(
@@ -71,12 +44,7 @@ public class Bookmarks {
     }
 
     @javax.inject.Inject
-    protected FactoryService factoryService;
-
-    @javax.inject.Inject
     protected BookmarkService2 bookmarkService;
 
-    @javax.inject.Inject
-    protected DomainObjectContainer container;
 
 }

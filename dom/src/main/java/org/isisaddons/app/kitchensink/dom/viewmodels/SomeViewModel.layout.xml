@@ -15,8 +15,15 @@
                                 <cpt:action id="downloadXml" position="PANEL"/>
                                 <cpt:action id="downloadXsd" position="PANEL"/>
                                 <cpt:property id="name"/>
-                                <cpt:property id="date"/>
-                                <cpt:property id="bookmark"/>
+                                <cpt:property id="date">
+                                    <cpt:action id="updateDate" promptStyle="INLINE_AS_IF_EDIT"/>
+                                </cpt:property>
+                                <cpt:property id="reason"/>
+                                <cpt:property id="textObject">
+                                    <cpt:action id="updateTextObject" promptStyle="INLINE"/>
+                                    <cpt:action id="updateTextObject2" promptStyle="INLINE"/>
+                                </cpt:property>
+                                <cpt:property id="bookmark" hidden="ALL_TABLES"/>
                             </cpt:fieldSet>
                         </bs3:col>
                     </bs3:row>

@@ -25,7 +25,7 @@ public class WorkflowObjectsFixture extends FixtureScript {
     @Override
     protected void execute(ExecutionContext executionContext) {
 
-        // create
+        // createWorkflowObject
         create("Foo", executionContext);
         create("Bar", executionContext);
         create("Baz", executionContext);
@@ -36,7 +36,7 @@ public class WorkflowObjectsFixture extends FixtureScript {
     }
 
     private org.isisaddons.app.kitchensink.dom.bulk.WorkflowObject create(final String name, ExecutionContext executionContext) {
-        return executionContext.addResult(this, workflowObjects.create(name));
+        return executionContext.addResult(this, workflowObjects.createWorkflowObject(name));
     }
 
     @javax.inject.Inject

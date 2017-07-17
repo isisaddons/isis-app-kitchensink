@@ -36,7 +36,7 @@ import org.apache.isis.applib.annotation.SemanticsOf;
 )
 @DomainServiceLayout(
         menuOrder = "10.1",
-        named="Inject"
+        named="Misc"
 )
 public class InjectObjects {
 

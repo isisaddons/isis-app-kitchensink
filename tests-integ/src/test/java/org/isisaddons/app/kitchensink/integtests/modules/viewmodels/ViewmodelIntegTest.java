@@ -31,7 +31,7 @@ import org.apache.isis.applib.fixturescripts.FixtureScripts;
 import org.apache.isis.applib.services.registry.ServiceRegistry2;
 
 import org.isisaddons.app.kitchensink.dom.primitive.PrimitiveObjects;
-import org.isisaddons.app.kitchensink.dom.viewmodels.Bookmarks;
+import org.isisaddons.app.kitchensink.dom.viewmodels.ViewModels;
 import org.isisaddons.app.kitchensink.dom.viewmodels.SomeViewModel;
 import org.isisaddons.app.kitchensink.fixture.KitchensinkTearDownFixture;
 import org.isisaddons.app.kitchensink.integtests.modules.KitchensinkAppIntegTest;
@@ -56,12 +56,12 @@ public class ViewmodelIntegTest extends KitchensinkAppIntegTest {
     public void create() throws Exception {
 
         // given
-        Bookmarks bookmarks = new Bookmarks();
-        serviceRegistry2.injectServicesInto(bookmarks);
+        ViewModels viewModels = new ViewModels();
+        serviceRegistry2.injectServicesInto(viewModels);
 
         // when
-        SomeViewModel viewModel = bookmarks.createViewModel("test", new LocalDate(2016,1,1));
-        SomeViewModel viewModelThroughWrapper = wrap(bookmarks).createViewModel("test", new LocalDate(2016,1,1));
+        SomeViewModel viewModel = viewModels.createViewModel("test", new LocalDate(2016,1,1));
+        SomeViewModel viewModelThroughWrapper = wrap(viewModels).createViewModel("test", new LocalDate(2016,1,1));
 
         // then
         Assertions.assertThat(viewModel.getDate()).isEqualTo(new LocalDate(2016,1,1));

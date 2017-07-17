@@ -38,7 +38,7 @@ import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
         repositoryFor = MiscObject.class
 )
 @DomainServiceLayout(
-        named="Data Types",
+        named="Misc",
         menuOrder = "10.15"
 )
 public class MiscObjects extends RepositoryAbstract<MiscObject> {

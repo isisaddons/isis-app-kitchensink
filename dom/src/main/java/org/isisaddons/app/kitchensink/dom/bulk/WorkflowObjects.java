@@ -16,6 +16,9 @@
  */
 package org.isisaddons.app.kitchensink.dom.bulk;
 
+import java.util.List;
+
+import org.apache.isis.applib.annotation.ActionLayout;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
@@ -29,7 +32,7 @@ import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
         repositoryFor = WorkflowObject.class
 )
 @DomainServiceLayout(
-        named="Bulk",
+        named="Misc",
         menuOrder = "10.9"
 )
 public class WorkflowObjects extends RepositoryAbstract<WorkflowObject> {
@@ -39,7 +42,7 @@ public class WorkflowObjects extends RepositoryAbstract<WorkflowObject> {
     }
 
     @MemberOrder(sequence = "30")
-    public WorkflowObject create(
+    public WorkflowObject createWorkflowObject(
             @ParameterLayout(named="Name")
             final String name) {
         final WorkflowObject obj = container.newTransientInstance(WorkflowObject.class);
@@ -50,5 +53,15 @@ public class WorkflowObjects extends RepositoryAbstract<WorkflowObject> {
         return obj;
     }
 
+    @ActionLayout(named = "first Workflow Object (bulk)")
+    @Override
+    public WorkflowObject first() {
+        return super.first();
+    }
 
+    @ActionLayout(named = "list all Workflow Objects (bulk)")
+    @Override
+    public List<WorkflowObject> listAll() {
+        return super.listAll();
+    }
 }
