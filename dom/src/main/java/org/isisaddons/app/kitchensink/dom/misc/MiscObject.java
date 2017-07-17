@@ -17,20 +17,24 @@
 package org.isisaddons.app.kitchensink.dom.misc;
 
 import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
+
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.VersionStrategy;
+
 import com.google.common.collect.Lists;
-import org.isisaddons.app.kitchensink.dom.Entity;
+
 import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.BookmarkPolicy;
 import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.DomainObjectLayout;
 import org.apache.isis.applib.annotation.Editing;
+import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.Optionality;
 import org.apache.isis.applib.annotation.Parameter;
 import org.apache.isis.applib.annotation.Property;
@@ -39,6 +43,8 @@ import org.apache.isis.applib.annotation.Title;
 import org.apache.isis.applib.annotation.Where;
 import org.apache.isis.applib.util.ObjectContracts;
 import org.apache.isis.applib.value.Money;
+
+import org.isisaddons.app.kitchensink.dom.Entity;
 
 @javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE)
 @javax.jdo.annotations.DatastoreIdentity(
@@ -93,6 +99,16 @@ public class MiscObject implements Entity<MiscObject> {
     public java.net.URL default0UpdateSomeUrlMandatory() {
         return getSomeUrlMandatory();
     }
+
+    @Action(semantics = SemanticsOf.SAFE)
+    @MemberOrder(name = "someUrlMandatory", sequence = "1")
+    public URL openSomeUrlMandatory() throws MalformedURLException {
+        return getSomeUrlMandatory();
+    }
+    public String disableSomeUrlMandatory() {
+        return getSomeUrlMandatory() == null ? "No URL to open" : null;
+    }
+
     //endregion
 
     //region > someUrlOptional (property)

@@ -16,16 +16,19 @@
  */
 package org.isisaddons.app.kitchensink.dom.misc;
 
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 import java.util.UUID;
 
+import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.ActionLayout;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.ParameterLayout;
+import org.apache.isis.applib.annotation.SemanticsOf;
 import org.apache.isis.applib.value.Money;
 
 import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
@@ -95,6 +98,28 @@ public class MiscObjects extends RepositoryAbstract<MiscObject> {
     public List<MiscObject> listAll() {
         return super.listAll();
     }
+
+
+    @Action(semantics = SemanticsOf.SAFE)
+    public URL openGoogle() throws MalformedURLException {
+        return new java.net.URL("https://www.google.com");
+    }
+
+    @Action(semantics = SemanticsOf.SAFE)
+    public URL openUrl(@ParameterLayout(named="Url") String url) throws MalformedURLException {
+        return new java.net.URL(url);
+    }
+    public String validateOpenUrl(String url) {
+        if (url == null)
+            return "No URL to open";
+        try {
+            openUrl(url);
+        } catch (MalformedURLException ex) {
+            return "Bad URL";
+        }
+        return null;
+    }
+
 
 
 }
