@@ -58,17 +58,17 @@
                     <cpt:action id="resetSomeOtherObjectOptionalWithChoices" position="RIGHT"/>
                 </cpt:property>
                 <cpt:property id="someOtherObjectActionOnlyWithChoices">
-                    <cpt:action id="updateSomeOtherObjectActionOnlyWithChoices" position="BELOW"/>
+                    <cpt:action id="updateSomeOtherObjectActionOnlyWithChoices" position="BELOW" promptStyle="INLINE_AS_IF_EDIT"/>
                     <cpt:action id="resetSomeOtherObjectActionOnlyWithChoices" position="RIGHT"/>
                 </cpt:property>
             </cpt:fieldSet>
             <cpt:fieldSet name="Without Choices" id="withoutChoices">
                 <cpt:property id="someOtherObjectOptionalWithoutChoices">
-                    <cpt:action id="updateSomeOtherObjectOptionalWithoutChoices" position="BELOW"/>
+                    <cpt:action id="updateSomeOtherObjectOptionalWithoutChoices" position="BELOW" promptStyle="INLINE_AS_IF_EDIT"/>
                     <cpt:action id="resetSomeOtherObjectOptionalWithoutChoices" position="BELOW"/>
                 </cpt:property>
                 <cpt:property id="someOtherObjectActionOnlyWithoutChoices">
-                    <cpt:action id="updateSomeOtherObjectActionOnlyWithoutChoices" position="BELOW"/>
+                    <cpt:action id="updateSomeOtherObjectActionOnlyWithoutChoices" position="BELOW" promptStyle="INLINE_AS_IF_EDIT"/>
                     <cpt:action id="resetSomeOtherObjectActionOnlyWithoutChoices" position="BELOW"/>
                 </cpt:property>
             </cpt:fieldSet>
