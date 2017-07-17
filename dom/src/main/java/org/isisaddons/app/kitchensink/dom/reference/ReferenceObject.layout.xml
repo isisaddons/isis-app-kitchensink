@@ -12,7 +12,9 @@
                     <bs3:row>
                         <bs3:col span="12">
                             <cpt:fieldSet name="General">
-                                <cpt:property id="name"/>
+                                <cpt:property id="name">
+                                    <cpt:action id="editName" promptStyle="INLINE_AS_IF_EDIT"/>
+                                </cpt:property>
                             </cpt:fieldSet>
                         </bs3:col>
                     </bs3:row>

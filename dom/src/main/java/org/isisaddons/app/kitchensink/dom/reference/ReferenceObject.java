@@ -19,6 +19,7 @@ package org.isisaddons.app.kitchensink.dom.reference;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
@@ -34,6 +35,7 @@ import com.google.common.base.Objects;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 
 import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.annotation.Action;
@@ -82,6 +84,7 @@ public class ReferenceObject implements Entity<ReferenceObject> {
 
     @Column(allowsNull="false")
     @Title(sequence="1")
+    @Property(editing = Editing.DISABLED)
     public String getName() {
         return name;
     }
@@ -89,9 +92,6 @@ public class ReferenceObject implements Entity<ReferenceObject> {
     public void setName(final String name) {
         this.name = name;
     }
-
-    //endregion
-
 
     //region > someAutoObjectMandatory (property)
     private AutoObject someAutoObjectMandatory;
@@ -430,7 +430,7 @@ public class ReferenceObject implements Entity<ReferenceObject> {
     public ReferenceObject moveChildren(
             //@Nullable
             @ParameterLayout(named = "Select some child(ren)")
-            final List<ReferenceChildObject> childObjects) {
+            final Set<ReferenceChildObject> childObjects) {
         for (ReferenceChildObject childObject : childObjects) {
             childObject.setParent(this);
         }
@@ -441,9 +441,9 @@ public class ReferenceObject implements Entity<ReferenceObject> {
         return otherChildren();
     }
 
-    public List<ReferenceChildObject> default0MoveChildren() {
+    public Set<ReferenceChildObject> default0MoveChildren() {
         final List<ReferenceChildObject> defaults = Lists.newArrayList();
-        final List<ReferenceChildObject> choices = choices0MoveChildren();
+        final List<ReferenceChildObject> choices = Lists.newArrayList( choices0MoveChildren() );
 
         if(choices.size() > 2) {
             defaults.add(choices.get(0));
@@ -451,7 +451,7 @@ public class ReferenceObject implements Entity<ReferenceObject> {
         } else if(choices.size() > 1) {
             defaults.add(choices.get(0));
         }
-        return defaults;
+        return Sets.newTreeSet(defaults);
     }
 
     private List<ReferenceChildObject> otherChildren() {
