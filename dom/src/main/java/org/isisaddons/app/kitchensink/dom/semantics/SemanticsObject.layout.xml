@@ -4,11 +4,15 @@
         <bs3:col span="12" unreferencedActions="true">
             <cpt:domainObject/>
             <cpt:action id="incrementCounter"/>
-            <cpt:action id="resetCounterAreYouSure"/>
+            <cpt:action id="resetCounterAreYouSure"  promptStyle="INLINE">
+                <cpt:describedAs>A no-arg 'are you sure' action</cpt:describedAs>
+            </cpt:action>
             <cpt:action id="invoke"/>
             <cpt:action id="incrementCounterAreYouSureTakingArgument"/>
             <cpt:action id="incrementCounterAreYouSure"/>
-            <cpt:action id="resetCounterAreYouSureTakingArgument"/>
+            <cpt:action id="resetCounterAreYouSureTakingArgument" promptStyle="INLINE">
+                <cpt:describedAs>A some-args (with dialog) 'are you sure' action</cpt:describedAs>
+            </cpt:action>
         </bs3:col>
     </bs3:row>
     <bs3:row>
