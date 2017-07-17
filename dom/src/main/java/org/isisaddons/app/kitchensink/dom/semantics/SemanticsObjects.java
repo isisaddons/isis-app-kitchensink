@@ -19,7 +19,6 @@ package org.isisaddons.app.kitchensink.dom.semantics;
 import java.util.List;
 import java.util.Objects;
 
-import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.ActionLayout;
 import org.apache.isis.applib.annotation.BookmarkPolicy;
@@ -29,6 +28,7 @@ import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.SemanticsOf;
+import org.apache.isis.applib.services.repository.RepositoryService;
 
 @DomainService(
         nature = NatureOfService.VIEW_MENU_ONLY,
@@ -52,14 +52,15 @@ public class SemanticsObjects {
         return cls.getSimpleName();
     }
 
+    @Action(semantics = SemanticsOf.NON_IDEMPOTENT_ARE_YOU_SURE)
     @MemberOrder(sequence = "30")
     public SemanticsObject createSemanticsObject(
             @ParameterLayout(named="Name")
             final String name) {
-        final SemanticsObject obj = container.newTransientInstance(cls);
+        final SemanticsObject obj = repositoryService.instantiate(cls);
         obj.setName(name);
 
-        container.persistIfNotAlready(obj);
+        repositoryService.persist(obj);
         return obj;
     }
 
@@ -67,6 +68,13 @@ public class SemanticsObjects {
     @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
     @MemberOrder(sequence = "10")
     public SemanticsObject firstSemanticsObject() {
+        final List<SemanticsObject> list = listAllSemanticsObject();
+        return list.isEmpty()? null: list.get(0);
+    }
+
+    @Action(semantics= SemanticsOf.IDEMPOTENT_ARE_YOU_SURE) // not really, but to test
+    @MemberOrder(sequence = "12")
+    public SemanticsObject firstSemanticsObjectNoargAreYouSure() {
         final List<SemanticsObject> list = listAllSemanticsObject();
         return list.isEmpty()? null: list.get(0);
     }
@@ -90,10 +98,10 @@ public class SemanticsObjects {
     @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
     @MemberOrder(sequence = "20")
     public List<SemanticsObject> listAllSemanticsObject() {
-        return container.allInstances(cls);
+        return repositoryService.allInstances(cls);
     }
 
     @javax.inject.Inject
-    protected DomainObjectContainer container;
+    protected RepositoryService repositoryService;
 
 }
