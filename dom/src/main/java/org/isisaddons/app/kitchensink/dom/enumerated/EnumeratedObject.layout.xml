@@ -41,8 +41,8 @@
                 </bs3:tab>
             </bs3:tabGroup>
             <cpt:fieldSet name="boolean" id="boolean">
-                <cpt:property id="someBoolean">
-                    <cpt:action id="updateSomeBoolean" position="BELOW"/>
+                <cpt:property id="someBoolean" promptStyle="INLINE">
+                    <cpt:action id="updateSomeBoolean" position="BELOW" promptStyle="INLINE"/>
                 </cpt:property>
                 <cpt:property id="someBooleanHidden"/>
                 <cpt:property id="someBooleanDisabled"/>
@@ -51,23 +51,31 @@
                 </cpt:property>
             </cpt:fieldSet>
             <cpt:fieldSet name="java.lang.Boolean" id="java.lang.Boolean">
-                <cpt:property id="someBooleanWrapperMandatory">
-                    <cpt:action id="updateSomeBooleanWrapperMandatory" position="BELOW"/>
+                <cpt:property id="someBooleanWrapperMandatory" promptStyle="INLINE">
+                    <cpt:action id="updateSomeBooleanWrapperMandatory" position="BELOW">
+                        <cpt:named>Update</cpt:named>
+                    </cpt:action>
+                    <cpt:action id="toggleSomeBooleanWrapperMandatory" position="BELOW">
+                        <cpt:named>Toggle</cpt:named>
+                    </cpt:action>
+                    <cpt:action id="toggleSomeBooleanWrapperMandatoryAreYouSure" position="BELOW">
+                        <cpt:named>Toggle (are you sure)</cpt:named>
+                    </cpt:action>
                 </cpt:property>
-                <cpt:property id="someBooleanWrapperOptional">
+                <cpt:property id="someBooleanWrapperOptional" labelPosition="RIGHT">
                     <cpt:action id="updateSomeBooleanWrapperOptional" position="BELOW"/>
-                    <cpt:action id="resetSomeBooleanWrapperOptional" position="RIGHT"/>
+                    <cpt:action id="resetSomeBooleanWrapperOptional" position="BELOW"/>
                 </cpt:property>
                 <cpt:property id="someBooleanWrapperHidden"/>
-                <cpt:property id="someBooleanWrapperDisabled"/>
-                <cpt:property id="someBooleanWrapperWithValidation">
+                <cpt:property id="someBooleanWrapperDisabled" labelPosition="TOP"/>
+                <cpt:property id="someBooleanWrapperWithValidation" labelPosition="RIGHT">
                     <cpt:action id="updateSomeBooleanWrapperWithValidation" position="BELOW"/>
                 </cpt:property>
             </cpt:fieldSet>
         </bs3:col>
         <bs3:col span="4">
             <cpt:fieldSet name="Enum of 3" id="enumof3">
-                <cpt:property id="someEnumOf3Mandatory">
+                <cpt:property id="someEnumOf3Mandatory" promptStyle="INLINE">
                     <cpt:action id="updateSomeEnumOf3Mandatory" position="BELOW"/>
                 </cpt:property>
                 <cpt:property id="someEnumOf3Optional">

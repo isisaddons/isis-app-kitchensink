@@ -71,6 +71,7 @@ public class EnumeratedObject implements Entity<EnumeratedObject> {
     //region > someBoolean (property)
     private boolean someBoolean;
 
+    @Property(editing = Editing.DISABLED)
     public boolean getSomeBoolean() {
         return someBoolean;
     }
@@ -170,6 +171,20 @@ public class EnumeratedObject implements Entity<EnumeratedObject> {
     public Boolean default0UpdateSomeBooleanWrapperMandatory() {
         return getSomeBooleanWrapperMandatory();
     }
+
+
+    @Action(semantics=SemanticsOf.NON_IDEMPOTENT)
+    public EnumeratedObject toggleSomeBooleanWrapperMandatory() {
+        setSomeBooleanWrapperMandatory(! getSomeBooleanWrapperMandatory());
+        return this;
+    }
+
+    @Action(semantics=SemanticsOf.NON_IDEMPOTENT_ARE_YOU_SURE)
+    public EnumeratedObject toggleSomeBooleanWrapperMandatoryAreYouSure() {
+        setSomeBooleanWrapperMandatory(! getSomeBooleanWrapperMandatory());
+        return this;
+    }
+
     //endregion
 
     //region > someBooleanWrapperOptional (property)
