@@ -470,8 +470,11 @@ public class TextObject implements Entity<TextObject> {
         return this;
     }
 
-    public String validateUpdateSomeStringWithValidation(final String i) {
-        return validateSomeStringWithValidation(i);
+    public String validate0UpdateSomeStringWithValidation(final String i) {
+        return !i.startsWith("a") ? "Must start with letter 'a'": null;
+    }
+    public String validateUpdateSomeStringWithValidation(final String x) {
+        return !x.endsWith("z") ? "Must end with letter 'z'": null;
     }
     public String default0UpdateSomeStringWithValidation() {
         return getSomeStringWithValidation();
@@ -544,7 +547,7 @@ public class TextObject implements Entity<TextObject> {
     //region > someStringOptionalWithMultiChoices (property)
     private String someStringOptionalWithMultiChoices;
 
-    @Property(editing = Editing.DISABLED)
+    @Property(editing = Editing.ENABLED)
     @Column(allowsNull = "true")
     public String getSomeStringOptionalWithMultiChoices() {
         return someStringOptionalWithMultiChoices;
@@ -552,6 +555,10 @@ public class TextObject implements Entity<TextObject> {
 
     public void setSomeStringOptionalWithMultiChoices(final String someStringOptionalWithMultiChoices) {
         this.someStringOptionalWithMultiChoices = someStringOptionalWithMultiChoices;
+    }
+
+    public List<String> choicesSomeStringOptionalWithMultiChoices() {
+        return Lists.newArrayList("a", "ab", "abcd", "abcdefgh", "abcdefghijklmnop", "abcdefghijklmnopqrstuvwxyz");
     }
 
     @Action(semantics=SemanticsOf.IDEMPOTENT, publishing = Publishing.ENABLED)
@@ -569,7 +576,7 @@ public class TextObject implements Entity<TextObject> {
     }
 
     public List<String> choices0UpdateSomeStringOptionalWithMultiChoices() {
-        return Lists.newArrayList("a", "ab", "abcd", "abcdefgh", "abcdefghijklmnop", "abcdefghijklmnopqrstuvwxyz");
+        return choicesSomeStringOptionalWithMultiChoices();
     }
 
 

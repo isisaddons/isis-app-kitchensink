@@ -13,7 +13,7 @@
                     <bs3:row>
                         <bs3:col span="12">
                             <cpt:fieldSet name="General">
-                                <cpt:property id="name"/>
+                                <cpt:property id="name" promptStyle="INLINE"/>
                             </cpt:fieldSet>
                         </bs3:col>
                     </bs3:row>
@@ -114,18 +114,18 @@
                 </cpt:property>
                 <cpt:property id="someStringHidden"/>
                 <cpt:property id="someStringDisabled"/>
-                <cpt:property id="someStringWithValidation">
-                    <cpt:action id="updateSomeStringWithValidation" position="BELOW">
+                <cpt:property id="someStringWithValidation"  promptStyle="INLINE">
+                    <cpt:action id="updateSomeStringWithValidation" position="BELOW" promptStyle="INLINE">
                         <cpt:named>Update</cpt:named>
                     </cpt:action>
                 </cpt:property>
                 <cpt:property id="someStringMandatoryWithChoices">
                     <cpt:action id="updateSomeStringMandatoryWithChoices" position="BELOW">
                         <cpt:named>Update</cpt:named>
-                    </cpt:action>>
+                    </cpt:action>
                 </cpt:property>
                 <cpt:property id="someStringOptionalWithChoices">
-                    <cpt:action id="updateSomeStringOptionalWithChoices" position="BELOW">
+                    <cpt:action id="updateSomeStringOptionalWithChoices" position="BELOW" promptStyle="INLINE">
                         <cpt:named>Update</cpt:named>
                     </cpt:action>
                     <cpt:action id="resetSomeStringOptionalWithChoices" position="RIGHT">
@@ -133,10 +133,10 @@
                     </cpt:action>
                 </cpt:property>
                 <cpt:property id="someStringOptionalWithMultiChoices">
-                    <cpt:action id="updateSomeStringOptionalWithMultiChoices" position="BELOW">
+                    <cpt:action id="updateSomeStringOptionalWithMultiChoices" position="BELOW" promptStyle="INLINE">
                         <cpt:named>Update</cpt:named>
                     </cpt:action>
-                    <cpt:action id="resetSomeStringOptionalWithMultiChoices" position="RIGHT">
+                    <cpt:action id="resetSomeStringOptionalWithMultiChoices" position="BELOW" promptStyle="DIALOG">
                         <cpt:named>Reset</cpt:named>
                     </cpt:action>
                 </cpt:property>
