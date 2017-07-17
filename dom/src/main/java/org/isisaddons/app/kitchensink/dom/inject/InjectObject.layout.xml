@@ -13,7 +13,7 @@
                         <bs3:col span="12">
                             <cpt:fieldSet name="General">
                                 <cpt:property id="name">
-                                    <cpt:action id="updateName" position="BELOW"/>
+                                    <cpt:action id="updateName" position="BELOW" promptStyle="INLINE"/>
                                 </cpt:property>
                                 <cpt:property id="numberOfOtherServices"/>
                                 <cpt:property id="numberOfServices"/>
