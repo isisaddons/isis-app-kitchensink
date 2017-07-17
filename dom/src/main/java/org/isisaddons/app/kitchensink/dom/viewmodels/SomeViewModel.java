@@ -3,6 +3,7 @@ package org.isisaddons.app.kitchensink.dom.viewmodels;
 import javax.inject.Inject;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import org.joda.time.LocalDate;
 
@@ -10,6 +11,7 @@ import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.Title;
 import org.apache.isis.applib.services.bookmark.Bookmark;
 import org.apache.isis.applib.services.bookmark.BookmarkService;
+import org.apache.isis.schema.utils.jaxbadapters.JodaLocalDateStringAdapter;
 
 @javax.xml.bind.annotation.XmlRootElement(name = "someViewModel")
 @javax.xml.bind.annotation.XmlType(
@@ -36,6 +38,7 @@ public class SomeViewModel implements org.apache.isis.applib.services.dto.Dto {
 
     private LocalDate date;
 
+    @XmlJavaTypeAdapter(JodaLocalDateStringAdapter.ForJaxb.class)
     @MemberOrder(sequence = "2")
     public LocalDate getDate() {
         return date;
@@ -54,5 +57,6 @@ public class SomeViewModel implements org.apache.isis.applib.services.dto.Dto {
     }
 
     @Inject
+    @XmlTransient
     BookmarkService bookmarkService;
 }
