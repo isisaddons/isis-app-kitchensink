@@ -14,7 +14,10 @@
                             <cpt:fieldSet name="General">
                                 <cpt:action id="downloadXml" position="PANEL"/>
                                 <cpt:action id="downloadXsd" position="PANEL"/>
-                                <cpt:property id="name"/>
+                                <cpt:property id="id"/>
+                                <cpt:property id="name">
+                                    <cpt:action id="updateName" promptStyle="INLINE"/>
+                                </cpt:property>
                                 <cpt:property id="date">
                                     <cpt:action id="updateDate" promptStyle="INLINE_AS_IF_EDIT"/>
                                 </cpt:property>

@@ -60,8 +60,8 @@ public class ViewmodelIntegTest extends KitchensinkAppIntegTest {
         serviceRegistry2.injectServicesInto(viewModels);
 
         // when
-        SomeViewModel viewModel = viewModels.createViewModel("test", new LocalDate(2016,1,1));
-        SomeViewModel viewModelThroughWrapper = wrap(viewModels).createViewModel("test", new LocalDate(2016,1,1));
+        SomeViewModel viewModel = viewModels.createViewModel(1, "test", new LocalDate(2016,1,1));
+        SomeViewModel viewModelThroughWrapper = wrap(viewModels).createViewModel(2, "test", new LocalDate(2016,1,1));
 
         // then
         Assertions.assertThat(viewModel.getDate()).isEqualTo(new LocalDate(2016,1,1));

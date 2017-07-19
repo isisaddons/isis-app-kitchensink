@@ -19,7 +19,6 @@ package org.isisaddons.app.kitchensink.dom.reference;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
@@ -35,7 +34,6 @@ import com.google.common.base.Objects;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.annotation.Action;
@@ -116,6 +114,42 @@ public class ReferenceObject implements Entity<ReferenceObject> {
     public AutoObject default0UpdateSomeAutoObjectMandatory() {
         return getSomeAutoObjectMandatory();
     }
+
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public ReferenceObject updateSomeAutoObjectMandatoryNoDefault(final AutoObject i) {
+        setSomeAutoObjectMandatory(i);
+        return this;
+    }
+
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public ReferenceObject updateSomeAutoObjectMandatoryWithValidation(final AutoObject i) {
+        setSomeAutoObjectMandatory(i);
+        return this;
+    }
+    public AutoObject default0UpdateSomeAutoObjectMandatoryWithValidation() {
+        return getSomeAutoObjectMandatory();
+    }
+
+    public String validate0UpdateSomeAutoObjectMandatoryWithValidation(final AutoObject autoObject) {
+        if(autoObject == null) return null;
+
+        return autoObject.getName().startsWith("B") ? "Cannot associate with object whose name starts with 'B'" : null;
+    }
+
+
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public ReferenceObject updateSomeAutoObjectMandatoryNoDefaultWithValidation(final AutoObject i) {
+        setSomeAutoObjectMandatory(i);
+        return this;
+    }
+
+    public String validate0UpdateSomeAutoObjectMandatoryNoDefaultWithValidation(final AutoObject autoObject) {
+        if(autoObject == null) return null;
+
+        return autoObject.getName().startsWith("B") ? "Cannot associate with object whose name starts with 'B'" : null;
+    }
+
+
     //endregion
 
 
@@ -134,6 +168,9 @@ public class ReferenceObject implements Entity<ReferenceObject> {
         return otherObjects.listAll();
     }
 
+
+
+
     @Action(semantics=SemanticsOf.IDEMPOTENT)
     public ReferenceObject updateSomeOtherObjectMandatoryWithChoices(final OtherObject i) {
         setSomeOtherObjectMandatoryWithChoices(i);
@@ -145,6 +182,54 @@ public class ReferenceObject implements Entity<ReferenceObject> {
     public List<OtherObject> choices0UpdateSomeOtherObjectMandatoryWithChoices() {
         return otherObjects.listAll();
     }
+
+
+
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public ReferenceObject updateSomeOtherObjectMandatoryWithChoicesNoDefault(final OtherObject i) {
+        setSomeOtherObjectMandatoryWithChoices(i);
+        return this;
+    }
+    public List<OtherObject> choices0UpdateSomeOtherObjectMandatoryWithChoicesNoDefault() {
+        return otherObjects.listAll();
+    }
+
+
+
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public ReferenceObject updateSomeOtherObjectMandatoryWithChoicesWithValidation(final OtherObject i) {
+        setSomeOtherObjectMandatoryWithChoices(i);
+        return this;
+    }
+    public List<OtherObject> choices0UpdateSomeOtherObjectMandatoryWithChoicesWithValidation() {
+        return otherObjects.listAll();
+    }
+    public OtherObject default0UpdateSomeOtherObjectMandatoryWithChoicesWithValidation() {
+        return getSomeOtherObjectMandatoryWithChoices();
+    }
+    public String validate0UpdateSomeOtherObjectMandatoryWithChoicesWithValidation(OtherObject otherObject) {
+        if(otherObject == null) return null;
+        return otherObject.getName().startsWith("B") ? "Can't associate with an object whose name begins with 'B'": null;
+    }
+
+
+
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public ReferenceObject updateSomeOtherObjectMandatoryWithChoicesNoDefaultWithValidation(final OtherObject i) {
+        setSomeOtherObjectMandatoryWithChoices(i);
+        return this;
+    }
+    public List<OtherObject> choices0UpdateSomeOtherObjectMandatoryWithChoicesNoDefaultWithValidation() {
+        return otherObjects.listAll();
+    }
+    public String validate0UpdateSomeOtherObjectMandatoryWithChoicesNoDefaultWithValidation(OtherObject otherObject) {
+        if(otherObject == null) return null;
+        return otherObject.getName().startsWith("B") ? "Can't associate with an object whose name begins with 'B'": null;
+    }
+
+
+
+
     //endregion
 
     //region > someOtherObjectOptionalWithChoices (property)
@@ -430,7 +515,7 @@ public class ReferenceObject implements Entity<ReferenceObject> {
     public ReferenceObject moveChildren(
             //@Nullable
             @ParameterLayout(named = "Select some child(ren)")
-            final Set<ReferenceChildObject> childObjects) {
+            final List<ReferenceChildObject> childObjects) {
         for (ReferenceChildObject childObject : childObjects) {
             childObject.setParent(this);
         }
@@ -441,7 +526,7 @@ public class ReferenceObject implements Entity<ReferenceObject> {
         return otherChildren();
     }
 
-    public Set<ReferenceChildObject> default0MoveChildren() {
+    public List<ReferenceChildObject> default0MoveChildren() {
         final List<ReferenceChildObject> defaults = Lists.newArrayList();
         final List<ReferenceChildObject> choices = Lists.newArrayList( choices0MoveChildren() );
 
@@ -451,7 +536,7 @@ public class ReferenceObject implements Entity<ReferenceObject> {
         } else if(choices.size() > 1) {
             defaults.add(choices.get(0));
         }
-        return Sets.newTreeSet(defaults);
+        return defaults;
     }
 
     private List<ReferenceChildObject> otherChildren() {

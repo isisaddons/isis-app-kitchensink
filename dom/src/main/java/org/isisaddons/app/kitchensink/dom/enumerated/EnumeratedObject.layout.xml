@@ -86,6 +86,7 @@
                 <cpt:property id="someEnumOf3Disabled"/>
                 <cpt:property id="someEnumOf3WithValidation">
                     <cpt:action id="updateSomeEnumOf3WithValidation" position="BELOW"/>
+                    <cpt:action id="updateSomeEnumOf3WithPerArgValidation" position="BELOW"/>
                 </cpt:property>
             </cpt:fieldSet>
             <cpt:fieldSet name="Enum of 4" id="enumof4">

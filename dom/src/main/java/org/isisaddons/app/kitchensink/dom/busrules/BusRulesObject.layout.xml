@@ -16,7 +16,11 @@
                             <cpt:fieldSet name="Name" id="name">
                                 <cpt:action id="action2AssociatedWithProperty" position="PANEL"/>
                                 <cpt:property id="name">
-                                    <cpt:action id="actionAssociatedWithProperty" position="BELOW"/>
+                                    <cpt:action id="actionAssociatedWithProperty" position="RIGHT"/>
+                                    <cpt:action id="action3AssociatedWithProperty" position="BELOW"/>
+                                </cpt:property>
+                                <cpt:property id="enableActions">
+                                    <cpt:action id="configureActions"/>
                                 </cpt:property>
                             </cpt:fieldSet>
                         </bs3:col>

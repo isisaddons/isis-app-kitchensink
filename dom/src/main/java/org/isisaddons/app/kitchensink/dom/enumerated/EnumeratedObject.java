@@ -16,6 +16,7 @@
  */
 package org.isisaddons.app.kitchensink.dom.enumerated;
 
+import javax.annotation.Nullable;
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.VersionStrategy;
@@ -378,17 +379,37 @@ public class EnumeratedObject implements Entity<EnumeratedObject> {
     }
 
     @Action(semantics=SemanticsOf.IDEMPOTENT)
-    public EnumeratedObject updateSomeEnumOf3WithValidation(final EnumOf3 i) {
+    public EnumeratedObject updateSomeEnumOf3WithValidation(final EnumOf3 i, @Nullable String unused) {
         setSomeEnumOf3WithValidation(i);
         return this;
     }
 
-    public String validateUpdateSomeEnumOf3WithValidation(final EnumOf3 i) {
+    public String validateUpdateSomeEnumOf3WithValidation(final EnumOf3 i, String unused) {
         return validateSomeEnumOf3WithValidation(i);
     }
     public EnumOf3 default0UpdateSomeEnumOf3WithValidation() {
         return getSomeEnumOf3WithValidation();
     }
+
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public EnumeratedObject updateSomeEnumOf3WithPerArgValidation(
+            final EnumOf3 i,
+            @Nullable String unused) {
+        setSomeEnumOf3WithValidation(i);
+        return this;
+    }
+
+    // validate 0th arg
+    public String validate0UpdateSomeEnumOf3WithPerArgValidation(final EnumOf3 i) {
+        return validateSomeEnumOf3WithValidation(i);
+    }
+    // validate 0th arg
+    public String validate1UpdateSomeEnumOf3WithPerArgValidation(final String dummy) {
+        return dummy == null || dummy.startsWith("a") ? "dummy must be some string not starting with 'a'" : null;
+    }
+//    public EnumOf3 default0UpdateSomeEnumOf3WithPerArgValidation() {
+//        return getSomeEnumOf3WithValidation();
+//    }
 
     //endregion
 

@@ -24,6 +24,7 @@ import org.apache.isis.applib.annotation.SemanticsOf;
 import org.apache.isis.applib.annotation.Title;
 import org.apache.isis.applib.services.bookmark.Bookmark;
 import org.apache.isis.applib.services.bookmark.BookmarkService;
+import org.apache.isis.applib.services.hint.HintStore;
 import org.apache.isis.applib.util.ReasonBuffer;
 import org.apache.isis.schema.utils.jaxbadapters.JodaLocalDateStringAdapter;
 
@@ -36,19 +37,50 @@ import lombok.Setter;
 @javax.xml.bind.annotation.XmlRootElement(name = "someViewModel")
 @javax.xml.bind.annotation.XmlType(
         propOrder = {
+                "id",
                 "name",
                 "date",
                 "textObject",
         }
 )
 @javax.xml.bind.annotation.XmlAccessorType(XmlAccessType.FIELD)
-public class SomeViewModel implements org.apache.isis.applib.services.dto.Dto {
+public class SomeViewModel implements org.apache.isis.applib.services.dto.Dto, HintStore.HintIdProvider{
+
+    @MemberOrder(sequence = "1")
+    @Getter @Setter
+    @Property(editing = Editing.DISABLED)
+    private int id;
 
     @Title
-    @MemberOrder(sequence = "1")
+    @MemberOrder(sequence = "1.1")
     @Getter @Setter
     @Property(editing = Editing.ENABLED)
     private String name;
+
+    @Override
+    public String hintId() {
+        return ""+getId() ;
+    }
+
+    //region > updateTextObject2 (action)
+    @Mixin(method="act")
+    public static class updateName{
+        private final SomeViewModel someViewModel;
+        public updateName(final SomeViewModel someViewModel) {
+            this.someViewModel = someViewModel;
+        }
+        @Action(semantics = SemanticsOf.NON_IDEMPOTENT)
+        @ActionLayout(contributed= Contributed.AS_ACTION)
+        public SomeViewModel act(final String newName) {
+            someViewModel.setName(newName);
+            return someViewModel;
+        }
+        public String default0Act() { return someViewModel.getName(); }
+
+        @Inject
+        TextObjects textObjects;
+    }
+    //endregion
 
 
     @XmlJavaTypeAdapter(JodaLocalDateStringAdapter.ForJaxb.class)
@@ -166,10 +198,10 @@ public class SomeViewModel implements org.apache.isis.applib.services.dto.Dto {
     public String getReason() {
         final ReasonBuffer buf = new ReasonBuffer();
         if(getName().contains("a")) {
-            buf.append("updateTextObject2 because name contains 'a'");
+            buf.append("updateTextObject2 hidden because name contains 'a'");
         }
         if(getName().contains("b")) {
-            buf.append("updateTextObject because name contains 'b'");
+            buf.append("updateTextObject hidden because name contains 'b'");
         }
         return buf.getReason();
     }

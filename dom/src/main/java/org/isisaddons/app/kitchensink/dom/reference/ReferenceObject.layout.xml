@@ -44,14 +44,36 @@
             </bs3:tabGroup>
             <cpt:fieldSet name="AutoComplete" id="AutoComplete">
                 <cpt:property id="someAutoObjectMandatory">
-                    <cpt:action id="updateSomeAutoObjectMandatory"/>
+                    <cpt:action id="updateSomeAutoObjectMandatory">
+                        <cpt:named>Mandatory</cpt:named>
+                    </cpt:action>
+                    <cpt:action id="updateSomeAutoObjectMandatoryNoDefault">
+                        <cpt:named>MandatoryNoDefault</cpt:named>
+                    </cpt:action>
+                    <cpt:action id="updateSomeAutoObjectMandatoryNoDefaultWithValidation">
+                        <cpt:named>MandatoryNoDefaultWithValidation</cpt:named>
+                    </cpt:action>
+                    <cpt:action id="updateSomeAutoObjectMandatoryWithValidation">
+                        <cpt:named>MandatoryWithValidation</cpt:named>
+                    </cpt:action>
                 </cpt:property>
             </cpt:fieldSet>
         </bs3:col>
         <bs3:col span="4">
             <cpt:fieldSet name="With Choices" id="withChoices">
                 <cpt:property id="someOtherObjectMandatoryWithChoices">
-                    <cpt:action id="updateSomeOtherObjectMandatoryWithChoices" position="BELOW"/>
+                    <cpt:action id="updateSomeOtherObjectMandatoryWithChoices" position="BELOW">
+                        <cpt:named>WithChoices</cpt:named>
+                    </cpt:action>
+                    <cpt:action id="updateSomeOtherObjectMandatoryWithChoicesNoDefault" position="BELOW">
+                        <cpt:named>WithChoicesNoDefault</cpt:named>
+                    </cpt:action>
+                    <cpt:action id="updateSomeOtherObjectMandatoryWithChoicesWithValidation" position="BELOW">
+                        <cpt:named>WithChoicesWithValidation</cpt:named>
+                    </cpt:action>
+                    <cpt:action id="updateSomeOtherObjectMandatoryWithChoicesNoDefaultWithValidation" position="BELOW">
+                        <cpt:named>WithChoicesNoDefaultWithValidation</cpt:named>
+                    </cpt:action>
                 </cpt:property>
                 <cpt:property id="someOtherObjectOptionalWithChoices">
                     <cpt:action id="updateSomeOtherObjectOptionalWithChoices" position="BELOW"/>

@@ -35,7 +35,6 @@ import org.apache.isis.applib.services.bookmark.BookmarkService2;
 import org.apache.isis.applib.services.clock.ClockService;
 import org.apache.isis.applib.services.factory.FactoryService;
 
-import org.isisaddons.app.kitchensink.dom.text.TextObject;
 import org.isisaddons.app.kitchensink.dom.text.TextObjects;
 
 @DomainService(
@@ -59,16 +58,20 @@ public class ViewModels {
 
     @MemberOrder(sequence = "30")
     public SomeViewModel createViewModel(
-            @ParameterLayout(named = "Name")
-            final String name,
-            @ParameterLayout(named = "Date")
-            final LocalDate date
-            ) {
+            @ParameterLayout(named = "Id") final int id,
+            @ParameterLayout(named = "Name") final String name,
+            @ParameterLayout(named = "Date") final LocalDate date) {
         SomeViewModel someViewModel = new SomeViewModel();
+        someViewModel.setId(id);
         someViewModel.setName(name);
         someViewModel.setDate(date);
         return someViewModel;
     }
+
+    public int default0CreateViewModel() { return 0; }
+    public String default1CreateViewModel() { return "ppp"; }
+    public LocalDate default2CreateViewModel() { return clockService.now(); }
+
 
     @MemberOrder(sequence = "30")
     public List<SomeViewModel> createSomeViewModels(
@@ -78,6 +81,7 @@ public class ViewModels {
         List<SomeViewModel> list = Lists.newArrayList();
         for (int i = 0; i < number; i++) {
             SomeViewModel someViewModel = new SomeViewModel();
+            someViewModel.setId(i);
             someViewModel.setName("number #" + i);
             someViewModel.setDate(clockService.now().plusDays(i));
             someViewModel.setTextObject(textObjects.first());
