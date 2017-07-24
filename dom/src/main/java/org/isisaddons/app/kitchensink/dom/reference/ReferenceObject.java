@@ -526,6 +526,15 @@ public class ReferenceObject implements Entity<ReferenceObject> {
         return otherChildren();
     }
 
+    public String validate0MoveChildren(List<ReferenceChildObject> candidates) {
+        for (ReferenceChildObject candidate : candidates) {
+            if(candidate.getName().contains("4")) {
+                return "Can't move #4 !";
+            }
+        }
+        return null;
+    }
+
     public List<ReferenceChildObject> default0MoveChildren() {
         final List<ReferenceChildObject> defaults = Lists.newArrayList();
         final List<ReferenceChildObject> choices = Lists.newArrayList( choices0MoveChildren() );
