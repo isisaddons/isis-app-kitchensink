@@ -24,6 +24,8 @@ import java.util.TreeSet;
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.Queries;
+import javax.jdo.annotations.Query;
 import javax.jdo.annotations.VersionStrategy;
 
 import com.google.common.collect.Iterables;
@@ -51,6 +53,14 @@ import static org.isisaddons.app.kitchensink.dom.hierarchy.child.PredicateUtil.c
 @javax.jdo.annotations.Version(
         strategy=VersionStrategy.VERSION_NUMBER, 
         column="version")
+@Queries({
+        @Query(
+                name = "findWithNoChildren",
+                value = "SELECT "
+                        + "FROM org.isisaddons.app.kitchensink.dom.hierarchy.parent.ParentObject "
+                        + "WHERE !(SELECT parent "
+                        + "          FROM org.isisaddons.app.kitchensink.dom.hierarchy.child.ChildObject).contains(this) ")
+})
 @DomainObject(
         objectType = "PARENT"
 )

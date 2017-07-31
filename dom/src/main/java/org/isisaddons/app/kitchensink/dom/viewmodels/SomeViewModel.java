@@ -34,6 +34,9 @@ import org.isisaddons.app.kitchensink.dom.text.TextObjects;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * Created by Dan on 31/07/2017.
+ */
 @javax.xml.bind.annotation.XmlRootElement(name = "someViewModel")
 @javax.xml.bind.annotation.XmlType(
         propOrder = {
@@ -44,7 +47,7 @@ import lombok.Setter;
         }
 )
 @javax.xml.bind.annotation.XmlAccessorType(XmlAccessType.FIELD)
-public class SomeViewModel implements org.apache.isis.applib.services.dto.Dto, HintStore.HintIdProvider{
+public class SomeViewModel implements org.apache.isis.applib.services.dto.Dto, HintStore.HintIdProvider {
 
     @MemberOrder(sequence = "1")
     @Getter @Setter
@@ -56,11 +59,6 @@ public class SomeViewModel implements org.apache.isis.applib.services.dto.Dto, H
     @Getter @Setter
     @Property(editing = Editing.ENABLED)
     private String name;
-
-    @Override
-    public String hintId() {
-        return ""+getId() ;
-    }
 
     //region > updateTextObject2 (action)
     @Mixin(method="act")
@@ -82,20 +80,16 @@ public class SomeViewModel implements org.apache.isis.applib.services.dto.Dto, H
     }
     //endregion
 
+    @Override
+    public String hintId() {
+        return "" + getId();
+    }
 
     @XmlJavaTypeAdapter(JodaLocalDateStringAdapter.ForJaxb.class)
     @MemberOrder(sequence = "2")
     @Property(editing = Editing.DISABLED)
-    //@Getter @Setter
+    @Getter @Setter
     private LocalDate date;
-
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(final LocalDate date) {
-        this.date = date;
-    }
 
     //region > updateTextObject (action)
     @Mixin(method="act")
@@ -110,7 +104,7 @@ public class SomeViewModel implements org.apache.isis.applib.services.dto.Dto, H
                 @ParameterLayout(named = "Day") Integer day,
                 @ParameterLayout(named = "Month") Integer month,
                 @ParameterLayout(named = "Year") Integer year
-                ) {
+        ) {
             someViewModel.setDate(new LocalDate(year, month, day));
             return someViewModel;
         }
@@ -133,15 +127,12 @@ public class SomeViewModel implements org.apache.isis.applib.services.dto.Dto, H
     //endregion
 
 
-
-
     @Nullable
     @MemberOrder(sequence = "3")
     @Property(editing = Editing.DISABLED)
     @Getter @Setter
     private TextObject textObject;
 
-    
     //region > updateTextObject (action)
     @Mixin(method="act")
     public static class updateTextObject {
@@ -192,19 +183,17 @@ public class SomeViewModel implements org.apache.isis.applib.services.dto.Dto, H
     }
     //endregion
 
-
-
-
     public String getReason() {
         final ReasonBuffer buf = new ReasonBuffer();
-        if(getName().contains("a")) {
+        if (getName().contains("a")) {
             buf.append("updateTextObject2 hidden because name contains 'a'");
         }
-        if(getName().contains("b")) {
+        if (getName().contains("b")) {
             buf.append("updateTextObject hidden because name contains 'b'");
         }
         return buf.getReason();
     }
+
     public boolean hideReason() {
         return Strings.isNullOrEmpty(getReason());
     }
@@ -215,8 +204,6 @@ public class SomeViewModel implements org.apache.isis.applib.services.dto.Dto, H
         Bookmark bookmark = bookmarkService.bookmarkFor(this);
         return bookmark.toString();
     }
-
-
 
     @Inject
     @XmlTransient
