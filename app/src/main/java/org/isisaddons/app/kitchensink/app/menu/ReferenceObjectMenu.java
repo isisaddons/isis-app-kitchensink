@@ -10,8 +10,8 @@ import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.SemanticsOf;
 
-import org.isisaddons.app.kitchensink.dom.reference.ReferenceChildObject;
-import org.isisaddons.app.kitchensink.dom.reference.ReferenceChildObjects;
+import org.isisaddons.app.kitchensink.dom.reference.child.ReferenceChildObject;
+import org.isisaddons.app.kitchensink.dom.reference.child.ReferenceChildObjects;
 import org.isisaddons.app.kitchensink.dom.reference.ReferenceObject;
 import org.isisaddons.app.kitchensink.dom.reference.ReferenceObjects;
 
@@ -23,7 +23,7 @@ import org.isisaddons.app.kitchensink.dom.reference.ReferenceObjects;
 public class ReferenceObjectMenu {
 
     @Action(semantics = SemanticsOf.IDEMPOTENT)
-    public ReferenceObject moveChildrenTest(
+    public ReferenceObject moveChildrenBetweenReferenceObjects(
             final ReferenceObject object,
             final List<ReferenceChildObject> childObjects
             ){
@@ -33,11 +33,11 @@ public class ReferenceObjectMenu {
         return object;
     }
 
-    public List<ReferenceObject> choices0MoveChildrenTest() {
+    public List<ReferenceObject> choices0MoveChildrenBetweenReferenceObjects() {
         return referenceObjects.listAll();
     }
 
-    public List<ReferenceChildObject> choices1MoveChildrenTest(final ReferenceObject object) {
+    public List<ReferenceChildObject> choices1MoveChildrenBetweenReferenceObjects(final ReferenceObject object) {
         return object!=null ? otherChildren(object) : null;
     }
 

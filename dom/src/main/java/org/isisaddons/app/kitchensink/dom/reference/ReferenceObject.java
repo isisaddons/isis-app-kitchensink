@@ -59,6 +59,10 @@ import org.isisaddons.app.kitchensink.dom.other.OtherBoundedObject;
 import org.isisaddons.app.kitchensink.dom.other.OtherBoundedObjects;
 import org.isisaddons.app.kitchensink.dom.other.OtherObject;
 import org.isisaddons.app.kitchensink.dom.other.OtherObjects;
+import org.isisaddons.app.kitchensink.dom.reference.child.ReferenceChildObject;
+import org.isisaddons.app.kitchensink.dom.reference.child.ReferenceChildObjects;
+import org.isisaddons.app.kitchensink.dom.reference.child2.ReferenceChild2Object;
+import org.isisaddons.app.kitchensink.dom.reference.child2.ReferenceChild2Objects;
 
 @javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE)
 @javax.jdo.annotations.DatastoreIdentity(
@@ -82,7 +86,7 @@ public class ReferenceObject implements Entity<ReferenceObject> {
 
     @Column(allowsNull="false")
     @Title(sequence="1")
-    @Property(editing = Editing.DISABLED)
+    @Property(editing = Editing.ENABLED)
     public String getName() {
         return name;
     }
@@ -90,6 +94,12 @@ public class ReferenceObject implements Entity<ReferenceObject> {
     public void setName(final String name) {
         this.name = name;
     }
+
+    public String disableName()  {
+        return getSomeOtherObjectOptionalWithChoices() != null? "disabled because someOtherObjectOptionalWithChoices is not null" : null;
+    }
+
+
 
     //region > someAutoObjectMandatory (property)
     private AutoObject someAutoObjectMandatory;
@@ -102,9 +112,10 @@ public class ReferenceObject implements Entity<ReferenceObject> {
     public void setSomeAutoObjectMandatory(final AutoObject someAutoObjectMandatory) {
         this.someAutoObjectMandatory = someAutoObjectMandatory;
     }
-    public Collection<AutoObject> choicesSomeAutoObjectMandatory() {
-        return autoObjects.listAll();
-    }
+//    public Collection<AutoObject> choicesSomeAutoObjectMandatory() {
+//        return autoObjects.listAll();
+//    }
+
 
     @Action(semantics=SemanticsOf.IDEMPOTENT)
     public ReferenceObject updateSomeAutoObjectMandatory(final AutoObject i) {
@@ -144,6 +155,66 @@ public class ReferenceObject implements Entity<ReferenceObject> {
     }
 
     public String validate0UpdateSomeAutoObjectMandatoryNoDefaultWithValidation(final AutoObject autoObject) {
+        if(autoObject == null) return null;
+
+        return autoObject.getName().startsWith("B") ? "Cannot associate with object whose name starts with 'B'" : null;
+    }
+
+
+    //endregion    //region > someAutoObjectOptional (property)
+    private AutoObject someAutoObjectOptional;
+
+    @Column(allowsNull = "true")
+    public AutoObject getSomeAutoObjectOptional() {
+        return someAutoObjectOptional;
+    }
+
+    public void setSomeAutoObjectOptional(final AutoObject someAutoObjectOptional) {
+        this.someAutoObjectOptional = someAutoObjectOptional;
+    }
+//    public Collection<AutoObject> choicesSomeAutoObjectOptional() {
+//        return autoObjects.listAll();
+//    }
+
+
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public ReferenceObject updateSomeAutoObjectOptional(@Nullable final AutoObject i) {
+        setSomeAutoObjectOptional(i);
+        return this;
+    }
+    public AutoObject default0UpdateSomeAutoObjectOptional() {
+        return getSomeAutoObjectOptional();
+    }
+
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public ReferenceObject updateSomeAutoObjectOptionalNoDefault(@Nullable final AutoObject i) {
+        setSomeAutoObjectOptional(i);
+        return this;
+    }
+
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public ReferenceObject updateSomeAutoObjectOptionalWithValidation(@Nullable final AutoObject i) {
+        setSomeAutoObjectOptional(i);
+        return this;
+    }
+    public AutoObject default0UpdateSomeAutoObjectOptionalWithValidation() {
+        return getSomeAutoObjectOptional();
+    }
+
+    public String validate0UpdateSomeAutoObjectOptionalWithValidation(final AutoObject autoObject) {
+        if(autoObject == null) return null;
+
+        return autoObject.getName().startsWith("B") ? "Cannot associate with object whose name starts with 'B'" : null;
+    }
+
+
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public ReferenceObject updateSomeAutoObjectOptionalNoDefaultWithValidation(final AutoObject i) {
+        setSomeAutoObjectOptional(i);
+        return this;
+    }
+
+    public String validate0UpdateSomeAutoObjectOptionalNoDefaultWithValidation(final AutoObject autoObject) {
         if(autoObject == null) return null;
 
         return autoObject.getName().startsWith("B") ? "Cannot associate with object whose name starts with 'B'" : null;
@@ -502,17 +573,17 @@ public class ReferenceObject implements Entity<ReferenceObject> {
     }
 
     public String validate0AddChild(final String name) {
-        final Optional<ReferenceChildObject> childNamed = getChildren().stream().filter(x -> name.equals(x.getName())).findAny();
+        final Optional<ReferenceChildObject> childNamed = Lists.newArrayList(getChildren()).stream().filter(x -> name.equals(x.getName())).findAny();
         return childNamed.isPresent() ? String.format("There is already a child named %s", name) : null;
     }
     //endregion
 
 
-    //region > moveChildren (action)
+    //region > moveChildrenWithChoices (action)
 
     @Action(semantics = SemanticsOf.IDEMPOTENT)
     @MemberOrder(name = "children", sequence = "1")
-    public ReferenceObject moveChildren(
+    public ReferenceObject moveChildrenWithChoices(
             //@Nullable
             @ParameterLayout(named = "Select some child(ren)")
             final List<ReferenceChildObject> childObjects) {
@@ -522,11 +593,11 @@ public class ReferenceObject implements Entity<ReferenceObject> {
         return this;
     }
 
-    public List<ReferenceChildObject> choices0MoveChildren() {
+    public List<ReferenceChildObject> choices0MoveChildrenWithChoices() {
         return otherChildren();
     }
 
-    public String validate0MoveChildren(List<ReferenceChildObject> candidates) {
+    public String validate0MoveChildrenWithChoices(List<ReferenceChildObject> candidates) {
         for (ReferenceChildObject candidate : candidates) {
             if(candidate.getName().contains("4")) {
                 return "Can't move #4 !";
@@ -535,9 +606,9 @@ public class ReferenceObject implements Entity<ReferenceObject> {
         return null;
     }
 
-    public List<ReferenceChildObject> default0MoveChildren() {
+    public List<ReferenceChildObject> default0MoveChildrenWithChoices() {
         final List<ReferenceChildObject> defaults = Lists.newArrayList();
-        final List<ReferenceChildObject> choices = Lists.newArrayList( choices0MoveChildren() );
+        final List<ReferenceChildObject> choices = Lists.newArrayList( choices0MoveChildrenWithChoices() );
 
         if(choices.size() > 2) {
             defaults.add(choices.get(0));
@@ -557,11 +628,11 @@ public class ReferenceObject implements Entity<ReferenceObject> {
     //endregion
 
 
-    //region > moveChildren2 (action)
+    //region > moveChildrenWithAuto (action)
 
     @Action(semantics = SemanticsOf.IDEMPOTENT)
     @MemberOrder(name = "children", sequence = "1")
-    public ReferenceObject moveChildren2(
+    public ReferenceObject moveChildrenWithAuto(
             @Nullable
             final List<ReferenceChildObject> childObjects) {
         for (ReferenceChildObject childObject : childObjects) {
@@ -570,13 +641,64 @@ public class ReferenceObject implements Entity<ReferenceObject> {
         return this;
     }
 
-    public List<ReferenceChildObject> autoComplete0MoveChildren2(@MinLength(1) String search) {
+    public List<ReferenceChildObject> autoComplete0MoveChildrenWithAuto(@MinLength(1) String search) {
         final List<ReferenceChildObject> referenceChildObjects = this.referenceChildObjects.findNamed(search);
         referenceChildObjects.removeAll(getChildren());
         return referenceChildObjects;
     }
 
     //endregion
+
+
+
+    //region > children (collection)
+    @Persistent(mappedBy = "parent", dependentElement = "false")
+    private SortedSet<ReferenceChild2Object> children2 = new TreeSet<ReferenceChild2Object>();
+
+    @MemberOrder(sequence = "1")
+    public SortedSet<ReferenceChild2Object> getChildren2() {
+        return children2;
+    }
+
+    public void setChildren2(final SortedSet<ReferenceChild2Object> children2) {
+        this.children2 = children2;
+    }
+
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
+    @MemberOrder(name = "children2", sequence = "1")
+    public ReferenceObject addChild2(final String name) {
+        referenceChild2Objects.create(name, this);
+        return this;
+    }
+
+    public String validate0AddChild2(final String name) {
+        final Optional<ReferenceChild2Object> childNamed = Lists.newArrayList(getChildren2()).stream().filter(x -> name.equals(x.getName())).findAny();
+        return childNamed.isPresent() ? String.format("There is already a child named %s", name) : null;
+    }
+    //endregion
+
+
+    //region > moveChildren2WithRepo (action)
+
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
+    @MemberOrder(name = "children2", sequence = "1")
+    public ReferenceObject moveChildren2WithRepo(
+            @Nullable
+            final List<ReferenceChild2Object> childObjects) {
+        for (ReferenceChild2Object childObject : childObjects) {
+            childObject.setParent(this);
+        }
+        return this;
+    }
+
+//    public List<ReferenceChild2Object> autoComplete0MoveChildren2WithRepo(@MinLength(1) String search) {
+//        final List<ReferenceChild2Object> referenceChild2Objects = this.referenceChild2Objects.findNamed(search);
+//        referenceChild2Objects.removeAll(getChildren2());
+//        return referenceChild2Objects;
+//    }
+
+    //endregion
+
 
 
     //region > injected services
@@ -596,6 +718,9 @@ public class ReferenceObject implements Entity<ReferenceObject> {
 
     @javax.inject.Inject
     private ReferenceChildObjects referenceChildObjects;
+
+    @javax.inject.Inject
+    private ReferenceChild2Objects referenceChild2Objects;
 
 
     //endregion

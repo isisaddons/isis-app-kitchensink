@@ -14,7 +14,7 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-package org.isisaddons.app.kitchensink.dom.reference;
+package org.isisaddons.app.kitchensink.dom.reference.child;
 
 import java.util.List;
 
@@ -27,6 +27,7 @@ import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.ParameterLayout;
 
 import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
+import org.isisaddons.app.kitchensink.dom.reference.ReferenceObject;
 
 @DomainService(
         repositoryFor = ReferenceChildObject.class

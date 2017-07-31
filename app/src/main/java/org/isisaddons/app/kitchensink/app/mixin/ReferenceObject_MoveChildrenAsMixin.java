@@ -8,8 +8,8 @@ import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.Mixin;
 import org.apache.isis.applib.annotation.SemanticsOf;
 
-import org.isisaddons.app.kitchensink.dom.reference.ReferenceChildObject;
-import org.isisaddons.app.kitchensink.dom.reference.ReferenceChildObjects;
+import org.isisaddons.app.kitchensink.dom.reference.child.ReferenceChildObject;
+import org.isisaddons.app.kitchensink.dom.reference.child.ReferenceChildObjects;
 import org.isisaddons.app.kitchensink.dom.reference.ReferenceObject;
 
 @Mixin

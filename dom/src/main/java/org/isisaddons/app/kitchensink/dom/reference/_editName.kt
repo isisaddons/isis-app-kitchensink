@@ -19,6 +19,12 @@ class _editName(private val mixee: ReferenceObject) {
 
     fun default1Act(): String = mixee.name.split(1)
 
+    fun hideAct() : Boolean = false
+
+    fun disableAct() : String? {
+        return if (mixee.someOtherBoundedObjectOptional != null) "disabled because someOtherBoundedObjectOptional is not null" else null;
+    }
+
     private fun String.split(i: Int): String {
         val regex = "\\s".toRegex()
         val parts = split(regex).dropLastWhile ({ it.isEmpty() }) .toTypedArray()

@@ -48,12 +48,21 @@ public class ReferenceObjectsFixture extends FixtureScript {
         foo.addChild("Child 2");
         foo.addChild("Child 3");
 
+        foo.addChild2("Child2 A");
+        foo.addChild2("Child2 B");
+        foo.addChild2("Child2 C");
+
         final ReferenceObject bar = create("Bar", executionContext, i++, get(autoObjectList, i),
                 get(otherObjectList, i), get(otherBoundedObjectList, i));
         bar.addChild("Child 4");
         bar.addChild("Child 5");
         bar.addChild("Child 6");
         bar.addChild("Child 7");
+
+        bar.addChild2("Child2 D");
+        bar.addChild2("Child2 E");
+        bar.addChild2("Child2 F");
+        bar.addChild2("Child2 G");
 
         create("Baz", executionContext, i++, get(autoObjectList, i), get(otherObjectList, i), get(otherBoundedObjectList, i));
     }

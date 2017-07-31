@@ -57,6 +57,20 @@
                         <cpt:named>MandatoryWithValidation</cpt:named>
                     </cpt:action>
                 </cpt:property>
+                <cpt:property id="someAutoObjectOptional">
+                    <cpt:action id="updateSomeAutoObjectOptional">
+                        <cpt:named>Optional</cpt:named>
+                    </cpt:action>
+                    <cpt:action id="updateSomeAutoObjectOptionalNoDefault">
+                        <cpt:named>OptionalNoDefault</cpt:named>
+                    </cpt:action>
+                    <cpt:action id="updateSomeAutoObjectOptionalNoDefaultWithValidation">
+                        <cpt:named>OptionalNoDefaultWithValidation</cpt:named>
+                    </cpt:action>
+                    <cpt:action id="updateSomeAutoObjectOptionalWithValidation">
+                        <cpt:named>OptionalWithValidation</cpt:named>
+                    </cpt:action>
+                </cpt:property>
             </cpt:fieldSet>
         </bs3:col>
         <bs3:col span="4">

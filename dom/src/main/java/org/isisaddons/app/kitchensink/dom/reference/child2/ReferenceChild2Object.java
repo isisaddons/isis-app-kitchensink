@@ -14,7 +14,7 @@
  *  specific language governing permissions and limitations
  *  under the License.
  */
-package org.isisaddons.app.kitchensink.dom.reference;
+package org.isisaddons.app.kitchensink.dom.reference.child2;
 
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
@@ -32,6 +32,7 @@ import org.apache.isis.applib.util.ObjectContracts;
 
 import org.isisaddons.app.kitchensink.dom.Entity;
 import org.isisaddons.app.kitchensink.dom.hierarchy.parent.ParentObjects;
+import org.isisaddons.app.kitchensink.dom.reference.ReferenceObject;
 
 @javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE)
 @javax.jdo.annotations.DatastoreIdentity(
@@ -41,12 +42,14 @@ import org.isisaddons.app.kitchensink.dom.hierarchy.parent.ParentObjects;
         strategy=VersionStrategy.VERSION_NUMBER, 
         column="version")
 @DomainObject(
-        objectType = "REFERENCE_CHILD"
+        objectType = "REFERENCE_CHILD2",
+        autoCompleteRepository = ReferenceChild2Objects.class,
+        autoCompleteAction = "findNamed"
 )
 @DomainObjectLayout(
         bookmarking = BookmarkPolicy.AS_CHILD
 )
-public class ReferenceChildObject implements Entity<ReferenceChildObject> {
+public class ReferenceChild2Object implements Entity<ReferenceChild2Object> {
 
     //region > name (property)
 
@@ -82,7 +85,7 @@ public class ReferenceChildObject implements Entity<ReferenceChildObject> {
     //region > compareTo
 
     @Override
-    public int compareTo(final ReferenceChildObject other) {
+    public int compareTo(final ReferenceChild2Object other) {
         return ObjectContracts.compare(this, other, "name");
     }
 
