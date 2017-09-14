@@ -45,7 +45,7 @@
         <bs3:col span="3">
             <cpt:fieldSet name="Parent" id="parent">
                 <cpt:property id="parent">
-                    <cpt:action id="changeParent" position="BELOW"/>
+                    <cpt:action id="changeParent" position="BELOW" promptStyle="INLINE"/>
                 </cpt:property>
             </cpt:fieldSet>
         </bs3:col>

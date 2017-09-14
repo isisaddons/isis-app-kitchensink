@@ -20,7 +20,7 @@ language governing permissions and limitations under the License.
     <parent>
         <groupId>org.isisaddons.app.kitchensink</groupId>
         <artifactId>isis-app-kitchensink</artifactId>
-        <version>1.15.0-SNAPSHOT</version>
+        <version>1.16.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>isis-app-kitchensink-webapp</artifactId>
@@ -135,7 +135,25 @@ language governing permissions and limitations under the License.
           </exclusions>
         </dependency>
 
+
     </dependencies>
+
+    <dependencyManagement>
+
+        <dependencies>
+
+            <dependency>
+                <!--
+                required because resteasy-jaxrs declares as a test dependency
+                whereas httpclient4 needs it as a compile dependency -->
+                <groupId>commons-logging</groupId>
+                <artifactId>commons-logging</artifactId>
+                <scope>compile</scope>
+            </dependency>
+
+        </dependencies>
+
+    </dependencyManagement>
 
     <profiles>
         <profile>

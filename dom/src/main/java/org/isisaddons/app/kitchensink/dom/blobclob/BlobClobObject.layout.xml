@@ -3,10 +3,6 @@
     <bs3:row>
         <bs3:col span="12" unreferencedActions="true">
             <cpt:domainObject/>
-            <cpt:action id="clearHints"/>
-            <cpt:action id="downloadLayoutXml"/>
-            <cpt:action id="downloadJdoMetadata"/>
-            <cpt:action id="rebuildMetamodel"/>
         </bs3:col>
     </bs3:row>
     <bs3:row>
@@ -60,6 +56,11 @@
                 <cpt:property id="someClob">
                     <cpt:action id="updateSomeClob" position="BELOW"/>
                     <cpt:action id="resetSomeClob" position="BELOW"/>
+                </cpt:property>
+            </cpt:fieldSet>
+            <cpt:fieldSet name="Markup" id="markup">
+                <cpt:action id="updateSomeMarkup"/>
+                <cpt:property id="someMarkup" labelPosition="NONE">
                 </cpt:property>
             </cpt:fieldSet>
         </bs3:col>

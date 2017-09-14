@@ -18,20 +18,22 @@ package org.isisaddons.app.kitchensink.dom.mixins.mixedIn;
 
 import java.util.Objects;
 
-import javax.inject.Inject;
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.VersionStrategy;
 
-import org.apache.isis.applib.DomainObjectContainer;
+import com.google.common.collect.Ordering;
+
 import org.apache.isis.applib.annotation.BookmarkPolicy;
 import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.DomainObjectLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.Title;
-import org.apache.isis.applib.util.ObjectContracts;
 
 import org.isisaddons.app.kitchensink.dom.Entity;
+
+import lombok.Getter;
+import lombok.Setter;
 
 @javax.jdo.annotations.PersistenceCapable(
         identityType=IdentityType.DATASTORE,
@@ -52,21 +54,10 @@ import org.isisaddons.app.kitchensink.dom.Entity;
 )
 public class Person implements Entity<Person> {
 
-    //region > name (property)
-
-    private String name;
-
-    @Title
     @Column(allowsNull="false")
-    public String getName() {
-        return name;
-    }
-
-    public void setName(final String name) {
-        this.name = name;
-    }
-
-    //endregion
+    @Title
+    @Getter @Setter
+    private String name;
 
     public enum ConfigureType {
         REGULAR,
@@ -80,47 +71,24 @@ public class Person implements Entity<Person> {
         LOCKDOWN
     }
 
-    //region > configure (property)
-    private ConfigureType configure;
-
     @Column(allowsNull = "true")
     @MemberOrder(sequence = "1")
-    public ConfigureType getConfigure() {
-        return configure;
-    }
+    @Getter @Setter
+    private ConfigureType configure;
 
-    public void setConfigure(final ConfigureType configure) {
-        this.configure = configure;
-    }
 
     public boolean isSecure() {
         return Objects.equals(getConfigure(), ConfigureType.SUPPRESS);
     }
+
     public boolean isLockDown() {
         return Objects.equals(getConfigure(), ConfigureType.LOCKDOWN);
     }
 
-    //endregion
-
-
-
-    //region > compareTo
 
     @Override
     public int compareTo(final Person other) {
-        return ObjectContracts.compare(this, other, "name");
+        return Ordering.natural().onResultOf(Person::getName).compare(this, other);
     }
-
-    //endregion
-
-    //region > injected services
-
-    @Inject
-    @SuppressWarnings("unused")
-    private DomainObjectContainer container;
-
-    @Inject
-    Persons contributee1Objects;
-    //endregion
 
 }

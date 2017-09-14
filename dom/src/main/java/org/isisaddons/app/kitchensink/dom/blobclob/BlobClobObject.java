@@ -16,25 +16,40 @@
  */
 package org.isisaddons.app.kitchensink.dom.blobclob;
 
-import org.apache.isis.applib.DomainObjectContainer;
-import org.apache.isis.applib.annotation.*;
-import org.apache.isis.applib.util.ObjectContracts;
+import javax.jdo.annotations.Column;
+import javax.jdo.annotations.IdentityType;
+import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.VersionStrategy;
+
+import com.google.common.collect.Ordering;
+
+import org.apache.isis.applib.annotation.Action;
+import org.apache.isis.applib.annotation.BookmarkPolicy;
+import org.apache.isis.applib.annotation.DomainObject;
+import org.apache.isis.applib.annotation.DomainObjectLayout;
+import org.apache.isis.applib.annotation.Editing;
+import org.apache.isis.applib.annotation.Optionality;
+import org.apache.isis.applib.annotation.Parameter;
+import org.apache.isis.applib.annotation.Property;
+import org.apache.isis.applib.annotation.SemanticsOf;
+import org.apache.isis.applib.annotation.Title;
 import org.apache.isis.applib.value.Blob;
 import org.apache.isis.applib.value.Clob;
+import org.apache.isis.applib.value.Markup;
+
 import org.isisaddons.app.kitchensink.dom.Entity;
 import org.isisaddons.app.kitchensink.dom.other.OtherBoundedObjects;
 import org.isisaddons.app.kitchensink.dom.other.OtherObjects;
 
-import javax.jdo.annotations.Column;
-import javax.jdo.annotations.IdentityType;
-import javax.jdo.annotations.VersionStrategy;
+import lombok.Getter;
+import lombok.Setter;
 
 @javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE)
 @javax.jdo.annotations.DatastoreIdentity(
         strategy=javax.jdo.annotations.IdGeneratorStrategy.IDENTITY,
          column="id")
 @javax.jdo.annotations.Version(
-        strategy=VersionStrategy.VERSION_NUMBER, 
+        strategy=VersionStrategy.VERSION_NUMBER,
         column="version")
 @DomainObject(
         objectType = "BLOBCLOB"
@@ -44,38 +59,55 @@ import javax.jdo.annotations.VersionStrategy;
 )
 public class BlobClobObject implements Entity<BlobClobObject> {
 
-    //region > name (property)
-
-    private String name;
-
     @Column(allowsNull="false")
     @Title(sequence="1")
-    public String getName() {
-        return name;
-    }
+    @Getter @Setter
+    private String name;
 
-    public void setName(final String name) {
-        this.name = name;
-    }
-
-    //endregion
-
-    //region > someBlob (property)
     @javax.jdo.annotations.Persistent(defaultFetchGroup="false", columns = {
             @javax.jdo.annotations.Column(name = "someBlob_name"),
             @javax.jdo.annotations.Column(name = "someBlob_mimetype"),
             @javax.jdo.annotations.Column(name = "someBlob_bytes", jdbcType = "BLOB", sqlType = "VARBINARY")
     })
+    @Property(optionality = Optionality.OPTIONAL)
+    @Getter @Setter
     private Blob someBlob;
 
-    @Property(optionality = Optionality.OPTIONAL)
-    public Blob getSomeBlob() {
-        return someBlob;
+    @javax.jdo.annotations.Persistent(defaultFetchGroup="false", columns = {
+            @javax.jdo.annotations.Column(name = "someImage_name"),
+            @javax.jdo.annotations.Column(name = "someImage_mimetype"),
+            @javax.jdo.annotations.Column(name = "someImage_bytes", jdbcType = "BLOB", sqlType = "LONGVARBINARY")
+    })
+    @Getter @Setter
+    @Property(optionality = Optionality.OPTIONAL, fileAccept ="image/*")
+    private Blob someImage;
+
+    @javax.jdo.annotations.Persistent(defaultFetchGroup="false", columns = {
+            @javax.jdo.annotations.Column(name = "someClob_name"),
+            @javax.jdo.annotations.Column(name = "someClob_mimetype"),
+            @javax.jdo.annotations.Column(name = "someClob_chars", jdbcType = "CLOB", sqlType = "LONGVARCHAR")
+    })
+    @Property(optionality=Optionality.OPTIONAL, fileAccept =".txt")
+    @Getter @Setter
+    private Clob someClob;
+
+
+    @Persistent
+    @Property(optionality=Optionality.OPTIONAL, editing = Editing.DISABLED)
+    @Column(allowsNull = "true", length = 4000)
+    @Getter @Setter
+    private Markup someMarkup;
+
+    public BlobClobObject updateSomeMarkup(Markup markup) {
+        setSomeMarkup(markup);
+        return this;
+    }
+    public Markup defaultUpdate0SomeMarkup(String markup) {
+        return getSomeMarkup();
     }
 
-    public void setSomeBlob(final Blob someBlob) {
-        this.someBlob = someBlob;
-    }
+
+
 
     @Action(semantics = SemanticsOf.IDEMPOTENT)
     public BlobClobObject updateSomeBlob(
@@ -90,24 +122,10 @@ public class BlobClobObject implements Entity<BlobClobObject> {
         setSomeBlob(null);
         return this;
     }
-    //endregion
 
-    //region > someImage (property)
-    @javax.jdo.annotations.Persistent(defaultFetchGroup="false", columns = {
-            @javax.jdo.annotations.Column(name = "someImage_name"),
-            @javax.jdo.annotations.Column(name = "someImage_mimetype"),
-            @javax.jdo.annotations.Column(name = "someImage_bytes", jdbcType = "BLOB", sqlType = "LONGVARBINARY")
-    })
-    private Blob someImage;
 
-    @Property(optionality = Optionality.OPTIONAL, fileAccept ="image/*")
-    public Blob getSomeImage() {
-        return someImage;
-    }
 
-    public void setSomeImage(final Blob someImage) {
-        this.someImage = someImage;
-    }
+
 
     @Action(semantics=SemanticsOf.IDEMPOTENT)
     public BlobClobObject updateSomeImage(@Parameter(optionality=Optionality.OPTIONAL, fileAccept ="image/*") final  Blob i) {
@@ -120,24 +138,9 @@ public class BlobClobObject implements Entity<BlobClobObject> {
         setSomeImage(null);
         return this;
     }
-    //endregion
 
-    //region > someClob (property)
-    @javax.jdo.annotations.Persistent(defaultFetchGroup="false", columns = {
-            @javax.jdo.annotations.Column(name = "someClob_name"),
-            @javax.jdo.annotations.Column(name = "someClob_mimetype"),
-            @javax.jdo.annotations.Column(name = "someClob_chars", jdbcType = "CLOB", sqlType = "LONGVARCHAR")
-    })
-    private Clob someClob;
 
-    @Property(optionality=Optionality.OPTIONAL, fileAccept =".txt")
-    public Clob getSomeClob() {
-        return someClob;
-    }
 
-    public void setSomeClob(final Clob someClob) {
-        this.someClob = someClob;
-    }
 
     @Action(semantics=SemanticsOf.IDEMPOTENT)
     public BlobClobObject updateSomeClob(
@@ -152,29 +155,21 @@ public class BlobClobObject implements Entity<BlobClobObject> {
         setSomeClob(null);
         return this;
     }
-    //endregion
 
-    //region > compareTo
+
+
 
     @Override
     public int compareTo(final BlobClobObject other) {
-        return ObjectContracts.compare(this, other, "name");
+        return Ordering.natural().onResultOf(BlobClobObject::getName).compare(this, other);
     }
 
-    //endregion
-
-    //region > injected services
 
     @javax.inject.Inject
-    @SuppressWarnings("unused")
-    private DomainObjectContainer container;
+    OtherObjects otherObjects;
 
     @javax.inject.Inject
-    private OtherObjects otherObjects;
+    OtherBoundedObjects otherBoundedObjects;
 
-    @javax.inject.Inject
-    private OtherBoundedObjects otherBoundedObjects;
-
-    //endregion
 
 }

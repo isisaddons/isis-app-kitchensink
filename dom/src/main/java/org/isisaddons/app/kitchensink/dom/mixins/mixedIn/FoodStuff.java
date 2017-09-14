@@ -16,19 +16,21 @@
  */
 package org.isisaddons.app.kitchensink.dom.mixins.mixedIn;
 
-import javax.inject.Inject;
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.VersionStrategy;
 
-import org.apache.isis.applib.DomainObjectContainer;
+import com.google.common.collect.Ordering;
+
 import org.apache.isis.applib.annotation.BookmarkPolicy;
 import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.DomainObjectLayout;
 import org.apache.isis.applib.annotation.Title;
-import org.apache.isis.applib.util.ObjectContracts;
 
 import org.isisaddons.app.kitchensink.dom.Entity;
+
+import lombok.Getter;
+import lombok.Setter;
 
 @javax.jdo.annotations.PersistenceCapable(
         identityType=IdentityType.DATASTORE,
@@ -48,39 +50,15 @@ import org.isisaddons.app.kitchensink.dom.Entity;
 )
 public class FoodStuff implements Entity<FoodStuff> {
 
-    //region > name (property)
-
+    @Column(allowsNull="false")
+    @Title
+    @Getter @Setter
     private String name;
 
-    @Title
-    @Column(allowsNull="false")
-    public String getName() {
-        return name;
-    }
-
-    public void setName(final String name) {
-        this.name = name;
-    }
-
-    //endregion
-
-    //region > compareTo
 
     @Override
     public int compareTo(final FoodStuff other) {
-        return ObjectContracts.compare(this, other, "name");
+        return Ordering.natural().onResultOf(FoodStuff::getName).compare(this, other);
     }
-
-    //endregion
-
-    //region > injected services
-
-    @Inject
-    @SuppressWarnings("unused")
-    private DomainObjectContainer container;
-
-    @Inject
-    FoodStuffs contributee2Objects;
-    //endregion
 
 }

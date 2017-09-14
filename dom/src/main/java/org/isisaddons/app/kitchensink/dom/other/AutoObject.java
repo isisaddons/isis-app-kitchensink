@@ -20,15 +20,18 @@ import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.VersionStrategy;
 
-import org.apache.isis.applib.DomainObjectContainer;
+import com.google.common.collect.Ordering;
+
 import org.apache.isis.applib.annotation.BookmarkPolicy;
 import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.DomainObjectLayout;
 import org.apache.isis.applib.annotation.Title;
-import org.apache.isis.applib.util.ObjectContracts;
 
 import org.isisaddons.app.kitchensink.dom.Entity;
 import org.isisaddons.app.kitchensink.dom.SomeCategory;
+
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Intended to be referenced from other classes...
@@ -50,68 +53,22 @@ import org.isisaddons.app.kitchensink.dom.SomeCategory;
 )
 public class AutoObject implements Entity<AutoObject> {
 
-    //region > name (property)
-
-    private String name;
-
     @Column(allowsNull="false")
     @Title(sequence="1")
-    public String getName() {
-        return name;
-    }
+    @Getter @Setter
+    private String name;
 
-    public void setName(final String name) {
-        this.name = name;
-    }
-
-    //endregion
-
-    //region > description (property)
-
+    @Column(allowsNull="true")
+    @Getter @Setter
     private String description;
 
     @Column(allowsNull="true")
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(final String description) {
-        this.description = description;
-    }
-
-    //endregion
-
-    //region > someCategory (property)
-
+    @Getter @Setter
     private SomeCategory someCategory;
-
-    @Column(allowsNull="true")
-    public SomeCategory getSomeCategory() {
-        return someCategory;
-    }
-
-    public void setSomeCategory(final SomeCategory someCategory) {
-        this.someCategory = someCategory;
-    }
-
-    //endregion
-
-
-    //region > compareTo
 
     @Override
     public int compareTo(AutoObject other) {
-        return ObjectContracts.compare(this, other, "name");
+        return Ordering.natural().onResultOf(AutoObject::getName).compare(this, other);
     }
-
-    //endregion
-
-    //region > injected services
-
-    @javax.inject.Inject
-    @SuppressWarnings("unused")
-    private DomainObjectContainer container;
-
-    //endregion
 
 }

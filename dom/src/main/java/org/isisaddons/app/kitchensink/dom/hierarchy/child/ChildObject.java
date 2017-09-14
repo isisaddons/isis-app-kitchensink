@@ -19,15 +19,14 @@ package org.isisaddons.app.kitchensink.dom.hierarchy.child;
 import java.util.Collection;
 import java.util.SortedSet;
 import java.util.TreeSet;
+
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.VersionStrategy;
-import org.isisaddons.app.kitchensink.dom.Entity;
-import org.isisaddons.app.kitchensink.dom.hierarchy.grandchild.GrandchildObject;
-import org.isisaddons.app.kitchensink.dom.hierarchy.parent.ParentObject;
-import org.isisaddons.app.kitchensink.dom.hierarchy.parent.ParentObjects;
-import org.apache.isis.applib.DomainObjectContainer;
+
+import com.google.common.collect.Ordering;
+
 import org.apache.isis.applib.annotation.BookmarkPolicy;
 import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.DomainObjectLayout;
@@ -35,7 +34,13 @@ import org.apache.isis.applib.annotation.Editing;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.Property;
 import org.apache.isis.applib.annotation.Title;
-import org.apache.isis.applib.util.ObjectContracts;
+
+import org.isisaddons.app.kitchensink.dom.Entity;
+import org.isisaddons.app.kitchensink.dom.hierarchy.grandchild.GrandchildObject;
+import org.isisaddons.app.kitchensink.dom.hierarchy.parent.ParentObject;
+
+import lombok.Getter;
+import lombok.Setter;
 
 @javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE)
 @javax.jdo.annotations.DatastoreIdentity(
@@ -50,41 +55,29 @@ import org.apache.isis.applib.util.ObjectContracts;
 @DomainObjectLayout(
         bookmarking = BookmarkPolicy.AS_CHILD
 )
+@Getter @Setter
 public class ChildObject implements Entity<ChildObject> {
 
-    //region > name (property)
-
-    private String name;
 
     @Column(allowsNull="false")
     @Title(sequence="1")
-    public String getName() {
-        return name;
-    }
+    private String name;
 
-    public void setName(final String name) {
-        this.name = name;
-    }
-
-    //endregion
-
-
-    //region > parent (property)
-    private ParentObject parent;
-
-    @Property(editing = Editing.DISABLED)
+    @Property(editing = Editing.ENABLED)
     @MemberOrder(sequence = "1")
     @Column(allowsNull = "false")
-    public ParentObject getParent() {
-        return parent;
+    private ParentObject parent;
+
+    public Collection<ParentObject> choicesParent() {
+        return getParent().choices1MoveChild();
     }
 
-    public void setParent(final ParentObject parent) {
-        this.parent = parent;
-    }
-    //endregion
 
-    //region > changeParent (action)
+
+    @Persistent(mappedBy = "child", dependentElement = "false")
+    private SortedSet<GrandchildObject> grandchildren = new TreeSet<GrandchildObject>();
+
+
     @MemberOrder(sequence = "1")
     public ChildObject changeParent(final ParentObject newParent) {
         setParent(newParent);
@@ -94,41 +87,13 @@ public class ChildObject implements Entity<ChildObject> {
     public Collection<ParentObject> choices0ChangeParent() {
         return getParent().choices1MoveChild();
     }
-    //endregion
-    
-    
-    //region > grandchildren (collection)
-    @Persistent(mappedBy = "child", dependentElement = "false")
-    private SortedSet<GrandchildObject> grandchildren = new TreeSet<GrandchildObject>();
 
-    @MemberOrder(sequence = "1")
-    public SortedSet<GrandchildObject> getGrandchildren() {
-        return grandchildren;
-    }
 
-    public void setGrandchildren(final SortedSet<GrandchildObject> grandchildren) {
-        this.grandchildren = grandchildren;
-    }
-    //endregion
-    
-    
-    //region > compareTo
 
     @Override
     public int compareTo(final ChildObject other) {
-        return ObjectContracts.compare(this, other, "name");
+        return Ordering.natural().onResultOf(ChildObject::getName).compare(this, other);
     }
 
-    //endregion
-
-
-    //region > injected services
-
-    @javax.inject.Inject
-    private DomainObjectContainer container;
-
-    @javax.inject.Inject
-    private ParentObjects parentObjects;
-    //endregion
 
 }

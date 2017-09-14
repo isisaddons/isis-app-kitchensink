@@ -30,20 +30,22 @@ import javax.jdo.annotations.VersionStrategy;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Ordering;
 
-import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.annotation.BookmarkPolicy;
 import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.DomainObjectLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.Title;
-import org.apache.isis.applib.util.ObjectContracts;
 
 import org.isisaddons.app.kitchensink.dom.Entity;
 import org.isisaddons.app.kitchensink.dom.hierarchy.child.ChildObject;
 import org.isisaddons.app.kitchensink.dom.hierarchy.child.ChildObjects;
 
 import static com.google.common.base.Predicates.not;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.Setter;
 import static org.isisaddons.app.kitchensink.dom.hierarchy.child.PredicateUtil.containedIn;
 
 @javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE)
@@ -67,41 +69,20 @@ import static org.isisaddons.app.kitchensink.dom.hierarchy.child.PredicateUtil.c
 @DomainObjectLayout(
         bookmarking = BookmarkPolicy.AS_ROOT
 )
+@Getter @Setter
 public class ParentObject implements Entity<ParentObject> {
 
 
-    //region > name (property)
-
-    private String name;
-
     @Column(allowsNull="false")
     @Title(sequence="1")
-    public String getName() {
-        return name;
-    }
+    private String name;
 
-    public void setName(final String name) {
-        this.name = name;
-    }
-
-    //endregion
-
-
-    //region > children (collection)
     @Persistent(mappedBy = "parent", dependentElement = "false")
+    @MemberOrder(sequence = "1")
     private SortedSet<ChildObject> children = new TreeSet<ChildObject>();
 
-    @MemberOrder(sequence = "1")
-    public SortedSet<ChildObject> getChildren() {
-        return children;
-    }
 
-    public void setChildren(final SortedSet<ChildObject> children) {
-        this.children = children;
-    }
-    //endregion
 
-    //region > addChild (action)
     @MemberOrder(sequence = "1")
     public ParentObject addChild(final ChildObject childObject) {
         childObject.setParent(this);
@@ -109,13 +90,11 @@ public class ParentObject implements Entity<ParentObject> {
     }
 
     public List<ChildObject> choices0AddChild() {
-        return Lists.newArrayList(Iterables.filter(childObjects.listAll(), not(containedIn(children)))
+        return Lists.newArrayList(Iterables.filter(childObjects.listAll(), not(containedIn(getChildren())))
         );
     }
 
-    //endregion
 
-    //region > removeChild (action)
     @MemberOrder(sequence = "1")
     public ParentObject moveChild(final ChildObject childObject, final ParentObject other) {
         childObject.setParent(other);
@@ -134,29 +113,23 @@ public class ParentObject implements Entity<ParentObject> {
     public String disableMoveChild(final ChildObject childObject, final ParentObject other) {
         return choices0MoveChild().isEmpty()? "No children to move": null;
     }
-    //endregion
 
-    //region > compareTo
+
 
     @Override
     public int compareTo(ParentObject other) {
-        return ObjectContracts.compare(this, other, "name");
+        return Ordering.natural().onResultOf(ParentObject::getName).compare(this, other);
     }
 
-    //endregion
 
-    //region > injected services
 
-    @javax.inject.Inject
-    private DomainObjectContainer container;
 
+    @Getter(AccessLevel.PRIVATE) @Setter(AccessLevel.PRIVATE)
     @javax.inject.Inject
     private ChildObjects childObjects;
 
+    @Getter(AccessLevel.PRIVATE) @Setter(AccessLevel.PRIVATE)
     @javax.inject.Inject
-    private ParentObjects parentObjects;
-
-
-    //endregion
+    ParentObjects parentObjects;
 
 }

@@ -27,8 +27,8 @@ import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.VersionStrategy;
 
 import com.google.common.collect.Lists;
+import com.google.common.collect.Ordering;
 
-import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.BookmarkPolicy;
 import org.apache.isis.applib.annotation.DomainObject;
@@ -41,10 +41,12 @@ import org.apache.isis.applib.annotation.Property;
 import org.apache.isis.applib.annotation.SemanticsOf;
 import org.apache.isis.applib.annotation.Title;
 import org.apache.isis.applib.annotation.Where;
-import org.apache.isis.applib.util.ObjectContracts;
 import org.apache.isis.applib.value.Money;
 
 import org.isisaddons.app.kitchensink.dom.Entity;
+
+import lombok.Getter;
+import lombok.Setter;
 
 @javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE)
 @javax.jdo.annotations.DatastoreIdentity(
@@ -59,37 +61,136 @@ import org.isisaddons.app.kitchensink.dom.Entity;
 @DomainObjectLayout(
         bookmarking = BookmarkPolicy.AS_ROOT
 )
+@Getter @Setter
 public class MiscObject implements Entity<MiscObject> {
 
 
-    //region > name (property)
-
-    private String name;
-
     @Column(allowsNull="false")
     @Title(sequence="1")
-    public String getName() {
-        return name;
-    }
-
-    public void setName(final String name) {
-        this.name = name;
-    }
-
-    //endregion
-
-
-    //region > someUrlMandatory (property)
-    private java.net.URL someUrlMandatory;
+    private String name;
 
     @Column(allowsNull = "false")
-    public java.net.URL getSomeUrlMandatory() {
-        return someUrlMandatory;
+    private java.net.URL someUrlMandatory;
+
+    @Column(allowsNull = "true")
+    private java.net.URL someUrlOptional;
+
+    @Column(allowsNull = "false")
+    @Property(hidden = Where.EVERYWHERE)
+    private java.net.URL someUrlHidden;
+
+    @Column(allowsNull = "false")
+    @Property(editing = Editing.DISABLED)
+    private java.net.URL someUrlDisabled;
+
+    @Column(allowsNull = "false")
+    private java.net.URL someUrlWithValidation;
+
+    public String validateSomeUrlWithValidation(final java.net.URL i) {
+        return !i.toString().contains("://") ? "Does not contain '://'": null;
     }
 
-    public void setSomeUrlMandatory(final java.net.URL someUrlMandatory) {
-        this.someUrlMandatory = someUrlMandatory;
+
+    @Column(allowsNull = "true")
+    private java.net.URL someUrlOptionalWithChoices;
+
+    public Collection<java.net.URL> choicesSomeUrlOptionalWithChoices() throws MalformedURLException {
+        return Lists.newArrayList(
+                new java.net.URL("http://isis.apache.org"),
+                new java.net.URL("http://www.isisaddons.org"),
+                new java.net.URL("http://www.apache.org"),
+                new java.net.URL("http://issues.apache.org"),
+                new java.net.URL("https://cwiki.apache.org/confluence/display/ISIS/Index")  // not in the list provided by the update action; reproduce issue of ISIS-1711
+        );
     }
+
+    @Action(semantics=SemanticsOf.IDEMPOTENT)
+    public MiscObject updateSomeUrlOptionalWithChoices(@Parameter(optionality= Optionality.OPTIONAL) final  java.net.URL i) {
+        setSomeUrlOptionalWithChoices(i);
+        return this;
+    }
+    public java.net.URL default0UpdateSomeUrlOptionalWithChoices() {
+        return getSomeUrlOptionalWithChoices();
+    }
+    public List<java.net.URL> choices0UpdateSomeUrlOptionalWithChoices() throws MalformedURLException {
+        return Lists.newArrayList(
+                new java.net.URL("http://github.com/apache/isis"), // not in the choices list for the property; reproduce issue of ISIS-1711
+                new java.net.URL("http://isis.apache.org"),
+                new java.net.URL("http://www.isisaddons.org"),
+                new java.net.URL("http://www.apache.org"),
+                new java.net.URL("http://issues.apache.org")
+        );
+    }
+
+
+
+
+
+    @Column(allowsNull = "false")
+    private java.net.URL someUrlMandatoryWithChoices;
+
+    public Collection<java.net.URL> choicesSomeUrlMandatoryWithChoices() throws MalformedURLException {
+        return Lists.newArrayList(
+                new java.net.URL("http://isis.apache.org"),
+                new java.net.URL("http://www.isisaddons.org"),
+                new java.net.URL("http://www.apache.org"),
+                new java.net.URL("http://issues.apache.org"),
+                new java.net.URL("https://cwiki.apache.org/confluence/display/ISIS/Index")
+        );
+    }
+
+    @Column(allowsNull = "false")
+    private java.util.UUID someUuidMandatory;
+
+
+    @Column(allowsNull = "true")
+    private java.util.UUID someUuidOptional;
+
+    @Column(allowsNull = "false")
+    @Property(hidden = Where.EVERYWHERE)
+    private java.util.UUID someUuidHidden;
+
+
+    @Column(allowsNull = "false")
+    @Property(editing = Editing.DISABLED)
+    private java.util.UUID someUuidDisabled;
+
+    @Column(allowsNull = "false")
+    private java.util.UUID someUuidWithValidation;
+
+
+    public String validateSomeUuidWithValidation(final java.util.UUID i) {
+        return !i.toString().contains("-")? "Must contain '-' character(s)": null;
+    }
+
+    @Column(allowsNull = "false")
+    private java.util.UUID someUuidMandatoryWithChoices;
+
+    public Collection<java.util.UUID> choicesSomeUuidMandatoryWithChoices() {
+        return Lists.newArrayList(UUID.randomUUID(),UUID.randomUUID(),UUID.randomUUID(),UUID.randomUUID());
+    }
+
+    @Column(allowsNull = "true")
+    private java.util.UUID someUuidOptionalWithChoices;
+
+    public Collection<java.util.UUID> choicesSomeUuidOptionalWithChoices() {
+        return Lists.newArrayList(UUID.randomUUID(),UUID.randomUUID(),UUID.randomUUID(),UUID.randomUUID());
+    }
+
+
+    @javax.jdo.annotations.Persistent(defaultFetchGroup="true", columns = {
+            @javax.jdo.annotations.Column(name = "someMoneyWithOptionalWithChoices_amount"),
+            @javax.jdo.annotations.Column(name = "someMoneyWithOptionalWithChoices_currency")
+    })
+    @Column(allowsNull = "true")
+    private Money someMoneyOptionalWithChoices;
+
+    public Collection<Money> choicesSomeMoneyOptionalWithChoices() {
+        return Lists.newArrayList(new Money(1000, "GBP"),new Money(10.00, "GBP"),new Money(1000, "EUR"),new Money(10.00, "EUR"), new Money(1000, "USD"), new Money(10.00, "USD"));
+    }
+
+
+
 
     @Action(semantics=SemanticsOf.IDEMPOTENT)
     public MiscObject updateSomeUrlMandatory(final java.net.URL i) {
@@ -100,6 +201,7 @@ public class MiscObject implements Entity<MiscObject> {
         return getSomeUrlMandatory();
     }
 
+
     @Action(semantics = SemanticsOf.SAFE)
     @MemberOrder(name = "someUrlMandatory", sequence = "1")
     public URL openSomeUrlMandatory() throws MalformedURLException {
@@ -109,19 +211,7 @@ public class MiscObject implements Entity<MiscObject> {
         return getSomeUrlMandatory() == null ? "No URL to open" : null;
     }
 
-    //endregion
 
-    //region > someUrlOptional (property)
-    private java.net.URL someUrlOptional;
-
-    @Column(allowsNull = "true")
-    public java.net.URL getSomeUrlOptional() {
-        return someUrlOptional;
-    }
-
-    public void setSomeUrlOptional(final java.net.URL someUrlOptional) {
-        this.someUrlOptional = someUrlOptional;
-    }
 
     @Action(semantics= SemanticsOf.IDEMPOTENT)
     public MiscObject updateSomeUrlOptional(@Parameter(optionality=Optionality.OPTIONAL) final  java.net.URL i) {
@@ -137,53 +227,7 @@ public class MiscObject implements Entity<MiscObject> {
         setSomeUrlOptional(null);
         return this;
     }
-    //endregion
 
-    //region > someUrlHidden (property)
-    private java.net.URL someUrlHidden;
-
-    @Column(allowsNull = "false")
-    @Property(hidden = Where.EVERYWHERE)
-    public java.net.URL getSomeUrlHidden() {
-        return someUrlHidden;
-    }
-
-    public void setSomeUrlHidden(final java.net.URL someUrlHidden) {
-        this.someUrlHidden = someUrlHidden;
-    }
-
-    //endregion
-
-    //region > someUrlDisabled (property)
-    private java.net.URL someUrlDisabled;
-
-    @Column(allowsNull = "false")
-    @Property(editing = Editing.DISABLED)
-    public java.net.URL getSomeUrlDisabled() {
-        return someUrlDisabled;
-    }
-
-    public void setSomeUrlDisabled(final java.net.URL someUrlDisabled) {
-        this.someUrlDisabled = someUrlDisabled;
-    }
-
-    //endregion
-
-    //region > someUrlWithValidation (property)
-    private java.net.URL someUrlWithValidation;
-
-    @Column(allowsNull = "false")
-    public java.net.URL getSomeUrlWithValidation() {
-        return someUrlWithValidation;
-    }
-
-    public void setSomeUrlWithValidation(final java.net.URL someUrlWithValidation) {
-        this.someUrlWithValidation = someUrlWithValidation;
-    }
-
-    public String validateSomeUrlWithValidation(final java.net.URL i) {
-        return !i.toString().contains("://") ? "Does not contain '://'": null;
-    }
 
     @Action(semantics=SemanticsOf.IDEMPOTENT)
     public MiscObject updateSomeUrlWithValidation(final java.net.URL i) {
@@ -198,28 +242,7 @@ public class MiscObject implements Entity<MiscObject> {
         return getSomeUrlWithValidation();
     }
 
-    //endregion
 
-    //region > someUrlMandatoryWithChoices (property)
-    private java.net.URL someUrlMandatoryWithChoices;
-
-    @Column(allowsNull = "false")
-    public java.net.URL getSomeUrlMandatoryWithChoices() {
-        return someUrlMandatoryWithChoices;
-    }
-
-    public void setSomeUrlMandatoryWithChoices(final java.net.URL someUrlMandatoryWithChoices) {
-        this.someUrlMandatoryWithChoices = someUrlMandatoryWithChoices;
-    }
-    public Collection<java.net.URL> choicesSomeUrlMandatoryWithChoices() throws MalformedURLException {
-        return Lists.newArrayList(
-                new java.net.URL("http://isis.apache.org"),
-                new java.net.URL("http://www.isisaddons.org"),
-                new java.net.URL("http://www.apache.org"),
-                new java.net.URL("http://issues.apache.org"),
-                new java.net.URL("https://cwiki.apache.org/confluence/display/ISIS/Index")
-                );
-    }
 
     @Action(semantics=SemanticsOf.IDEMPOTENT)
     public MiscObject updateSomeUrlMandatoryWithChoices(final java.net.URL i) {
@@ -238,67 +261,16 @@ public class MiscObject implements Entity<MiscObject> {
                 new java.net.URL("https://cwiki.apache.org/confluence/display/ISIS/Index")
         );
     }
-    //endregion
 
-    //region > someUrlOptionalWithChoices (property)
-    private java.net.URL someUrlOptionalWithChoices;
 
-    @Column(allowsNull = "true")
-    public java.net.URL getSomeUrlOptionalWithChoices() {
-        return someUrlOptionalWithChoices;
-    }
-
-    public void setSomeUrlOptionalWithChoices(final java.net.URL someUrlOptionalWithChoices) {
-        this.someUrlOptionalWithChoices = someUrlOptionalWithChoices;
-    }
-    public Collection<java.net.URL> choicesSomeUrlOptionalWithChoices() throws MalformedURLException {
-        return Lists.newArrayList(
-                new java.net.URL("http://isis.apache.org"),
-                new java.net.URL("http://www.isisaddons.org"),
-                new java.net.URL("http://www.apache.org"),
-                new java.net.URL("http://issues.apache.org"),
-                new java.net.URL("https://cwiki.apache.org/confluence/display/ISIS/Index")
-        );
-    }
-
-    @Action(semantics=SemanticsOf.IDEMPOTENT)
-    public MiscObject updateSomeUrlOptionalWithChoices(@Parameter(optionality= Optionality.OPTIONAL) final  java.net.URL i) {
-        setSomeUrlOptionalWithChoices(i);
-        return this;
-    }
-    public java.net.URL default0UpdateSomeUrlOptionalWithChoices() {
-        return getSomeUrlOptionalWithChoices();
-    }
-    public List<java.net.URL> choices0UpdateSomeUrlOptionalWithChoices() throws MalformedURLException {
-        return Lists.newArrayList(
-                new java.net.URL("http://isis.apache.org"),
-                new java.net.URL("http://www.isisaddons.org"),
-                new java.net.URL("http://www.apache.org"),
-                new java.net.URL("http://issues.apache.org"),
-                new java.net.URL("https://cwiki.apache.org/confluence/display/ISIS/Index")
-        );
-    }
 
     @Action(semantics=SemanticsOf.IDEMPOTENT)
     public MiscObject resetSomeUrlOptionalWithChoices() {
         setSomeUrlOptionalWithChoices(null);
         return this;
     }
-    //endregion
 
 
-
-    //region > someUuidMandatory (property)
-    private java.util.UUID someUuidMandatory;
-
-    @Column(allowsNull = "false")
-    public java.util.UUID getSomeUuidMandatory() {
-        return someUuidMandatory;
-    }
-
-    public void setSomeUuidMandatory(final java.util.UUID someUuidMandatory) {
-        this.someUuidMandatory = someUuidMandatory;
-    }
 
     @Action(semantics=SemanticsOf.IDEMPOTENT)
     public MiscObject updateSomeUuidMandatory(final java.util.UUID i) {
@@ -308,19 +280,8 @@ public class MiscObject implements Entity<MiscObject> {
     public java.util.UUID default0UpdateSomeUuidMandatory() {
         return getSomeUuidMandatory();
     }
-    //endregion
 
-    //region > someUuidOptional (property)
-    private java.util.UUID someUuidOptional;
 
-    @Column(allowsNull = "true")
-    public java.util.UUID getSomeUuidOptional() {
-        return someUuidOptional;
-    }
-
-    public void setSomeUuidOptional(final java.util.UUID someUuidOptional) {
-        this.someUuidOptional = someUuidOptional;
-    }
 
     @Action(semantics=SemanticsOf.IDEMPOTENT)
     public MiscObject updateSomeUuidOptional(@Parameter(optionality=Optionality.OPTIONAL) final  java.util.UUID i) {
@@ -331,58 +292,14 @@ public class MiscObject implements Entity<MiscObject> {
         return getSomeUuidOptional();
     }
 
+
+
     @Action(semantics=SemanticsOf.IDEMPOTENT)
     public MiscObject resetSomeUuidOptional() {
         setSomeUuidOptional(null);
         return this;
     }
-    //endregion
 
-    //region > someUuidHidden (property)
-    private java.util.UUID someUuidHidden;
-
-    @Column(allowsNull = "false")
-    @Property(hidden = Where.EVERYWHERE)
-    public java.util.UUID getSomeUuidHidden() {
-        return someUuidHidden;
-    }
-
-    public void setSomeUuidHidden(final java.util.UUID someUuidHidden) {
-        this.someUuidHidden = someUuidHidden;
-    }
-
-    //endregion
-
-    //region > someUuidDisabled (property)
-    private java.util.UUID someUuidDisabled;
-
-    @Column(allowsNull = "false")
-    @Property(editing = Editing.DISABLED)
-    public java.util.UUID getSomeUuidDisabled() {
-        return someUuidDisabled;
-    }
-
-    public void setSomeUuidDisabled(final java.util.UUID someUuidDisabled) {
-        this.someUuidDisabled = someUuidDisabled;
-    }
-
-    //endregion
-
-    //region > someUuidWithValidation (property)
-    private java.util.UUID someUuidWithValidation;
-
-    @Column(allowsNull = "false")
-    public java.util.UUID getSomeUuidWithValidation() {
-        return someUuidWithValidation;
-    }
-
-    public void setSomeUuidWithValidation(final java.util.UUID someUuidWithValidation) {
-        this.someUuidWithValidation = someUuidWithValidation;
-    }
-
-    public String validateSomeUuidWithValidation(final java.util.UUID i) {
-        return !i.toString().contains("-")? "Must contain '-' character(s)": null;
-    }
 
     @Action(semantics=SemanticsOf.IDEMPOTENT)
     public MiscObject updateSomeUuidWithValidation(final java.util.UUID i) {
@@ -397,22 +314,9 @@ public class MiscObject implements Entity<MiscObject> {
         return getSomeUuidWithValidation();
     }
 
-    //endregion
 
-    //region > someUuidMandatoryWithChoices (property)
-    private java.util.UUID someUuidMandatoryWithChoices;
 
-    @Column(allowsNull = "false")
-    public java.util.UUID getSomeUuidMandatoryWithChoices() {
-        return someUuidMandatoryWithChoices;
-    }
 
-    public void setSomeUuidMandatoryWithChoices(final java.util.UUID someUuidMandatoryWithChoices) {
-        this.someUuidMandatoryWithChoices = someUuidMandatoryWithChoices;
-    }
-    public Collection<java.util.UUID> choicesSomeUuidMandatoryWithChoices() {
-        return Lists.newArrayList(UUID.randomUUID(),UUID.randomUUID(),UUID.randomUUID(),UUID.randomUUID());
-    }
 
     @Action(semantics=SemanticsOf.IDEMPOTENT)
     public MiscObject updateSomeUuidMandatoryWithChoices(final java.util.UUID i) {
@@ -425,22 +329,10 @@ public class MiscObject implements Entity<MiscObject> {
     public List<java.util.UUID> choices0UpdateSomeUuidMandatoryWithChoices() {
         return Lists.newArrayList(UUID.randomUUID(),UUID.randomUUID(),UUID.randomUUID(),UUID.randomUUID());
     }
-    //endregion
 
-    //region > someUuidOptionalWithChoices (property)
-    private java.util.UUID someUuidOptionalWithChoices;
 
-    @Column(allowsNull = "true")
-    public java.util.UUID getSomeUuidOptionalWithChoices() {
-        return someUuidOptionalWithChoices;
-    }
 
-    public void setSomeUuidOptionalWithChoices(final java.util.UUID someUuidOptionalWithChoices) {
-        this.someUuidOptionalWithChoices = someUuidOptionalWithChoices;
-    }
-    public Collection<java.util.UUID> choicesSomeUuidOptionalWithChoices() {
-        return Lists.newArrayList(UUID.randomUUID(),UUID.randomUUID(),UUID.randomUUID(),UUID.randomUUID());
-    }
+
 
     @Action(semantics=SemanticsOf.IDEMPOTENT)
     public MiscObject updateSomeUuidOptionalWithChoices(@Parameter(optionality=Optionality.OPTIONAL) final  java.util.UUID i) {
@@ -462,21 +354,16 @@ public class MiscObject implements Entity<MiscObject> {
     //endregion
 
 
-    //region > someMoneyMandatory (property)
-    private Money someMoneyMandatory;
-
     @javax.jdo.annotations.Persistent(defaultFetchGroup="true", columns = {
             @javax.jdo.annotations.Column(name = "someMoneyMandatory_amount"),
             @javax.jdo.annotations.Column(name = "someMoneyMandatory_currency")
     })
     @Column(allowsNull = "false")
-    public Money getSomeMoneyMandatory() {
-        return someMoneyMandatory;
-    }
+    @Getter @Setter
+    private Money someMoneyMandatory;
 
-    public void setSomeMoneyMandatory(final Money someMoneyMandatory) {
-        this.someMoneyMandatory = someMoneyMandatory;
-    }
+
+
 
     @Action(semantics=SemanticsOf.IDEMPOTENT)
     public MiscObject updateSomeMoneyMandatory(final Money i) {
@@ -486,23 +373,19 @@ public class MiscObject implements Entity<MiscObject> {
     public Money default0UpdateSomeMoneyMandatory() {
         return getSomeMoneyMandatory();
     }
-    //endregion
 
-    //region > someMoneyOptional (property)
-    private Money someMoneyOptional;
+
 
     @javax.jdo.annotations.Persistent(defaultFetchGroup="true", columns = {
             @javax.jdo.annotations.Column(name = "someMoneyOptional_amount"),
             @javax.jdo.annotations.Column(name = "someMoneyOptional_currency")
     })
     @Column(allowsNull = "true")
-    public Money getSomeMoneyOptional() {
-        return someMoneyOptional;
-    }
+    @Getter @Setter
+    private Money someMoneyOptional;
 
-    public void setSomeMoneyOptional(final Money someMoneyOptional) {
-        this.someMoneyOptional = someMoneyOptional;
-    }
+
+
 
     @Action(semantics=SemanticsOf.IDEMPOTENT)
     public MiscObject updateSomeMoneyOptional(@Parameter(optionality=Optionality.OPTIONAL) final  Money i) {
@@ -518,10 +401,7 @@ public class MiscObject implements Entity<MiscObject> {
         setSomeMoneyOptional(null);
         return this;
     }
-    //endregion
 
-    //region > someMoneyHidden (property)
-    private Money someMoneyHidden;
 
     @javax.jdo.annotations.Persistent(defaultFetchGroup="true", columns = {
             @javax.jdo.annotations.Column(name = "someMoneyHidden_amount"),
@@ -529,18 +409,9 @@ public class MiscObject implements Entity<MiscObject> {
     })
     @Column(allowsNull = "false")
     @Property(hidden = Where.EVERYWHERE)
-    public Money getSomeMoneyHidden() {
-        return someMoneyHidden;
-    }
+    @Getter @Setter
+    private Money someMoneyHidden;
 
-    public void setSomeMoneyHidden(final Money someMoneyHidden) {
-        this.someMoneyHidden = someMoneyHidden;
-    }
-
-    //endregion
-
-    //region > someMoneyDisabled (property)
-    private Money someMoneyDisabled;
 
     @javax.jdo.annotations.Persistent(defaultFetchGroup="true", columns = {
             @javax.jdo.annotations.Column(name = "someMoneyDisabled_amount"),
@@ -548,35 +419,23 @@ public class MiscObject implements Entity<MiscObject> {
     })
     @Column(allowsNull = "false")
     @Property(editing = Editing.DISABLED)
-    public Money getSomeMoneyDisabled() {
-        return someMoneyDisabled;
-    }
+    @Getter @Setter
+    private Money someMoneyDisabled;
 
-    public void setSomeMoneyDisabled(final Money someMoneyDisabled) {
-        this.someMoneyDisabled = someMoneyDisabled;
-    }
-
-    //endregion
-
-    //region > someMoneyWithValidation (property)
-    private Money someMoneyWithValidation;
 
     @javax.jdo.annotations.Persistent(defaultFetchGroup="true", columns = {
             @javax.jdo.annotations.Column(name = "someMoneyWithValidation_amount"),
             @javax.jdo.annotations.Column(name = "someMoneyWithValidation_currency")
     })
     @Column(allowsNull = "false")
-    public Money getSomeMoneyWithValidation() {
-        return someMoneyWithValidation;
-    }
-
-    public void setSomeMoneyWithValidation(final Money someMoneyWithValidation) {
-        this.someMoneyWithValidation = someMoneyWithValidation;
-    }
+    @Getter @Setter
+    private Money someMoneyWithValidation;
 
     public String validateSomeMoneyWithValidation(final Money i) {
         return i != null && !"GBP".equals(i.getCurrency())? "Must be in GBP": null;
     }
+
+
 
     @Action(semantics=SemanticsOf.IDEMPOTENT)
     public MiscObject updateSomeMoneyWithValidation(final Money i) {
@@ -591,23 +450,16 @@ public class MiscObject implements Entity<MiscObject> {
         return getSomeMoneyWithValidation();
     }
 
-    //endregion
 
-    //region > someMoneyMandatoryWithChoices (property)
-    private Money someMoneyMandatoryWithChoices;
 
     @javax.jdo.annotations.Persistent(defaultFetchGroup="true", columns = {
             @javax.jdo.annotations.Column(name = "someMoneyWithMandatoryWithChoices_amount"),
             @javax.jdo.annotations.Column(name = "someMoneyWithMandatoryWithChoices_currency")
     })
     @Column(allowsNull = "false")
-    public Money getSomeMoneyMandatoryWithChoices() {
-        return someMoneyMandatoryWithChoices;
-    }
+    @Getter @Setter
+    private Money someMoneyMandatoryWithChoices;
 
-    public void setSomeMoneyMandatoryWithChoices(final Money someMoneyMandatoryWithChoices) {
-        this.someMoneyMandatoryWithChoices = someMoneyMandatoryWithChoices;
-    }
     public Collection<Money> choicesSomeMoneyMandatoryWithChoices() {
         return Lists.newArrayList(new Money(1000, "GBP"),new Money(10.00, "GBP"),new Money(1000, "EUR"),new Money(10.00, "EUR"), new Money(1000, "USD"), new Money(10.00, "USD"));
     }
@@ -623,26 +475,11 @@ public class MiscObject implements Entity<MiscObject> {
     public List<Money> choices0UpdateSomeMoneyMandatoryWithChoices() {
         return Lists.newArrayList(new Money(1000, "GBP"),new Money(10.00, "GBP"),new Money(1000, "EUR"),new Money(10.00, "EUR"), new Money(1000, "USD"), new Money(10.00, "USD"));
     }
-    //endregion
 
-    //region > someMoneyOptionalWithChoices (property)
-    private Money someMoneyOptionalWithChoices;
 
-    @javax.jdo.annotations.Persistent(defaultFetchGroup="true", columns = {
-            @javax.jdo.annotations.Column(name = "someMoneyWithOptionalWithChoices_amount"),
-            @javax.jdo.annotations.Column(name = "someMoneyWithOptionalWithChoices_currency")
-    })
-    @Column(allowsNull = "true")
-    public Money getSomeMoneyOptionalWithChoices() {
-        return someMoneyOptionalWithChoices;
-    }
 
-    public void setSomeMoneyOptionalWithChoices(final Money someMoneyOptionalWithChoices) {
-        this.someMoneyOptionalWithChoices = someMoneyOptionalWithChoices;
-    }
-    public Collection<Money> choicesSomeMoneyOptionalWithChoices() {
-        return Lists.newArrayList(new Money(1000, "GBP"),new Money(10.00, "GBP"),new Money(1000, "EUR"),new Money(10.00, "EUR"), new Money(1000, "USD"), new Money(10.00, "USD"));
-    }
+
+
 
     @Action(semantics=SemanticsOf.IDEMPOTENT)
     public MiscObject updateSomeMoneyOptionalWithChoices(@Parameter(optionality=Optionality.OPTIONAL) final  Money i) {
@@ -661,26 +498,15 @@ public class MiscObject implements Entity<MiscObject> {
         setSomeMoneyOptionalWithChoices(null);
         return this;
     }
-    //endregion
 
 
 
-
-    //region > compareTo
 
     @Override
     public int compareTo(MiscObject other) {
-        return ObjectContracts.compare(this, other, "name");
+        return Ordering.natural().onResultOf(MiscObject::getName).compare(this, other);
     }
 
-    //endregion
 
-    //region > injected services
-
-    @javax.inject.Inject
-    @SuppressWarnings("unused")
-    private DomainObjectContainer container;
-
-    //endregion
 
 }
