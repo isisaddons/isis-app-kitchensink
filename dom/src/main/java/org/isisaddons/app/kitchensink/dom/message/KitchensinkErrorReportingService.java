@@ -33,13 +33,12 @@ public class KitchensinkErrorReportingService implements ErrorReportingService {
     public Ticket reportError(final ErrorDetails errorDetails) {
         return new Ticket(
                 nextTicketReference(),
-                "The Kitchen sink app is sorry to report that: " + errorDetails.getMainMessage(),
-                  "These are additional details for the end-user to read.\n"
-                + "This content should be able to span many lines.\n"
-                + "More detail.\n"
-                + "Some suggested work-arounds.\n"
-                + "Details of how to contact help desk.\n"
-                + "And so on");
+                errorDetails.getMainMessage(),
+                  "By way of an apology, \n"
+                          + "here's a picture of a \n"
+                          + "kitten for you to look at.",
+                "http://www.randomkittengenerator.com/cats/rotator.php"
+                );
     }
 
     String nextTicketReference() {

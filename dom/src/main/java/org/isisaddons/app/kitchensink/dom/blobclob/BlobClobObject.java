@@ -102,7 +102,7 @@ public class BlobClobObject implements Entity<BlobClobObject> {
         setSomeMarkup(markup);
         return this;
     }
-    public Markup defaultUpdate0SomeMarkup(String markup) {
+    public Markup default0UpdateSomeMarkup() {
         return getSomeMarkup();
     }
 
