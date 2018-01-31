@@ -45,6 +45,7 @@ import org.isisaddons.app.kitchensink.dom.hierarchy.child.ChildObjects;
 import static com.google.common.base.Predicates.not;
 import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import static org.isisaddons.app.kitchensink.dom.hierarchy.child.PredicateUtil.containedIn;
 
@@ -61,7 +62,12 @@ import static org.isisaddons.app.kitchensink.dom.hierarchy.child.PredicateUtil.c
                 value = "SELECT "
                         + "FROM org.isisaddons.app.kitchensink.dom.hierarchy.parent.ParentObject "
                         + "WHERE !(SELECT parent "
-                        + "          FROM org.isisaddons.app.kitchensink.dom.hierarchy.child.ChildObject).contains(this) ")
+                        + "          FROM org.isisaddons.app.kitchensink.dom.hierarchy.child.ChildObject).contains(this) "),
+        @Query(
+                name = "findUnique",
+                value = "SELECT "
+                        + "FROM org.isisaddons.app.kitchensink.dom.hierarchy.parent.ParentObject "
+                        + "WHERE name == :name ")
 })
 @DomainObject(
         objectType = "PARENT"
@@ -70,11 +76,13 @@ import static org.isisaddons.app.kitchensink.dom.hierarchy.child.PredicateUtil.c
         bookmarking = BookmarkPolicy.AS_ROOT
 )
 @Getter @Setter
+@RequiredArgsConstructor(staticName = "create")
 public class ParentObject implements Entity<ParentObject> {
 
 
     @Column(allowsNull="false")
     @Title(sequence="1")
+    @lombok.NonNull
     private String name;
 
     @Persistent(mappedBy = "parent", dependentElement = "false")

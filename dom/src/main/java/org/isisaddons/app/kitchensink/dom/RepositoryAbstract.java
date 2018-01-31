@@ -23,6 +23,8 @@ import org.apache.isis.applib.annotation.ActionLayout;
 import org.apache.isis.applib.annotation.BookmarkPolicy;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.SemanticsOf;
+import org.apache.isis.applib.services.factory.FactoryService;
+import org.apache.isis.applib.services.repository.RepositoryService;
 
 public abstract class RepositoryAbstract<T extends Entity> {
 
@@ -85,8 +87,14 @@ public abstract class RepositoryAbstract<T extends Entity> {
 
     //region > injected services
 
-    @javax.inject.Inject 
+    @javax.inject.Inject
     protected DomainObjectContainer container;
+
+    @javax.inject.Inject
+    protected RepositoryService repositoryService;
+
+    @javax.inject.Inject
+    protected FactoryService factoryService;
 
     //endregion
 

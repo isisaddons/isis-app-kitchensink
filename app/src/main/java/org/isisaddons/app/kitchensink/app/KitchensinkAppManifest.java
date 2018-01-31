@@ -18,13 +18,7 @@
  */
 package org.isisaddons.app.kitchensink.app;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-
-import org.apache.isis.applib.AppManifest;
-import org.apache.isis.applib.fixturescripts.FixtureScript;
+import org.apache.isis.applib.AppManifestAbstract;
 
 import org.isisaddons.app.kitchensink.dom.KitchensinkDomModule;
 import org.isisaddons.app.kitchensink.fixture.KitchensinkFixtureModule;
@@ -33,67 +27,22 @@ import org.isisaddons.module.fakedata.FakeDataModule;
 /**
  * Bootstrap the application.
  */
-public class KitchensinkAppManifest implements AppManifest {
+public class KitchensinkAppManifest extends AppManifestAbstract {
 
-    /**
-     * Load all services and entities found in (the packages and subpackages within) these modules
-     */
-    @Override
-    public List<Class<?>> getModules() {
-        return Arrays.asList(
-                KitchensinkDomModule.class,
-                KitchensinkFixtureModule.class,
-                KitchensinkAppModule.class,
-                FakeDataModule.class
-        );
+    private final static Builder BUILDER =
+                    Builder.forModules(
+                        KitchensinkDomModule.class,
+                        KitchensinkFixtureModule.class,
+                        KitchensinkAppModule.class,
+                        FakeDataModule.class
+                    )
+                    .withAuthMechanism("shiro")
+                    .withConfigurationProperty("isis.foo", "other")
+                    .withConfigurationPropertiesFile(KitchensinkAppManifest.class, "git.properties");
+
+    public KitchensinkAppManifest() {
+        super(BUILDER);
     }
 
-    /**
-     * No additional services.
-     */
-    @Override
-    public List<Class<?>> getAdditionalServices() {
-        return Collections.emptyList();
-    }
-
-    /**
-     * Use shiro for authentication.
-     *
-     * <p>
-     *     NB: this is ignored for integration tests, which always use "bypass".
-     * </p>
-     */
-    @Override
-    public String getAuthenticationMechanism() {
-        return "shiro";
-    }
-
-    /**
-     * Use shiro for authorization.
-     *
-     * <p>
-     *     NB: this is ignored for integration tests, which always use "bypass".
-     * </p>
-     */
-    @Override
-    public String getAuthorizationMechanism() {
-        return "shiro";
-    }
-
-    /**
-     * No fixtures.
-     */
-    @Override
-    public List<Class<? extends FixtureScript>> getFixtures() {
-        return Collections.emptyList();
-    }
-
-    /**
-     * No overrides.
-     */
-    @Override
-    public Map<String, String> getConfigurationProperties() {
-        return null;
-    }
 
 }

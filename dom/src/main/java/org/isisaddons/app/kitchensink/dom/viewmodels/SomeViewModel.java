@@ -15,9 +15,11 @@ import org.joda.time.LocalDate;
 import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.ActionLayout;
 import org.apache.isis.applib.annotation.Contributed;
+import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.Editing;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.Mixin;
+import org.apache.isis.applib.annotation.Nature;
 import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.Property;
 import org.apache.isis.applib.annotation.SemanticsOf;
@@ -34,9 +36,7 @@ import org.isisaddons.app.kitchensink.dom.text.TextObjects;
 import lombok.Getter;
 import lombok.Setter;
 
-/**
- * Created by Dan on 31/07/2017.
- */
+@DomainObject(nature = Nature.VIEW_MODEL)
 @javax.xml.bind.annotation.XmlRootElement(name = "someViewModel")
 @javax.xml.bind.annotation.XmlType(
         propOrder = {

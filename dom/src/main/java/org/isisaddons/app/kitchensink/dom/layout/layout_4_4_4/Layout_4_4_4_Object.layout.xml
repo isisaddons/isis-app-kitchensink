@@ -41,7 +41,7 @@
                 </bs3:tab>
             </bs3:tabGroup>
             <cpt:fieldSet name="Left" id="left">
-                <cpt:property id="someString1"/>
+                <cpt:property id="someString1" hidden="OBJECT_FORMS"/>
                 <cpt:property id="someString2"/>
             </cpt:fieldSet>
         </bs3:col>

@@ -16,6 +16,8 @@
  */
 package org.isisaddons.app.kitchensink.dom.hierarchy;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import com.google.common.base.Optional;
@@ -50,7 +52,7 @@ public class HierarchyObjects {
     }
 
     @Action(semantics = SemanticsOf.SAFE)
-    @MemberOrder(sequence = "10")
+    @MemberOrder(sequence = "11")
     public ParentObject findParent(
             @ParameterLayout(named="Title")
             final String title) {
@@ -60,16 +62,47 @@ public class HierarchyObjects {
     }
 
     @Action(semantics = SemanticsOf.SAFE)
+    @MemberOrder(sequence = "11.1")
+    public ParentObject findParentUnique(String name) {
+        return parentObjects.findUnique(name);
+    }
+
+
+    @Action(semantics = SemanticsOf.SAFE)
+    @MemberOrder(sequence = "12")
+    public List<ParentObject> allParents() {
+        return parentObjects.listAll();
+    }
+
+
+    @Action(semantics = SemanticsOf.SAFE)
     @MemberOrder(sequence = "20")
     public ChildObject firstChild() {
         return childObjects.first();
     }
+
+
+    @Action(semantics = SemanticsOf.SAFE)
+    @MemberOrder(sequence = "21")
+    public List<ChildObject> allChildren() {
+        return childObjects.listAll();
+    }
+
+
 
     @Action(semantics = SemanticsOf.SAFE)
     @MemberOrder(sequence = "30")
     public GrandchildObject firstGrandchild() {
         return grandchildObjects.first();
     }
+
+
+    @Action(semantics = SemanticsOf.SAFE)
+    @MemberOrder(sequence = "31")
+    public List<GrandchildObject> allGrandChildren() {
+        return grandchildObjects.listAll();
+    }
+
 
     @Inject
     private ParentObjects parentObjects;

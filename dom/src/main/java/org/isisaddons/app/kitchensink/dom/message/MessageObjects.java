@@ -16,14 +16,19 @@
  */
 package org.isisaddons.app.kitchensink.dom.message;
 
+import javax.inject.Inject;
+
 import org.apache.isis.applib.NonRecoverableException;
 import org.apache.isis.applib.RecoverableException;
+import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.Programmatic;
+import org.apache.isis.applib.annotation.SemanticsOf;
+import org.apache.isis.applib.services.bookmarkui.BookmarkUiService;
 
 import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
 
@@ -92,6 +97,12 @@ public class MessageObjects extends RepositoryAbstract<MessageObject> {
         throw new RuntimeException("A runtime exception has been thrown; the object (name='" + name + "') should NOT have been created");
     }
 
+    @Action(semantics = SemanticsOf.IDEMPOTENT)
+    @MemberOrder(sequence = "30.9")
+    public void removeBookmarksAndBreadcrumbs() {
+        bookmarkUiService.clear();
+    }
+
     @Programmatic
     public MessageObject create(String name) {
         final MessageObject obj = container.newTransientInstance(MessageObject.class);
@@ -101,4 +112,6 @@ public class MessageObjects extends RepositoryAbstract<MessageObject> {
         return obj;
     }
 
+    @Inject
+    BookmarkUiService bookmarkUiService;
 }

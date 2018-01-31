@@ -24,12 +24,7 @@ package org.isisaddons.app.kitchensink.app;
 public class KitchensinkAppManifestBypassSecurity extends KitchensinkAppManifest {
 
     @Override
-    public String getAuthenticationMechanism() {
-        return "bypass";
-    }
-
-    @Override
-    public String getAuthorizationMechanism() {
+    protected String overrideAuthMechanism() {
         return "bypass";
     }
 }

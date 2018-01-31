@@ -58,6 +58,7 @@
             <cpt:collection id="other" defaultView="table">
                 <cpt:action id="actionAssociatedWithCollection"/>
                 <cpt:action id="action2AssociatedWithCollection"/>
+                <cpt:action id="action3AssociatedWithCollection"/>
             </cpt:collection>
         </bs3:col>
     </bs3:row>

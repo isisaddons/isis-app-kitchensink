@@ -16,22 +16,26 @@
  */
 package org.isisaddons.app.kitchensink.dom.hierarchy.grandchild;
 
-import java.util.SortedSet;
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.VersionStrategy;
-import com.google.common.base.Predicate;
-import org.isisaddons.app.kitchensink.dom.Entity;
-import org.isisaddons.app.kitchensink.dom.hierarchy.child.ChildObject;
-import org.isisaddons.app.kitchensink.dom.other.OtherBoundedObjects;
-import org.isisaddons.app.kitchensink.dom.other.OtherObjects;
-import org.apache.isis.applib.DomainObjectContainer;
+
+import com.google.common.collect.Ordering;
+
 import org.apache.isis.applib.annotation.BookmarkPolicy;
 import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.DomainObjectLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
+import org.apache.isis.applib.annotation.Property;
 import org.apache.isis.applib.annotation.Title;
-import org.apache.isis.applib.util.ObjectContracts;
+import org.apache.isis.applib.annotation.Where;
+
+import org.isisaddons.app.kitchensink.dom.Entity;
+import org.isisaddons.app.kitchensink.dom.hierarchy.child.ChildObject;
+
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
 @javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE)
 @javax.jdo.annotations.DatastoreIdentity(
@@ -46,75 +50,25 @@ import org.apache.isis.applib.util.ObjectContracts;
 @DomainObjectLayout(
         bookmarking = BookmarkPolicy.AS_CHILD
 )
+@Getter @Setter
+@RequiredArgsConstructor(staticName = "create")
 public class GrandchildObject implements Entity<GrandchildObject> {
-
-
-    //region > name (property)
-
-    private String name;
 
     @Column(allowsNull="false")
     @Title(sequence="1")
-    public String getName() {
-        return name;
-    }
-
-    public void setName(final String name) {
-        this.name = name;
-    }
-
-    //endregion
+    @lombok.NonNull
+    private String name;
 
 
-    //region > Child (property)
-    private ChildObject child;
-
-    @MemberOrder(sequence = "1")
+    @MemberOrder(sequence = "2")
+    @Property(hidden = Where.REFERENCES_PARENT)
     @Column(allowsNull = "false")
-    public ChildObject getChild() {
-        return child;
-    }
-
-    public void setChild(final ChildObject child) {
-        this.child = child;
-    }
-    //endregion
-
-
-    //region > compareTo
+    @lombok.NonNull
+    private ChildObject child;
 
     @Override
     public int compareTo(final GrandchildObject other) {
-        return ObjectContracts.compare(this, other, "name");
+        return Ordering.natural().onResultOf(GrandchildObject::getName).compare(this, other);
     }
-
-    //endregion
-
-
-    static class Predicates {
-        private Predicates(){}
-        static Predicate<ChildObject> containedIn(final SortedSet<GrandchildObject> children) {
-            return new Predicate<ChildObject>() {
-                @Override
-                public boolean apply(final ChildObject input) {
-                    return children.contains(input);
-                }
-            };
-        }
-    }
-
-    //region > injected services
-
-    @javax.inject.Inject
-    @SuppressWarnings("unused")
-    private DomainObjectContainer container;
-
-    @javax.inject.Inject
-    private OtherObjects otherObjects;
-
-    @javax.inject.Inject
-    private OtherBoundedObjects otherBoundedObjects;
-
-    //endregion
 
 }

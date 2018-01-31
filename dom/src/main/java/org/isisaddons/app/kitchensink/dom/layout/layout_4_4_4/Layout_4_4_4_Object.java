@@ -19,7 +19,7 @@ package org.isisaddons.app.kitchensink.dom.layout.layout_4_4_4;
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.VersionStrategy;
-import org.isisaddons.app.kitchensink.dom.Entity;
+
 import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.annotation.BookmarkPolicy;
 import org.apache.isis.applib.annotation.DomainObject;
@@ -27,6 +27,8 @@ import org.apache.isis.applib.annotation.DomainObjectLayout;
 import org.apache.isis.applib.annotation.Title;
 import org.apache.isis.applib.services.clock.ClockService;
 import org.apache.isis.applib.util.ObjectContracts;
+
+import org.isisaddons.app.kitchensink.dom.Entity;
 
 @javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE)
 @javax.jdo.annotations.DatastoreIdentity(
@@ -84,6 +86,8 @@ public class Layout_4_4_4_Object implements Entity<Layout_4_4_4_Object> {
     public void setSomeString2(final String someString2) {
         this.someString2 = someString2;
     }
+
+    public boolean hideSomeString2() { return getSomeString3().contains("hide");}
     //endregion
 
     //region > someString3 (property)

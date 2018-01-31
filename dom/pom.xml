@@ -25,7 +25,7 @@ language governing permissions and limitations under the License.
     </parent>
 
     <artifactId>isis-app-kitchensink-dom</artifactId>
-    <name>App KitchensinkApp DOM</name>
+    <name>Isis Addons App KitchensinkApp DOM</name>
 
     <build>
         <resources>
@@ -163,7 +163,7 @@ language governing permissions and limitations under the License.
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.16.16</version>
+            <version>1.16.18</version>
             <scope>provided</scope>
         </dependency>
 

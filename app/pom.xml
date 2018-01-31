@@ -27,7 +27,7 @@
     </parent>
 
     <artifactId>isis-app-kitchensink-app</artifactId>
-    <name>App KitchensinkApp Application</name>
+    <name>Isis Addons App KitchensinkApp Application</name>
 
     <build>
         <resources>
@@ -65,6 +65,37 @@
                     </mixins>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>pl.project13.maven</groupId>
+                <artifactId>git-commit-id-plugin</artifactId>
+                <version>2.2.3</version>
+                <executions>
+                    <execution>
+                        <id>get-the-git-infos</id>
+                        <goals>
+                            <goal>revision</goal>
+                        </goals>
+                    </execution>
+                </executions>
+
+                <configuration>
+                    <dotGitDirectory>../.git</dotGitDirectory>
+
+                    <dateFormat>yyyy-MM-dd'T'HH:mm:ssZ</dateFormat>
+                    <dateFormatTimeZone>${user.timezone}</dateFormatTimeZone>
+
+                    <prefix>application.git</prefix>
+
+                    <verbose>false</verbose>
+                    <generateGitPropertiesFile>true</generateGitPropertiesFile>
+                    <generateGitPropertiesFilename>${project.build.outputDirectory}/org/isisaddons/app/kitchensink/app/git.properties</generateGitPropertiesFilename>
+
+                    <abbrevLength>7</abbrevLength>
+
+                </configuration>
+
+            </plugin>
         </plugins>
     </build>
 
@@ -83,6 +114,12 @@
         <dependency>
             <groupId>org.apache.isis.core</groupId>
             <artifactId>isis-core-wrapper</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
         </dependency>
 
     </dependencies>

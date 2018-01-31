@@ -21,6 +21,7 @@ import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.ParameterLayout;
+import org.apache.isis.applib.query.QueryDefault;
 
 import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
 
@@ -39,11 +40,17 @@ public class ParentObjects extends RepositoryAbstract<ParentObject> {
     public ParentObject create(
             @ParameterLayout(named="Name")
             final String name) {
-        final ParentObject obj = container.newTransientInstance(ParentObject.class);
-        obj.setName(name);
+        return repositoryService.persist(ParentObject.create(name));
+    }
 
-        container.persistIfNotAlready(obj);
-        return obj;
+    @MemberOrder(sequence = "30.2")
+    public ParentObject findUnique(
+            @ParameterLayout(named="Name")
+            final String name) {
+        return repositoryService.firstMatch(
+                new QueryDefault<>(ParentObject.class,
+                        "findUnique",
+                        "name", name));
     }
 
 }

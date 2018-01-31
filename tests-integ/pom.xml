@@ -28,7 +28,7 @@
     </parent>
 
     <artifactId>isis-app-kitchensink-integtests</artifactId>
-    <name>App KitchensinkApp Integration Tests</name>
+    <name>Isis Addons App KitchensinkApp Integration Tests</name>
 
     <build>
         <testResources>

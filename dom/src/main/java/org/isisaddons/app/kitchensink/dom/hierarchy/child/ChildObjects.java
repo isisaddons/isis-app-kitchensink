@@ -16,10 +16,9 @@
  */
 package org.isisaddons.app.kitchensink.dom.hierarchy.child;
 
+import java.util.List;
+
 import org.apache.isis.applib.annotation.DomainService;
-import org.apache.isis.applib.annotation.DomainServiceLayout;
-import org.apache.isis.applib.annotation.MemberOrder;
-import org.apache.isis.applib.annotation.ParameterLayout;
 
 import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
 import org.isisaddons.app.kitchensink.dom.hierarchy.parent.ParentObject;
@@ -27,24 +26,20 @@ import org.isisaddons.app.kitchensink.dom.hierarchy.parent.ParentObject;
 @DomainService(
         repositoryFor = ChildObject.class
 )
-@DomainServiceLayout(menuOrder = "10")
 public class ChildObjects extends RepositoryAbstract<ChildObject> {
 
     public ChildObjects() {
         super(ChildObject.class, Visibility.NOT_VISIBLE);
     }
 
-    @MemberOrder(sequence = "30")
     public ChildObject create(
-            @ParameterLayout(named="Name")
             final String name,
             final ParentObject parentObject) {
-        final ChildObject obj = container.newTransientInstance(ChildObject.class);
-        obj.setName(name);
-        obj.setParent(parentObject);
+        return repositoryService.persist(ChildObject.create(name, parentObject));
+    }
 
-        container.persistIfNotAlready(obj);
-        return obj;
+    public List<ChildObject> listAll() {
+        return repositoryService.allInstances(ChildObject.class);
     }
 
 }

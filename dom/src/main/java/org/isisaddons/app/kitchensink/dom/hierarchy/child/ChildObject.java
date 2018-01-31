@@ -34,12 +34,14 @@ import org.apache.isis.applib.annotation.Editing;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.Property;
 import org.apache.isis.applib.annotation.Title;
+import org.apache.isis.applib.annotation.Where;
 
 import org.isisaddons.app.kitchensink.dom.Entity;
 import org.isisaddons.app.kitchensink.dom.hierarchy.grandchild.GrandchildObject;
 import org.isisaddons.app.kitchensink.dom.hierarchy.parent.ParentObject;
 
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE)
@@ -56,22 +58,24 @@ import lombok.Setter;
         bookmarking = BookmarkPolicy.AS_CHILD
 )
 @Getter @Setter
+@RequiredArgsConstructor(staticName = "create")
 public class ChildObject implements Entity<ChildObject> {
 
 
     @Column(allowsNull="false")
     @Title(sequence="1")
+    @lombok.NonNull
     private String name;
 
-    @Property(editing = Editing.ENABLED)
-    @MemberOrder(sequence = "1")
+    @Property(editing = Editing.ENABLED, hidden = Where.PARENTED_TABLES)
     @Column(allowsNull = "false")
+    @MemberOrder(sequence = "1")
+    @lombok.NonNull
     private ParentObject parent;
 
     public Collection<ParentObject> choicesParent() {
         return getParent().choices1MoveChild();
     }
-
 
 
     @Persistent(mappedBy = "child", dependentElement = "false")

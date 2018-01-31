@@ -1,4 +1,4 @@
-package org.isisaddons.app.kitchensink.app.menu;
+package org.isisaddons.app.kitchensink.dom.reference;
 
 import java.util.List;
 
@@ -12,8 +12,6 @@ import org.apache.isis.applib.annotation.SemanticsOf;
 
 import org.isisaddons.app.kitchensink.dom.reference.child.ReferenceChildObject;
 import org.isisaddons.app.kitchensink.dom.reference.child.ReferenceChildObjects;
-import org.isisaddons.app.kitchensink.dom.reference.ReferenceObject;
-import org.isisaddons.app.kitchensink.dom.reference.ReferenceObjects;
 
 @DomainService(nature = NatureOfService.VIEW)
 @DomainServiceLayout(

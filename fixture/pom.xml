@@ -25,7 +25,7 @@ language governing permissions and limitations under the License.
     </parent>
 
     <artifactId>isis-app-kitchensink-fixture</artifactId>
-    <name>App KitchensinkApp Fixtures</name>
+    <name>Isis Addons App KitchensinkApp Fixtures</name>
 
     <build>
         <plugins>

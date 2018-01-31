@@ -185,6 +185,23 @@ public class BusRulesObject implements Entity<BusRulesObject> {
 
     //endregion
 
+    //region > action3AssociatedWithCollection
+
+    public BusRulesObject action3AssociatedWithCollection() {
+        return this;
+    }
+
+    public boolean hideAction3AssociatedWithCollection() {
+        return reasonDisabledIfAnyCached() != null;
+    }
+
+    public String disableAction3AssociatedWithCollection() {
+        // this should not be called if hidden.
+        return "Always disabled";
+    }
+
+    //endregion
+
     //region > action2AssociatedWithCollection
 
     public BusRulesObject action2AssociatedWithCollection() {
