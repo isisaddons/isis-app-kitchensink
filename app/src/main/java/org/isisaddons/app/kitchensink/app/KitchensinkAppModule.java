@@ -18,6 +18,18 @@
  */
 package org.isisaddons.app.kitchensink.app;
 
-public final class KitchensinkAppModule {
-    private KitchensinkAppModule(){}
+import java.util.Set;
+
+import org.assertj.core.util.Sets;
+
+import org.apache.isis.applib.Module;
+import org.apache.isis.applib.ModuleAbstract;
+
+import org.isisaddons.app.kitchensink.fixture.KitchensinkFixtureModule;
+
+public class KitchensinkAppModule extends ModuleAbstract {
+    @Override
+    public Set<Module> getDependencies() {
+        return Sets.newLinkedHashSet(new KitchensinkFixtureModule());
+    }
 }

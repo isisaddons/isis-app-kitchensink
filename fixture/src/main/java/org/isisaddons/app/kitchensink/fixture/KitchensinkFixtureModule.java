@@ -16,5 +16,18 @@
  */
 package org.isisaddons.app.kitchensink.fixture;
 
-public class KitchensinkFixtureModule {
+import java.util.Set;
+
+import org.assertj.core.util.Sets;
+
+import org.apache.isis.applib.Module;
+import org.apache.isis.applib.ModuleAbstract;
+
+import org.isisaddons.app.kitchensink.dom.KitchensinkDomModule;
+
+public class KitchensinkFixtureModule  extends ModuleAbstract {
+    @Override
+    public Set<Module> getDependencies() {
+        return Sets.newLinkedHashSet(new KitchensinkDomModule());
+    }
 }

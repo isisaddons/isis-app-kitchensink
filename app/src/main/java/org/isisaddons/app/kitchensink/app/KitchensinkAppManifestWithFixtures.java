@@ -18,20 +18,17 @@
  */
 package org.isisaddons.app.kitchensink.app;
 
-import java.util.List;
-
-import org.apache.isis.applib.fixturescripts.FixtureScript;
+import org.apache.isis.applib.AppManifestAbstract2;
 
 import org.isisaddons.app.kitchensink.fixture.KitchensinkSetupFixture;
 
-/**
- * Run the app but without setting up any fixtures.
- */
-public class KitchensinkAppManifestWithFixtures extends KitchensinkAppManifest {
+public class KitchensinkAppManifestWithFixtures extends AppManifestAbstract2 {
 
-    @Override
-    protected void overrideFixtures(final List<Class<? extends FixtureScript>> fixtureScripts) {
-        fixtureScripts.add(KitchensinkSetupFixture.class);
+    public KitchensinkAppManifestWithFixtures() {
+        super(KitchensinkAppManifest.BUILDER.withFixtureScripts(KitchensinkSetupFixture.class));
     }
 
+//    @Override protected void overrideFixtures(final List<Class<? extends FixtureScript>> fixtureScriptClasses) {
+//        fixtureScriptClasses.add(KitchensinkSetupFixture.class);
+//    }
 }

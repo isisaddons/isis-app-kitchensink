@@ -32,6 +32,7 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Ordering;
 
+import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.BookmarkPolicy;
 import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.DomainObjectLayout;
@@ -91,7 +92,7 @@ public class ParentObject implements Entity<ParentObject> {
 
 
 
-    @MemberOrder(sequence = "1")
+    @Action(associateWith = "children", associateWithSequence = "1")
     public ParentObject addChild(final ChildObject childObject) {
         childObject.setParent(this);
         return this;
@@ -103,23 +104,45 @@ public class ParentObject implements Entity<ParentObject> {
     }
 
 
-    @MemberOrder(sequence = "1")
+
+    @Action(associateWith = "children", associateWithSequence = "2")
     public ParentObject moveChild(final ChildObject childObject, final ParentObject other) {
         childObject.setParent(other);
         return this;
     }
 
-    public java.util.Collection<ChildObject> choices0MoveChild() {
-        return getChildren();
-    }
+//    public java.util.Collection<ChildObject> choices0MoveChild() {
+//        return getChildren();
+//    }
     public java.util.Collection<ParentObject> choices1MoveChild() {
         return Lists.newArrayList(
                 Iterables.filter(parentObjects.listAll(), not(containedIn(Collections.singleton(this)))
         ));
     }
 
-    public String disableMoveChild(final ChildObject childObject, final ParentObject other) {
-        return choices0MoveChild().isEmpty()? "No children to move": null;
+    public String disableMoveChild() {
+        return getChildren().isEmpty()? "No children to move": null;
+    }
+
+
+
+    @Action(associateWith = "children", associateWithSequence = "3")
+    public ParentObject moveChildren(final List<ChildObject> childObjects, final ParentObject other) {
+        for (final ChildObject childObject : childObjects) {
+            childObject.setParent(other);
+        }
+        return this;
+    }
+//    public java.util.Collection<ChildObject> choices0MoveChildren() {
+//        return choices0MoveChild();
+//    }
+
+    public java.util.Collection<ParentObject> choices1MoveChildren() {
+        return choices1MoveChild();
+    }
+
+    public String disableMoveChildren() {
+        return disableMoveChild();
     }
 
 

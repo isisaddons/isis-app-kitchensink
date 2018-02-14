@@ -565,8 +565,7 @@ public class ReferenceObject implements Entity<ReferenceObject> {
         this.children = children;
     }
 
-    @Action(semantics = SemanticsOf.IDEMPOTENT)
-    @MemberOrder(name = "children", sequence = "1")
+    @Action(semantics = SemanticsOf.IDEMPOTENT, associateWith = "children:1")
     public ReferenceObject addChild(final String name) {
         referenceChildObjects.create(name, this);
         return this;
@@ -581,8 +580,7 @@ public class ReferenceObject implements Entity<ReferenceObject> {
 
     //region > moveChildrenWithChoices (action)
 
-    @Action(semantics = SemanticsOf.IDEMPOTENT)
-    @MemberOrder(name = "children", sequence = "1")
+    @Action(semantics = SemanticsOf.IDEMPOTENT, associateWith = "children:3")
     public ReferenceObject moveChildrenWithChoices(
             //@Nullable
             @ParameterLayout(named = "Select some child(ren)")
@@ -630,8 +628,7 @@ public class ReferenceObject implements Entity<ReferenceObject> {
 
     //region > moveChildrenWithAuto (action)
 
-    @Action(semantics = SemanticsOf.IDEMPOTENT)
-    @MemberOrder(name = "children", sequence = "1")
+    @Action(semantics = SemanticsOf.IDEMPOTENT, associateWith = "children:3")
     public ReferenceObject moveChildrenWithAuto(
             @Nullable
             final List<ReferenceChildObject> childObjects) {

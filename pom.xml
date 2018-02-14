@@ -21,7 +21,7 @@ language governing permissions and limitations under the License.
     <parent>
         <groupId>org.incode</groupId>
         <artifactId>incode-parent</artifactId>
-        <version>1.16.0</version>
+        <version>1.16.0.20180208-1809</version>
         <relativePath/>
     </parent>
 
@@ -39,12 +39,8 @@ language governing permissions and limitations under the License.
 
     <properties>
         <isis.version>1.16.1-SNAPSHOT</isis.version>
-        <isis-module-fakedata.version>1.16.0</isis-module-fakedata.version>
 
-        <isis-wicket-excel.version>1.16.0</isis-wicket-excel.version>
-        <isis-wicket-wickedcharts.version>1.16.0</isis-wicket-wickedcharts.version>
-
-        <kotlin.version>1.1.2-2</kotlin.version>
+        <kotlin.version>1.2.21</kotlin.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>

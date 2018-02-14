@@ -18,24 +18,18 @@
  */
 package org.isisaddons.app.kitchensink.app;
 
-import org.apache.isis.applib.AppManifestAbstract;
+import org.apache.isis.applib.AppManifestAbstract2;
 
-import org.isisaddons.app.kitchensink.dom.KitchensinkDomModule;
-import org.isisaddons.app.kitchensink.fixture.KitchensinkFixtureModule;
 import org.isisaddons.module.fakedata.FakeDataModule;
 
 /**
  * Bootstrap the application.
  */
-public class KitchensinkAppManifest extends AppManifestAbstract {
+public class KitchensinkAppManifest extends AppManifestAbstract2 {
 
-    private final static Builder BUILDER =
-                    Builder.forModules(
-                        KitchensinkDomModule.class,
-                        KitchensinkFixtureModule.class,
-                        KitchensinkAppModule.class,
-                        FakeDataModule.class
-                    )
+    final static AppManifestAbstract2.Builder BUILDER =
+            Builder.forModule(new KitchensinkAppModule())
+                    .withAdditionalModules(FakeDataModule.class)
                     .withAuthMechanism("shiro")
                     .withConfigurationProperty("isis.foo", "other")
                     .withConfigurationPropertiesFile(KitchensinkAppManifest.class, "git.properties");
@@ -43,6 +37,5 @@ public class KitchensinkAppManifest extends AppManifestAbstract {
     public KitchensinkAppManifest() {
         super(BUILDER);
     }
-
 
 }

@@ -1,0 +1,701 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<mb3:menuBars xsi:schemaLocation="http://isis.apache.org/applib/layout/menubars/bootstrap3 http://isis.apache.org/applib/layout/menubars/bootstrap3/menubars.xsd http://isis.apache.org/applib/layout/component http://isis.apache.org/applib/layout/component/component.xsd http://isis.apache.org/applib/layout/links http://isis.apache.org/applib/layout/links/links.xsd" xmlns:cpt="http://isis.apache.org/applib/layout/component" xmlns:lnk="http://isis.apache.org/applib/layout/links" xmlns:mb3="http://isis.apache.org/applib/layout/menubars/bootstrap3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <mb3:primary>
+<!--
+        <mb3:menu>
+            <mb3:named>Grandchild Objects</mb3:named>
+            <mb3:section>
+                <mb3:serviceAction objectType="GrandchildObject" id="listAll">
+                    <cpt:named>List All</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="GrandchildObject" id="first">
+                    <cpt:named>First</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="GrandchildObject" id="create">
+                    <cpt:named>Create</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+        </mb3:menu>
+        <mb3:menu>
+            <mb3:named>Parent Objects</mb3:named>
+            <mb3:section>
+                <mb3:serviceAction objectType="ParentObject" id="first">
+                    <cpt:named>First</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="ParentObject" id="listAll">
+                    <cpt:named>List All</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="ParentObject" id="create">
+                    <cpt:named>Create</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="ParentObject" id="findUnique">
+                    <cpt:named>Find Unique</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+        </mb3:menu>
+        <mb3:menu>
+            <mb3:named>Layout_ 3_ 4_ 5_ Objects</mb3:named>
+            <mb3:section>
+                <mb3:serviceAction objectType="Layout_3_4_5_Object" id="first">
+                    <cpt:named>First</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="Layout_3_4_5_Object" id="listAll">
+                    <cpt:named>List All</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="Layout_3_4_5_Object" id="create">
+                    <cpt:named>Create</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+        </mb3:menu>
+        <mb3:menu>
+            <mb3:named>Layout_ 4_ 0_ 0_ 8 C_ Objects</mb3:named>
+            <mb3:section>
+                <mb3:serviceAction objectType="Layout_4_0_0_8C_Object" id="first">
+                    <cpt:named>First</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="Layout_4_0_0_8C_Object" id="listAll">
+                    <cpt:named>List All</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="Layout_4_0_0_8C_Object" id="create">
+                    <cpt:named>Create</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+        </mb3:menu>
+        <mb3:menu>
+            <mb3:named>Layout_ 4_ 0_ 8_ Objects</mb3:named>
+            <mb3:section>
+                <mb3:serviceAction objectType="Layout_4_0_8_Object" id="first">
+                    <cpt:named>First</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="Layout_4_0_8_Object" id="listAll">
+                    <cpt:named>List All</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="Layout_4_0_8_Object" id="create">
+                    <cpt:named>Create</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+        </mb3:menu>
+        <mb3:menu>
+            <mb3:named>Layout_ 4_ 4_ 4_ Objects</mb3:named>
+            <mb3:section>
+                <mb3:serviceAction objectType="Layout_4_4_4_Object" id="first">
+                    <cpt:named>First</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="Layout_4_4_4_Object" id="listAll">
+                    <cpt:named>List All</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="Layout_4_4_4_Object" id="create">
+                    <cpt:named>Create</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+        </mb3:menu>
+        <mb3:menu>
+            <mb3:named>Layout_ 6_ 0_ 6_ Objects</mb3:named>
+            <mb3:section>
+                <mb3:serviceAction objectType="Layout_6_0_6_Object" id="first">
+                    <cpt:named>First</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="Layout_6_0_6_Object" id="listAll">
+                    <cpt:named>List All</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="Layout_6_0_6_Object" id="create">
+                    <cpt:named>Create</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+        </mb3:menu>
+        <mb3:menu>
+            <mb3:named>Layout_ 6_ 0_ 6_ 12 C_ Objects</mb3:named>
+            <mb3:section>
+                <mb3:serviceAction objectType="Layout_6_0_6_12C_Object" id="first">
+                    <cpt:named>First</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="Layout_6_0_6_12C_Object" id="listAll">
+                    <cpt:named>List All</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="Layout_6_0_6_12C_Object" id="create">
+                    <cpt:named>Create</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+        </mb3:menu>
+        <mb3:menu>
+            <mb3:named>Reference Child Objects</mb3:named>
+            <mb3:section>
+                <mb3:serviceAction objectType="ReferenceChildObject" id="first">
+                    <cpt:named>First</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="ReferenceChildObject" id="listAll">
+                    <cpt:named>List All</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="ReferenceChildObject" id="create">
+                    <cpt:named>Create</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="ReferenceChildObject" id="findNamed">
+                    <cpt:named>Find Named</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+        </mb3:menu>
+-->
+        <mb3:menu>
+            <mb3:named>Business Rules</mb3:named>
+            <mb3:section>
+                <mb3:serviceAction objectType="BusRulesObject" id="findBusRulesObject">
+                    <cpt:named>Find XXX Bus Rules Object</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="BusRulesObject" id="firstBusRulesObject">
+                    <cpt:named>First Bus Rules Object</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="BusRulesObject" id="listAllBusRulesObject">
+                    <cpt:named>List All Bus Rules Object</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="BusRulesObject" id="createBusRulesObject">
+                    <cpt:named>Create Bus Rules Object</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="BusRulesObject" id="listAllBusRulesObjectDisabled">
+                    <cpt:named>List All Bus Rules Object Disabled</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="BusRulesObject" id="listAllBusRulesObjectHidden">
+                    <cpt:named>List All Bus Rules Object Hidden</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+            <mb3:section>
+                <mb3:serviceAction objectType="SpecObject" id="firstSpecObject">
+                    <cpt:named>First Spec Object</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="SpecObject" id="findSpecObject">
+                    <cpt:named>Find Spec Object</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="SpecObject" id="listAllSpecObject">
+                    <cpt:named>List All Spec Object</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="SpecObject" id="createSpecObject">
+                    <cpt:named>Create Spec Object</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+        </mb3:menu>
+        <mb3:menu>
+            <mb3:named>Contributions</mb3:named>
+            <mb3:section>
+                <mb3:serviceAction objectType="Preference" id="firstPreference">
+                    <cpt:named>First Preference</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="Preference" id="listAllPreferences">
+                    <cpt:named>List All Preferences</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="Preference" id="createPreference">
+                    <cpt:named>Create Preference</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+            <mb3:section>
+                <mb3:serviceAction objectType="FoodStuff" id="firstFoodStuff">
+                    <cpt:named>First Food Stuff</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="FoodStuff" id="listAllFoodStuffs">
+                    <cpt:named>List All Food Stuffs</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="FoodStuff" id="createFoodStuff">
+                    <cpt:named>Create Food Stuff</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+            <mb3:section>
+                <mb3:serviceAction objectType="Person" id="firstPerson">
+                    <cpt:named>First Person</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="Person" id="listAllPersons">
+                    <cpt:named>List All Persons</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="Person" id="createPerson">
+                    <cpt:named>Create Person</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+            <mb3:section>
+                <mb3:serviceAction objectType="mixins.FoodStuffs" id="firstFoodStuff">
+                    <cpt:named>First Food Stuff</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="mixins.FoodStuffs" id="listAllFoodStuffs">
+                    <cpt:named>List All Food Stuffs</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="mixins.FoodStuffs" id="createFoodStuff">
+                    <cpt:named>Create Food Stuff</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+            <mb3:section>
+                <mb3:serviceAction objectType="mixins.Persons" id="firstPerson">
+                    <cpt:named>First Person</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="mixins.Persons" id="listAllPersons">
+                    <cpt:named>List All Persons</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="mixins.Persons" id="createPerson">
+                    <cpt:named>Create Person</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+            <mb3:section>
+                <mb3:serviceAction objectType="mixins.Preferences" id="firstPreference">
+                    <cpt:named>First Preference</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="mixins.Preferences" id="listAllPreferences">
+                    <cpt:named>List All Preferences</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="mixins.Preferences" id="createPreference">
+                    <cpt:named>Create Preference</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+        </mb3:menu>
+        <mb3:menu>
+            <mb3:named>Misc</mb3:named>
+            <mb3:section>
+                <mb3:serviceAction objectType="InjectObject" id="firstInjectObject">
+                    <cpt:named>First Inject Object</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="InjectObject" id="findInjectObject">
+                    <cpt:named>Find Inject Object</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="InjectObject" id="listAllInjectObject">
+                    <cpt:named>List All Inject Object</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="InjectObject" id="createInjectObject">
+                    <cpt:named>Create Inject Object</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+            <mb3:section>
+                <mb3:serviceAction objectType="WorkflowObject" id="first">
+                    <cpt:named>first Workflow Object (bulk)</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="WorkflowObject" id="listAll">
+                    <cpt:named>list all Workflow Objects (bulk)</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="WorkflowObject" id="createWorkflowObject">
+                    <cpt:named>Create Workflow Object</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+            <mb3:section>
+                <mb3:serviceAction objectType="MiscObject" id="first">
+                    <cpt:named>First MiscObject</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="MiscObject" id="listAll">
+                    <cpt:named>List All MiscObjects</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="MiscObject" id="createMiscObject">
+                    <cpt:named>Create Misc Object</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="MiscObject" id="openGoogle">
+                    <cpt:named>Open Google</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="MiscObject" id="openUrl">
+                    <cpt:named>Open Url</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+            <mb3:section>
+                <mb3:serviceAction objectType="org.isisaddons.app.kitchensink.dom.bookmarks.Bookmarks" id="lookup">
+                    <cpt:named>Lookup</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+        </mb3:menu>
+        <mb3:menu>
+            <mb3:named>Pages</mb3:named>
+            <mb3:section>
+                <mb3:serviceAction objectType="org.isisaddons.app.kitchensink.dom.pages.Pages" id="entityPage">
+                    <cpt:named>Entity Page</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="org.isisaddons.app.kitchensink.dom.pages.Pages" id="standaloneCollection">
+                    <cpt:named>Standalone Collection</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="org.isisaddons.app.kitchensink.dom.pages.Pages" id="scalarPageReturningInt">
+                    <cpt:named>Scalar Page Returning Int</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="org.isisaddons.app.kitchensink.dom.pages.Pages" id="scalarPageReturningString">
+                    <cpt:named>Scalar Page Returning String</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="org.isisaddons.app.kitchensink.dom.pages.Pages" id="voidPage">
+                    <cpt:named>Void Page</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="org.isisaddons.app.kitchensink.dom.pages.Pages" id="errorPage">
+                    <cpt:named>Error Page</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+        </mb3:menu>
+        <mb3:menu>
+            <mb3:named>Semantics</mb3:named>
+            <mb3:section>
+                <mb3:serviceAction objectType="SemanticsObject" id="firstSemanticsObject">
+                    <cpt:named>First Semantics Object</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="SemanticsObject" id="firstSemanticsObjectNoargAreYouSure">
+                    <cpt:named>First Semantics Object Noarg Are You Sure</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="SemanticsObject" id="findSemanticsObject">
+                    <cpt:named>Find Semantics Object</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="SemanticsObject" id="listAllSemanticsObject">
+                    <cpt:named>List All Semantics Object</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="SemanticsObject" id="createSemanticsObject">
+                    <cpt:named>Create Semantics Object</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+        </mb3:menu>
+        <mb3:menu>
+            <mb3:named>Data Types</mb3:named>
+            <mb3:section>
+                <mb3:serviceAction objectType="TextObject" id="first">
+                    <cpt:named>First TextObject</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="TextObject" id="listAll">
+                    <cpt:named>List All TextObjects</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="TextObject" id="createTextObject">
+                    <cpt:named>Create Text Object</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+            <mb3:section>
+                <mb3:serviceAction objectType="PrimitiveObject" id="first">
+                    <cpt:named>First PrimitiveObject</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="PrimitiveObject" id="listAll">
+                    <cpt:named>List All PrimitiveObjects</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="PrimitiveObject" id="createPrimitiveObject">
+                    <cpt:named>Create Primitive Object</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+            <mb3:section>
+                <mb3:serviceAction objectType="WrapperObject" id="first">
+                    <cpt:named>First WrapperObject</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="WrapperObject" id="listAll">
+                    <cpt:named>List All WrapperObjects</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="WrapperObject" id="createWrapperObject">
+                    <cpt:named>Create Wrapper Object</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+            <mb3:section>
+                <mb3:serviceAction objectType="JavaMathObject" id="first">
+                    <cpt:named>First JavaMathObject</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="JavaMathObject" id="listAll">
+                    <cpt:named>List All JavaMathObjects</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="JavaMathObject" id="createJavaMathObject">
+                    <cpt:named>Create Java Math Object</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+            <mb3:section>
+                <mb3:serviceAction objectType="DateObject" id="first">
+                    <cpt:named>First DateObject</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="DateObject" id="listAll">
+                    <cpt:named>List All DateObjects</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="DateObject" id="createDateObject">
+                    <cpt:named>Create Date Object</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+            <mb3:section>
+                <mb3:serviceAction objectType="EnumeratedObject" id="first">
+                    <cpt:named>First EnumeratedObject</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="EnumeratedObject" id="listAll">
+                    <cpt:named>List All EnumeratedObjects</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="EnumeratedObject" id="createEnumeratedObject">
+                    <cpt:named>Create Enumerated Object</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+            <mb3:section>
+                <mb3:serviceAction objectType="BlobClobObject" id="first">
+                    <cpt:named>First BlobClobObject</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="BlobClobObject" id="listAll">
+                    <cpt:named>List All BlobClobObjects</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="BlobClobObject" id="createBlobClobObject">
+                    <cpt:named>Create Blob Clob Object</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+            <mb3:section>
+                <mb3:serviceAction objectType="ReferenceObject" id="first">
+                    <cpt:named>First ReferenceObject</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="ReferenceObject" id="listAll">
+                    <cpt:named>List All ReferenceObjects</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="ReferenceObject" id="createReferenceObject">
+                    <cpt:named>Create Reference Object</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+            <mb3:section>
+                <mb3:serviceAction objectType="org.isisaddons.app.kitchensink.dom.reference.ReferenceObjectMenu" id="moveChildrenBetweenReferenceObjects">
+                    <cpt:named>Move Children Between Reference Objects</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+        </mb3:menu>
+        <mb3:menu>
+            <mb3:named>Timestampable</mb3:named>
+            <mb3:section>
+                <mb3:serviceAction objectType="TimestampableObject" id="firstTimestampableObject">
+                    <cpt:named>First Timestampable Object</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="TimestampableObject" id="findTimestampableObject">
+                    <cpt:named>Find Timestampable Object</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="TimestampableObject" id="listAllTimestampableObjects">
+                    <cpt:named>List All Timestampable Objects</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="TimestampableObject" id="createTimestampableObject">
+                    <cpt:named>Create Timestampable Object</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+        </mb3:menu>
+        <mb3:menu>
+            <mb3:named>Reference Child 2 Objects</mb3:named>
+            <mb3:section>
+                <mb3:serviceAction objectType="ReferenceChild2Object" id="first">
+                    <cpt:named>First</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="ReferenceChild2Object" id="listAll">
+                    <cpt:named>List All</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="ReferenceChild2Object" id="create">
+                    <cpt:named>Create</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="ReferenceChild2Object" id="findNamed">
+                    <cpt:named>Find Named</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+        </mb3:menu>
+        <mb3:menu>
+            <mb3:named>Dependent</mb3:named>
+            <mb3:section>
+                <mb3:serviceAction objectType="NflPlayer" id="first">
+                    <cpt:named>First</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="NflPlayer" id="listAll">
+                    <cpt:named>List All</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="NflPlayer" id="create">
+                    <cpt:named>Create</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+            <mb3:section>
+                <mb3:serviceAction objectType="NflTeamEntity" id="first">
+                    <cpt:named>First</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="NflTeamEntity" id="listAll">
+                    <cpt:named>List All</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="NflTeamEntity" id="create">
+                    <cpt:named>Create</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+        </mb3:menu>
+        <mb3:menu>
+            <mb3:named>Hierarchy Objects</mb3:named>
+            <mb3:section>
+                <mb3:serviceAction objectType="org.isisaddons.app.kitchensink.dom.hierarchy.HierarchyObjects" id="firstParent">
+                    <cpt:named>First Parent</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="org.isisaddons.app.kitchensink.dom.hierarchy.HierarchyObjects" id="findParent">
+                    <cpt:named>Find Parent</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="org.isisaddons.app.kitchensink.dom.hierarchy.HierarchyObjects" id="findParentUnique">
+                    <cpt:named>Find Parent Unique</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="org.isisaddons.app.kitchensink.dom.hierarchy.HierarchyObjects" id="allParents">
+                    <cpt:named>All Parents</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="org.isisaddons.app.kitchensink.dom.hierarchy.HierarchyObjects" id="firstChild">
+                    <cpt:named>First Child</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="org.isisaddons.app.kitchensink.dom.hierarchy.HierarchyObjects" id="allChildren">
+                    <cpt:named>All Children</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="org.isisaddons.app.kitchensink.dom.hierarchy.HierarchyObjects" id="firstGrandchild">
+                    <cpt:named>First Grandchild</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="org.isisaddons.app.kitchensink.dom.hierarchy.HierarchyObjects" id="allGrandChildren">
+                    <cpt:named>All Grand Children</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+        </mb3:menu>
+        <mb3:menu>
+            <mb3:named>Layout Objects</mb3:named>
+            <mb3:section>
+                <mb3:serviceAction objectType="org.isisaddons.app.kitchensink.dom.layout.LayoutObjects" id="first_4_4_4">
+                    <cpt:named>First_ 4_ 4_4</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="org.isisaddons.app.kitchensink.dom.layout.LayoutObjects" id="first_3_4_5">
+                    <cpt:named>First_ 3_ 4_5</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="org.isisaddons.app.kitchensink.dom.layout.LayoutObjects" id="first_4_0_8">
+                    <cpt:named>First_ 4_ 0_8</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="org.isisaddons.app.kitchensink.dom.layout.LayoutObjects" id="first_6_0_6">
+                    <cpt:named>First_ 6_ 0_6</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="org.isisaddons.app.kitchensink.dom.layout.LayoutObjects" id="first_4_0_0_8C">
+                    <cpt:named>First_ 4_ 0_ 0_ 8C</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="org.isisaddons.app.kitchensink.dom.layout.LayoutObjects" id="first_6_0_6_12C">
+                    <cpt:named>First_ 6_ 0_ 6_ 12C</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+        </mb3:menu>
+        <mb3:menu>
+            <mb3:named>Messages</mb3:named>
+            <mb3:section>
+                <mb3:serviceAction objectType="MessageObject" id="first">
+                    <cpt:named>First</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="MessageObject" id="listAll">
+                    <cpt:named>List All</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="MessageObject" id="createAndInfoMessage">
+                    <cpt:named>Create And Info Message</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="MessageObject" id="createAndWarnUser">
+                    <cpt:named>Create And Warn User</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="MessageObject" id="createAndRaiseError">
+                    <cpt:named>Create And Raise Error</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="MessageObject" id="createAndThrowRecoverableException">
+                    <cpt:named>Create And Throw Recoverable Exception</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="MessageObject" id="createAndThrowNonRecoverableException">
+                    <cpt:named>Create And Throw Non Recoverable Exception</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="MessageObject" id="createAndThrowRuntimeException">
+                    <cpt:named>Create And Throw Runtime Exception</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="MessageObject" id="removeBookmarksAndBreadcrumbs">
+                    <cpt:named>Remove Bookmarks And Breadcrumbs</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+        </mb3:menu>
+        <mb3:menu>
+            <mb3:named>View Models</mb3:named>
+            <mb3:section>
+                <mb3:serviceAction objectType="SomeViewModel" id="lookup">
+                    <cpt:named>Lookup</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="SomeViewModel" id="createSomeViewModels">
+                    <cpt:named>Create Some View Models</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="SomeViewModel" id="createViewModel">
+                    <cpt:named>Create View Model</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+        </mb3:menu>
+        <mb3:menu>
+            <mb3:named>Child Objects</mb3:named>
+            <mb3:section>
+                <mb3:serviceAction objectType="ChildObject" id="first">
+                    <cpt:named>First</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="ChildObject" id="listAll">
+                    <cpt:named>List All</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="ChildObject" id="create">
+                    <cpt:named>Create</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+        </mb3:menu>
+        <mb3:menu unreferencedActions="true">
+            <mb3:named>Other</mb3:named>
+        </mb3:menu>
+    </mb3:primary>
+    <mb3:secondary>
+        <mb3:menu>
+            <mb3:named>Prototyping</mb3:named>
+            <mb3:section>
+                <mb3:serviceAction objectType="isisApplib.FixtureScriptsDefault" id="runFixtureScript">
+                    <cpt:named>Run Fixture Script</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="isisApplib.FixtureScriptsDefault" id="runFixtureScriptWithAutoComplete">
+                    <cpt:named>Run Fixture Script</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="isisApplib.FixtureScriptsDefault" id="recreateObjectsAndReturnFirst">
+                    <cpt:named>Recreate Objects And Return First</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+            <mb3:section>
+                <mb3:serviceAction objectType="isisApplib.LayoutServiceMenu" id="downloadLayouts">
+                    <cpt:named>Download Object Layouts (ZIP)</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="isisApplib.LayoutServiceMenu" id="downloadMenuBarsLayout">
+                    <cpt:named>Download Menu Bars Layout (XML)</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+            <mb3:section>
+                <mb3:serviceAction objectType="isisApplib.MetaModelServicesMenu" id="downloadMetaModel">
+                    <cpt:named>Download Meta Model (CSV)</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+            <mb3:section>
+                <mb3:serviceAction objectType="isisApplib.SwaggerServiceMenu" id="openSwaggerUi">
+                    <cpt:named>Open Swagger Ui</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="isisApplib.SwaggerServiceMenu" id="openRestApi">
+                    <cpt:named>Open Rest Api</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="isisApplib.SwaggerServiceMenu" id="downloadSwaggerSchemaDefinition">
+                    <cpt:named>Download Swagger Schema Definition</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+            <mb3:section>
+                <mb3:serviceAction objectType="isisApplib.TranslationServicePoMenu" id="downloadTranslations">
+                    <cpt:named>Download Translations</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="isisApplib.TranslationServicePoMenu" id="resetTranslationCache">
+                    <cpt:named>Clear translation cache</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="isisApplib.TranslationServicePoMenu" id="switchToReadingTranslations">
+                    <cpt:named>Switch To Reading Translations</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="isisApplib.TranslationServicePoMenu" id="switchToWritingTranslations">
+                    <cpt:named>Switch To Writing Translations</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+            <mb3:section>
+                <mb3:serviceAction objectType="isisApplib.HsqlDbManagerMenu" id="hsqlDbManager">
+                    <cpt:named>HSQL DB Manager</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+        </mb3:menu>
+    </mb3:secondary>
+    <mb3:tertiary>
+        <mb3:menu>
+            <mb3:named>Security</mb3:named>
+            <mb3:section>
+                <mb3:serviceAction objectType="org.isisaddons.app.kitchensink.dom.tertiary.Security" id="me">
+                    <cpt:named>Me</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+        </mb3:menu>
+        <mb3:menu>
+            <mb3:named>Preferences</mb3:named>
+            <mb3:section>
+                <mb3:serviceAction objectType="org.isisaddons.app.kitchensink.dom.tertiary.Preferences" id="preferences">
+                    <cpt:named>Preferences</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+        </mb3:menu>
+        <mb3:menu>
+            <mb3:named>Workflow</mb3:named>
+            <mb3:section>
+                <mb3:serviceAction objectType="org.isisaddons.app.kitchensink.dom.tertiary.Workflow" id="tasks">
+                    <cpt:named>Tasks</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+        </mb3:menu>
+        <mb3:menu>
+            <mb3:named>Configuration Service Menu</mb3:named>
+            <mb3:section>
+                <mb3:serviceAction objectType="isisApplib.ConfigurationServiceMenu" id="configuration">
+                    <cpt:named>Configuration</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+        </mb3:menu>
+    </mb3:tertiary>
+</mb3:menuBars>

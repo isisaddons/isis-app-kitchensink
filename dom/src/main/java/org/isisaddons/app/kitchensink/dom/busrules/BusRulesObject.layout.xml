@@ -15,7 +15,7 @@
                         <bs3:col span="12">
                             <cpt:fieldSet name="Name" id="name">
                                 <cpt:action id="action2AssociatedWithProperty" position="PANEL"/>
-                                <cpt:property id="name">
+                                <cpt:property id="name" promptStyle="INLINE">
                                     <cpt:action id="actionAssociatedWithProperty" position="RIGHT"/>
                                     <cpt:action id="action3AssociatedWithProperty" position="BELOW"/>
                                 </cpt:property>

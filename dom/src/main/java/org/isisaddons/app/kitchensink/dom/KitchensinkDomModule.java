@@ -16,5 +16,7 @@
  */
 package org.isisaddons.app.kitchensink.dom;
 
-public class KitchensinkDomModule {
+import org.apache.isis.applib.ModuleAbstract;
+
+public class KitchensinkDomModule extends ModuleAbstract {
 }

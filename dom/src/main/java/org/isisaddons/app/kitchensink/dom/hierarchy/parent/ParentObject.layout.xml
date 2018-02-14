@@ -43,10 +43,15 @@
             </bs3:tabGroup>
         </bs3:col>
         <bs3:col span="6" unreferencedCollections="true">
-            <cpt:collection id="children" defaultView="table">
-                <cpt:action id="addChild"/>
-                <cpt:action id="moveChild"/>
-            </cpt:collection>
+            <bs3:tabGroup collapseIfOne="false">
+                <bs3:tab name="Children">
+                    <bs3:row>
+                        <bs3:col span="12">
+                            <cpt:collection id="children" defaultView="table"/>
+                        </bs3:col>
+                    </bs3:row>
+                </bs3:tab>
+            </bs3:tabGroup>
         </bs3:col>
     </bs3:row>
 </bs3:grid>
