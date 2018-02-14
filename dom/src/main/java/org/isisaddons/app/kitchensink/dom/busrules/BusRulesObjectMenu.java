@@ -18,7 +18,7 @@ package org.isisaddons.app.kitchensink.dom.busrules;
 
 import java.util.List;
 import java.util.Objects;
-import org.apache.isis.applib.DomainObjectContainer;
+
 import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.ActionLayout;
 import org.apache.isis.applib.annotation.BookmarkPolicy;
@@ -29,6 +29,7 @@ import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.SemanticsOf;
 import org.apache.isis.applib.annotation.Where;
+import org.apache.isis.applib.services.repository.RepositoryService;
 
 @DomainService(
         nature = NatureOfService.VIEW_MENU_ONLY,
@@ -57,10 +58,10 @@ public class BusRulesObjectMenu {
     public BusRulesObject createBusRulesObject(
             @ParameterLayout(named="Name")
             final String name) {
-        final BusRulesObject obj = container.newTransientInstance(BusRulesObject.class);
+        final BusRulesObject obj = repositoryService.instantiate(BusRulesObject.class);
         obj.setName(name);
 
-        container.persistIfNotAlready(obj);
+        repositoryService.persist(obj);
         return obj;
     }
 
@@ -91,7 +92,7 @@ public class BusRulesObjectMenu {
     @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
     @MemberOrder(sequence = "20")
     public List<BusRulesObject> listAllBusRulesObject() {
-        return container.allInstances(cls);
+        return repositoryService.allInstances(cls);
     }
 
     @Action(semantics=SemanticsOf.SAFE)
@@ -115,6 +116,6 @@ public class BusRulesObjectMenu {
     }
 
     @javax.inject.Inject
-    protected DomainObjectContainer container;
+    RepositoryService repositoryService;
 
 }

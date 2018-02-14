@@ -19,7 +19,6 @@ package org.isisaddons.app.kitchensink.dom.timestampable.inject;
 import java.util.List;
 import java.util.Objects;
 
-import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.ActionLayout;
 import org.apache.isis.applib.annotation.BookmarkPolicy;
@@ -29,6 +28,7 @@ import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.SemanticsOf;
+import org.apache.isis.applib.services.repository.RepositoryService;
 
 @DomainService(
         nature = NatureOfService.VIEW_MENU_ONLY,
@@ -54,10 +54,10 @@ public class TimestampableObjects {
     public TimestampableObject createTimestampableObject(
             @ParameterLayout(named = "Name")
             final String name) {
-        final TimestampableObject obj = container.newTransientInstance(cls);
+        final TimestampableObject obj = repositoryService.instantiate(cls);
         obj.setName(name);
 
-        container.persistIfNotAlready(obj);
+        repositoryService.persist(obj);
         return obj;
     }
 
@@ -88,10 +88,10 @@ public class TimestampableObjects {
     @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
     @MemberOrder(sequence = "20")
     public List<TimestampableObject> listAllTimestampableObjects() {
-        return container.allInstances(cls);
+        return repositoryService.allInstances(cls);
     }
 
     @javax.inject.Inject
-    protected DomainObjectContainer container;
+    RepositoryService repositoryService;
 
 }

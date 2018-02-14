@@ -49,7 +49,7 @@ public class EnumeratedObjects extends RepositoryAbstract<EnumeratedObject> {
             final EnumOf3 enumOf3,
             final EnumOf4 enumOf4,
             final EnumOf8 enumOf8) {
-        final EnumeratedObject obj = container.newTransientInstance(EnumeratedObject.class);
+        final EnumeratedObject obj = repositoryService.instantiate(EnumeratedObject.class);
         obj.setName(name);
 
         obj.setSomeBoolean(b);
@@ -81,7 +81,7 @@ public class EnumeratedObjects extends RepositoryAbstract<EnumeratedObject> {
         obj.setSomeEnumOf8Disabled(enumOf8);
         obj.setSomeEnumOf8WithValidation(enumOf8);
 
-        container.persistIfNotAlready(obj);
+        repositoryService.persist(obj);
         return obj;
     }
 

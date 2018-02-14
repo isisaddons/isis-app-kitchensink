@@ -55,14 +55,14 @@ public class BlobClobObjects extends RepositoryAbstract<BlobClobObject> {
             final Blob image,
             @ParameterLayout(named="Some clob") @Parameter(optionality=Optionality.OPTIONAL)
             final Clob clob) {
-        final BlobClobObject obj = container.newTransientInstance(BlobClobObject.class);
+        final BlobClobObject obj = repositoryService.instantiate(BlobClobObject.class);
         obj.setName(name);
 
         obj.setSomeBlob(blob);
         obj.setSomeImage(image);
         obj.setSomeClob(clob);
 
-        container.persistIfNotAlready(obj);
+        repositoryService.persist(obj);
         return obj;
     }
 

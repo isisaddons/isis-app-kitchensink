@@ -57,7 +57,7 @@ public class PrimitiveObjects extends RepositoryAbstract<PrimitiveObject> {
             final float f,
             @ParameterLayout(named="Double")
             final double d) {
-        final PrimitiveObject obj = container.newTransientInstance(PrimitiveObject.class);
+        final PrimitiveObject obj = repositoryService.instantiate(PrimitiveObject.class);
         obj.setName(name);
 
         obj.setSomeByte(b);
@@ -103,7 +103,7 @@ public class PrimitiveObjects extends RepositoryAbstract<PrimitiveObject> {
         obj.setSomeDoubleWithChoices(d);
 
 
-        container.persistIfNotAlready(obj);
+        repositoryService.persist(obj);
         return obj;
     }
 

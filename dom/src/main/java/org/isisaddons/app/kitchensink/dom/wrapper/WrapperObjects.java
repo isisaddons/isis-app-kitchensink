@@ -57,7 +57,7 @@ public class WrapperObjects extends RepositoryAbstract<WrapperObject> {
             final float f,
             @ParameterLayout(named="Double")
             final double d) {
-        final WrapperObject obj = container.newTransientInstance(WrapperObject.class);
+        final WrapperObject obj = repositoryService.instantiate(WrapperObject.class);
         obj.setName(name);
 
         obj.setSomeByteWrapperMandatory(b);
@@ -83,7 +83,7 @@ public class WrapperObjects extends RepositoryAbstract<WrapperObject> {
         obj.setSomeDoubleWrapperMandatory(d);
         obj.setSomeDoubleWrapperOptional(d);
 
-        container.persistIfNotAlready(obj);
+        repositoryService.persist(obj);
         return obj;
     }
 

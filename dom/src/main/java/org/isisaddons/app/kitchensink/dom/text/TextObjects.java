@@ -46,7 +46,7 @@ public class TextObjects extends RepositoryAbstract<TextObject> {
     public TextObject createTextObject(
             @ParameterLayout(named="Name")
             final String name) {
-        final TextObject obj = container.newTransientInstance(TextObject.class);
+        final TextObject obj = repositoryService.instantiate(TextObject.class);
         obj.setName(name);
 
         final char nameChar0 = name.charAt(0);
@@ -88,7 +88,7 @@ public class TextObjects extends RepositoryAbstract<TextObject> {
         obj.setSomeStringMultiline(name);
         obj.setSomeStringMultilineNoWrap(name);
 
-        container.persistIfNotAlready(obj);
+        repositoryService.persist(obj);
         return obj;
     }
 

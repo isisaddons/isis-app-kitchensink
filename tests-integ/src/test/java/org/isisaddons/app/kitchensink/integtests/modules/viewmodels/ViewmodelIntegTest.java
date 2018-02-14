@@ -28,7 +28,7 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import org.apache.isis.applib.fixturescripts.FixtureScripts;
-import org.apache.isis.applib.services.registry.ServiceRegistry2;
+import org.apache.isis.applib.services.registry.ServiceRegistry;
 
 import org.isisaddons.app.kitchensink.dom.primitive.PrimitiveObjects;
 import org.isisaddons.app.kitchensink.dom.viewmodels.ViewModels;
@@ -57,7 +57,7 @@ public class ViewmodelIntegTest extends KitchensinkAppIntegTest {
 
         // given
         ViewModels viewModels = new ViewModels();
-        serviceRegistry2.injectServicesInto(viewModels);
+        serviceRegistry.injectServicesInto(viewModels);
 
         // when
         SomeViewModel viewModel = viewModels.createViewModel(1, "test", new LocalDate(2016,1,1));
@@ -70,6 +70,6 @@ public class ViewmodelIntegTest extends KitchensinkAppIntegTest {
     }
 
     @Inject
-    ServiceRegistry2 serviceRegistry2;
+    ServiceRegistry serviceRegistry;
 
 }

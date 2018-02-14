@@ -18,7 +18,6 @@ package org.isisaddons.app.kitchensink.dom.mixins.mixedIn;
 
 import java.util.List;
 
-import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.ActionLayout;
 import org.apache.isis.applib.annotation.BookmarkPolicy;
@@ -27,6 +26,7 @@ import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.SemanticsOf;
+import org.apache.isis.applib.services.repository.RepositoryService;
 
 @DomainService(repositoryFor = Person.class)
 @DomainServiceLayout(
@@ -48,10 +48,10 @@ public class Persons {
     @MemberOrder(sequence = "30")
     public Person createPerson(
             final @ParameterLayout(named="Name") String name) {
-        final Person obj = container.newTransientInstance(Person.class);
+        final Person obj = repositoryService.instantiate(Person.class);
         obj.setName(name);
 
-        container.persistIfNotAlready(obj);
+        repositoryService.persist(obj);
         return obj;
     }
 
@@ -68,10 +68,10 @@ public class Persons {
     @Action(semantics= SemanticsOf.SAFE)
     @MemberOrder(sequence = "20")
     public List<Person> listAllPersons() {
-        return container.allInstances(cls);
+        return repositoryService.allInstances(cls);
     }
 
     @javax.inject.Inject
-    protected DomainObjectContainer container;
+    RepositoryService repositoryService;
 
 }

@@ -17,13 +17,12 @@
 package org.isisaddons.app.kitchensink.dom;
 
 import java.util.List;
-import org.apache.isis.applib.DomainObjectContainer;
+
 import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.ActionLayout;
 import org.apache.isis.applib.annotation.BookmarkPolicy;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.SemanticsOf;
-import org.apache.isis.applib.services.factory.FactoryService;
 import org.apache.isis.applib.services.repository.RepositoryService;
 
 public abstract class RepositoryAbstract<T extends Entity> {
@@ -79,23 +78,13 @@ public abstract class RepositoryAbstract<T extends Entity> {
     @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
     @MemberOrder(sequence = "20")
     public List<T> listAll() {
-        return container.allInstances(cls);
+        return repositoryService.allInstances(cls);
     }
 
     //endregion
 
 
-    //region > injected services
-
-    @javax.inject.Inject
-    protected DomainObjectContainer container;
-
     @javax.inject.Inject
     protected RepositoryService repositoryService;
-
-    @javax.inject.Inject
-    protected FactoryService factoryService;
-
-    //endregion
 
 }

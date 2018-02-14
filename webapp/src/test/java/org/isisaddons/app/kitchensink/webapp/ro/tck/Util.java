@@ -22,7 +22,10 @@ import java.io.IOException;
 
 import javax.ws.rs.core.Response;
 
-import org.apache.isis.core.commons.matchers.IsisMatchers;
+import org.hamcrest.Description;
+import org.hamcrest.TypeSafeMatcher;
+import org.jetbrains.annotations.NotNull;
+
 import org.apache.isis.viewer.restfulobjects.applib.JsonRepresentation;
 import org.apache.isis.viewer.restfulobjects.applib.LinkRepresentation;
 import org.apache.isis.viewer.restfulobjects.applib.Rel;
@@ -113,7 +116,8 @@ public class Util {
         final ListRepresentation listRepr = actionResultRepr.getResult().as(ListRepresentation.class);
 
         assertThat(listRepr.getValue(), is(not(nullValue())));
-        assertThat(listRepr.getValue().size(), is(IsisMatchers.greaterThan(idx + 1)));
+
+        assertThat(listRepr.getValue().size(), is(greaterThan(idx+1)));
 
         final LinkRepresentation domainObjectLinkRepr = listRepr.getValue().arrayGet(idx).as(LinkRepresentation.class);
 
@@ -123,8 +127,18 @@ public class Util {
         return domainObjectLinkRepr;
     }
 
-    
-    
+    @NotNull public static TypeSafeMatcher<Integer> greaterThan(final int amount) {
+        return new TypeSafeMatcher<Integer>() {
+
+            @Override public void describeTo(final Description description) {
+                description.appendText("is greater than " + amount);
+            }
+            @Override protected boolean matchesSafely(final Integer integer) {
+                return integer > amount;
+            }
+        };
+    }
+
     /**
      * For resourceProxy tests; returns the first entity in the list returned by invoking the 'list' action on the specified repo
      */

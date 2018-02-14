@@ -24,16 +24,14 @@ import com.google.common.collect.Lists;
 
 import org.joda.time.LocalDate;
 
-import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.services.bookmark.Bookmark;
-import org.apache.isis.applib.services.bookmark.BookmarkService2;
+import org.apache.isis.applib.services.bookmark.BookmarkService;
 import org.apache.isis.applib.services.clock.ClockService;
-import org.apache.isis.applib.services.factory.FactoryService;
 
 import org.isisaddons.app.kitchensink.dom.text.TextObjects;
 
@@ -105,18 +103,12 @@ public class ViewModels {
             final String bookmarkStr) {
 
         Bookmark bookmark = new Bookmark(bookmarkStr);
-        final Object obj = bookmarkService.lookup(bookmark, BookmarkService2.FieldResetPolicy.DONT_RESET);
+        final Object obj = bookmarkService.lookup(bookmark, BookmarkService.FieldResetPolicy.DONT_RESET);
         return obj;
     }
 
     @javax.inject.Inject
-    protected FactoryService factoryService;
-
-    @javax.inject.Inject
-    protected BookmarkService2 bookmarkService;
-
-    @javax.inject.Inject
-    protected DomainObjectContainer container;
+    BookmarkService bookmarkService;
 
     @Inject
     ClockService clockService;

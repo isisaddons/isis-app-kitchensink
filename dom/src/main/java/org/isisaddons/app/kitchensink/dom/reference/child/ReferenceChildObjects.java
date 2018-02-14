@@ -46,11 +46,11 @@ public class ReferenceChildObjects extends RepositoryAbstract<ReferenceChildObje
             @ParameterLayout(named="Name")
             final String name,
             final ReferenceObject parentObject) {
-        final ReferenceChildObject obj = container.newTransientInstance(ReferenceChildObject.class);
+        final ReferenceChildObject obj = repositoryService.instantiate(ReferenceChildObject.class);
         obj.setName(name);
         obj.setParent(parentObject);
 
-        container.persistIfNotAlready(obj);
+        repositoryService.persist(obj);
         return obj;
     }
 

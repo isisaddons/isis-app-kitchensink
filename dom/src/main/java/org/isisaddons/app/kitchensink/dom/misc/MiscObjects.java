@@ -53,7 +53,7 @@ public class MiscObjects extends RepositoryAbstract<MiscObject> {
             final URL url,
             final UUID uuid,
             final Money money) {
-        final MiscObject obj = container.newTransientInstance(MiscObject.class);
+        final MiscObject obj = repositoryService.instantiate(MiscObject.class);
         obj.setName(name);
 
         obj.setSomeUrlDisabled(url);
@@ -81,7 +81,7 @@ public class MiscObjects extends RepositoryAbstract<MiscObject> {
         obj.setSomeMoneyOptional(money);
         obj.setSomeMoneyOptionalWithChoices(money);
 
-        container.persistIfNotAlready(obj);
+        repositoryService.persist(obj);
         return obj;
     }
 

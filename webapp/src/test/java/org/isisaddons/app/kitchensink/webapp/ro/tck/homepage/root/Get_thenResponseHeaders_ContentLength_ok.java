@@ -24,7 +24,6 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
-import org.apache.isis.core.commons.matchers.IsisMatchers;
 import org.apache.isis.viewer.restfulobjects.applib.client.RestfulClient;
 import org.apache.isis.viewer.restfulobjects.applib.client.RestfulResponse;
 import org.apache.isis.viewer.restfulobjects.applib.client.RestfulResponse.Header;
@@ -34,6 +33,7 @@ import org.apache.isis.viewer.restfulobjects.applib.homepage.HomePageResource;
 import org.isisaddons.app.kitchensink.webapp.ro.tck.IsisWebServerRule;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.isisaddons.app.kitchensink.webapp.ro.tck.Util.greaterThan;
 import static org.junit.Assert.assertThat;
 
 public class Get_thenResponseHeaders_ContentLength_ok {
@@ -60,6 +60,6 @@ public class Get_thenResponseHeaders_ContentLength_ok {
         final RestfulResponse<HomePageRepresentation> restfulResponse = RestfulResponse.ofT(resp);
 
         // then
-        assertThat(restfulResponse.getHeader(Header.CONTENT_LENGTH), is(IsisMatchers.greaterThan(1000)));
+        assertThat(restfulResponse.getHeader(Header.CONTENT_LENGTH), is(greaterThan(1000)));
     }
 }

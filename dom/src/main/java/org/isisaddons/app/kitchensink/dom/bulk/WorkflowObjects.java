@@ -45,11 +45,11 @@ public class WorkflowObjects extends RepositoryAbstract<WorkflowObject> {
     public WorkflowObject createWorkflowObject(
             @ParameterLayout(named="Name")
             final String name) {
-        final WorkflowObject obj = container.newTransientInstance(WorkflowObject.class);
+        final WorkflowObject obj = repositoryService.instantiate(WorkflowObject.class);
         obj.setName(name);
         obj.setState(State.OPEN);
 
-        container.persistIfNotAlready(obj);
+        repositoryService.persist(obj);
         return obj;
     }
 

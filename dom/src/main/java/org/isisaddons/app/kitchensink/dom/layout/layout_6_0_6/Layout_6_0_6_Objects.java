@@ -39,7 +39,7 @@ public class Layout_6_0_6_Objects extends RepositoryAbstract<Layout_6_0_6_Object
     @MemberOrder(sequence = "30")
     public Layout_6_0_6_Object create(
             final String name) {
-        final Layout_6_0_6_Object obj = container.newTransientInstance(Layout_6_0_6_Object.class);
+        final Layout_6_0_6_Object obj = repositoryService.instantiate(Layout_6_0_6_Object.class);
         obj.setName(name);
 
         obj.setSomeString1(name);
@@ -49,7 +49,7 @@ public class Layout_6_0_6_Objects extends RepositoryAbstract<Layout_6_0_6_Object
         obj.setSomeString5(name);
         obj.setSomeString6(name);
 
-        container.persistIfNotAlready(obj);
+        repositoryService.persist(obj);
         return obj;
     }
 

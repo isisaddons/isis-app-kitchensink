@@ -35,7 +35,6 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
-import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.BookmarkPolicy;
 import org.apache.isis.applib.annotation.DomainObject;
@@ -50,6 +49,7 @@ import org.apache.isis.applib.annotation.Property;
 import org.apache.isis.applib.annotation.SemanticsOf;
 import org.apache.isis.applib.annotation.Title;
 import org.apache.isis.applib.annotation.Where;
+import org.apache.isis.applib.services.repository.RepositoryService;
 import org.apache.isis.applib.util.ObjectContracts;
 
 import org.isisaddons.app.kitchensink.dom.Entity;
@@ -521,13 +521,13 @@ public class ReferenceObject implements Entity<ReferenceObject> {
 
     public void setSomeOtherObjectUsingNameName(final String name) {
         OtherObject otherObject = name != null
-                ? container.firstMatch(OtherObject.class, withName(name))
+                ? repositoryService.firstMatch(OtherObject.class, withName(name))
                 : null;
         setSomeOtherObjectUsingName(otherObject);
     }
 
     public List<String> choicesSomeOtherObjectUsingNameName() {
-        List<OtherObject> otherObjects = container.allInstances(OtherObject.class);
+        List<OtherObject> otherObjects = repositoryService.allInstances(OtherObject.class);
         return Lists.newArrayList(
                 Iterables.transform(otherObjects, nameOf())
         );
@@ -702,22 +702,22 @@ public class ReferenceObject implements Entity<ReferenceObject> {
 
     @javax.inject.Inject
     @SuppressWarnings("unused")
-    private DomainObjectContainer container;
+    RepositoryService repositoryService;
 
     @javax.inject.Inject
-    private AutoObjects autoObjects;
+    AutoObjects autoObjects;
 
     @javax.inject.Inject
-    private OtherObjects otherObjects;
+    OtherObjects otherObjects;
 
     @javax.inject.Inject
-    private OtherBoundedObjects otherBoundedObjects;
+    OtherBoundedObjects otherBoundedObjects;
 
     @javax.inject.Inject
-    private ReferenceChildObjects referenceChildObjects;
+    ReferenceChildObjects referenceChildObjects;
 
     @javax.inject.Inject
-    private ReferenceChild2Objects referenceChild2Objects;
+    ReferenceChild2Objects referenceChild2Objects;
 
 
     //endregion

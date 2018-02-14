@@ -51,7 +51,7 @@ public class ReferenceObjects extends RepositoryAbstract<ReferenceObject> {
             AutoObject autoObject,
             final OtherObject otherObject,
             final OtherBoundedObject otherBoundedObject) {
-        final ReferenceObject obj = container.newTransientInstance(ReferenceObject.class);
+        final ReferenceObject obj = repositoryService.instantiate(ReferenceObject.class);
         obj.setName(name);
 
         obj.setSomeAutoObjectMandatory(autoObject);
@@ -61,7 +61,7 @@ public class ReferenceObjects extends RepositoryAbstract<ReferenceObject> {
 
         obj.setSomeOtherBoundedObjectMandatory(otherBoundedObject);
 
-        container.persistIfNotAlready(obj);
+        repositoryService.persist(obj);
         return obj;
     }
 

@@ -26,6 +26,7 @@ import org.apache.isis.applib.annotation.BookmarkPolicy;
 import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.DomainObjectLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
+import org.apache.isis.applib.annotation.Parent;
 import org.apache.isis.applib.annotation.Property;
 import org.apache.isis.applib.annotation.Title;
 import org.apache.isis.applib.annotation.Where;
@@ -64,6 +65,7 @@ public class GrandchildObject implements Entity<GrandchildObject> {
     @Property(hidden = Where.REFERENCES_PARENT)
     @Column(allowsNull = "false")
     @lombok.NonNull
+    @Parent()
     private ChildObject child;
 
     @Override

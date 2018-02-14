@@ -52,7 +52,7 @@ public class JavaMathObjects extends RepositoryAbstract<JavaMathObject> {
             final long l,
             @ParameterLayout(named="Double")
             final double d) {
-        final JavaMathObject obj = container.newTransientInstance(JavaMathObject.class);
+        final JavaMathObject obj = repositoryService.instantiate(JavaMathObject.class);
         obj.setName(name);
 
         final BigInteger bi = BigInteger.valueOf(l);
@@ -77,7 +77,7 @@ public class JavaMathObjects extends RepositoryAbstract<JavaMathObject> {
 
         obj.setSomeBigDecimal92(bd);
 
-        container.persistIfNotAlready(obj);
+        repositoryService.persist(obj);
         return obj;
     }
 

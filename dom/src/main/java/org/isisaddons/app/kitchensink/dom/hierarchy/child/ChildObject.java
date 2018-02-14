@@ -32,6 +32,7 @@ import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.DomainObjectLayout;
 import org.apache.isis.applib.annotation.Editing;
 import org.apache.isis.applib.annotation.MemberOrder;
+import org.apache.isis.applib.annotation.Parent;
 import org.apache.isis.applib.annotation.Property;
 import org.apache.isis.applib.annotation.Title;
 import org.apache.isis.applib.annotation.Where;
@@ -71,6 +72,7 @@ public class ChildObject implements Entity<ChildObject> {
     @Column(allowsNull = "false")
     @MemberOrder(sequence = "1")
     @lombok.NonNull
+    @Parent()
     private ParentObject parent;
 
     public Collection<ParentObject> choicesParent() {

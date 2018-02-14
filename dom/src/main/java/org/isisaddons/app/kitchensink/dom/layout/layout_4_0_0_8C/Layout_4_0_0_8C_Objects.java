@@ -39,14 +39,14 @@ public class Layout_4_0_0_8C_Objects extends RepositoryAbstract<Layout_4_0_0_8C_
     @MemberOrder(sequence = "30")
     public Layout_4_0_0_8C_Object create(
             final String name) {
-        final Layout_4_0_0_8C_Object obj = container.newTransientInstance(Layout_4_0_0_8C_Object.class);
+        final Layout_4_0_0_8C_Object obj = repositoryService.instantiate(Layout_4_0_0_8C_Object.class);
         obj.setName(name);
 
         obj.setSomeString1(name);
         obj.setSomeString2(name);
         obj.setSomeString3(name);
 
-        container.persistIfNotAlready(obj);
+        repositoryService.persist(obj);
         return obj;
     }
 

@@ -44,12 +44,12 @@ public class NflPlayers extends RepositoryAbstract<NflPlayer> {
             final NflLeague league,
             @Parameter(optionality=Optionality.OPTIONAL) final  NflRegion region,
             @Parameter(optionality= Optionality.OPTIONAL) final NflTeamEnum nflTeamEnum) {
-        final NflPlayer obj = container.newTransientInstance(NflPlayer.class);
+        final NflPlayer obj = repositoryService.instantiate(NflPlayer.class);
         obj.setName(name);
 
         obj.updateUsingEnum(league, region, nflTeamEnum);
 
-        container.persistIfNotAlready(obj);
+        repositoryService.persist(obj);
         return obj;
     }
 

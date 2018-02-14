@@ -23,6 +23,7 @@ import javax.jdo.annotations.VersionStrategy;
 
 import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.annotation.BookmarkPolicy;
+import org.apache.isis.applib.annotation.Bounding;
 import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.DomainObjectLayout;
 import org.apache.isis.applib.annotation.Title;
@@ -42,7 +43,7 @@ import org.isisaddons.app.kitchensink.dom.Entity;
         column="version")
 @DomainObject(
         objectType = "PERSON",
-        bounded = true
+        bounding = Bounding.BOUNDED
 )
 @DomainObjectLayout(
         bookmarking = BookmarkPolicy.AS_ROOT

@@ -53,12 +53,12 @@ public class NflTeams extends RepositoryAbstract<NflTeamEntity> {
             final String name,
             final NflLeague league,
             @Parameter(optionality=Optionality.OPTIONAL) final  NflRegion region) {
-        final NflTeamEntity obj = container.newTransientInstance(NflTeamEntity.class);
+        final NflTeamEntity obj = repositoryService.instantiate(NflTeamEntity.class);
 
         obj.setName(name);
         obj.setRegion(region);
 
-        container.persistIfNotAlready(obj);
+        repositoryService.persist(obj);
         return obj;
     }
 

@@ -37,6 +37,7 @@ import org.apache.isis.applib.annotation.Collection;
 import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.DomainObjectLayout;
 import org.apache.isis.applib.annotation.DomainService;
+import org.apache.isis.applib.annotation.MementoSerialization;
 import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.Publishing;
@@ -162,7 +163,7 @@ public class BusRulesObject implements Entity<BusRulesObject> {
     //region > other (derived collection)
 
     @Collection(
-            notPersisted = true
+            mementoSerialization = MementoSerialization.EXCLUDED
     )
     public List<BusRulesObject> getOther() {
         final List<BusRulesObject> other = Lists.newArrayList();

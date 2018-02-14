@@ -63,10 +63,10 @@ public class AutoObjects extends RepositoryAbstract<AutoObject> {
     @Action(hidden = Where.EVERYWHERE)
     public AutoObject create(
             final @ParameterLayout(named="Name") String name) {
-        final AutoObject obj = container.newTransientInstance(AutoObject.class);
+        final AutoObject obj = repositoryService.instantiate(AutoObject.class);
         obj.setName(name);
 
-        container.persistIfNotAlready(obj);
+        repositoryService.persist(obj);
         return obj;
     }
 

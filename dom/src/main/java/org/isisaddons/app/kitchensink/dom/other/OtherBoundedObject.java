@@ -23,6 +23,7 @@ import javax.jdo.annotations.VersionStrategy;
 import com.google.common.collect.Ordering;
 
 import org.apache.isis.applib.annotation.BookmarkPolicy;
+import org.apache.isis.applib.annotation.Bounding;
 import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.DomainObjectLayout;
 import org.apache.isis.applib.annotation.Title;
@@ -45,7 +46,7 @@ import lombok.Setter;
         column="version")
 @DomainObject(
         objectType = "OTHERBOUNDED",
-        bounded = true
+        bounding = Bounding.BOUNDED
 )
 @DomainObjectLayout(
         bookmarking = BookmarkPolicy.AS_ROOT

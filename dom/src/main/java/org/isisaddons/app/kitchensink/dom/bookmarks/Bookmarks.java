@@ -22,7 +22,7 @@ import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.services.bookmark.Bookmark;
-import org.apache.isis.applib.services.bookmark.BookmarkService2;
+import org.apache.isis.applib.services.bookmark.BookmarkService;
 
 @DomainService(
         nature = NatureOfService.VIEW_MENU_ONLY
@@ -39,12 +39,12 @@ public class Bookmarks {
             final String bookmarkStr) {
 
         Bookmark bookmark = new Bookmark(bookmarkStr);
-        final Object obj = bookmarkService.lookup(bookmark, BookmarkService2.FieldResetPolicy.DONT_RESET);
+        final Object obj = bookmarkService.lookup(bookmark, BookmarkService.FieldResetPolicy.DONT_RESET);
         return obj;
     }
 
     @javax.inject.Inject
-    protected BookmarkService2 bookmarkService;
+    BookmarkService bookmarkService;
 
 
 }

@@ -24,12 +24,12 @@ import javax.jdo.annotations.VersionStrategy;
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 
-import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.annotation.BookmarkPolicy;
 import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.DomainObjectLayout;
 import org.apache.isis.applib.annotation.Property;
 import org.apache.isis.applib.annotation.Where;
+import org.apache.isis.applib.services.title.TitleService;
 import org.apache.isis.applib.util.ObjectContracts;
 
 import org.isisaddons.app.kitchensink.dom.Entity;
@@ -55,7 +55,10 @@ import org.isisaddons.app.kitchensink.dom.mixins.mixedIn.Person;
 public class Preference implements Entity<Preference> {
 
     public String title() {
-        return container.titleOf(getPerson()) + " " + getType().toString().toLowerCase() + " " + container.titleOf(getFoodStuff());
+        return String.format("%s %s %s",
+                titleService.titleOf(getPerson()),
+                getType().toString().toLowerCase(),
+                titleService.titleOf(getFoodStuff()));
     }
 
     public enum PreferenceType {
@@ -133,7 +136,7 @@ public class Preference implements Entity<Preference> {
     }
 
     @Inject
-    DomainObjectContainer container;
+    TitleService titleService;
 
 
 }
