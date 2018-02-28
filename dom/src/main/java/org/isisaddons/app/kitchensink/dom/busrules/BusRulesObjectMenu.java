@@ -18,6 +18,8 @@ package org.isisaddons.app.kitchensink.dom.busrules;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
+
 import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.ActionLayout;
@@ -85,6 +87,17 @@ public class BusRulesObjectMenu {
             }
         }
         return null;
+    }
+
+    @Action(semantics=SemanticsOf.SAFE)
+    @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
+    @MemberOrder(sequence = "18")
+    public List<BusRulesObject> findMatchingBusRulesObject(
+            @ParameterLayout(named="Name")
+            final String name) {
+        return listAllBusRulesObject().stream()
+                .filter(x -> x.getName().contains(name))
+                .collect(Collectors.toList());
     }
 
     @Action(semantics=SemanticsOf.SAFE)

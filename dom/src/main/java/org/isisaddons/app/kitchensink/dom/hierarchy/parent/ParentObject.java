@@ -106,7 +106,10 @@ public class ParentObject implements Entity<ParentObject> {
 
 
     @Action(associateWith = "children", associateWithSequence = "2")
-    public ParentObject moveChild(final ChildObject childObject, final ParentObject other) {
+    //@MemberOrder(name = "children", sequence = "2")
+    public ParentObject moveChild(
+            final ChildObject childObject,
+            final ParentObject other) {
         childObject.setParent(other);
         return this;
     }
@@ -127,6 +130,7 @@ public class ParentObject implements Entity<ParentObject> {
 
 
     @Action(associateWith = "children", associateWithSequence = "3")
+    //@MemberOrder(name = "children", sequence = "3")
     public ParentObject moveChildren(final List<ChildObject> childObjects, final ParentObject other) {
         for (final ChildObject childObject : childObjects) {
             childObject.setParent(other);
@@ -134,7 +138,7 @@ public class ParentObject implements Entity<ParentObject> {
         return this;
     }
 //    public java.util.Collection<ChildObject> choices0MoveChildren() {
-//        return choices0MoveChild();
+//        return getChildren();
 //    }
 
     public java.util.Collection<ParentObject> choices1MoveChildren() {
