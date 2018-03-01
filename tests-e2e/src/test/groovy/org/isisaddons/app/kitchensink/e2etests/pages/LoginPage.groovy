@@ -1,6 +1,5 @@
 package org.isisaddons.app.kitchensink.e2etests.pages
 
-import geb.Browser
 import geb.Page
 
 class LoginPage extends Page {
@@ -8,7 +7,6 @@ class LoginPage extends Page {
     static url = 'http://localhost:8080/wicket'
 
     static at = {
-
         title == 'Kitchensink'
         username.value() == ''
         password.value() == ''

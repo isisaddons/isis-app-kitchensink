@@ -12,7 +12,7 @@ import com.aoe.gebspockreports.GebReportingListener
 import geb.report.CompositeReporter
 import geb.report.PageSourceReporter
 import io.github.bonigarcia.wdm.ChromeDriverManager
-import org.incode.platform.lib.gebspock.Screenshot
+import org.incode.platform.lib.gebspock.reporters.Screenshot
 import org.openqa.selenium.chrome.ChromeDriver
 
 waiting {

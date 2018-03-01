@@ -1,4 +1,4 @@
-package org.incode.platform.lib.gebspock
+package org.incode.platform.lib.gebspock.reporters
 
 import geb.report.ScreenshotReporter
 
@@ -8,8 +8,7 @@ class Screenshot extends ScreenshotReporter {
 
     @Override
     protected File saveScreenshotPngBytes(File outputDir, String label, byte[] bytes) {
-        this.file = super.saveScreenshotPngBytes(outputDir, label, bytes)
-        file
+        return file = super.saveScreenshotPngBytes(outputDir, label, bytes)
     }
 
 }

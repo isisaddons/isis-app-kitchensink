@@ -1,4 +1,4 @@
-package org.incode.platform.lib.gebspock
+package org.incode.platform.lib.gebspock.specs
 
 import com.github.approval.Approval
 import com.github.approval.Reporter
@@ -6,6 +6,7 @@ import com.github.approval.converters.Converter
 import com.github.approval.reporters.ExecutableDifferenceReporter
 import com.google.common.io.Resources
 import geb.spock.GebReportingSpec
+import org.incode.platform.lib.gebspock.reporters.Screenshot
 
 import javax.annotation.Nullable
 import java.nio.file.Files

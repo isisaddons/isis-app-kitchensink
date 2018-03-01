@@ -4,8 +4,10 @@ import org.isisaddons.app.kitchensink.e2etests.base.StandaloneCollectionModule
 
 class BusRulesObject_StandaloneCollection extends StandaloneCollectionModule {
 
+    static base = { $(".standaloneCollectionPage") }
+
     static content = {
-        table(wait: true) { $(".standaloneCollectionPage .isis-busrules-busrulesobjects-listallbusrulesobject .collectionContentsAsAjaxTablePanel table", 0) }
+        table(wait: true) { $(".isis-busrules-busrulesobject .collectionContentsAsAjaxTablePanel table") }
     }
 
 }

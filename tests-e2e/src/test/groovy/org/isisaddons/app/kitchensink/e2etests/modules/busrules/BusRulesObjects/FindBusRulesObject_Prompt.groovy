@@ -5,6 +5,6 @@ import org.isisaddons.app.kitchensink.e2etests.base.ActionParametersModule
 class FindBusRulesObject_Prompt extends ActionParametersModule {
     static content = {
         form { $("div.actionPanel div.actionParametersForm form.isis-busrules-busrulesobjects-findbusrulesobject", 0) }
-        parameters { module(FindBusRulesObject_PromptParams) }
+        parameters { module FindBusRulesObject_PromptParams }
     }
 }
