@@ -30,7 +30,7 @@ import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.SemanticsOf;
 
 import org.isisaddons.app.kitchensink.dom.busrules.BusRulesObject;
-import org.isisaddons.app.kitchensink.dom.busrules.BusRulesObjectMenu;
+import org.isisaddons.app.kitchensink.dom.busrules.BusRulesObjects;
 
 @DomainService(
         nature = NatureOfService.VIEW_MENU_ONLY
@@ -45,14 +45,14 @@ public class Pages {
     @Action(semantics= SemanticsOf.SAFE)
     @MemberOrder(sequence = "10")
     public BusRulesObject entityPage() {
-        return busRulesObjectMenu.firstBusRulesObject();
+        return busRulesObjects.firstBusRulesObject();
     }
 
     @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
     @Action(semantics=SemanticsOf.SAFE)
     @MemberOrder(sequence = "10")
     public List<BusRulesObject> standaloneCollection() {
-        return busRulesObjectMenu.listAllBusRulesObject();
+        return busRulesObjects.listAllBusRulesObject();
     }
 
     @Action(semantics=SemanticsOf.SAFE)
@@ -82,6 +82,6 @@ public class Pages {
     @javax.inject.Inject
     protected DomainObjectContainer container;
     @javax.inject.Inject
-    protected BusRulesObjectMenu busRulesObjectMenu;
+    protected BusRulesObjects busRulesObjects;
 
 }

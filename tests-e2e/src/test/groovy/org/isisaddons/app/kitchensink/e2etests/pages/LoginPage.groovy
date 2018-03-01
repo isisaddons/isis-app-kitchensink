@@ -8,13 +8,13 @@ class LoginPage extends Page {
 
     static at = {
         title == 'Kitchensink'
-        username_field.value() == ''
-        password_field.value() == ''
+        username.value() == ''
+        password.value() == ''
     }
 
     static content = {
-        username_field { $("#username2")}
-        password_field { $("#password3")}
-        signIn_button { $("#signInForm1 button", 0) }
+        username { $("input.isis-username", 0)}
+        password { $("input.isis-password", 0)}
+        signIn { $("#signInForm1 button", 0) }
     }
 }

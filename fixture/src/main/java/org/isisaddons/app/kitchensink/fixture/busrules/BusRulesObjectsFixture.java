@@ -19,7 +19,7 @@ package org.isisaddons.app.kitchensink.fixture.busrules;
 import org.apache.isis.applib.fixturescripts.FixtureScript;
 
 import org.isisaddons.app.kitchensink.dom.busrules.BusRulesObject;
-import org.isisaddons.app.kitchensink.dom.busrules.BusRulesObjectMenu;
+import org.isisaddons.app.kitchensink.dom.busrules.BusRulesObjects;
 
 public class BusRulesObjectsFixture extends FixtureScript {
 
@@ -33,10 +33,10 @@ public class BusRulesObjectsFixture extends FixtureScript {
     }
 
     private BusRulesObject create(final String name, ExecutionContext executionContext) {
-        return executionContext.addResult(this, busRulesObjectMenu.createBusRulesObject(name));
+        return executionContext.addResult(this, busRulesObjects.createBusRulesObject(name));
     }
 
     @javax.inject.Inject
-    private BusRulesObjectMenu busRulesObjectMenu;
+    private BusRulesObjects busRulesObjects;
 
 }

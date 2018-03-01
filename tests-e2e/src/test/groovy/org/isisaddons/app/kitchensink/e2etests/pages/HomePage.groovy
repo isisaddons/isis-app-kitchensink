@@ -1,8 +1,8 @@
 package org.isisaddons.app.kitchensink.e2etests.pages
 
-import org.isisaddons.app.kitchensink.e2etests.modules.ActionParametersModule
-import org.isisaddons.app.kitchensink.e2etests.modules.PrototypingMenuModule
 import geb.Page
+import org.isisaddons.app.kitchensink.e2etests.base.ActionParametersModule
+import org.isisaddons.app.kitchensink.e2etests.modules.busrules.BusRulesObject.Menu_Module
 
 class HomePage extends Page {
 
@@ -12,7 +12,9 @@ class HomePage extends Page {
 
     static content = {
 
-        prototypingMenu { module(PrototypingMenuModule) }
+        // menu services
+        busRulesObject { module(Menu_Module) }
+
         actionParameters { module(ActionParametersModule) }
 
     }

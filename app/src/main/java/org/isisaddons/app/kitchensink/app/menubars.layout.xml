@@ -138,22 +138,22 @@
         <mb3:menu>
             <mb3:named>Business Rules</mb3:named>
             <mb3:section>
-                <mb3:serviceAction objectType="BusRulesObject" id="findBusRulesObject">
-                    <cpt:named>Find XXX Bus Rules Object</cpt:named>
+                <mb3:serviceAction objectType="busrules.BusRulesObjects" id="findBusRulesObject">
+                    <cpt:named>Find Bus Rules Object</cpt:named>
                 </mb3:serviceAction>
-                <mb3:serviceAction objectType="BusRulesObject" id="firstBusRulesObject">
+                <mb3:serviceAction objectType="busrules.BusRulesObjects" id="firstBusRulesObject">
                     <cpt:named>First Bus Rules Object</cpt:named>
                 </mb3:serviceAction>
-                <mb3:serviceAction objectType="BusRulesObject" id="listAllBusRulesObject">
+                <mb3:serviceAction objectType="busrules.BusRulesObjects" id="listAllBusRulesObject">
                     <cpt:named>List All Bus Rules Object</cpt:named>
                 </mb3:serviceAction>
-                <mb3:serviceAction objectType="BusRulesObject" id="createBusRulesObject">
+                <mb3:serviceAction objectType="busrules.BusRulesObjects" id="createBusRulesObject">
                     <cpt:named>Create Bus Rules Object</cpt:named>
                 </mb3:serviceAction>
-                <mb3:serviceAction objectType="BusRulesObject" id="listAllBusRulesObjectDisabled">
+                <mb3:serviceAction objectType="busrules.BusRulesObjects" id="listAllBusRulesObjectDisabled">
                     <cpt:named>List All Bus Rules Object Disabled</cpt:named>
                 </mb3:serviceAction>
-                <mb3:serviceAction objectType="BusRulesObject" id="listAllBusRulesObjectHidden">
+                <mb3:serviceAction objectType="busrules.BusRulesObjects" id="listAllBusRulesObjectHidden">
                     <cpt:named>List All Bus Rules Object Hidden</cpt:named>
                 </mb3:serviceAction>
             </mb3:section>

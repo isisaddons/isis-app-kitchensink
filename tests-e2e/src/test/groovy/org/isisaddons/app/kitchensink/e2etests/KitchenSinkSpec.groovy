@@ -1,9 +1,9 @@
 package org.isisaddons.app.kitchensink.e2etests
 
-import org.isisaddons.app.kitchensink.e2etests.pages.CollectionResultsPage
+import geb.spock.GebReportingSpec
+import org.isisaddons.app.kitchensink.e2etests.base.CollectionResultsPage
 import org.isisaddons.app.kitchensink.e2etests.pages.HomePage
 import org.isisaddons.app.kitchensink.e2etests.pages.LoginPage
-import geb.spock.GebReportingSpec
 import spock.lang.Stepwise
 
 @Stepwise
@@ -20,32 +20,41 @@ class KitchenSinkSpec extends GebReportingSpec {
 
     void "Sign in"() {
 
+        given:
+            LoginPage loginPage = at(LoginPage)
+
         when: "Enter user and password"
-            username_field = "sven"
-            password_field = 'pass'
+            loginPage.username = "sven"
+            loginPage.password = 'pass'
 
         and: "sign in"
-            signIn_button.click()
+            loginPage.signIn.click()
 
         then:
             at HomePage
+            report "home page"
     }
 
-    void "Install fixtures"() {
+    void "Business Rules Object > find Bus Rules Object"() {
+
+        given:
+            HomePage homePage = at(HomePage)
 
         when:
-            prototypingMenu.menu.jquery.mouseover()
+            homePage.busRulesObject.menu.jquery.mouseover()
 
         and:
-            prototypingMenu.runFixtureScripts.menuItem.click()
+            homePage.busRulesObject.findBusRulesObject.menuItem.click()
 
-        and:
-            actionParameters.form.displayed
-            actionParameters.ok_button.click()
+        then:
+            homePage.busRulesObject.findBusRulesObject.prompt.form.displayed
+
+        when:
+            homePage.busRulesObject.findBusRulesObject.prompt.parameters.name = "Foo"
+            homePage.busRulesObject.findBusRulesObject.prompt.ok_button.click()
 
         then:
             at CollectionResultsPage
-            prototypingMenu.runFixtureScripts.results.displayed
 
     }
 

@@ -69,6 +69,12 @@ import lombok.Setter;
 )
 public class BusRulesObject implements Entity<BusRulesObject> {
 
+    public BusRulesObject() {
+    }
+
+    public BusRulesObject(final String name) {
+        this.name = name;
+    }
 
     @DomainService(nature = NatureOfService.DOMAIN)
     public static class TitleSubscriber extends AbstractSubscriber {
@@ -166,7 +172,7 @@ public class BusRulesObject implements Entity<BusRulesObject> {
     )
     public List<BusRulesObject> getOther() {
         final List<BusRulesObject> other = Lists.newArrayList();
-        other.addAll(busRulesObjectMenu.listAllBusRulesObject());
+        other.addAll(busRulesObjects.listAllBusRulesObject());
         other.remove(this);
         return other;
     }
@@ -261,7 +267,7 @@ public class BusRulesObject implements Entity<BusRulesObject> {
     private DomainObjectContainer container;
 
     @Inject
-    BusRulesObjectMenu busRulesObjectMenu;
+    BusRulesObjects busRulesObjects;
 
     @Inject
     QueryResultsCache queryResultsCache;

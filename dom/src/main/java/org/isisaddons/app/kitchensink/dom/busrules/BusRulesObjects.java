@@ -20,7 +20,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.ActionLayout;
 import org.apache.isis.applib.annotation.BookmarkPolicy;
@@ -31,39 +30,26 @@ import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.SemanticsOf;
 import org.apache.isis.applib.annotation.Where;
+import org.apache.isis.applib.services.repository.RepositoryService;
 
 @DomainService(
         nature = NatureOfService.VIEW_MENU_ONLY,
-        repositoryFor = BusRulesObject.class
-        // ,objectType = "busrules.BusRulesObjectMenu"
+        repositoryFor = BusRulesObject.class,
+        objectType = "busrules.BusRulesObjects"
 )
 @DomainServiceLayout(
         menuOrder = "10.1",
         named="Bus Rules"
 )
-public class BusRulesObjectMenu {
+public class BusRulesObjects {
 
-    private final Class<BusRulesObject> cls = BusRulesObject.class;
-
-
-
-    public String getId() {
-        return cls.getSimpleName();
-    }
-
-    public String iconName() {
-        return cls.getSimpleName();
-    }
+    private final static Class<BusRulesObject> cls = BusRulesObject.class;
 
     @MemberOrder(sequence = "30")
     public BusRulesObject createBusRulesObject(
             @ParameterLayout(named="Name")
             final String name) {
-        final BusRulesObject obj = container.newTransientInstance(BusRulesObject.class);
-        obj.setName(name);
-
-        container.persistIfNotAlready(obj);
-        return obj;
+        return repositoryService.persist(new BusRulesObject(name));
     }
 
     @Action(semantics= SemanticsOf.SAFE)
@@ -104,7 +90,7 @@ public class BusRulesObjectMenu {
     @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
     @MemberOrder(sequence = "20")
     public List<BusRulesObject> listAllBusRulesObject() {
-        return container.allInstances(cls);
+        return repositoryService.allInstances(cls);
     }
 
     @Action(semantics=SemanticsOf.SAFE)
@@ -128,6 +114,6 @@ public class BusRulesObjectMenu {
     }
 
     @javax.inject.Inject
-    protected DomainObjectContainer container;
+    RepositoryService repositoryService;
 
 }
