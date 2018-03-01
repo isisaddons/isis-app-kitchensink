@@ -9,7 +9,10 @@
 
 
 import com.aoe.gebspockreports.GebReportingListener
+import geb.report.CompositeReporter
+import geb.report.PageSourceReporter
 import io.github.bonigarcia.wdm.ChromeDriverManager
+import org.incode.platform.lib.gebspock.Screenshot
 import org.openqa.selenium.chrome.ChromeDriver
 
 waiting {
@@ -22,7 +25,8 @@ environments {
 	// run via “./gradlew chromeTest”
 	// See: http://code.google.com/p/selenium/wiki/ChromeDriver
 	chrome {
-		ChromeDriverManager.instance.setup()
+		def driverManager = ChromeDriverManager.instance
+		driverManager.setup()
 		driver = {
 			def driverInstance = new ChromeDriver()
 			driverInstance.manage().window().maximize()
@@ -37,4 +41,7 @@ baseUrl = "http://localhost:8080/wicket"
 
 reportingListener = new GebReportingListener()
 reportsDir = 'build/geb-spock-reports'
+
+reporter = new CompositeReporter(new PageSourceReporter(), new Screenshot())
+
 

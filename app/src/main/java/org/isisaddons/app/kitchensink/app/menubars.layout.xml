@@ -1,142 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <mb3:menuBars xsi:schemaLocation="http://isis.apache.org/applib/layout/menubars/bootstrap3 http://isis.apache.org/applib/layout/menubars/bootstrap3/menubars.xsd http://isis.apache.org/applib/layout/component http://isis.apache.org/applib/layout/component/component.xsd http://isis.apache.org/applib/layout/links http://isis.apache.org/applib/layout/links/links.xsd" xmlns:cpt="http://isis.apache.org/applib/layout/component" xmlns:lnk="http://isis.apache.org/applib/layout/links" xmlns:mb3="http://isis.apache.org/applib/layout/menubars/bootstrap3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <mb3:primary>
-<!--
-        <mb3:menu>
-            <mb3:named>Grandchild Objects</mb3:named>
-            <mb3:section>
-                <mb3:serviceAction objectType="GrandchildObject" id="listAll">
-                    <cpt:named>List All</cpt:named>
-                </mb3:serviceAction>
-                <mb3:serviceAction objectType="GrandchildObject" id="first">
-                    <cpt:named>First</cpt:named>
-                </mb3:serviceAction>
-                <mb3:serviceAction objectType="GrandchildObject" id="create">
-                    <cpt:named>Create</cpt:named>
-                </mb3:serviceAction>
-            </mb3:section>
-        </mb3:menu>
-        <mb3:menu>
-            <mb3:named>Parent Objects</mb3:named>
-            <mb3:section>
-                <mb3:serviceAction objectType="ParentObject" id="first">
-                    <cpt:named>First</cpt:named>
-                </mb3:serviceAction>
-                <mb3:serviceAction objectType="ParentObject" id="listAll">
-                    <cpt:named>List All</cpt:named>
-                </mb3:serviceAction>
-                <mb3:serviceAction objectType="ParentObject" id="create">
-                    <cpt:named>Create</cpt:named>
-                </mb3:serviceAction>
-                <mb3:serviceAction objectType="ParentObject" id="findUnique">
-                    <cpt:named>Find Unique</cpt:named>
-                </mb3:serviceAction>
-            </mb3:section>
-        </mb3:menu>
-        <mb3:menu>
-            <mb3:named>Layout_ 3_ 4_ 5_ Objects</mb3:named>
-            <mb3:section>
-                <mb3:serviceAction objectType="Layout_3_4_5_Object" id="first">
-                    <cpt:named>First</cpt:named>
-                </mb3:serviceAction>
-                <mb3:serviceAction objectType="Layout_3_4_5_Object" id="listAll">
-                    <cpt:named>List All</cpt:named>
-                </mb3:serviceAction>
-                <mb3:serviceAction objectType="Layout_3_4_5_Object" id="create">
-                    <cpt:named>Create</cpt:named>
-                </mb3:serviceAction>
-            </mb3:section>
-        </mb3:menu>
-        <mb3:menu>
-            <mb3:named>Layout_ 4_ 0_ 0_ 8 C_ Objects</mb3:named>
-            <mb3:section>
-                <mb3:serviceAction objectType="Layout_4_0_0_8C_Object" id="first">
-                    <cpt:named>First</cpt:named>
-                </mb3:serviceAction>
-                <mb3:serviceAction objectType="Layout_4_0_0_8C_Object" id="listAll">
-                    <cpt:named>List All</cpt:named>
-                </mb3:serviceAction>
-                <mb3:serviceAction objectType="Layout_4_0_0_8C_Object" id="create">
-                    <cpt:named>Create</cpt:named>
-                </mb3:serviceAction>
-            </mb3:section>
-        </mb3:menu>
-        <mb3:menu>
-            <mb3:named>Layout_ 4_ 0_ 8_ Objects</mb3:named>
-            <mb3:section>
-                <mb3:serviceAction objectType="Layout_4_0_8_Object" id="first">
-                    <cpt:named>First</cpt:named>
-                </mb3:serviceAction>
-                <mb3:serviceAction objectType="Layout_4_0_8_Object" id="listAll">
-                    <cpt:named>List All</cpt:named>
-                </mb3:serviceAction>
-                <mb3:serviceAction objectType="Layout_4_0_8_Object" id="create">
-                    <cpt:named>Create</cpt:named>
-                </mb3:serviceAction>
-            </mb3:section>
-        </mb3:menu>
-        <mb3:menu>
-            <mb3:named>Layout_ 4_ 4_ 4_ Objects</mb3:named>
-            <mb3:section>
-                <mb3:serviceAction objectType="Layout_4_4_4_Object" id="first">
-                    <cpt:named>First</cpt:named>
-                </mb3:serviceAction>
-                <mb3:serviceAction objectType="Layout_4_4_4_Object" id="listAll">
-                    <cpt:named>List All</cpt:named>
-                </mb3:serviceAction>
-                <mb3:serviceAction objectType="Layout_4_4_4_Object" id="create">
-                    <cpt:named>Create</cpt:named>
-                </mb3:serviceAction>
-            </mb3:section>
-        </mb3:menu>
-        <mb3:menu>
-            <mb3:named>Layout_ 6_ 0_ 6_ Objects</mb3:named>
-            <mb3:section>
-                <mb3:serviceAction objectType="Layout_6_0_6_Object" id="first">
-                    <cpt:named>First</cpt:named>
-                </mb3:serviceAction>
-                <mb3:serviceAction objectType="Layout_6_0_6_Object" id="listAll">
-                    <cpt:named>List All</cpt:named>
-                </mb3:serviceAction>
-                <mb3:serviceAction objectType="Layout_6_0_6_Object" id="create">
-                    <cpt:named>Create</cpt:named>
-                </mb3:serviceAction>
-            </mb3:section>
-        </mb3:menu>
-        <mb3:menu>
-            <mb3:named>Layout_ 6_ 0_ 6_ 12 C_ Objects</mb3:named>
-            <mb3:section>
-                <mb3:serviceAction objectType="Layout_6_0_6_12C_Object" id="first">
-                    <cpt:named>First</cpt:named>
-                </mb3:serviceAction>
-                <mb3:serviceAction objectType="Layout_6_0_6_12C_Object" id="listAll">
-                    <cpt:named>List All</cpt:named>
-                </mb3:serviceAction>
-                <mb3:serviceAction objectType="Layout_6_0_6_12C_Object" id="create">
-                    <cpt:named>Create</cpt:named>
-                </mb3:serviceAction>
-            </mb3:section>
-        </mb3:menu>
-        <mb3:menu>
-            <mb3:named>Reference Child Objects</mb3:named>
-            <mb3:section>
-                <mb3:serviceAction objectType="ReferenceChildObject" id="first">
-                    <cpt:named>First</cpt:named>
-                </mb3:serviceAction>
-                <mb3:serviceAction objectType="ReferenceChildObject" id="listAll">
-                    <cpt:named>List All</cpt:named>
-                </mb3:serviceAction>
-                <mb3:serviceAction objectType="ReferenceChildObject" id="create">
-                    <cpt:named>Create</cpt:named>
-                </mb3:serviceAction>
-                <mb3:serviceAction objectType="ReferenceChildObject" id="findNamed">
-                    <cpt:named>Find Named</cpt:named>
-                </mb3:serviceAction>
-            </mb3:section>
-        </mb3:menu>
--->
         <mb3:menu>
             <mb3:named>Business Rules</mb3:named>
+            <mb3:section>
+                <mb3:serviceAction objectType="BusRulesObject" id="firstBusRulesObject">
+                    <cpt:named>First Bus Rules Object</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="BusRulesObject" id="findBusRulesObject">
+                    <cpt:named>Find Bus Rules Object</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="BusRulesObject" id="findMatchingBusRulesObject">
+                    <cpt:named>Find Matching Bus Rules Object</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="BusRulesObject" id="listAllBusRulesObject">
+                    <cpt:named>List All Bus Rules Object</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="BusRulesObject" id="createBusRulesObject">
+                    <cpt:named>Create Bus Rules Object</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="BusRulesObject" id="listAllBusRulesObjectDisabled">
+                    <cpt:named>List All Bus Rules Object Disabled</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="BusRulesObject" id="listAllBusRulesObjectHidden">
+                    <cpt:named>List All Bus Rules Object Hidden</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
             <mb3:section>
                 <mb3:serviceAction objectType="busrules.BusRulesObjects" id="findBusRulesObject">
                     <cpt:named>Find Bus Rules Object</cpt:named>
@@ -603,6 +492,111 @@
         </mb3:menu>
         <mb3:menu unreferencedActions="true">
             <mb3:named>Other</mb3:named>
+            <mb3:section>
+                <mb3:serviceAction objectType="GrandchildObject" id="first">
+                    <cpt:named>First</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="GrandchildObject" id="listAll">
+                    <cpt:named>List All</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="GrandchildObject" id="create">
+                    <cpt:named>Create</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+            <mb3:section>
+                <mb3:serviceAction objectType="ParentObject" id="first">
+                    <cpt:named>First</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="ParentObject" id="listAll">
+                    <cpt:named>List All</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="ParentObject" id="create">
+                    <cpt:named>Create</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="ParentObject" id="findUnique">
+                    <cpt:named>Find Unique</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+            <mb3:section>
+                <mb3:serviceAction objectType="Layout_3_4_5_Object" id="first">
+                    <cpt:named>First</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="Layout_3_4_5_Object" id="listAll">
+                    <cpt:named>List All</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="Layout_3_4_5_Object" id="create">
+                    <cpt:named>Create</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+            <mb3:section>
+                <mb3:serviceAction objectType="Layout_4_0_0_8C_Object" id="first">
+                    <cpt:named>First</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="Layout_4_0_0_8C_Object" id="listAll">
+                    <cpt:named>List All</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="Layout_4_0_0_8C_Object" id="create">
+                    <cpt:named>Create</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+            <mb3:section>
+                <mb3:serviceAction objectType="Layout_4_0_8_Object" id="first">
+                    <cpt:named>First</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="Layout_4_0_8_Object" id="listAll">
+                    <cpt:named>List All</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="Layout_4_0_8_Object" id="create">
+                    <cpt:named>Create</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+            <mb3:section>
+                <mb3:serviceAction objectType="Layout_4_4_4_Object" id="first">
+                    <cpt:named>First</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="Layout_4_4_4_Object" id="listAll">
+                    <cpt:named>List All</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="Layout_4_4_4_Object" id="create">
+                    <cpt:named>Create</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+            <mb3:section>
+                <mb3:serviceAction objectType="Layout_6_0_6_Object" id="first">
+                    <cpt:named>First</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="Layout_6_0_6_Object" id="listAll">
+                    <cpt:named>List All</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="Layout_6_0_6_Object" id="create">
+                    <cpt:named>Create</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+            <mb3:section>
+                <mb3:serviceAction objectType="Layout_6_0_6_12C_Object" id="first">
+                    <cpt:named>First</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="Layout_6_0_6_12C_Object" id="listAll">
+                    <cpt:named>List All</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="Layout_6_0_6_12C_Object" id="create">
+                    <cpt:named>Create</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
+            <mb3:section>
+                <mb3:serviceAction objectType="ReferenceChildObject" id="first">
+                    <cpt:named>First</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="ReferenceChildObject" id="listAll">
+                    <cpt:named>List All</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="ReferenceChildObject" id="create">
+                    <cpt:named>Create</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="ReferenceChildObject" id="findNamed">
+                    <cpt:named>Find Named</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
         </mb3:menu>
     </mb3:primary>
     <mb3:secondary>
