@@ -22,17 +22,18 @@ class KitchenSinkSpec extends GebReportingSpec {
 
         given:
             LoginPage loginPage = at(LoginPage)
+            report "given"
 
         when: "Enter user and password"
             loginPage.username = "sven"
             loginPage.password = 'pass'
 
         and: "sign in"
+            report "about to sign in"
             loginPage.signIn.click()
 
         then:
             at HomePage
-            report "home page"
     }
 
     void "Business Rules Object > find Bus Rules Object"() {

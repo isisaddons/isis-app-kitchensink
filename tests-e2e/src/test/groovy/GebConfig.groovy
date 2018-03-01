@@ -6,6 +6,9 @@
  *
  */
 
+
+
+import com.aoe.gebspockreports.GebReportingListener
 import io.github.bonigarcia.wdm.ChromeDriverManager
 import org.openqa.selenium.chrome.ChromeDriver
 
@@ -20,11 +23,18 @@ environments {
 	// See: http://code.google.com/p/selenium/wiki/ChromeDriver
 	chrome {
 		ChromeDriverManager.instance.setup()
-		driver = { new ChromeDriver() }
+		driver = {
+			def driverInstance = new ChromeDriver()
+			driverInstance.manage().window().maximize()
+			driverInstance
+		}
 	}
 }
 
 // To run the tests with all browsers just run “./gradlew test”
 
 baseUrl = "http://localhost:8080/wicket"
-reportsDir = "build/reports/geb"
+
+reportingListener = new GebReportingListener()
+reportsDir = 'build/geb-spock-reports'
+
