@@ -42,6 +42,7 @@ class FindBusRulesObject_Prompt extends Module {
 class FindBusRulesObject_PromptParams extends Module {
     static content = {
         name { $(".isis-name").module(StringPanel).input }
+        nameFeedback { $(".isis-name").module(StringPanel).feedback }
     }
 }
 

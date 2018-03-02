@@ -7,7 +7,7 @@ final class StringPanel extends Module {
 
     static content = {
         input { $("input").module(TextInput) }
-//        notification { $("alert") }
+        feedback { $(".alert") }
     }
 
 }

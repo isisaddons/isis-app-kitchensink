@@ -55,6 +55,14 @@ class KitchenSinkSpec extends GebReportingSpecWithApprovals {
             page.busRulesObjects.findBusRulesObject.prompt.displayed
 
         when:
+            page.busRulesObjects.findBusRulesObject.prompt.parameters.name = ""
+            page.busRulesObjects.findBusRulesObject.prompt.ok.click()
+
+        then:
+            page.busRulesObjects.findBusRulesObject.prompt.parameters.nameFeedback.displayed
+            page.busRulesObjects.findBusRulesObject.prompt.parameters.nameFeedback.text() =~ /'Name' is required./
+
+        when:
             page.busRulesObjects.findBusRulesObject.prompt.parameters.name = "Foo"
             page.busRulesObjects.findBusRulesObject.prompt.ok.click()
 
