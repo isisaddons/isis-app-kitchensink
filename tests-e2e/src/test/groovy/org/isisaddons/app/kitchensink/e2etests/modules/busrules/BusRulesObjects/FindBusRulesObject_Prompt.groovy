@@ -1,13 +1,12 @@
 package org.isisaddons.app.kitchensink.e2etests.modules.busrules.BusRulesObjects
 
-import org.isisaddons.app.kitchensink.e2etests.base.ActionParametersModule
+import org.incode.platform.lib.gebspock.wicket.ui.components.actions.ActionParametersFormPanelModule
 
-class FindBusRulesObject_Prompt extends ActionParametersModule {
+class FindBusRulesObject_Prompt extends ActionParametersFormPanelModule {
 
-    static base = { $("div.actionPanel div.actionParametersForm" ) }
-    
     static content = {
-        form { $("form.isis-busrules-busrulesobjects-findbusrulesobject", 0) }
+        form { modalBody.$("form.isis-busrules-busrulesobjects-findbusrulesobject") }
+        //form { ActionPromptModalWindowModule.modalBody.$("form.isis-busrules-busrulesobjects-findbusrulesobject") }
         //form { $("div.actionPanel div.actionParametersForm form.isis-busrules-busrulesobjects-findbusrulesobject", 0) }
         parameters { form.module FindBusRulesObject_PromptParams }
     }
