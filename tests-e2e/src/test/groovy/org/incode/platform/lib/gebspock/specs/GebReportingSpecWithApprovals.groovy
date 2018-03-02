@@ -12,8 +12,7 @@ import javax.annotation.Nullable
 import java.nio.file.Files
 abstract class GebReportingSpecWithApprovals extends GebReportingSpec {
 
-
-// initial cleanup is in gradle
+// use 'gradle clean test' to do a cleanup of reporting directory first
 
 //    @Override
 //    def setupSpec() {

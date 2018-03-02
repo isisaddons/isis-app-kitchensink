@@ -9,6 +9,6 @@ class CollectionContentsAsAjaxTablePanel extends Module {
     static content = {
         table(wait: true) { $("table") }
         tbody { table.$("tbody")}
-        titleColumn { tbody.$("td.title-column a.entityUrlSource") }
+        titleColumn { tbody.$("td.title-column a.entityUrlSource", it) }
     }
 }

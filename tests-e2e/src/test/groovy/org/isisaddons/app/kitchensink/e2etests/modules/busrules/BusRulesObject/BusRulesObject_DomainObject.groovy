@@ -28,7 +28,7 @@ class BusRulesObject_CollectionContentsAsAjaxTablePanel extends Module {
     static content = {
         table { module(CollectionContentsAsAjaxTablePanel).table }
         tbody { module(CollectionContentsAsAjaxTablePanel).tbody }
-        titleColumn { module(CollectionContentsAsAjaxTablePanel).titleColumn }
+        titleColumn { module(CollectionContentsAsAjaxTablePanel).titleColumn(it) }
 
         nameColumn { tbody.$("td.isis-busrules-busrulesobject-name").module(StringPanel).columnValue(it) }
         enableActionsColumn { tbody.$("td.isis-busrules-busrulesobject-enableactions").module(BooleanPanel).columnValue(it) }

@@ -50,7 +50,7 @@ class BusRulesObject_ListAllBusRulesObject extends GebReportingSpecWithApprovals
         def page = at BusRulesObject_StandaloneCollectionPage
 
         when:
-        page.tablePanel.titleColumn[0].click()
+        page.tablePanel.titleColumn(0).click()
 
         then:
         at EntityPage
