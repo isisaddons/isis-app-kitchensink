@@ -4,7 +4,19 @@ import org.incode.platform.lib.gebspock.wicket.ui.components.collectioncontents.
 import org.incode.platform.lib.gebspock.wicket.ui.components.scalars.primitive.BooleanPanel
 import org.incode.platform.lib.gebspock.wicket.ui.components.scalars.string.StringPanel
 import org.incode.platform.lib.gebspock.wicket.ui.components.standalonecollection.StandaloneCollectionPanel
+import org.incode.platform.lib.gebspock.wicket.ui.pages.entity.EntityPage
 import org.incode.platform.lib.gebspock.wicket.ui.pages.standalonecollection.StandaloneCollectionPage
+
+class BusRulesObject_EntityPage extends EntityPage {
+
+    static at = {
+        body.displayed
+    }
+
+    static content = {
+        body(wait: true) { $(".entityPage.isis-busrules-busrulesobject") }
+    }
+}
 
 class BusRulesObject_StandaloneCollectionPage extends StandaloneCollectionPage {
 

@@ -2,8 +2,8 @@ package org.isisaddons.app.kitchensink.e2etests.specs
 
 import org.incode.platform.lib.gebspock.specs.GebReportingSpecWithApprovals
 import org.incode.platform.lib.gebspock.wicket.ui.pages.LoggedInPage
-import org.incode.platform.lib.gebspock.wicket.ui.pages.entity.EntityPage
 import org.incode.platform.lib.gebspock.wicket.ui.pages.signin.WicketSignInPage
+import org.isisaddons.app.kitchensink.e2etests.modules.busrules.BusRulesObject.BusRulesObject_EntityPage
 import org.isisaddons.app.kitchensink.e2etests.modules.busrules.BusRulesObject.BusRulesObject_StandaloneCollectionPage
 import spock.lang.Stepwise
 
@@ -53,7 +53,8 @@ class BusRulesObject_ListAllBusRulesObject extends GebReportingSpecWithApprovals
         page.tablePanel.titleColumn(0).click()
 
         then:
-        at EntityPage
+        def nextPage = at BusRulesObject_EntityPage
+        nextPage.objectTitle =~ /Foo/
     }
 
 }

@@ -10,6 +10,8 @@ class EntityPage extends LoggedInPage {
 
     static content = {
         body(wait:true) { $(".entityPage") }
+
+        objectTitle { $(".entityHeaderPanel .iconAndTitle span.entityTitle",0).text() }
     }
 
 }
