@@ -9,7 +9,7 @@ final class StringPanel extends Module {
         input { $("input").module(TextInput) }
         feedback { $(".alert") }
 
-        column { $( "div.scalarNameAndValueComponentType.stringPanel" ) }
+        columnValue { $( "div.scalarNameAndValueComponentType.stringPanel", it ).text() }
     }
 
 }

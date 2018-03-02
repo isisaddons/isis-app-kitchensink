@@ -40,7 +40,8 @@ class BusRulesObject_ListAllBusRulesObject extends GebReportingSpecWithApprovals
         def page = at BusRulesObject_StandaloneCollectionPage
 
         then:
-        page.tablePanel.nameColumn[0].text() =~ /Foo/
+        page.tablePanel.nameColumn(0) =~ /Foo/
+        page.tablePanel.enableActionsColumn(0) == false
     }
 
     void "Navigate to 1st Entity"() {
