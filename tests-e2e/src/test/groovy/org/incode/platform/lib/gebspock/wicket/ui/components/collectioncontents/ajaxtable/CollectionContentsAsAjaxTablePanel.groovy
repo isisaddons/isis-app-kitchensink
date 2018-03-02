@@ -2,7 +2,7 @@ package org.incode.platform.lib.gebspock.wicket.ui.components.collectioncontents
 
 import geb.Module
 
-class CollectionContentsAsAjaxTablePanel extends Module {
+abstract class CollectionContentsAsAjaxTablePanel extends Module {
 
     static base = { $(".collectionContentsAsAjaxTablePanel" ) }
 

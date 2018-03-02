@@ -4,7 +4,7 @@ import org.incode.platform.lib.gebspock.specs.GebReportingSpecWithApprovals
 import org.incode.platform.lib.gebspock.wicket.ui.pages.LoggedInPage
 import org.incode.platform.lib.gebspock.wicket.ui.pages.home.HomePage
 import org.incode.platform.lib.gebspock.wicket.ui.pages.signin.WicketSignInPage
-import org.incode.platform.lib.gebspock.wicket.ui.pages.standalonecollection.StandaloneCollectionPage
+import org.isisaddons.app.kitchensink.e2etests.modules.isisapplib.ConfigurationProperty.ConfigurationProperty_StandaloneCollectionPage
 import spock.lang.Stepwise
 
 @Stepwise
@@ -31,8 +31,7 @@ class ConfigurationServiceMenu_Configuration extends GebReportingSpecWithApprova
         page.configurationService.configuration.menuItem.click()
 
         then:
-        at StandaloneCollectionPage
-        page.configurationService.configuration.results.table.displayed
+        at ConfigurationProperty_StandaloneCollectionPage
     }
 
     void "Reset to Home Page"() {

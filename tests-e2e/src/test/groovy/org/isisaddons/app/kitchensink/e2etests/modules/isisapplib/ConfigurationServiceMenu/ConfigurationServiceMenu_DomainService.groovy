@@ -2,7 +2,6 @@ package org.isisaddons.app.kitchensink.e2etests.modules.isisapplib.Configuration
 
 import geb.Module
 import org.incode.platform.lib.gebspock.wicket.ui.components.header.HeaderPanel
-import org.isisaddons.app.kitchensink.e2etests.modules.isisapplib.ConfigurationProperty.ConfigurationProperty_StandaloneCollection
 
 class ConfigurationServiceMenu_DomainService extends Module {
     static content = {
@@ -16,7 +15,6 @@ class Configuration_MenuItem extends Module {
     static content = {
         menuItem { module(HeaderPanel).tertiary.$(".dropdown")
                     $("li.isis-isisapplib-configurationservicemenu-configuration a")}
-        results { module ConfigurationProperty_StandaloneCollection }
     }
 }
 

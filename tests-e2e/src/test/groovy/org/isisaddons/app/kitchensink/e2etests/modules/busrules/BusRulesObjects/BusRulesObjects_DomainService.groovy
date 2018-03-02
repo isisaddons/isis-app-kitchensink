@@ -25,15 +25,15 @@ class FindBusRulesObject_MenuItem extends Module {
     }
 }
 
-class FindBusRulesObject_Prompt extends Module {
+class FindBusRulesObject_Prompt extends ActionParametersFormPanel {
     static base = {
         module(ActionPromptModalWindow) // because this prompt is DIALOG, not INLINE
                 .$(".isis-busrules-busrulesobjects-findbusrulesobject")
     }
     static content = {
         parameters { $("fieldset.parameters").module FindBusRulesObject_PromptParams }
-        ok { module(ActionParametersFormPanel).ok }
-        cancel { module(ActionParametersFormPanel).cancel }
+        //ok { module(ActionParametersFormPanel).ok }
+        //cancel { module(ActionParametersFormPanel).cancel }
     }
 }
 
