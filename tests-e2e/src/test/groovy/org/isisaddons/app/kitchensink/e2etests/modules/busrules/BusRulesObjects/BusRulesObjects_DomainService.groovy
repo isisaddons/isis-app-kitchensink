@@ -5,7 +5,7 @@ import org.incode.platform.lib.gebspock.wicket.ui.components.actionmenu.servicea
 import org.incode.platform.lib.gebspock.wicket.ui.components.actionprompt.ActionPromptModalWindow
 import org.incode.platform.lib.gebspock.wicket.ui.components.actions.ActionParametersFormPanel
 import org.incode.platform.lib.gebspock.wicket.ui.components.scalars.string.StringPanel
-import org.isisaddons.app.kitchensink.e2etests.modules.busrules.BusRulesObject.BusRulesObject_StandaloneCollection
+import org.isisaddons.app.kitchensink.e2etests.modules.busrules.BusRulesObject.BusRulesObject_CollectionContentsAsAjaxTablePanel
 
 class BusRulesObjects_DomainService extends Module {
     //static base = { module(HeaderPanel) }
@@ -50,7 +50,7 @@ class ListAllBusRulesObject_MenuItem extends Module {
         menuItem { module(ServiceActionsPanel).dropdown
                 .$(".isis-busrules-busrulesobjects li.isis-busrules-busrulesobjects-listallbusrulesobject a")}
         // no args so no prompt
-        results { module BusRulesObject_StandaloneCollection }
+        results { module BusRulesObject_CollectionContentsAsAjaxTablePanel }
     }
 }
 

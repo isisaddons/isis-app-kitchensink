@@ -4,7 +4,7 @@ import geb.Module
 
 final class StandaloneCollectionPanel extends Module {
 
-    // HACK: ought to be '.standaloneCollectionPage', but positioning of 'isis-' CSS is incorrect
+    // HACK: ought to be '.standaloneCollectionPanel', but positioning of 'isis-' CSS is incorrect
     static base = { $(".standaloneCollectionPage") }
 
 }

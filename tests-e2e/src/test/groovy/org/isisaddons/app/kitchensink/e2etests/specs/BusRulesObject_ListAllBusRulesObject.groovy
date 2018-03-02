@@ -2,8 +2,9 @@ package org.isisaddons.app.kitchensink.e2etests.specs
 
 import org.incode.platform.lib.gebspock.specs.GebReportingSpecWithApprovals
 import org.incode.platform.lib.gebspock.wicket.ui.pages.LoggedInPage
+import org.incode.platform.lib.gebspock.wicket.ui.pages.entity.EntityPage
 import org.incode.platform.lib.gebspock.wicket.ui.pages.signin.WicketSignInPage
-import org.incode.platform.lib.gebspock.wicket.ui.pages.standalonecollection.StandaloneCollectionPage
+import org.isisaddons.app.kitchensink.e2etests.modules.busrules.BusRulesObject.BusRulesObject_StandaloneCollectionPage
 import spock.lang.Stepwise
 
 @Stepwise
@@ -30,8 +31,19 @@ class BusRulesObject_ListAllBusRulesObject extends GebReportingSpecWithApprovals
         page.busRulesObjects.listAllBusRulesObject.menuItem.click()
 
         then:
-        at StandaloneCollectionPage
-        page.busRulesObjects.listAllBusRulesObject.results.table.displayed
+        at BusRulesObject_StandaloneCollectionPage
+    }
+
+    void "Navigate to 1st Entity"() {
+
+        given:
+        def page = at BusRulesObject_StandaloneCollectionPage
+
+        when:
+        page.table.$("tbody td.title-column a.entityUrlSource",0).click()
+
+        then:
+        at EntityPage
     }
 
 }
