@@ -5,7 +5,7 @@ import geb.Module
 final class CollectionContentsAsAjaxTablePanel extends Module {
 
     static content = {
-        table(wait: true) { $(".collectionContentsAsAjaxTablePanel table", 0) }
+        table(wait: true) { $(".collectionContentsAsAjaxTablePanel table") }
     }
 
 }

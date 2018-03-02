@@ -3,7 +3,7 @@ package org.isisaddons.app.kitchensink.e2etests.modules.busrules.BusRulesObjects
 import geb.Module
 import org.incode.platform.lib.gebspock.wicket.ui.components.actionmenu.serviceactions.ServiceActionsPanel
 import org.incode.platform.lib.gebspock.wicket.ui.components.actionprompt.ActionPromptModalWindow
-import org.incode.platform.lib.gebspock.wicket.ui.components.actions.ActionParametersFormPanel_Abstract
+import org.incode.platform.lib.gebspock.wicket.ui.components.actions.ActionParametersFormPanel
 import org.incode.platform.lib.gebspock.wicket.ui.components.header.HeaderPanel
 import org.incode.platform.lib.gebspock.wicket.ui.components.scalars.string.StringPanel
 import org.isisaddons.app.kitchensink.e2etests.modules.busrules.BusRulesObject.BusRulesObject_StandaloneCollection
@@ -27,13 +27,15 @@ class FindBusRulesObject_MenuItem extends Module {
     }
 }
 
-class FindBusRulesObject_Prompt extends ActionParametersFormPanel_Abstract {
+class FindBusRulesObject_Prompt extends Module {
     static base = {
         module(ActionPromptModalWindow) // because this prompt is DIALOG, not INLINE
                 .$(".isis-busrules-busrulesobjects-findbusrulesobject")
     }
     static content = {
         parameters { $("fieldset.parameters").module FindBusRulesObject_PromptParams }
+        ok { module(ActionParametersFormPanel).ok }
+        cancel { module(ActionParametersFormPanel).cancel }
     }
 }
 

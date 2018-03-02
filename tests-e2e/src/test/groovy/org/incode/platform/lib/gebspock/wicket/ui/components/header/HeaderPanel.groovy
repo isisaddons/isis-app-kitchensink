@@ -4,8 +4,6 @@ import geb.Module
 
 final class HeaderPanel extends Module {
 
-    static at = { $("header.navbar") }
-
     static content = {
 
         primary { $(".navbar-nav.primary")}
