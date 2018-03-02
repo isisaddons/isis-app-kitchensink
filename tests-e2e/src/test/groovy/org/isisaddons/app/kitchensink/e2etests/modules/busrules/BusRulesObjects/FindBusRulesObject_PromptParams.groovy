@@ -1,9 +1,10 @@
 package org.isisaddons.app.kitchensink.e2etests.modules.busrules.BusRulesObjects
 
-import org.isisaddons.app.kitchensink.e2etests.base.ScalarPropertyOrParameterModule
+import geb.Module
+import org.incode.platform.lib.gebspock.wicket.ui.components.scalars.string.StringPanelModule
 
-class FindBusRulesObject_PromptParams extends ScalarPropertyOrParameterModule {
+class FindBusRulesObject_PromptParams extends Module {
     static content = {
-        name { $("div.actionPanel div.actionParametersForm form.isis-busrules-busrulesobjects-findbusrulesobject fieldset.parameters input", 0) }
+        name { $("fieldset.parameters .isis-name").module(StringPanelModule) }
     }
 }

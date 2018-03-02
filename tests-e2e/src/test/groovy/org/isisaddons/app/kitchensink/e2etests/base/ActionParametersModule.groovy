@@ -10,6 +10,8 @@ class ActionParametersModule extends Module {
         ok { $(".actionParametersForm .buttons input",0) }
         cancel { $(".actionParametersForm .buttons input",1) }
 
+        feedback { $(".xxx",0) }
+
     }
 
 }
