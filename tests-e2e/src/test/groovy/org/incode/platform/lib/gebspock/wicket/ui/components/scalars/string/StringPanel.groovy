@@ -8,6 +8,8 @@ final class StringPanel extends Module {
     static content = {
         input { $("input").module(TextInput) }
         feedback { $(".alert") }
+
+        column { $( "div.scalarNameAndValueComponentType.stringPanel" ) }
     }
 
 }

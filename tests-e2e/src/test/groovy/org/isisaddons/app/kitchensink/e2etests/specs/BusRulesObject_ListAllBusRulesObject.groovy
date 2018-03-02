@@ -34,6 +34,15 @@ class BusRulesObject_ListAllBusRulesObject extends GebReportingSpecWithApprovals
         at BusRulesObject_StandaloneCollectionPage
     }
 
+    void "Check 1st Row"() {
+
+        when:
+        def page = at BusRulesObject_StandaloneCollectionPage
+
+        then:
+        page.tablePanel.nameColumn[0].text() =~ /Foo/
+    }
+
     void "Navigate to 1st Entity"() {
 
         given:

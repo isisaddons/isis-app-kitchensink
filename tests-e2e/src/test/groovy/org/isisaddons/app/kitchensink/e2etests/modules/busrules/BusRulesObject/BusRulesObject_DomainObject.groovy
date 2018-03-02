@@ -2,6 +2,7 @@ package org.isisaddons.app.kitchensink.e2etests.modules.busrules.BusRulesObject
 
 import geb.Module
 import org.incode.platform.lib.gebspock.wicket.ui.components.collectioncontents.ajaxtable.CollectionContentsAsAjaxTablePanel
+import org.incode.platform.lib.gebspock.wicket.ui.components.scalars.string.StringPanel
 import org.incode.platform.lib.gebspock.wicket.ui.components.standalonecollection.StandaloneCollectionPanel
 import org.incode.platform.lib.gebspock.wicket.ui.pages.standalonecollection.StandaloneCollectionPage
 
@@ -25,8 +26,9 @@ class BusRulesObject_CollectionContentsAsAjaxTablePanel extends Module {
 
     static content = {
         table { module(CollectionContentsAsAjaxTablePanel).table }
+        tbody { module(CollectionContentsAsAjaxTablePanel).tbody }
         titleColumn { module(CollectionContentsAsAjaxTablePanel).titleColumn }
+
+        nameColumn { tbody.$("td.isis-busrules-busrulesobject-name").module(StringPanel).column }
     }
-
 }
-
