@@ -2,7 +2,7 @@ package org.incode.platform.lib.gebspock.wicket.ui.components.actions
 
 import geb.Module
 
-abstract class ActionParametersFormPanel_Module extends Module {
+abstract class ActionParametersFormPanel_Abstract extends Module {
 
     static content = {
 

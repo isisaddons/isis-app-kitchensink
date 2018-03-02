@@ -2,10 +2,10 @@ package org.incode.platform.lib.gebspock.wicket.ui.components.actionmenu.service
 
 import geb.Module
 
-final class ServiceActionsPanel_Module extends Module {
+final class ServiceActionsPanel extends Module {
     static base = { $("ul.navbar-nav") }
     static content =
     {
-        dropdown { $("ul.navbar-nav li.dropdown") }
+        dropdown { $("li.dropdown") }
     }
 }

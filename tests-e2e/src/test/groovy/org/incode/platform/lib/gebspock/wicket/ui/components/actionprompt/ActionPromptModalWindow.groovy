@@ -5,7 +5,7 @@ import geb.Module
 /**
  * Provides a base for the modal dialog.
  */
-final class ActionPromptModalWindow_Module extends Module {
+final class ActionPromptModalWindow extends Module {
 
     static base = { $(".modal-body div.actionPanel" ) }
 

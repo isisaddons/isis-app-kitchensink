@@ -1,4 +1,6 @@
-package org.isisaddons.app.kitchensink.e2etests.pages
+package org.incode.platform.lib.gebspock.wicket.ui.pages.home
+
+import org.incode.platform.lib.gebspock.wicket.ui.pages.LoggedInPage
 
 class HomePage extends LoggedInPage {
 

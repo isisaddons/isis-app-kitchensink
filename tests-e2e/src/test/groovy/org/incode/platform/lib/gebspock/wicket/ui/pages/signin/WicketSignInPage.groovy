@@ -1,8 +1,8 @@
-package org.isisaddons.app.kitchensink.e2etests.pages
+package org.incode.platform.lib.gebspock.wicket.ui.pages.signin
 
 import geb.Page
 
-class LoginPage extends Page {
+class WicketSignInPage extends Page {
 
     static url = 'http://localhost:8080/wicket'
 

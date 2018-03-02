@@ -1,11 +1,11 @@
 package org.isisaddons.app.kitchensink.e2etests.specs
 
-import org.isisaddons.app.kitchensink.e2etests.pages.EntityPage
-import org.isisaddons.app.kitchensink.e2etests.pages.HomePage
-import org.isisaddons.app.kitchensink.e2etests.pages.StandaloneCollectionPage
+import org.incode.platform.lib.gebspock.wicket.ui.pages.entity.EntityPage
+import org.incode.platform.lib.gebspock.wicket.ui.pages.home.HomePage
+import org.incode.platform.lib.gebspock.wicket.ui.pages.standalonecollection.StandaloneCollectionPage
 import org.incode.platform.lib.gebspock.specs.GebReportingSpecWithApprovals
-import org.isisaddons.app.kitchensink.e2etests.pages.LoggedInPage
-import org.isisaddons.app.kitchensink.e2etests.pages.LoginPage
+import org.incode.platform.lib.gebspock.wicket.ui.pages.LoggedInPage
+import org.incode.platform.lib.gebspock.wicket.ui.pages.signin.WicketSignInPage
 
 import spock.lang.Stepwise
 
@@ -14,16 +14,16 @@ class KitchenSinkSpec extends GebReportingSpecWithApprovals {
 
     void "Open"() {
         when:
-            to LoginPage
+            to WicketSignInPage
 
         then:
-            at LoginPage
+            at WicketSignInPage
     }
 
     void "Sign in"() {
 
         given:
-            def page = at LoginPage
+            def page = at WicketSignInPage
             //reportAndApprove "given"
 
         when: "Enter user and password"
