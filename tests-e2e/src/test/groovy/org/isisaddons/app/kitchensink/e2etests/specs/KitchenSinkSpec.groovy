@@ -52,7 +52,7 @@ class KitchenSinkSpec extends GebReportingSpecWithApprovals {
             page.busRulesObjects.findBusRulesObject.menuItem.click()
 
         then:
-            page.busRulesObjects.findBusRulesObject.prompt.form.displayed
+            page.busRulesObjects.findBusRulesObject.prompt.displayed
 
         when:
             page.busRulesObjects.findBusRulesObject.prompt.parameters.name = "Foo"

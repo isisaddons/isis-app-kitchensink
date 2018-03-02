@@ -5,8 +5,10 @@ import org.incode.platform.lib.gebspock.wicket.ui.components.actions.ActionParam
 
 class FindBusRulesObject_Prompt extends ActionParametersFormPanel_Module {
 
+    // because this prompt is DIALOG, not INLINE, the prompt is relative to ActionPromptModalWindow_Module
+    static base = { module(ActionPromptModalWindow_Module).$(".isis-busrules-busrulesobjects-findbusrulesobject") }
+
     static content = {
-        form { module(ActionPromptModalWindow_Module).$("form.isis-busrules-busrulesobjects-findbusrulesobject") }
-        parameters { form.module FindBusRulesObject_PromptParams }
+        parameters { module FindBusRulesObject_PromptParams }
     }
 }
