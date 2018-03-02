@@ -7,7 +7,7 @@ abstract class ActionParametersFormPanel_Module extends Module {
     static content = {
 
         ok { $("div.actionPanel div.actionParametersForm .buttons input",0) }
-        cancel { $(".buttons input",1) }
+        cancel { $("div.actionPanel div.actionParametersForm .buttons input",1) }
 
         feedback { $(".xxx",0) }
 
