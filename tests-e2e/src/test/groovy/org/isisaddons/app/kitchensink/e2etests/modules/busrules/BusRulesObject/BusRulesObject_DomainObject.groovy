@@ -14,9 +14,7 @@ class BusRulesObject_StandaloneCollectionPage extends StandaloneCollectionPage {
     static content = {
         body(wait: true) { $(".standaloneCollectionPage").$(".isis-busrules-busrulesobject") }
 
-        // yuk
-        table { module(BusRulesObject_CollectionContentsAsAjaxTablePanel).table }
-        titleColumn { module(BusRulesObject_CollectionContentsAsAjaxTablePanel).titleColumn }
+        tablePanel { module(BusRulesObject_CollectionContentsAsAjaxTablePanel) }
     }
 
 }
@@ -26,7 +24,7 @@ class BusRulesObject_CollectionContentsAsAjaxTablePanel extends Module {
     static base = { module(StandaloneCollectionPanel).$(".isis-busrules-busrulesobject") }
 
     static content = {
-        table(wait: true) { module(CollectionContentsAsAjaxTablePanel).table }
+        table { module(CollectionContentsAsAjaxTablePanel).table }
         titleColumn { module(CollectionContentsAsAjaxTablePanel).titleColumn }
     }
 
