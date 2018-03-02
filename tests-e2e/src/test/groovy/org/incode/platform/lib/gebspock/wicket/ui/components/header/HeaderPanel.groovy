@@ -10,7 +10,7 @@ final class HeaderPanel extends Module {
         secondary { $(".navbar-nav.secondary")}
         tertiary { $(".navbar-nav.tertiary")}
 
-        logo { $( ".navbar-header a.navbar-brand") }
+        logo { $(".navbar-header a.navbar-brand") }
         currentUser { tertiary.$("span.userName") }
 
     }

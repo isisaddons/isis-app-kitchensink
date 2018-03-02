@@ -9,7 +9,7 @@ class StandaloneCollectionPage extends LoggedInPage {
     }
 
     static content = {
-        body { $(".standaloneCollectionPage") }
+        body(wait: 3) { $(".standaloneCollectionPage") }
     }
 
 }

@@ -84,6 +84,12 @@ chromeTest {
 }
 
 test {
+    def reportsDir = file("$buildDir/geb-spock-reports")
+    if(reportsDir.exists()) {
+        print "deleting: ${reportsDir}"
+        reportsDir.delete()
+    }
+
     dependsOn drivers.collect { tasks["${it}Test"] }
     enabled = false
 }

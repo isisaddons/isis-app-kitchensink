@@ -10,8 +10,29 @@ import org.incode.platform.lib.gebspock.reporters.Screenshot
 
 import javax.annotation.Nullable
 import java.nio.file.Files
+abstract class GebReportingSpecWithApprovals extends GebReportingSpec {
 
-class GebReportingSpecWithApprovals extends GebReportingSpec {
+
+// initial cleanup is in gradle
+
+//    @Override
+//    def setupSpec() {
+//        def dir = config.reportsDir
+//        if(dir.exists()) {
+//            if (dir.exists() && !dir.deleteDir()) {
+//                throw new IllegalStateException("Could not clean report dir '${dir}'")
+//            }
+//        }
+//    }
+
+//    @Override
+//    def cleanupSpec() {
+//        def dir = config.reportsDir
+//        if(dir != null && dir.exists()) {
+//            Desktop.desktop.browse(dir.toPath().toUri())
+//        }
+//    }
+
 
     void reportAndApprove(final String label) {
         super.report(label)
@@ -121,7 +142,6 @@ and
     ${new File(toApproveAbsPathInOut).toPath()} 
 was not approved.""")
             }
-
         }
 
         List<String> cmdLineFor(String... cmdParts) {
