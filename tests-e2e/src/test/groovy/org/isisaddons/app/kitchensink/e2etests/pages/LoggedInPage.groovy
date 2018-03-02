@@ -1,7 +1,7 @@
 package org.isisaddons.app.kitchensink.e2etests.pages
 
 import geb.Page
-import org.isisaddons.app.kitchensink.e2etests.modules.busrules.BusRulesObjects.BusRulesObjects_MenuService
+import org.isisaddons.app.kitchensink.e2etests.modules.busrules.BusRulesObjects.BusRulesObjects_DomainService
 
 class LoggedInPage extends Page {
 
@@ -14,7 +14,7 @@ class LoggedInPage extends Page {
         logo { $( ".navbar-header a.navbar-brand") }
 
         // menu bar
-        busRulesObjects { module(BusRulesObjects_MenuService) }
+        busRulesObjects { module(BusRulesObjects_DomainService) }
     }
 
 }
