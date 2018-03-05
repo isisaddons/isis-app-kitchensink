@@ -34,7 +34,7 @@ environments {
 		driver = {
 			def options = new ChromeOptions()
 			options.addArguments("--headless")
-			options.addArguments("--window-size=2560x1440");
+			options.addArguments("--window-size=2048x1024");
 
 			def driverInstance = new ChromeDriver(options)
 			driverInstance
