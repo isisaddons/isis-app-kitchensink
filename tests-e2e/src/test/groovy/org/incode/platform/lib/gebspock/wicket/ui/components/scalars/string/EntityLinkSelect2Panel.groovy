@@ -4,14 +4,12 @@ import geb.Module
 import geb.module.Select
 import org.openqa.selenium.Keys
 
-class EntityLinkSelect2Panel extends Module {
+abstract class EntityLinkSelect2Panel extends Module {
 
     static content = {
-        searchField { closest("body").$("input.select2-search__field") }
         select { $(".select2") }
-        value { select.module(Select).getSelectedText() }
-
-        //
+        value { $("select").module(Select).getSelectedText() }
+        searchField { closest("body").$("input.select2-search__field") }
 
         //feedback { $(".alert") }
         //columnValue { $( "div.scalarNameAndValueComponentType.stringPanel", it ).text() }
@@ -21,7 +19,7 @@ class EntityLinkSelect2Panel extends Module {
         select.click()
         def element = searchField.firstElement() // findElement(By.cssSelector("input.select2-search__field"))
         element.sendKeys(newValue)
-        sleep(100) // yuk
+        sleep(250) // yuk
         element.sendKeys(Keys.ENTER)
     }
 

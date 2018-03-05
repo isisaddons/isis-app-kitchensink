@@ -6,7 +6,7 @@ import org.incode.platform.lib.gebspock.wicket.ui.pages.signin.WicketSignInPage
 import spock.lang.Stepwise
 
 @Stepwise
-class LoginAndLogout extends GebReportingSpecWithApprovals {
+class S_010_LoginAndLogout extends GebReportingSpecWithApprovals {
 
     void "Open"() {
         when:

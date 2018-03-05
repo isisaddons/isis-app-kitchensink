@@ -2,15 +2,17 @@ package org.isisaddons.app.kitchensink.e2etests.specs
 
 import org.incode.platform.lib.gebspock.specs.GebReportingSpecWithApprovals
 import org.incode.platform.lib.gebspock.wicket.ui.pages.LoggedInPage
+import org.incode.platform.lib.gebspock.wicket.ui.pages.home.HomePage
 import org.incode.platform.lib.gebspock.wicket.ui.pages.signin.WicketSignInPage
 import org.isisaddons.app.kitchensink.e2etests.modules.busrules.BusRulesObject.BusRulesObject_EntityPage
 import org.isisaddons.app.kitchensink.e2etests.modules.busrules.BusRulesObject.BusRulesObject_StandaloneCollectionPage
+import org.isisaddons.app.kitchensink.e2etests.modules.isisapplib.FixtureResult.FixtureResult_StandaloneCollectionPage
 import spock.lang.Stepwise
 
 @Stepwise
-class BusRulesObject_ListAllBusRulesObject extends GebReportingSpecWithApprovals {
+class S_040_BusRulesObject_ListAllBusRulesObject extends GebReportingSpecWithApprovals {
 
-    void "Login"() {
+    void "Login, run fixtures, back to home page"() {
         when:
         def page = to WicketSignInPage
         page.username = "sven"
@@ -18,7 +20,23 @@ class BusRulesObject_ListAllBusRulesObject extends GebReportingSpecWithApprovals
         page.login.click()
 
         then:
-        at LoggedInPage
+        def loggedInPage = at LoggedInPage
+
+        when:
+        page = loggedInPage
+        page.fixtureScripts.menu.jquery.mouseover()
+        page.fixtureScripts.runFixtureScript.menuItem.click()
+        page.fixtureScripts.runFixtureScript.prompt.ok.click()
+
+        then:
+        def collectionPage = at(FixtureResult_StandaloneCollectionPage)
+
+        when:
+        page = collectionPage
+        page.logo.click()
+
+        then:
+        at HomePage
     }
 
     void "Business Rules Object > List All Bus Rules Object"() {

@@ -8,7 +8,7 @@ import org.isisaddons.app.kitchensink.e2etests.modules.isisapplib.ConfigurationP
 import spock.lang.Stepwise
 
 @Stepwise
-class ConfigurationServiceMenu_Configuration extends GebReportingSpecWithApprovals {
+class S_030_ConfigurationServiceMenu_Configuration extends GebReportingSpecWithApprovals {
 
     void "Login"() {
         when:

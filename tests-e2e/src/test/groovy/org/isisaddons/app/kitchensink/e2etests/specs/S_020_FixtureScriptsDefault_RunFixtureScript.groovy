@@ -7,7 +7,7 @@ import org.isisaddons.app.kitchensink.e2etests.modules.isisapplib.FixtureResult.
 import spock.lang.Stepwise
 
 @Stepwise
-class FixtureScriptsDefault_RunFixtureScript extends GebReportingSpecWithApprovals {
+class S_020_FixtureScriptsDefault_RunFixtureScript extends GebReportingSpecWithApprovals {
 
     void "Login"() {
         when:
@@ -29,31 +29,26 @@ class FixtureScriptsDefault_RunFixtureScript extends GebReportingSpecWithApprova
         page.fixtureScripts.menu.jquery.mouseover()
         page.fixtureScripts.runFixtureScript.menuItem.click()
 
-//        then:
-//        page.fixtureScripts.runFixtureScript.prompt.displayed
+        then:
+        page.fixtureScripts.runFixtureScript.prompt.displayed
 
-//        and: "default script is selected"
-//        page.fixtureScripts.runFixtureScript.prompt.parameters.script.value == "Kitchensink Setup Fixture"
-//
-//        when:
-//        page.fixtureScripts.runFixtureScript.prompt.ok.click()
-//
-//        then:
-//        def nextPage = at FixtureResult_StandaloneCollectionPage
-//        // TODO: assert records found
-//
-//        when:
-//        page.fixtureScripts.menu.jquery.mouseover()
-//        page.fixtureScripts.runFixtureScript.menuItem.click()
+        and: "default script is selected"
+        page.fixtureScripts.runFixtureScript.prompt.parameters.script.value == "Kitchensink Setup Fixture"
+
+        when:
+        page.fixtureScripts.runFixtureScript.prompt.ok.click()
+
+        then:
+        def nextPage = at FixtureResult_StandaloneCollectionPage
+        // TODO: assert records found
+
+        when:
+        page.fixtureScripts.menu.jquery.mouseover()
+        page.fixtureScripts.runFixtureScript.menuItem.click()
 
         and: "select teardown"
 
         page.fixtureScripts.runFixtureScript.prompt.parameters.script.input = "Kitchensink Tear Down Fixture"
-
-//        page.fixtureScripts.runFixtureScript.prompt.parameters.script.select.click()
-//        def element = driver.findElement(By.cssSelector("input.select2-search__field"))
-//        element.sendKeys("Kitchensink Tear Down Fixture")
-//        element.sendKeys(Keys.ENTER)
 
         page.fixtureScripts.runFixtureScript.prompt.ok.click()
 
