@@ -40,8 +40,8 @@ class BusRulesObject_ListAllBusRulesObject extends GebReportingSpecWithApprovals
         def page = at BusRulesObject_StandaloneCollectionPage
 
         then:
-        page.tablePanel.nameColumn(0) =~ /Foo/
-        page.tablePanel.enableActionsColumn(0) == false
+        page.tablePanel.columns.name(0) =~ /Foo/
+        page.tablePanel.columns.enableActions(0) == false
     }
 
     void "Navigate to 1st Entity"() {
@@ -50,7 +50,7 @@ class BusRulesObject_ListAllBusRulesObject extends GebReportingSpecWithApprovals
         def page = at BusRulesObject_StandaloneCollectionPage
 
         when:
-        page.tablePanel.titleColumn(0).click()
+        page.tablePanel.columns.objectTitle(0).click()
 
         then:
         def nextPage = at BusRulesObject_EntityPage

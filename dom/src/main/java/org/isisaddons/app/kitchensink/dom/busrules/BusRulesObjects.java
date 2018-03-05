@@ -56,8 +56,7 @@ public class BusRulesObjects {
     @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
     @MemberOrder(sequence = "10")
     public BusRulesObject firstBusRulesObject() {
-        final List<BusRulesObject> list = listAllBusRulesObject();
-        return list.isEmpty()? null: list.get(0);
+        return listAllBusRulesObject().stream().findFirst().orElse(null);
     }
 
     @Action(semantics=SemanticsOf.SAFE)

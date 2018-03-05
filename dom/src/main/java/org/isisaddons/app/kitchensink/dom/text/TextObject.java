@@ -33,7 +33,6 @@ import com.google.common.base.Splitter;
 import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 
-import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.BookmarkPolicy;
 import org.apache.isis.applib.annotation.DomainObject;
@@ -56,6 +55,9 @@ import org.apache.isis.schema.utils.jaxbadapters.PersistentEntityAdapter;
 
 import org.isisaddons.app.kitchensink.dom.Entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE)
 @javax.jdo.annotations.DatastoreIdentity(
         strategy=javax.jdo.annotations.IdGeneratorStrategy.IDENTITY,
@@ -64,7 +66,7 @@ import org.isisaddons.app.kitchensink.dom.Entity;
         strategy=VersionStrategy.VERSION_NUMBER, 
         column="version")
 @DomainObject(
-        objectType = "TEXT"
+        objectType = "datatypes.TextObject"
 )
 @DomainObjectLayout(
         bookmarking = BookmarkPolicy.AS_ROOT
@@ -72,32 +74,16 @@ import org.isisaddons.app.kitchensink.dom.Entity;
 @XmlJavaTypeAdapter(PersistentEntityAdapter.class)
 public class TextObject implements Entity<TextObject> {
 
-    //region > name (property)
-
-    private String name;
 
     @Column(allowsNull="false")
     @Title(sequence="1")
-    public String getName() {
-        return name;
-    }
-
-    public void setName(final String name) {
-        this.name = name;
-    }
-
-    //endregion
+    @Getter @Setter
+    private String name;
 
     //region > someChar (property)
+
+    @Getter @Setter
     private char someChar;
-
-    public char getSomeChar() {
-        return someChar;
-    }
-
-    public void setSomeChar(final char someChar) {
-        this.someChar = someChar;
-    }
 
     @Action(semantics=SemanticsOf.IDEMPOTENT)
     public TextObject updateSomeChar(final char i) {
@@ -109,44 +95,20 @@ public class TextObject implements Entity<TextObject> {
     }
     //endregion
 
-    //region > someCharHidden (property)
-    private char someCharHidden;
 
     @Property(hidden = Where.EVERYWHERE)
-    public char getSomeCharHidden() {
-        return someCharHidden;
-    }
+    @Getter @Setter
+    private char someCharHidden;
 
-    public void setSomeCharHidden(final char someCharHidden) {
-        this.someCharHidden = someCharHidden;
-    }
-
-    //endregion
-
-    //region > someCharDisabled (property)
-    private char someCharDisabled;
 
     @Property(editing = Editing.DISABLED)
-    public char getSomeCharDisabled() {
-        return someCharDisabled;
-    }
+    @Getter @Setter
+    private char someCharDisabled;
 
-    public void setSomeCharDisabled(final char someCharDisabled) {
-        this.someCharDisabled = someCharDisabled;
-    }
-
-    //endregion
 
     //region > someCharWithValidation (property)
+    @Getter @Setter
     private char someCharWithValidation;
-
-    public char getSomeCharWithValidation() {
-        return someCharWithValidation;
-    }
-
-    public void setSomeCharWithValidation(final char someCharWithValidation) {
-        this.someCharWithValidation = someCharWithValidation;
-    }
 
     public String validateSomeCharWithValidation(final char c) {
         return c % 2 != 0? "Can only enter even characters": null;
@@ -168,15 +130,8 @@ public class TextObject implements Entity<TextObject> {
     //endregion
 
     //region > someCharWithChoices (property)
+    @Getter @Setter
     private char someCharWithChoices;
-
-    public char getSomeCharWithChoices() {
-        return someCharWithChoices;
-    }
-
-    public void setSomeCharWithChoices(final char someCharWithChoices) {
-        this.someCharWithChoices = someCharWithChoices;
-    }
 
     public Collection<Character> choicesSomeCharWithChoices() {
         return Lists.newArrayList('a','b','c','d');
@@ -198,16 +153,9 @@ public class TextObject implements Entity<TextObject> {
 
 
     //region > someCharacterWrapperMandatory (property)
-    private Character someCharacterWrapperMandatory;
-
     @Column(allowsNull = "false")
-    public Character getSomeCharacterWrapperMandatory() {
-        return someCharacterWrapperMandatory;
-    }
-
-    public void setSomeCharacterWrapperMandatory(final Character someCharacterWrapperMandatory) {
-        this.someCharacterWrapperMandatory = someCharacterWrapperMandatory;
-    }
+    @Getter @Setter
+    private Character someCharacterWrapperMandatory;
 
     @Action(semantics=SemanticsOf.IDEMPOTENT)
     public TextObject updateSomeCharacterWrapperMandatory(final Character i) {
@@ -220,16 +168,9 @@ public class TextObject implements Entity<TextObject> {
     //endregion
 
     //region > someCharacterWrapperOptional (property)
-    private Character someCharacterWrapperOptional;
-
     @Column(allowsNull = "true")
-    public Character getSomeCharacterWrapperOptional() {
-        return someCharacterWrapperOptional;
-    }
-
-    public void setSomeCharacterWrapperOptional(final Character someCharacterWrapperOptional) {
-        this.someCharacterWrapperOptional = someCharacterWrapperOptional;
-    }
+    @Getter @Setter
+    private Character someCharacterWrapperOptional;
 
     @Action(semantics=SemanticsOf.IDEMPOTENT)
     public TextObject updateSomeCharacterWrapperOptional(@Parameter(optionality=Optionality.OPTIONAL) final  Character i) {
@@ -247,47 +188,20 @@ public class TextObject implements Entity<TextObject> {
     }
     //endregion
 
-    //region > someCharacterWrapperHidden (property)
+    @javax.jdo.annotations.Column(allowsNull = "false")
+    @Property(hidden = Where.EVERYWHERE)
+    @Getter @Setter
     private java.lang.Character someCharacterWrapperHidden;
 
     @javax.jdo.annotations.Column(allowsNull = "false")
-    @Property(hidden = Where.EVERYWHERE)
-    public java.lang.Character getSomeCharacterWrapperHidden() {
-        return someCharacterWrapperHidden;
-    }
-
-    public void setSomeCharacterWrapperHidden(final java.lang.Character someCharacterWrapperHidden) {
-        this.someCharacterWrapperHidden = someCharacterWrapperHidden;
-    }
-
-    //endregion
-
-    //region > someCharacterWrapperDisabled (property)
+    @Property(editing = Editing.DISABLED)
+    @Getter @Setter
     private java.lang.Character someCharacterWrapperDisabled;
 
-    @javax.jdo.annotations.Column(allowsNull = "false")
-    @Property(editing = Editing.DISABLED)
-    public java.lang.Character getSomeCharacterWrapperDisabled() {
-        return someCharacterWrapperDisabled;
-    }
-
-    public void setSomeCharacterWrapperDisabled(final java.lang.Character someCharacterWrapperDisabled) {
-        this.someCharacterWrapperDisabled = someCharacterWrapperDisabled;
-    }
-
-    //endregion
-
     //region > someCharacterWrapperWithValidation (property)
-    private java.lang.Character someCharacterWrapperWithValidation;
-
     @javax.jdo.annotations.Column(allowsNull = "false")
-    public java.lang.Character getSomeCharacterWrapperWithValidation() {
-        return someCharacterWrapperWithValidation;
-    }
-
-    public void setSomeCharacterWrapperWithValidation(final java.lang.Character someCharacterWrapperWithValidation) {
-        this.someCharacterWrapperWithValidation = someCharacterWrapperWithValidation;
-    }
+    @Getter @Setter
+    private java.lang.Character someCharacterWrapperWithValidation;
 
     public String validateSomeCharacterWrapperWithValidation(final java.lang.Character i) {
         return i % 2 != 0? "Can only enter even numbers": null;
@@ -309,16 +223,10 @@ public class TextObject implements Entity<TextObject> {
     //endregion
 
     //region > someCharacterWrapperMandatoryWithChoices (property)
+    @Column(allowsNull = "false")
+    @Getter @Setter
     private Character someCharacterWrapperMandatoryWithChoices;
 
-    @Column(allowsNull = "false")
-    public Character getSomeCharacterWrapperMandatoryWithChoices() {
-        return someCharacterWrapperMandatoryWithChoices;
-    }
-
-    public void setSomeCharacterWrapperMandatoryWithChoices(final Character someCharacterWrapperMandatoryWithChoices) {
-        this.someCharacterWrapperMandatoryWithChoices = someCharacterWrapperMandatoryWithChoices;
-    }
     public Collection<Character> choicesSomeCharacterWrapperMandatoryWithChoices() {
         return Lists.newArrayList('a','b','c','d');
     }
@@ -337,16 +245,10 @@ public class TextObject implements Entity<TextObject> {
     //endregion
 
     //region > someCharacterWrapperOptionalWithChoices (property)
+    @Column(allowsNull = "true")
+    @Getter @Setter
     private Character someCharacterWrapperOptionalWithChoices;
 
-    @Column(allowsNull = "true")
-    public Character getSomeCharacterWrapperOptionalWithChoices() {
-        return someCharacterWrapperOptionalWithChoices;
-    }
-
-    public void setSomeCharacterWrapperOptionalWithChoices(final Character someCharacterWrapperOptionalWithChoices) {
-        this.someCharacterWrapperOptionalWithChoices = someCharacterWrapperOptionalWithChoices;
-    }
     public Collection<Character> choicesSomeCharacterWrapperOptionalWithChoices() {
         return Lists.newArrayList('a','b','c','d');
     }
@@ -372,16 +274,9 @@ public class TextObject implements Entity<TextObject> {
 
 
     //region > someStringMandatory (property)
-    private String someStringMandatory;
-
     @Column(allowsNull = "false")
-    public String getSomeStringMandatory() {
-        return someStringMandatory;
-    }
-
-    public void setSomeStringMandatory(final String someStringMandatory) {
-        this.someStringMandatory = someStringMandatory;
-    }
+    @Getter @Setter
+    private String someStringMandatory;
 
     @Action(semantics=SemanticsOf.IDEMPOTENT)
     public TextObject updateSomeStringMandatory(final String i) {
@@ -394,16 +289,9 @@ public class TextObject implements Entity<TextObject> {
     //endregion
 
     //region > someStringOptional (property)
-    private String someStringOptional;
-
     @Column(allowsNull = "true")
-    public String getSomeStringOptional() {
-        return someStringOptional;
-    }
-
-    public void setSomeStringOptional(final String someStringOptional) {
-        this.someStringOptional = someStringOptional;
-    }
+    @Getter @Setter
+    private String someStringOptional;
 
     @Action(semantics=SemanticsOf.IDEMPOTENT)
     public TextObject updateSomeStringOptional(@Parameter(optionality=Optionality.OPTIONAL) final  String i) {
@@ -421,47 +309,22 @@ public class TextObject implements Entity<TextObject> {
     }
     //endregion
 
-    //region > someStringHidden (property)
-    private String someStringHidden;
-
     @javax.jdo.annotations.Column(allowsNull = "false")
     @Property(hidden = Where.EVERYWHERE)
-    public String getSomeStringHidden() {
-        return someStringHidden;
-    }
+    @Getter @Setter
+    private String someStringHidden;
 
-    public void setSomeStringHidden(final String someStringHidden) {
-        this.someStringHidden = someStringHidden;
-    }
-
-    //endregion
-
-    //region > someStringDisabled (property)
-    private String someStringDisabled;
 
     @javax.jdo.annotations.Column(allowsNull = "false")
     @Property(editing = Editing.DISABLED)
-    public String getSomeStringDisabled() {
-        return someStringDisabled;
-    }
+    @Getter @Setter
+    private String someStringDisabled;
 
-    public void setSomeStringDisabled(final String someStringDisabled) {
-        this.someStringDisabled = someStringDisabled;
-    }
-
-    //endregion
 
     //region > someStringWithValidation (property)
-    private String someStringWithValidation;
-
     @javax.jdo.annotations.Column(allowsNull = "false")
-    public String getSomeStringWithValidation() {
-        return someStringWithValidation;
-    }
-
-    public void setSomeStringWithValidation(final String someStringWithValidation) {
-        this.someStringWithValidation = someStringWithValidation;
-    }
+    @Getter @Setter
+    private String someStringWithValidation;
 
     public String validateSomeStringWithValidation(final String x) {
         return !x.startsWith("a") ? "Must start with letter 'a'": null;
@@ -486,16 +349,10 @@ public class TextObject implements Entity<TextObject> {
     //endregion
 
     //region > someStringMandatoryWithChoices (property)
+    @Column(allowsNull = "false")
+    @Getter @Setter
     private String someStringMandatoryWithChoices;
 
-    @Column(allowsNull = "false")
-    public String getSomeStringMandatoryWithChoices() {
-        return someStringMandatoryWithChoices;
-    }
-
-    public void setSomeStringMandatoryWithChoices(final String someStringMandatoryWithChoices) {
-        this.someStringMandatoryWithChoices = someStringMandatoryWithChoices;
-    }
     public Collection<String> choicesSomeStringMandatoryWithChoices() {
         return Lists.newArrayList("a", "ab", "abcd", "abcdefgh", "abcdefghijklmnop", "abcdefghijklmnopqrstuvwxyz");
     }
@@ -514,16 +371,10 @@ public class TextObject implements Entity<TextObject> {
     //endregion
 
     //region > someStringOptionalWithChoices (property)
+    @Column(allowsNull = "true")
+    @Getter @Setter
     private String someStringOptionalWithChoices;
 
-    @Column(allowsNull = "true")
-    public String getSomeStringOptionalWithChoices() {
-        return someStringOptionalWithChoices;
-    }
-
-    public void setSomeStringOptionalWithChoices(final String someStringOptionalWithChoices) {
-        this.someStringOptionalWithChoices = someStringOptionalWithChoices;
-    }
     public Collection<String> choicesSomeStringOptionalWithChoices() {
         return Lists.newArrayList("a", "ab", "abcd", "abcdefgh", "abcdefghijklmnop", "abcdefghijklmnopqrstuvwxyz");
     }
@@ -548,17 +399,10 @@ public class TextObject implements Entity<TextObject> {
     //endregion
 
     //region > someStringOptionalWithMultiChoices (property)
-    private String someStringOptionalWithMultiChoices;
-
     @Property(editing = Editing.ENABLED)
     @Column(allowsNull = "true")
-    public String getSomeStringOptionalWithMultiChoices() {
-        return someStringOptionalWithMultiChoices;
-    }
-
-    public void setSomeStringOptionalWithMultiChoices(final String someStringOptionalWithMultiChoices) {
-        this.someStringOptionalWithMultiChoices = someStringOptionalWithMultiChoices;
-    }
+    @Getter @Setter
+    private String someStringOptionalWithMultiChoices;
 
     public List<String> choicesSomeStringOptionalWithMultiChoices() {
         return Lists.newArrayList("a", "ab", "abcd", "abcdefgh", "abcdefghijklmnop", "abcdefghijklmnopqrstuvwxyz");
@@ -592,21 +436,13 @@ public class TextObject implements Entity<TextObject> {
     //endregion
 
     //region > someStringOptionalWithMultiAutoComplete (property - NOT SUPPORTED)
-    private String someStringOptionalWithMultiAutoComplete;
-
-
     @Property(
             editing = Editing.DISABLED,
             hidden = Where.EVERYWHERE  // autocomplete on values is NOT SUPPORTED
     )
     @Column(allowsNull = "true")
-    public String getSomeStringOptionalWithMultiAutoComplete() {
-        return someStringOptionalWithMultiAutoComplete;
-    }
-
-    public void setSomeStringOptionalWithMultiAutoComplete(final String someStringOptionalWithMultiAutoComplete) {
-        this.someStringOptionalWithMultiAutoComplete = someStringOptionalWithMultiAutoComplete;
-    }
+    @Getter @Setter
+    private String someStringOptionalWithMultiAutoComplete;
 
     @Action(semantics=SemanticsOf.IDEMPOTENT, publishing = Publishing.ENABLED)
     public TextObject updateSomeStringOptionalWithMultiAutoComplete(
@@ -637,16 +473,9 @@ public class TextObject implements Entity<TextObject> {
 
 
     //region > someString20 (property)
-    private String someString20;
-
     @Column(allowsNull = "true", length = 20)
-    public String getSomeString20() {
-        return someString20;
-    }
-
-    public void setSomeString20(final String someString20) {
-        this.someString20 = someString20;
-    }
+    @Getter @Setter
+    private String someString20;
 
     @Action(semantics=SemanticsOf.IDEMPOTENT)
     public TextObject updateSomeString20(@Parameter(optionality=Optionality.OPTIONAL, maxLength = 20) final  String i) {
@@ -665,17 +494,10 @@ public class TextObject implements Entity<TextObject> {
     //endregion
 
     //region > someString50 (property)
-    private String someString50;
-
     @PropertyLayout(typicalLength = 20)
     @Column(allowsNull = "true", length = 50)
-    public String getSomeString50() {
-        return someString50;
-    }
-
-    public void setSomeString50(final String someString50) {
-        this.someString50 = someString50;
-    }
+    @Getter @Setter
+    private String someString50;
 
     @Action(semantics=SemanticsOf.IDEMPOTENT)
     public TextObject updateSomeString50(@Parameter(optionality=Optionality.OPTIONAL, maxLength = 50) final  @ParameterLayout(typicalLength = 20) String i) {
@@ -695,17 +517,15 @@ public class TextObject implements Entity<TextObject> {
 
 
     //region > somePasswordMandatory (property)
+    @Column(allowsNull = "false")
+    @Getter @Setter
     private String somePasswordMandatoryStr;
 
     @Programmatic
-    @Column(allowsNull = "false")
     public String getSomePasswordMandatoryStr() {
         return somePasswordMandatoryStr;
     }
 
-    public void setSomePasswordMandatoryStr(final String somePasswordMandatoryStr) {
-        this.somePasswordMandatoryStr = somePasswordMandatoryStr;
-    }
 
     @javax.jdo.annotations.NotPersistent
     public Password getSomePasswordMandatory() {
@@ -727,17 +547,15 @@ public class TextObject implements Entity<TextObject> {
     //endregion
 
     //region > somePasswordOptional (property)
+    @Column(allowsNull = "true")
+    @Getter @Setter
     private String somePasswordOptionalStr;
 
-    @Column(allowsNull = "true")
     @Programmatic
     public String getSomePasswordOptionalStr() {
         return somePasswordOptionalStr;
     }
 
-    public void setSomePasswordOptionalStr(final String somePasswordOptionalStr) {
-        this.somePasswordOptionalStr = somePasswordOptionalStr;
-    }
 
     @javax.jdo.annotations.NotPersistent
     @Property(optionality=Optionality.OPTIONAL)
@@ -766,16 +584,13 @@ public class TextObject implements Entity<TextObject> {
 
 
     //region > somePasswordHidden (property)
+    @javax.jdo.annotations.Column(allowsNull = "false")
+    @Getter @Setter
     private String somePasswordHiddenStr;
 
-    @javax.jdo.annotations.Column(allowsNull = "false")
     @Programmatic
     public String getSomePasswordHiddenStr() {
         return somePasswordHiddenStr;
-    }
-
-    public void setSomePasswordHiddenStr(final String somePasswordHiddenStr) {
-        this.somePasswordHiddenStr = somePasswordHiddenStr;
     }
 
     @javax.jdo.annotations.NotPersistent
@@ -790,17 +605,15 @@ public class TextObject implements Entity<TextObject> {
     //endregion
 
     //region > somePasswordDisabled (property)
+    @javax.jdo.annotations.Column(allowsNull = "false")
+    @Getter @Setter
     private String somePasswordDisabledStr;
 
-    @javax.jdo.annotations.Column(allowsNull = "false")
     @Programmatic
     public String getSomePasswordDisabledStr() {
         return somePasswordDisabledStr;
     }
 
-    public void setSomePasswordDisabledStr(final String somePasswordDisabledStr) {
-        this.somePasswordDisabledStr = somePasswordDisabledStr;
-    }
 
     @javax.jdo.annotations.NotPersistent
     @Property(editing = Editing.DISABLED)
@@ -814,16 +627,13 @@ public class TextObject implements Entity<TextObject> {
     //endregion
 
     //region > somePasswordWithValidation (property)
+    @javax.jdo.annotations.Column(allowsNull = "false")
+    @Getter @Setter
     private String somePasswordWithValidationStr;
 
-    @javax.jdo.annotations.Column(allowsNull = "false")
     @Programmatic
     public String getSomePasswordWithValidationStr() {
         return somePasswordWithValidationStr;
-    }
-
-    public void setSomePasswordWithValidationStr(final String somePasswordWithValidationStr) {
-        this.somePasswordWithValidationStr = somePasswordWithValidationStr;
     }
 
 
@@ -857,17 +667,15 @@ public class TextObject implements Entity<TextObject> {
     //endregion
 
     //region > somePasswordMandatoryWithChoices (property)
+    @Column(allowsNull = "false")
+    @Getter @Setter
     private String somePasswordMandatoryWithChoicesStr;
 
-    @Column(allowsNull = "false")
     @Programmatic
     public String getSomePasswordMandatoryWithChoicesStr() {
         return somePasswordMandatoryWithChoicesStr;
     }
 
-    public void setSomePasswordMandatoryWithChoicesStr(final String somePasswordMandatoryWithChoicesStr) {
-        this.somePasswordMandatoryWithChoicesStr = somePasswordMandatoryWithChoicesStr;
-    }
 
     @javax.jdo.annotations.NotPersistent
     public Password getSomePasswordMandatoryWithChoices() {
@@ -901,17 +709,15 @@ public class TextObject implements Entity<TextObject> {
     //endregion
 
     //region > somePasswordOptionalWithChoices (property)
+    @Getter @Setter
+    @Column(allowsNull = "true")
     private String somePasswordOptionalWithChoicesStr;
 
-    @Column(allowsNull = "true")
     @Programmatic
     public String getSomePasswordOptionalWithChoicesStr() {
         return somePasswordOptionalWithChoicesStr;
     }
 
-    public void setSomePasswordOptionalWithChoicesStr(final String somePasswordOptionalWithChoicesStr) {
-        this.somePasswordOptionalWithChoicesStr = somePasswordOptionalWithChoicesStr;
-    }
 
     @javax.jdo.annotations.NotPersistent
     @Property(optionality=Optionality.OPTIONAL)
@@ -953,17 +759,11 @@ public class TextObject implements Entity<TextObject> {
 
 
     //region > someStringMultiline (property)
-    private String someStringMultiline;
-
     @Column(allowsNull = "true", length = 2048)
     @PropertyLayout(multiLine = 10)
-    public String getSomeStringMultiline() {
-        return someStringMultiline;
-    }
+    @Getter @Setter
+    private String someStringMultiline;
 
-    public void setSomeStringMultiline(final String someStringMultiline) {
-        this.someStringMultiline = someStringMultiline;
-    }
 
     @Action(semantics=SemanticsOf.IDEMPOTENT)
     public TextObject updateSomeStringMultiline(@Parameter(optionality=Optionality.OPTIONAL, maxLength = 2048) final  @ParameterLayout(multiLine = 10)  String i) {
@@ -982,22 +782,17 @@ public class TextObject implements Entity<TextObject> {
     //endregion
 
     //region > someStringMultilineNoWrap (property)
-    private String someStringMultilineNoWrap;
-
     @PropertyLayout(multiLine = 4)
     @Column(allowsNull = "true", length = 2048)
-    public String getSomeStringMultilineNoWrap() {
-        return someStringMultilineNoWrap;
-    }
+    @Getter @Setter
+    private String someStringMultilineNoWrap;
 
-    public void setSomeStringMultilineNoWrap(final String someStringMultilineNoWrap) {
-        this.someStringMultilineNoWrap = someStringMultilineNoWrap;
-    }
 
     @Action(semantics=SemanticsOf.IDEMPOTENT)
-    public TextObject updateSomeStringMultilineNoWrap(@Parameter(optionality=Optionality.OPTIONAL, maxLength = 2048)
-                                                  @ParameterLayout(multiLine = 4)
-                                                  final String i) {
+    public TextObject updateSomeStringMultilineNoWrap(
+            @Parameter(optionality=Optionality.OPTIONAL, maxLength = 2048)
+            @ParameterLayout(multiLine = 4)
+            final String i) {
         setSomeStringMultilineNoWrap(i);
         return this;
     }
@@ -1013,14 +808,10 @@ public class TextObject implements Entity<TextObject> {
     //endregion
 
 
-    //region > compareTo
-
     @Override
     public int compareTo(TextObject other) {
         return ObjectContracts.compare(this, other, "name");
     }
-
-    //endregion
 
 
     static class SeparatorUtil {
@@ -1045,12 +836,5 @@ public class TextObject implements Entity<TextObject> {
 
     }
 
-    //region > injected services
-
-    @javax.inject.Inject
-    @SuppressWarnings("unused")
-    private DomainObjectContainer container;
-
-    //endregion
 
 }

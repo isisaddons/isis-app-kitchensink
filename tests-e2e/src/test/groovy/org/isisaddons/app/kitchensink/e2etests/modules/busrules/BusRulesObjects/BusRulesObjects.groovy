@@ -9,7 +9,7 @@ import org.incode.platform.lib.gebspock.wicket.ui.components.scalars.string.Stri
 class BusRulesObjects_DomainService extends Module {
     //static base = { module(HeaderPanel) }
     static content = {
-        menu { $("li.dropdown.isis-busrules-busrulesobjects a", 0)}
+        menu { $("li.dropdown.isis-busrules-BusRulesObjects a", 0)}
 
         findBusRulesObject { module FindBusRulesObject_MenuItem }
         listAllBusRulesObject { module ListAllBusRulesObject_MenuItem }
@@ -20,7 +20,7 @@ class FindBusRulesObject_MenuItem extends Module {
     //static base = { module(HeaderPanel) }
     static content = {
         menuItem { module(ServiceActionsPanel).dropdown
-                    .$(".isis-busrules-busrulesobjects li.isis-busrules-busrulesobjects-findbusrulesobject a")}
+                .$(".isis-busrules-BusRulesObjects li.isis-busrules-BusRulesObjects-findBusRulesObject a")}
         prompt(wait:true) { module FindBusRulesObject_Prompt }
     }
 }
@@ -28,12 +28,10 @@ class FindBusRulesObject_MenuItem extends Module {
 class FindBusRulesObject_Prompt extends ActionParametersFormPanel {
     static base = {
         module(ActionPromptModalWindow) // because this prompt is DIALOG, not INLINE
-                .$(".isis-busrules-busrulesobjects-findbusrulesobject")
+                .$(".isis-busrules-BusRulesObjects-findBusRulesObject")
     }
     static content = {
         parameters { $("fieldset.parameters").module FindBusRulesObject_PromptParams }
-        //ok { module(ActionParametersFormPanel).ok }
-        //cancel { module(ActionParametersFormPanel).cancel }
     }
 }
 
@@ -45,15 +43,15 @@ class FindBusRulesObject_PromptParams extends Module {
 
 class FindBusRulesObject_Name extends Module {
     static content = {
-        input { $(".isis-name").module(StringPanel).input }
-        feedback(wait:true) { $(".isis-name").module(StringPanel).feedback }
+        input { $(".isis-busrules-BusRulesObjects-findBusRulesObject-name").module(StringPanel).input }
+        feedback(wait:true) { $(".isis-busrules-BusRulesObjects-findBusRulesObject-name").module(StringPanel).feedback }
     }
 }
 
 class ListAllBusRulesObject_MenuItem extends Module {
     static content = {
         menuItem { module(ServiceActionsPanel).dropdown
-                .$(".isis-busrules-busrulesobjects li.isis-busrules-busrulesobjects-listallbusrulesobject a")}
+                .$(".isis-busrules-BusRulesObjects li.isis-busrules-BusRulesObjects-listAllBusRulesObject a")}
         // no args so no prompt
     }
 }

@@ -1,4 +1,4 @@
-package org.incode.platform.lib.gebspock.reporters
+package org.incode.platform.lib.gebspock.spi
 
 import geb.report.ScreenshotReporter
 

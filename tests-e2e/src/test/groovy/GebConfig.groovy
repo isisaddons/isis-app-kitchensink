@@ -7,16 +7,23 @@
  */
 
 
-
+//
+// To run the tests with all browsers just run “./gradlew test”
+// To run for just chrome, use “./gradlew chromeTest”
+//
 
 
 
 import com.aoe.gebspockreports.GebReportingListener
+import geb.Browser
 import geb.report.CompositeReporter
 import geb.report.PageSourceReporter
 import io.github.bonigarcia.wdm.ChromeDriverManager
-import org.incode.platform.lib.gebspock.reporters.Screenshot
+import org.incode.platform.lib.gebspock.spi.EmptyNavigator
+import org.incode.platform.lib.gebspock.spi.NonEmptyNavigator
+import org.incode.platform.lib.gebspock.spi.Screenshot
 import org.openqa.selenium.Dimension
+import org.openqa.selenium.WebElement
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.chrome.ChromeOptions
 
@@ -27,10 +34,9 @@ waiting {
 
 environments {
 
-
-	// run via “./gradlew chromeTest”
 	// See: http://code.google.com/p/selenium/wiki/ChromeDriver
 	chrome {
+
 		def driverManager = ChromeDriverManager.instance
 		driverManager.setup()
 		driver = {
@@ -56,7 +62,9 @@ environments {
 
 
 
-// To run the tests with all browsers just run “./gradlew test”
+innerNavigatorFactory = { Browser browser, List<WebElement> elements ->
+	elements ? new NonEmptyNavigator(browser, elements) : new EmptyNavigator(browser)
+}
 
 baseUrl = "http://localhost:8080/wicket"
 

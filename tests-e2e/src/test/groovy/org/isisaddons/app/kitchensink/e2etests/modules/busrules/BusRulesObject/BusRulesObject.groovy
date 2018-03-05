@@ -1,5 +1,6 @@
 package org.isisaddons.app.kitchensink.e2etests.modules.busrules.BusRulesObject
 
+import geb.Module
 import org.incode.platform.lib.gebspock.wicket.ui.components.collectioncontents.ajaxtable.CollectionContentsAsAjaxTablePanel
 import org.incode.platform.lib.gebspock.wicket.ui.components.scalars.primitive.BooleanPanel
 import org.incode.platform.lib.gebspock.wicket.ui.components.scalars.string.StringPanel
@@ -14,7 +15,7 @@ class BusRulesObject_EntityPage extends EntityPage {
     }
 
     static content = {
-        body(wait: true) { $(".entityPage.isis-busrules-busrulesobject") }
+        body(wait: true) { $(".entityPage.isis-busrules-BusRulesObject") }
     }
 }
 
@@ -25,18 +26,26 @@ class BusRulesObject_StandaloneCollectionPage extends StandaloneCollectionPage {
     }
 
     static content = {
-        body(wait: true) { $(".standaloneCollectionPage").$(".isis-busrules-busrulesobject") }
+        body(wait: true) { $(".standaloneCollectionPage").$(".isis-busrules-BusRulesObject") }
 
         tablePanel { module(BusRulesObject_CollectionContentsAsAjaxTablePanel) }
     }
 }
 
-class BusRulesObject_CollectionContentsAsAjaxTablePanel extends CollectionContentsAsAjaxTablePanel {
+class BusRulesObject_CollectionContentsAsAjaxTablePanel extends Module {
 
-    static base = { module(StandaloneCollectionPanel).$(".isis-busrules-busrulesobject") }
+    static base = { module(StandaloneCollectionPanel).$(".isis-busrules-BusRulesObject") }
 
     static content = {
-        nameColumn { tbody.$("td.isis-busrules-busrulesobject-name").module(StringPanel).columnValue(it) }
-        enableActionsColumn { tbody.$("td.isis-busrules-busrulesobject-enableactions").module(BooleanPanel).columnValue(it) }
+        columns { module(BusRulesObject_CollectionContentsAsAjaxTablePanel_Columns) }
+    }
+}
+
+class BusRulesObject_CollectionContentsAsAjaxTablePanel_Columns extends CollectionContentsAsAjaxTablePanel {
+
+    static content = {
+
+        name { tbody.$("td.isis-busrules-BusRulesObject-name").module(StringPanel).columnValue(it) }
+        enableActions { tbody.$("td.isis-busrules-BusRulesObject-enableActions").module(BooleanPanel).columnValue(it) }
     }
 }

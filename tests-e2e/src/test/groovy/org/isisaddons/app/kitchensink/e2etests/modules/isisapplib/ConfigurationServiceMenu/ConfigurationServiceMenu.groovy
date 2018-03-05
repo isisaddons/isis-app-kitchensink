@@ -14,7 +14,7 @@ class ConfigurationServiceMenu_DomainService extends Module {
 class Configuration_MenuItem extends Module {
     static content = {
         menuItem { module(HeaderPanel).tertiary.$(".dropdown")
-                    $("li.isis-isisapplib-configurationservicemenu-configuration a")}
+                    $("li.isis-isisApplib-ConfigurationServiceMenu-configuration a")}
     }
 }
 

@@ -17,7 +17,6 @@
 package org.isisaddons.app.kitchensink.dom.busrules;
 
 import java.util.List;
-import java.util.concurrent.Callable;
 
 import javax.inject.Inject;
 import javax.jdo.annotations.Column;
@@ -245,12 +244,8 @@ public class BusRulesObject implements Entity<BusRulesObject> {
 
 
     String reasonDisabledIfAnyCached() {
-        final String reasonDisabledIfAnyCached = queryResultsCache.execute(new Callable<String>() {
-            @Override
-            public String call() throws Exception {
-                return doReasonDisabledIfAny(BusRulesObject.this);
-            }
-        }, getClass(), "reasonDisabledIfAnyCached", this);
+        final String reasonDisabledIfAnyCached = queryResultsCache.execute(
+                () -> doReasonDisabledIfAny(BusRulesObject.this), getClass(), "reasonDisabledIfAnyCached", this);
         boolean enabled = reasonDisabledIfAnyCached == null;
         return reasonDisabledIfAnyCached;
     }

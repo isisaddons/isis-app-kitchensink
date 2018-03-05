@@ -24,9 +24,8 @@ import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.ParameterLayout;
+import org.apache.isis.applib.services.repository.RepositoryService;
 import org.apache.isis.applib.value.Password;
-
-import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
 
 @DomainService(
         nature = NatureOfService.VIEW_MENU_ONLY,
@@ -36,17 +35,15 @@ import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
         named="Data Types",
         menuOrder = "10.1"
 )
-public class TextObjects extends RepositoryAbstract<TextObject> {
+public class TextObjects  {
 
-    public TextObjects() {
-        super(TextObject.class, Visibility.VISIBLE);
-    }
+    private final static Class<TextObject> cls = TextObject.class;
 
     @MemberOrder(sequence = "30")
     public TextObject createTextObject(
             @ParameterLayout(named="Name")
             final String name) {
-        final TextObject obj = container.newTransientInstance(TextObject.class);
+        final TextObject obj = repositoryService.instantiate(TextObject.class);
         obj.setName(name);
 
         final char nameChar0 = name.charAt(0);
@@ -88,24 +85,24 @@ public class TextObjects extends RepositoryAbstract<TextObject> {
         obj.setSomeStringMultiline(name);
         obj.setSomeStringMultilineNoWrap(name);
 
-        container.persistIfNotAlready(obj);
+        repositoryService.persist(obj);
         return obj;
     }
 
 
-
     @ActionLayout(named="First TextObject")
-    @Override
     public TextObject first() {
-        return super.first();
+        return listAll().stream().findFirst().orElse(null);
     }
 
     @ActionLayout(named="List All TextObjects")
-    @Override
     public List<TextObject> listAll() {
-        return super.listAll();
+        return repositoryService.allInstances(cls);
     }
 
+
+    @javax.inject.Inject
+    RepositoryService repositoryService;
 
 
 }

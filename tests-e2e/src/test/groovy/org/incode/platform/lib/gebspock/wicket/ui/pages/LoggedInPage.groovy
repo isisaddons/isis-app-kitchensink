@@ -4,6 +4,7 @@ import geb.Page
 import org.incode.platform.lib.gebspock.wicket.ui.components.header.HeaderPanel
 import org.isisaddons.app.kitchensink.e2etests.modules.busrules.BusRulesObjects.BusRulesObjects_DomainService
 import org.isisaddons.app.kitchensink.e2etests.modules.isisapplib.ConfigurationServiceMenu.ConfigurationServiceMenu_DomainService
+import org.isisaddons.app.kitchensink.e2etests.modules.isisapplib.FixtureScriptsDefault.FixtureScriptsDefault_DomainService
 import org.isisaddons.app.kitchensink.e2etests.modules.isisapplib.Logout.LogoutMenu
 
 class LoggedInPage extends Page {
@@ -18,6 +19,9 @@ class LoggedInPage extends Page {
 
         // primary menu bar
         busRulesObjects { module BusRulesObjects_DomainService }
+
+        // secondary menu bar
+        fixtureScripts { module FixtureScriptsDefault_DomainService }
 
         // tertiary menu bar
         configurationService { module ConfigurationServiceMenu_DomainService }
