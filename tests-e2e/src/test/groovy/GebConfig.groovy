@@ -16,6 +16,7 @@ import geb.report.CompositeReporter
 import geb.report.PageSourceReporter
 import io.github.bonigarcia.wdm.ChromeDriverManager
 import org.incode.platform.lib.gebspock.reporters.Screenshot
+import org.openqa.selenium.Dimension
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.chrome.ChromeOptions
 
@@ -26,17 +27,28 @@ waiting {
 
 environments {
 
+
 	// run via “./gradlew chromeTest”
 	// See: http://code.google.com/p/selenium/wiki/ChromeDriver
 	chrome {
 		def driverManager = ChromeDriverManager.instance
 		driverManager.setup()
 		driver = {
-			def options = new ChromeOptions()
-			options.addArguments("--headless")
-			options.addArguments("--window-size=2048x1024");
 
-			def driverInstance = new ChromeDriver(options)
+			def headlessMode = false
+
+			ChromeDriver driverInstance
+
+			if(headlessMode) {
+				def options = new ChromeOptions()
+				options.addArguments("--headless")
+				options.addArguments("--window-size=2048x1024");
+				driverInstance = new ChromeDriver(options)
+			} else {
+				driverInstance = new ChromeDriver()
+				driverInstance.manage().window().setSize(new Dimension(2048,1024))
+			}
+
 			driverInstance
 		}
 	}
