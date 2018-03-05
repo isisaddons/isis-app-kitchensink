@@ -33,16 +33,15 @@ class BusRulesObjects_FindBusRulesObject extends GebReportingSpecWithApprovals {
         page.busRulesObjects.findBusRulesObject.prompt.displayed
 
         when: "Missing name"
-        page.busRulesObjects.findBusRulesObject.prompt.parameters.name = ""
+        page.busRulesObjects.findBusRulesObject.prompt.parameters.name.input = ""
         page.busRulesObjects.findBusRulesObject.prompt.ok.click()
 
         then:
-        page.busRulesObjects.findBusRulesObject.prompt.parameters.nameFeedback.displayed
-        page.busRulesObjects.findBusRulesObject.prompt.parameters.nameFeedback.text() =~ /'Name' is required./
+        page.busRulesObjects.findBusRulesObject.prompt.parameters.name.feedback.text() =~ /'Name' is required./
         report "name is required"
 
         when: "Enter all details"
-        page.busRulesObjects.findBusRulesObject.prompt.parameters.name = "Foo"
+        page.busRulesObjects.findBusRulesObject.prompt.parameters.name.input = "Foo"
         page.busRulesObjects.findBusRulesObject.prompt.ok.click()
 
         then:

@@ -21,7 +21,7 @@ class FindBusRulesObject_MenuItem extends Module {
     static content = {
         menuItem { module(ServiceActionsPanel).dropdown
                     .$(".isis-busrules-busrulesobjects li.isis-busrules-busrulesobjects-findbusrulesobject a")}
-        prompt(wait:3) { module FindBusRulesObject_Prompt }
+        prompt(wait:true) { module FindBusRulesObject_Prompt }
     }
 }
 
@@ -39,8 +39,14 @@ class FindBusRulesObject_Prompt extends ActionParametersFormPanel {
 
 class FindBusRulesObject_PromptParams extends Module {
     static content = {
-        name { $(".isis-name").module(StringPanel).input }
-        nameFeedback(wait:3) { $(".isis-name").module(StringPanel).feedback }
+        name { module(FindBusRulesObject_Name) }
+    }
+}
+
+class FindBusRulesObject_Name extends Module {
+    static content = {
+        input { $(".isis-name").module(StringPanel).input }
+        feedback(wait:true) { $(".isis-name").module(StringPanel).feedback }
     }
 }
 
