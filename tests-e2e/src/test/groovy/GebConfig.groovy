@@ -41,7 +41,7 @@ environments {
 		driverManager.setup()
 		driver = {
 
-			def headlessMode = false
+			def headlessMode = System.getProperty("headless") == "true"
 
 			ChromeDriver driverInstance
 

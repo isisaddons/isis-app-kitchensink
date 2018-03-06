@@ -76,11 +76,17 @@ drivers.each { driver ->
     }
 }
 
+
 chromeTest {
     dependsOn unzipChromeDriver
 
     def chromedriverFilename = Os.isFamily(Os.FAMILY_WINDOWS) ? "chromedriver.exe" : "chromedriver"
     systemProperty "webdriver.chrome.driver", new File(unzipChromeDriver.outputs.files.singleFile, chromedriverFilename).absolutePath
+
+    def headlessMode = System.getProperty("headless")
+    if(headlessMode == "true") {
+        systemProperty "headless", "true"
+    }
 }
 
 test {
