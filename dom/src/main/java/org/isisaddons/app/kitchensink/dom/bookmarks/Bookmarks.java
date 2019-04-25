@@ -27,10 +27,6 @@ import org.apache.isis.applib.services.bookmark.BookmarkService2;
 @DomainService(
         nature = NatureOfService.VIEW_MENU_ONLY
 )
-@DomainServiceLayout(
-        menuOrder = "16.1",
-        named="Misc"
-)
 public class Bookmarks {
 
     @MemberOrder(sequence = "20")

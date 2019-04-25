@@ -165,11 +165,4 @@ public class BlobClobObject implements Entity<BlobClobObject> {
     }
 
 
-    @javax.inject.Inject
-    OtherObjects otherObjects;
-
-    @javax.inject.Inject
-    OtherBoundedObjects otherBoundedObjects;
-
-
 }

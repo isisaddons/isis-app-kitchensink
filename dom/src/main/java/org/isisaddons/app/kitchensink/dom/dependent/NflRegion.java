@@ -18,10 +18,12 @@ package org.isisaddons.app.kitchensink.dom.dependent;
 
 import java.util.Arrays;
 import java.util.List;
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
+import java.util.stream.Collectors;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@AllArgsConstructor
 public enum NflRegion {
     AFC_NORTH(NflLeague.AFC, "North"),
     AFC_EAST(NflLeague.AFC, "East"),
@@ -32,28 +34,14 @@ public enum NflRegion {
     NFC_SOUTH(NflLeague.NFC, "South"),
     NFC_WEST(NflLeague.NFC, "West");
 
+    @Getter
     private final NflLeague league;
+    @Getter
     private final String region;
 
-    NflRegion(NflLeague league, String region) {
-        this.league = league;
-        this.region = region;
-    }
-
-    public NflLeague getLeague() {
-        return league;
-    }
-
-    public String getRegion() {
-        return region;
-    }
-
     public static List<NflRegion> thoseFor(final NflLeague league) {
-        return Lists.newArrayList(Iterables.filter(Arrays.asList(values()), new Predicate<NflRegion>() {
-            @Override
-            public boolean apply(NflRegion input) {
-                return input.getLeague() == league;
-            }
-        }));
+        return Arrays.stream(values())
+                .filter(input -> input.getLeague() == league)
+                .collect(Collectors.toList());
     }
 }

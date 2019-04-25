@@ -20,8 +20,7 @@ import javax.inject.Inject;
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.VersionStrategy;
-import org.isisaddons.app.kitchensink.dom.Entity;
-import org.apache.isis.applib.DomainObjectContainer;
+
 import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.BookmarkPolicy;
 import org.apache.isis.applib.annotation.DomainObject;
@@ -30,6 +29,11 @@ import org.apache.isis.applib.annotation.InvokeOn;
 import org.apache.isis.applib.annotation.Title;
 import org.apache.isis.applib.services.actinvoc.ActionInvocationContext;
 import org.apache.isis.applib.util.ObjectContracts;
+
+import org.isisaddons.app.kitchensink.dom.Entity;
+
+import lombok.Getter;
+import lombok.Setter;
 
 @javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE)
 @javax.jdo.annotations.DatastoreIdentity(
@@ -46,35 +50,15 @@ import org.apache.isis.applib.util.ObjectContracts;
 )
 public class WorkflowObject implements Entity<WorkflowObject> {
 
-    //region > name (property)
-
-    private String name;
-
     @Column(allowsNull="false")
     @Title(sequence="1")
-    public String getName() {
-        return name;
-    }
+    @Getter @Setter
+    private String name;
 
-    public void setName(final String name) {
-        this.name = name;
-    }
-
-    //endregion
-
-
-    //region > state (property)
-    private State state;
 
     @javax.jdo.annotations.Column(allowsNull = "false")
-    public State getState() {
-        return state;
-    }
-
-    public void setState(final State state) {
-        this.state = state;
-    }
-    //endregion
+    @Getter @Setter
+    private State state;
 
     //region > previous (action)
     @Action(invokeOn = InvokeOn.OBJECT_AND_COLLECTION)
@@ -92,23 +76,15 @@ public class WorkflowObject implements Entity<WorkflowObject> {
     }
     //endregion
 
-    //region > compareTo
+
 
     @Override
     public int compareTo(final WorkflowObject other) {
         return ObjectContracts.compare(this, other, "name");
     }
 
-    //endregion
-
-    //region > injected services
-
-    @javax.inject.Inject
-    @SuppressWarnings("unused")
-    private DomainObjectContainer container;
 
     @Inject
-    private ActionInvocationContext actionInvocationContext;
-    //endregion
+    ActionInvocationContext actionInvocationContext;
 
 }

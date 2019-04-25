@@ -20,24 +20,23 @@ import java.util.List;
 
 import org.apache.isis.applib.annotation.ActionLayout;
 import org.apache.isis.applib.annotation.DomainService;
-import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.services.repository.RepositoryService;
 import org.apache.isis.applib.value.Password;
 
+import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
+
 @DomainService(
         nature = NatureOfService.VIEW_MENU_ONLY,
         repositoryFor = TextObject.class
 )
-@DomainServiceLayout(
-        named="Data Types",
-        menuOrder = "10.1"
-)
-public class TextObjects  {
+public class TextObjects extends RepositoryAbstract<TextObject> {
 
-    private final static Class<TextObject> cls = TextObject.class;
+    public TextObjects() {
+        super(TextObject.class, Visibility.VISIBLE);
+    }
 
     @MemberOrder(sequence = "30")
     public TextObject createTextObject(
@@ -92,12 +91,12 @@ public class TextObjects  {
 
     @ActionLayout(named="First TextObject")
     public TextObject first() {
-        return listAll().stream().findFirst().orElse(null);
+        return super.first();
     }
 
     @ActionLayout(named="List All TextObjects")
     public List<TextObject> listAll() {
-        return repositoryService.allInstances(cls);
+        return super.listAll();
     }
 
 

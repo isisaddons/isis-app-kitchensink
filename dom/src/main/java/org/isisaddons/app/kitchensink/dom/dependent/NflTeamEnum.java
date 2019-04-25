@@ -17,14 +17,15 @@
 package org.isisaddons.app.kitchensink.dom.dependent;
 
 import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.google.common.base.Objects;
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@AllArgsConstructor
 public enum NflTeamEnum {
     BAL("Baltimore Ravens", NflRegion.AFC_NORTH),
     CIN("Cincinnati Bengals", NflRegion.AFC_NORTH),
@@ -59,29 +60,15 @@ public enum NflTeamEnum {
     SEA("Seattle Seahawks", NflRegion.NFC_WEST),
     STL("St Louis Rams", NflRegion.NFC_WEST);
 
+    @Getter
     private final String name;
-    private final NflRegion leagueRegion;
-
-    NflTeamEnum(String name, NflRegion leagueRegion) {
-        this.name = name;
-        this.leagueRegion = leagueRegion;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public NflRegion getRegion() {
-        return leagueRegion;
-    }
+    @Getter
+    private final NflRegion region;
 
     public static List<NflTeamEnum> thoseFor(final NflRegion leagueRegion) {
-        return Lists.newArrayList(Iterables.filter(Arrays.asList(values()), new Predicate<NflTeamEnum>() {
-            @Override
-            public boolean apply(NflTeamEnum input) {
-                return input.getRegion() == leagueRegion;
-            }
-        }));
+        return Arrays.stream(values())
+                .filter(input -> input.getRegion() == leagueRegion)
+                .collect(Collectors.toList());
     }
 
     public static NflTeamEnum lookup(final NflTeamEntity nflTeamEntity) {
@@ -90,13 +77,10 @@ public enum NflTeamEnum {
     }
 
     public static NflTeamEnum lookup(final String name, final NflRegion leagueRegion) {
-        final Iterator<NflTeamEnum> iter = Iterables.filter(Arrays.asList(values()), new Predicate<NflTeamEnum>() {
-            @Override
-            public boolean apply(NflTeamEnum input) {
-                return Objects.equal(name, input.getName()) && Objects.equal(leagueRegion, input.getRegion());
-            }
-        }).iterator();
-        return iter.hasNext()? iter.next(): null;
+        return Arrays.stream(values())
+                .filter(input -> Objects.equal(name, input.getName()) &&
+                                 Objects.equal(leagueRegion, input.getRegion()))
+                .findFirst().orElse(null);
     }
 
     @Override

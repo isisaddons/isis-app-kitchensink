@@ -28,10 +28,6 @@ import org.apache.isis.applib.annotation.SemanticsOf;
 @DomainService(
         nature = NatureOfService.VIEW_MENU_ONLY
 )
-@DomainServiceLayout(
-        menuBar = DomainServiceLayout.MenuBar.TERTIARY,
-        menuOrder = "1"
-)
 public class Security {
 
     @Action(semantics= SemanticsOf.SAFE)

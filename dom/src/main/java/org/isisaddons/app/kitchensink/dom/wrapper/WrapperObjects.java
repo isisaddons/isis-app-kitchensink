@@ -20,7 +20,6 @@ import java.util.List;
 
 import org.apache.isis.applib.annotation.ActionLayout;
 import org.apache.isis.applib.annotation.DomainService;
-import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.ParameterLayout;
@@ -30,10 +29,6 @@ import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
 @DomainService(
         nature = NatureOfService.VIEW_MENU_ONLY,
         repositoryFor = WrapperObject.class
-)
-@DomainServiceLayout(
-        named="Data Types",
-        menuOrder = "10.3"
 )
 public class WrapperObjects extends RepositoryAbstract<WrapperObject> {
 
@@ -57,7 +52,7 @@ public class WrapperObjects extends RepositoryAbstract<WrapperObject> {
             final float f,
             @ParameterLayout(named="Double")
             final double d) {
-        final WrapperObject obj = container.newTransientInstance(WrapperObject.class);
+        final WrapperObject obj = factoryService.instantiate(WrapperObject.class);
         obj.setName(name);
 
         obj.setSomeByteWrapperMandatory(b);
@@ -83,7 +78,7 @@ public class WrapperObjects extends RepositoryAbstract<WrapperObject> {
         obj.setSomeDoubleWrapperMandatory(d);
         obj.setSomeDoubleWrapperOptional(d);
 
-        container.persistIfNotAlready(obj);
+        repositoryService.persist(obj);
         return obj;
     }
 

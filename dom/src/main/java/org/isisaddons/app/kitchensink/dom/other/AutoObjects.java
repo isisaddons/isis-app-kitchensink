@@ -24,7 +24,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @DomainService(nature = NatureOfService.DOMAIN, repositoryFor = AutoObject.class)
-@DomainServiceLayout(menuOrder = "90")
 public class AutoObjects extends RepositoryAbstract<AutoObject> {
 
     public AutoObjects() {
@@ -63,10 +62,10 @@ public class AutoObjects extends RepositoryAbstract<AutoObject> {
     @Action(hidden = Where.EVERYWHERE)
     public AutoObject create(
             final @ParameterLayout(named="Name") String name) {
-        final AutoObject obj = container.newTransientInstance(AutoObject.class);
+        final AutoObject obj = factoryService.instantiate(AutoObject.class);
         obj.setName(name);
 
-        container.persistIfNotAlready(obj);
+        repositoryService.persist(obj);
         return obj;
     }
 

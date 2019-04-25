@@ -21,13 +21,13 @@ language governing permissions and limitations under the License.
     <parent>
         <groupId>org.incode</groupId>
         <artifactId>incode-parent</artifactId>
-        <version>1.16.0.20180208-1809</version>
+        <version>1.17.0.20190305-1828-b0e9bc8d</version>
         <relativePath/>
     </parent>
 
     <groupId>org.isisaddons.app.kitchensink</groupId>
     <artifactId>isis-app-kitchensink</artifactId>
-    <version>1.16.1-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
 
     <name>Isis Addons App KitchensinkApp</name>
 
@@ -38,7 +38,7 @@ language governing permissions and limitations under the License.
     </prerequisites>
 
     <properties>
-        <isis.version>1.16.2-SNAPSHOT</isis.version>
+        <isis.version>1.17.0.20190425-1136-bfb6ade9</isis.version>
 
         <kotlin.version>1.2.21</kotlin.version>
 
@@ -61,22 +61,22 @@ language governing permissions and limitations under the License.
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>isis-app-kitchensink-app</artifactId>
-                <version>1.16.1-SNAPSHOT</version>
+                <version>1.0.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>isis-app-kitchensink-dom</artifactId>
-                <version>1.16.1-SNAPSHOT</version>
+                <version>1.0.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>isis-app-kitchensink-fixture</artifactId>
-                <version>1.16.1-SNAPSHOT</version>
+                <version>1.0.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>isis-app-kitchensink-webapp</artifactId>
-                <version>1.16.1-SNAPSHOT</version>
+                <version>1.0.0-SNAPSHOT</version>
             </dependency>
 
             <!-- addon modules -->
@@ -103,4 +103,46 @@ language governing permissions and limitations under the License.
         <module>webapp</module>
     </modules>
 
+    <profiles>
+        <profile>
+            <id>incode-work-maven</id>
+            <activation>
+                <property>
+                    <name>!skip.incode-work-maven</name>
+                </property>
+            </activation>
+            <repositories>
+                <repository>
+                    <id>incode-work-maven</id>
+                    <url>https://repo.incode.work/</url>
+                    <name>Incode Work (maven)</name>
+                    <releases>
+                        <enabled>true</enabled>
+                        <updatePolicy>always</updatePolicy>
+                        <checksumPolicy>fail</checksumPolicy>
+                    </releases>
+                    <snapshots>
+                        <enabled>false</enabled>
+                        <updatePolicy>always</updatePolicy>
+                        <checksumPolicy>fail</checksumPolicy>
+                    </snapshots>
+                    <layout>default</layout>
+                </repository>
+            </repositories>
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>incode-work-maven</id>
+                    <name>Incode Work (maven)</name>
+                    <releases>
+                        <enabled>true</enabled>
+                        <updatePolicy>never</updatePolicy>
+                        <checksumPolicy>fail</checksumPolicy>
+                    </releases>
+                    <url>https://repo.incode.work/</url>
+                    <layout>default</layout>
+                </pluginRepository>
+            </pluginRepositories>
+        </profile>
+
+    </profiles>
 </project>

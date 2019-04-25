@@ -44,7 +44,6 @@ import org.isisaddons.app.kitchensink.dom.hierarchy.child.ChildObject;
 import org.isisaddons.app.kitchensink.dom.hierarchy.child.ChildObjects;
 
 import static com.google.common.base.Predicates.not;
-import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -76,20 +75,20 @@ import static org.isisaddons.app.kitchensink.dom.hierarchy.child.PredicateUtil.c
 @DomainObjectLayout(
         bookmarking = BookmarkPolicy.AS_ROOT
 )
-@Getter @Setter
 @RequiredArgsConstructor(staticName = "create")
 public class ParentObject implements Entity<ParentObject> {
 
 
     @Column(allowsNull="false")
     @Title(sequence="1")
+    @Getter @Setter
     @lombok.NonNull
     private String name;
 
     @Persistent(mappedBy = "parent", dependentElement = "false")
+    @Getter @Setter
     @MemberOrder(sequence = "1")
     private SortedSet<ChildObject> children = new TreeSet<ChildObject>();
-
 
 
     @Action(associateWith = "children", associateWithSequence = "1")
@@ -150,20 +149,15 @@ public class ParentObject implements Entity<ParentObject> {
     }
 
 
-
     @Override
     public int compareTo(ParentObject other) {
         return Ordering.natural().onResultOf(ParentObject::getName).compare(this, other);
     }
 
 
-
-
-    @Getter(AccessLevel.PRIVATE) @Setter(AccessLevel.PRIVATE)
     @javax.inject.Inject
-    private ChildObjects childObjects;
+    ChildObjects childObjects;
 
-    @Getter(AccessLevel.PRIVATE) @Setter(AccessLevel.PRIVATE)
     @javax.inject.Inject
     ParentObjects parentObjects;
 

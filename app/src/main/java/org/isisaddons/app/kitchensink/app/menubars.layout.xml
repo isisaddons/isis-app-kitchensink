@@ -4,34 +4,14 @@
         <mb3:menu>
             <mb3:named>Business Rules</mb3:named>
             <mb3:section>
-                <mb3:serviceAction objectType="BusRulesObject" id="firstBusRulesObject">
-                    <cpt:named>First Bus Rules Object</cpt:named>
-                </mb3:serviceAction>
-                <mb3:serviceAction objectType="BusRulesObject" id="findBusRulesObject">
-                    <cpt:named>Find Bus Rules Object</cpt:named>
-                </mb3:serviceAction>
-                <mb3:serviceAction objectType="BusRulesObject" id="findMatchingBusRulesObject">
-                    <cpt:named>Find Matching Bus Rules Object</cpt:named>
-                </mb3:serviceAction>
-                <mb3:serviceAction objectType="BusRulesObject" id="listAllBusRulesObject">
-                    <cpt:named>List All Bus Rules Object</cpt:named>
-                </mb3:serviceAction>
-                <mb3:serviceAction objectType="BusRulesObject" id="createBusRulesObject">
-                    <cpt:named>Create Bus Rules Object</cpt:named>
-                </mb3:serviceAction>
-                <mb3:serviceAction objectType="BusRulesObject" id="listAllBusRulesObjectDisabled">
-                    <cpt:named>List All Bus Rules Object Disabled</cpt:named>
-                </mb3:serviceAction>
-                <mb3:serviceAction objectType="BusRulesObject" id="listAllBusRulesObjectHidden">
-                    <cpt:named>List All Bus Rules Object Hidden</cpt:named>
-                </mb3:serviceAction>
-            </mb3:section>
-            <mb3:section>
                 <mb3:serviceAction objectType="busrules.BusRulesObjects" id="findBusRulesObject">
                     <cpt:named>Find Bus Rules Object</cpt:named>
                 </mb3:serviceAction>
                 <mb3:serviceAction objectType="busrules.BusRulesObjects" id="firstBusRulesObject">
                     <cpt:named>First Bus Rules Object</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="busrules.BusRulesObjects" id="findMatchingBusRulesObject">
+                    <cpt:named>Find Matching Bus Rules Object</cpt:named>
                 </mb3:serviceAction>
                 <mb3:serviceAction objectType="busrules.BusRulesObjects" id="listAllBusRulesObject">
                     <cpt:named>List All Bus Rules Object</cpt:named>
@@ -377,6 +357,11 @@
                     <cpt:named>Create</cpt:named>
                 </mb3:serviceAction>
             </mb3:section>
+            <mb3:section>
+                <mb3:serviceAction objectType="MiscObject" id="add">
+                    <cpt:named>Add (dependent defaults)</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
         </mb3:menu>
         <mb3:menu>
             <mb3:named>Hierarchy Objects</mb3:named>
@@ -622,6 +607,9 @@
                 </mb3:serviceAction>
             </mb3:section>
             <mb3:section>
+                <mb3:serviceAction objectType="isisApplib.MetaModelServicesMenu" id="downloadMetaModelXml">
+                    <cpt:named>Download Meta Model (XML)</cpt:named>
+                </mb3:serviceAction>
                 <mb3:serviceAction objectType="isisApplib.MetaModelServicesMenu" id="downloadMetaModel">
                     <cpt:named>Download Meta Model (CSV)</cpt:named>
                 </mb3:serviceAction>

@@ -17,24 +17,23 @@
 package org.isisaddons.app.kitchensink.dom.contrib.contributed;
 
 import java.util.List;
+
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import org.isisaddons.app.kitchensink.dom.contrib.contributee.FoodStuff;
-import org.isisaddons.app.kitchensink.dom.contrib.contributee.Person;
+
 import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.ActionLayout;
 import org.apache.isis.applib.annotation.Contributed;
 import org.apache.isis.applib.annotation.DomainService;
-import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.SemanticsOf;
 
+import org.isisaddons.app.kitchensink.dom.contrib.contributee.FoodStuff;
+import org.isisaddons.app.kitchensink.dom.contrib.contributee.Person;
+
 @DomainService(
         nature = NatureOfService.VIEW_CONTRIBUTIONS_ONLY
-)
-@DomainServiceLayout(
-        menuOrder = "10.1"
 )
 public class PreferenceContributions {
 

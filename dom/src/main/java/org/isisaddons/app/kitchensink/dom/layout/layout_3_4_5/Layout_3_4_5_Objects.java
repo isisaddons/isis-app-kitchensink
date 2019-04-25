@@ -28,9 +28,6 @@ import org.isisaddons.app.kitchensink.dom.layout.layout_4_4_4.Layout_4_4_4_Objec
         nature = NatureOfService.VIEW_MENU_ONLY,
         repositoryFor = Layout_4_4_4_Object.class
 )
-@DomainServiceLayout(
-        menuOrder = "10"
-)
 public class Layout_3_4_5_Objects extends RepositoryAbstract<Layout_3_4_5_Object> {
 
     public Layout_3_4_5_Objects() {
@@ -40,7 +37,7 @@ public class Layout_3_4_5_Objects extends RepositoryAbstract<Layout_3_4_5_Object
     @MemberOrder(sequence = "30")
     public Layout_3_4_5_Object create(
             final String name) {
-        final Layout_3_4_5_Object obj = container.newTransientInstance(Layout_3_4_5_Object.class);
+        final Layout_3_4_5_Object obj = factoryService.instantiate(Layout_3_4_5_Object.class);
         obj.setName(name);
 
         obj.setSomeString1(name);
@@ -50,7 +47,7 @@ public class Layout_3_4_5_Objects extends RepositoryAbstract<Layout_3_4_5_Object
         obj.setSomeString5(name);
         obj.setSomeString6(name);
 
-        container.persistIfNotAlready(obj);
+        repositoryService.persist(obj);
         return obj;
     }
 

@@ -22,7 +22,6 @@ import org.apache.isis.applib.NonRecoverableException;
 import org.apache.isis.applib.RecoverableException;
 import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.DomainService;
-import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.ParameterLayout;
@@ -36,10 +35,6 @@ import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
         nature = NatureOfService.VIEW_MENU_ONLY,
         repositoryFor = MessageObject.class
 )
-@DomainServiceLayout(
-        named="Messages",
-        menuOrder = "10.12"
-)
 public class MessageObjects extends RepositoryAbstract<MessageObject> {
 
     public MessageObjects() {
@@ -51,7 +46,7 @@ public class MessageObjects extends RepositoryAbstract<MessageObject> {
             @ParameterLayout(named="Name")
             final String name) {
         final MessageObject messageObject = create(name);
-        container.informUser("Created object: " + name + " (informUser)");
+        messageService.informUser("Created object: " + name + " (informUser)");
         return messageObject;
     }
 
@@ -60,7 +55,7 @@ public class MessageObjects extends RepositoryAbstract<MessageObject> {
             @ParameterLayout(named="Name")
             final String name) {
         final MessageObject messageObject = create(name);
-        container.warnUser("Created object: " + name + " (warnUser)");
+        messageService.warnUser("Created object: " + name + " (warnUser)");
         return messageObject;
     }
 
@@ -69,7 +64,7 @@ public class MessageObjects extends RepositoryAbstract<MessageObject> {
             @ParameterLayout(named="Name")
             final String name) {
         final MessageObject messageObject = create(name);
-        container.raiseError("Created object: " + name + " (raiseError)");
+        messageService.raiseError("Created object: " + name + " (raiseError)");
         return messageObject;
     }
 
@@ -105,10 +100,10 @@ public class MessageObjects extends RepositoryAbstract<MessageObject> {
 
     @Programmatic
     public MessageObject create(String name) {
-        final MessageObject obj = container.newTransientInstance(MessageObject.class);
+        final MessageObject obj = factoryService.instantiate(MessageObject.class);
         obj.setName(name);
 
-        container.persistIfNotAlready(obj);
+        repositoryService.persist(obj);
         return obj;
     }
 

@@ -37,6 +37,9 @@ import org.apache.isis.applib.util.ObjectContracts;
 
 import org.isisaddons.app.kitchensink.dom.Entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE)
 @javax.jdo.annotations.DatastoreIdentity(
         strategy=javax.jdo.annotations.IdGeneratorStrategy.IDENTITY,
@@ -52,34 +55,18 @@ import org.isisaddons.app.kitchensink.dom.Entity;
 )
 public class EnumeratedObject implements Entity<EnumeratedObject> {
 
-    //region > name (property)
-
-    private String name;
-
     @Column(allowsNull="false")
     @Title(sequence="1")
-    public String getName() {
-        return name;
-    }
+    @Getter @Setter
+    private String name;
 
-    public void setName(final String name) {
-        this.name = name;
-    }
 
-    //endregion
 
-    
     //region > someBoolean (property)
-    private boolean someBoolean;
 
     @Property(editing = Editing.DISABLED)
-    public boolean getSomeBoolean() {
-        return someBoolean;
-    }
-
-    public void setSomeBoolean(final boolean aBoolean) {
-        this.someBoolean = aBoolean;
-    }
+    @Getter @Setter
+    private boolean someBoolean;
 
     @Action(semantics=SemanticsOf.IDEMPOTENT)
     public EnumeratedObject updateSomeBoolean(final boolean b) {
@@ -87,48 +74,24 @@ public class EnumeratedObject implements Entity<EnumeratedObject> {
         return this;
     }
     public boolean default0UpdateSomeBoolean() {
-        return getSomeBoolean();
+        return isSomeBoolean();
     }
     //endregion
 
-    //region > someBooleanHidden (property)
-    private boolean someBooleanHidden;
 
     @Property(hidden = Where.EVERYWHERE)
-    public boolean getSomeBooleanHidden() {
-        return someBooleanHidden;
-    }
+    @Getter @Setter
+    private boolean someBooleanHidden;
 
-    public void setSomeBooleanHidden(final boolean someBooleanHidden) {
-        this.someBooleanHidden = someBooleanHidden;
-    }
-
-    //endregion
-
-    //region > someBooleanDisabled (property)
-    private boolean someBooleanDisabled;
 
     @Property(editing = Editing.DISABLED)
-    public boolean getSomeBooleanDisabled() {
-        return someBooleanDisabled;
-    }
+    @Getter @Setter
+    private boolean someBooleanDisabled;
 
-    public void setSomeBooleanDisabled(final boolean someBooleanDisabled) {
-        this.someBooleanDisabled = someBooleanDisabled;
-    }
-
-    //endregion
 
     //region > someBooleanWithValidation (property)
+    @Getter @Setter
     private boolean someBooleanWithValidation;
-
-    public boolean getSomeBooleanWithValidation() {
-        return someBooleanWithValidation;
-    }
-
-    public void setSomeBooleanWithValidation(final boolean someBooleanWithValidation) {
-        this.someBooleanWithValidation = someBooleanWithValidation;
-    }
 
     public String validateSomeBooleanWithValidation(final boolean i) {
         // this validation is broken, somehow...
@@ -145,7 +108,7 @@ public class EnumeratedObject implements Entity<EnumeratedObject> {
         return validateSomeBooleanWithValidation(i);
     }
     public boolean default0UpdateSomeBooleanWithValidation() {
-        return getSomeBooleanWithValidation();
+        return isSomeBooleanWithValidation();
     }
 
     //endregion
@@ -153,16 +116,9 @@ public class EnumeratedObject implements Entity<EnumeratedObject> {
 
 
     //region > someBooleanWrapperMandatory (property)
-    private Boolean someBooleanWrapperMandatory;
-
     @Column(allowsNull = "false")
-    public Boolean getSomeBooleanWrapperMandatory() {
-        return someBooleanWrapperMandatory;
-    }
-
-    public void setSomeBooleanWrapperMandatory(final Boolean someBooleanWrapperMandatory) {
-        this.someBooleanWrapperMandatory = someBooleanWrapperMandatory;
-    }
+    @Getter @Setter
+    private Boolean someBooleanWrapperMandatory;
 
     @Action(semantics=SemanticsOf.IDEMPOTENT)
     public EnumeratedObject updateSomeBooleanWrapperMandatory(final Boolean i) {
@@ -189,16 +145,9 @@ public class EnumeratedObject implements Entity<EnumeratedObject> {
     //endregion
 
     //region > someBooleanWrapperOptional (property)
-    private Boolean someBooleanWrapperOptional;
-
+    @Getter @Setter
     @Column(allowsNull = "true")
-    public Boolean getSomeBooleanWrapperOptional() {
-        return someBooleanWrapperOptional;
-    }
-
-    public void setSomeBooleanWrapperOptional(final Boolean someBooleanWrapperOptional) {
-        this.someBooleanWrapperOptional = someBooleanWrapperOptional;
-    }
+    private Boolean someBooleanWrapperOptional;
 
     @Action(semantics=SemanticsOf.IDEMPOTENT)
     public EnumeratedObject updateSomeBooleanWrapperOptional(
@@ -217,82 +166,51 @@ public class EnumeratedObject implements Entity<EnumeratedObject> {
         return this;
     }
     //endregion
-    
-    //region > someBooleanWrapperHidden (property)
-    private java.lang.Boolean someBooleanWrapperHidden;
+
 
     @Column(allowsNull = "false")
     @Property(hidden = Where.EVERYWHERE)
-    public java.lang.Boolean getSomeBooleanWrapperHidden() {
-    return someBooleanWrapperHidden;
-    }
-    
-    public void setSomeBooleanWrapperHidden(final java.lang.Boolean someBooleanWrapperHidden) {
-    this.someBooleanWrapperHidden = someBooleanWrapperHidden;
-    }
-    
-    //endregion
-    
-    //region > someBooleanWrapperDisabled (property)
-    private java.lang.Boolean someBooleanWrapperDisabled;
+    @Getter @Setter
+    private java.lang.Boolean someBooleanWrapperHidden;
+
 
     @Column(allowsNull = "false")
     @Property(editing = Editing.DISABLED)
-    public java.lang.Boolean getSomeBooleanWrapperDisabled() {
-    return someBooleanWrapperDisabled;
-    }
-    
-    public void setSomeBooleanWrapperDisabled(final java.lang.Boolean someBooleanWrapperDisabled) {
-    this.someBooleanWrapperDisabled = someBooleanWrapperDisabled;
-    }
-    
-    //endregion
-    
+    @Getter @Setter
+    private java.lang.Boolean someBooleanWrapperDisabled;
+
+
     //region > someBooleanWrapperWithValidation (property)
+    @Column(allowsNull = "false")
+    @Getter @Setter
     private java.lang.Boolean someBooleanWrapperWithValidation;
 
-    @Column(allowsNull = "false")
-    public java.lang.Boolean getSomeBooleanWrapperWithValidation() {
-        return someBooleanWrapperWithValidation;
-    }
-    
-    public void setSomeBooleanWrapperWithValidation(final java.lang.Boolean someBooleanWrapperWithValidation) {
-    this.someBooleanWrapperWithValidation = someBooleanWrapperWithValidation;
-    }
-    
     public String validateSomeBooleanWrapperWithValidation(final java.lang.Boolean i) {
         // this validation is broken, somehow...
         return null; // i == getSomeBooleanWrapperWithValidation() ? "Can only enter opposite of current": null;
     }
-    
+
     @Action(semantics=SemanticsOf.IDEMPOTENT)
     public EnumeratedObject updateSomeBooleanWrapperWithValidation(final java.lang.Boolean i) {
     setSomeBooleanWrapperWithValidation(i);
     return this;
     }
-    
+
     public String validateUpdateSomeBooleanWrapperWithValidation(final java.lang.Boolean i) {
     return validateSomeBooleanWrapperWithValidation(i);
     }
     public java.lang.Boolean default0UpdateSomeBooleanWrapperWithValidation() {
     return getSomeBooleanWrapperWithValidation();
     }
-    
+
     //endregion
-    
-    
-    
+
+
+
     //region > someEnumOf3Mandatory (property)
-    private EnumOf3 someEnumOf3Mandatory;
-
     @Column(allowsNull = "false")
-    public EnumOf3 getSomeEnumOf3Mandatory() {
-        return someEnumOf3Mandatory;
-    }
-
-    public void setSomeEnumOf3Mandatory(final EnumOf3 someEnumOf3Mandatory) {
-        this.someEnumOf3Mandatory = someEnumOf3Mandatory;
-    }
+    @Getter @Setter
+    private EnumOf3 someEnumOf3Mandatory;
 
     @Action(semantics=SemanticsOf.IDEMPOTENT)
     public EnumeratedObject updateSomeEnumOf3Mandatory(final EnumOf3 i) {
@@ -305,16 +223,9 @@ public class EnumeratedObject implements Entity<EnumeratedObject> {
     //endregion
 
     //region > someEnumOf3Optional (property)
-    private EnumOf3 someEnumOf3Optional;
-
     @Column(allowsNull = "true")
-    public EnumOf3 getSomeEnumOf3Optional() {
-        return someEnumOf3Optional;
-    }
-
-    public void setSomeEnumOf3Optional(final EnumOf3 someEnumOf3Optional) {
-        this.someEnumOf3Optional = someEnumOf3Optional;
-    }
+    @Getter @Setter
+    private EnumOf3 someEnumOf3Optional;
 
     @Action(semantics=SemanticsOf.IDEMPOTENT)
     public EnumeratedObject updateSomeEnumOf3Optional(@Parameter(optionality=Optionality.OPTIONAL) final  EnumOf3 i) {
@@ -332,47 +243,22 @@ public class EnumeratedObject implements Entity<EnumeratedObject> {
     }
     //endregion
 
-    //region > someEnumOf3Hidden (property)
-    private EnumOf3 someEnumOf3Hidden;
-
     @Column(allowsNull = "false")
     @Property(hidden = Where.EVERYWHERE)
-    public EnumOf3 getSomeEnumOf3Hidden() {
-        return someEnumOf3Hidden;
-    }
+    @Getter @Setter
+    private EnumOf3 someEnumOf3Hidden;
 
-    public void setSomeEnumOf3Hidden(final EnumOf3 someEnumOf3Hidden) {
-        this.someEnumOf3Hidden = someEnumOf3Hidden;
-    }
-
-    //endregion
-
-    //region > someEnumOf3Disabled (property)
-    private EnumOf3 someEnumOf3Disabled;
 
     @Column(allowsNull = "false")
     @Property(editing = Editing.DISABLED)
-    public EnumOf3 getSomeEnumOf3Disabled() {
-        return someEnumOf3Disabled;
-    }
+    @Getter @Setter
+    private EnumOf3 someEnumOf3Disabled;
 
-    public void setSomeEnumOf3Disabled(final EnumOf3 someEnumOf3Disabled) {
-        this.someEnumOf3Disabled = someEnumOf3Disabled;
-    }
-
-    //endregion
 
     //region > someEnumOf3WithValidation (property)
-    private EnumOf3 someEnumOf3WithValidation;
-
     @Column(allowsNull = "false")
-    public EnumOf3 getSomeEnumOf3WithValidation() {
-        return someEnumOf3WithValidation;
-    }
-
-    public void setSomeEnumOf3WithValidation(final EnumOf3 someEnumOf3WithValidation) {
-        this.someEnumOf3WithValidation = someEnumOf3WithValidation;
-    }
+    @Getter @Setter
+    private EnumOf3 someEnumOf3WithValidation;
 
     public String validateSomeEnumOf3WithValidation(final EnumOf3 i) {
         return i == EnumOf3.AMEX ? "Can't enter AMEX": null;
@@ -416,16 +302,9 @@ public class EnumeratedObject implements Entity<EnumeratedObject> {
 
 
     //region > someEnumOf4Mandatory (property)
-    private EnumOf4 someEnumOf4Mandatory;
-
     @Column(allowsNull = "false")
-    public EnumOf4 getSomeEnumOf4Mandatory() {
-        return someEnumOf4Mandatory;
-    }
-
-    public void setSomeEnumOf4Mandatory(final EnumOf4 someEnumOf4Mandatory) {
-        this.someEnumOf4Mandatory = someEnumOf4Mandatory;
-    }
+    @Getter @Setter
+    private EnumOf4 someEnumOf4Mandatory;
 
     @Action(semantics=SemanticsOf.IDEMPOTENT)
     public EnumeratedObject updateSomeEnumOf4Mandatory(final EnumOf4 i) {
@@ -438,16 +317,9 @@ public class EnumeratedObject implements Entity<EnumeratedObject> {
     //endregion
 
     //region > someEnumOf4Optional (property)
-    private EnumOf4 someEnumOf4Optional;
-
     @Column(allowsNull = "true")
-    public EnumOf4 getSomeEnumOf4Optional() {
-        return someEnumOf4Optional;
-    }
-
-    public void setSomeEnumOf4Optional(final EnumOf4 someEnumOf4Optional) {
-        this.someEnumOf4Optional = someEnumOf4Optional;
-    }
+    @Getter @Setter
+    private EnumOf4 someEnumOf4Optional;
 
     @Action(semantics=SemanticsOf.IDEMPOTENT)
     public EnumeratedObject updateSomeEnumOf4Optional(@Parameter(optionality=Optionality.OPTIONAL) final  EnumOf4 i) {
@@ -465,47 +337,22 @@ public class EnumeratedObject implements Entity<EnumeratedObject> {
     }
 //endregion
 
-    //region > someEnumOf4Hidden (property)
-    private EnumOf4 someEnumOf4Hidden;
-
     @Column(allowsNull = "false")
     @Property(hidden = Where.EVERYWHERE)
-    public EnumOf4 getSomeEnumOf4Hidden() {
-        return someEnumOf4Hidden;
-    }
+    @Getter @Setter
+    private EnumOf4 someEnumOf4Hidden;
 
-    public void setSomeEnumOf4Hidden(final EnumOf4 someEnumOf4Hidden) {
-        this.someEnumOf4Hidden = someEnumOf4Hidden;
-    }
-
-    //endregion
-
-    //region > someEnumOf4Disabled (property)
-    private EnumOf4 someEnumOf4Disabled;
 
     @Column(allowsNull = "false")
     @Property(editing = Editing.DISABLED)
-    public EnumOf4 getSomeEnumOf4Disabled() {
-        return someEnumOf4Disabled;
-    }
+    @Getter @Setter
+    private EnumOf4 someEnumOf4Disabled;
 
-    public void setSomeEnumOf4Disabled(final EnumOf4 someEnumOf4Disabled) {
-        this.someEnumOf4Disabled = someEnumOf4Disabled;
-    }
-
-    //endregion
 
     //region > someEnumOf4WithValidation (property)
-    private EnumOf4 someEnumOf4WithValidation;
-
     @Column(allowsNull = "false")
-    public EnumOf4 getSomeEnumOf4WithValidation() {
-        return someEnumOf4WithValidation;
-    }
-
-    public void setSomeEnumOf4WithValidation(final EnumOf4 someEnumOf4WithValidation) {
-        this.someEnumOf4WithValidation = someEnumOf4WithValidation;
-    }
+    @Getter @Setter
+    private EnumOf4 someEnumOf4WithValidation;
 
     public String validateSomeEnumOf4WithValidation(final EnumOf4 i) {
         return i == EnumOf4.SPRING ? "Can't enter SPRING": null;
@@ -525,19 +372,12 @@ public class EnumeratedObject implements Entity<EnumeratedObject> {
     }
 
     //endregion
-    
-    
+
+
     //region > someEnumOf8Mandatory (property)
-    private EnumOf8 someEnumOf8Mandatory;
-
     @Column(allowsNull = "false")
-    public EnumOf8 getSomeEnumOf8Mandatory() {
-        return someEnumOf8Mandatory;
-    }
-
-    public void setSomeEnumOf8Mandatory(final EnumOf8 someEnumOf8Mandatory) {
-        this.someEnumOf8Mandatory = someEnumOf8Mandatory;
-    }
+    @Getter @Setter
+    private EnumOf8 someEnumOf8Mandatory;
 
     @Action(semantics=SemanticsOf.IDEMPOTENT)
     public EnumeratedObject updateSomeEnumOf8Mandatory(final EnumOf8 i) {
@@ -550,16 +390,10 @@ public class EnumeratedObject implements Entity<EnumeratedObject> {
     //endregion
 
     //region > someEnumOf8Optional (property)
+    @Column(allowsNull = "true")
+    @Getter @Setter
     private EnumOf8 someEnumOf8Optional;
 
-    @Column(allowsNull = "true")
-    public EnumOf8 getSomeEnumOf8Optional() {
-        return someEnumOf8Optional;
-    }
-
-    public void setSomeEnumOf8Optional(final EnumOf8 someEnumOf8Optional) {
-        this.someEnumOf8Optional = someEnumOf8Optional;
-    }
 
     @Action(semantics=SemanticsOf.IDEMPOTENT)
     public EnumeratedObject updateSomeEnumOf8Optional(@Parameter(optionality=Optionality.OPTIONAL) final  EnumOf8 i) {
@@ -577,47 +411,22 @@ public class EnumeratedObject implements Entity<EnumeratedObject> {
     }
     //endregion
 
-    //region > someEnumOf8Hidden (property)
-    private EnumOf8 someEnumOf8Hidden;
-
     @Column(allowsNull = "false")
     @Property(hidden = Where.EVERYWHERE)
-    public EnumOf8 getSomeEnumOf8Hidden() {
-        return someEnumOf8Hidden;
-    }
+    @Getter @Setter
+    private EnumOf8 someEnumOf8Hidden;
 
-    public void setSomeEnumOf8Hidden(final EnumOf8 someEnumOf8Hidden) {
-        this.someEnumOf8Hidden = someEnumOf8Hidden;
-    }
-
-    //endregion
-
-    //region > someEnumOf8Disabled (property)
-    private EnumOf8 someEnumOf8Disabled;
 
     @Column(allowsNull = "false")
     @Property(editing = Editing.DISABLED)
-    public EnumOf8 getSomeEnumOf8Disabled() {
-        return someEnumOf8Disabled;
-    }
+    @Getter @Setter
+    private EnumOf8 someEnumOf8Disabled;
 
-    public void setSomeEnumOf8Disabled(final EnumOf8 someEnumOf8Disabled) {
-        this.someEnumOf8Disabled = someEnumOf8Disabled;
-    }
-
-    //endregion
 
     //region > someEnumOf8WithValidation (property)
-    private EnumOf8 someEnumOf8WithValidation;
-
     @Column(allowsNull = "false")
-    public EnumOf8 getSomeEnumOf8WithValidation() {
-        return someEnumOf8WithValidation;
-    }
-
-    public void setSomeEnumOf8WithValidation(final EnumOf8 someEnumOf8WithValidation) {
-        this.someEnumOf8WithValidation = someEnumOf8WithValidation;
-    }
+    @Getter @Setter
+    private EnumOf8 someEnumOf8WithValidation;
 
     public String validateSomeEnumOf8WithValidation(final EnumOf8 i) {
         return i == EnumOf8.ABBEY_ROAD ? "Can't enter ABBEY_ROAD": null;
@@ -638,22 +447,14 @@ public class EnumeratedObject implements Entity<EnumeratedObject> {
 
     //endregion
 
-    
-    //region > compareTo
 
     @Override
     public int compareTo(EnumeratedObject other) {
         return ObjectContracts.compare(this, other, "name");
     }
 
-    //endregion
-
-    //region > injected services
 
     @javax.inject.Inject
-    @SuppressWarnings("unused")
-    private DomainObjectContainer container;
-
-    //endregion
+    DomainObjectContainer container;
 
 }

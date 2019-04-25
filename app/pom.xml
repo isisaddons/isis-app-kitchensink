@@ -23,7 +23,7 @@
     <parent>
         <groupId>org.isisaddons.app.kitchensink</groupId>
         <artifactId>isis-app-kitchensink</artifactId>
-        <version>1.16.1-SNAPSHOT</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>isis-app-kitchensink-app</artifactId>
@@ -57,10 +57,6 @@
                         <mixin>
                             <groupId>com.danhaywood.mavenmixin</groupId>
                             <artifactId>standard</artifactId>
-                        </mixin>
-                        <mixin>
-                            <groupId>org.incode.mavenmixin</groupId>
-                            <artifactId>incode-mavenmixin-validate</artifactId>
                         </mixin>
                     </mixins>
                 </configuration>

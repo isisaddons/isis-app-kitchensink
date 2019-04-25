@@ -50,11 +50,11 @@ public class OtherBoundedObjects extends RepositoryAbstract<OtherBoundedObject> 
     public OtherBoundedObject create(
             final @ParameterLayout(named="Name") String name,
             final @ParameterLayout(named="Description") String description) {
-        final OtherBoundedObject obj = container.newTransientInstance(OtherBoundedObject.class);
+        final OtherBoundedObject obj = factoryService.instantiate(OtherBoundedObject.class);
         obj.setName(name);
         obj.setDescription(description);
 
-        container.persistIfNotAlready(obj);
+        repositoryService.persist(obj);
         return obj;
     }
 

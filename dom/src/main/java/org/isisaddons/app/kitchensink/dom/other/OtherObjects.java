@@ -27,7 +27,6 @@ import org.apache.isis.applib.annotation.SemanticsOf;
 import org.apache.isis.applib.annotation.Where;
 
 @DomainService(nature = NatureOfService.DOMAIN, repositoryFor = OtherObject.class)
-@DomainServiceLayout(menuOrder = "90")
 public class OtherObjects extends RepositoryAbstract<OtherObject> {
 
     public OtherObjects() {
@@ -52,11 +51,11 @@ public class OtherObjects extends RepositoryAbstract<OtherObject> {
     public OtherObject create(
             final @ParameterLayout(named="Name") String name,
             final @ParameterLayout(named="Description") String description) {
-        final OtherObject obj = container.newTransientInstance(OtherObject.class);
+        final OtherObject obj = factoryService.instantiate(OtherObject.class);
         obj.setName(name);
         obj.setDescription(description);
 
-        container.persistIfNotAlready(obj);
+        repositoryService.persist(obj);
         return obj;
     }
 

@@ -31,6 +31,9 @@ import org.apache.isis.applib.util.ObjectContracts;
 
 import org.isisaddons.app.kitchensink.dom.Entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @javax.jdo.annotations.PersistenceCapable(identityType= IdentityType.DATASTORE)
 @javax.jdo.annotations.DatastoreIdentity(
         strategy=javax.jdo.annotations.IdGeneratorStrategy.IDENTITY,
@@ -46,44 +49,20 @@ import org.isisaddons.app.kitchensink.dom.Entity;
 )
 public class NflTeamEntity implements Entity<NflTeamEntity> {
 
-    //region > name (property)
-
-    private String name;
-
     @Column(allowsNull="false")
     @Title(sequence="1")
-    public String getName() {
-        return name;
-    }
-
-    public void setName(final String name) {
-        this.name = name;
-    }
-
-    //endregion
-
-    //region > region (property)
-    private NflRegion region;
+    @Getter @Setter
+    private String name;
 
     @Property(editing = Editing.DISABLED)
     @Column(allowsNull = "true")
     @MemberOrder(sequence = "2")
-    public NflRegion getRegion() {
-        return region;
-    }
-
-    public void setRegion(final NflRegion region) {
-        this.region = region;
-    }
-    //endregion
-
-    //region > compareTo
+    @Getter @Setter
+    private NflRegion region;
 
     @Override
     public int compareTo(final NflTeamEntity other) {
         return ObjectContracts.compare(this, other, "name");
     }
-
-    //endregion
 
 }

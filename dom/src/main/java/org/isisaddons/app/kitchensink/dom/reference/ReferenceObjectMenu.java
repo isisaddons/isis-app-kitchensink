@@ -14,10 +14,6 @@ import org.isisaddons.app.kitchensink.dom.reference.child.ReferenceChildObject;
 import org.isisaddons.app.kitchensink.dom.reference.child.ReferenceChildObjects;
 
 @DomainService(nature = NatureOfService.VIEW)
-@DomainServiceLayout(
-        named = "Data Types",
-        menuOrder = "10.8.2"
-)
 public class ReferenceObjectMenu {
 
     @Action(semantics = SemanticsOf.IDEMPOTENT)

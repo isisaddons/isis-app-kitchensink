@@ -50,21 +50,23 @@ import lombok.Setter;
 @DomainObjectLayout(
         bookmarking = BookmarkPolicy.AS_CHILD
 )
-@Getter @Setter
 @RequiredArgsConstructor(staticName = "create")
 public class GrandchildObject implements Entity<GrandchildObject> {
 
     @Column(allowsNull="false")
     @Title(sequence="1")
+    @Getter @Setter
     @lombok.NonNull
     private String name;
 
 
+    @Column(allowsNull = "false")
     @MemberOrder(sequence = "2")
     @Property(hidden = Where.REFERENCES_PARENT)
-    @Column(allowsNull = "false")
+    @Getter @Setter
     @lombok.NonNull
     private ChildObject child;
+
 
     @Override
     public int compareTo(final GrandchildObject other) {

@@ -16,16 +16,12 @@
  */
 package org.isisaddons.app.kitchensink.dom.dependent;
 
-import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.google.common.base.Objects;
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 import org.apache.isis.applib.annotation.DomainService;
-import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.Optionality;
 import org.apache.isis.applib.annotation.Parameter;
@@ -36,10 +32,6 @@ import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
 
 @DomainService(
         repositoryFor = NflTeamEntity.class
-)
-@DomainServiceLayout(
-        menuOrder = "10.10",
-        named="Dependent"
 )
 public class NflTeams extends RepositoryAbstract<NflTeamEntity> {
 
@@ -53,12 +45,12 @@ public class NflTeams extends RepositoryAbstract<NflTeamEntity> {
             final String name,
             final NflLeague league,
             @Parameter(optionality=Optionality.OPTIONAL) final  NflRegion region) {
-        final NflTeamEntity obj = container.newTransientInstance(NflTeamEntity.class);
+        final NflTeamEntity obj = factoryService.instantiate(NflTeamEntity.class);
 
         obj.setName(name);
         obj.setRegion(region);
 
-        container.persistIfNotAlready(obj);
+        repositoryService.persist(obj);
         return obj;
     }
 
@@ -70,12 +62,26 @@ public class NflTeams extends RepositoryAbstract<NflTeamEntity> {
     @Programmatic
     public List<NflTeamEntity> thoseFor(final NflRegion leagueRegion) {
         final List<NflTeamEntity> nflTeamEntities = listAll();
-        return Lists.newArrayList(Iterables.filter(nflTeamEntities, new Predicate<NflTeamEntity>() {
-            @Override
-            public boolean apply(NflTeamEntity input) {
-                return input.getRegion() == leagueRegion;
-            }
-        }));
+        final List<NflTeamEntity> list = nflTeamEntities.stream()
+                .filter(
+                        input -> {
+                            if(input == null) {
+                                return false;
+                            }
+                            if(leagueRegion == null) {
+                                return false;
+                            }
+                            if (input.getRegion() == leagueRegion) {
+                                return true;
+                            }
+
+                            // this is just a hack for testing; teams named 'A' will appear in multiple lists.
+                            return input.getName().startsWith("A") &&
+                                   input.getRegion().getLeague() == leagueRegion.getLeague();
+                        }
+                )
+                .collect(Collectors.toList());
+        return list;
     }
 
     @Programmatic
@@ -84,13 +90,9 @@ public class NflTeams extends RepositoryAbstract<NflTeamEntity> {
             return null;
         }
         final List<NflTeamEntity> nflTeamEntities = listAll();
-        final Iterator<NflTeamEntity> iterator = Iterables.filter(nflTeamEntities, new Predicate<NflTeamEntity>() {
-            @Override
-            public boolean apply(NflTeamEntity input) {
-                return Objects.equal(nflTeamEnum.getName(), input.getName()) && Objects.equal(nflTeamEnum.getRegion(), input.getRegion());
-            }
-        }).iterator();
-        return iterator.hasNext()? iterator.next(): null;
+        return nflTeamEntities.stream()
+                .filter(input -> Objects.equal(nflTeamEnum.getName(), input.getName()) && Objects
+                        .equal(nflTeamEnum.getRegion(), input.getRegion())).findFirst().orElse(null);
     }
 
 }

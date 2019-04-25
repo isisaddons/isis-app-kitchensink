@@ -35,10 +35,6 @@ import org.isisaddons.app.kitchensink.dom.busrules.BusRulesObjects;
 @DomainService(
         nature = NatureOfService.VIEW_MENU_ONLY
 )
-@DomainServiceLayout(
-        named="Pages",
-        menuOrder = "10.1"
-)
 public class Pages {
 
 

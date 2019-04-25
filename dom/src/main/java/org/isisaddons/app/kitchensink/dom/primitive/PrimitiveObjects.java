@@ -20,7 +20,6 @@ import java.util.List;
 
 import org.apache.isis.applib.annotation.ActionLayout;
 import org.apache.isis.applib.annotation.DomainService;
-import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.ParameterLayout;
@@ -30,10 +29,6 @@ import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
 @DomainService(
         nature = NatureOfService.VIEW_MENU_ONLY,
         repositoryFor = PrimitiveObject.class
-)
-@DomainServiceLayout(
-        named="Data Types",
-        menuOrder = "10.2"
 )
 public class PrimitiveObjects extends RepositoryAbstract<PrimitiveObject> {
 
@@ -57,7 +52,7 @@ public class PrimitiveObjects extends RepositoryAbstract<PrimitiveObject> {
             final float f,
             @ParameterLayout(named="Double")
             final double d) {
-        final PrimitiveObject obj = container.newTransientInstance(PrimitiveObject.class);
+        final PrimitiveObject obj = factoryService.instantiate(PrimitiveObject.class);
         obj.setName(name);
 
         obj.setSomeByte(b);
@@ -103,7 +98,7 @@ public class PrimitiveObjects extends RepositoryAbstract<PrimitiveObject> {
         obj.setSomeDoubleWithChoices(d);
 
 
-        container.persistIfNotAlready(obj);
+        repositoryService.persist(obj);
         return obj;
     }
 

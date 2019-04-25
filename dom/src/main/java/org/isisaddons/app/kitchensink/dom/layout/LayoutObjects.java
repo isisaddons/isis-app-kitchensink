@@ -39,7 +39,6 @@ import org.isisaddons.app.kitchensink.dom.layout.layout_6_0_6_12C.Layout_6_0_6_1
 @DomainService(
         nature = NatureOfService.VIEW_MENU_ONLY
 )
-@DomainServiceLayout(menuOrder = "10.11")
 public class LayoutObjects  {
 
 

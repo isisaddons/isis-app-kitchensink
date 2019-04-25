@@ -29,7 +29,6 @@ import com.google.common.eventbus.Subscribe;
 import org.jetbrains.annotations.Nullable;
 
 import org.apache.isis.applib.AbstractSubscriber;
-import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.annotation.Auditing;
 import org.apache.isis.applib.annotation.BookmarkPolicy;
 import org.apache.isis.applib.annotation.Collection;
@@ -244,10 +243,10 @@ public class BusRulesObject implements Entity<BusRulesObject> {
 
 
     String reasonDisabledIfAnyCached() {
-        final String reasonDisabledIfAnyCached = queryResultsCache.execute(
-                () -> doReasonDisabledIfAny(BusRulesObject.this), getClass(), "reasonDisabledIfAnyCached", this);
-        boolean enabled = reasonDisabledIfAnyCached == null;
-        return reasonDisabledIfAnyCached;
+        return queryResultsCache.execute(
+                () -> doReasonDisabledIfAny(this),
+                getClass(), "reasonDisabledIfAnyCached", this
+        );
     }
 
     @Nullable
@@ -257,9 +256,6 @@ public class BusRulesObject implements Entity<BusRulesObject> {
 
     //region > injected services
 
-    @javax.inject.Inject
-    @SuppressWarnings("unused")
-    private DomainObjectContainer container;
 
     @Inject
     BusRulesObjects busRulesObjects;

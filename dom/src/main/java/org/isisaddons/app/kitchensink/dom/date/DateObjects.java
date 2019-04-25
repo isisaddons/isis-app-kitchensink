@@ -33,10 +33,6 @@ import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
         nature = NatureOfService.VIEW_MENU_ONLY,
         repositoryFor = DateObject.class
 )
-@DomainServiceLayout(
-        named="Data Types",
-        menuOrder = "10.5"
-)
 public class DateObjects extends RepositoryAbstract<DateObject> {
 
     public DateObjects() {
@@ -57,7 +53,7 @@ public class DateObjects extends RepositoryAbstract<DateObject> {
             final int hour,
             @ParameterLayout(named="Minutes")
             final int minutes) {
-        final DateObject obj = container.newTransientInstance(DateObject.class);
+        final DateObject obj = factoryService.instantiate(DateObject.class);
         obj.setName(name);
 
         final org.joda.time.DateTime dt = new org.joda.time.DateTime(year, month, day, hour, minutes);
@@ -118,7 +114,7 @@ public class DateObjects extends RepositoryAbstract<DateObject> {
 //        obj.setSomeApplibDateMandatory(new Date(ld.toDate()));
 //        obj.setSomeApplibDateTimeMandatory(new DateTime(ldt.toDateTime()));
 
-        container.persistIfNotAlready(obj);
+        repositoryService.persist(obj);
         return obj;
     }
 

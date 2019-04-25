@@ -31,10 +31,6 @@ import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
         nature = NatureOfService.VIEW_MENU_ONLY,
         repositoryFor = EnumeratedObject.class
 )
-@DomainServiceLayout(
-        named="Data Types",
-        menuOrder = "10.6"
-)
 public class EnumeratedObjects extends RepositoryAbstract<EnumeratedObject> {
 
     public EnumeratedObjects() {
@@ -49,7 +45,7 @@ public class EnumeratedObjects extends RepositoryAbstract<EnumeratedObject> {
             final EnumOf3 enumOf3,
             final EnumOf4 enumOf4,
             final EnumOf8 enumOf8) {
-        final EnumeratedObject obj = container.newTransientInstance(EnumeratedObject.class);
+        final EnumeratedObject obj = factoryService.instantiate(EnumeratedObject.class);
         obj.setName(name);
 
         obj.setSomeBoolean(b);
@@ -81,7 +77,7 @@ public class EnumeratedObjects extends RepositoryAbstract<EnumeratedObject> {
         obj.setSomeEnumOf8Disabled(enumOf8);
         obj.setSomeEnumOf8WithValidation(enumOf8);
 
-        container.persistIfNotAlready(obj);
+        repositoryService.persist(obj);
         return obj;
     }
 

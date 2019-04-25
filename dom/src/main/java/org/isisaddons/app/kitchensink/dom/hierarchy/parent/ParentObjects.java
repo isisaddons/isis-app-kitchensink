@@ -29,7 +29,6 @@ import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
         nature = NatureOfService.VIEW_MENU_ONLY,
         repositoryFor = ParentObject.class
 )
-@DomainServiceLayout(menuOrder = "10")
 public class ParentObjects extends RepositoryAbstract<ParentObject> {
 
     public ParentObjects() {

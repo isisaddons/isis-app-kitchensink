@@ -40,10 +40,6 @@ import org.isisaddons.app.kitchensink.dom.text.TextObjects;
 @DomainService(
         nature = NatureOfService.VIEW_MENU_ONLY
 )
-@DomainServiceLayout(
-        menuOrder = "16.1",
-        named="View Models"
-)
 public class ViewModels {
 
     private final Class<SomeViewModel> cls = SomeViewModel.class;

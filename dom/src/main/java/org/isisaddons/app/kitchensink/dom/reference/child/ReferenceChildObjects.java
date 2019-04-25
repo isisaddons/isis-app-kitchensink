@@ -32,9 +32,6 @@ import org.isisaddons.app.kitchensink.dom.reference.ReferenceObject;
 @DomainService(
         repositoryFor = ReferenceChildObject.class
 )
-@DomainServiceLayout(
-        menuOrder = "10"
-)
 public class ReferenceChildObjects extends RepositoryAbstract<ReferenceChildObject> {
 
     public ReferenceChildObjects() {
@@ -46,11 +43,11 @@ public class ReferenceChildObjects extends RepositoryAbstract<ReferenceChildObje
             @ParameterLayout(named="Name")
             final String name,
             final ReferenceObject parentObject) {
-        final ReferenceChildObject obj = container.newTransientInstance(ReferenceChildObject.class);
+        final ReferenceChildObject obj = factoryService.instantiate(ReferenceChildObject.class);
         obj.setName(name);
         obj.setParent(parentObject);
 
-        container.persistIfNotAlready(obj);
+        repositoryService.persist(obj);
         return obj;
     }
 

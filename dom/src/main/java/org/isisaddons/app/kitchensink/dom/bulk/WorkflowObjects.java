@@ -20,7 +20,6 @@ import java.util.List;
 
 import org.apache.isis.applib.annotation.ActionLayout;
 import org.apache.isis.applib.annotation.DomainService;
-import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.ParameterLayout;
@@ -30,10 +29,6 @@ import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
 @DomainService(
         nature = NatureOfService.VIEW_MENU_ONLY,
         repositoryFor = WorkflowObject.class
-)
-@DomainServiceLayout(
-        named="Misc",
-        menuOrder = "10.9"
 )
 public class WorkflowObjects extends RepositoryAbstract<WorkflowObject> {
 
@@ -45,11 +40,11 @@ public class WorkflowObjects extends RepositoryAbstract<WorkflowObject> {
     public WorkflowObject createWorkflowObject(
             @ParameterLayout(named="Name")
             final String name) {
-        final WorkflowObject obj = container.newTransientInstance(WorkflowObject.class);
+        final WorkflowObject obj = factoryService.instantiate(WorkflowObject.class);
         obj.setName(name);
         obj.setState(State.OPEN);
 
-        container.persistIfNotAlready(obj);
+        repositoryService.persist(obj);
         return obj;
     }
 

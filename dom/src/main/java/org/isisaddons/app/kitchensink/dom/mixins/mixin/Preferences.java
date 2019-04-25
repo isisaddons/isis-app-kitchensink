@@ -18,17 +18,17 @@ package org.isisaddons.app.kitchensink.dom.mixins.mixin;
 
 import java.util.List;
 
-import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.ActionLayout;
 import org.apache.isis.applib.annotation.BookmarkPolicy;
 import org.apache.isis.applib.annotation.DomainService;
-import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.Programmatic;
 import org.apache.isis.applib.annotation.SemanticsOf;
+import org.apache.isis.applib.services.factory.FactoryService;
+import org.apache.isis.applib.services.repository.RepositoryService;
 
 import org.isisaddons.app.kitchensink.dom.mixins.mixedIn.FoodStuff;
 import org.isisaddons.app.kitchensink.dom.mixins.mixedIn.Person;
@@ -36,10 +36,6 @@ import org.isisaddons.app.kitchensink.dom.mixins.mixedIn.Person;
 @DomainService(
         repositoryFor = Preference.class,
         nature = NatureOfService.VIEW_MENU_ONLY
-)
-@DomainServiceLayout(
-        named="Contributions",
-        menuOrder = "10.9"
 )
 public class Preferences {
 
@@ -58,12 +54,12 @@ public class Preferences {
             final Person person,
             final @ParameterLayout(named="Type") Preference.PreferenceType preferenceType,
             final FoodStuff foodStuff) {
-        final Preference obj = container.newTransientInstance(Preference.class);
+        final Preference obj = factoryService.instantiate(Preference.class);
         obj.setPerson(person);
         obj.setType(preferenceType);
         obj.setFoodStuff(foodStuff);
 
-        container.persistIfNotAlready(obj);
+        repositoryService.persist(obj);
         return obj;
     }
 
@@ -71,7 +67,7 @@ public class Preferences {
     public void deletePreference(
             final Preference preference) {
 
-        container.removeIfNotAlready(preference);
+        repositoryService.remove(preference);
     }
 
     @Action(semantics=SemanticsOf.SAFE)
@@ -86,10 +82,12 @@ public class Preferences {
     @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
     @MemberOrder(sequence = "20")
     public List<Preference> listAllPreferences() {
-        return container.allInstances(cls);
+        return repositoryService.allInstances(cls);
     }
 
     @javax.inject.Inject
-    protected DomainObjectContainer container;
+    RepositoryService repositoryService;
+    @javax.inject.Inject
+    FactoryService factoryService;
 
 }

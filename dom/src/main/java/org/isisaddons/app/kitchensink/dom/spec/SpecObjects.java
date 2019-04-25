@@ -19,24 +19,20 @@ package org.isisaddons.app.kitchensink.dom.spec;
 import java.util.List;
 import java.util.Objects;
 
-import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.ActionLayout;
 import org.apache.isis.applib.annotation.BookmarkPolicy;
 import org.apache.isis.applib.annotation.DomainService;
-import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.SemanticsOf;
+import org.apache.isis.applib.services.factory.FactoryService;
+import org.apache.isis.applib.services.repository.RepositoryService;
 
 @DomainService(
         nature = NatureOfService.VIEW_MENU_ONLY,
         repositoryFor = SpecObject.class
-)
-@DomainServiceLayout(
-        menuOrder = "10.1",
-        named="Bus Rules"
 )
 public class SpecObjects {
 
@@ -54,10 +50,10 @@ public class SpecObjects {
     public SpecObject createSpecObject(
             @ParameterLayout(named="Name")
             final String name) {
-        final SpecObject obj = container.newTransientInstance(cls);
+        final SpecObject obj = factoryService.instantiate(cls);
         obj.setName(name);
 
-        container.persistIfNotAlready(obj);
+        repositoryService.persist(obj);
         return obj;
     }
 
@@ -88,10 +84,12 @@ public class SpecObjects {
     @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
     @MemberOrder(sequence = "20")
     public List<SpecObject> listAllSpecObject() {
-        return container.allInstances(cls);
+        return repositoryService.allInstances(cls);
     }
 
     @javax.inject.Inject
-    protected DomainObjectContainer container;
+    RepositoryService repositoryService;
+    @javax.inject.Inject
+    FactoryService factoryService;
 
 }

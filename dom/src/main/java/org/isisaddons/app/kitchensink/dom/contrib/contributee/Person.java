@@ -30,6 +30,9 @@ import org.apache.isis.applib.util.ObjectContracts;
 
 import org.isisaddons.app.kitchensink.dom.Entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @javax.jdo.annotations.PersistenceCapable(
         identityType=IdentityType.DATASTORE,
         schema = "contrib"
@@ -49,39 +52,16 @@ import org.isisaddons.app.kitchensink.dom.Entity;
 )
 public class Person implements Entity<Person> {
 
-    //region > name (property)
-
-    private String name;
-
     @Title
     @Column(allowsNull="false")
-    public String getName() {
-        return name;
-    }
+    @Getter @Setter
+    private String name;
 
-    public void setName(final String name) {
-        this.name = name;
-    }
-
-    //endregion
-
-    //region > compareTo
 
     @Override
     public int compareTo(final Person other) {
         return ObjectContracts.compare(this, other, "name");
     }
 
-    //endregion
-
-    //region > injected services
-
-    @Inject
-    @SuppressWarnings("unused")
-    private DomainObjectContainer container;
-
-    @Inject
-    Persons contributee1Objects;
-    //endregion
 
 }

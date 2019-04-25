@@ -27,7 +27,6 @@ import org.isisaddons.app.kitchensink.dom.hierarchy.child.ChildObject;
 @DomainService(
         repositoryFor = GrandchildObject.class
 )
-@DomainServiceLayout(menuOrder = "10")
 public class GrandchildObjects extends RepositoryAbstract<GrandchildObject> {
 
     public GrandchildObjects() {

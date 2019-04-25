@@ -20,7 +20,6 @@ import java.util.List;
 
 import org.apache.isis.applib.annotation.ActionLayout;
 import org.apache.isis.applib.annotation.DomainService;
-import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.Optionality;
@@ -34,10 +33,6 @@ import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
 @DomainService(
         nature = NatureOfService.VIEW_MENU_ONLY,
         repositoryFor = BlobClobObject.class
-)
-@DomainServiceLayout(
-        named="Data Types",
-        menuOrder = "10.7"
 )
 public class BlobClobObjects extends RepositoryAbstract<BlobClobObject> {
 
@@ -55,14 +50,14 @@ public class BlobClobObjects extends RepositoryAbstract<BlobClobObject> {
             final Blob image,
             @ParameterLayout(named="Some clob") @Parameter(optionality=Optionality.OPTIONAL)
             final Clob clob) {
-        final BlobClobObject obj = container.newTransientInstance(BlobClobObject.class);
+        final BlobClobObject obj = factoryService.instantiate(BlobClobObject.class);
         obj.setName(name);
 
         obj.setSomeBlob(blob);
         obj.setSomeImage(image);
         obj.setSomeClob(clob);
 
-        container.persistIfNotAlready(obj);
+        repositoryService.persist(obj);
         return obj;
     }
 

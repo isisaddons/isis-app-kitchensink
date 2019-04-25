@@ -28,10 +28,6 @@ import org.apache.isis.applib.annotation.SemanticsOf;
 @DomainService(
         nature = NatureOfService.VIEW_MENU_ONLY
 )
-@DomainServiceLayout(
-        menuBar = DomainServiceLayout.MenuBar.TERTIARY,
-        menuOrder = "3"
-)
 public class Workflow {
 
     @Action(semantics= SemanticsOf.SAFE)

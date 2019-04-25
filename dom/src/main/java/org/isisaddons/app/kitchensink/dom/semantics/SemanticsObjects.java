@@ -34,10 +34,6 @@ import org.apache.isis.applib.services.repository.RepositoryService;
         nature = NatureOfService.VIEW_MENU_ONLY,
         repositoryFor = SemanticsObject.class
 )
-@DomainServiceLayout(
-        menuOrder = "10.1",
-        named="Semantics"
-)
 public class SemanticsObjects {
 
     private final Class<SemanticsObject> cls = SemanticsObject.class;

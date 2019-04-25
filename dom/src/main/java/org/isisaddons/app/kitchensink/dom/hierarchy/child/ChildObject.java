@@ -57,19 +57,20 @@ import lombok.Setter;
 @DomainObjectLayout(
         bookmarking = BookmarkPolicy.AS_CHILD
 )
-@Getter @Setter
 @RequiredArgsConstructor(staticName = "create")
 public class ChildObject implements Entity<ChildObject> {
 
 
     @Column(allowsNull="false")
     @Title(sequence="1")
+    @Getter @Setter
     @lombok.NonNull
     private String name;
 
     @Property(editing = Editing.ENABLED, hidden = Where.PARENTED_TABLES)
     @Column(allowsNull = "false")
     @MemberOrder(sequence = "1")
+    @Getter @Setter
     @lombok.NonNull
     private ParentObject parent;
 
@@ -79,6 +80,7 @@ public class ChildObject implements Entity<ChildObject> {
 
 
     @Persistent(mappedBy = "child", dependentElement = "false")
+    @Getter @Setter
     private SortedSet<GrandchildObject> grandchildren = new TreeSet<GrandchildObject>();
 
 
@@ -98,6 +100,5 @@ public class ChildObject implements Entity<ChildObject> {
     public int compareTo(final ChildObject other) {
         return Ordering.natural().onResultOf(ChildObject::getName).compare(this, other);
     }
-
 
 }

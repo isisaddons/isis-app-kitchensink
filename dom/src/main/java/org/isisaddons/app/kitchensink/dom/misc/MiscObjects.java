@@ -24,7 +24,6 @@ import java.util.UUID;
 import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.ActionLayout;
 import org.apache.isis.applib.annotation.DomainService;
-import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.ParameterLayout;
@@ -36,10 +35,6 @@ import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
 @DomainService(
         nature = NatureOfService.VIEW_MENU_ONLY,
         repositoryFor = MiscObject.class
-)
-@DomainServiceLayout(
-        named="Misc",
-        menuOrder = "10.15"
 )
 public class MiscObjects extends RepositoryAbstract<MiscObject> {
 
@@ -53,7 +48,7 @@ public class MiscObjects extends RepositoryAbstract<MiscObject> {
             final URL url,
             final UUID uuid,
             final Money money) {
-        final MiscObject obj = container.newTransientInstance(MiscObject.class);
+        final MiscObject obj = factoryService.instantiate(MiscObject.class);
         obj.setName(name);
 
         obj.setSomeUrlDisabled(url);
@@ -81,7 +76,7 @@ public class MiscObjects extends RepositoryAbstract<MiscObject> {
         obj.setSomeMoneyOptional(money);
         obj.setSomeMoneyOptionalWithChoices(money);
 
-        container.persistIfNotAlready(obj);
+        repositoryService.persist(obj);
         return obj;
     }
 
@@ -121,5 +116,13 @@ public class MiscObjects extends RepositoryAbstract<MiscObject> {
     }
 
 
+    public int add(final Integer net, final Integer vat, final Integer gross) {
+        return net + vat;
+    }
+
+    public Integer default2Add(final Integer net, final Integer val) {
+        if(net == null || val == null) { return null; }
+        return net + val;
+    }
 
 }

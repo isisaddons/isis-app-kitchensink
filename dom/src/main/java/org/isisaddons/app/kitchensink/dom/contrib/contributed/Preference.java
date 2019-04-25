@@ -34,6 +34,9 @@ import org.isisaddons.app.kitchensink.dom.Entity;
 import org.isisaddons.app.kitchensink.dom.contrib.contributee.FoodStuff;
 import org.isisaddons.app.kitchensink.dom.contrib.contributee.Person;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @javax.jdo.annotations.PersistenceCapable(
         identityType=IdentityType.DATASTORE,
         schema = "contrib"
@@ -63,7 +66,7 @@ public class Preference implements Entity<Preference> {
 
     static class Functions {
         static Function<Preference, FoodStuff> food() {
-            return input -> input.getFoodStuff();
+            return Preference::getFoodStuff;
         }
     }
 
@@ -78,64 +81,25 @@ public class Preference implements Entity<Preference> {
         HATE
     }
 
-    //region > description (property)
-
+    @Column(allowsNull="false")
+    @Getter @Setter
     private PreferenceType type;
 
-    @Column(allowsNull="false")
-    public PreferenceType getType() {
-        return type;
-    }
-
-    public void setType(final PreferenceType type) {
-        this.type = type;
-    }
-
-    //endregion
-
-    //region > person (property)
+    @javax.jdo.annotations.Column(name = "personId", allowsNull = "false")
+    @Getter @Setter
     private Person person;
 
-    @javax.jdo.annotations.Column(name = "personId", allowsNull = "false")
-    public Person getPerson() {
-        return person;
-    }
-
-    public void setPerson(final Person person) {
-        this.person = person;
-    }
-    //endregion
-
-    //region > food (property)
-    private FoodStuff foodStuff;
-
     @javax.jdo.annotations.Column(name = "foodId", allowsNull = "false")
-    public FoodStuff getFoodStuff() {
-        return foodStuff;
-    }
-
-    public void setFoodStuff(final FoodStuff foodStuff) {
-        this.foodStuff = foodStuff;
-    }
-    //endregion
-
-    //region > compareTo
+    @Getter @Setter
+    private FoodStuff foodStuff;
 
     @Override
     public int compareTo(final Preference other) {
         return ObjectContracts.compare(this, other, "name");
     }
 
-    //endregion
-
-    //region > injected services
 
     @Inject
-    @SuppressWarnings("unused")
-    private DomainObjectContainer container;
-
-    @Inject
-    Preferences preferences;
-    //endregion
+    DomainObjectContainer container;
 
 }

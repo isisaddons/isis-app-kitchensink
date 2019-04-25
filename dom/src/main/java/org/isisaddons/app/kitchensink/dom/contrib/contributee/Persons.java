@@ -18,24 +18,20 @@ package org.isisaddons.app.kitchensink.dom.contrib.contributee;
 
 import java.util.List;
 
-import org.apache.isis.applib.DomainObjectContainer;
 import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.ActionLayout;
 import org.apache.isis.applib.annotation.BookmarkPolicy;
 import org.apache.isis.applib.annotation.DomainService;
-import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.NatureOfService;
 import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.SemanticsOf;
+import org.apache.isis.applib.services.factory.FactoryService;
+import org.apache.isis.applib.services.repository.RepositoryService;
 
 @DomainService(
         nature = NatureOfService.VIEW_MENU_ONLY,
         repositoryFor = Person.class
-)
-@DomainServiceLayout(
-        named="Contributions",
-        menuOrder = "10.1"
 )
 public class Persons {
 
@@ -53,10 +49,10 @@ public class Persons {
     public Person createPerson(
             @ParameterLayout(named="Name")
             final String name) {
-        final Person obj = container.newTransientInstance(cls);
+        final Person obj = factoryService.instantiate(cls);
         obj.setName(name);
 
-        container.persistIfNotAlready(obj);
+        repositoryService.persist(obj);
         return obj;
     }
 
@@ -73,10 +69,12 @@ public class Persons {
     @Action(semantics= SemanticsOf.SAFE)
     @MemberOrder(sequence = "20")
     public List<Person> listAllPersons() {
-        return container.allInstances(cls);
+        return repositoryService.allInstances(cls);
     }
 
     @javax.inject.Inject
-    protected DomainObjectContainer container;
+    RepositoryService repositoryService;
+    @javax.inject.Inject
+    FactoryService factoryService;
 
 }

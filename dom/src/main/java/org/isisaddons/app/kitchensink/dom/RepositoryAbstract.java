@@ -17,13 +17,14 @@
 package org.isisaddons.app.kitchensink.dom;
 
 import java.util.List;
-import org.apache.isis.applib.DomainObjectContainer;
+
 import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.ActionLayout;
 import org.apache.isis.applib.annotation.BookmarkPolicy;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.SemanticsOf;
 import org.apache.isis.applib.services.factory.FactoryService;
+import org.apache.isis.applib.services.message.MessageService2;
 import org.apache.isis.applib.services.repository.RepositoryService;
 
 public abstract class RepositoryAbstract<T extends Entity> {
@@ -68,8 +69,7 @@ public abstract class RepositoryAbstract<T extends Entity> {
     @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
     @MemberOrder(sequence = "10")
     public T first() {
-        final List<T> list = listAll();
-        return list.isEmpty()? null: list.get(0);
+        return listAll().stream().findFirst().orElse(null);
     }
     //endregion
 
@@ -79,7 +79,7 @@ public abstract class RepositoryAbstract<T extends Entity> {
     @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT)
     @MemberOrder(sequence = "20")
     public List<T> listAll() {
-        return container.allInstances(cls);
+        return repositoryService.allInstances(cls);
     }
 
     //endregion
@@ -88,7 +88,7 @@ public abstract class RepositoryAbstract<T extends Entity> {
     //region > injected services
 
     @javax.inject.Inject
-    protected DomainObjectContainer container;
+    protected MessageService2 messageService;
 
     @javax.inject.Inject
     protected RepositoryService repositoryService;
