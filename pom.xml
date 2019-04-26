@@ -38,7 +38,7 @@ language governing permissions and limitations under the License.
     </prerequisites>
 
     <properties>
-        <isis.version>1.17.0.20190425-1136-bfb6ade9</isis.version>
+        <isis.version>1.0.0-SNAPSHOT</isis.version>
 
         <kotlin.version>1.2.21</kotlin.version>
 

@@ -19,6 +19,7 @@ package org.isisaddons.app.kitchensink.dom.mixins.mixedIn;
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.VersionStrategy;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import com.google.common.collect.Ordering;
 
@@ -26,6 +27,7 @@ import org.apache.isis.applib.annotation.BookmarkPolicy;
 import org.apache.isis.applib.annotation.DomainObject;
 import org.apache.isis.applib.annotation.DomainObjectLayout;
 import org.apache.isis.applib.annotation.Title;
+import org.apache.isis.schema.utils.jaxbadapters.PersistentEntityAdapter;
 
 import org.isisaddons.app.kitchensink.dom.Entity;
 
@@ -48,6 +50,7 @@ import lombok.Setter;
 @DomainObjectLayout(
         bookmarking = BookmarkPolicy.AS_ROOT
 )
+@XmlJavaTypeAdapter(PersistentEntityAdapter.class)
 public class FoodStuff implements Entity<FoodStuff> {
 
     @Column(allowsNull="false")
