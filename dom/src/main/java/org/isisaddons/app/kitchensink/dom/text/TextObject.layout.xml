@@ -115,6 +115,7 @@
                 </cpt:property>
                 <cpt:property id="someStringHidden"/>
                 <cpt:property id="someStringDisabled"/>
+                <cpt:property id="someStringProgrammaticallyDisabled"/>
                 <cpt:property id="someStringWithValidation"  promptStyle="INLINE">
                     <cpt:action id="updateSomeStringWithValidation" position="BELOW" promptStyle="INLINE">
                         <cpt:named>Update</cpt:named>

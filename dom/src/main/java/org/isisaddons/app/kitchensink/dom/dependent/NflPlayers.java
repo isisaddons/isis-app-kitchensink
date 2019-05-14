@@ -16,14 +16,19 @@
  */
 package org.isisaddons.app.kitchensink.dom.dependent;
 
+import java.util.Arrays;
 import java.util.List;
 
+import javax.inject.Inject;
+
+import org.apache.isis.applib.annotation.Action;
 import org.apache.isis.applib.annotation.DomainService;
-import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.Optionality;
 import org.apache.isis.applib.annotation.Parameter;
 import org.apache.isis.applib.annotation.ParameterLayout;
+import org.apache.isis.applib.annotation.SemanticsOf;
+import org.apache.isis.applib.services.registry.ServiceRegistry2;
 
 import org.isisaddons.app.kitchensink.dom.RepositoryAbstract;
 
@@ -43,13 +48,12 @@ public class NflPlayers extends RepositoryAbstract<NflPlayer> {
             final NflLeague league,
             @Parameter(optionality=Optionality.OPTIONAL) final  NflRegion region,
             @Parameter(optionality= Optionality.OPTIONAL) final NflTeamEnum nflTeamEnum) {
-        final NflPlayer obj = factoryService.instantiate(NflPlayer.class);
-        obj.setName(name);
 
-        obj.updateUsingEnum(league, region, nflTeamEnum);
+        final NflPlayer nflPlayer = serviceRegistry2.injectServicesInto(new NflPlayer(name));
+        nflPlayer.updateUsingEnum(league, region, nflTeamEnum);
 
-        repositoryService.persist(obj);
-        return obj;
+        repositoryService.persist(nflPlayer);
+        return nflPlayer;
     }
 
     public List<NflRegion> choices2Create(final String name, final NflLeague league) {
@@ -58,5 +62,29 @@ public class NflPlayers extends RepositoryAbstract<NflPlayer> {
     public List<NflTeamEnum> choices3Create(final String name, final NflLeague league, final NflRegion region) {
         return NflTeamEnum.thoseFor(region);
     }
+
+
+    @Action(semantics = SemanticsOf.NON_IDEMPOTENT)
+    @MemberOrder(sequence = "1")
+    public NflPlayer newPlayer(
+            @ParameterLayout(named="Name")
+            final String name,
+            final NflLeague league,
+            final List<INflLeague> unused) {
+
+        final NflPlayer nflPlayer = serviceRegistry2.injectServicesInto(new NflPlayer(name));
+
+        repositoryService.persist(nflPlayer);
+        return nflPlayer;
+
+    }
+
+    public List<INflLeague> choices2NewPlayer() {
+        return Arrays.asList(NflLeague.values());
+    }
+
+
+    @Inject
+    ServiceRegistry2 serviceRegistry2;
 
 }

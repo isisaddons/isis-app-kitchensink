@@ -320,6 +320,16 @@ public class TextObject implements Entity<TextObject> {
     @Getter @Setter
     private String someStringDisabled;
 
+    @javax.jdo.annotations.Column(allowsNull = "false")
+    @Property(editing = Editing.ENABLED)
+    @Getter @Setter
+    private String someStringProgrammaticallyDisabled;
+    public String disableSomeStringProgrammaticallyDisabled() {
+        return getSomeStringWithValidation().endsWith("a") ?
+                null :
+                "Enabled only if 'someStringWithValidation' end with an 'a'";
+    }
+
 
     //region > someStringWithValidation (property)
     @javax.jdo.annotations.Column(allowsNull = "false")

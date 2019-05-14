@@ -32,7 +32,8 @@ public class KitchensinkAppManifest extends AppManifestAbstract2 {
                     .withAdditionalModules(FakeDataModule.class)
                     .withAuthMechanism("shiro")
                     .withConfigurationProperty("isis.foo", "other")
-                    .withConfigurationPropertiesFile(KitchensinkAppManifest.class, "git.properties");
+                    //.withConfigurationPropertiesFile(KitchensinkAppManifest.class, "git.properties")
+                    ;
 
     public KitchensinkAppManifest() {
         super(BUILDER);

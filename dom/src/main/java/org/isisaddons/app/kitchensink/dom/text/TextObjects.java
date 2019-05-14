@@ -66,6 +66,7 @@ public class TextObjects extends RepositoryAbstract<TextObject> {
         obj.setSomeStringOptional(name);
         obj.setSomeStringHidden(name);
         obj.setSomeStringDisabled(name);
+        obj.setSomeStringProgrammaticallyDisabled(name);
         obj.setSomeStringWithValidation(name);
         obj.setSomeStringMandatoryWithChoices(name);
         obj.setSomeStringOptionalWithChoices(name);

@@ -16,7 +16,12 @@
  */
 package org.isisaddons.app.kitchensink.dom.dependent;
 
-public enum NflLeague {
+public enum NflLeague implements INflLeague {
     AFC,
-    NFC
+    NFC;
+
+    @Override
+    public String getName() {
+        return name();
+    }
 }

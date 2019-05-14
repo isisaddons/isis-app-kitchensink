@@ -39,7 +39,7 @@ public enum NflRegion {
     @Getter
     private final String region;
 
-    public static List<NflRegion> thoseFor(final NflLeague league) {
+    public static List<NflRegion> thoseFor(final INflLeague league) {
         return Arrays.stream(values())
                 .filter(input -> input.getLeague() == league)
                 .collect(Collectors.toList());

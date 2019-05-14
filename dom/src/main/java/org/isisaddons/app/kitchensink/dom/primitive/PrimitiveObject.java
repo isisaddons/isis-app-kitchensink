@@ -110,7 +110,7 @@ public class PrimitiveObject implements Entity<PrimitiveObject> {
     //region > someByteDisabled (property)
     private byte someByteDisabled;
 
-    @Property(editing = Editing.DISABLED)
+    @Property(editing = Editing.DISABLED, editingDisabledReason = "Sorry, disabled!")
     public byte getSomeByteDisabled() {
         return someByteDisabled;
     }

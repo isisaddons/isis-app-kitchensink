@@ -52,6 +52,10 @@ import lombok.Setter;
 )
 public class NflPlayer implements Entity<NflPlayer> {
 
+    public NflPlayer(final String name) {
+        this.name = name;
+    }
+
     @Column(allowsNull="false")
     @Title(sequence="1")
     @Getter @Setter

@@ -356,6 +356,9 @@
                 <mb3:serviceAction objectType="NflTeamEntity" id="create">
                     <cpt:named>Create</cpt:named>
                 </mb3:serviceAction>
+                <mb3:serviceAction objectType="NflPlayer" id="newNflPlayer">
+                    <cpt:named>New Player</cpt:named>
+                </mb3:serviceAction>
             </mb3:section>
             <mb3:section>
                 <mb3:serviceAction objectType="MiscObject" id="add">
