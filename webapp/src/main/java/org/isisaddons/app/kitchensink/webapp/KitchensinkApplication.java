@@ -69,8 +69,8 @@ public class KitchensinkApplication extends IsisWicketApplication {
         super.init();
 
         getDebugSettings().setOutputMarkupContainerClassName(true);
-        getMarkupSettings().setStripWicketTags(true);
-        getDebugSettings().setAjaxDebugModeEnabled(false);
+        //getMarkupSettings().setStripWicketTags(true);
+        //getDebugSettings().setAjaxDebugModeEnabled(false);
 
         IBootstrapSettings settings = Bootstrap.getSettings();
         settings.setThemeProvider(new BootswatchThemeProvider(BootswatchTheme.Flatly));

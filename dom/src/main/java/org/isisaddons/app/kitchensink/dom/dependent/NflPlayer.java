@@ -58,6 +58,7 @@ public class NflPlayer implements Entity<NflPlayer> {
 
     @Column(allowsNull="false")
     @Title(sequence="1")
+    @javax.jdo.annotations.Unique
     @Getter @Setter
     private String name;
 
