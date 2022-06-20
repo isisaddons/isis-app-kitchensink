@@ -40,7 +40,7 @@ language governing permissions and limitations under the License.
     <properties>
         <isis.version>1.17.0.20200209-1325-9885ff17</isis.version>
 
-        <kotlin.version>1.2.21</kotlin.version>
+        <kotlin.version>1.6.0</kotlin.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
